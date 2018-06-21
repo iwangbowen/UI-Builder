@@ -1,0 +1,56 @@
+{
+  "name": "vvvebjs",
+  "description": "Drag and drop website builder javascript library",
+  "version": "0.0.1",
+  "author": "Ziadin Givan",
+  "license": "Apache-2.0",
+  "homepage": "http://www.vvveb.com/vvvebjs/editor.html",
+  "main": "libs/builder/builder.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iwangbowen/VvvebJs"
+  },
+  "scripts": {
+    "clean": "grunt clean:all",
+    "clean:concated": "grunt clean:concated",
+    "clean:built": "grunt clean:built",
+    "clean:transpiled": "grunt clean:transpiled",
+    "concat": "grunt concat",
+    "build": "grunt build",
+    "build:dev": "grunt build:dev",
+    "bild:prod": "grunt build:prod",
+    "transpile": "grunt transpile"
+  },
+  "dependencies": {
+    "dragula": "^3.7.2",
+    "js-beautify": "^1.7.5"
+  },
+  "keywords": [
+    "vvvebjs",
+    "drag-drop",
+    "drag&drop",
+    "drag",
+    "drop",
+    "wysiwyg",
+    "web",
+    "template",
+    "editor",
+    "site",
+    "builder"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "factor-bundle": "^2.5.0",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^7.0.0",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "load-grunt-tasks": "^4.0.0",
+    "minifyify": "^7.3.5"
+  }
+}
