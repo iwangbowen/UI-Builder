@@ -613,25 +613,24 @@ Vvveb.Builder = {
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
 					try {
-						// self.dragElement.css({
-						// 	transform: `translate(${event.pageX}px, ${event.pageY}px)`
-						// });
+						self.dragElement.css({
+							display: 'none'
+						});
 						if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
 							if (offset.top > (event.originalEvent.y - 10)) {
-								// parent.before(self.dragElement);
+								parent.before(self.dragElement);
 							} else {
-								// parent.prepend(self.dragElement);
-								//self.dragElement.prependTo(parent);
+								parent.prepend(self.dragElement);
+								self.dragElement.prependTo(parent);
 							}
 						} else {
 							if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-								// parent.before(self.dragElement);
+								parent.before(self.dragElement);
 							} else {
-								// parent.append(self.dragElement);
-								//self.dragElement.appendTo(parent);
+								parent.append(self.dragElement);
+								self.dragElement.appendTo(parent);
 							}
 						}
-						// self.dragElement.trigger('mousemove');
 					} catch (err) {
 						console.log(err);
 					}
@@ -924,12 +923,15 @@ Vvveb.Builder = {
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
+			console.log('what is going on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 			if (self.iconDrag && self.isDragging == true) {
 				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
+				console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+				console.log(elementMouseIsOver, elementMouseIsOver.tagName);
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
 					self.frameBody.trigger("mousemove", event);
 					event.stopPropagation();

@@ -33,7 +33,7 @@
                         $('body').append($element);
                     }
 
-                    var target = event.target,
+                    const target = event.target,
                         // keep the dragged position in the data-x/data-y attributes
                         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
                         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
@@ -42,22 +42,22 @@
                         transform: `translate(${x}px, ${y}px`
                     });
 
-                    // console.log($element.offset().top - y, $element.offset().left - x);
-
-                    // update the posiion attributes
+                    // update the position attributes
                     target.setAttribute('data-x', x);
                     target.setAttribute('data-y', y);
                 },
                 // call this function on every dragend event
                 onend: event => {
                     isElementCreated = false;
+
+                    // remove the position attributes
                     event.target.removeAttribute('data-x');
                     event.target.removeAttribute('data-y');
 
                     // self.frameBody.append($element);
                     // self.dragElement = $element;
-                    // self.dragElement && self.dragElement.replaceWith($element);
-                    var textEl = event.target.querySelector('p');
+                    self.dragElement && self.dragElement.replaceWith($element);
+                    const textEl = event.target.querySelector('p');
 
                     textEl && (textEl.textContent =
                         'moved a distance of '
