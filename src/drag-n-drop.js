@@ -2,6 +2,8 @@
     $(document).ready(() => {
         let isElementCreated = false;
         let $element;
+        const left = $('#iframeId').offset().left - $('body').offset().left,
+            top = $('#iframeId').offset().top - $('body').offset().top;
 
         interact('#components-list li ol li')
             .draggable({
@@ -39,7 +41,7 @@
                         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
                     $element.css({
-                        transform: `translate(${x}px, ${y}px`
+                        transform: `translate(${x}px, ${y}px)`
                     });
 
                     // update the position attributes
@@ -48,12 +50,16 @@
                 },
                 // call this function on every dragend event
                 onend: event => {
+                    
+                    $element.css({
+                        transform: `translate(${parseFloat(event.target.getAttribute('data-x')) - left}px, ${parseFloat(event.target.getAttribute('data-y')) - top}px)`
+                    });
+                    
                     isElementCreated = false;
-
                     // remove the position attributes
                     event.target.removeAttribute('data-x');
                     event.target.removeAttribute('data-y');
-
+                    
                     // self.frameBody.append($element);
                     // self.dragElement = $element;
                     self.dragElement && self.dragElement.replaceWith($element);

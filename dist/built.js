@@ -875,7 +875,6 @@ Vvveb.Builder = {
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
-			console.log('what is going on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 			if (self.iconDrag && self.isDragging == true) {
 				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 
@@ -3552,6 +3551,8 @@ Vvveb.Components.add("html/gridrow", {
 	$(document).ready(function () {
 		var isElementCreated = false;
 		var $element = void 0;
+		var left = $('#iframeId').offset().left - $('body').offset().left,
+		    top = $('#iframeId').offset().top - $('body').offset().top;
 
 		interact('#components-list li ol li').draggable({
 			// enable inertial throwing
@@ -3572,13 +3573,13 @@ Vvveb.Components.add("html/gridrow", {
 					var _html = _component.dragHtml || _component.html;
 
 					var _$$offset = $(event.target).offset(),
-					    left = _$$offset.left,
-					    top = _$$offset.top;
+					    _left = _$$offset.left,
+					    _top = _$$offset.top;
 
 					$element = $(_html).css({
 						position: 'absolute',
-						left: left,
-						top: top,
+						left: _left,
+						top: _top,
 						'z-index': 999
 					});
 					isElementCreated = true;
@@ -3592,7 +3593,7 @@ Vvveb.Components.add("html/gridrow", {
 				    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
 				$element.css({
-					transform: "translate(" + x + "px, " + y + "px"
+					transform: "translate(" + x + "px, " + y + "px)"
 				});
 
 				// update the position attributes
@@ -3601,8 +3602,12 @@ Vvveb.Components.add("html/gridrow", {
 			},
 			// call this function on every dragend event
 			onend: function onend(event) {
-				isElementCreated = false;
 
+				$element.css({
+					transform: "translate(" + (parseFloat(event.target.getAttribute('data-x')) - left) + "px, " + (parseFloat(event.target.getAttribute('data-y')) - top) + "px)"
+				});
+
+				isElementCreated = false;
 				// remove the position attributes
 				event.target.removeAttribute('data-x');
 				event.target.removeAttribute('data-y');

@@ -923,7 +923,6 @@ Vvveb.Builder = {
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
-			console.log('what is going on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 			if (self.iconDrag && self.isDragging == true) {
 				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 

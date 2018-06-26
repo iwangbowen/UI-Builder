@@ -31,7 +31,7 @@
                     target.setAttribute('data-y', y);
                 },
                 // call this function on every dragend event
-                onend: function (event) {
+                onend: event => {
                     var textEl = event.target.querySelector('p');
 
                     textEl && (textEl.textContent =
