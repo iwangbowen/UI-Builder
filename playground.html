@@ -29,6 +29,16 @@
         //     })
         // });
 
+        $('#btn1').on('click', () => {
+            $('body').append($(`<div style="width: 100px; height: 100px; background-color: red;">
+                <label>Username</label>
+                <label>Password</label>
+                <h1>Drag me here</h1>
+                <input type="text">
+                <input type="text">
+                </div>`));
+        });
+
         $('#btn2').on('click', () => {
             $('#div1').remove();
         });

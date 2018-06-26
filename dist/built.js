@@ -571,6 +571,7 @@ Vvveb.Builder = {
 				width = target.outerWidth();
 				height = target.outerHeight();
 
+				console.log(self.isDragging);
 				if (self.isDragging) {
 					// if (self.iconDrag) self.iconDrag.remove();
 					console.log('*************************************');
@@ -3576,7 +3577,9 @@ Vvveb.Components.add("html/gridrow", {
 						position: 'absolute',
 						left: left,
 						top: top,
-						'z-index': 999
+						'z-index': 999,
+						'-webkit-touch-action': 'none',
+						'touch-action': 'none'
 					});
 					isElementCreated = true;
 					$('body').append($element);

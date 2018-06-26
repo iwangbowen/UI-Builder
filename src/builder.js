@@ -607,6 +607,7 @@ Vvveb.Builder = {
 				width = target.outerWidth();
 				height = target.outerHeight();
 
+				console.log(self.isDragging);
 				if (self.isDragging) {
 					// if (self.iconDrag) self.iconDrag.remove();
 					console.log('*************************************');
