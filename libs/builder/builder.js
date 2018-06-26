@@ -887,7 +887,6 @@ Vvveb.Builder = {
 
 		self.isDragging = false;
 		component = {};
-		// dragula([document.querySelector('#components ul > li > ol'), document.querySelector('#iframe1 body')]);
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
 
 			$this = jQuery(this);

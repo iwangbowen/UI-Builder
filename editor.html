@@ -22,8 +22,8 @@
 		<div id="vvveb-builder">
 
 			<div id="top-panel">
-				<a href="#" class="float-left" style="font-size: 1.5rem;" title="Sageui 0.0.1">
-					<h3>Sageui 0.0.1</h3>
+				<a href="#" class="float-left" style="font-size: 1.5rem;" title="Sageui 0.0.1.5">
+					<h3>Sageui 0.0.1.5</h3>
 				</a>
 
 				<div class="btn-group mr-3" role="group">
@@ -268,7 +268,7 @@
 
 
 					</div>
-					<iframe src="about:none" id="iframe1"></iframe>
+					<iframe src="about:none" id="iframeId"></iframe>
 				</div>
 
 
@@ -660,6 +660,9 @@
 			<!-- dragula -->
 			<script src="js/dragula.js"></script>
 
+			<!-- interact -->
+			<script src="js/interact.js"></script>
+
 			<script src="dist/built.js"></script>
 			<!-- <script src="dist/common.js"></script> -->
 			<!-- builder code-->
@@ -683,6 +686,15 @@
 			<script src="libs/builder/plugin-codemirror.js"></script>
 
 			<script>
+				function setIframeHeight(iframe) {
+					if (iframe) {
+						var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+						if (iframeWin.document.body) {
+							iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+						}
+					}
+				};
+
 				$(document).ready(function () {
 					Vvveb.Builder.init('demo/playground/index.html', function () {
 					});

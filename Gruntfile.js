@@ -67,7 +67,7 @@ module.exports = function (grunt) {
             build: {
                 files: {
                     'dist/built.js': 'concated/concated.js',
-                    'dist/drag-n-drop.js': 'src/drag-n-drop.js'
+                    'dist/iframe-drag-n-drop.js': 'src/iframe-drag-n-drop.js'
                 }
             }
         },
@@ -77,7 +77,8 @@ module.exports = function (grunt) {
                     'transpiled/builder*.js',
                     'transpiled/undo*.js',
                     'transpiled/inputs*.js',
-                    'transpiled/components-bootstrap4*.js'
+                    'transpiled/components-bootstrap4*.js',
+                    'transpiled/drag-n-drop*.js'
                 ],
                 dest: 'dist/built.js'
             },
@@ -86,7 +87,8 @@ module.exports = function (grunt) {
                     'src/builder*.js',
                     'src/undo*.js',
                     'src/inputs*.js',
-                    'src/components-bootstrap4*.js'
+                    'src/components-bootstrap4*.js',
+                    'src/drag-n-drop*.js'
                 ],
                 dest: 'concated/concated.js'
             }

@@ -563,7 +563,6 @@ Vvveb.Builder = {
 		this.frameBody.on("mousemove touchmove", function (event) {
 			//delay for half a second if dragging over same element
 			if (event.target == moveEvent.target && event.timeStamp - moveEvent.timeStamp < 500) return;
-
 			if (event.target) {
 				moveEvent = event;
 
@@ -573,30 +572,35 @@ Vvveb.Builder = {
 				height = target.outerHeight();
 
 				if (self.isDragging) {
-					if (self.iconDrag) self.iconDrag.remove();
-
+					// if (self.iconDrag) self.iconDrag.remove();
+					console.log('*************************************');
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
-
 					try {
+						// self.dragElement.css({
+						// 	transform: `translate(${event.pageX}px, ${event.pageY}px)`
+						// });
 						if (event.originalEvent && offset.left > event.originalEvent.x - 10) {
 							if (offset.top > event.originalEvent.y - 10) {
-								parent.before(self.dragElement);
+								// parent.before(self.dragElement);
 							} else {
-								parent.prepend(self.dragElement);
-								//self.dragElement.prependTo(parent);
-							}
+									// parent.prepend(self.dragElement);
+									//self.dragElement.prependTo(parent);
+								}
 						} else {
 							if (event.originalEvent && offset.top > event.originalEvent.y - 10) {
-								parent.before(self.dragElement);
+								// parent.before(self.dragElement);
 							} else {
-								parent.append(self.dragElement);
-								//self.dragElement.appendTo(parent);
-							}
+									// parent.append(self.dragElement);
+									//self.dragElement.appendTo(parent);
+								}
 						}
+						// self.dragElement.trigger('mousemove');
 					} catch (err) {
 						console.log(err);
 					}
+
+					console.log("translate(" + event.pageX + "px, " + event.pageY + "px)");
 
 					self.isDragging == false;
 				} else {
@@ -843,7 +847,8 @@ Vvveb.Builder = {
 
 			$this = jQuery(this);
 
-			$("#component-clone").remove();
+			// $("#component-clone").remove();
+
 
 			component = Vvveb.Components.get($this.data("type"));
 
@@ -858,20 +863,21 @@ Vvveb.Builder = {
 			if (component.dragStart) self.dragElement = component.dragStart(self.dragElement);
 
 			self.isDragging = true;
-			self.iconDrag = $this.clone().attr("id", "component-clone").css('position', 'absolute');
-			$('body').append(self.iconDrag);
+			// self.iconDrag = $this.clone().attr("id", "component-clone").css('position', 'absolute');
+			// $('body').append(self.iconDrag);
+			self.iconDrag = true;
 		});
 
 		$('body').on('mouseup touchend', function (event) {
 			if (self.iconDrag && self.isDragging == true) {
 				self.isDragging = false;
-				$("#component-clone").remove();
+				// $("#component-clone").remove();
 			}
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
 			if (self.iconDrag && self.isDragging == true) {
-				self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
+				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 
@@ -886,7 +892,7 @@ Vvveb.Builder = {
 
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
 			self.isDragging = false;
-			$("#component-clone").remove();
+			// $("#component-clone").remove();
 		});
 	},
 
@@ -3539,4 +3545,111 @@ Vvveb.Components.add("html/gridrow", {
 		}
 	}]
 });
+
+(function () {
+	$(document).ready(function () {
+		var isElementCreated = false;
+		var $element = void 0;
+
+		interact('#components-list li ol li').draggable({
+			// enable inertial throwing
+			inertia: true,
+			// keep the element within the area of it's parent
+			restrict: {
+				restriction: document.getElementById('iframeId').contentWindow.document.getElementById('bodyId'),
+				endOnly: true,
+				elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+			},
+			// enable autoScroll
+			autoScroll: true,
+
+			// call this function on every dragmove event
+			onmove: function onmove(event) {
+				if (!isElementCreated) {
+					var _component = Vvveb.Components.get($(event.target).data("type"));
+					var _html = _component.dragHtml || _component.html;
+
+					var _$$offset = $(event.target).offset(),
+					    left = _$$offset.left,
+					    top = _$$offset.top;
+
+					$element = $(_html).css({
+						position: 'absolute',
+						left: left,
+						top: top,
+						'z-index': 999
+					});
+					isElementCreated = true;
+					$('body').append($element);
+				}
+
+				var target = event.target,
+
+				// keep the dragged position in the data-x/data-y attributes
+				x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+				    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+				$element.css({
+					transform: "translate(" + x + "px, " + y + "px"
+				});
+
+				// console.log($element.offset().top - y, $element.offset().left - x);
+
+				// update the posiion attributes
+				target.setAttribute('data-x', x);
+				target.setAttribute('data-y', y);
+			},
+			// call this function on every dragend event
+			onend: function onend(event) {
+				isElementCreated = false;
+				event.target.removeAttribute('data-x');
+				event.target.removeAttribute('data-y');
+
+				// self.frameBody.append($element);
+				// self.dragElement = $element;
+				// self.dragElement && self.dragElement.replaceWith($element);
+				var textEl = event.target.querySelector('p');
+
+				textEl && (textEl.textContent = 'moved a distance of ' + Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0).toFixed(2) + 'px');
+			}
+		});
+		// .resizable({
+		//     // resize from all edges and corners
+		//     edges: { left: true, right: true, bottom: true, top: true },
+
+		//     // keep the edges inside the parent
+		//     restrictEdges: {
+		//         outer: 'parent',
+		//         endOnly: true,
+		//     },
+
+		//     // minimum size
+		//     restrictSize: {
+		//         min: { width: 100, height: 50 },
+		//     },
+
+		//     inertia: true,
+		// })
+		// .on('resizemove', function (event) {
+		//     var target = event.target,
+		//         x = (parseFloat(target.getAttribute('data-x')) || 0),
+		//         y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+		//     // update the element's style
+		//     target.style.width = event.rect.width + 'px';
+		//     target.style.height = event.rect.height + 'px';
+
+		//     // translate when resizing from top or left edges
+		//     x += event.deltaRect.left;
+		//     y += event.deltaRect.top;
+
+		//     target.style.webkitTransform = target.style.transform =
+		//         'translate(' + x + 'px,' + y + 'px)';
+
+		//     target.setAttribute('data-x', x);
+		//     target.setAttribute('data-y', y);
+		//     target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
+		// });
+	});
+})();
 //# sourceMappingURL=built.js.map

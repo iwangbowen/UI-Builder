@@ -5,28 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>拖拽</title>
 </head>
 
 <body>
-    <div id="div1" class="draggable hello" style="width: 30px; height: 30px; background-color: pink;"></div>
-    <div class="draggable hello" style="width: 30px; height: 30px; background-color: rebeccapurple;"></div>
-    <button>Click me</button>
-    <button>Click me</button>
+    <div id="div1" class="draggable hello" style="position: absolute; top: 50px; left: 100px; width: 30px; height: 30px; background-color: pink;"></div>
+    <div id="div2" class="draggable hello" style="width: 30px; height: 30px; background-color: rebeccapurple;"></div>
+    <button id="btn1">Click me</button>
+    <button id="btn2">Delete me</button>
+    <button id="btn3">Click this</button>
+    <a>drag me</a>
     <iframe id="iframeId" src="iframe.html"></iframe>
+    <div id="drop" style="height: 100px; width: 100%; background-color: darkorchid;"></div>
     <script src="js/jquery.min.js"></script>
     <script src="js/interact.js"></script>
     <script>
-        $('button').on('click', () => {
-            $('body').append($('#div1').clone());
+        // $('body').on('mousemove', event => {
+        //     console.log(event.offsetX, event.offsetY);
+        //     $('#div1').css({
+        //         top: event.offsetY,
+        //         left: event.offsetY
+        //     })
+        // });
+
+        $('#btn2').on('click', () => {
+            $('#div1').remove();
         });
+
+        $('#btn3').on('click', () => {
+            $('body').append($('<div style="width: 30px; height: 30px; background-color: black;"></div>'));
+        });
+
+        function createElement() {
+            $('body').append($('#div1').clone().css('color', 'black').attr('id', 'drag1'));
+        }
+
+        const frameBody = $($('#iframeId').get(0).contentWindow.document).find("body");
+        // console.log(frameBody);
+        frameBody.on('mousemove', event => {
+            // console.log(event);
+        });
+
+        $('body').on('mousemove', event => {
+            // console.log(event);
+        });
+
+
         interact('body *')
             .draggable({
                 // enable inertial throwing
                 inertia: true,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: "parent",
+                    restriction: document.getElementById('drop'),
+                    // $($('#iframeId').get(0).contentWindow.document).find("body").get(0),
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -37,6 +69,7 @@
                 onmove: dragMoveListener,
                 // call this function on every dragend event
                 onend: function (event) {
+                    console.log('end');
                     var textEl = event.target.querySelector('p');
 
                     textEl && (textEl.textContent =
@@ -47,6 +80,8 @@
                 }
             });
 
+
+        let isElementCreated = false;
         function dragMoveListener(event) {
             var target = event.target,
                 // keep the dragged position in the data-x/data-y attributes

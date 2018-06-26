@@ -1,15 +1,12 @@
 (function () {
     $(document).ready(() => {
-        let isElementCreated = false;
-        let $element;
-
-        interact('#components-list li ol li')
+        interact('body :not(div)')
             .draggable({
                 // enable inertial throwing
                 inertia: true,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: document.getElementById('iframeId').contentWindow.document.getElementById('bodyId'),
+                    restriction: 'parent',
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -17,46 +14,9 @@
                 autoScroll: true,
 
                 // call this function on every dragmove event
-                onmove: event => {
-                    if (!isElementCreated) {
-                        const component = Vvveb.Components.get($(event.target).data("type"));
-                        const html = component.dragHtml || component.html;
-
-                        const { left, top } = $(event.target).offset();
-                        $element = $(html).css({
-                            position: 'absolute',
-                            left,
-                            top,
-                            'z-index': 999
-                        });
-                        isElementCreated = true;
-                        $('body').append($element);
-                    }
-
-                    var target = event.target,
-                        // keep the dragged position in the data-x/data-y attributes
-                        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-                    $element.css({
-                        transform: `translate(${x}px, ${y}px`
-                    });
-
-                    // console.log($element.offset().top - y, $element.offset().left - x);
-
-                    // update the posiion attributes
-                    target.setAttribute('data-x', x);
-                    target.setAttribute('data-y', y);
-                },
+                onmove: dragMoveListener,
                 // call this function on every dragend event
-                onend: event => {
-                    isElementCreated = false;
-                    event.target.removeAttribute('data-x');
-                    event.target.removeAttribute('data-y');
-
-                    // self.frameBody.append($element);
-                    // self.dragElement = $element;
-                    // self.dragElement && self.dragElement.replaceWith($element);
+                onend: function (event) {
                     var textEl = event.target.querySelector('p');
 
                     textEl && (textEl.textContent =
@@ -103,5 +63,22 @@
         //     target.setAttribute('data-y', y);
         //     target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
         // });
+
+        function dragMoveListener(event) {
+            console.log('hello world');
+            var target = event.target,
+                // keep the dragged position in the data-x/data-y attributes
+                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+            // translate the element
+            target.style.webkitTransform =
+                target.style.transform =
+                'translate(' + x + 'px, ' + y + 'px)';
+
+            // update the posiion attributes
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        }
     });
 })();

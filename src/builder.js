@@ -599,7 +599,6 @@ Vvveb.Builder = {
 		this.frameBody.on("mousemove touchmove", function (event) {
 			//delay for half a second if dragging over same element
 			if (event.target == moveEvent.target && ((event.timeStamp - moveEvent.timeStamp) < 500)) return;
-
 			if (event.target) {
 				moveEvent = event;
 
@@ -609,31 +608,36 @@ Vvveb.Builder = {
 				height = target.outerHeight();
 
 				if (self.isDragging) {
-					if (self.iconDrag) self.iconDrag.remove();
-
+					// if (self.iconDrag) self.iconDrag.remove();
+					console.log('*************************************');
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
-
 					try {
+						// self.dragElement.css({
+						// 	transform: `translate(${event.pageX}px, ${event.pageY}px)`
+						// });
 						if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
 							if (offset.top > (event.originalEvent.y - 10)) {
-								parent.before(self.dragElement);
+								// parent.before(self.dragElement);
 							} else {
-								parent.prepend(self.dragElement);
+								// parent.prepend(self.dragElement);
 								//self.dragElement.prependTo(parent);
 							}
 						} else {
 							if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-								parent.before(self.dragElement);
+								// parent.before(self.dragElement);
 							} else {
-								parent.append(self.dragElement);
+								// parent.append(self.dragElement);
 								//self.dragElement.appendTo(parent);
 							}
 						}
-
+						// self.dragElement.trigger('mousemove');
 					} catch (err) {
 						console.log(err);
 					}
+
+
+					console.log(`translate(${event.pageX}px, ${event.pageY}px)`);
 
 					self.isDragging == false;
 				} else {
@@ -649,7 +653,6 @@ Vvveb.Builder = {
 
 					jQuery("#highlight-name").html(self._getElementType(event.target));
 				}
-
 			}
 		});
 
@@ -891,7 +894,7 @@ Vvveb.Builder = {
 
 			$this = jQuery(this);
 
-			$("#component-clone").remove();
+			// $("#component-clone").remove();
 
 
 			component = Vvveb.Components.get($this.data("type"));
@@ -907,21 +910,22 @@ Vvveb.Builder = {
 			if (component.dragStart) self.dragElement = component.dragStart(self.dragElement);
 
 			self.isDragging = true;
-			self.iconDrag = $this.clone().attr("id", "component-clone").css('position', 'absolute');
-			$('body').append(self.iconDrag);
+			// self.iconDrag = $this.clone().attr("id", "component-clone").css('position', 'absolute');
+			// $('body').append(self.iconDrag);
+			self.iconDrag = true;
 		});
 
 
 		$('body').on('mouseup touchend', function (event) {
 			if (self.iconDrag && self.isDragging == true) {
 				self.isDragging = false;
-				$("#component-clone").remove();
+				// $("#component-clone").remove();
 			}
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
 			if (self.iconDrag && self.isDragging == true) {
-				self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
+				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 
@@ -936,7 +940,7 @@ Vvveb.Builder = {
 
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
 			self.isDragging = false;
-			$("#component-clone").remove();
+			// $("#component-clone").remove();
 		});
 
 	},
