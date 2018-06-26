@@ -599,8 +599,6 @@ Vvveb.Builder = {
 						console.log(err);
 					}
 
-					console.log("translate(" + event.pageX + "px, " + event.pageY + "px)");
-
 					self.isDragging == false;
 				} else {
 
@@ -3551,8 +3549,6 @@ Vvveb.Components.add("html/gridrow", {
 	$(document).ready(function () {
 		var isElementCreated = false;
 		var $element = void 0;
-		var left = $('#iframeId').offset().left - $('body').offset().left,
-		    top = $('#iframeId').offset().top - $('body').offset().top;
 
 		interact('#components-list li ol li').draggable({
 			// enable inertial throwing
@@ -3573,13 +3569,13 @@ Vvveb.Components.add("html/gridrow", {
 					var _html = _component.dragHtml || _component.html;
 
 					var _$$offset = $(event.target).offset(),
-					    _left = _$$offset.left,
-					    _top = _$$offset.top;
+					    left = _$$offset.left,
+					    top = _$$offset.top;
 
 					$element = $(_html).css({
 						position: 'absolute',
-						left: _left,
-						top: _top,
+						left: left,
+						top: top,
 						'z-index': 999
 					});
 					isElementCreated = true;
@@ -3602,10 +3598,20 @@ Vvveb.Components.add("html/gridrow", {
 			},
 			// call this function on every dragend event
 			onend: function onend(event) {
+				console.log(event);
 
+				var left = $element.offset().left - $('#iframeId').offset().left,
+				    top = $element.offset().top - $('#iframeId').offset().top;
 				$element.css({
-					transform: "translate(" + (parseFloat(event.target.getAttribute('data-x')) - left) + "px, " + (parseFloat(event.target.getAttribute('data-y')) - top) + "px)"
+					left: left,
+					top: top,
+					transform: ''
 				});
+
+				// $element.css({
+				//     position: 'static',
+				//     transform: `translate(${parseFloat(event.target.getAttribute('data-x')) - left}px, ${parseFloat(event.target.getAttribute('data-y')) - top}px)`
+				// });
 
 				isElementCreated = false;
 				// remove the position attributes

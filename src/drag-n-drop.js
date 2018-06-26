@@ -2,8 +2,6 @@
     $(document).ready(() => {
         let isElementCreated = false;
         let $element;
-        const left = $('#iframeId').offset().left - $('body').offset().left,
-            top = $('#iframeId').offset().top - $('body').offset().top;
 
         interact('#components-list li ol li')
             .draggable({
@@ -50,16 +48,26 @@
                 },
                 // call this function on every dragend event
                 onend: event => {
-                    
+                    console.log(event);
+
+                    const left = $element.offset().left - $('#iframeId').offset().left,
+                        top = $element.offset().top - $('#iframeId').offset().top;
                     $element.css({
-                        transform: `translate(${parseFloat(event.target.getAttribute('data-x')) - left}px, ${parseFloat(event.target.getAttribute('data-y')) - top}px)`
+                        left,
+                        top,
+                        transform: ''
                     });
-                    
+
+                    // $element.css({
+                    //     position: 'static',
+                    //     transform: `translate(${parseFloat(event.target.getAttribute('data-x')) - left}px, ${parseFloat(event.target.getAttribute('data-y')) - top}px)`
+                    // });
+
                     isElementCreated = false;
                     // remove the position attributes
                     event.target.removeAttribute('data-x');
                     event.target.removeAttribute('data-y');
-                    
+
                     // self.frameBody.append($element);
                     // self.dragElement = $element;
                     self.dragElement && self.dragElement.replaceWith($element);

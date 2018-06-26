@@ -635,9 +635,6 @@ Vvveb.Builder = {
 						console.log(err);
 					}
 
-
-					console.log(`translate(${event.pageX}px, ${event.pageY}px)`);
-
 					self.isDragging == false;
 				} else {
 
