@@ -77,7 +77,7 @@ function removeUnusedTags(html) {
 			&& !tag.getAttribute('href').includes('bootstrap'));
 	removeTag(el, 'script');
 
-	return el.outerHTML;
+	return $(el).prop('outerHTML');
 }
 
 function getStyle(el, styleProp) {

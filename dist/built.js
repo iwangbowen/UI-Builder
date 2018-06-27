@@ -69,7 +69,7 @@ function removeUnusedTags(html) {
 	});
 	removeTag(el, 'script');
 
-	return el.outerHTML;
+	return $(el).prop('outerHTML');
 }
 
 function getStyle(el, styleProp) {
