@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+</head>
+
+<body>
+    <div id="div" class="draggable hello" style="position: absolute; top: 50px; left: 100px; width: 30px; height: 30px; background-color: pink;"></div>
+    <button id="btn">Append to iframe</button>
+    <iframe id="iframeId" src="iframe.html"></iframe>
+    <script>
+        document.getElementById('btn').addEventListener('click', () => {
+            document.getElementById('iframeId').contentWindow.document.body.appendChild(document.getElementById('div'));
+        });
+    </script>
+</body>
+
+</html>

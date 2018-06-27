@@ -6,7 +6,7 @@
                 inertia: true,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: document.getElementById('bodyId'),
+                    restriction: document.body,
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -15,7 +15,6 @@
 
                 // call this function on every dragmove event
                 onmove: event => {
-                    console.log('hello world');
                     var target = event.target,
                         // keep the dragged position in the data-x/data-y attributes
                         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,

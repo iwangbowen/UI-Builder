@@ -48,6 +48,30 @@ var delay = function () {
 	};
 }();
 
+var alwaysTrue = function alwaysTrue() {
+	return true;
+};
+
+function removeTag(el, tagName) {
+	var filterFn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : alwaysTrue;
+
+	Array.from(el.getElementsByTagName(tagName)).filter(filterFn).forEach(function (tag) {
+		return tag.parentNode.removeChild(tag);
+	});
+}
+
+function removeUnusedTags(html) {
+	var el = document.createElement('html');
+	el.innerHTML = html;
+
+	removeTag(el, 'link', function (tag) {
+		return tag.getAttribute('rel') == 'stylesheet' && !tag.getAttribute('href').includes('bootstrap');
+	});
+	removeTag(el, 'script');
+
+	return "<!DOCTYPE html><html>" + el.innerHTML + "</html>";
+}
+
 function getStyle(el, styleProp) {
 	value = "";
 	//var el = document.getElementById(el);
@@ -571,10 +595,8 @@ Vvveb.Builder = {
 				width = target.outerWidth();
 				height = target.outerHeight();
 
-				console.log(self.isDragging);
 				if (self.isDragging) {
 					// if (self.iconDrag) self.iconDrag.remove();
-					console.log('*************************************');
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
 					try {
@@ -880,8 +902,6 @@ Vvveb.Builder = {
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
-				console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-				console.log(elementMouseIsOver, elementMouseIsOver.tagName);
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
 					self.frameBody.trigger("mousemove", event);
 					event.stopPropagation();
@@ -902,7 +922,8 @@ Vvveb.Builder = {
   -U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
   								   use empty array to denote that no tags should not be reformatted
    */
-		return html_beautify(this.getHtml(), {
+		return html_beautify(removeUnusedTags(this.getHtml()), {
+			preserve_newlines: false,
 			indent_inner_html: true,
 			unformatted: []
 		});
@@ -3453,7 +3474,7 @@ Vvveb.Components.add("html/gridrow", {
 	name: "Grid Row",
 	image: "icons/grid_row.svg",
 	classes: ["row"],
-	html: '<div class="row drag-n-drop-padding"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
+	html: '<div class="row"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
 
 	beforeInit: function beforeInit(node) {
 		properties = [];
@@ -3500,8 +3521,6 @@ Vvveb.Components.add("html/gridrow", {
 					//add new column size
 					if (value) _class += ' ' + input.name + '-' + value;
 					column.attr("class", _class);
-
-					//console.log(this, node, value, input, input.name);
 
 					return node;
 				}
@@ -3556,7 +3575,7 @@ Vvveb.Components.add("html/gridrow", {
 			inertia: true,
 			// keep the element within the area of it's parent
 			restrict: {
-				restriction: document.getElementById('iframeId').contentWindow.document.getElementById('bodyId'),
+				restriction: document.getElementById('iframeId').contentWindow.document.body,
 				endOnly: true,
 				elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
 			},
@@ -3602,7 +3621,7 @@ Vvveb.Components.add("html/gridrow", {
 			// call this function on every dragend event
 			onend: function onend(event) {
 				console.log(event);
-
+				console.log($element);
 				var left = $element.offset().left - $('#iframeId').offset().left,
 				    top = $element.offset().top - $('#iframeId').offset().top;
 				$element.css({

@@ -1856,7 +1856,7 @@ Vvveb.Components.add("html/gridrow", {
     name: "Grid Row",
     image: "icons/grid_row.svg",
     classes: ["row"],
-    html: '<div class="row drag-n-drop-padding"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
+    html: '<div class="row"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
     
 	beforeInit: function (node)
 	{
@@ -1905,8 +1905,6 @@ Vvveb.Components.add("html/gridrow", {
 					//add new column size
 					if (value) _class +=  ' ' + input.name + '-' + value;
 					column.attr("class", _class);
-					
-					//console.log(this, node, value, input, input.name);
 					
 					return node;
 				},	

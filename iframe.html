@@ -10,12 +10,8 @@
 
 <body>
     <div class="draggable" style="width: 30px; height: 30px; background-color:olivedrab;"></div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/interact.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3.3/dist/interact.min.js"></script>
     <script>
-        $('button').on('click', () => {
-            $('body').append($('#div1').clone());
-        });
         interact('body *')
             .draggable({
                 // enable inertial throwing
@@ -60,6 +56,5 @@
         }
     </script>
 </body>
-
 
 </html>

@@ -9,7 +9,7 @@
                 inertia: true,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: document.getElementById('iframeId').contentWindow.document.getElementById('bodyId'),
+                    restriction: document.getElementById('iframeId').contentWindow.document.body,
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -51,7 +51,7 @@
                 // call this function on every dragend event
                 onend: event => {
                     console.log(event);
-
+                    console.log($element);
                     const left = $element.offset().left - $('#iframeId').offset().left,
                         top = $element.offset().top - $('#iframeId').offset().top;
                     $element.css({

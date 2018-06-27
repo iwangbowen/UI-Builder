@@ -11,9 +11,11 @@
 <body>
     <div id="div1" class="draggable hello" style="position: absolute; top: 50px; left: 100px; width: 30px; height: 30px; background-color: pink;"></div>
     <div id="div2" class="draggable hello" style="width: 30px; height: 30px; background-color: rebeccapurple;"></div>
+    <div id="div3" class="draggable hello" style="width: 30px; height: 30px; background-color: rgb(51, 153, 85);"></div>
     <button id="btn1">Click me</button>
     <button id="btn2">Delete me</button>
     <button id="btn3">Click this</button>
+    <button id="btn4">Append to iframe</button>
     <input type="text">
     <a>drag me</a>
     <iframe id="iframeId" src="iframe.html"></iframe>
@@ -45,6 +47,10 @@
 
         $('#btn3').on('click', () => {
             $('body').append($('<div style="width: 30px; height: 30px; background-color: black;"></div>'));
+        });
+
+        $('#btn4').on('click', () => {
+            document.getElementById('iframeId').contentWindow.document.body.appendChild(document.getElementById('div3'));
         });
 
         function createElement() {

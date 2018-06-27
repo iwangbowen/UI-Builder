@@ -60,6 +60,26 @@ var delay = (function () {
 	};
 })();
 
+const alwaysTrue = () => true;
+
+function removeTag(el, tagName, filterFn = alwaysTrue) {
+	Array.from(el.getElementsByTagName(tagName))
+		.filter(filterFn)
+		.forEach(tag => tag.parentNode.removeChild(tag));
+}
+
+function removeUnusedTags(html) {
+	const el = document.createElement('html');
+	el.innerHTML = html;
+
+	removeTag(el, 'link',
+		tag => tag.getAttribute('rel') == 'stylesheet'
+			&& !tag.getAttribute('href').includes('bootstrap'));
+	removeTag(el, 'script');
+
+	return `<!DOCTYPE html><html>${el.innerHTML}</html>`;
+}
+
 function getStyle(el, styleProp) {
 	value = "";
 	//var el = document.getElementById(el);
@@ -607,10 +627,8 @@ Vvveb.Builder = {
 				width = target.outerWidth();
 				height = target.outerHeight();
 
-				console.log(self.isDragging);
 				if (self.isDragging) {
 					// if (self.iconDrag) self.iconDrag.remove();
-					console.log('*************************************');
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
 					try {
@@ -927,8 +945,6 @@ Vvveb.Builder = {
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
-				console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-				console.log(elementMouseIsOver, elementMouseIsOver.tagName);
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
 					self.frameBody.trigger("mousemove", event);
 					event.stopPropagation();
@@ -950,7 +966,8 @@ Vvveb.Builder = {
 		-U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
 										   use empty array to denote that no tags should not be reformatted
 		 */
-		return html_beautify(this.getHtml(), {
+		return html_beautify(removeUnusedTags(this.getHtml()), {
+			preserve_newlines: false,
 			indent_inner_html: true,
 			unformatted: []
 		});
