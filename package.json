@@ -22,7 +22,6 @@
     "transpile": "grunt transpile"
   },
   "dependencies": {
-    "dragula": "^3.7.2",
     "js-beautify": "^1.7.5"
   },
   "keywords": [
