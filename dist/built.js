@@ -69,7 +69,7 @@ function removeUnusedTags(html) {
 	});
 	removeTag(el, 'script');
 
-	return "<!DOCTYPE html><html>" + el.innerHTML + "</html>";
+	return $(el).prop("outerHTML");
 }
 
 function getStyle(el, styleProp) {
@@ -3630,19 +3630,16 @@ Vvveb.Components.add("html/gridrow", {
 					transform: ''
 				});
 
-				// $element.css({
-				//     position: 'static',
-				//     transform: `translate(${parseFloat(event.target.getAttribute('data-x')) - left}px, ${parseFloat(event.target.getAttribute('data-y')) - top}px)`
-				// });
-
 				isElementCreated = false;
 				// remove the position attributes
 				event.target.removeAttribute('data-x');
 				event.target.removeAttribute('data-y');
 
-				// self.frameBody.append($element);
-				// self.dragElement = $element;
-				self.dragElement && self.dragElement.replaceWith($element);
+				// 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
+				// 获得html字符串，然后再进行替换
+				self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
+				$element.remove();
+				// self.dragElement && myFrame.replaceWith(self.dragElement, $element);
 				var textEl = event.target.querySelector('p');
 
 				textEl && (textEl.textContent = 'moved a distance of ' + Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0).toFixed(2) + 'px');
