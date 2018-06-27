@@ -3620,8 +3620,6 @@ Vvveb.Components.add("html/gridrow", {
 			},
 			// call this function on every dragend event
 			onend: function onend(event) {
-				console.log(event);
-				console.log($element);
 				var left = $element.offset().left - $('#iframeId').offset().left,
 				    top = $element.offset().top - $('#iframeId').offset().top;
 				$element.css({
