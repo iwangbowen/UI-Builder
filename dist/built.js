@@ -69,7 +69,7 @@ function removeUnusedTags(html) {
 	});
 	removeTag(el, 'script');
 
-	return $(el).prop("outerHTML");
+	return el.outerHTML;
 }
 
 function getStyle(el, styleProp) {
@@ -3596,9 +3596,7 @@ Vvveb.Components.add("html/gridrow", {
 						position: 'absolute',
 						left: left,
 						top: top,
-						'z-index': 999,
-						'-webkit-touch-action': 'none',
-						'touch-action': 'none'
+						'z-index': 999
 					});
 					isElementCreated = true;
 					$('body').append($element);

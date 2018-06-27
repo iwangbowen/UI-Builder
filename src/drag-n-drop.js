@@ -27,9 +27,7 @@
                             position: 'absolute',
                             left,
                             top,
-                            'z-index': 999,
-                            '-webkit-touch-action': 'none',
-                            'touch-action': 'none'
+                            'z-index': 999
                         });
                         isElementCreated = true;
                         $('body').append($element);
