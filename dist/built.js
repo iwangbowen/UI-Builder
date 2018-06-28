@@ -3634,18 +3634,15 @@ Vvveb.Components.add("html/gridrow", {
 					var _component = Vvveb.Components.get($(event.target).data("type"));
 					var _html = _component.dragHtml || _component.html;
 
-					var _$$offset = $(event.target).offset(),
-					    left = _$$offset.left,
-					    top = _$$offset.top;
-
 					$element = $(_html).css({
 						position: 'absolute',
-						left: left,
-						top: top,
+						left: event.pageX - 5,
+						top: event.pageY - 5,
 						'z-index': 999
 					});
-					isElementCreated = true;
 					$('body').append($element);
+
+					isElementCreated = true;
 				}
 
 				var target = event.target,

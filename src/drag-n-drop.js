@@ -22,15 +22,15 @@
                         const component = Vvveb.Components.get($(event.target).data("type"));
                         const html = component.dragHtml || component.html;
 
-                        const { left, top } = $(event.target).offset();
                         $element = $(html).css({
                             position: 'absolute',
-                            left,
-                            top,
+                            left: event.pageX - 5,
+                            top: event.pageY -5,
                             'z-index': 999
                         });
-                        isElementCreated = true;
                         $('body').append($element);
+
+                        isElementCreated = true;
                     }
 
                     const target = event.target,
