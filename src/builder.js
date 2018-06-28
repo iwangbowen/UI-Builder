@@ -769,7 +769,7 @@ Vvveb.Builder = {
 			self.selectedEl.attr('data-y', y);
 		};
 
-		this.frameBody.keydown((e) => {
+		this.frameBody.keydown(e => {
 			if (self.selectedEl && self.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
 					arrowKeyMove(e.which);
