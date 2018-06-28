@@ -3636,8 +3636,8 @@ Vvveb.Components.add("html/gridrow", {
 
 					$element = $(_html).css({
 						position: 'absolute',
-						left: event.pageX - 5,
-						top: event.pageY - 5,
+						left: event.pageX - 15,
+						top: event.pageY - 15,
 						'z-index': 999
 					});
 					$('body').append($element);
