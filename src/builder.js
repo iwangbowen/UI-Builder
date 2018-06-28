@@ -738,6 +738,46 @@ Vvveb.Builder = {
 
 		});
 
+		const arrowKeyMove = key => {
+			let dx = 0, dy = 0;
+			switch (key) {
+				case 37: // left
+					dx = -1;
+					break;
+				case 38: // up
+					dy = -1;
+					break;
+				case 39: // right
+					dx = 1;
+					break;
+				case 40: // down
+					dy = 1;
+					break;
+				default: return; // exit this handler for other keys
+			}
+
+			// keep the dragged position in the data-x/data-y attributes
+			const x = (parseFloat(self.selectedEl.attr('data-x')) || 0) + dx,
+				y = (parseFloat(self.selectedEl.attr('data-y')) || 0) + dy;
+
+			self.selectedEl.css({
+				transform: `translate(${x}px, ${y}px)`
+			});
+
+			// update the position attributes
+			self.selectedEl.attr('data-x', x);
+			self.selectedEl.attr('data-y', y);
+		};
+
+		this.frameBody.keydown((e) => {
+			if (self.selectedEl && self.selectedEl.prop('tagName') != 'BODY') {
+				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
+					arrowKeyMove(e.which);
+				}
+				e.preventDefault(); // prevent the default action (scroll / move caret)
+			}
+		});
+
 		$("#drag-box").on("mousedown", function (event) {
 			jQuery("#select-box").hide();
 			self.dragElement = self.selectedEl;
