@@ -24,8 +24,8 @@
 
                         $element = $(html).css({
                             position: 'absolute',
-                            left: event.pageX - 15,
-                            top: event.pageY - 15,
+                            left: event.pageX - 20,
+                            top: event.pageY - 20,
                             'z-index': 999
                         });
                         $('body').append($element);
