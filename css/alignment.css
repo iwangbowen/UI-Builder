@@ -6,6 +6,7 @@
     background-color: #fff;
     width: 100%;
     height: 1px;
+    margin: 0;
 }
 
 .vertical-line {
@@ -16,4 +17,5 @@
     background-color: #fff;
     width: 1px;
     height: 100%;
+    margin: 0;
 }

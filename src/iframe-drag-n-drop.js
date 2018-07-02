@@ -1,7 +1,12 @@
 (function () {
     const getCenterCoordinates = $element => ({
-        left: $element.offset().left + $element.width() / 2,
-        top: $element.offset().top + $element.height() / 2
+        left: $element.offset().left + $element.outerWidth(true) / 2,
+        top: $element.offset().top + $element.outerHeight(true) / 2
+    });
+
+    const isAlign = (targetOffset, currentOffset) => ({
+        isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 1,
+        isVerticalAlign: Math.abs(targetOffset.left - currentOffset.left) <= 1
     });
 
     const removeAlignmentLines = () => $('.horizontal-line, .vertical-line').remove();
@@ -42,30 +47,34 @@
     };
 
     const dragAlignmentLine = (target) => {
-        const targetCenter = getCenterCoordinates($(target));
+        let horizontalLineExists = false;
+        let verticalLineExists = false;
+        const targetOffset = $(target).offset();
+
         Array.from($('body *:visible:not(script)'))
             .filter(currentValue => currentValue != target)
             .some(currentValue => {
-                const currentCenter = getCenterCoordinates($(currentValue));
-                const isHorizontalAlign = Math.abs(targetCenter.top - currentCenter.top) <= 1;
-                const isVerticalAlign = Math.abs(targetCenter.left - currentCenter.left) <= 1;
-                if (isHorizontalAlign) {
+                const currentOffset = $(currentValue).offset();
+                const { isHorizontalAlign, isVerticalAlign } = isAlign(targetOffset, currentOffset);
+                if (!horizontalLineExists && isHorizontalAlign) {
                     $('<hr />')
                         .addClass('horizontal-line')
                         .css({
-                            top: $(target).offset().top
+                            top: targetOffset.top
                         })
                         .appendTo($('body'));
+                    horizontalLineExists = true;
                 }
-                if (isVerticalAlign) {
+                if (!verticalLineExists && isVerticalAlign) {
                     $('<hr />')
                         .addClass('vertical-line')
                         .css({
-                            left: $(target).offset().left
+                            left: targetOffset.left
                         })
                         .appendTo($('body'));
+                    verticalLineExists = true;
                 }
-                return isHorizontalAlign || isVerticalAlign;
+                return horizontalLineExists && verticalLineExists;
             });
     };
 
@@ -86,7 +95,6 @@
                 // call this function on every dragmove event
                 onmove: event => {
                     removeAlignmentLines();
-
                     var target = event.target,
                         // keep the dragged position in the data-x/data-y attributes
                         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -105,6 +113,8 @@
                 },
                 // call this function on every dragend event
                 onend: event => {
+                    removeAlignmentLines();
+
                     var textEl = event.target.querySelector('p');
 
                     textEl && (textEl.textContent =
