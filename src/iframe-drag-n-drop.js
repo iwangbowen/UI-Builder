@@ -6,6 +6,37 @@
 
     const removeAlignmentLines = () => $('.horizontal-line, .vertical-line').remove();
 
+    self.arrowKeyMove = (key, element) => {
+        let dx = 0, dy = 0;
+        switch (key) {
+            case 37: // left
+                dx = -1;
+                break;
+            case 38: // up
+                dy = -1;
+                break;
+            case 39: // right
+                dx = 1;
+                break;
+            case 40: // down
+                dy = 1;
+                break;
+            default: return; // exit this handler for other keys
+        }
+
+        // keep the dragged position in the data-x/data-y attributes
+        const x = (parseFloat(element.attr('data-x')) || 0) + dx,
+            y = (parseFloat(element.attr('data-y')) || 0) + dy;
+
+            element.css({
+            transform: `translate(${x}px, ${y}px)`
+        });
+
+        // update the position attributes
+        element.attr('data-x', x);
+        element.attr('data-y', y);
+    };
+
     $(document).ready(() => {
         interact('body *')
             .draggable({

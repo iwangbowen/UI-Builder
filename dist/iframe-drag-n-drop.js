@@ -10,6 +10,43 @@
         return $('.horizontal-line, .vertical-line').remove();
     };
 
+    self.arrowKeyMove = function (key, element) {
+        var dx = 0,
+            dy = 0;
+        switch (key) {
+            case 37:
+                // left
+                dx = -1;
+                break;
+            case 38:
+                // up
+                dy = -1;
+                break;
+            case 39:
+                // right
+                dx = 1;
+                break;
+            case 40:
+                // down
+                dy = 1;
+                break;
+            default:
+                return; // exit this handler for other keys
+        }
+
+        // keep the dragged position in the data-x/data-y attributes
+        var x = (parseFloat(element.attr('data-x')) || 0) + dx,
+            y = (parseFloat(element.attr('data-y')) || 0) + dy;
+
+        element.css({
+            transform: 'translate(' + x + 'px, ' + y + 'px)'
+        });
+
+        // update the position attributes
+        element.attr('data-x', x);
+        element.attr('data-y', y);
+    };
+
     $(document).ready(function () {
         interact('body *').draggable({
             // enable inertial throwing
