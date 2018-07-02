@@ -14,10 +14,14 @@
         <label>Username</label>
         <input type="text">
     </div>
+    <div id="div2" class="draggable hello" style="width: 30px; height: 30px; background-color: rgb(198, 192, 255);">1</div>
+    <div id="div3" class="draggable hello" style="width: 30px; height: 30px; background-color: rgb(198, 192, 255);">1</div>
+    <div class="draggable hello" style="width: 30px; height: 30px; background-color: rgb(198, 192, 255);">1</div>
     <button id="btn1">Append div to iframe</button>
     <button id="btn2">Append div to current page</button>
     <button id="btn3">Append input to iframe</button>
     <button id="btn4">Append div to iframe directly</button>
+    <button id="btn5">Delete div</button>
     <iframe name="myFrame" id="iframeId" src="iframe.html"></iframe>
     <script src="js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3.3/dist/interact.min.js"></script>
@@ -36,6 +40,13 @@
 
         document.getElementById('btn4').addEventListener('click', () => {
             myFrame.copy($('#div'));
+        });
+
+        document.getElementById('btn5').addEventListener('click', () => {
+            const $div = $('#div2');
+            console.log($div);
+            $div.remove();
+            console.log($div);
         });
     </script>
     <script>

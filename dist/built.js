@@ -3678,10 +3678,6 @@ Vvveb.Components.add("html/gridrow", {
 				// 获得html字符串，然后再进行替换
 				self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
 				$element.remove();
-				// self.dragElement && myFrame.replaceWith(self.dragElement, $element);
-				var textEl = event.target.querySelector('p');
-
-				textEl && (textEl.textContent = 'moved a distance of ' + Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0).toFixed(2) + 'px');
 			}
 		});
 		// .resizable({
