@@ -7,6 +7,8 @@
     const removeAlignmentLines = () => $('.horizontal-line, .vertical-line').remove();
 
     self.arrowKeyMove = (key, element) => {
+        removeAlignmentLines();
+
         let dx = 0, dy = 0;
         switch (key) {
             case 37: // left
@@ -28,13 +30,43 @@
         const x = (parseFloat(element.attr('data-x')) || 0) + dx,
             y = (parseFloat(element.attr('data-y')) || 0) + dy;
 
-            element.css({
+        element.css({
             transform: `translate(${x}px, ${y}px)`
         });
 
         // update the position attributes
         element.attr('data-x', x);
         element.attr('data-y', y);
+
+        dragAlignmentLine(element.get(0));
+    };
+
+    const dragAlignmentLine = (target) => {
+        const targetCenter = getCenterCoordinates($(target));
+        Array.from($('body *:visible:not(script)'))
+            .filter(currentValue => currentValue != target)
+            .some(currentValue => {
+                const currentCenter = getCenterCoordinates($(currentValue));
+                const isHorizontalAlign = Math.abs(targetCenter.top - currentCenter.top) <= 1;
+                const isVerticalAlign = Math.abs(targetCenter.left - currentCenter.left) <= 1;
+                if (isHorizontalAlign) {
+                    $('<hr />')
+                        .addClass('horizontal-line')
+                        .css({
+                            top: $(target).offset().top
+                        })
+                        .appendTo($('body'));
+                }
+                if (isVerticalAlign) {
+                    $('<hr />')
+                        .addClass('vertical-line')
+                        .css({
+                            left: $(target).offset().left
+                        })
+                        .appendTo($('body'));
+                }
+                return isHorizontalAlign || isVerticalAlign;
+            });
     };
 
     $(document).ready(() => {
@@ -69,32 +101,7 @@
                     target.setAttribute('data-x', x);
                     target.setAttribute('data-y', y);
 
-                    const targetCenter = getCenterCoordinates($(target));
-                    Array.from($('body *:visible:not(script)'))
-                        .filter(currentValue => currentValue != target)
-                        .some(currentValue => {
-                            const currentCenter = getCenterCoordinates($(currentValue));
-                            const isHorizontalAlign = Math.abs(targetCenter.top - currentCenter.top) <= 1;
-                            const isVerticalAlign = Math.abs(targetCenter.left - currentCenter.left) <= 1;
-                            console.log(isVerticalAlign);
-                            if (isHorizontalAlign) {
-                                $('<hr />')
-                                    .addClass('horizontal-line')
-                                    .css({
-                                        top: $(target).offset().top
-                                    })
-                                    .appendTo($('body'));
-                            }
-                            if (isVerticalAlign) {
-                                $('<hr />')
-                                    .addClass('vertical-line')
-                                    .css({
-                                        left: $(target).offset().left
-                                    })
-                                    .appendTo($('body'));
-                            }
-                            return isHorizontalAlign || isVerticalAlign;
-                        });
+                    dragAlignmentLine(target);
                 },
                 // call this function on every dragend event
                 onend: event => {
