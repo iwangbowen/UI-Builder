@@ -64,6 +64,9 @@ function removeUnusedTags(html) {
 	var el = document.createElement('html');
 	el.innerHTML = html;
 
+	removeTag(el, 'hr', function (tag) {
+		return $(tag).hasClass('horizontal-line') || $(tag).hasClass('vertical-line');
+	});
 	removeTag(el, 'link', function (tag) {
 		return tag.getAttribute('rel') == 'stylesheet' && !tag.getAttribute('href').includes('bootstrap');
 	});

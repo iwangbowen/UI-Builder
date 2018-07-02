@@ -72,6 +72,7 @@ function removeUnusedTags(html) {
 	const el = document.createElement('html');
 	el.innerHTML = html;
 
+	removeTag(el, 'hr', tag => $(tag).hasClass('horizontal-line') || $(tag).hasClass('vertical-line'));
 	removeTag(el, 'link',
 		tag => tag.getAttribute('rel') == 'stylesheet'
 			&& !tag.getAttribute('href').includes('bootstrap'));

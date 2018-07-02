@@ -1,4 +1,11 @@
 (function () {
+    const getCenterCoordinates = $element => ({
+        left: $element.offset().left + $element.width() / 2,
+        top: $element.offset().top + $element.height() / 2
+    });
+
+    const removeAlignmentLines = () => $('.horizontal-line, .vertical-line').remove();
+
     $(document).ready(() => {
         interact('body *')
             .draggable({
@@ -15,6 +22,8 @@
 
                 // call this function on every dragmove event
                 onmove: event => {
+                    removeAlignmentLines();
+
                     var target = event.target,
                         // keep the dragged position in the data-x/data-y attributes
                         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -28,6 +37,33 @@
                     // update the posiion attributes
                     target.setAttribute('data-x', x);
                     target.setAttribute('data-y', y);
+
+                    const targetCenter = getCenterCoordinates($(target));
+                    Array.from($('body *:visible:not(script)'))
+                        .filter(currentValue => currentValue != target)
+                        .some(currentValue => {
+                            const currentCenter = getCenterCoordinates($(currentValue));
+                            const isHorizontalAlign = Math.abs(targetCenter.top - currentCenter.top) <= 1;
+                            const isVerticalAlign = Math.abs(targetCenter.left - currentCenter.left) <= 1;
+                            console.log(isVerticalAlign);
+                            if (isHorizontalAlign) {
+                                $('<hr />')
+                                    .addClass('horizontal-line')
+                                    .css({
+                                        top: $(target).offset().top
+                                    })
+                                    .appendTo($('body'));
+                            }
+                            if (isVerticalAlign) {
+                                $('<hr />')
+                                    .addClass('vertical-line')
+                                    .css({
+                                        left: $(target).offset().left
+                                    })
+                                    .appendTo($('body'));
+                            }
+                            return isHorizontalAlign || isVerticalAlign;
+                        });
                 },
                 // call this function on every dragend event
                 onend: event => {

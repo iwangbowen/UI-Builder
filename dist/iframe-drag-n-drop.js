@@ -1,4 +1,15 @@
 (function () {
+    var getCenterCoordinates = function getCenterCoordinates($element) {
+        return {
+            left: $element.offset().left + $element.width() / 2,
+            top: $element.offset().top + $element.height() / 2
+        };
+    };
+
+    var removeAlignmentLines = function removeAlignmentLines() {
+        return $('.horizontal-line, .vertical-line').remove();
+    };
+
     $(document).ready(function () {
         interact('body *').draggable({
             // enable inertial throwing
@@ -14,6 +25,8 @@
 
             // call this function on every dragmove event
             onmove: function onmove(event) {
+                removeAlignmentLines();
+
                 var target = event.target,
 
                 // keep the dragged position in the data-x/data-y attributes
@@ -26,6 +39,27 @@
                 // update the posiion attributes
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
+
+                var targetCenter = getCenterCoordinates($(target));
+                Array.from($('body *:visible:not(script)')).filter(function (currentValue) {
+                    return currentValue != target;
+                }).some(function (currentValue) {
+                    var currentCenter = getCenterCoordinates($(currentValue));
+                    var isHorizontalAlign = Math.abs(targetCenter.top - currentCenter.top) <= 1;
+                    var isVerticalAlign = Math.abs(targetCenter.left - currentCenter.left) <= 1;
+                    console.log(isVerticalAlign);
+                    if (isHorizontalAlign) {
+                        $('<hr />').addClass('horizontal-line').css({
+                            top: $(target).offset().top
+                        }).appendTo($('body'));
+                    }
+                    if (isVerticalAlign) {
+                        $('<hr />').addClass('vertical-line').css({
+                            left: $(target).offset().left
+                        }).appendTo($('body'));
+                    }
+                    return isHorizontalAlign || isVerticalAlign;
+                });
             },
             // call this function on every dragend event
             onend: function onend(event) {

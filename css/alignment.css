@@ -1,0 +1,19 @@
+.horizontal-line {
+    position: absolute;
+    border: none;
+    border-top: 1px dotted #000;
+    color: #fff;
+    background-color: #fff;
+    width: 100%;
+    height: 1px;
+}
+
+.vertical-line {
+    position: absolute;
+    border: none;
+    border-left: 1px dotted #000;
+    color: #fff;
+    background-color: #fff;
+    width: 1px;
+    height: 100%;
+}
