@@ -3108,7 +3108,7 @@ Vvveb.Components.extend("_base", "html/selectinput", {
 	nodes: ["select"],
 	name: "Select Input",
 	image: "icons/select_input.svg",
-	html: '<div class="form-group"><label>Choose an option </label><select class="form-control"><option value="value1">Text 1</option><option value="value2">Text 2</option><option value="value3">Text 3</option></select></div>',
+	html: '<div class="form-group" style="display: inline-block;"><label>Choose an option </label><select class="form-control"><option value="value1">Text 1</option><option value="value2">Text 2</option><option value="value3">Text 3</option></select></div>',
 
 	beforeInit: function beforeInit(node) {
 		properties = [];
@@ -3600,13 +3600,23 @@ Vvveb.Components.add("html/gridrow", {
 					var _component = Vvveb.Components.get($(event.target).data("type"));
 					var _html = _component.dragHtml || _component.html;
 
-					$element = $(_html).css({
-						position: 'absolute',
-						left: event.pageX - 20,
-						top: event.pageY - 20,
-						'z-index': 999
-					});
-					$('body').append($element);
+					$element = $(_html).appendTo($('body'));
+					var display = $element.css('display');
+					if (display == 'inline-block') {
+						$element.css({
+							position: 'absolute',
+							left: event.pageX - $element.outerWidth() / 2,
+							top: event.pageY - $element.outerHeight() / 2,
+							'z-index': 999
+						});
+					} else {
+						$element.css({
+							position: 'absolute',
+							left: event.pageX - 20,
+							top: event.pageY - 20,
+							'z-index': 999
+						});
+					}
 
 					isElementCreated = true;
 				}

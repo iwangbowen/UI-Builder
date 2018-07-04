@@ -22,14 +22,24 @@
                         const component = Vvveb.Components.get($(event.target).data("type"));
                         const html = component.dragHtml || component.html;
 
-                        $element = $(html).css({
-                            position: 'absolute',
-                            left: event.pageX - 20,
-                            top: event.pageY - 20,
-                            'z-index': 999
-                        });
-                        $('body').append($element);
-
+                        $element = $(html).appendTo($('body'));
+                        const display = $element.css('display');
+                        if (display == 'inline-block') {
+                            $element.css({
+                                position: 'absolute',
+                                left: event.pageX - $element.outerWidth() / 2,
+                                top: event.pageY - $element.outerHeight() / 2,
+                                'z-index': 999
+                            });
+                        } else {
+                            $element.css({
+                                position: 'absolute',
+                                left: event.pageX - 20,
+                                top: event.pageY - 20,
+                                'z-index': 999
+                            });
+                        }
+                        
                         isElementCreated = true;
                     }
 
