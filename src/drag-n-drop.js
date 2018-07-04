@@ -18,6 +18,7 @@
 
                 // call this function on every dragmove event
                 onmove: event => {
+                    console.log(event);
                     if (!isElementCreated) {
                         const component = Vvveb.Components.get($(event.target).data("type"));
                         const html = component.dragHtml || component.html;

@@ -910,9 +910,9 @@ Vvveb.Builder = {
 		$('body').on('mousemove touchmove', function (event) {
 			if (self.iconDrag && self.isDragging == true) {
 				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
-
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
-
+				// elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
+				console.log(elementMouseIsOver);
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
 					self.frameBody.trigger("mousemove", event);
@@ -3596,6 +3596,7 @@ Vvveb.Components.add("html/gridrow", {
 
 			// call this function on every dragmove event
 			onmove: function onmove(event) {
+				console.log(event);
 				if (!isElementCreated) {
 					var _component = Vvveb.Components.get($(event.target).data("type"));
 					var _html = _component.dragHtml || _component.html;
