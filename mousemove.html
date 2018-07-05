@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" style="position: absolute; width: 30px; height: 30px; background-color: darkorchid;"></div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $('body').on('mousemove', (event) => {
+            $('#div1').css({
+                left: event.pageX,
+                top: event.pageY
+            });
+        });
+    </script>
+</body>
+</html>

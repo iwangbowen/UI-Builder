@@ -585,7 +585,6 @@ Vvveb.Builder = {
 	/* iframe highlight */
 	_initHightlight: function _initHightlight() {
 
-		self.isElementCreated = false;
 		moveEvent = { target: null };
 
 		this.frameBody.on("mousemove touchmove", function (event) {
@@ -599,36 +598,34 @@ Vvveb.Builder = {
 				width = target.outerWidth();
 				height = target.outerHeight();
 
-				if (self.isDragging && !self.isElementCreated) {
+				if (self.isDragging) {
 					self.dragElement.css({
 						display: 'none'
 					});
-					self.frameBody.append(self.dragElement);
-					self.isElementCreated = true;
-					// parent = self.highlightEl;
-					// parentOffset = self.dragElement.offset();
-					// try {
-					// 	self.dragElement.css({
-					// 		display: 'none'
-					// 	});
-					// 	if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
-					// 		if (offset.top > (event.originalEvent.y - 10)) {
-					// 			parent.before(self.dragElement);
-					// 		} else {
-					// 			parent.prepend(self.dragElement);
-					// 			self.dragElement.prependTo(parent);
-					// 		}
-					// 	} else {
-					// 		if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-					// 			parent.before(self.dragElement);
-					// 		} else {
-					// 			parent.append(self.dragElement);
-					// 			self.dragElement.appendTo(parent);
-					// 		}
-					// 	}
-					// } catch (err) {
-					// 	console.log(err);
-					// }
+					parent = self.highlightEl;
+					parentOffset = self.dragElement.offset();
+					try {
+						self.dragElement.css({
+							display: 'none'
+						});
+						if (event.originalEvent && offset.left > event.originalEvent.x - 10) {
+							if (offset.top > event.originalEvent.y - 10) {
+								parent.before(self.dragElement);
+							} else {
+								parent.prepend(self.dragElement);
+								self.dragElement.prependTo(parent);
+							}
+						} else {
+							if (event.originalEvent && offset.top > event.originalEvent.y - 10) {
+								parent.before(self.dragElement);
+							} else {
+								parent.append(self.dragElement);
+								self.dragElement.appendTo(parent);
+							}
+						}
+					} catch (err) {
+						console.log(err);
+					}
 				} else {
 
 					jQuery("#highlight-box").css({
@@ -879,7 +876,6 @@ Vvveb.Builder = {
 		self.isDragging = false;
 		component = {};
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
-
 			$this = jQuery(this);
 
 			// $("#component-clone").remove();
@@ -904,7 +900,6 @@ Vvveb.Builder = {
 		});
 
 		$('body').on('mouseup touchend', function (event) {
-			self.isElementCreated = false;
 			if (self.iconDrag && self.isDragging == true) {
 				self.isDragging = false;
 				// $("#component-clone").remove();
@@ -912,12 +907,9 @@ Vvveb.Builder = {
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
-			console.log(self.isDragging);
 			if (self.iconDrag && self.isDragging == true) {
 				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
-				// elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
-				console.log(elementMouseIsOver);
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
 					self.frameBody.trigger("mousemove", event);
@@ -3587,118 +3579,162 @@ Vvveb.Components.add("html/gridrow", {
 		var isElementCreated = false;
 		var $element = void 0;
 
-		interact('#components-list li ol li').draggable({
-			// enable inertial throwing
-			inertia: true,
-			// keep the element within the area of it's parent
-			restrict: {
-				restriction: document.getElementById('iframeId').contentWindow.document.body,
-				endOnly: true,
-				elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-			},
-			// enable autoScroll
-			autoScroll: true,
+		var setInteractables = function setInteractables() {
+			'use strict';
 
-			// call this function on every dragmove event
-			onmove: function onmove(event) {
-				console.log(event);
-				if (!isElementCreated) {
-					var _component = Vvveb.Components.get($(event.target).data("type"));
-					var _html = _component.dragHtml || _component.html;
+			interact('#components-list li ol li', { context: document }).autoScroll(true).draggable({
+				onmove: function onmove(event) {
+					if (!isElementCreated) {
+						var _component = Vvveb.Components.get($(event.target).data("type"));
+						var _html = _component.dragHtml || _component.html;
 
-					$element = $(_html).appendTo($('body'));
-					var display = $element.css('display');
-					if (display == 'inline-block') {
-						$element.css({
-							position: 'absolute',
-							left: event.pageX - $element.outerWidth() / 2,
-							top: event.pageY - $element.outerHeight() / 2,
-							'z-index': 999
-						});
-					} else {
-						$element.css({
-							position: 'absolute',
-							left: event.pageX - 20,
-							top: event.pageY - 20,
-							'z-index': 999
-						});
+						$element = $(_html).appendTo($('body'));
+						var display = $element.css('display');
+						if (display == 'inline-block') {
+							$element.css({
+								position: 'absolute',
+								left: event.pageX - $element.outerWidth() / 2,
+								top: event.pageY - $element.outerHeight() / 2,
+								'z-index': 999
+							});
+						} else {
+							$element.css({
+								position: 'absolute',
+								left: event.pageX - 20,
+								top: event.pageY - 20,
+								'z-index': 999
+							});
+						}
+
+						isElementCreated = true;
 					}
 
-					isElementCreated = true;
+					var target = event.target,
+
+					// keep the dragged position in the data-x/data-y attributes
+					x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+					    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+					$element.css({
+						transform: "translate(" + x + "px, " + y + "px)"
+					});
+
+					$element.get(0).style.webkitTransform = $element.get(0).style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+					// update the position attributes
+					target.setAttribute('data-x', x);
+					target.setAttribute('data-y', y);
+				},
+				onend: function onend(event) {
+					console.log(event);
+					var left = $element.offset().left - $('#iframeId').offset().left,
+					    top = $element.offset().top - $('#iframeId').offset().top;
+					$element.css({
+						left: left,
+						top: top,
+						transform: ''
+					});
+
+					isElementCreated = false;
+					// remove the position attributes
+					event.target.removeAttribute('data-x');
+					event.target.removeAttribute('data-y');
+
+					// 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
+					// 获得html字符串，然后再进行替换
+					self.frameBody.append($element.prop("outerHTML"));
+					self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
+					$element.remove();
 				}
+			}).inertia(true).restrict({
+				restriction: 'parent', //document.getElementById('iframeId').contentWindow.document.body,
+				endOnly: true,
+				elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+			});
+		};
 
-				var target = event.target,
+		document.querySelector('iframe').onload = function (event) {
+			window.interact = frames[0].interact_1_2_6;
 
-				// keep the dragged position in the data-x/data-y attributes
-				x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-				    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+			setInteractables();
+		};
 
-				$element.css({
-					transform: "translate(" + x + "px, " + y + "px)"
-				});
+		// const setInteractables = () => {
+		//     interact('#components-list li ol li', { context: document })
+		//         .draggable({
+		//             // enable inertial throwing
+		//             inertia: true,
+		//             // keep the element within the area of it's parent
+		//             // restrict: {
+		//             //     restriction: document.getElementById('iframeId').contentWindow.document.body,
+		//             //     endOnly: true,
+		//             //     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+		//             // },
+		//             // enable autoScroll
+		//             autoScroll: true,
 
-				// update the position attributes
-				target.setAttribute('data-x', x);
-				target.setAttribute('data-y', y);
-			},
-			// call this function on every dragend event
-			onend: function onend(event) {
-				var left = $element.offset().left - $('#iframeId').offset().left,
-				    top = $element.offset().top - $('#iframeId').offset().top;
-				$element.css({
-					left: left,
-					top: top,
-					transform: ''
-				});
+		//             // call this function on every dragmove event
+		//             onmove: event => {
+		//                 if (!isElementCreated) {
+		//                     const component = Vvveb.Components.get($(event.target).data("type"));
+		//                     const html = component.dragHtml || component.html;
 
-				isElementCreated = false;
-				// remove the position attributes
-				event.target.removeAttribute('data-x');
-				event.target.removeAttribute('data-y');
+		//                     $element = $(html).appendTo($('body'));
+		//                     const display = $element.css('display');
+		//                     if (display == 'inline-block') {
+		//                         $element.css({
+		//                             position: 'absolute',
+		//                             left: event.pageX - $element.outerWidth() / 2,
+		//                             top: event.pageY - $element.outerHeight() / 2,
+		//                             'z-index': 999
+		//                         });
+		//                     } else {
+		//                         $element.css({
+		//                             position: 'absolute',
+		//                             left: event.pageX - 20,
+		//                             top: event.pageY - 20,
+		//                             'z-index': 999
+		//                         });
+		//                     }
 
-				// 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
-				// 获得html字符串，然后再进行替换
-				self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
-				$element.remove();
-			}
-		});
-		// .resizable({
-		//     // resize from all edges and corners
-		//     edges: { left: true, right: true, bottom: true, top: true },
+		//                     isElementCreated = true;
+		//                 }
 
-		//     // keep the edges inside the parent
-		//     restrictEdges: {
-		//         outer: 'parent',
-		//         endOnly: true,
-		//     },
+		//                 const target = event.target,
+		//                     // keep the dragged position in the data-x/data-y attributes
+		//                     x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+		//                     y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-		//     // minimum size
-		//     restrictSize: {
-		//         min: { width: 100, height: 50 },
-		//     },
+		//                 $element.css({
+		//                     transform: `translate(${x}px, ${y}px)`
+		//                 });
 
-		//     inertia: true,
-		// })
-		// .on('resizemove', function (event) {
-		//     var target = event.target,
-		//         x = (parseFloat(target.getAttribute('data-x')) || 0),
-		//         y = (parseFloat(target.getAttribute('data-y')) || 0);
+		//                 // update the position attributes
+		//                 target.setAttribute('data-x', x);
+		//                 target.setAttribute('data-y', y);
+		//             },
+		//             // call this function on every dragend event
+		//             onend: event => {
+		//                 const left = $element.offset().left - $('#iframeId').offset().left,
+		//                     top = $element.offset().top - $('#iframeId').offset().top;
+		//                 $element.css({
+		//                     left,
+		//                     top,
+		//                     transform: ''
+		//                 });
 
-		//     // update the element's style
-		//     target.style.width = event.rect.width + 'px';
-		//     target.style.height = event.rect.height + 'px';
+		//                 isElementCreated = false;
+		//                 // remove the position attributes
+		//                 event.target.removeAttribute('data-x');
+		//                 event.target.removeAttribute('data-y');
 
-		//     // translate when resizing from top or left edges
-		//     x += event.deltaRect.left;
-		//     y += event.deltaRect.top;
-
-		//     target.style.webkitTransform = target.style.transform =
-		//         'translate(' + x + 'px,' + y + 'px)';
-
-		//     target.setAttribute('data-x', x);
-		//     target.setAttribute('data-y', y);
-		//     target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
-		// });
+		//                 // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
+		//                 // 获得html字符串，然后再进行替换
+		//                 self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
+		//                 $element.remove();
+		//             }
+		//         });
+		// };
 	});
 })();
 //# sourceMappingURL=built.js.map

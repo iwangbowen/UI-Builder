@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<link href="css/iframes.css" rel="stylesheet" type="text/css" />
+<div class="draggable" style="width: 30px; height: 30px; background-color:darkgreen;"></div>
+<div id="input" class="draggable">
+    <label>Username</label>
+    <input type="text">
+</div>
+<div class="draggable" style="width: 60px; height: 60px;background-color:darkmagenta;"></div>
+<iframe src="iframes-middle.html" style="border: solid 2px black"></iframe>
+<!-- <iframe name="myFrame" id="iframeId" src="iframe.html" style="width:500px;height:500px;"></iframe> -->
+<script src="js/iframes.js"></script>
+<!-- <script src="../js/interact_1.1.2.js"></script> -->
+<script>
+    document.querySelector('iframe').onload = function (event) {
+        window.interact = frames[0].interact;
+
+        setInteractables();
+    };
+</script>
+
+<div class="draggable" style="width: 60px; height: 60px;background-color:darkmagenta;"></div>
+<div id="drag-me" class="draggable" style="width: 30px; height: 30px;">
+    <p>An element in the TOP frame</p>
+</div>

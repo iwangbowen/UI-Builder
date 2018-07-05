@@ -113,6 +113,8 @@
                 },
                 // call this function on every dragend event
                 onend: event => {
+                    console.log(event);
+                    console.log('test drag area-------------------------------');
                     removeAlignmentLines();
 
                     var textEl = event.target.querySelector('p');
