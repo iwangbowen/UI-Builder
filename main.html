@@ -8,24 +8,26 @@
     <title>拖拽</title>
 </head>
 
-<body>
+<body style="">
+    <iframe name="myFrame" id="iframeId" src="iframe.html" style="position:absolute;transform: translate(50px, 50px);width:500px;height:500px;z-index: -2;"></iframe>
     <div id="input" class="draggable">
         <label>Username</label>
         <input type="text">
     </div>
-    <div style="width: 50px; height: 50px;"></div>
-    <iframe name="myFrame" id="iframeId" src="iframe.html" style="width:500px;height:500px;"></iframe>
+
     <script src="js/jquery.min.js"></script>
     <!-- <script src="js/interact_1.1.2.js"></script> -->
     <!-- <script src="js/interact.js"></script> -->
     <script src="iframes.js"></script>
     <script>
+        console.log(window.event);
         document.querySelector('iframe').onload = function (event) {
             window.interact = frames[0].interact;
 
             setInteractables();
         };
     </script>
+    <div style="width: 50px; height: 50px;"></div>
     <!-- <script>
         interact('body *', { context: document })
             .autoScroll(true)

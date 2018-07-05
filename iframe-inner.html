@@ -10,9 +10,17 @@
 
 <body style="width:500px; height: 300px;">
     <div style="width: 30px; height: 30px; background-color:olivedrab;"></div>
-    <script src="../js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- <script src="js/interact.js"></script> -->
-    <script src="../js/interact-1.2.6.js"></script>
+    <script src="iframes.js"></script>
+
+    <script>
+        window.parent.onlonad = () => {
+            window.interact = window.parent.interact;
+            setInteractables();
+        };
+
+    </script>
     <script>
     //     function copy($div) {
     //         $('body').append($(`<div id="div" style="width: 30px; height: 30px; background-color: black;">1</div>`));

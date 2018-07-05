@@ -11498,6 +11498,7 @@ body {
 
 #vvveb-builder #left-panel {
   float: left;
+  right: 260px;
   border-right-width: 1px;
   overflow: hidden;
   /*
@@ -11624,6 +11625,9 @@ body {
       min-height: 1.1rem; }
 
 #vvveb-builder #top-panel {
+  position: fixed;
+  top: 0px;
+  right: 0px;
   height: 35px;
   border-bottom: 1px solid #eee;
   text-align: center;
@@ -11635,7 +11639,7 @@ body {
   bottom: 0px;
   position: fixed;
   border-top: 1px solid #eee;
-  left: 260px;
+  left: 0px;
   right: 260px;
   background-color: #fff; }
   #vvveb-builder #bottom-panel #vvveb-code-editor {
@@ -11656,13 +11660,13 @@ body {
   height: 50%; }
 
 #vvveb-builder #canvas {
-  margin-right: 260px;
-  margin-left: 260px;
+  /* margin-right: 260px; */
+  /* margin-left: 260px; */
   width: 100%;
   height: 100%;
   width: calc( 100vw - 520px);
   height: calc( 100vh - 70px);
-  top: 35px;
+  /* top: 35px; */
   position: fixed;
   transition: width 0.35s, left 0.35s; }
   #vvveb-builder #canvas #iframe-wrapper, #vvveb-builder #canvas iframe {

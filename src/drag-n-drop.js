@@ -2,10 +2,7 @@
     $(document).ready(() => {
         let isElementCreated = false;
         let $element;
-
         const setInteractables = () => {
-            'use strict';
-
             interact('#components-list li ol li', { context: document })
                 .autoScroll(true)
                 .draggable({
@@ -31,42 +28,33 @@
                                     'z-index': 999
                                 });
                             }
-
                             isElementCreated = true;
                         }
+                        const x = (parseFloat($element.attr('data-x')) || 0) + event.dx,
+                            y = (parseFloat($element.attr('data-y')) || 0) + event.dy;
 
-                        const target = event.target,
-                            // keep the dragged position in the data-x/data-y attributes
-                            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-                        $element.css({
-                            transform: `translate(${x}px, ${y}px)`
-                        });
-
-                        $element.get(0).style.webkitTransform =
-                            $element.get(0).style.transform =
-                            'translate(' + x + 'px, ' + y + 'px)';
-
-                        // update the position attributes
-                        target.setAttribute('data-x', x);
-                        target.setAttribute('data-y', y);
+                        $element
+                            .css({
+                                transform: `translate(${x}px, ${y}px)`
+                            })
+                            .attr({
+                                'data-x': x,
+                                'data-y': y
+                            });
                     },
                     onend: (event) => {
                         console.log(event);
                         const left = $element.offset().left - $('#iframeId').offset().left,
                             top = $element.offset().top - $('#iframeId').offset().top;
-                        $element.css({
-                            left,
-                            top,
-                            transform: ''
-                        });
+                        $element
+                            .css({
+                                left,
+                                top,
+                                transform: ''
+                            }).removeAttr('data-x data-y');
 
+                        isOffsetAdjusted = false;
                         isElementCreated = false;
-                        // remove the position attributes
-                        event.target.removeAttribute('data-x');
-                        event.target.removeAttribute('data-y');
-
                         // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
                         // 获得html字符串，然后再进行替换
                         self.frameBody.append($element.prop("outerHTML"));

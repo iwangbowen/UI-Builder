@@ -1,5 +1,5 @@
 // function setInteractables() {
-//     interact('body *', { context: document })
+//     interact('.draggable')
 //         .draggable({
 //             // enable inertial throwing
 //             inertia: true,
@@ -85,7 +85,7 @@
 function setInteractables() {
     'use strict';
 
-    interact('body *', { context: document })
+    interact('.draggable', { context: document })
         .autoScroll(true)
         .draggable({
             onmove: onMove,
