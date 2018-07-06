@@ -635,28 +635,28 @@ Vvveb.Builder = {
 					});
 					parent = self.highlightEl;
 					parentOffset = self.dragElement.offset();
-					try {
-						self.dragElement.css({
-							display: 'none'
-						});
-						if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
-							if (offset.top > (event.originalEvent.y - 10)) {
-								parent.before(self.dragElement);
-							} else {
-								parent.prepend(self.dragElement);
-								self.dragElement.prependTo(parent);
-							}
-						} else {
-							if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-								parent.before(self.dragElement);
-							} else {
-								parent.append(self.dragElement);
-								self.dragElement.appendTo(parent);
-							}
-						}
-					} catch (err) {
-						console.log(err);
-					}
+					// try {
+					// 	self.dragElement.css({
+					// 		display: 'none'
+					// 	});
+					// 	if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
+					// 		if (offset.top > (event.originalEvent.y - 10)) {
+					// 			parent.before(self.dragElement);
+					// 		} else {
+					// 			parent.prepend(self.dragElement);
+					// 			self.dragElement.prependTo(parent);
+					// 		}
+					// 	} else {
+					// 		if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
+					// 			parent.before(self.dragElement);
+					// 		} else {
+					// 			parent.append(self.dragElement);
+					// 			self.dragElement.appendTo(parent);
+					// 		}
+					// 	}
+					// } catch (err) {
+					// 	console.log(err);
+					// }
 				} else {
 
 					jQuery("#highlight-box").css(
