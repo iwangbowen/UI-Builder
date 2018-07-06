@@ -5,7 +5,6 @@
 
         document.querySelector('iframe').onload = function (event) {
             window.interact = frames[0].interact;
-
             setInteractables();
         };
 
