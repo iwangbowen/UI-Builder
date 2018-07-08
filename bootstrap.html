@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/editor.css" rel="stylesheet">
+    <style>
+        .tab__content {
+            padding: 10px 25px;
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+            opacity: 0;
+            left: 0;
+            transform: translateY(-3px);
+            border-radius: 6px;
+        }
+
+        /* 首先让内容部分都不可见，不占据文档流。 */
+
+        .tab:checked:nth-of-type(1)~.tab__content:nth-of-type(1) {
+            opacity: 1;
+            transition: 0.5s opacity ease-in, 0.8s transform ease;
+            position: relative;
+            top: 0;
+            z-index: 100;
+            transform: translateY(0px);
+            text-shadow: 0 0 0;
+        }
+
+        .tab:checked:nth-of-type(2)~.tab__content:nth-of-type(2) {
+            opacity: 1;
+            transition: 0.5s opacity ease-in, 0.8s transform ease;
+            position: relative;
+            top: 0;
+            z-index: 100;
+            transform: translateY(0px);
+            text-shadow: 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            </div>
+        </div>
+    </nav>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="tab-chrome" role="tab" data-toggle="tab">Chrome</a>
+        </li>
+        <li>
+            <a href="#tab-firefox" role="tab" data-toggle="tab">Firefox</a>
+        </li>
+        <li>
+            <a href="#tab-safari" role="tab" data-toggle="tab">Safari</a>
+        </li>
+        <li>
+            <a href="#tab-opera" role="tab" data-toggle="tab">Opera</a>
+        </li>
+        <li>
+            <a href="#tab-ie" role="tab" data-toggle="tab">IE</a>
+        </li>
+    </ul>
+
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form class="form-inline navbar-form pull-right">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-success-outline" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <div class="tab-wrap">
+        <!-- active tab on page load gets checked attribute -->
+        <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+        <!-- 设置一个默认状态 -->
+        <label for="tab1">Short</label>
+        <input type="radio" id="tab2" name="tabGroup1" class="tab">
+        <label for="tab2">Medium</label>
+        <input type="radio" id="tab3" name="tabGroup1" class="tab">
+        <label for="tab3">Long</label>
+        <div class="tab__content">
+            <h3>Short Section</h3>
+            <p>Praesent...</p>
+        </div>
+        <div class="tab__content">
+            <h3>Medium Section</h3>
+            <p>Praesent...</p>
+            <p>In...</p>
+        </div>
+        <div class="tab__content">
+            <h3>Long Section</h3>
+            <p>...</p>
+            <p>...</p>
+            <p>...</p>
+            <p>...</p>
+        </div>
+    </div>
+</body>
+
+</html>

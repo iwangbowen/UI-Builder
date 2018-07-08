@@ -73,66 +73,85 @@
 			</div>
 
 			<div id="canvas">
-					<div id="iframe-wrapper">
-						<div id="iframe-layer">
-	
-							<div id="highlight-box">
-								<div id="highlight-name"></div>
-	
+				<div id="iframe-wrapper">
+					<div id="iframe-layer">
+
+						<div id="highlight-box">
+							<div id="highlight-name"></div>
+
+						</div>
+
+						<div id="select-box">
+
+							<div id="wysiwyg-editor">
+								<a id="bold-btn" href="" title="Bold">
+									<i>
+										<strong>B</strong>
+									</i>
+								</a>
+								<a id="italic-btn" href="" title="Italic">
+									<i>I</i>
+								</a>
+								<a id="underline-btn" href="" title="Underline">
+									<u>u</u>
+								</a>
+								<a id="strike-btn" href="" title="Strikeout">
+									<strike>S</strike>
+								</a>
+								<a id="link-btn" href="" title="Create link">
+									<strong>a</strong>
+								</a>
 							</div>
-	
-							<div id="select-box">
-	
-								<div id="wysiwyg-editor">
-									<a id="bold-btn" href="" title="Bold">
-										<i>
-											<strong>B</strong>
-										</i>
-									</a>
-									<a id="italic-btn" href="" title="Italic">
-										<i>I</i>
-									</a>
-									<a id="underline-btn" href="" title="Underline">
-										<u>u</u>
-									</a>
-									<a id="strike-btn" href="" title="Strikeout">
-										<strike>S</strike>
-									</a>
-									<a id="link-btn" href="" title="Create link">
-										<strong>a</strong>
-									</a>
-								</div>
-	
-								<div id="select-actions">
-									<!-- <a id="drag-box" href="" title="Drag element">
+
+							<div id="select-actions">
+								<!-- <a id="drag-box" href="" title="Drag element">
 										<i class="ion-arrow-move"></i>
 									</a> -->
-									<a id="parent-box" href="" title="Select parent">
-										<i class="ion-reply"></i>
-									</a>
-	
-									<a id="up-box" href="" title="Move element up">
-										<i class="ion-arrow-up-a"></i>
-									</a>
-									<a id="down-box" href="" title="Move element down">
-										<i class="ion-arrow-down-a"></i>
-									</a>
-									<a id="clone-box" href="" title="Clone element">
-										<i class="ion-ios-copy"></i>
-									</a>
-									<a id="delete-box" href="" title="Remove element">
-										<i class="ion-trash-a"></i>
-									</a>
-								</div>
+								<a id="parent-box" href="" title="Select parent">
+									<i class="ion-reply"></i>
+								</a>
+
+								<a id="up-box" href="" title="Move element up">
+									<i class="ion-arrow-up-a"></i>
+								</a>
+								<a id="down-box" href="" title="Move element down">
+									<i class="ion-arrow-down-a"></i>
+								</a>
+								<a id="clone-box" href="" title="Clone element">
+									<i class="ion-ios-copy"></i>
+								</a>
+								<a id="delete-box" href="" title="Remove element">
+									<i class="ion-trash-a"></i>
+								</a>
 							</div>
-	
-	
 						</div>
-						<iframe src="about:none" id="iframeId" name="myFrame"></iframe>
+
+
 					</div>
-	
-	
+					<iframe src="about:none" id="iframeId" name="myFrame"></iframe>
 				</div>
+
+
+			</div>
+
+			<div id="tool-panel">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+					<a class="navbar-brand" href="#">页面拖拽</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+					 aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="navbar-nav">
+							<a class="nav-item nav-link active" href="#">组件库
+								<span class="sr-only">(current)</span>
+							</a>
+							<a class="nav-item nav-link" href="#">属性设置</a>
+						</div>
+					</div>
+				</nav>
+			</div>
+
 
 			<div id="left-panel">
 

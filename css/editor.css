@@ -11493,12 +11493,12 @@ body {
   background-color: #fff;
   height: 100%;
   position: fixed;
-  top: 35px;
+  top: 56px;
   z-index: 10; }
 
 #vvveb-builder #left-panel {
   float: left;
-  right: 260px;
+  right: 275px;
   border-right-width: 1px;
   overflow: hidden;
   /*
@@ -11510,7 +11510,7 @@ body {
   background: -webkit-linear-gradient(left, #fff 85%, #fcfcfc 100%);
   background: linear-gradient(left, #fff 85%, #fcfcfc 100%);
   box-shadow: -1px -2px 2px #f3f3f3 inset;
-  width: 260px;
+  width: 275px;
   height: 100%;
   max-height: 100%; }
   #vvveb-builder #left-panel:hover {
@@ -11574,7 +11574,7 @@ body {
   background: -webkit-linear-gradient(right, #fff 85%, #fcfcfc 100%);
   background: linear-gradient(right, #fff 85%, #fcfcfc 100%);
   box-shadow: 1px -2px 2px #f3f3f3 inset;
-  width: 260px;
+  width: 275px;
   /*		
 		&:hover
 		{
@@ -11624,6 +11624,12 @@ body {
     #vvveb-builder #right-panel .form-group .custom-control {
       min-height: 1.1rem; }
 
+#vvveb-builder #tool-panel {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+    
 #vvveb-builder #top-panel {
   position: fixed;
   width: fit-content;
@@ -11669,8 +11675,8 @@ body {
   /* margin-left: 260px; */
   width: 100%;
   height: 100%;
-  width: calc( 100vw - 520px);
-  height: calc( 100vh - 70px);
+  width: calc( 100vw - 275px);
+  height: calc( 100vh - 35px);
   /* top: 35px; */
   position: fixed;
   transition: width 0.35s, left 0.35s; }

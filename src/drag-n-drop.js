@@ -63,7 +63,6 @@
                     },
                     // call this function on every dragend event
                     onend: event => {
-                        console.log(event);
                         const left = $element.offset().left - $('#iframeId').offset().left,
                             top = $element.offset().top - $('#iframeId').offset().top;
                         $element

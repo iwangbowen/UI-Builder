@@ -3581,7 +3581,6 @@ Vvveb.Components.add("html/gridrow", {
 
 		document.querySelector('iframe').onload = function (event) {
 			window.interact = frames[0].interact;
-
 			setInteractables();
 		};
 
@@ -3637,7 +3636,6 @@ Vvveb.Components.add("html/gridrow", {
 				},
 				// call this function on every dragend event
 				onend: function onend(event) {
-					console.log(event);
 					var left = $element.offset().left - $('#iframeId').offset().left,
 					    top = $element.offset().top - $('#iframeId').offset().top;
 					$element.css({
