@@ -11498,7 +11498,7 @@ body {
 
 #vvveb-builder #left-panel {
   float: left;
-  right: 275px;
+  right: 0px;
   border-right-width: 1px;
   overflow: hidden;
   /*
@@ -11563,6 +11563,7 @@ body {
       overflow-x: hidden; }
 
 #vvveb-builder #right-panel {
+  display: none;
   float: right;
   right: 0px;
   border-left-width: 1px;

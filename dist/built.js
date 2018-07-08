@@ -3576,6 +3576,15 @@ Vvveb.Components.add("html/gridrow", {
 
 (function () {
 	$(document).ready(function () {
+		$('#tool-panel .navbar-nav a').on('click', function () {
+			if (!$(this).hasClass('active')) {
+				$(this).addClass('active');
+				$(this).siblings().removeClass('active');
+				$('#left-panel').toggle();
+				$('#right-panel').toggle();
+			}
+		});
+
 		var isElementCreated = false;
 		var $element = void 0;
 

@@ -1,5 +1,14 @@
 (function () {
     $(document).ready(() => {
+        $('#tool-panel .navbar-nav a').on('click', function () {
+            if(!$(this).hasClass('active')) {
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+                $('#left-panel').toggle();
+                $('#right-panel').toggle();
+            }
+        });
+
         let isElementCreated = false;
         let $element;
 
