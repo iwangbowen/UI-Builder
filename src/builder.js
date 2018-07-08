@@ -731,6 +731,14 @@ Vvveb.Builder = {
 
 		this.frameBody.on("click", function (event) {
 			if (event.target) {
+				if (!$('#attribute-settings').hasClass('active')) {
+					$('#attribute-settings')
+						.addClass('active')
+						.siblings()
+						.removeClass('active');
+					$('#left-panel').hide();
+					$('#right-panel').show();
+				}
 				self.selectNode(event.target);
 				self.loadNodeComponent(event.target);
 
