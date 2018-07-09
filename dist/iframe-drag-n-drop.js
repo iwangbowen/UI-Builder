@@ -93,6 +93,9 @@
         var isDropzoneParent = function isDropzoneParent(element) {
             return !!$(element).parents('.dropzone').length;
         };
+        var getDropzoneParent = function getDropzoneParent(element) {
+            return $(element).parents('.dropzone');
+        };
 
         // enable draggables to be dropped into this
         interact('.dropzone').dropzone({
@@ -135,6 +138,15 @@
                     });
                     $(event.relatedTarget).appendTo($(event.target));
                 } else if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
+                    var _$$offset = $(event.relatedTarget).offset(),
+                        left = _$$offset.left,
+                        top = _$$offset.top;
+
+                    event.relatedTarget.style.webkitTransform = event.relatedTarget.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
+                    $(event.relatedTarget).attr({
+                        'data-x': left,
+                        'data-y': top
+                    });
                     $(event.relatedTarget).appendTo($('body'));
                 }
             }
@@ -166,7 +178,6 @@
             // translate when resizing from top or left edges
             x += event.deltaRect.left;
             y += event.deltaRect.top;
-            console.log(x, y);
 
             target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
 

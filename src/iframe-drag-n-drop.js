@@ -81,6 +81,7 @@
     $(document).ready(() => {
         let enteredDropzone = false;
         const isDropzoneParent = element => !!$(element).parents('.dropzone').length;
+        const getDropzoneParent = element => $(element).parents('.dropzone');
 
         // enable draggables to be dropped into this
         interact('.dropzone')
@@ -124,6 +125,15 @@
                             });
                         $(event.relatedTarget).appendTo($(event.target));
                     } else if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
+                        const { left, top } = $(event.relatedTarget).offset();
+                        event.relatedTarget.style.webkitTransform =
+                            event.relatedTarget.style.transform =
+                            `translate(${left}px, ${top}px)`;
+                        $(event.relatedTarget)
+                            .attr({
+                                'data-x': left,
+                                'data-y': top
+                            });
                         $(event.relatedTarget).appendTo($('body'));
                     }
                 }
@@ -157,7 +167,6 @@
                 // translate when resizing from top or left edges
                 x += event.deltaRect.left;
                 y += event.deltaRect.top;
-                console.log(x, y);
 
                 target.style.webkitTransform = target.style.transform =
                     'translate(' + x + 'px,' + y + 'px)';
