@@ -731,7 +731,7 @@ Vvveb.Builder = {
 
 		this.frameBody.on("click", function (event) {
 			if (event.target) {
-				if (!$('#attribute-settings').hasClass('active')) {
+				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
 					$('#attribute-settings')
 						.addClass('active')
 						.siblings()
@@ -1065,6 +1065,8 @@ Vvveb.CodeEditor = {
 	}
 }
 
+let shownPanel, hiddenPanel, isPreview;
+
 Vvveb.Gui = {
 
 	init: function () {
@@ -1117,6 +1119,23 @@ Vvveb.Gui = {
 	},
 
 	preview: function () {
+		if ($('#left-panel').is(':visible')) {
+			shownPanel = 'left-panel';
+			hiddenPanel = 'right-panel';
+			$('#left-panel, #right-panel').hide();
+			isPreview = true;
+		} else if ($('#right-panel').is(':visible')) {
+			shownPanel = 'right-panel';
+			hiddenPanel = 'left-panel';
+			$('#left-panel, #right-panel').hide();
+			isPreview = true;
+		} else {
+			isPreview = false;
+			$(`#${shownPanel}`).show();
+			$(`#${hiddenPanel}`).hide();
+		}
+
+		$('#menu-panel').toggle();
 		$("#iframe-layer").toggle();
 		$("#vvveb-builder").toggleClass("preview");
 	},
