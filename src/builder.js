@@ -927,8 +927,6 @@ Vvveb.Builder = {
 			$this = jQuery(this);
 
 			// $("#component-clone").remove();
-
-
 			component = Vvveb.Components.get($this.data("type"));
 
 			if (component.dragHtml) {

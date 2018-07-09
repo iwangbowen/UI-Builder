@@ -1,7 +1,7 @@
 (function () {
     $(document).ready(() => {
         $('#menu-panel .navbar-nav a').on('click', function () {
-            if(!$(this).hasClass('active')) {
+            if (!$(this).hasClass('active')) {
                 $(this).addClass('active');
                 $(this).siblings().removeClass('active');
                 $('#left-panel').toggle();
@@ -11,6 +11,7 @@
 
         let isElementCreated = false;
         let $element;
+        const draggableElements = '#components-list li ol li';
 
         document.querySelector('iframe').onload = function (event) {
             window.interact = frames[0].interact;
@@ -18,7 +19,7 @@
         };
 
         const setInteractables = () => {
-            interact('#components-list li ol li', { context: document })
+            interact(draggableElements, { context: document })
                 .draggable({
                     // enable inertial throwing
                     inertia: true,

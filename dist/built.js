@@ -884,8 +884,6 @@ Vvveb.Builder = {
 			$this = jQuery(this);
 
 			// $("#component-clone").remove();
-
-
 			component = Vvveb.Components.get($this.data("type"));
 
 			if (component.dragHtml) {
@@ -2368,7 +2366,7 @@ Vvveb.Components.extend("_base", "_base", {
 Vvveb.Components.extend("_base", "html/container", {
 	classes: ["container", "container-fluid"],
 	image: "icons/container.svg",
-	html: '<div class="container"><div class="m-5">Container</div></div>',
+	html: '<div class="container dropzone"><div class="m-5">Container</div></div>',
 	name: "Container",
 	properties: [{
 		name: "Type",
@@ -3070,7 +3068,7 @@ Vvveb.Components.extend("_base", "html/form", {
 	nodes: ["form"],
 	image: "icons/form.svg",
 	name: "Form",
-	html: '<form><div class="form-group"><label>Text</label><input type="text" class="form-control"></div></div></form>',
+	html: '<form class="dropzone"></form>',
 	properties: [{
 		name: "Style",
 		key: "style",
@@ -3609,6 +3607,7 @@ Vvveb.Components.add("html/gridrow", {
 
 		var isElementCreated = false;
 		var $element = void 0;
+		var draggableElements = '#components-list li ol li';
 
 		document.querySelector('iframe').onload = function (event) {
 			window.interact = frames[0].interact;
@@ -3616,7 +3615,7 @@ Vvveb.Components.add("html/gridrow", {
 		};
 
 		var setInteractables = function setInteractables() {
-			interact('#components-list li ol li', { context: document }).draggable({
+			interact(draggableElements, { context: document }).draggable({
 				// enable inertial throwing
 				inertia: true,
 				// keep the element within the area of it's parent

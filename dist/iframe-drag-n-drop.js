@@ -89,6 +89,91 @@
     };
 
     $(document).ready(function () {
+        var enteredDropzone = false;
+        var isDropzoneParent = function isDropzoneParent(element) {
+            return !!$(element).parents('.dropzone').length;
+        };
+
+        // enable draggables to be dropped into this
+        interact('.dropzone').dropzone({
+            // only accept elements matching this CSS selector
+            accept: 'body *',
+            // Require a 75% element overlap for a drop to be possible
+            overlap: 0.50,
+            // listen for drop related events:
+            ondropactivate: function ondropactivate(event) {
+                // add active dropzone feedback
+                event.target.classList.add('drop-active');
+            },
+            ondragenter: function ondragenter(event) {
+                var draggableElement = event.relatedTarget,
+                    dropzoneElement = event.target;
+
+                // feedback the possibility of a drop
+                dropzoneElement.classList.add('drop-target');
+                draggableElement.classList.add('can-drop');
+            },
+            ondragleave: function ondragleave(event) {
+                // remove the drop feedback style
+                event.target.classList.remove('drop-target');
+                event.relatedTarget.classList.remove('can-drop');
+                enteredDropzone = false;
+            },
+            ondrop: function ondrop(event) {
+                return enteredDropzone = true;
+            },
+            ondropdeactivate: function ondropdeactivate(event) {
+                // remove active dropzone feedback
+                event.target.classList.remove('drop-active');
+                event.target.classList.remove('drop-target');
+
+                if (enteredDropzone && !isDropzoneParent(event.relatedTarget)) {
+                    $(event.relatedTarget).removeAttr('data-x data-y').css({
+                        left: 0,
+                        top: 0,
+                        transform: ''
+                    });
+                    $(event.relatedTarget).appendTo($(event.target));
+                } else if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
+                    $(event.relatedTarget).appendTo($('body'));
+                }
+            }
+        }).resizable({
+            // resize from all edges and corners
+            edges: { left: true, right: true, bottom: true, top: true },
+
+            // keep the edges inside the parent
+            restrictEdges: {
+                outer: 'parent',
+                endOnly: true
+            },
+
+            // minimum size
+            restrictSize: {
+                min: { width: 100, height: 50 }
+            },
+
+            inertia: true
+        }).on('resizemove', function (event) {
+            var target = event.target,
+                x = parseFloat(target.getAttribute('data-x')) || 0,
+                y = parseFloat(target.getAttribute('data-y')) || 0;
+
+            // update the element's style
+            target.style.width = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
+
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
+            console.log(x, y);
+
+            target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        });
+
         interact('body *').draggable({
             // enable inertial throwing
             inertia: true,
@@ -128,43 +213,6 @@
                 textEl && (textEl.textContent = 'moved a distance of ' + Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0).toFixed(2) + 'px');
             }
         });
-        // .resizable({
-        //     // resize from all edges and corners
-        //     edges: { left: true, right: true, bottom: true, top: true },
-
-        //     // keep the edges inside the parent
-        //     restrictEdges: {
-        //         outer: 'parent',
-        //         endOnly: true,
-        //     },
-
-        //     // minimum size
-        //     restrictSize: {
-        //         min: { width: 100, height: 50 },
-        //     },
-
-        //     inertia: true,
-        // })
-        // .on('resizemove', function (event) {
-        //     var target = event.target,
-        //         x = (parseFloat(target.getAttribute('data-x')) || 0),
-        //         y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-        //     // update the element's style
-        //     target.style.width = event.rect.width + 'px';
-        //     target.style.height = event.rect.height + 'px';
-
-        //     // translate when resizing from top or left edges
-        //     x += event.deltaRect.left;
-        //     y += event.deltaRect.top;
-
-        //     target.style.webkitTransform = target.style.transform =
-        //         'translate(' + x + 'px,' + y + 'px)';
-
-        //     target.setAttribute('data-x', x);
-        //     target.setAttribute('data-y', y);
-        //     target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
-        // });
     });
 })();
 //# sourceMappingURL=iframe-drag-n-drop.js.map
