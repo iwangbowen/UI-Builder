@@ -899,21 +899,17 @@ Vvveb.Builder = {
 			if (component.dragStart) self.dragElement = component.dragStart(self.dragElement);
 
 			self.isDragging = true;
-			// self.iconDrag = $this.clone().attr("id", "component-clone").css('position', 'absolute');
-			// $('body').append(self.iconDrag);
-			self.iconDrag = true;
 		});
 
 		$('body').on('mouseup touchend', function (event) {
-			if (self.iconDrag && self.isDragging == true) {
+			if (self.isDragging == true) {
 				self.isDragging = false;
 				// $("#component-clone").remove();
 			}
 		});
 
 		$('body').on('mousemove touchmove', function (event) {
-			if (self.iconDrag && self.isDragging == true) {
-				// self.iconDrag.css({ 'left': event.originalEvent.x - 60, 'top': event.originalEvent.y - 30 });
+			if (self.isDragging == true) {
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
