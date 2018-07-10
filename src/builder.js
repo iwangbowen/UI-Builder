@@ -1161,18 +1161,27 @@ Vvveb.FileManager = {
 		this.tree = $("#filemanager .tree > ol").html("");
 
 		$(this.tree).on("click", "li[data-page] span", function (e) {
-
-			Vvveb.FileManager.loadPage($(this).parents("li").data("page"));
+			window.location.href = `#${$(this).parents('li').data('page')}`;
+			window.location.reload();
+			// Vvveb.FileManager.loadPage($(this).parents("li").data("page"));
 			return false;
 		})
 	},
 
+	getPage(name) {
+		return this.pages[name];
+	},
+
 	addPage: function (name, title, url) {
 
-		this.pages[name] = { title: title, url: url };
+		this.pages[name] = {
+			name,
+			title,
+			url
+		};
 
 		this.tree.append(
-			tmpl("vvveb-filemanager-page", { name: name, title: title, url: url }));
+			tmpl("vvveb-filemanager-page", { name, title, url }));
 	},
 
 	addPages: function (pages) {
@@ -1183,7 +1192,12 @@ Vvveb.FileManager = {
 
 	addComponent: function (name, url, title, page) {
 		$("[data-page='" + page + "'] > ol", this.tree).append(
-			tmpl("vvveb-filemanager-component", { name: name, url: url, title: title }));
+			tmpl("vvveb-filemanager-component", { name, url, title }));
+	},
+
+	showActive(name) {
+		$("[data-page]", this.tree).removeClass("active");
+		$("[data-page='" + name + "']", this.tree).addClass("active");
 	},
 
 	loadPage: function (name) {

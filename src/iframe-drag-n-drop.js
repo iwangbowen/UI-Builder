@@ -211,6 +211,5 @@
                 // call this function on every dragend event
                 onend: removeAlignmentLines
             });
-
     });
 })();
