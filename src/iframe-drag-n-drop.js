@@ -1,9 +1,4 @@
 (function () {
-    const getCenterCoordinates = $element => ({
-        left: $element.offset().left + $element.outerWidth(true) / 2,
-        top: $element.offset().top + $element.outerHeight(true) / 2
-    });
-
     const isAlign = (targetOffset, currentOffset) => ({
         isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 1,
         isVerticalAlign: Math.abs(targetOffset.left - currentOffset.left) <= 1
@@ -87,6 +82,7 @@
                 `translate(${left}px, ${top}px)`;
             return $(element);
         };
+
         // enable draggables to be dropped into this
         interact('.dropzone')
             .dropzone({
@@ -115,7 +111,6 @@
                 },
                 ondrop: event => {
                     enteredDropzone = true;
-
                     const left = $(event.relatedTarget).offset().left - $(event.target).offset().left,
                         top = $(event.relatedTarget).offset().top - $(event.target).offset().top;
                     $(event.relatedTarget).appendTo($(event.target));
