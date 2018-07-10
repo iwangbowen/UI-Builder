@@ -111,8 +111,15 @@
                 },
                 ondrop: event => {
                     enteredDropzone = true;
-                    const left = $(event.relatedTarget).offset().left - $(event.target).offset().left,
+                    let left, top;
+                    if ($(event.target).css('position') == 'absolute') {
+                        left = $(event.relatedTarget).offset().left - $(event.target).offset().left;
                         top = $(event.relatedTarget).offset().top - $(event.target).offset().top;
+                    } else {
+                        left = $(event.relatedTarget).offset().left;
+                        top = $(event.relatedTarget).offset().top;
+                    }
+                    
                     $(event.relatedTarget).appendTo($(event.target));
                     setTransformStyle(event.relatedTarget, left, top)
                         .css({
