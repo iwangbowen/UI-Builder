@@ -76,6 +76,15 @@
     $(document).ready(() => {
         let enteredDropzone = false;
         const isDropzoneParent = element => !!$(element).parents('.dropzone').length;
+        const getAbsolutePositionParent = $element => {
+            if (!$element.length || $element.css('position') == 'absolute') {
+                console.log($element.css('position'));
+                return $element;
+            } else {
+                return getAbsolutePositionParent($element.parent());
+            }
+        };
+
         const setTransformStyle = (element, left, top) => {
             element.style.webkitTransform =
                 element.style.transform =
@@ -111,15 +120,20 @@
                 },
                 ondrop: event => {
                     enteredDropzone = true;
+
                     let left, top;
-                    if ($(event.target).css('position') == 'absolute') {
-                        left = $(event.relatedTarget).offset().left - $(event.target).offset().left;
-                        top = $(event.relatedTarget).offset().top - $(event.target).offset().top;
+                    // dropzone元素不一定是position为absolute的元素
+                    // 为了实现左键抬起时不偏移，需要找到dropzone或其父元素中positon为absolute的元素
+                    // 并更新拖拽元素的transform属性
+                    const $parent = getAbsolutePositionParent($(event.target));
+                    if (parent.length) {
+                        left = $(event.relatedTarget).offset().left - $parent.offset().left;
+                        top = $(event.relatedTarget).offset().top - $parent.offset().top;
                     } else {
                         left = $(event.relatedTarget).offset().left;
                         top = $(event.relatedTarget).offset().top;
                     }
-                    
+
                     $(event.relatedTarget).appendTo($(event.target));
                     setTransformStyle(event.relatedTarget, left, top)
                         .css({
