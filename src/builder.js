@@ -62,23 +62,33 @@ var delay = (function () {
 
 const alwaysTrue = () => true;
 
-function removeTag(el, tagName, filterFn = alwaysTrue) {
-	Array.from(el.getElementsByTagName(tagName))
-		.filter(filterFn)
+const unusedTags = [
+	// {
+	// 	name: 'script'
+	// },
+	// {
+	// 	name: 'link',
+	// 	filter: tag => tag.getAttribute('rel') == 'stylesheet'
+	// 		&& !tag.getAttribute('href').includes('bootstrap')
+	// },
+	{
+		name: 'hr',
+		filter: tag => $(tag).hasClass('horizontal-line')
+			|| $(tag).hasClass('vertical-line')
+	}
+];
+
+// this refers to html element
+function removeTag({ name, filter = alwaysTrue }) {
+	Array.from(this.getElementsByTagName(name))
+		.filter(filter)
 		.forEach(tag => tag.parentNode.removeChild(tag));
 }
 
-function removeUnusedTags(html) {
+function removeUnusedTags(html, tags) {
 	const el = document.createElement('html');
 	el.innerHTML = html;
-
-	removeTag(el, 'hr',
-		tag => $(tag).hasClass('horizontal-line')
-			|| $(tag).hasClass('vertical-line'));
-	removeTag(el, 'link',
-		tag => tag.getAttribute('rel') == 'stylesheet'
-			&& !tag.getAttribute('href').includes('bootstrap'));
-	removeTag(el, 'script');
+	tags.forEach(removeTag, el);
 
 	return $(el).prop('outerHTML');
 }
@@ -975,25 +985,33 @@ Vvveb.Builder = {
 		-U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
 										   use empty array to denote that no tags should not be reformatted
 		 */
-		return html_beautify(removeUnusedTags(this.getHtml()), {
-			preserve_newlines: false,
-			indent_inner_html: true,
-			unformatted: []
-		});
+
+		const { doctype, html } = this.getHtml();
+		return html_beautify(`${doctype}
+							  ${removeUnusedTags(html, unusedTags)}`,
+			{
+				preserve_newlines: false,
+				indent_inner_html: true,
+				unformatted: []
+			});
 	},
 
 	getHtml: function () {
 		doc = window.FrameDocument;
-
-		return "<!DOCTYPE "
+		const doctype = "<!DOCTYPE "
 			+ doc.doctype.name
 			+ (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
 			+ (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
 			+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
-			+ ">\n"
-			+ "<html>"
-			+ doc.documentElement.innerHTML
-			+ "\n</html>";
+			+ ">\n";
+		const html = `${doctype}
+					  <html>
+						  ${doc.documentElement.innerHTML}
+					  </html>`;
+		return {
+			doctype,
+			html
+		};
 	},
 
 	setHtml: function (html) {

@@ -52,25 +52,37 @@ var alwaysTrue = function alwaysTrue() {
     return true;
 };
 
-function removeTag(el, tagName) {
-    var filterFn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : alwaysTrue;
+var unusedTags = [
+// {
+// 	name: 'script'
+// },
+// {
+// 	name: 'link',
+// 	filter: tag => tag.getAttribute('rel') == 'stylesheet'
+// 		&& !tag.getAttribute('href').includes('bootstrap')
+// },
+{
+    name: 'hr',
+    filter: function filter(tag) {
+        return $(tag).hasClass('horizontal-line') || $(tag).hasClass('vertical-line');
+    }
+}];
 
-    Array.from(el.getElementsByTagName(tagName)).filter(filterFn).forEach(function (tag) {
+// this refers to html element
+function removeTag(_ref) {
+    var name = _ref.name,
+        _ref$filter = _ref.filter,
+        filter = _ref$filter === undefined ? alwaysTrue : _ref$filter;
+
+    Array.from(this.getElementsByTagName(name)).filter(filter).forEach(function (tag) {
         return tag.parentNode.removeChild(tag);
     });
 }
 
-function removeUnusedTags(html) {
+function removeUnusedTags(html, tags) {
     var el = document.createElement('html');
     el.innerHTML = html;
-
-    removeTag(el, 'hr', function (tag) {
-        return $(tag).hasClass('horizontal-line') || $(tag).hasClass('vertical-line');
-    });
-    removeTag(el, 'link', function (tag) {
-        return tag.getAttribute('rel') == 'stylesheet' && !tag.getAttribute('href').includes('bootstrap');
-    });
-    removeTag(el, 'script');
+    tags.forEach(removeTag, el);
 
     return $(el).prop('outerHTML');
 }
@@ -930,7 +942,12 @@ Vvveb.Builder = {
         -U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
         								   use empty array to denote that no tags should not be reformatted
          */
-        return html_beautify(removeUnusedTags(this.getHtml()), {
+
+        var _getHtml = this.getHtml(),
+            doctype = _getHtml.doctype,
+            html = _getHtml.html;
+
+        return html_beautify(doctype + "\n\t\t\t\t\t\t\t  " + removeUnusedTags(html, unusedTags), {
             preserve_newlines: false,
             indent_inner_html: true,
             unformatted: []
@@ -940,8 +957,12 @@ Vvveb.Builder = {
 
     getHtml: function getHtml() {
         doc = window.FrameDocument;
-
-        return "<!DOCTYPE " + doc.doctype.name + (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '') + (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '') + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '') + ">\n" + "<html>" + doc.documentElement.innerHTML + "\n</html>";
+        var doctype = "<!DOCTYPE " + doc.doctype.name + (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '') + (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '') + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '') + ">\n";
+        var html = doctype + "\n\t\t\t\t\t  <html>\n\t\t\t\t\t\t  " + doc.documentElement.innerHTML + "\n\t\t\t\t\t  </html>";
+        return {
+            doctype: doctype,
+            html: html
+        };
     },
 
     setHtml: function setHtml(html) {
