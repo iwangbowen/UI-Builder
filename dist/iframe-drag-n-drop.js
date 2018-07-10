@@ -93,10 +93,10 @@
         var isDropzoneParent = function isDropzoneParent(element) {
             return !!$(element).parents('.dropzone').length;
         };
-        var getDropzoneParent = function getDropzoneParent(element) {
-            return $(element).parents('.dropzone');
+        var setTransformStyle = function setTransformStyle(element, left, top) {
+            element.style.webkitTransform = element.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
+            return $(element);
         };
-
         // enable draggables to be dropped into this
         interact('.dropzone').dropzone({
             // only accept elements matching this CSS selector
@@ -123,31 +123,32 @@
                 enteredDropzone = false;
             },
             ondrop: function ondrop(event) {
-                return enteredDropzone = true;
+                enteredDropzone = true;
+
+                var left = $(event.relatedTarget).offset().left - $(event.target).offset().left,
+                    top = $(event.relatedTarget).offset().top - $(event.target).offset().top;
+                $(event.relatedTarget).appendTo($(event.target));
+                setTransformStyle(event.relatedTarget, left, top).css({
+                    left: 0,
+                    top: 0
+                }).attr({
+                    'data-x': left,
+                    'data-y': top
+                });
             },
             ondropdeactivate: function ondropdeactivate(event) {
                 // remove active dropzone feedback
                 event.target.classList.remove('drop-active');
                 event.target.classList.remove('drop-target');
-
-                if (enteredDropzone && !isDropzoneParent(event.relatedTarget)) {
-                    $(event.relatedTarget).removeAttr('data-x data-y').css({
-                        left: 0,
-                        top: 0,
-                        transform: ''
-                    });
-                    $(event.relatedTarget).appendTo($(event.target));
-                } else if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
+                if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
                     var _$$offset = $(event.relatedTarget).offset(),
                         left = _$$offset.left,
                         top = _$$offset.top;
 
-                    event.relatedTarget.style.webkitTransform = event.relatedTarget.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
-                    $(event.relatedTarget).attr({
+                    setTransformStyle(event.relatedTarget, left, top).attr({
                         'data-x': left,
                         'data-y': top
-                    });
-                    $(event.relatedTarget).appendTo($('body'));
+                    }).appendTo($('body'));
                 }
             }
         }).resizable({
@@ -216,13 +217,7 @@
                 dragAlignmentLine(target);
             },
             // call this function on every dragend event
-            onend: function onend(event) {
-                removeAlignmentLines();
-
-                var textEl = event.target.querySelector('p');
-
-                textEl && (textEl.textContent = 'moved a distance of ' + Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0).toFixed(2) + 'px');
-            }
+            onend: removeAlignmentLines
         });
     });
 })();
