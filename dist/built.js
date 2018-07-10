@@ -56,12 +56,12 @@ var unusedTags = [
 // {
 // 	name: 'script'
 // },
-// {
-// 	name: 'link',
-// 	filter: tag => tag.getAttribute('rel') == 'stylesheet'
-// 		&& !tag.getAttribute('href').includes('bootstrap')
-// },
 {
+    name: 'link',
+    filter: function filter(tag) {
+        return tag.getAttribute('rel') == 'stylesheet' && tag.getAttribute('href').includes('drag-n-drop');
+    }
+}, {
     name: 'hr',
     filter: function filter(tag) {
         return $(tag).hasClass('horizontal-line') || $(tag).hasClass('vertical-line');
