@@ -15,8 +15,12 @@ limitations under the License.
 
 https://github.com/givan/Vvvebjs
 */
+import { TextInput, CheckboxInput, ColorInput, SelectInput, LinkInput, RangeInput, NumberInput, CssUnitInput,
+	RadioInput, RadioButtonInput, ToggleInput, ValueTextInput, GridLayoutInput, ProductsInput, GridInput,
+TextValueInput, ButtonInput, SectionInput, ListInput, FileUploadInput} from './inputs';
+import Vvveb from './builder';
 
-bgcolorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark", "bg-white"]
+const bgcolorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark", "bg-white"]
 
 bgcolorSelectOptions =
     [{

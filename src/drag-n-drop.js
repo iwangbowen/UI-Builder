@@ -1,3 +1,5 @@
+import Vvveb from './builder';
+
 (function () {
     $(document).ready(() => {
         $('#menu-panel .navbar-nav a').on('click', function () {

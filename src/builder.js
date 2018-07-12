@@ -19,6 +19,8 @@ https://github.com/givan/VvvebJs
 
 // Simple JavaScript Templating
 // John Resig - https://johnresig.com/ - MIT Licensed
+import { SectionInput } from './inputs';
+
 (function () {
 	var cache = {};
 
@@ -1258,3 +1260,5 @@ function launchFullScreen(document) {
 			document.documentElement.msRequestFullscreen();
 	}
 }
+
+export default Vvveb;

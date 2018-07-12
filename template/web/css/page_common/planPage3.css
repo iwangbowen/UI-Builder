@@ -1,0 +1,3233 @@
+/*以下是oee新模板页面的css代码，start*/
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+}
+/*::-webkit-scrollbar{
+    display:none;
+}*/
+body {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+    width: 100%;
+}
+html, body {
+    height: 100%;
+}
+/*.top {
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    margin-bottom: 1px;
+}*/
+.fullpagearea {
+    width: 99.8%;
+    /*    这个对于底线对其很重要*/
+/*    height: calc(100% - 56px);*/
+    height: 100%;
+    margin: 0 auto;
+}
+.fullpagoutbox {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;
+}
+/*
+.fullpagearea .fullpagoutbox .nav {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 16px;
+    overflow: hidden;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul{
+    width: 100%;
+    height: 100%;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li{
+    width: 140px;
+    height: 100%;
+!*    border-right: 1px solid red;*!
+    display: inline-block;
+    background-color: snow;
+    border-radius: 7px;
+    padding-left: 5px;
+    position: relative;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li .fa-times{
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: #c0c0c0;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li .fa-times:hover{
+    font-size: 19px;
+    color: black;
+}
+*/
+.fullpagearea .fullpagoutbox .containerarea {
+    margin-left: 17px;
+    width: calc(100% - 16px);
+    /*    这个对于底线对其很重要*/
+/*    height: calc(100% - 40px);*/
+    height: 100% ;
+    position: relative;
+    z-index: 9;
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore{
+    width:17px;
+    height: 30px;
+   /* background-color: red;*/
+    position: absolute;
+    top: 35%;
+    left: -17px;
+    cursor: pointer;
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore .show-icon{
+    font-size: 18px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color:#c0a16b;
+    display: none;
+/*    position: absolute;
+    left: -5px;*/
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore .hide-icon{
+    font-size: 18px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color:#c0a16b;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerleft {
+    position: absolute;
+    height: 100%;
+    /*  设置为只有T1的宽度*/
+    width: 275px;
+    left: 0;
+    border: 1px solid black;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.containerleft .searchInput {
+    margin-top: 8px;
+    position: relative;
+    width: 100%;
+    height: 28px;
+  /*  border-bottom: 1px solid black;*/
+}
+.containerleft .searchInput .btn-group{
+    position: absolute;
+    top: 0;
+    left: 5px;                   ;
+    width:105px !important;
+    height: 100%;
+    background: none;
+}
+.containerleft .searchInput .btn-group button{
+    background-color: snow;
+    width:  100%;
+    height: 100%;
+    padding-left: 0;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    position: relative;
+    left:-5px;
+}
+.containerleft .searchInput .btn-group button .filter-option{
+    padding-left: 10px;
+    line-height: 100% ;
+    font-family: 宋体;
+    font-size: 14px;
+}
+.containerleft .searchInput .btn-group #selectChoose {
+    width: 100px;
+    height: 20px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+.containerleft .searchInput .btn-group #selectBox{
+    width: 100px;
+    position: absolute;
+    left: 85px;
+    top:55px;
+}
+.containerleft .searchInput .btn-group #selectBox ul {
+    padding: 0;
+    border-top:1px solid  black;
+    border-right:1px solid  black;
+    border-left:1px solid  black;
+    list-style: none;
+    width: 100%;
+}
+.containerleft .searchInput .btn-group #selectBox ul li{
+    width: 100%;
+    border-bottom: 1px solid  black;
+}
+.containerleft .searchInput .btn-group button .filter-option .bs-caret{
+    position: absolute;
+    right: 2px;
+}
+.containerleft .searchInput .btn-group .dropdown-menu{
+    width:  100%;
+    margin-left: -5px;
+    overflow-y: scroll;
+}
+.containerleft .searchInput .btn-group .dropdown-menu::-webkit-scrollbar {
+    display: none;
+}
+.containerleft .searchInput .iconarea{
+    height: 100%;
+   /* border: 1px solid black;*/
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.containerleft .searchInput .iconarea .fa{
+   padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    border:1px solid black;
+    border-radius: 4px  ;
+    height: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    color: black;
+    background-color: #c0a16b;
+    background-color: lightgoldenrodyellow;
+}
+.containerleft .searchInput .arrow-down-Open{
+    width: 100px;
+/*    background-color: red;*/
+    position: absolute;
+    top: 29px;;
+    right: 0px;
+    background-color: snow;
+    z-index: 999;
+   display: none;
+}
+.containerleft .searchInput .arrow-down-Open ul{
+    list-style: none;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.containerleft .searchInput .arrow-down-Open ul li{
+    height: 25px;
+    list-style: none;
+    line-height: 25px;
+    padding-left: 5px;
+    color: black;
+    box-sizing: border-box;
+}
+.containerleft .searchInput .arrow-down-Open ul li:hover{
+    /* background-color: #c0c0c0; */
+     background-color:#c8e5bc;
+}
+.containerleft .searchInput .arrow-down-Open ul li a{
+    color: black;
+    text-decoration: none;
+}
+.containerleft .form-box{
+    border-top: 1px solid black;
+    margin-top:8px;
+    width: 100%;
+    height: calc(100% - 81px);
+/*    border-bottom: 1px solid red;*/
+}
+.containerleft .searcharea {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.containerleft .searcharea::-webkit-scrollbar {
+    display: none;
+}
+.containerleft  .form-box .searcharea  .siteOutbox{
+    width: 275px;
+    height: 100%;
+   /*    overflow: hidden !important; */
+}
+.containerleft  .form-box .searcharea  .siteOutbox .everySite{
+    width:275px;
+    height: 100%;
+   /* display: none;*/
+    float: left;
+/*    overflow-y: scroll;*/
+ /*     overflow-y: scroll; */
+}
+.containerleft  .form-box .searcharea  .siteOutbox .everySite::-webkit-scrollbar {
+  /*  display: none;*/
+}
+.containerleft .bottom-searchButton {
+    border-top: 1px solid #8c8c8c;
+    width: 100%;
+    height:37px;
+    position: absolute;
+    bottom: 0;
+}
+.containerleft  .bottom-searchButton button {
+    text-align: center;
+    width: 80px;
+    height:30px;
+    font-size: 15px;
+    position: absolute;
+    background-color: #3385ff;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    top: 3px;
+    right: 21px;
+    font-weight: normal;
+    line-height: 30px;
+    touch-action: manipulation;
+    cursor: pointer;
+    border-radius: 5px;
+/*    font-family: inherit;*/
+    font-family:宋体;
+    color: #fff;
+    border-color: #2e6da4;
+    border-bottom: 1px solid #2d78f4;
+    /* add margin-right by makeqiang 2018-3-29 09:12:02  */
+    margin-right: 14px;
+}
+.containerleft  .bottom-searchButton button:hover{
+    background-color: #317ef3;
+    border-bottom: 1px solid #2868c8;
+    -moz-box-shadow: 1px 1px 1px #CCCCCC;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle {
+    height: 100%;
+    width: 12px;
+    position: absolute;
+   /* background-color: blue;*/
+    z-index: 99;
+    left: 275px;
+    /*  //250+2+4*/
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox {
+    height: 100%;
+    width: 3px;
+/*    background-color: blueviolet;*/
+    border-radius: 50%;
+    z-index: 998;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox .glyphicon-Outbox{
+    width: 15px;
+    height: 20px;
+/*    background-color: red;*/
+    z-index: 8;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox .glyphicon-Outbox .glyphicon{
+    font-size: 13px;
+    color: #ce8483;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
+    cursor: w-resize;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerRight {
+    position: absolute;
+    height: 100%;
+    /* 要通过js控制*/
+    width: calc(100% - 275px - 2px - 12px);
+  /* border: 1px solid black;*/
+    border-radius: 6px;
+    /*  要通过js控制*/
+    left: calc(275px + 12px);
+}
+.containerRight .allContent {
+    width: 100%;
+    height: 100%;
+}
+.containerRight .allContent .topContent {
+    /*overflow-y: scroll;*/
+    /* height:;高度由内容撑开*/
+    width: 100%;
+    height: 100%;
+/*   border-bottom: 1px solid hotpink;*/
+/*    margin-bottom: 5px;*/
+}
+.containerRight .allContent .topContent .container {
+    width: 100%;
+    height: 100%;
+/*    border: 2px solid hotpink;*/
+    /*    padding-left: 0;最终决定*/
+   padding-left: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .topContent .container .row {
+    width: 100%;
+    height: 100%;
+/*    border-bottom: 1px solid hotpink;*/
+    margin-right: -15px;
+    margin-left: -15px;
+   /*  后续根据项目需求决定是否保留滚动条 */
+   /*  overflow-y: scroll; */
+}
+.containerRight .allContent .topContent .container .row::-webkit-scrollbar {
+    display: none;
+}
+.containerRight .allContent .topContent .container .row .everyBox {
+/*    height: 170px;*/
+    height: 100%;
+        /*border:1px solid black;*/
+     padding-right: 0;
+     margin-bottom: 10px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea {
+    /*   position: relative;*/
+   border: 1px solid black;
+    border-radius:5px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  /*  重点*/
+/*    overflow-x: scroll;*/
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle {
+    width: 100%;
+    height: 25px;
+    background-color:darkkhaki;
+    background-color: #81cdee;
+    line-height: 25px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .fa{
+    margin-left: 5px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon {
+    float: right;
+    padding: 0.2rem;
+    position: relative;
+    top: 3px;
+    right: 3px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:hover {
+/*    background-color: #FFFFFF;*/
+    transform: scale(1.2);
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:before {
+    content: "\e140";
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .echarts-Area{
+    width: 100%;
+    height:calc( 100% - 25px);
+   /* overflow-x: scroll;*/
+}
+.containerRight .allContent .bottomContent {
+    width: 100%;
+    height: 32%;
+}
+.containerRight .allContent .bottomContent .container {
+    width: 100%;
+    height: 100%;
+/*    border-top: 2px solid hotpink;*/
+    /*    padding-left: 0;最终决定*/
+    padding-left: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .bottomContent .container .row {
+    width: 100%;
+    height: 100%;
+/*    border-bottom: 1px solid hotpink;*/
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.containerRight .allContent .bottomContent .container .row .excel {
+    height: 100%;
+    /*       border:1px solid black;*/
+    padding-right: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea {
+    border: 1px solid black;
+    border-radius: 6px;
+    height: 100%;
+    /*为了消除圆角虚线*/
+    overflow: hidden;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle {
+    width: 100%;
+    height: 25px;
+/*    border: 1px solid red;*/
+    line-height: 25px;
+  /*  background-color: darkkhaki;*/
+    background-color: #81cdee;
+    position: relative;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .fa-lg{
+    padding-left: 5px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle  .excel-icon-outbox{
+    height: 100%;
+    width: 50px;
+    float: right;
+    right: 14px;
+    position: absolute;
+    top: 0;
+    right:10px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .fa-file-excel-o {
+    position: relative;
+    color: green;
+    top: 1px;
+    right:-15px;
+    font-size: 18px;
+    line-height: 20px;
+    cursor: pointer;
+    margin: 0 auto ;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon {
+    float: right;
+    padding: 0.2rem;
+    position: relative;
+    top: 3px;
+    right: -7px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:hover {
+ /*   background-color: #FFFFFF;*/
+    transform: scale(1.2);
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:before {
+    content: "\e140";
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area{
+    width: 100%;
+    height: calc(100% - 26px);
+    overflow-y:scroll ;
+  /*  高度由内容撑开*/
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 14px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 5px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0.5,0.5,0.5,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage{
+    width:calc(100% - 17px);
+    height: 100%;
+    position: absolute;
+    display: none;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: url(../img/topbg.png) #fff !important;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top{
+    position: relative;
+    padding-left: 20px;
+    height: 30px;
+    width: 100%;
+    background-color: #81cdee;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top .top-tittle{
+    font-size: 16px;
+    color: #333;
+    line-height: 30px;
+    font-weight: 700;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top   .closespan{
+    width: 28px;
+    height: 100%;
+    font-size: 28px;
+    color: black;
+    line-height: 30px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top   .closespan:hover{
+    color: orangered;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-body{
+    height:calc(100% - 30px);
+}
+/*oee新模板页面的css代码，over*/
+/*以下是模板button区域的样式代码，要求这个代码可以独立出来，样式可以和结构一起引入*/
+.Button-template{
+    /* 继承site的宽度*/
+    width: 100% !important;
+}
+.Button-template .bigTittle, .Button-template .bigTittle{
+    height: 28px;
+    /* border-bottom: 1px solid black;*/
+    line-height: 28px;
+    font-size: 16px;
+    padding-left: 10px;
+    font-family: 宋体;
+}
+.Button-template  .allButton{
+    width: 100%;
+    /*    这里的高度让内容自己撑开把*/
+}
+.Button-template  .allButton .allButton-text{
+    width: 38%;
+    float: left;
+}
+.Button-template   .allButton .allButton-button{
+    width:60%;
+    /*    防止浮动下去*/
+    float: left;
+}
+.Button-template  .allButton .allButton-text .everyOutbox-left{
+    /*    border: 1px solid black;*/
+    border-left: 0;
+    height: 25px;
+    margin-top: 5px;
+}
+.Button-template   .allButton .allButton-text .everyOutbox-left .fa{
+    margin-left: 7px;
+    font-size: 14px;
+    color: #8a6d3b;
+    line-height: 25px;
+}
+.Button-template  .allButton .allButton-text .everyOutbox-left .theme{
+    margin-left: 5px;
+    font-size: 14px !important;
+    line-height: 30px;
+    font-weight: normal;
+    color: #555;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right{
+    /*   border: 1px solid black;*/
+    border-left: 0;
+    height: 25px;
+    margin-top: 5px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group{
+    width: 147px;
+    /*  margin-left: 5px;*/
+    height: 100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .bootstrap-select{
+    height: 100%;
+    width: 100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group   button{
+    height: 100%;
+    width:100%;
+    background-color: snow;
+    position: relative;
+    line-height: 100%;
+    font-size: 12px;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:hover{
+    background-color: #c8e5bc;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:active{
+    border: 2px solid dodgerblue;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group   input{
+    background-color: snow;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:hover{
+    background-color: #c8e5bc;
+}
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .inner{
+    /*  width: 147px !important;*/
+    width: 147px;
+    min-width: 147px;
+    max-height: 160px !important;
+    overflow-y: scroll !important;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox{
+    height: 100%;
+    font-size: 12px;
+    top:3px;
+    bottom:0;
+    margin:auto;
+    font-family: 微软雅黑;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox .font{
+    height: 100%;
+    line-height: 100%;
+    font-size: 12px;
+    position: absolute;
+    left: 11px;
+    font-family: sans-serif;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox .caret{
+    font-size: 12px;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    right:11px;
+    top: 10px;
+}
+/*如果是多选框（opotion模式）的话，样式如下*/
+/*如果是多选框（opotion模式）的话，样式如下*/
+/*如果是多选框（opotion模式）的话，样式如下*/
+
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .inner{
+    width: 147px !important;
+    /*   !*不然100条线怎么办*!*/
+    max-height: 160px !important;
+    overflow-y: scroll !important;;
+    /*    border: 1px solid  red;*/
+    padding-bottom: 0;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .dropdown-menu ul li a{
+    padding-left: 8px;
+    font-size: 12px;
+    font-family: inherit !important;
+    font-weight: normal  !important;
+}
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group{
+    /*    overflow: hidden;*/
+}
+
+/*如果日器控件（包括日周月）的话，样式如下*/
+/*如果日器控件（包括日周月）的话，样式如下*/
+/*如果日器控件（包括日周月）的话，样式如下*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  input{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  input:hover{
+    background-color: #c8e5bc;
+}
+/*日期控件设置样式*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .dailyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    /*    padding-left: 8px*/;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .dailyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    position: absolute;
+    left: 0;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox  button{
+    width:60px;
+    height: 100% !important;
+    /* 必须加important*/
+    width:60px;
+    position: absolute;
+    left: 60px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox{
+    height: 100% !important;
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    width: 50% !important;
+    position: absolute;
+    left: 0;
+}
+/*下面这个button样式是个人测试样式，供项目备用方案*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  button{
+    height: 100% !important;
+    /* 必须加important*/
+    width:50% !important;
+    position: absolute;
+    left: 50%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox .select-outbox{
+    position: absolute;
+    left:50%;
+    width:50%;
+    height:100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox .select-outbox .dropdown-menu{
+	/* width:100% !important;
+	min-width:100% !important; */
+	/* max-height:100% !important;
+	overflow:hidden !important; */
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  .select-outbox button{
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute;
+    left: 0%;
+}
+
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  .select-outbox button:hover{
+    background-color: #c8e5bc;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    width: 68% !important;
+    position: absolute;
+    left: 0;
+}
+/*下面这个button样式是个人测试样式，供项目备用方案*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox  button{
+    height: 100% !important;
+    /* 必须加important*/
+    width:32% !important;
+    position: absolute;
+    left:68%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox{
+    position: absolute;
+    width:32%;
+    height:100%;
+    left:68%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox button{
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute;
+    left: 0%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox .btn-group .dropdown-menu{
+    /*  为了解决下拉项在ie下撑开左边的问题 */
+    width:100% !important;
+	min-width:100% !important;
+/* 	overflow:hidden !important; */
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox button:hover{
+    background-color: #c8e5bc;
+}
+/*checkbox样式代码*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .checkboxInput{
+	width: 16px !important;;
+	height: 16px !important;;
+	margin-top: 9px !important;;
+	background-color: snow !important;
+}
+/*glass summar类型页面底部layer背景颜色*/
+.bottomContent .container .row .excel .ag-theme-blue{
+	background-color: #F6F6F6 !important;
+}
+/*以上是button模板样式代码*/
+
+/*weekly样式修复*/
+.weekly-fix{
+	padding-left:2px;
+	background: #fff;
+    border: 1px solid #ccc;
+}
+
+/* ag grid row index number */
+.excelTittle {
+    list-style: none;
+ /*    border: 1px solid red; */
+ /*   width: 62px;*/
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 99;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index:999;
+}
+/*   通用样式*/
+.excelTittle .numList{
+  /*  width: 62px;
+    height: 23px;*/
+    border: 1px solid transparent;
+    padding-left: 11px;
+    line-height: 24px;
+    border: 1px solid transparent;
+    border-right: 1px dotted #9bc2e6;
+    font-size: 14px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+}
+.excelTittle .numList:focus{
+         /* box-sizing: border-box;
+    border: 1px solid black;  */
+}
+/*   分类样式*/
+.excelTittle .OddNum{
+    background-color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background-color 0.1s;
+    border-bottom: 1px dotted #9bc2e6;
+}
+.excelTittle .evenNUM{
+    background-color: #deebf7;
+    cursor: default;
+    user-select: none;
+    color: #222;
+}
+/* ag grid row index number */
+ .StockerTxt{ -webkit-text-size-adjust:none;}
+.mod_body {
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.section {
+	background-color: white;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 18px;
+}
+
+.section-header {
+	background-color: #F6F6F6;
+	background-image: -moz-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#F2F2F2));
+	background-image: -webkit-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -o-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: linear-gradient(to bottom, #FAFAFA,#F2F2F2);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAFAFA', endColorstr='#FFF2F2F2', GradientType=0);
+	border-top: 1px solid white;
+	border-bottom: 1px solid #CCC;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	height: 55px;
+	line-height: 55px;
+	padding: 0 15px 0;
+}
+
+.section-actions {
+	float: right;
+	margin-top: 9px;
+	margin-bottom: 0;
+}
+.btn-toolbar {
+	font-size: 0;
+	margin-top: 9px;
+	margin-bottom: 9px;
+}
+.section-body {
+	min-height: 18px;
+	padding: 9px 15px 0;
+}
+
+.search_bar{
+	background-color: #F2F2F2;
+	padding: 8px;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	min-width:1370px;
+}
+.search_bar form{
+	margin: 5px 0 5px 0;
+}
+.form_input_label{
+	background-color: #C0C0C0;
+}
+
+label.error {
+  font-weight: bold;
+  color: red;
+}
+#maintain_form label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+.table tbody tr.notactive td {
+	color: #E6E6E6;
+}
+.page_size{
+	margin:35px 0px;
+}
+.span1_5 {
+  width: 80px;
+}
+.span2_5 {
+  width: 180px;
+}
+
+.th_table_idx {
+  width: 30px;
+  text-align: center;
+}
+
+  .formitem-title {
+  	width: 120px !important;
+  }
+  
+  
+ div .formitem{
+	 border-top: 1px solid transparent;
+	 border-left: 1px solid transparent;
+	 border-color: #ddd;
+	 padding: 8px;
+  }
+  
+ div .formright{
+	 border-bottom: 1px solid transparent;
+	 border-right: 1px solid transparent;
+	 border-color: #ddd;
+	 display: inline-block;
+	 width:100%;
+  }
+  
+.container-fluid {
+    padding-right: 0px !important; 
+    padding-left: 0px !important;
+}
+
+.cust-panel-heading {
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+   border-bottom: 1px solid transparent;
+}
+
+.cust-input-group-addon{
+   width: 127px;
+   text-align: left;
+	background-color: #f2f2f2; 
+  border: 0px #fff;
+  padding: 6px 0px;
+      
+}
+.cust-form-group{
+	margin-bottom: 5px;
+
+}
+
+.cust-panel-body{
+    padding: 8px;
+    background:#f2f2f2;
+    border: 1px solid #9AA1AF;
+    border-radius: 0.5rem;
+    /* height: 41.5rem; */
+}
+.btn-row{
+    border-color: #ddd!important;
+        border-top: 1px solid transparent;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: -15px!important;
+}
+
+.cust-pager-row{
+    border-color: #ddd!important;
+    border-top: 1px solid transparent;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right:0px;
+    padding-left: 0x;
+}
+
+.cust-input-group-addon>.fa{
+    margin-right: 10px;
+}
+
+
+.cust-panel-heading>.widget-icon {
+	display: block;
+    width: 30px;
+    height: 32px;
+    position: relative;
+    float: left;
+    font-size: 111%;
+    line-height: 32px;
+    text-align: center;
+    margin-right: -10px
+}
+
+.cust-panel-heading h2 {
+    height: 100%;
+    width: auto;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    line-height: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: 10px;
+    float: left;
+}
+.cust-panel-heading>.btn-group{
+    width: auto;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+.cust-table > tbody > tr > td {
+	background-color: #F7EFEF;
+	border-color: C6C6C6;
+}
+
+/**/
+.mod_body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+/*限制多选Selected 宽度*/
+
+.selectpicker_max_width{
+	width:160px !important;
+	overflow:hidden;
+}
+
+
+/* select multiple*/
+.select_multiple{
+	height:50px;
+}
+
+
+
+/*******************************/
+.eleSize{
+    width: 7rem !important;
+    font-size: 12px !important;
+    margin: 0.1rem 0.1rem !important;
+    padding: 0 !important;
+}
+
+.eleOneSize{
+    width: 12rem !important;
+    
+}
+
+.eleOneSize-half{
+    width: 5.7rem !important;
+}
+
+.shiftly-fromDateTag{
+	width:116px !important; 
+}
+
+.shiftly-fromDate{
+	width: 8rem !important;
+    padding-left: 0.2rem;
+}
+
+.shiftly-fromDate-AB{
+	width: 47px !important;
+}
+
+/* 列表头样式  */
+.oeeTable_header_default{
+	color:#fff;
+	background-color:#aaa !important;
+}
+.table.dataTable th{
+	background-color:#aaa !important;
+}
+.oeeTable_gray_bg {
+  background-color: #f3f3f4;
+}
+
+/**
+ * @author zhixin wen <wenzhixin2010@gmail.com>
+ */
+
+.ms-parent {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.ms-choice {
+    display: block;
+    width: 100%;
+    height: 26px;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 26px;
+    color: #444;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.ms-choice.disabled {
+    background-color: #f4f4f4;
+    background-image: none;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+.ms-choice > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-left: 8px;
+}
+
+.ms-choice > span.placeholder {
+    color: #999;
+}
+
+.ms-choice > div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 25px;
+    background: url('multiple-select.png') left top no-repeat;
+}
+
+.ms-choice > div.open {
+    background: url('multiple-select.png') right top no-repeat;
+}
+
+.ms-drop {
+    width: 100%;
+    overflow: hidden;
+    display: none;
+    margin-top: -1px;
+    padding: 0;
+    position: absolute;
+    z-index: 1000;
+    background: #fff;
+    color: #000;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ms-drop.bottom {
+    top: 100%;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+}
+
+.ms-drop.top {
+    bottom: 100%;
+    -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+}
+
+.ms-search {
+    display: inline-block;
+    margin: 0;
+    min-height: 26px;
+    padding: 4px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 10000;
+}
+
+.ms-search input {
+    width: 100%;
+    height: auto !important;
+    min-height: 24px;
+    padding: 0 20px 0 5px;
+    margin: 0;
+    outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #fff url('multiple-select.png') no-repeat 100% -22px;
+    background: url('multiple-select.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+    background: url('multiple-select.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('multiple-select.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url('multiple-select.png') no-repeat 100% -22px, -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
+    background: url('multiple-select.png') no-repeat 100% -22px, -ms-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+    background: url('multiple-select.png') no-repeat 100% -22px, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+}
+
+.ms-search, .ms-search input {
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ms-drop ul {
+    overflow: auto;
+    margin: 0;
+    padding: 5px 8px;
+}
+
+.ms-drop ul > li {
+    list-style: none;
+    display: list-item;
+    background-image: none;
+    position: static;
+}
+
+.ms-drop ul > li .disabled {
+    opacity: .35;
+    filter: Alpha(Opacity=35);
+}
+
+.ms-drop ul > li.multiple {
+    display: block;
+    float: left;
+}
+
+.ms-drop ul > li.group {
+    clear: both;
+}
+
+.ms-drop ul > li.multiple label {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ms-drop ul > li label {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+}
+
+.ms-drop ul > li label.optgroup {
+    font-weight: bold;
+}
+
+.ms-drop input[type="checkbox"] {
+    vertical-align: middle;
+}
+
+.ms-drop .ms-no-results {
+    display: none;
+}
+
+/*以下是oee新模板页面的css代码，start*/
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+}
+/*::-webkit-scrollbar{
+    display:none;
+}*/
+body {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+    width: 100%;
+}
+html, body {
+    height: 100%;
+}
+/*.top {
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    margin-bottom: 1px;
+}*/
+.fullpagearea {
+    width: 99.8%;
+    /*    这个对于底线对其很重要*/
+/*    height: calc(100% - 56px);*/
+    height: 100%;
+    margin: 0 auto;
+}
+.fullpagoutbox {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;
+}
+/*
+.fullpagearea .fullpagoutbox .nav {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 16px;
+    overflow: hidden;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul{
+    width: 100%;
+    height: 100%;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li{
+    width: 140px;
+    height: 100%;
+!*    border-right: 1px solid red;*!
+    display: inline-block;
+    background-color: snow;
+    border-radius: 7px;
+    padding-left: 5px;
+    position: relative;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li .fa-times{
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: #c0c0c0;
+}
+.fullpagearea .fullpagoutbox .nav .nav-ul li .fa-times:hover{
+    font-size: 19px;
+    color: black;
+}
+*/
+.fullpagearea .fullpagoutbox .containerarea {
+    margin-left: 17px;
+    width: calc(100% - 16px);
+    /*    这个对于底线对其很重要*/
+/*    height: calc(100% - 40px);*/
+    height: 100% ;
+    position: relative;
+    z-index: 9;
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore{
+    width:17px;
+    height: 30px;
+   /* background-color: red;*/
+    position: absolute;
+    top: 35%;
+    left: -17px;
+    cursor: pointer;
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore .show-icon{
+    font-size: 18px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color:#c0a16b;
+    display: none;
+/*    position: absolute;
+    left: -5px;*/
+}
+.fullpagearea .fullpagoutbox .containerarea .leftBefore .hide-icon{
+    font-size: 18px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color:#c0a16b;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerleft {
+    position: absolute;
+    height: 100%;
+    /*  设置为只有T1的宽度*/
+    width: 275px;
+    left: 0;
+    border: 1px solid black;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.containerleft .searchInput {
+    margin-top: 8px;
+    position: relative;
+    width: 100%;
+    height: 28px;
+  /*  border-bottom: 1px solid black;*/
+}
+.containerleft .searchInput .btn-group{
+    position: absolute;
+    top: 0;
+    left: 5px;                   ;
+    width:105px !important;
+    height: 100%;
+    background: none;
+}
+.containerleft .searchInput .btn-group button{
+    background-color: snow;
+    width:  100%;
+    height: 100%;
+    padding-left: 0;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    position: relative;
+    left:-5px;
+}
+.containerleft .searchInput .btn-group button .filter-option{
+    padding-left: 10px;
+    line-height: 100% ;
+    font-family: 宋体;
+    font-size: 14px;
+}
+.containerleft .searchInput .btn-group #selectChoose {
+    width: 100px;
+    height: 20px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+.containerleft .searchInput .btn-group #selectBox{
+    width: 100px;
+    position: absolute;
+    left: 85px;
+    top:55px;
+}
+.containerleft .searchInput .btn-group #selectBox ul {
+    padding: 0;
+    border-top:1px solid  black;
+    border-right:1px solid  black;
+    border-left:1px solid  black;
+    list-style: none;
+    width: 100%;
+}
+.containerleft .searchInput .btn-group #selectBox ul li{
+    width: 100%;
+    border-bottom: 1px solid  black;
+}
+.containerleft .searchInput .btn-group button .filter-option .bs-caret{
+    position: absolute;
+    right: 2px;
+}
+.containerleft .searchInput .btn-group .dropdown-menu{
+    width:  100%;
+    margin-left: -5px;
+    overflow-y: scroll;
+}
+.containerleft .searchInput .btn-group .dropdown-menu::-webkit-scrollbar {
+    display: none;
+}
+.containerleft .searchInput .iconarea{
+    height: 100%;
+   /* border: 1px solid black;*/
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.containerleft .searchInput .iconarea .fa{
+   padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    border:1px solid black;
+    border-radius: 4px  ;
+    height: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    color: black;
+    background-color: #c0a16b;
+    background-color: lightgoldenrodyellow;
+}
+.containerleft .searchInput .arrow-down-Open{
+    width: 100px;
+/*    background-color: red;*/
+    position: absolute;
+    top: 29px;;
+    right: 0px;
+    background-color: snow;
+    z-index: 999;
+   display: none;
+}
+.containerleft .searchInput .arrow-down-Open ul{
+    list-style: none;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.containerleft .searchInput .arrow-down-Open ul li{
+    height: 25px;
+    list-style: none;
+    line-height: 25px;
+    padding-left: 5px;
+    color: black;
+    box-sizing: border-box;
+}
+.containerleft .searchInput .arrow-down-Open ul li:hover{
+    /* background-color: #c0c0c0; */
+     background-color:#c8e5bc;
+}
+.containerleft .searchInput .arrow-down-Open ul li a{
+    color: black;
+    text-decoration: none;
+}
+.containerleft .form-box{
+    border-top: 1px solid black;
+    margin-top:8px;
+    width: 100%;
+    height: calc(100% - 81px);
+/*    border-bottom: 1px solid red;*/
+}
+.containerleft .searcharea {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.containerleft .searcharea::-webkit-scrollbar {
+    display: none;
+}
+.containerleft  .form-box .searcharea  .siteOutbox{
+    width: 275px;
+    height: 100%;
+   /*    overflow: hidden !important; */
+}
+.containerleft  .form-box .searcharea  .siteOutbox .everySite{
+    width:275px;
+    height: 100%;
+   /* display: none;*/
+    float: left;
+/*    overflow-y: scroll;*/
+ /*     overflow-y: scroll; */
+}
+.containerleft  .form-box .searcharea  .siteOutbox .everySite::-webkit-scrollbar {
+  /*  display: none;*/
+}
+.containerleft .bottom-searchButton {
+    border-top: 1px solid #8c8c8c;
+    width: 100%;
+    height:37px;
+    position: absolute;
+    bottom: 0;
+}
+.containerleft  .bottom-searchButton button {
+    text-align: center;
+    width: 80px;
+    height:30px;
+    font-size: 15px;
+    position: absolute;
+    background-color: #3385ff;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    top: 3px;
+    right: 21px;
+    font-weight: normal;
+    line-height: 30px;
+    touch-action: manipulation;
+    cursor: pointer;
+    border-radius: 5px;
+/*    font-family: inherit;*/
+    font-family:宋体;
+    color: #fff;
+    border-color: #2e6da4;
+    border-bottom: 1px solid #2d78f4;
+    /* add margin-right by makeqiang 2018-3-29 09:12:02  */
+    margin-right: 14px;
+}
+.containerleft  .bottom-searchButton button:hover{
+    background-color: #317ef3;
+    border-bottom: 1px solid #2868c8;
+    -moz-box-shadow: 1px 1px 1px #CCCCCC;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle {
+    height: 100%;
+    width: 12px;
+    position: absolute;
+   /* background-color: blue;*/
+    z-index: 99;
+    left: 275px;
+    /*  //250+2+4*/
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox {
+    height: 100%;
+    width: 3px;
+/*    background-color: blueviolet;*/
+    border-radius: 50%;
+    z-index: 998;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox .glyphicon-Outbox{
+    width: 15px;
+    height: 20px;
+/*    background-color: red;*/
+    z-index: 8;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle .innerbox .glyphicon-Outbox .glyphicon{
+    font-size: 13px;
+    color: #ce8483;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
+    cursor: w-resize;
+}
+.fullpagearea .fullpagoutbox .containerarea .containerRight {
+    position: absolute;
+    height: 100%;
+    /* 要通过js控制*/
+    width: calc(100% - 275px - 2px - 12px);
+  /* border: 1px solid black;*/
+    border-radius: 6px;
+    /*  要通过js控制*/
+    left: calc(275px + 12px);
+}
+.containerRight .allContent {
+    width: 100%;
+    height: 100%;
+}
+.containerRight .allContent .topContent {
+    /*overflow-y: scroll;*/
+    /* height:;高度由内容撑开*/
+    width: 100%;
+    height: 100%;
+/*   border-bottom: 1px solid hotpink;*/
+/*    margin-bottom: 5px;*/
+}
+.containerRight .allContent .topContent .container {
+    width: 100%;
+    height: 100%;
+/*    border: 2px solid hotpink;*/
+    /*    padding-left: 0;最终决定*/
+   padding-left: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .topContent .container .row {
+    width: 100%;
+    height: 100%;
+/*    border-bottom: 1px solid hotpink;*/
+    margin-right: -15px;
+    margin-left: -15px;
+   /*  后续根据项目需求决定是否保留滚动条 */
+   /*  overflow-y: scroll; */
+}
+.containerRight .allContent .topContent .container .row::-webkit-scrollbar {
+    display: none;
+}
+.containerRight .allContent .topContent .container .row .everyBox {
+/*    height: 170px;*/
+    height: 100%;
+        /*border:1px solid black;*/
+     padding-right: 0;
+     margin-bottom: 10px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea {
+    /*   position: relative;*/
+   border: 1px solid black;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  /*  重点*/
+/*    overflow-x: scroll;*/
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle {
+    width: 100%;
+    height: 25px;
+    background-color:darkkhaki;
+    background-color: #81cdee;
+    line-height: 25px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .fa{
+    margin-left: 5px;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon {
+    float: right;
+    padding: 0.2rem;
+    position: relative;
+    top: 3px;
+    right: 3px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:hover {
+/*    background-color: #FFFFFF;*/
+    transform: scale(1.2);
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:before {
+    content: "\e140";
+}
+.containerRight .allContent .topContent .container .row .everyBox .boxarea .echarts-Area{
+    width: 100%;
+    height:calc( 100% - 25px);
+   /* overflow-x: scroll;*/
+}
+.containerRight .allContent .bottomContent {
+    width: 100%;
+    height: 32%;
+}
+.containerRight .allContent .bottomContent .container {
+    width: 100%;
+    height: 100%;
+/*    border-top: 2px solid hotpink;*/
+    /*    padding-left: 0;最终决定*/
+    padding-left: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .bottomContent .container .row {
+    width: 100%;
+    height: 100%;
+/*    border-bottom: 1px solid hotpink;*/
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.containerRight .allContent .bottomContent .container .row .excel {
+    height: 100%;
+    /*       border:1px solid black;*/
+    padding-right: 0;
+    padding-right: 0;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea {
+    border: 1px solid black;
+    border-radius: 6px;
+    height: 100%;
+    /*为了消除圆角虚线*/
+    overflow: hidden;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle {
+    width: 100%;
+    height: 25px;
+/*    border: 1px solid red;*/
+    line-height: 25px;
+  /*  background-color: darkkhaki;*/
+    background-color: #81cdee;
+    position: relative;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .fa-lg{
+    padding-left: 5px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle  .excel-icon-outbox{
+    height: 100%;
+    width: 50px;
+    float: right;
+    right: 14px;
+    position: absolute;
+    top: 0;
+    right:10px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .fa-file-excel-o {
+    position: relative;
+    color: green;
+    top: 1px;
+    right:-15px;
+    font-size: 18px;
+    line-height: 20px;
+    cursor: pointer;
+    margin: 0 auto ;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon {
+    float: right;
+    padding: 0.2rem;
+    position: relative;
+    top: 3px;
+    right: -7px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:hover {
+ /*   background-color: #FFFFFF;*/
+    transform: scale(1.2);
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:before {
+    content: "\e140";
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area{
+    width: 100%;
+    height: calc(100% - 26px);
+    overflow-y:scroll ;
+  /*  高度由内容撑开*/
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 14px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 5px;
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0.5,0.5,0.5,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage{
+    width:calc(100% - 17px);
+    height: 100%;
+    position: absolute;
+    display: none;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: url(../img/topbg.png) #fff !important;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top{
+    position: relative;
+    padding-left: 20px;
+    height: 30px;
+    width: 100%;
+    background-color: #81cdee;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top .top-tittle{
+    font-size: 16px;
+    color: #333;
+    line-height: 30px;
+    font-weight: 700;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top   .closespan{
+    width: 28px;
+    height: 100%;
+    font-size: 28px;
+    color: black;
+    line-height: 30px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-top   .closespan:hover{
+    color: orangered;
+}
+.fullpagearea .fullpagoutbox .containerarea .openPage  .openPage-body{
+    height:calc(100% - 30px);
+}
+/*oee新模板页面的css代码，over*/
+/*以下是模板button区域的样式代码，要求这个代码可以独立出来，样式可以和结构一起引入*/
+.Button-template{
+    /* 继承site的宽度*/
+    width: 100% !important;
+}
+.Button-template .bigTittle, .Button-template .bigTittle{
+    height: 28px;
+    /* border-bottom: 1px solid black;*/
+    line-height: 28px;
+    font-size: 16px;
+    padding-left: 10px;
+    font-family: 宋体;
+}
+.Button-template  .allButton{
+    width: 100%;
+    /*    这里的高度让内容自己撑开把*/
+}
+.Button-template  .allButton .allButton-text{
+    width: 38%;
+    float: left;
+}
+.Button-template   .allButton .allButton-button{
+    width:60%;
+    /*    防止浮动下去*/
+    float: left;
+}
+.Button-template  .allButton .allButton-text .everyOutbox-left{
+    /*    border: 1px solid black;*/
+    border-left: 0;
+    height: 25px;
+    margin-top: 5px;
+}
+.Button-template   .allButton .allButton-text .everyOutbox-left .fa{
+    margin-left: 7px;
+    font-size: 14px;
+    color: #8a6d3b;
+    line-height: 25px;
+}
+.Button-template  .allButton .allButton-text .everyOutbox-left .theme{
+    margin-left: 5px;
+    font-size: 14px !important;
+    line-height: 30px;
+    font-weight: normal;
+    color: #555;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right{
+    /*   border: 1px solid black;*/
+    border-left: 0;
+    height: 25px;
+    margin-top: 5px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group{
+    width: 147px;
+    /*  margin-left: 5px;*/
+    height: 100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .bootstrap-select{
+    height: 100%;
+    width: 100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group   button{
+    height: 100%;
+    width:100%;
+    background-color: snow;
+    position: relative;
+    line-height: 100%;
+    font-size: 12px;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:hover{
+    background-color: #c8e5bc;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:active{
+    border: 2px solid dodgerblue;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group   input{
+    background-color: snow;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group button:hover{
+    background-color: #c8e5bc;
+}
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+/*如果是单选框（button+ul模式）的话，样式如下：*/
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .inner{
+    /*  width: 147px !important;*/
+    width: 147px;
+    min-width: 147px;
+    max-height: 160px !important;
+    overflow-y: scroll !important;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox{
+    height: 100%;
+    font-size: 12px;
+    top:3px;
+    bottom:0;
+    margin:auto;
+    font-family: 微软雅黑;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox .font{
+    height: 100%;
+    line-height: 100%;
+    font-size: 12px;
+    position: absolute;
+    left: 11px;
+    font-family: sans-serif;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .TXToutBox .caret{
+    font-size: 12px;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    right:11px;
+    top: 10px;
+}
+/*如果是多选框（opotion模式）的话，样式如下*/
+/*如果是多选框（opotion模式）的话，样式如下*/
+/*如果是多选框（opotion模式）的话，样式如下*/
+
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .inner{
+    width: 147px !important;
+    /*   !*不然100条线怎么办*!*/
+    max-height: 160px !important;
+    overflow-y: scroll !important;
+    /*    border: 1px solid  red;*/
+    padding-bottom: 0;
+}
+.Button-template  .allButton .allButton-button .everyOutbox-right .btn-group .dropdown-menu ul li a{
+    padding-left: 8px;
+    font-size: 12px;
+    font-family: inherit !important;
+    font-weight: normal  !important;
+}
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+/*如果是多选单选切换框（彭涛模式）的话，样式如下*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group{
+    /*    overflow: hidden;*/
+}
+
+/*如果日器控件（包括日周月）的话，样式如下*/
+/*如果日器控件（包括日周月）的话，样式如下*/
+/*如果日器控件（包括日周月）的话，样式如下*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  input{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  input:hover{
+    background-color: #c8e5bc;
+}
+/*日期控件设置样式*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .dailyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    /*    padding-left: 8px*/;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .dailyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    position: absolute;
+    left: 0;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .monthlyBox  button{
+    width:60px;
+    height: 100% !important;
+    /* 必须加important*/
+    width:60px;
+    position: absolute;
+    left: 60px;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox{
+    height: 100% !important;
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    width: 50% !important;
+    position: absolute;
+    left: 0;
+}
+/*下面这个button样式是个人测试样式，供项目备用方案*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  button{
+    height: 100% !important;
+    /* 必须加important*/
+    width:50% !important;
+    position: absolute;
+    left: 50%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox .select-outbox{
+    position: absolute;
+    left:50%;
+    width:50%;
+    height:100%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox .select-outbox .btn-group .dropdown-menu{
+	width:100% !important;
+	min-width:100% !important;
+	overflow-y: scroll;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  .select-outbox button{
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute;
+    left: 0%;
+}
+
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .weeklyBox  .select-outbox button:hover{
+    background-color: #c8e5bc;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox{
+    height: 100% !important;
+    /* 必须加important*/
+    width: 100% !important;
+    padding-left: 8px;
+    font-size: 12px;
+    position: relative;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox input{
+    height: 100% !important;
+    line-height: 100% !important;
+    width: 68% !important;
+    position: absolute;
+    left: 0;
+}
+/*下面这个button样式是个人测试样式，供项目备用方案*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox  button{
+    height: 100% !important;
+    /* 必须加important*/
+    width:32% !important;
+    position: absolute;
+    left:68%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox{
+    position: absolute;
+    width:32%;
+    height:100%;
+    left:68%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox button{
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute;
+    left: 0%;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox .btn-group .dropdown-menu{
+    /*  为了解决下拉项在ie下撑开左边的问题 */
+    width:100% !important;
+ 	/* min-width:100% !important; */
+ 	overflow-x: hidden;
+ 	overflow-y: hidden;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox .btn-group .dropdown-menu::-webkit-scrollbar{
+	display: none;
+}
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group  .shiftlyBox .select-outbox button:hover{
+    background-color: #c8e5bc;
+}
+/*checkbox样式代码*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .checkboxInput{
+	width: 16px !important;
+	height: 16px !important;
+	margin-top: 9px !important;
+	background-color: snow !important;
+}
+/*radio样式代码*/
+.Button-template   .allButton .allButton-button .everyOutbox-right .radioInput{
+	width: 16px !important;;
+	height: 16px !important;;
+	margin-top: 9px !important;;
+	background-color: snow !important;
+}
+/*glass summar类型页面底部layer背景颜色*/
+.bottomContent .container .row .excel .ag-theme-blue{
+	background-color: #F6F6F6 !important;
+}
+/*以上是button模板样式代码*/
+
+/*weekly样式修复*/
+.weekly-fix{
+	padding-left:2px;
+	background: #fff;
+    border: 1px solid #ccc;
+}
+
+
+/* 以下是一些基本css样式的整合,包括
+common.css/
+common_base.cs/
+popus.css/
+menu_default.css/
+default.css/
+menu_dropdown.css */
+/* menu_dropdown.css  start */
+ul.dropdown,
+ul.dropdown li,
+ul.dropdown ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+ul.dropdown {
+ position: relative;
+ z-index: 597;
+ float: left;
+}
+
+ul.dropdown li {
+ float: left;
+ line-height: 1.3em;
+ vertical-align: middle;
+ zoom: 1;
+}
+
+ul.dropdown li.hover,
+ul.dropdown li:hover {
+ position: relative;
+ z-index: 599;
+ cursor: default;
+}
+
+ul.dropdown ul {
+ visibility: hidden;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ z-index: 598;
+ width: 100%;
+}
+
+ul.dropdown ul li {
+ float: none;
+}
+
+ul.dropdown ul ul {
+ top: 1px;
+ left: 99%;
+}
+
+ul.dropdown li:hover > ul {
+ visibility: visible;
+}
+menu_dropdown.css  end
+
+
+
+default.css  start
+ul.dropdown {
+ padding-bottom: 1px;
+ background: url(../../img/menu/pattern1.png) 0 100% repeat-x;
+ font: bold 13px/normal Arial, Helvetica, sans-serif;
+}
+
+	ul.dropdown li {
+	 padding: 4px 6px;
+	 color: #0063dc;
+	}
+
+	ul.dropdown li.divider {
+	 border-top: solid 1px #e5e5e5;
+	}
+
+	ul.dropdown li.hover,
+	ul.dropdown li:hover {
+	 color: #0063dc;
+	}
+
+	ul.dropdown a:link,
+	ul.dropdown a:visited	{ color: #0063dc; text-decoration: none; }
+	ul.dropdown a:hover		{ color: #0063dc; text-decoration: underline; }
+	ul.dropdown a:active	{ color: #ff0084; }
+
+
+	-- level mark --
+
+	ul.dropdown ul {
+	 width: 150px;
+	 padding: 3px 6px;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #f0f0f0 #666 #666 #f0f0f0;
+	 background-color: #fff;
+	 font-weight: normal;
+	 font-size: 11px;
+	}
+
+		ul.dropdown ul li {
+		}
+
+
+
+-------------------------------------------------/
+ * @section		Support Class `dir`
+ * @level sep	ul, .class
+
+
+
+ul.dropdown *.dir {
+ padding-right: 25px;
+ background-image: url(../../img/menu/nav-arrow-down.png);
+ background-position: 95% 50%;
+ background-repeat: no-repeat;
+}
+
+
+-- Components override --
+
+ul.dropdown-vertical ul {
+ top: 0;
+ left: 100%;
+}
+
+ul.dropdown-vertical-rtl ul {
+ right: 100%;
+}
+
+ul.dropdown-horizontal,
+ul.dropdown-linear,
+ul.dropdown-upward {
+ width: 100%;
+}
+
+ul.dropdown-horizontal ul *.dir {
+ padding-right: 25px;
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 100% 50%;
+ background-repeat: no-repeat;
+}
+
+ul.dropdown-upward *.dir {
+ background-image: url(../../img/menu/nav-arrow-up.png);
+}
+
+ul.dropdown-vertical *.dir {
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 180px 50%;
+}
+
+ul.dropdown-vertical ul *.dir,
+ul.dropdown-upward ul *.dir {
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 100% 50%;
+}
+
+ul.dropdown-vertical-rtl *.dir {
+ padding-right: 6px;
+ padding-left: 25px;
+ background-image: url(../../img/menu/nav-arrow-left.png);
+ background-position: 5px 50%;
+}
+
+ul.dropdown-vertical-rtl ul *.dir {
+ padding-right: 0;
+ background-image: url(../../img/menu/nav-arrow-left.png);
+ background-position: 0 50%;
+}
+default.css  end
+
+menu_default.css  start
+ul.dropdown a,
+ul.dropdown span {
+ display: block;
+ padding: 4px 6px;
+}
+
+ul.dropdown ul a,
+ul.dropdown ul span {
+ padding: 4px 0;
+}
+
+
+-------------------------------------------------/
+ * @section		Base Style Override
+
+
+ul.dropdown li {
+ padding: 0;
+ border: none;
+}
+
+
+-------------------------------------------------/
+ *	@section	Custom Styles
+
+
+ul.dropdown li a,
+ul.dropdown *.dir {
+ border-style: solid;
+ border-width: 1px 1px 0;
+ border-color: #fff;
+}
+
+ul.dropdown ul li a,
+ul.dropdown ul *.dir {
+ border: none;
+}
+
+
+ul.dropdown-vertical li a,
+ul.dropdown-vertical *.dir {
+ border-width: 1px 0 1px 1px;
+}
+
+ul.dropdown-vertical-rtl li a,
+ul.dropdown-vertical-rtl *.dir {
+ border-width: 1px 1px 1px 0;
+}
+
+
+-------------------------------------------------/
+ * @section		Support Class `open` Usage
+ * @source		js, artificial
+ *
+
+
+ul.dropdown li.hover *.open {
+ position: relative;
+ z-index: 600;
+ margin: -1px 0;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ border-color: #f0f0f0 #666 #666 #f0f0f0;
+ background-color: #fff;
+ background-image: url(../../img/menu/nav-arrow-down-open.png);
+ color: #0063dc;
+ zoom: 1;
+}
+
+ul.dropdown-horizontal li.hover *.open,
+ul.dropdown-upward li.hover *.open,
+ul.dropdown-linear li.hover *.open {
+ float: left;
+ zoom: none;
+}
+
+ul.dropdown-vertical li.hover *.open {
+ margin: 0 -1px;
+ padding-top: 4px;
+ padding-bottom: 4px;
+ padding-left: 7px;
+}
+
+ul.dropdown-vertical-rtl li.hover *.open {
+ padding-right: 7px;
+}
+
+ul.dropdown-vertical ul li.hover *.open {
+ padding-right: 0;
+ padding-left: 0;
+}
+
+ul.dropdown ul li.hover *.open {
+ position: static;
+ z-index: 0;
+ float: none;
+ margin: 0;
+ padding-top: 4px;
+ padding-bottom: 4px;
+ border: none;
+}
+
+ul.dropdown ul li.hover *.open,
+ul.dropdown-vertical li.hover *.open {
+ background-image: url(../../img/menu/nav-arrow-right-open.png);
+}
+
+ul.dropdown-vertical-rtl li.hover *.open,
+ul.dropdown-vertical-rtl ul li.hover *.open {
+ background-image: url(../../img/menu/nav-arrow-left-open.png);
+}
+
+ul.dropdown-upward li.hover *.open {
+ background-image: url(../../img/menu/nav-arrow-up-open.png);
+}
+
+ul.dropdown-upward ul li.hover *.open {
+ background-image: url(../../img/menu/nav-arrow-right-open.png);
+}
+
+ul.dropdown a.dir:hover {
+ background-image: url(../../img/menu/nav-arrow-down-on.png) !important;
+}
+
+ul.dropdown-upward a.dir:hover {
+ background-image: url(../../img/menu/nav-arrow-up-on.png) !important;
+}
+
+ul.dropdown ul a.dir:hover,
+ul.dropdown-vertical a.dir:hover {
+ background-image: url(../../img/menu/nav-arrow-right-on.png) !important;
+}
+
+ul.dropdown-vertical-rtl a.dir:hover,
+ul.dropdown-vertical-rtl ul a.dir:hover {
+ background-image: url(../../img/menu/nav-arrow-left-on.png) !important;
+}
+
+
+	CSS2 clone
+
+	ul.dropdown li:hover > *.dir {
+	 position: relative;
+	 z-index: 600;
+	 margin: -1px 0;
+	 padding-top: 5px;
+	 padding-bottom: 5px;
+	 border-color: #f0f0f0 #666 #666 #f0f0f0;
+	 background-color: #fff;
+	 background-image: url(../../img/menu/nav-arrow-down-open.png);
+	 color: #0063dc;
+	}
+
+	ul.dropdown-horizontal li:hover > *.dir,
+	ul.dropdown-upward li:hover > *.dir,
+	ul.dropdown-linear li:hover > *.dir {
+	 float: left;
+	}
+
+	ul.dropdown-vertical li:hover > *.dir {
+	 margin: 0 -1px;
+	 padding-top: 4px;
+	 padding-bottom: 4px;
+	 padding-left: 7px;
+	 *position: static;
+	}
+
+	ul.dropdown-vertical-rtl li:hover > *.dir {
+	 padding-right: 7px;
+	}
+
+	ul.dropdown-vertical ul li:hover > *.dir {
+	 padding-right: 0;
+	 padding-left: 0;
+	}
+
+	ul.dropdown ul li:hover > *.dir {
+	 position: static;
+	 z-index: 0;
+	 float: none;
+	 margin: 0;
+	 padding-top: 4px;
+	 padding-bottom: 4px;
+	 border: none;
+	}
+
+	ul.dropdown ul li:hover > *.dir,
+	ul.dropdown-vertical li:hover > *.dir {
+	 background-image: url(../../img/menu/nav-arrow-right-open.png);
+	}
+
+	ul.dropdown-vertical-rtl li:hover > *.dir,
+	ul.dropdown-vertical-rtl ul li:hover > *.dir {
+	 background-image: url(../../img/menu/nav-arrow-left-open.png);
+	}
+
+	ul.dropdown-upward li:hover > *.dir {
+	 background-image: url(../../img/menu/nav-arrow-up-open.png);
+	}
+
+	ul.dropdown-upward ul li:hover > *.dir {
+	 background-image: url(../../img/menu/nav-arrow-right-open.png);
+	}
+menu_default.css  end
+
+popus.css  start
+ul.dropdown {
+ padding-bottom: 1px;
+ background: url(../../img/menu/pattern1.png) 0 100% repeat-x;
+ font: bold 13px/normal Arial, Helvetica, sans-serif;
+}
+
+	ul.dropdown li {
+	 padding: 4px 6px;
+	 color: #0063dc;
+	}
+
+	ul.dropdown li.divider {
+	 border-top: solid 1px #e5e5e5;
+	}
+
+	ul.dropdown li.hover,
+	ul.dropdown li:hover {
+	 color: #0063dc;
+	}
+
+	ul.dropdown a:link,
+	ul.dropdown a:visited	{ color: #0063dc; text-decoration: none; }
+	ul.dropdown a:hover		{ color: #0063dc; text-decoration: underline; }
+	ul.dropdown a:active	{ color: #ff0084; }
+
+
+	-- level mark --
+
+	ul.dropdown ul {
+	 width: 150px;
+	 padding: 3px 6px;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #f0f0f0 #666 #666 #f0f0f0;
+	 background-color: #fff;
+	 font-weight: normal;
+	 font-size: 11px;
+	}
+
+		ul.dropdown ul li {
+		}
+
+
+
+-------------------------------------------------/
+ * @section		Support Class `dir`
+ * @level sep	ul, .class
+
+
+
+ul.dropdown *.dir {
+ padding-right: 25px;
+ background-image: url(../../img/menu/nav-arrow-down.png);
+ background-position: 95% 50%;
+ background-repeat: no-repeat;
+}
+
+
+-- Components override --
+
+ul.dropdown-vertical ul {
+ top: 0;
+ left: 100%;
+}
+
+ul.dropdown-vertical-rtl ul {
+ right: 100%;
+}
+
+ul.dropdown-horizontal,
+ul.dropdown-linear,
+ul.dropdown-upward {
+ width: 100%;
+}
+
+ul.dropdown-horizontal ul *.dir {
+ padding-right: 25px;
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 100% 50%;
+ background-repeat: no-repeat;
+}
+
+ul.dropdown-upward *.dir {
+ background-image: url(../../img/menu/nav-arrow-up.png);
+}
+
+ul.dropdown-vertical *.dir {
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 180px 50%;
+}
+
+ul.dropdown-vertical ul *.dir,
+ul.dropdown-upward ul *.dir {
+ background-image: url(../../img/menu/nav-arrow-right.png);
+ background-position: 100% 50%;
+}
+
+ul.dropdown-vertical-rtl *.dir {
+ padding-right: 6px;
+ padding-left: 25px;
+ background-image: url(../../img/menu/nav-arrow-left.png);
+ background-position: 5px 50%;
+}
+
+ul.dropdown-vertical-rtl ul *.dir {
+ padding-right: 0;
+ background-image: url(../../img/menu/nav-arrow-left.png);
+ background-position: 0 50%;
+}
+popus.css  end
+
+common.css  start
+.StockerTxt{ -webkit-text-size-adjust:none;}
+.mod_body {
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.section {
+	background-color: white;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 18px;
+}
+
+.section-header {
+	background-color: #F6F6F6;
+	background-image: -moz-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#F2F2F2));
+	background-image: -webkit-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -o-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: linear-gradient(to bottom, #FAFAFA,#F2F2F2);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAFAFA', endColorstr='#FFF2F2F2', GradientType=0);
+	border-top: 1px solid white;
+	border-bottom: 1px solid #CCC;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	height: 55px;
+	line-height: 55px;
+	padding: 0 15px 0;
+}
+
+.section-actions {
+	float: right;
+	margin-top: 9px;
+	margin-bottom: 0;
+}
+.btn-toolbar {
+	font-size: 0;
+	margin-top: 9px;
+	margin-bottom: 9px;
+}
+.section-body {
+	min-height: 18px;
+	padding: 9px 15px 0;
+}
+
+.search_bar{
+	background-color: #F2F2F2;
+	padding: 8px;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	min-width:1370px;
+}
+.search_bar form{
+	margin: 5px 0 5px 0;
+}
+.form_input_label{
+	background-color: #C0C0C0;
+}
+
+label.error {
+  font-weight: bold;
+  color: red;
+}
+#maintain_form label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+.table tbody tr.notactive td {
+	color: #E6E6E6;
+}
+.page_size{
+	margin:35px 0px;
+}
+.span1_5 {
+  width: 80px;
+}
+.span2_5 {
+  width: 180px;
+}
+
+.th_table_idx {
+  width: 30px;
+  text-align: center;
+}
+
+  .formitem-title {
+  	width: 120px !important;
+  }
+  
+  
+ div .formitem{
+	 border-top: 1px solid transparent;
+	 border-left: 1px solid transparent;
+	 border-color: #ddd;
+	 padding: 8px;
+  }
+  
+ div .formright{
+	 border-bottom: 1px solid transparent;
+	 border-right: 1px solid transparent;
+	 border-color: #ddd;
+	 display: inline-block;
+	 width:100%;
+  }
+  
+.container-fluid {
+    padding-right: 0px !important; 
+    padding-left: 0px !important;
+}
+
+.cust-panel-heading {
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+   border-bottom: 1px solid transparent;
+}
+
+.cust-input-group-addon{
+   width: 120px;
+   text-align: left;
+	background-color: #f2f2f2; 
+  border: 0px #fff;
+  padding: 6px 0px;
+      
+}
+.cust-form-group{
+	margin-bottom: 5px;
+
+}
+
+.cust-panel-body{
+    padding: 8px;
+    background:#f2f2f2;
+    border: 1px solid #9AA1AF;
+    border-radius: 0.5rem;
+    height: 41.5rem;
+}
+.btn-row{
+    border-color: #ddd!important;
+        border-top: 1px solid transparent;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: -15px!important;
+}
+
+.cust-pager-row{
+    border-color: #ddd!important;
+    border-top: 1px solid transparent;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right:0px;
+    padding-left: 0x;
+}
+
+.cust-input-group-addon>.fa{
+    margin-right: 10px;
+}
+
+
+.cust-panel-heading>.widget-icon {
+	display: block;
+    width: 30px;
+    height: 32px;
+    position: relative;
+    float: left;
+    font-size: 111%;
+    line-height: 32px;
+    text-align: center;
+    margin-right: -10px
+}
+
+.cust-panel-heading h2 {
+    height: 100%;
+    width: auto;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    line-height: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: 10px;
+    float: left;
+}
+.cust-panel-heading>.btn-group{
+    width: auto;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+.cust-table > tbody > tr > td {
+	background-color: #F7EFEF;
+	border-color: C6C6C6;
+}
+
+
+.mod_body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+限制多选Selected 宽度
+
+.selectpicker_max_width{
+	width:160px !important;
+	overflow:hidden;
+}
+
+
+select multiple
+.select_multiple{
+	height:50px;
+}
+
+
+
+*****************************
+.eleSize{
+    width: 7rem !important;
+    font-size: 0.5em !important;
+    margin: 0.1rem 0.1rem !important;
+    padding: 0 !important;
+}
+
+.eleOneSize{
+    width: 12rem !important;
+    
+}
+
+.eleOneSize-half{
+    width: 5.7rem !important;
+}
+
+.shiftly-fromDateTag{
+	width:9.8rem !important; 
+}
+
+.shiftly-fromDate{
+	width: 8rem !important;
+    padding-left: 0.2rem;
+}
+
+.shiftly-fromDate-AB{
+	width: 4rem !important;
+}
+
+列表头样式 
+.oeeTable_header_default{
+	color:#fff;
+	background-color:#aaa !important;
+}
+.table.dataTable th{
+	background-color:#aaa !important;
+}
+.oeeTable_gray_bg {
+  background-color: #f3f3f4;
+}
+
+common.css  end
+
+common_base  start
+.StockerTxt{ -webkit-text-size-adjust:none;}
+.mod_body {
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+.section {
+	background-color: white;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 18px;
+}
+
+.section-header {
+	background-color: #F6F6F6;
+	background-image: -moz-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#F2F2F2));
+	background-image: -webkit-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: -o-linear-gradient(top, #FAFAFA, #F2F2F2);
+	background-image: linear-gradient(to bottom, #FAFAFA,#F2F2F2);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAFAFA', endColorstr='#FFF2F2F2', GradientType=0);
+	border-top: 1px solid white;
+	border-bottom: 1px solid #CCC;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	height: 55px;
+	line-height: 55px;
+	padding: 0 15px 0;
+}
+
+.section-actions {
+	float: right;
+	margin-top: 9px;
+	margin-bottom: 0;
+}
+.btn-toolbar {
+	font-size: 0;
+	margin-top: 9px;
+	margin-bottom: 9px;
+}
+.section-body {
+	min-height: 18px;
+	padding: 9px 15px 0;
+}
+
+.search_bar{
+	background-color: #F2F2F2;
+	padding: 8px;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	min-width:1370px;
+}
+.search_bar form{
+	margin: 5px 0 5px 0;
+}
+.form_input_label{
+	background-color: #C0C0C0;
+}
+
+label.error {
+  font-weight: bold;
+  color: red;
+}
+#maintain_form label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+.table tbody tr.notactive td {
+	color: #E6E6E6;
+}
+.page_size{
+	margin:35px 0px;
+}
+.span1_5 {
+  width: 80px;
+}
+.span2_5 {
+  width: 180px;
+}
+
+.th_table_idx {
+  width: 30px;
+  text-align: center;
+}
+
+  .formitem-title {
+  	width: 120px !important;
+  }
+  
+  
+ div .formitem{
+	 border-top: 1px solid transparent;
+	 border-left: 1px solid transparent;
+	 border-color: #ddd;
+	 padding: 8px;
+  }
+  
+ div .formright{
+	 border-bottom: 1px solid transparent;
+	 border-right: 1px solid transparent;
+	 border-color: #ddd;
+	 display: inline-block;
+	 width:100%;
+  }
+
+菜单栏优化 ：1、自动展开菜单，2、鼠标手势
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.dropdown-menu{
+	cursor:pointer;
+}
+/* common_base  end  */
+
+/* 以上是一些基本css样式的整合,包括
+common.css/
+common_base.cs/
+popus.css/
+menu_default.css/
+default.css/
+menu_dropdown.css */

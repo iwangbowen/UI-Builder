@@ -49,6 +49,8 @@ MutationRecord.oldValue 			String 		The return value depends on the MutationReco
 												For characterData, it is the data of the changed node before the change.
 												For childList, it is null.
 */
+import Vvveb from './builder';
+
 Vvveb.Undo = {
 
 	undos: [],

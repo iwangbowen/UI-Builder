@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="醉探索戈壁(https://blog.fundodoo.com/)">
+    <meta name="author" content="醉探索戈壁(https://blog.fundodoo.com/)">
+    <title>Demo(https://www.fundodoo.com/)</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome4.6.min.css" rel="stylesheet">
+    <!-- <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style4.1.0.min.css?v=4.1.0" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../../css/page_common/planPage3.css">
+    <link rel="stylesheet" href="../../js/plugins/datepicker/skin/WdatePicker.css">
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div class="fullpagearea">
+    <div class="fullpagoutbox">
+        <div id="carea" class="containerarea">
+            <div class="leftBefore">
+                <div class="show-icon glyphicon glyphicon-chevron-right">
+                </div>
+                <div class="hide-icon glyphicon glyphicon-chevron-left">
+                </div>
+            </div>
+            <div id="cleft" class="containerleft">
+                <div class="searchInput">
+                    <div class="btn-group ">
+                        <!-- <select class="form-control selectpicker" multiple="multiple" id="siteSelect">
+                            <option value="site-one">T1</option>
+                            <option value="site-two">T2</option>
+                            <option value="site-three">T3</option>
+                        </select> -->
+                    </div>
+                    <!-- <div class="iconarea">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="arrow-down-Open" contenteditable="true">
+                        <ul >
+                        <li><a href="javascript:void(0)">AAAAAA</a></li>
+                        <li><a href="javascript:void(0)" >Glass</a></li>
+                        <li><a href="javascript:void(0)" >LLLLL</a></li>
+                    </ul>
+                    </div> -->
+                </div>
+                <div style="clear:both;"></div>
+                <form class="form-box" action="">
+                    <div class="searcharea">
+                        <!--//以下结构是为了方便模板制作-->
+                        <div class="siteOutbox">
+                          <!--  siteOutbox为了解决拖拽滚动条时site掉下去的问题-->
+                        <div class="everySite site-one" >
+                            <div class="Button-template ">
+                                <div class="bigTittle">
+                                    <span>T1</span>
+                                </div>
+                                <div class="allButton">
+                                	<!--搜索条件text开始-->
+                                    <div class="allButton-text">
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">Period</span>
+                                        </div>
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">From Date</span>
+                                        </div>
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">From Date</span>
+                                        </div>
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">To Date</span>
+                                        </div>
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">checkbox</span>
+                                        </div>
+                                         <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">checkbox</span>
+                                        </div>
+                                        <div class="everyOutbox-left">
+                                            <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
+                                            <span class="theme">radio</span>
+                                        </div>
+                                    </div>
+                                    <!--搜索条件text结束-->
+                                    <!--搜索条件控件开始-->
+                                    <div class="allButton-button">
+                                    	<!--搜索条件第一个控件开始-->
+                                    	 <div class="everyOutbox-right">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown">
+                                                    <div class="TXToutBox">
+                                                        <span class="font">Daily</span>
+                                                        <span class="caret"></span>
+                                                    </div>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Daily</a></li>
+                                                    <li><a href="#">Weekly</a></li>
+                                                    <li><a href="#">Monthly</a></li>
+                                                    <li><a href="#">Shiftly</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="everyOutbox-right">
+                                            <div class="btn-group">
+                                                <div class="dailyBox">
+                                                    <input id="monthlyFrom99" name="monthlyFrom"  value="20180206" lustyle="height: 2.8rem;width:13rem " class="form-control Wdate"
+                                                           onclick="WdatePicker({isShowWeek:true,dateFmt:'yyyyMMdd'})"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="everyOutbox-right">
+                                            <div class="btn-group">
+                                                <div class="monthlyBox">
+                                                    <input id="monthlyFrom3" name="monthlyFrom"  value="20180206" lustyle="height: 2.8rem;width:13rem " class="form-control Wdate"
+                                                           onclick="WdatePicker({isShowWeek:true,dateFmt:'yyyyMM'})"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="everyOutbox-right">
+                                            <div class="btn-group">
+                                                <div class="weeklyBox">
+                                                    <input id="monthlyFrom2" name="monthlyFrom"  value="2017" lustyle="height: 2.8rem;width:13rem " class="form-control Wdate"
+                                                           onclick="WdatePicker({isShowWeek:true,dateFmt:'yyyy'})"/>
+                                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                                            data-toggle="dropdown">
+                                                        <div class="TXToutBox">
+                                                            <span class="font">W10</span>
+                                                            <span class="caret"></span>
+                                                        </div>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">W1</a></li>
+                                                        <li><a href="#">W2</a></li>
+                                                        <li><a href="#">W3</a></li>
+                                                        <li><a href="#">W4</a></li>
+                                                        <li><a href="#">W5</a></li>
+                                                        <li><a href="#">W6</a></li>
+                                                        <li><a href="#">W7</a></li>
+                                                        <li><a href="#">W8</a></li>
+                                                        <li><a href="#">W9</a></li>
+                                                        <li><a href="#">W10</a></li>
+                                                        <li><a href="#">W11</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="everyOutbox-right">
+                                            <div class="btn-group">
+                                                <div class="shiftlyBox">
+                                                    <input id="monthlyFrom12" name="monthlyFrom"  value="20180206" lustyle="height: 2.8rem;width:13rem " class="form-control Wdate"
+                                                           onclick="WdatePicker({isShowWeek:true,dateFmt:'yyyyMMdd'})"/>
+                                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                                            data-toggle="dropdown">
+                                                        <div class="TXToutBox">
+                                                            <span class="font">A</span>
+                                                            <span class="caret"></span>
+                                                        </div>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">W1</a></li>
+                                                        <li><a href="#">W2</a></li>
+                                                        <li><a href="#">W3</a></li>
+                                                        <li><a href="#">W4</a></li>
+                                                        <li><a href="#">W5</a></li>
+                                                        <li><a href="#">W6</a></li>
+                                                        <li><a href="#">W7</a></li>
+                                                        <li><a href="#">W8</a></li>
+                                                        <li><a href="#">W9</a></li>
+                                                        <li><a href="#">W10</a></li>
+                                                        <li><a href="#">W11</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="everyOutbox-right">
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  checked/>
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  checked/>
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  checked/>
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  checked/>
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  checked/>
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  />
+								              <input type="checkbox" class="checkboxInput" id='${it.site}eprCheck' name="paramItems[${loop.index}].eprCheck" value="true"  />         
+								        </div>
+								        <div class="everyOutbox-right">
+								                <input class="radioInput" name="Fruit" type="radio" value=""  />
+								                <input class="radioInput" name="Fruit" type="radio" value=""  />
+								                <input class="radioInput" name="Fruit" type="radio" value=""  />
+								                <input class="radioInput" name="Fruit" type="radio" value="" checked />
+								                <input class="radioInput" name="Fruit" type="radio" value="" />
+								                <input class="radioInput" name="Fruit" type="radio" value="" />
+								                <input class="radioInput" name="Fruit" type="radio" value="" />  
+								        </div>
+                                      
+                                </div>
+                                	<!--搜索条件控件结束-->
+                                <div style="clear:both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div style="clear:both;"></div>
+                        </div>
+                        <!--//以上结构是为了方便模板制作-->
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="bottom-searchButton">
+                        <button><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </div>
+                </form>
+            </div>
+            <div id="cmiddle" class="containerMiddle">
+                <div class="innerbox"></div>
+            </div>
+            <div id="cright" class="containerRight">
+                <div class="allContent">
+                    <div class="topContent">
+                        <div class="container">
+                            <div class="row">
+                                <div class="everyBox col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="boxarea">
+                                        <div class="tittle">
+                                            <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
+                                            <strong>Demo Title</strong>
+                                            <div class="icon" title="最大化"></div>
+                                        </div>
+                                        <!-- 右侧内容区开始 -->
+                                        <div>
+                                        	abcd
+                                        </div>
+                                        <!-- 右侧内容区结束 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="openPage">
+            <div class="openPage-top">
+                <span class="top-tittle">top-tittle</span>
+                <span class="closespan  fa fa-times"></span>
+            </div>
+            <div class="openPage-body"   id="openPageCHart">
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+	<script src="../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../js/plugins/datepicker/WdatePicker.js"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.7" type="text/javascript"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../../js/plugins/layer/layer.min.js" type="text/javascript"></script>
+    <script src="../../js/config.js" type="text/javascript" ></script>
+    <script src="../../js/plugins/fundodoo.js" type="text/javascript" ></script>
+    <script src="../../js/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <!-- 操作提示 -->
+	<script src="../../js/plugins/noty/jquery.noty.packaged.js" type="text/javascript" ></script>
+	
+	<script src="../../js/page_common/fundodooPageTemplate.js" type="text/javascript"></script>
+    <script src="../../js/page_common/common.js" type="text/javascript"></script>
+    
+    <!-- 功能页面javascript开始 -->
+	<script type="text/javascript">
+	 /* $(function () {
+	        $("#monthlyFrom2").datepicker({//添加日期选择功能
+	            numberOfMonths: 1,//显示几个月
+	            showButtonPanel: true,//是否显示按钮面板
+	            dateFormat: 'yy-mm-dd',//日期格式
+	            clearText: "清除",//清除日期的按钮名称
+	            closeText: "关闭",//关闭选择框的按钮名称
+	            yearSuffix: '年', //年的后缀
+	            showMonthAfterYear: true,//是否把月放在年的后面
+	            defaultDate: '2011-03-10',//默认日期
+	            minDate: '2011-03-05',//最小日期
+	            maxDate: '2011-03-20',//最大日期
+	            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+	            dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+	            dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+	            dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+	            onSelect: function (selectedDate) {//选择日期后执行的操作
+	                alert(selectedDate);
+	            }
+	        }); */
+		//条件控件初始化
+		//条件控件结束
+		
+		//右侧内容查询开始
+		var search = function(){
+			$.ajax({ 
+				url: "/demo", //远程资源地址
+				fundodooAjax : true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+				success: function(rs,status,xhr){
+					
+		    	}
+			});
+		}
+		
+		var add = function(){
+			
+			
+		}
+		
+		var edit = function(){
+			
+			
+		}
+		
+		var del = function(){
+			
+		}
+		
+		//右侧内容查询结束
+		$(document).ready(function() {
+			
+    	});
+	</script>
+	<!-- 功能页面javascript结束 -->
+</body>
+</html>

@@ -15,7 +15,6 @@ limitations under the License.
 
 https://github.com/givanz/VvvebJs
 */
-
 var Input = {
 	
 	init: function(name) {
@@ -451,3 +450,7 @@ var ListInput = $.extend({}, Input, {
 	
   }
 );
+
+export { Input, TextInput, CheckboxInput, SelectInput, LinkInput, RangeInput, NumberInput, CssUnitInput,
+	RadioInput, RadioButtonInput, ToggleInput, ValueTextInput, GridLayoutInput, ProductsInput, GridInput,
+TextValueInput, ButtonInput, SectionInput, ListInput};

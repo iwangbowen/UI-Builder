@@ -6,7 +6,11 @@ module.exports = function (grunt) {
         browserify: {
             development: {
                 src: [
-                    "src/*.js"
+                    "src/init.js",
+                    'src/components-bootstrap4.js',
+                    'src/undo.js',
+                    'src/plugin-codemirror.js',
+                    'src/drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
                 options: {
@@ -15,10 +19,11 @@ module.exports = function (grunt) {
                     plugin: [
                         ["factor-bundle", {
                             outputs: [
-                                'dist/builder.js',
+                                'dist/init.js',
                                 'dist/components-bootstrap4.js',
-                                'dist/inputs.js',
-                                'dist/undo.js'
+                                'dist/undo.js',
+                                'dist/plugin-codemirror.js',
+                                'dist/drag-n-drop.js'
                             ]
                         }]
                     ],
@@ -57,7 +62,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/',
+                        cwd: 'lib/',
                         src: ['*.js'],
                         dest: 'transpiled/',
                         ext: '.babel.js'
@@ -84,11 +89,9 @@ module.exports = function (grunt) {
             },
             es5: {
                 src: [
-                    'src/builder*.js',
-                    'src/undo*.js',
-                    'src/inputs*.js',
-                    'src/components-bootstrap4*.js',
-                    'src/drag-n-drop*.js'
+                    // 'lib/builder*.js',
+                    'lib/undo*.js',
+                    'lib/drag-n-drop*.js'
                 ],
                 dest: 'concated/concated.js'
             }
@@ -106,7 +109,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browserify');
 
     // Register tasks
-    grunt.registerTask("build:dev", ['browserify:development']);
+    grunt.registerTask("build:dev", ['clean:all', 'browserify:development']);
     grunt.registerTask("build:prod", ['browserify:production']);
     grunt.registerTask('build', ['clean:all', 'concat:es5', 'babel:build']);
     grunt.registerTask('transpile', ['babel:transpile']);

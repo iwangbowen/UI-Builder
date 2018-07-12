@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "express": "^4.16.3",
-    "js-beautify": "^1.7.5"
+    "js-beautify": "^1.7.5",
+    "lodash": "^4.17.10"
   },
   "keywords": [
     "vvvebjs",
