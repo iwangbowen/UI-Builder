@@ -10,7 +10,8 @@ module.exports = function (grunt) {
                     'src/components-bootstrap4.js',
                     'src/undo.js',
                     'src/plugin-codemirror.js',
-                    'src/drag-n-drop.js'
+                    'src/drag-n-drop.js',
+                    'src/iframe-drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
                 options: {
@@ -23,7 +24,8 @@ module.exports = function (grunt) {
                                 'dist/components-bootstrap4.js',
                                 'dist/undo.js',
                                 'dist/plugin-codemirror.js',
-                                'dist/drag-n-drop.js'
+                                'dist/drag-n-drop.js',
+                                'dist/iframe-drag-n-drop.js'
                             ]
                         }]
                     ],
