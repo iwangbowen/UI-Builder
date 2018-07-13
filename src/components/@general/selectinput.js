@@ -1,5 +1,5 @@
 import Vvveb from '../../builder';
-import {TextValueInput, ButtonInput} from '../../inputs/inputs';
+import { TextValueInput, ButtonInput } from '../../inputs/inputs';
 
 const selectinput = {
     nodes: ["select"],

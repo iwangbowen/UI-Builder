@@ -1,4 +1,4 @@
-import SelectInput from '../../inputs/inputs';
+import { SelectInput } from '../../inputs/inputs';
 
 const alert = {
     classes: ["alert"],

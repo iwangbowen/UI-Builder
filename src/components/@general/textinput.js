@@ -1,4 +1,4 @@
-import {TextInput} from '../../inputs/inputs';
+import { TextInput } from '../../inputs/inputs';
 
 const textinput = {
     name: "Text Input",
