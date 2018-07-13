@@ -76,18 +76,22 @@ $(document).ready(() => {
                 onend: event => {
                     const left = $element.offset().left - $('#iframeId').offset().left,
                         top = $element.offset().top - $('#iframeId').offset().top;
-                    $element
-                        .css({
-                            left,
-                            top,
-                            transform: ''
-                        }).removeAttr('data-x data-y');
-
                     isElementCreated = false;
                     // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
                     // 获得html字符串，然后再进行替换
                     self.frameBody.append($element.prop("outerHTML"));
-                    // self.dragElement && self.dragElement.replaceWith($element.prop("outerHTML"));
+                    const appendedElement = self.frameBody.children('body > *:last');
+                    appendedElement
+                        .css({
+                            transform: '',
+                            left: '',
+                            top: ''
+                        })
+                        .offset({
+                            left,
+                            top
+                        })
+                        .removeAttr('data-x data-y');
                     $element.remove();
                 }
             });

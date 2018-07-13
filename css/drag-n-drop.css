@@ -22,10 +22,11 @@
   
 .dropzone {
   background-color: #ccc;
-  border: dashed 4px transparent;
-  border-radius: 4px;
-  margin: 10px auto 10px;
-  padding: 10px;
+  border: dashed transparent;
+  border-width: 4px 0;
+  /* border-radius: 4px; */
+  /* margin: 10px auto 10px; */
+  /* padding: 10px; */
   /* width: 80%; */
   transition: background-color 0.3s;
 }

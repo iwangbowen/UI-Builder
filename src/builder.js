@@ -736,8 +736,8 @@ Vvveb.Builder = {
 			if (self.selectedEl && self.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
 					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, self.selectedEl);
+					e.preventDefault(); // prevent the default action (scroll / move caret)
 				}
-				e.preventDefault(); // prevent the default action (scroll / move caret)
 			}
 		});
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="no" style="width: 50px; height: 50px; background: rebeccapurple;"></div>
+    <div id="outer" style="left: 20px; top: 10px;position: absolute; width: 50px; height: 50px; background: rebeccapurple;">
+        <div id="inner" style="position: absolute; left: 5px; top: 5px; width: 20px; height: 20px; background: powderblue;"></div>
+    </div>
+    <div id="yes" style="left: 20px; height: 50px; background: orange;"></div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            console.log($('#outer').offset());
+            console.log($('#outer').position());
+            console.log($('#inner').css('position'));
+            console.log($('#no').css('position'));
+            console.log($('#yes').css('position'));
+        });
+        // $('div').offset({
+        //     left: 100,
+        //     right: 100
+        // })
+    </script>
+</body>
+</html>

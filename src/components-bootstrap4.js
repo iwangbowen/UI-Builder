@@ -20,7 +20,8 @@ import {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput
+    table, tablebody, tablecell, tablehead, tablerow, textareainput,
+    labeldiv
 } from './components/@oee/components';
 import element from './components/element';
 import border from './components/border';
@@ -31,7 +32,7 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['Bootstrap 3'] =
-    ['html/label', 'html/div', 'html/button', 'html/buttongroup', 'html/buttontoolbar', 'html/form', 'html/textinput', 'html/textareainput', 'html/selectinput', 'html/fileinput', 'html/checkbox', 'html/radiobutton', 'html/table', 'html/heading', 'html/image', 'html/jumbotron', 'html/alert', 'html/card', 'html/listgroup', 'html/hr', 'html/taglabel', 'html/badge', 'html/progress', 'html/navbar', 'html/breadcrumbs', 'html/pagination', 'html/container', 'html/gridrow'];
+    ['html/labeldiv', 'html/label', 'html/div', 'html/button', 'html/buttongroup', 'html/buttontoolbar', 'html/form', 'html/textinput', 'html/textareainput', 'html/selectinput', 'html/fileinput', 'html/checkbox', 'html/radiobutton', 'html/table', 'html/heading', 'html/image', 'html/jumbotron', 'html/alert', 'html/card', 'html/listgroup', 'html/hr', 'html/taglabel', 'html/badge', 'html/progress', 'html/navbar', 'html/breadcrumbs', 'html/pagination', 'html/container', 'html/gridrow'];
 
 Vvveb.Components.add("_base", element);
 //display
@@ -84,3 +85,5 @@ Vvveb.Components.extend("_base", "html/tablehead", tablehead);
 Vvveb.Components.extend("_base", "html/tablebody", tablebody);
 Vvveb.Components.add("html/gridcolumn", gridcolumn);
 Vvveb.Components.add("html/gridrow", gridrow);
+
+Vvveb.Components.add('html/labeldiv', labeldiv);

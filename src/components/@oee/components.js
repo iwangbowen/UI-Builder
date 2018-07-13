@@ -36,9 +36,12 @@ import tablehead from './tablehead';
 import tablerow from './tablerow';
 import textareainput from './textareainput';
 
+import labeldiv from './labeldiv';
+
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput
+    table, tablebody, tablecell, tablehead, tablerow, textareainput,
+    labeldiv
 };

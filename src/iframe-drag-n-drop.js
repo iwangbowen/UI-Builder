@@ -7,21 +7,6 @@ self.arrowKeyMove = arrowKeyMove;
 $(document).ready(() => {
     let enteredDropzone = false;
     const isDropzoneParent = element => !!$(element).parents('.dropzone').length;
-    const getAbsolutePositionParent = $element => {
-        if (!$element.length || $element.css('position') == 'absolute') {
-            console.log($element.css('position'));
-            return $element;
-        } else {
-            return getAbsolutePositionParent($element.parent());
-        }
-    };
-
-    const setTransformStyle = (element, left, top) => {
-        element.style.webkitTransform =
-            element.style.transform =
-            `translate(${left}px, ${top}px)`;
-        return $(element);
-    };
 
     // enable draggables to be dropped into this
     interact('.dropzone')
@@ -51,43 +36,29 @@ $(document).ready(() => {
             },
             ondrop: event => {
                 enteredDropzone = true;
-
-                let left, top;
-                // dropzone元素不一定是position为absolute的元素
-                // 为了实现左键抬起时不偏移，需要找到dropzone或其父元素中positon为absolute的元素
-                // 并更新拖拽元素的transform属性
-                const $parent = getAbsolutePositionParent($(event.target));
-                if (parent.length) {
-                    left = $(event.relatedTarget).offset().left - $parent.offset().left;
-                    top = $(event.relatedTarget).offset().top - $parent.offset().top;
-                } else {
-                    left = $(event.relatedTarget).offset().left;
-                    top = $(event.relatedTarget).offset().top;
-                }
-
-                $(event.relatedTarget).appendTo($(event.target));
-                setTransformStyle(event.relatedTarget, left, top)
+                // offset()函数用于设置或返回当前匹配元素相对于当前文档的偏移，也就是相对于当前文档的坐标
+                // 元素可以是任意定位方式的元素
+                // 单独设置left或top对于absolute定位的元素来说，是相对于最近的已定位祖先元素或相对于最初的包含块。
+                const offset = $(event.relatedTarget).offset();
+                $(event.relatedTarget)
+                    .appendTo($(event.target))
                     .css({
-                        left: 0,
-                        top: 0
+                        left: '',
+                        top: '',
+                        transform: '',
                     })
-                    .attr({
-                        'data-x': left,
-                        'data-y': top
-                    })
+                    .offset(offset)
+                    .removeAttr('data-x data-y');
             },
             ondropdeactivate: function (event) {
                 // remove active dropzone feedback
                 event.target.classList.remove('drop-active');
                 event.target.classList.remove('drop-target');
                 if (!enteredDropzone && isDropzoneParent(event.relatedTarget)) {
-                    const { left, top } = $(event.relatedTarget).offset();
-                    setTransformStyle(event.relatedTarget, left, top)
-                        .attr({
-                            'data-x': left,
-                            'data-y': top
-                        })
-                        .appendTo($('body'));
+                    const offset = $(event.relatedTarget).offset();
+                    $(event.relatedTarget)
+                        .appendTo($('body'))
+                        .offset(offset);
                 }
             }
         })
