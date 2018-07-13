@@ -1,5 +1,7 @@
 import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine } from './util/drag-n-drop';
+import interact from '../node_modules/interactjs/src/index';
 
+self.interact = interact;
 self.arrowKeyMove = arrowKeyMove;
 
 $(document).ready(() => {
