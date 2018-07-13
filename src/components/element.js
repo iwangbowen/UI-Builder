@@ -7,13 +7,13 @@ const element = {
         key: "element_header",
         inputtype: SectionInput,
         name: false,
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         data: { header: "General" },
     }, {
         name: "Id",
         key: "id",
         htmlAttr: "id",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         inline: true,
         col: 6,
         inputtype: TextInput
@@ -21,7 +21,7 @@ const element = {
         name: "Class",
         key: "class",
         htmlAttr: "class",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         inline: true,
         col: 6,
         inputtype: TextInput

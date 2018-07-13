@@ -6,13 +6,13 @@ const padding = {
         key: "paddings_header",
         inputtype: SectionInput,
         name: false,
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         data: { header: "Padding", expanded: false },
     }, {
         name: "Top",
         key: "padding-top",
         htmlAttr: "style",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         col: 6,
         inline: true,
         inputtype: CssUnitInput
@@ -20,7 +20,7 @@ const padding = {
         name: "Right",
         key: "padding-right",
         htmlAttr: "style",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         col: 6,
         inline: true,
         inputtype: CssUnitInput
@@ -28,7 +28,7 @@ const padding = {
         name: "Bottom",
         key: "padding-bottom",
         htmlAttr: "style",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         col: 6,
         inline: true,
         inputtype: CssUnitInput
@@ -36,7 +36,7 @@ const padding = {
         name: "Left",
         key: "padding-Left",
         htmlAttr: "style",
-        sort: inc_base_sort,
+        sort: inc_base_sort(),
         col: 6,
         inline: true,
         inputtype: CssUnitInput
