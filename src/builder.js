@@ -19,7 +19,10 @@ https://github.com/givan/VvvebJs
 
 // Simple JavaScript Templating
 // John Resig - https://johnresig.com/ - MIT Licensed
-import { SectionInput } from './inputs';
+import { SectionInput } from './inputs/inputs';
+import { removeUnusedTags } from './util/jsoup';
+import { downloadAsTextFile } from './util/download';
+import { launchFullScreen } from './util/fullScreen';
 
 (function () {
 	var cache = {};
@@ -62,8 +65,6 @@ var delay = (function () {
 	};
 })();
 
-const alwaysTrue = () => true;
-
 const unusedTags = [
 	// {
 	// 	name: 'script'
@@ -80,21 +81,6 @@ const unusedTags = [
 	}
 ];
 
-// this refers to html element
-function removeTag({ name, filter = alwaysTrue }) {
-	Array.from(this.getElementsByTagName(name))
-		.filter(filter)
-		.forEach(tag => tag.parentNode.removeChild(tag));
-}
-
-function removeUnusedTags(html, tags) {
-	const el = document.createElement('html');
-	el.innerHTML = html;
-	tags.forEach(removeTag, el);
-
-	return $(el).prop('outerHTML');
-}
-
 function getStyle(el, styleProp) {
 	value = "";
 	//var el = document.getElementById(el);
@@ -110,19 +96,6 @@ function getStyle(el, styleProp) {
 		}
 
 	return value;
-}
-
-function downloadAsTextFile(filename, text) {
-	const element = document.createElement('a');
-	element.setAttribute('href', `data:text/html;charset=utf-8,${encodeURIComponent(text)}`);
-	element.setAttribute('download', filename);
-
-	element.style.display = 'none';
-	document.body.appendChild(element);
-
-	element.click();
-
-	document.body.removeChild(element);
 }
 
 if (Vvveb === undefined) var Vvveb = {};
@@ -1227,38 +1200,6 @@ Vvveb.FileManager = {
 		Vvveb.Builder.loadUrl(this.pages[name]['url']);
 	},
 
-}
-
-// Toggle fullscreen
-function launchFullScreen(document) {
-	if (document.documentElement.requestFullScreen) {
-
-		if (document.FullScreenElement)
-			document.exitFullScreen();
-		else
-			document.documentElement.requestFullScreen();
-		//mozilla		
-	} else if (document.documentElement.mozRequestFullScreen) {
-
-		if (document.mozFullScreenElement)
-			document.mozCancelFullScreen();
-		else
-			document.documentElement.mozRequestFullScreen();
-		//webkit	  
-	} else if (document.documentElement.webkitRequestFullScreen) {
-
-		if (document.webkitFullscreenElement)
-			document.webkitExitFullscreen();
-		else
-			document.documentElement.webkitRequestFullScreen();
-		//ie	  
-	} else if (document.documentElement.msRequestFullscreen) {
-
-		if (document.msFullScreenElement)
-			document.msExitFullscreen();
-		else
-			document.documentElement.msRequestFullscreen();
-	}
 }
 
 export default Vvveb;
