@@ -1164,7 +1164,7 @@ Vvveb.FileManager = {
 
 exports.default = Vvveb;
 
-},{"./inputs/inputs":164,"./util/download":167,"./util/fullScreen":169,"./util/jsoup":170}],170:[function(require,module,exports){
+},{"./inputs/inputs":164,"./util/download":168,"./util/fullScreen":170,"./util/jsoup":171}],171:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1193,7 +1193,7 @@ function removeUnusedTags(html, tags) {
 
 exports.removeUnusedTags = removeUnusedTags;
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1219,7 +1219,7 @@ function launchFullScreen(document) {
 
 exports.launchFullScreen = launchFullScreen;
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
