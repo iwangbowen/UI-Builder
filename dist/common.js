@@ -1212,7 +1212,7 @@ Vvveb.FileManager = {
 
 exports.default = Vvveb;
 
-},{"./inputs":6}],6:[function(require,module,exports){
+},{"./inputs":52}],52:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1342,7 +1342,7 @@ exports.FileUploadInput = _FileUploadInput2.default; /*
                                                      https://github.com/givanz/VvvebJs
                                                      */
 
-},{"./inputs/ButtonInput":7,"./inputs/CheckboxInput":8,"./inputs/ColorInput":9,"./inputs/CssUnitInput":10,"./inputs/FileUploadInput":11,"./inputs/GridInput":12,"./inputs/GridLayoutInput":13,"./inputs/Input":14,"./inputs/LinkInput":15,"./inputs/ListInput":16,"./inputs/NumberInput":17,"./inputs/ProductsInput":18,"./inputs/RadioButtonInput":19,"./inputs/RadioInput":20,"./inputs/RangeInput":21,"./inputs/SectionInput":22,"./inputs/SelectInput":23,"./inputs/TextInput":24,"./inputs/TextValueInput":25,"./inputs/ToggleInput":26,"./inputs/ValueTextInput":27}],27:[function(require,module,exports){
+},{"./inputs/ButtonInput":53,"./inputs/CheckboxInput":54,"./inputs/ColorInput":55,"./inputs/CssUnitInput":56,"./inputs/FileUploadInput":57,"./inputs/GridInput":58,"./inputs/GridLayoutInput":59,"./inputs/Input":60,"./inputs/LinkInput":61,"./inputs/ListInput":62,"./inputs/NumberInput":63,"./inputs/ProductsInput":64,"./inputs/RadioButtonInput":65,"./inputs/RadioInput":66,"./inputs/RangeInput":67,"./inputs/SectionInput":68,"./inputs/SelectInput":69,"./inputs/TextInput":70,"./inputs/TextValueInput":71,"./inputs/ToggleInput":72,"./inputs/ValueTextInput":73}],73:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1368,7 +1368,7 @@ var ValueTextInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ValueTextInput;
 
-},{"./TextInput":24}],26:[function(require,module,exports){
+},{"./TextInput":70}],72:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1400,7 +1400,7 @@ var ToggleInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ToggleInput;
 
-},{"./TextInput":24}],25:[function(require,module,exports){
+},{"./TextInput":70}],71:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1426,7 +1426,7 @@ var TextValueInput = $.extend({}, _Input2.default, {
 
 exports.default = TextValueInput;
 
-},{"./Input":14}],23:[function(require,module,exports){
+},{"./Input":60}],69:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1453,7 +1453,7 @@ var SelectInput = $.extend({}, _Input2.default, {
 
 exports.default = SelectInput;
 
-},{"./Input":14}],22:[function(require,module,exports){
+},{"./Input":60}],68:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1480,7 +1480,7 @@ var SectionInput = $.extend({}, _Input2.default, {
 
 exports.default = SectionInput;
 
-},{"./Input":14}],21:[function(require,module,exports){
+},{"./Input":60}],67:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1506,7 +1506,7 @@ var RangeInput = $.extend({}, _Input2.default, {
 
 exports.default = RangeInput;
 
-},{"./Input":14}],19:[function(require,module,exports){
+},{"./Input":60}],65:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1526,7 +1526,7 @@ var RadioButtonInput = $.extend({}, _RadioInput2.default, {
 
 exports.default = RadioButtonInput;
 
-},{"./RadioInput":20}],20:[function(require,module,exports){
+},{"./RadioInput":66}],66:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1560,7 +1560,7 @@ var RadioInput = $.extend({}, _Input2.default, {
 
 exports.default = RadioInput;
 
-},{"./Input":14}],18:[function(require,module,exports){
+},{"./Input":60}],64:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1586,7 +1586,7 @@ var ProductsInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ProductsInput;
 
-},{"./TextInput":24}],17:[function(require,module,exports){
+},{"./TextInput":70}],63:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1612,7 +1612,7 @@ var NumberInput = $.extend({}, _Input2.default, {
 
 exports.default = NumberInput;
 
-},{"./Input":14}],16:[function(require,module,exports){
+},{"./Input":60}],62:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1639,7 +1639,7 @@ var ListInput = $.extend({}, _Input2.default, {
 
 exports.default = ListInput;
 
-},{"./Input":14}],15:[function(require,module,exports){
+},{"./Input":60}],61:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1665,7 +1665,7 @@ var LinkInput = $.extend({}, _TextInput2.default, {
 
 exports.default = LinkInput;
 
-},{"./TextInput":24}],13:[function(require,module,exports){
+},{"./TextInput":70}],59:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1691,7 +1691,7 @@ var GridLayoutInput = $.extend({}, _TextInput2.default, {
 
 exports.default = GridLayoutInput;
 
-},{"./TextInput":24}],12:[function(require,module,exports){
+},{"./TextInput":70}],58:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1717,7 +1717,7 @@ var GridInput = $.extend({}, _Input2.default, {
 
 exports.default = GridInput;
 
-},{"./Input":14}],11:[function(require,module,exports){
+},{"./Input":60}],57:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1743,7 +1743,7 @@ var FileUploadInput = $.extend({}, _TextInput2.default, {
 
 exports.default = FileUploadInput;
 
-},{"./TextInput":24}],24:[function(require,module,exports){
+},{"./TextInput":70}],70:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1769,7 +1769,7 @@ var TextInput = $.extend({}, _Input2.default, {
 
 exports.default = TextInput;
 
-},{"./Input":14}],10:[function(require,module,exports){
+},{"./Input":60}],56:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1823,7 +1823,7 @@ var CssUnitInput = $.extend({}, _input2.default, {
 
 exports.default = CssUnitInput;
 
-},{"./input":28}],28:[function(require,module,exports){
+},{"./input":74}],74:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1860,7 +1860,7 @@ var Input = {
 
 exports.default = Input;
 
-},{}],9:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1894,7 +1894,7 @@ var ColorInput = $.extend({}, _Input2.default, {
 
 exports.default = ColorInput;
 
-},{"./Input":14}],8:[function(require,module,exports){
+},{"./Input":60}],54:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1927,7 +1927,7 @@ var CheckboxInput = $.extend({}, _Input2.default, {
 
 exports.default = CheckboxInput;
 
-},{"./Input":14}],7:[function(require,module,exports){
+},{"./Input":60}],53:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1954,7 +1954,7 @@ var ButtonInput = $.extend({}, _Input2.default, {
 
 exports.default = ButtonInput;
 
-},{"./Input":14}],14:[function(require,module,exports){
+},{"./Input":60}],60:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
