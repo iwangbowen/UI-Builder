@@ -99,7 +99,7 @@ $(document).ready(() => {
             target.setAttribute('data-y', y);
         });
 
-    interact('body *')
+    interact('body *.draggable')
         .draggable({
             // enable inertial throwing
             inertia: true,
