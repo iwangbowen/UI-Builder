@@ -287,7 +287,9 @@ Vvveb.Components = {
 				} else if (property.htmlAttr) {
 					oldValue = element.attr(property.htmlAttr);
 
-					if (property.htmlAttr == "class" && property.validValues) {
+					if (property.htmlAttr == 'text') {
+						element.text(value);
+					} else if (property.htmlAttr == "class" && property.validValues) {
 						element.removeClass(property.validValues.join(" "));
 						element = element.addClass(value);
 					}
@@ -338,7 +340,9 @@ Vvveb.Components = {
 			if (property.init) {
 				property.inputtype.setValue(property.init(element.get(0)));
 			} else if (property.htmlAttr) {
-				if (property.htmlAttr == "style") {
+				if (property.htmlAttr == 'text') {
+					value = element.text();
+				} else if (property.htmlAttr == "style") {
 					//value = element.css(property.key);//jquery css returns computed style
 					value = getStyle(element.get(0), property.key);//getStyle returns declared style
 				} else {

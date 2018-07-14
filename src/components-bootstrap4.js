@@ -77,3 +77,4 @@ Vvveb.Components.add('html/labeldiv@oee', _oee.labeldiv);
 Vvveb.Components.extend('_base', 'html/textinput@oee', _oee.textinput);
 Vvveb.Components.extend('_base', 'html/button@oee', _oee.button);
 Vvveb.Components.extend('_base', 'html/radiobutton@oee', _oee.radiobutton);
+Vvveb.Components.extend('_base', 'html/span@oee', _oee.span);
