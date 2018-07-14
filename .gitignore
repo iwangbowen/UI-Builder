@@ -2,3 +2,4 @@ node_modules/
 concated/
 transpiled/
 .vscode/
+.idea/
