@@ -10,7 +10,7 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
-    ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/radiobutton@oee'];
+    ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/radiobutton@oee', 'html/checkbox@oee'];
 
 Vvveb.ComponentsGroup['通用组件'] =
     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
@@ -78,3 +78,4 @@ Vvveb.Components.extend('_base', 'html/textinput@oee', _oee.textinput);
 Vvveb.Components.extend('_base', 'html/button@oee', _oee.button);
 Vvveb.Components.extend('_base', 'html/radiobutton@oee', _oee.radiobutton);
 Vvveb.Components.extend('_base', 'html/span@oee', _oee.span);
+Vvveb.Components.extend('_base', 'html/checkbox@oee', _oee.checkbox);
