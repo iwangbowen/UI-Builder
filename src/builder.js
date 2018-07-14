@@ -23,6 +23,7 @@ import { SectionInput } from './inputs/inputs';
 import { removeUnusedTags } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
+import { dataComponentId } from './components/common'
 
 (function () {
 	var cache = {};
@@ -199,8 +200,13 @@ Vvveb.Components = {
 
 
 	matchNode: function (node) {
-		if ($(node).attr('data-component-id') && this._components[$(node).attr('data-component-id')]) {
-			return this._components[$(node).attr('data-component-id')];
+		if ($(node).attr(dataComponentId) && this._components[$(node).attr(dataComponentId)]) {
+			return this._components[$(node).attr(dataComponentId)];
+		} else if ($(node).attr('type') == 'radio' || $(node).attr('type') == 'checkbox') {
+			const $parent = $(node).parent();
+			if ($parent.attr(dataComponentId) && this._components[$parent.attr(dataComponentId)]) {
+				return this._components[$parent.attr(dataComponentId)]
+			}
 		}
 
 		if (node.attributes.length) {

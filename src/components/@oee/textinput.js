@@ -1,5 +1,6 @@
 import { TextInput, SelectInput } from '../../inputs/inputs';
 import { inputTypes, inputTypeNames } from '../inputTypes';
+import { dataComponentId } from '../common';
 
 const textinput = {
     name: "Text Input",
@@ -8,7 +9,7 @@ const textinput = {
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <input data-component-id="html/textinput@oee" lustyle="height: 2.8rem;width:13rem " type="text" class="form-control Wdate"/>
+                    <input ${dataComponentId}="html/textinput@oee" lustyle="height: 2.8rem;width:13rem " type="text" class="form-control Wdate"/>
                  </div>
             </div>
            </div>`,

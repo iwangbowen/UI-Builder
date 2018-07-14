@@ -54,4 +54,6 @@ function inc_base_sort() {
     return base_sort++;
 }
 
-export { bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort };
+const dataComponentId = 'data-component-id';
+
+export { bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId };
