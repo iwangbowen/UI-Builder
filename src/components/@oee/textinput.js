@@ -8,7 +8,7 @@ const textinput = {
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <input lustyle="height: 2.8rem;width:13rem " type="text" class="form-control Wdate"/>
+                    <input data-component-id="html/textinput@oee" lustyle="height: 2.8rem;width:13rem " type="text" class="form-control Wdate"/>
                  </div>
             </div>
            </div>`,

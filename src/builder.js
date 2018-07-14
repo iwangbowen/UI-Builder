@@ -108,7 +108,6 @@ Vvveb.baseUrl = document.currentScript ? document.currentScript.src.replace(/[^\
 Vvveb.ComponentsGroup = {};
 
 Vvveb.Components = {
-
 	_components: {},
 
 	_nodesLookup: {},
@@ -200,6 +199,9 @@ Vvveb.Components = {
 
 
 	matchNode: function (node) {
+		if ($(node).attr('data-component-id') && this._components[$(node).attr('data-component-id')]) {
+			return this._components[$(node).attr('data-component-id')];
+		}
 
 		if (node.attributes.length) {
 			//search for attributes
