@@ -9,6 +9,9 @@ const inputTypes = [
         value: 'number',
         text: 'number'
     }, {
+        value: 'submit',
+        text: 'submit'
+    }, {
         value: "email",
         text: "email"
     }, {
