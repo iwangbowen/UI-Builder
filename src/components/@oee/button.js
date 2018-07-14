@@ -1,10 +1,12 @@
 import { LinkInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
 
 const button = {
-    classes: ["btn", "btn-link"],
+    classes: ["btn", "btn-link", 'btn@oee'],
     name: "Button",
     image: "icons/button.svg",
-    html: '<button type="button" class="btn btn-primary">Primary</button>',
+    html: `<div class="bottom-searchButton draggable">
+            <button type="button" class="btn@oee"><span class="glyphicon glyphicon-search"></span>Search</button>
+          </div>`,
     properties: [{
         name: "Link To",
         key: "href",

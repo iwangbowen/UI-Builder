@@ -1,8 +1,9 @@
-import { TextInput } from '../../inputs/inputs';
+import { TextInput, SelectInput } from '../../inputs/inputs';
+import { inputTypes, inputTypeNames } from '../inputTypes';
 
 const textinput = {
     name: "Text Input",
-    attributes: { "type": "text" },
+    attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
@@ -26,6 +27,14 @@ const textinput = {
         key: 'name',
         htmlAttr: 'name',
         inputtype: TextInput
+    }, {
+        name: 'type',
+        key: 'type',
+        htmlAttr: 'type',
+        inputtype: SelectInput,
+        data: {
+            options: inputTypes
+        }
     }]
 };
 

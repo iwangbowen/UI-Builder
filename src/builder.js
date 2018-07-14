@@ -148,11 +148,14 @@ Vvveb.Components = {
 						this._attributesLookup[i] = {};
 					}
 
-					if (typeof this._attributesLookup[i][data.attributes[i]] === 'undefined') {
-						this._attributesLookup[i][data.attributes[i]] = {};
+					if (data.attributes[i].constructor === Array) {
+						// 支持textinput中不同的输入类型attributes: { "type": ['text', 'password'] },
+						data.attributes[i].forEach(value => {
+							this._attributesLookup[i][value] = data;
+						});
+					} else {
+						this._attributesLookup[i][data.attributes[i]] = data;
 					}
-
-					this._attributesLookup[i][data.attributes[i]] = data;
 				}
 			}
 		}
