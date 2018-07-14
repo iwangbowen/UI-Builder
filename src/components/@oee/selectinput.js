@@ -5,7 +5,7 @@ const selectinput = {
     nodes: ["select"],
     name: "Select Input",
     image: "icons/select_input.svg",
-    html: '<div class="form-group" style="display: inline-block;"><label>Choose an option </label><select class="form-control"><option value="value1">Text 1</option><option value="value2">Text 2</option><option value="value3">Text 3</option></select></div>',
+    html: '<div class="form-group draggable" style="display: inline-block;"><label>Choose an option </label><select class="form-control"><option value="value1">Text 1</option><option value="value2">Text 2</option><option value="value3">Text 3</option></select></div>',
 
     beforeInit: function (node) {
         properties = [];

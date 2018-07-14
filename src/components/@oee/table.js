@@ -5,7 +5,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Table",
-    html: '<table class="table">\
+    html: '<table class="table draggable">\
 		  <thead>\
 			<tr>\
 			  <th>#</th>\
