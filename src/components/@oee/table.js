@@ -1,4 +1,4 @@
-import { ButtonInput, TextValueInput } from '../../inputs/inputs';
+import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
 import { dataComponentId, dataTableId } from '../common';
 import Vvveb from '../../builder';
 
@@ -16,7 +16,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Table",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 350px; height: 200px;" class="dropzone draggable ag-theme-balham"></div>`,
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-balham"></div>`,
     beforeInit: function (node) {
         if (!$(node).attr(dataTableId)) {
             const id = index++;
@@ -71,6 +71,52 @@ const table = {
         return node;
     },
     properties: [
+        {
+            name: "Theme",
+            key: "theme",
+            htmlAttr: "class",
+            validValues: ['ag-theme-balham-dark', 'ag-theme-balham', 'ag-theme-blue', 'ag-theme-bootstrap',
+                'ag-theme-dark', 'ag-theme-fresh', 'ag-theme-material'],
+            inputtype: SelectInput,
+            onChange: function (node, value) {
+                node.removeClass(this.validValues.join(" "));
+                node.addClass(value);
+
+                // Code copied form official site example https://www.ag-grid.com/example.php#/
+                const gridOptions = tables[node.attr(dataTableId)];
+                gridOptions.api.resetRowHeights();
+                gridOptions.api.redrawRows();
+                gridOptions.api.refreshHeader();
+                gridOptions.api.refreshToolPanel();
+            },
+            data: {
+                options: [{
+                    value: "Default",
+                    text: ""
+                }, {
+                    value: "ag-theme-balham",
+                    text: "Balham"
+                }, {
+                    value: "ag-theme-balham-dark",
+                    text: "Balham (dark)"
+                }, {
+                    value: "ag-theme-blue",
+                    text: "Blue"
+                }, {
+                    value: "ag-theme-bootstrap",
+                    text: "Bootstrap"
+                }, {
+                    value: "ag-theme-dark",
+                    text: "Dark"
+                }, {
+                    value: "ag-theme-fresh",
+                    text: "Fresh"
+                }, {
+                    value: "ag-theme-material",
+                    text: "Material"
+                }]
+            }
+        },
         {
             name: "",
             key: "addChild",
