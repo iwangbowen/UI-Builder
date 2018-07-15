@@ -16,7 +16,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Table",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 350px; height: 200px;" class="dropzone draggable"></div>`,
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 350px; height: 200px;" class="dropzone draggable ag-theme-balham"></div>`,
     beforeInit: function (node) {
         if (!$(node).attr(dataTableId)) {
             const id = index++;
