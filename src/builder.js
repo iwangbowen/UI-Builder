@@ -1,8 +1,9 @@
 import { SectionInput } from './inputs/inputs';
-import { removeUnusedTags } from './util/jsoup';
+import { removeUnusedTags, emptyChildren, generateTableScript } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
 import { dataComponentId } from './components/common'
+import htmlGenerator from './util/htmlGenerator';
 
 (function () {
 	var cache = {};
@@ -957,7 +958,7 @@ Vvveb.Builder = {
 
 		const { doctype, html } = this.getHtml();
 		return html_beautify(`${doctype}
-							  ${removeUnusedTags(html, unusedTags)}`,
+							  ${htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript)}`,
 			{
 				preserve_newlines: false,
 				indent_inner_html: true,

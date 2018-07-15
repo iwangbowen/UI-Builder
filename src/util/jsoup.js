@@ -1,3 +1,8 @@
+import unusedTags from './unusedTags';
+import { emptyChildrenSelectors, tableSelector } from './emptyChildrenSelectors';
+import template from '../templates/table';
+import table from '../components/@oee/table';
+
 const alwaysTrue = () => true;
 
 // this refers to html element
@@ -7,12 +12,23 @@ function removeTag({ name, filter = alwaysTrue }) {
         .forEach(tag => tag.parentNode.removeChild(tag));
 }
 
-function removeUnusedTags(html, tags) {
-    const el = document.createElement('html');
-    el.innerHTML = html;
-    tags.forEach(removeTag, el);
-
-    return $(el).prop('outerHTML');
+function removeUnusedTags(el) {
+    unusedTags.forEach(removeTag, el);
+    return el;
 }
 
-export { removeUnusedTags };
+function emptyChildren(el) {
+    $(el).find(emptyChildrenSelectors.join(', ')).empty();
+    return el;
+}
+
+function generateTableScript(el) {
+    const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
+        return `${prev}
+                ${template($(element), table)}`;
+    }, '');
+    $('<script></script>').text(jsStr).appendTo($(el).find('body'));
+    return el;
+}
+
+export { removeUnusedTags, emptyChildren, generateTableScript };
