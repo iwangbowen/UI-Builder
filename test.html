@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./libs/ag-grid/ag-grid.css">
+    <link rel="stylesheet" href="./libs/ag-grid/ag-theme-balham.css">
 </head>
+
 <body>
     <div id="no" style="width: 50px; height: 50px; background: rebeccapurple;"></div>
     <div id="outer" style="left: 20px; top: 10px;position: absolute; width: 50px; height: 50px; background: rebeccapurple;">
         <div id="inner" style="position: absolute; left: 5px; top: 5px; width: 20px; height: 20px; background: powderblue;"></div>
     </div>
     <div id="yes" style="left: 20px; height: 50px; background: orange;"></div>
+    <div id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div>
     <script src="js/jquery.min.js"></script>
+    <script src="./libs/ag-grid/ag-grid.min.noStyle.js"></script>
     <script>
-        $(function() {
-            console.log($('#outer').offset());
-            console.log($('#outer').position());
-            console.log($('#inner').css('position'));
-            console.log($('#no').css('position'));
-            console.log($('#yes').css('position'));
-        });
         // $('div').offset({
         //     left: 100,
         //     right: 100
         // })
     </script>
+    <script>
+        // specify the columns
+        var columnDefs = [
+            { headerName: "Make", field: "make" },
+            { headerName: "Model", field: "model" },
+            { headerName: "Price", field: "price" }
+        ];
+
+        // let the grid know which columns and what data to use
+        var gridOptions = {
+            columnDefs: columnDefs,
+            enableSorting: true,
+            enableFilter: true
+        };
+
+
+        // lookup the container we want the Grid to use
+        var eGridDiv = document.querySelector('#myGrid');
+
+        // create the grid passing in the div to use together with the columns & data we want to use
+        var ins = new agGrid.Grid(eGridDiv, gridOptions);
+        console.log(ins);
+        console.log(gridOptions);
+        fetch('https://api.myjson.com/bins/15psn9').then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            // gridOptions.api.setRowData([]);
+        })
+    </script>
 </body>
+
 </html>

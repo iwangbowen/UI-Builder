@@ -55,5 +55,6 @@ function inc_base_sort() {
 }
 
 const dataComponentId = 'data-component-id';
+const dataTableId = 'data-table-id';
 
-export { bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId };
+export { bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId };

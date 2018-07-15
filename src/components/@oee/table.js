@@ -1,167 +1,92 @@
-import { SelectInput, ToggleInput } from '../../inputs/inputs';
+import { ButtonInput, TextValueInput } from '../../inputs/inputs';
+import { dataComponentId, dataTableId } from '../common';
+import Vvveb from '../../builder';
+
+const tables = {};
+let index = 1;
+function setColumnDefsAndRender(node, colDefs) {
+    // Call to set new column definitions into the grid. 
+    // The grid will redraw all the column headers, and then redraw all of the rows.
+    tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
+    Vvveb.Components.render("html/table@oee");
+}
 
 const table = {
     nodes: ["table"],
     classes: ["table"],
     image: "icons/table.svg",
     name: "Table",
-    html: '<table class="table draggable">\
-		  <thead>\
-			<tr>\
-			  <th>#</th>\
-			  <th>First Name</th>\
-			  <th>Last Name</th>\
-			  <th>Username</th>\
-			</tr>\
-		  </thead>\
-		  <tbody>\
-			<tr>\
-			  <th scope="row">1</th>\
-			  <td>Mark</td>\
-			  <td>Otto</td>\
-			  <td>@mdo</td>\
-			</tr>\
-			<tr>\
-			  <th scope="row">2</th>\
-			  <td>Jacob</td>\
-			  <td>Thornton</td>\
-			  <td>@fat</td>\
-			</tr>\
-			<tr>\
-			  <th scope="row">3</th>\
-			  <td>Larry</td>\
-			  <td>the Bird</td>\
-			  <td>@twitter</td>\
-			</tr>\
-		  </tbody>\
-		</table>',
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 350px; height: 200px;" class="dropzone draggable"></div>`,
+    beforeInit: function (node) {
+        if (!$(node).attr(dataTableId)) {
+            const id = index++;
+            $(node).attr(dataTableId, id);
+            tables[id] = {
+                columnDefs: [
+                    { headerName: "header", field: "filed" },
+                    { headerName: "header", field: "field" },
+                    { headerName: "header", field: "field" }
+                ],
+                enableSorting: true,
+                enableFilter: true
+            };
+            new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, tables[id]);
+        }
+        let i = 0;
+        const properties = tables[$(node).attr(dataTableId)].columnDefs.reduce((prev, cur) => {
+            i++;
+            prev.push({
+                name: "Header " + i,
+                key: "option" + i,
+                //index: i - 1,
+                optionNode: this,
+                inputtype: TextValueInput,
+                data: {
+                    id: 'tableheader@oee',
+                    headerName: cur.headerName,
+                    field: cur.field
+                },
+                onChange: function (node, value, input) {
+                    const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
+                    let colDefs = tables[$(node).attr(dataTableId)].columnDefs;
+                    if (input.nodeName == 'BUTTON') {
+                        colDefs = colDefs
+                            .filter((value, index) => index != keyIndex);
+                        tables[$(node).attr(dataTableId)].columnDefs = colDefs;
+                        setColumnDefsAndRender(node, colDefs);
+                    } else {
+                        colDefs[keyIndex][input.name] = value;
+                        // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
+                        tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
+                    }
+                    return node;
+                },
+            });
+            return prev;
+        }, []);
+
+        this.properties = this.properties.filter(property => property.key.indexOf("option") === -1);
+        this.properties.unshift(...properties);
+
+        return node;
+    },
     properties: [
         {
-            name: "Type",
-            key: "type",
-            htmlAttr: "class",
-            validValues: ["table-primary", "table-secondary", "table-success", "table-danger", "table-warning", "table-info", "table-light", "table-dark", "table-white"],
-            inputtype: SelectInput,
-            data: {
-                options: [{
-                    value: "Default",
-                    text: ""
-                }, {
-                    value: "table-primary",
-                    text: "Primary"
-                }, {
-                    value: "table-secondary",
-                    text: "Secondary"
-                }, {
-                    value: "table-success",
-                    text: "Success"
-                }, {
-                    value: "table-danger",
-                    text: "Danger"
-                }, {
-                    value: "table-warning",
-                    text: "Warning"
-                }, {
-                    value: "table-info",
-                    text: "Info"
-                }, {
-                    value: "table-light",
-                    text: "Light"
-                }, {
-                    value: "table-dark",
-                    text: "Dark"
-                }, {
-                    value: "table-white",
-                    text: "White"
-                }]
+            name: "",
+            key: "addChild",
+            inputtype: ButtonInput,
+            data: { text: "Add header" },
+            onChange: function (node) {
+                const colDefs = tables[$(node).attr(dataTableId)].columnDefs;
+                colDefs.push({
+                    headerName: 'header',
+                    field: 'field'
+                });
+
+                setColumnDefsAndRender(node, colDefs);
+                return node;
             }
-        },
-        {
-            name: "Responsive",
-            key: "responsive",
-            htmlAttr: "class",
-            validValues: ["table-responsive"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-responsive",
-                off: ""
-            }
-        },
-        {
-            name: "Small",
-            key: "small",
-            htmlAttr: "class",
-            validValues: ["table-sm"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-sm",
-                off: ""
-            }
-        },
-        {
-            name: "Hover",
-            key: "hover",
-            htmlAttr: "class",
-            validValues: ["table-hover"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-hover",
-                off: ""
-            }
-        },
-        {
-            name: "Bordered",
-            key: "bordered",
-            htmlAttr: "class",
-            validValues: ["table-bordered"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-bordered",
-                off: ""
-            }
-        },
-        {
-            name: "Striped",
-            key: "striped",
-            htmlAttr: "class",
-            validValues: ["table-striped"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-striped",
-                off: ""
-            }
-        },
-        {
-            name: "Inverse",
-            key: "inverse",
-            htmlAttr: "class",
-            validValues: ["table-inverse"],
-            inputtype: ToggleInput,
-            data: {
-                on: "table-inverse",
-                off: ""
-            }
-        },
-        {
-            name: "Head options",
-            key: "head",
-            htmlAttr: "class",
-            child: "thead",
-            inputtype: SelectInput,
-            validValues: ["", "thead-inverse", "thead-default"],
-            data: {
-                options: [{
-                    value: "",
-                    text: "None"
-                }, {
-                    value: "thead-default",
-                    text: "Default"
-                }, {
-                    value: "thead-inverse",
-                    text: "Inverse"
-                }]
-            }
-        }]
+        },]
 };
 
 export default table;
