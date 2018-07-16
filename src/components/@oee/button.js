@@ -93,6 +93,11 @@ const button = {
         htmlAttr: "target",
         inputtype: TextInput
     }, {
+        name: 'Data Url',
+        key: 'dataUrl',
+        htmlAttr: 'data-url',
+        inputtype: TextInput
+    }, {
         name: "Disabled",
         key: "disabled",
         htmlAttr: "class",
