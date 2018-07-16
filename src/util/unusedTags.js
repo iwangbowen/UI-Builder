@@ -1,7 +1,9 @@
 const unusedTags = [
-	// {
-	// 	name: 'script'
-	// },
+	{
+		name: 'script',
+		filter: tag => tag.getAttribute('src')
+			&& tag.getAttribute('src').includes('iframe-drag-n-drop')
+	},
 	{
 		name: 'link',
 		filter: tag => tag.getAttribute('rel') == 'stylesheet'
