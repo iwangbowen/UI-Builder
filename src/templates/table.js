@@ -18,6 +18,7 @@ function template(node, table) {
       };
     var eGridDiv${key} = document.querySelector('#${id}');
     new agGrid.Grid(eGridDiv${key}, gridOptions${key});
+    gridOptions${key}.api.setRowData([]);
     `;
 }
 

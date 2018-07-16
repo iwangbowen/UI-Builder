@@ -34,6 +34,7 @@ const table = {
                 enableFilter: true
             };
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, tables[id]);
+            tables[id].api.setRowData([]);
         }
         let i = 0;
         const properties = tables[$(node).attr(dataTableId)].columnDefs.reduce((prev, cur) => {
