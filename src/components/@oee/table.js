@@ -15,7 +15,7 @@ const table = {
     nodes: ["table"],
     classes: ["table"],
     image: "icons/table.svg",
-    name: "Table",
+    name: "ag-Grid",
     html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-balham"></div>`,
     getTable(key) {
         return tables[key];
