@@ -2,6 +2,7 @@ import unusedTags from './unusedTags';
 import { emptyChildrenSelectors, tableSelector } from './emptyChildrenSelectors';
 import template from '../templates/table';
 import table from '../components/@oee/table';
+import { calendarSelector, setOnclickAttr } from './calendar';
 
 const alwaysTrue = () => true;
 
@@ -31,4 +32,11 @@ function generateTableScript(el) {
     return el;
 }
 
-export { removeUnusedTags, emptyChildren, generateTableScript };
+function generateCalendarOnclickAttr(el) {
+    $(el).find(calendarSelector).each(function () {
+        $(this).attr('onclick') || setOnclickAttr(this);
+    });
+    return el;
+}
+
+export { removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr };
