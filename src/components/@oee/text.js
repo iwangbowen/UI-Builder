@@ -1,16 +1,12 @@
 import { TextInput } from '../../inputs/inputs';
 
-const span = {
-    name: "Span",
+const text = {
+    name: "Text",
     image: "icons/text_input.svg",
-    nodes: ['span'],
     html: ``,
+    nodes: ['b', 'big', 'em', 'i', 'small', 'strong',
+        'sub', 'sup', 'ins', 'del', 's', 'strike', 'u'],
     properties: [{
-        name: "For id",
-        key: "for",
-        htmlAttr: "for",
-        inputtype: TextInput
-    }, {
         name: 'Text',
         key: 'text',
         htmlAttr: 'text',
@@ -18,4 +14,4 @@ const span = {
     }]
 };
 
-export default span;
+export default text;

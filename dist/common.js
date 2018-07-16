@@ -1173,7 +1173,7 @@ Vvveb.FileManager = {
 
 exports.default = Vvveb;
 
-},{"./components/common":134,"./inputs/inputs":166,"./util/calendar":171,"./util/download":172,"./util/fullScreen":175,"./util/htmlGenerator":176,"./util/jsoup":177}],177:[function(require,module,exports){
+},{"./components/common":135,"./inputs/inputs":167,"./util/calendar":172,"./util/download":173,"./util/fullScreen":176,"./util/htmlGenerator":177,"./util/jsoup":178}],178:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1242,7 +1242,7 @@ exports.emptyChildren = emptyChildren;
 exports.generateTableScript = generateTableScript;
 exports.generateCalendarOnclickAttr = generateCalendarOnclickAttr;
 
-},{"../components/@oee/table":125,"../templates/table":169,"./calendar":171,"./emptyChildrenSelectors":174,"./unusedTags":178}],178:[function(require,module,exports){
+},{"../components/@oee/table":125,"../templates/table":170,"./calendar":172,"./emptyChildrenSelectors":175,"./unusedTags":179}],179:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1265,7 +1265,7 @@ var unusedTags = [{
 
 exports.default = unusedTags;
 
-},{}],174:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -1279,7 +1279,7 @@ var emptyChildrenSelectors = [tableSelector];
 exports.emptyChildrenSelectors = emptyChildrenSelectors;
 exports.tableSelector = tableSelector;
 
-},{"../components/common":134}],169:[function(require,module,exports){
+},{"../components/common":135}],170:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1298,7 +1298,7 @@ function template(node, table) {
 
 exports.default = template;
 
-},{"../components/common":134}],125:[function(require,module,exports){
+},{"../components/common":135}],125:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1454,7 +1454,7 @@ var table = {
 
 exports.default = table;
 
-},{"../../builder":52,"../../inputs/inputs":166,"../common":134}],176:[function(require,module,exports){
+},{"../../builder":52,"../../inputs/inputs":167,"../common":135}],177:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1474,7 +1474,7 @@ function htmlGenerator(html) {
 
 exports.default = htmlGenerator;
 
-},{}],175:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1500,7 +1500,7 @@ function launchFullScreen(document) {
 
 exports.launchFullScreen = launchFullScreen;
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1519,7 +1519,7 @@ function downloadAsTextFile(filename, text) {
 
 exports.downloadAsTextFile = downloadAsTextFile;
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1576,7 +1576,7 @@ exports.getParsedConfigInfo = getParsedConfigInfo;
 exports.setOnclickAttr = setOnclickAttr;
 exports.setDataConfigInfo = setDataConfigInfo;
 
-},{"../components/common":134}],166:[function(require,module,exports){
+},{"../components/common":135}],167:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1706,7 +1706,7 @@ exports.FileUploadInput = _FileUploadInput2.default; /*
                                                      https://github.com/givanz/VvvebJs
                                                      */
 
-},{"./ButtonInput":145,"./CheckboxInput":146,"./ColorInput":147,"./CssUnitInput":148,"./FileUploadInput":149,"./GridInput":150,"./GridLayoutInput":151,"./Input":152,"./LinkInput":153,"./ListInput":154,"./NumberInput":155,"./ProductsInput":156,"./RadioButtonInput":157,"./RadioInput":158,"./RangeInput":159,"./SectionInput":160,"./SelectInput":161,"./TextInput":162,"./TextValueInput":163,"./ToggleInput":164,"./ValueTextInput":165}],165:[function(require,module,exports){
+},{"./ButtonInput":146,"./CheckboxInput":147,"./ColorInput":148,"./CssUnitInput":149,"./FileUploadInput":150,"./GridInput":151,"./GridLayoutInput":152,"./Input":153,"./LinkInput":154,"./ListInput":155,"./NumberInput":156,"./ProductsInput":157,"./RadioButtonInput":158,"./RadioInput":159,"./RangeInput":160,"./SectionInput":161,"./SelectInput":162,"./TextInput":163,"./TextValueInput":164,"./ToggleInput":165,"./ValueTextInput":166}],166:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1732,7 +1732,7 @@ var ValueTextInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ValueTextInput;
 
-},{"./TextInput":162}],164:[function(require,module,exports){
+},{"./TextInput":163}],165:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1764,7 +1764,7 @@ var ToggleInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ToggleInput;
 
-},{"./TextInput":162}],163:[function(require,module,exports){
+},{"./TextInput":163}],164:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1790,7 +1790,7 @@ var TextValueInput = $.extend({}, _Input2.default, {
 
 exports.default = TextValueInput;
 
-},{"./Input":152}],161:[function(require,module,exports){
+},{"./Input":153}],162:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1817,7 +1817,7 @@ var SelectInput = $.extend({}, _Input2.default, {
 
 exports.default = SelectInput;
 
-},{"./Input":152}],160:[function(require,module,exports){
+},{"./Input":153}],161:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1844,7 +1844,7 @@ var SectionInput = $.extend({}, _Input2.default, {
 
 exports.default = SectionInput;
 
-},{"./Input":152}],159:[function(require,module,exports){
+},{"./Input":153}],160:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1870,7 +1870,7 @@ var RangeInput = $.extend({}, _Input2.default, {
 
 exports.default = RangeInput;
 
-},{"./Input":152}],157:[function(require,module,exports){
+},{"./Input":153}],158:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -1890,7 +1890,7 @@ var RadioButtonInput = $.extend({}, _RadioInput2.default, {
 
 exports.default = RadioButtonInput;
 
-},{"./RadioInput":158}],158:[function(require,module,exports){
+},{"./RadioInput":159}],159:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1924,7 +1924,7 @@ var RadioInput = $.extend({}, _Input2.default, {
 
 exports.default = RadioInput;
 
-},{"./Input":152}],156:[function(require,module,exports){
+},{"./Input":153}],157:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1950,7 +1950,7 @@ var ProductsInput = $.extend({}, _TextInput2.default, {
 
 exports.default = ProductsInput;
 
-},{"./TextInput":162}],155:[function(require,module,exports){
+},{"./TextInput":163}],156:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -1976,7 +1976,7 @@ var NumberInput = $.extend({}, _Input2.default, {
 
 exports.default = NumberInput;
 
-},{"./Input":152}],154:[function(require,module,exports){
+},{"./Input":153}],155:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2003,7 +2003,7 @@ var ListInput = $.extend({}, _Input2.default, {
 
 exports.default = ListInput;
 
-},{"./Input":152}],153:[function(require,module,exports){
+},{"./Input":153}],154:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2029,7 +2029,7 @@ var LinkInput = $.extend({}, _TextInput2.default, {
 
 exports.default = LinkInput;
 
-},{"./TextInput":162}],151:[function(require,module,exports){
+},{"./TextInput":163}],152:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2055,7 +2055,7 @@ var GridLayoutInput = $.extend({}, _TextInput2.default, {
 
 exports.default = GridLayoutInput;
 
-},{"./TextInput":162}],150:[function(require,module,exports){
+},{"./TextInput":163}],151:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2081,7 +2081,7 @@ var GridInput = $.extend({}, _Input2.default, {
 
 exports.default = GridInput;
 
-},{"./Input":152}],149:[function(require,module,exports){
+},{"./Input":153}],150:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2107,7 +2107,7 @@ var FileUploadInput = $.extend({}, _TextInput2.default, {
 
 exports.default = FileUploadInput;
 
-},{"./TextInput":162}],162:[function(require,module,exports){
+},{"./TextInput":163}],163:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2133,7 +2133,7 @@ var TextInput = $.extend({}, _Input2.default, {
 
 exports.default = TextInput;
 
-},{"./Input":152}],148:[function(require,module,exports){
+},{"./Input":153}],149:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2187,7 +2187,7 @@ var CssUnitInput = $.extend({}, _Input2.default, {
 
 exports.default = CssUnitInput;
 
-},{"./Input":152}],147:[function(require,module,exports){
+},{"./Input":153}],148:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2221,7 +2221,7 @@ var ColorInput = $.extend({}, _Input2.default, {
 
 exports.default = ColorInput;
 
-},{"./Input":152}],146:[function(require,module,exports){
+},{"./Input":153}],147:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2254,7 +2254,7 @@ var CheckboxInput = $.extend({}, _Input2.default, {
 
 exports.default = CheckboxInput;
 
-},{"./Input":152}],145:[function(require,module,exports){
+},{"./Input":153}],146:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2281,7 +2281,7 @@ var ButtonInput = $.extend({}, _Input2.default, {
 
 exports.default = ButtonInput;
 
-},{"./Input":152}],152:[function(require,module,exports){
+},{"./Input":153}],153:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -2318,7 +2318,7 @@ var Input = {
 
 exports.default = Input;
 
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
     value: true
 });

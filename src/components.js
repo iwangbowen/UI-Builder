@@ -11,7 +11,7 @@ import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
     ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/calendar@oee', 'html/radiobutton@oee', 'html/checkbox@oee',
-        'html/selectinput@oee', 'html/table@oee'];
+        'html/selectinput@oee', 'html/table@oee', 'html/text@oee'];
 
 Vvveb.ComponentsGroup['通用组件'] =
     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
@@ -83,4 +83,5 @@ Vvveb.Components.extend('_base', 'html/checkbox@oee', _oee.checkbox);
 Vvveb.Components.extend('_base', 'html/selectinput@oee', _oee.selectinput);
 Vvveb.Components.extend('_base', 'html/table@oee', _oee.table);
 Vvveb.Components.extend('_base', 'html/calendar@oee', _oee.calendar);
+Vvveb.Components.extend('_base', 'html/text@oee', _oee.text);
 
