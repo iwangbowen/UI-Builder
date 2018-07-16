@@ -11,7 +11,7 @@ import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
     ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/calendar@oee', 'html/radiobutton@oee', 'html/checkbox@oee',
-        'html/selectinput@oee', 'html/table@oee', 'html/text@oee'];
+        'html/selectinput@oee', 'html/table@oee'];
 
 Vvveb.ComponentsGroup['通用组件'] =
     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
