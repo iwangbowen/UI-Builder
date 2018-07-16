@@ -1,6 +1,7 @@
 import Vvveb from './builder';
 import * as _general from './components/@general/components';
 import * as _oee from './components/@oee/components';
+import * as _oee_ids from './components/@oee/ids';
 import element from './components/element';
 import border from './components/border';
 import padding from './components/padding';
@@ -10,8 +11,8 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
-    ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/calendar@oee', 'html/radiobutton@oee', 'html/checkbox@oee',
-        'html/selectinput@oee', 'html/table@oee'];
+    ['html/labeldiv@oee', 'html/button@oee', 'html/textinput@oee', 'html/calendar@oee', _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,
+        'html/radiobutton@oee', 'html/checkbox@oee', 'html/table@oee'];
 
 Vvveb.ComponentsGroup['通用组件'] =
     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
@@ -84,4 +85,6 @@ Vvveb.Components.extend('_base', 'html/selectinput@oee', _oee.selectinput);
 Vvveb.Components.extend('_base', 'html/table@oee', _oee.table);
 Vvveb.Components.extend('_base', 'html/calendar@oee', _oee.calendar);
 Vvveb.Components.extend('_base', 'html/text@oee', _oee.text);
+Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
+Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
 
