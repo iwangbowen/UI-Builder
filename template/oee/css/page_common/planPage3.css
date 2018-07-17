@@ -654,6 +654,11 @@ html, body {
     /*  margin-left: 5px;*/
     height: 100%;
 }
+.Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .fundodooSelect{
+    height: 24px;
+    padding: 3px;
+    font-size: 12px;
+}
 .Button-template   .allButton .allButton-button .everyOutbox-right .btn-group .bootstrap-select{
     height: 100%;
     width: 100%;

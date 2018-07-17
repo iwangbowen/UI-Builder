@@ -9,7 +9,7 @@ const autoselectinput = {
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control" lustyle="height: 2.8rem;width:13rem">
+                    <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control fundodooSelect" lustyle="height: 2.8rem;width:13rem">
                     </select>
                 </div>
             </div>
