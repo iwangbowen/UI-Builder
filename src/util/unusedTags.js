@@ -7,7 +7,9 @@ const unusedTags = [
 	{
 		name: 'link',
 		filter: tag => tag.getAttribute('rel') == 'stylesheet'
-			&& tag.getAttribute('href').includes('drag-n-drop')
+			&& (tag.getAttribute('href').includes('drag-n-drop')
+				|| tag.getAttribute('href').includes('/datepicker/skin/WdatePicker.css')
+			|| tag.getAttribute('href').includes('/layer/skin/layer.css'))
 	},
 	{
 		name: 'hr',

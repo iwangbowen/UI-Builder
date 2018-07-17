@@ -1,7 +1,8 @@
 import unusedTags from './unusedTags';
 import { emptyChildrenSelectors, tableSelector, autoselectinputSelector } from './selectors';
 import tableTemplate from '../templates/table';
-import autoselectinputtemplate from '../templates/autoselectinput';
+import autoselectinputTemplate from '../templates/autoselectinput';
+import submitFormTemplate from '../templates/submitform';
 import table from '../components/@oee/table';
 import { calendarSelector, setOnclickAttr } from './calendar';
 
@@ -45,10 +46,14 @@ function generateCalendarOnclickAttr(el) {
 }
 
 function generateSelectOptionsScript(el) {
-    return appendScript(el, autoselectinputtemplate());
+    return appendScript(el, autoselectinputTemplate());
+}
+
+function generateSubmitFormScript() {
+
 }
 
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-    generateSelectOptionsScript
+    generateSelectOptionsScript, generateSubmitFormScript
 };

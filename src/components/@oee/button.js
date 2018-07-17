@@ -4,7 +4,7 @@ const button = {
     classes: ["btn", "btn-link", 'btn@oee'],
     name: "Button",
     image: "icons/button.svg",
-    html: `<button type="button" class="btn@oee draggable">
+    html: `<button type="button" class="draggable btn@oee">
             <span class="glyphicon glyphicon-search">Search</span>
            </button>`,
     properties: [{
@@ -91,6 +91,11 @@ const button = {
         name: "Target",
         key: "target",
         htmlAttr: "target",
+        inputtype: TextInput
+    }, {
+        name: 'onclick',
+        key: 'onclick',
+        htmlAttr: 'onclick',
         inputtype: TextInput
     }, {
         name: 'Data Url',
