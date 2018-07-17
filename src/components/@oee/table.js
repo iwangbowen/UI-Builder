@@ -41,9 +41,9 @@ const table = {
             $(node).attr(dataTableId, id);
             tables[id] = {
                 columnDefs: [
-                    { headerName: "header", field: "filed" },
-                    { headerName: "header", field: "field" },
-                    { headerName: "header", field: "field" }
+                    { headerName: "header", field: "filed", width: '' },
+                    { headerName: "header", field: "field", width: '' },
+                    { headerName: "header", field: "field", width: '' }
                 ],
                 enableSorting: false,
                 enableFilter: false
@@ -63,7 +63,8 @@ const table = {
                 data: {
                     id: 'tableheader@oee',
                     headerName: cur.headerName,
-                    field: cur.field
+                    field: cur.field,
+                    width: cur.width
                 },
                 onChange: function (node, value, input) {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
@@ -74,7 +75,7 @@ const table = {
                         tables[$(node).attr(dataTableId)].columnDefs = colDefs;
                         setColumnDefsAndRender(node, colDefs);
                     } else {
-                        colDefs[keyIndex][input.name] = value;
+                        colDefs[keyIndex][input.name] = value && parseInt(value);
                         // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
                         tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
                     }
@@ -145,13 +146,14 @@ const table = {
                 const colDefs = tables[$(node).attr(dataTableId)].columnDefs;
                 colDefs.push({
                     headerName: 'header',
-                    field: 'field'
+                    field: 'field',
+                    width: ''
                 });
 
                 setColumnDefsAndRender(node, colDefs);
                 return node;
             }
-        },]
+        }]
 };
 
 export default table;
