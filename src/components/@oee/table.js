@@ -16,7 +16,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "ag-Grid",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-balham"></div>`,
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue"></div>`,
     getTable(key) {
         return tables[key];
     },
@@ -30,8 +30,8 @@ const table = {
                     { headerName: "header", field: "field" },
                     { headerName: "header", field: "field" }
                 ],
-                enableSorting: true,
-                enableFilter: true
+                enableSorting: false,
+                enableFilter: false
             };
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, tables[id]);
             tables[id].api.setRowData([]);

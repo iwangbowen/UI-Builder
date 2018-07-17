@@ -9,7 +9,7 @@ const textinput = {
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <input ${dataComponentId}="html/textinput@oee" lustyle="height: 2.8rem;width:13rem " type="text" class="form-control Wdate"/>
+                    <input ${dataComponentId}="html/textinput@oee" lustyle="height: 2.8rem;width:13rem" type="text" class="form-control"/>
                  </div>
             </div>
            </div>`,

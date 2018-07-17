@@ -7,7 +7,7 @@ module.exports = function (grunt) {
             development: {
                 src: [
                     "src/init.js",
-                    'src/components-bootstrap4.js',
+                    'src/components.js',
                     'src/undo.js',
                     'src/plugin-codemirror.js',
                     'src/drag-n-drop.js',
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                         ["factor-bundle", {
                             outputs: [
                                 'dist/init.js',
-                                'dist/components-bootstrap4.js',
+                                'dist/components.js',
                                 'dist/undo.js',
                                 'dist/plugin-codemirror.js',
                                 'dist/drag-n-drop.js',

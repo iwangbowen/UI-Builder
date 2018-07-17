@@ -3,6 +3,7 @@ import { TextInput } from '../../inputs/inputs';
 const span = {
     name: "Span",
     image: "icons/text_input.svg",
+    nodes: ['span'],
     html: ``,
     properties: [{
         name: "For id",

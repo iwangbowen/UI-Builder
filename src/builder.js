@@ -1,9 +1,13 @@
 import { SectionInput } from './inputs/inputs';
-import { removeUnusedTags, emptyChildren, generateTableScript } from './util/jsoup';
+import {
+	removeUnusedTags, emptyChildren, generateTableScript,
+	generateCalendarOnclickAttr, generateSelectOptionsScript
+} from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
-import { dataComponentId } from './components/common'
+import { dataComponentId, dataCalendarId } from './components/common'
 import htmlGenerator from './util/htmlGenerator';
+import { replaceOtherShowingCalendarInputs } from './util/calendar';
 
 (function () {
 	var cache = {};
@@ -45,22 +49,6 @@ var delay = (function () {
 		timer = setTimeout(callback, ms);
 	};
 })();
-
-const unusedTags = [
-	// {
-	// 	name: 'script'
-	// },
-	{
-		name: 'link',
-		filter: tag => tag.getAttribute('rel') == 'stylesheet'
-			&& tag.getAttribute('href').includes('drag-n-drop')
-	},
-	{
-		name: 'hr',
-		filter: tag => $(tag).hasClass('horizontal-line')
-			|| $(tag).hasClass('vertical-line')
-	}
-];
 
 function getStyle(el, styleProp) {
 	value = "";
@@ -524,7 +512,7 @@ Vvveb.Builder = {
 
 		self.frameDoc = $(window.FrameDocument);
 		self.frameHtml = $(window.FrameDocument).find("html");
-		self.frameBody = $(window.FrameDocument).find("body");
+		self.frameBody = $(window.FrameDocument).find('body');
 
 		this._initHightlight();
 	},
@@ -689,6 +677,7 @@ Vvveb.Builder = {
 
 
 		this.frameBody.on("dblclick", function (event) {
+			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
 
 			self.texteditEl = target = jQuery(event.target);
 
@@ -710,6 +699,8 @@ Vvveb.Builder = {
 
 
 		this.frameBody.on("click", function (event) {
+			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
+
 			if (event.target) {
 				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
 					$('#attribute-settings')
@@ -958,7 +949,8 @@ Vvveb.Builder = {
 
 		const { doctype, html } = this.getHtml();
 		return html_beautify(`${doctype}
-							  ${htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript)}`,
+							  ${htmlGenerator(html, removeUnusedTags, emptyChildren,
+				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript)}`,
 			{
 				preserve_newlines: false,
 				indent_inner_html: true,

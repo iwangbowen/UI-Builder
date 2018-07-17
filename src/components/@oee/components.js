@@ -37,10 +37,15 @@ import tablerow from './tablerow';
 import textareainput from './textareainput';
 import labeldiv from './labeldiv';
 import span from './span';
+import calendar from './calendar';
+import text from './text';
+import autoselectinput from './autoselectinput';
+import manualselectinput from './manualselectinput';
 
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span
+    table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, calendar, text,
+    autoselectinput, manualselectinput
 };

@@ -1,7 +1,9 @@
 import unusedTags from './unusedTags';
-import { emptyChildrenSelectors, tableSelector } from './emptyChildrenSelectors';
-import template from '../templates/table';
+import { emptyChildrenSelectors, tableSelector, autoselectinputSelector } from './selectors';
+import tableTemplate from '../templates/table';
+import autoselectinputtemplate from '../templates/autoselectinput';
 import table from '../components/@oee/table';
+import { calendarSelector, setOnclickAttr } from './calendar';
 
 const alwaysTrue = () => true;
 
@@ -22,13 +24,31 @@ function emptyChildren(el) {
     return el;
 }
 
-function generateTableScript(el) {
-    const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
-        return `${prev}
-                ${template($(element), table)}`;
-    }, '');
-    $('<script></script>').text(jsStr).appendTo($(el).find('body'));
+function appendScript(el, jsStr) {
+    jsStr && $('<script></script>').text(jsStr).appendTo($(el).find('body'));
     return el;
 }
 
-export { removeUnusedTags, emptyChildren, generateTableScript };
+function generateTableScript(el) {
+    const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
+        return `${prev}
+                ${tableTemplate($(element), table)}`;
+    }, '');
+    return appendScript(el, jsStr);
+}
+
+function generateCalendarOnclickAttr(el) {
+    $(el).find(calendarSelector).each(function () {
+        $(this).attr('onclick') || setOnclickAttr(this);
+    });
+    return el;
+}
+
+function generateSelectOptionsScript(el) {
+    return appendScript(el, autoselectinputtemplate());
+}
+
+export {
+    removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
+    generateSelectOptionsScript
+};

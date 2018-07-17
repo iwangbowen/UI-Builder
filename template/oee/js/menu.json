@@ -1,0 +1,45 @@
+{
+	"code": "200",
+	"comment": "",
+	"extend": {},
+	"sid": "3313204840",
+	"data": [{
+		"permissionName": "Bai Du",
+		"defaultURL": "https://www.baidu.com/",
+		"icon": "1.icon",
+		"childList": []
+
+	}, {
+		"permissionName": "测试2",
+		"defaultURL": "1.html#",
+		"icon": "1.icon",
+		"childList": [{
+			"permissionName": "demo21",
+			"defaultURL": "/html/demo/demo.html",
+			"icon": "21.icon",
+			"childList": []
+		}, {
+			"permissionName": "fundodoo.com",
+			"defaultURL": "https://www.fundodoo.com/",
+			"icon": "22.icon",
+			"childList": [{
+				"permissionName": "登录1",
+				"defaultURL": "html/login.html",
+				"icon": "31.icon",
+				"childList": []
+
+			},{
+				"permissionName": "测试2",
+				"defaultURL": "32.html#",
+				"icon": "32.icon",
+				"childList": []
+
+			}]
+		}, {
+			"permissionName": "测试23 ",
+			"defaultURL": "https://www.fundodoo.com/",
+			"icon": "23.icon",
+			"childList": []
+		}]
+	}]
+}

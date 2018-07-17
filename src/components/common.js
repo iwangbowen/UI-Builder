@@ -56,5 +56,12 @@ function inc_base_sort() {
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
+const dataCalendarId = 'data-calendar-id';
+const dataConfigInfo = 'data-config-info';
+const dataAutoSelectId = 'data-auto-select-id';
+const dataUrl = 'data-url'
 
-export { bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId };
+export {
+    bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
+    dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId
+};

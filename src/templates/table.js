@@ -13,8 +13,8 @@ function template(node, table) {
     ];
     var gridOptions${key} = {
         columnDefs: columnDefs${key},
-        enableSorting: true,
-        enableFilter: true
+        enableSorting: false,
+        enableFilter: false
       };
     var eGridDiv${key} = document.querySelector('#${id}');
     new agGrid.Grid(eGridDiv${key}, gridOptions${key});

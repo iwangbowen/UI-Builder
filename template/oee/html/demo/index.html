@@ -16,6 +16,13 @@
         <link rel="stylesheet" href="../../js/plugins/datepicker/skin/WdatePicker.css">
         <link rel="stylesheet" href="../../../../libs/ag-grid/ag-grid.css">
         <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-balham.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-balham-dark.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-blue.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-bootstrap.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-dark.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-material.css">
+        <link rel="stylesheet" href="../../../../libs/ag-grid/ag-theme-fresh.css">
+        <link href="http://localhost:8003/template/oee/js/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="http://localhost:8003/template/oee/js/plugins/layer/skin/layer.css" id="layui_layer_skinlayercss" style="">
     </head>
 
@@ -33,7 +40,7 @@
                         <div class="show-icon glyphicon glyphicon-chevron-right"> </div>
                         <div class="hide-icon glyphicon glyphicon-chevron-left"> </div>
                     </div>
-                    <div id="cleft" class="containerleft">
+                    <div id="cleft" class="containerleft" style="width: 275px;">
                         <div class="searchInput">
                             <div class="btn-group ">
                                 <!-- <select class="form-control selectpicker" multiple="multiple" id="siteSelect">
@@ -55,7 +62,7 @@
                     </ul>
                     </div> --></div>
                         <div style="clear:both;"></div>
-                        <form class="form-box dropzone" action="">
+                        <form class="form-box" action="">
                             <div class="searcharea">
                                 <!--//以下结构是为了方便模板制作-->
                                 <div class="siteOutbox">
@@ -249,16 +256,13 @@
                                 <!--//以上结构是为了方便模板制作-->
                             </div>
                             <div style="clear:both;"></div>
-                            <div class="bottom-searchButton">
-                                <button>
-                                    <span class="glyphicon glyphicon-search"></span> Search</button>
-                            </div>
+                            <div class="bottom-searchButton dropzone"> </div>
                         </form>
                     </div>
-                    <div id="cmiddle" class="containerMiddle">
+                    <div id="cmiddle" class="containerMiddle" style="left: 275px;">
                         <div class="innerbox"></div>
                     </div>
-                    <div id="cright" class="containerRight">
+                    <div id="cright" class="containerRight" style="left: calc(287px);">
                         <div class="allContent">
                             <div class="topContent">
                                 <div class="container">
@@ -271,7 +275,9 @@
                                                     <div class="icon" title="最大化"></div>
                                                 </div>
                                                 <!-- 右侧内容区开始 -->
-                                                <div> abcd </div>
+                                                <!-- <div>
+                                                abcd
+                                            </div> -->
                                                 <!-- 右侧内容区结束 -->
                                             </div>
                                         </div>
@@ -302,7 +308,6 @@
         <script src="../../js/plugins/noty/jquery.noty.packaged.js" type="text/javascript"></script>
         <script src="../../js/page_common/fundodooPageTemplate.js" type="text/javascript"></script>
         <script src="../../js/page_common/common.js" type="text/javascript"></script>
-        <script src="../../../../dist/iframe-drag-n-drop.js"></script>
         <script src="../../../../libs/ag-grid/ag-grid.min.noStyle.js"></script>
         <!-- 功能页面javascript开始 -->
         <script type="text/javascript">
@@ -343,200 +348,51 @@
             $(document).ready(function() {});
         </script>
         <!-- 功能页面javascript结束 -->
-        <div data-component-id="html/table@oee" style="width: 650px; height: 200px; position: absolute; z-index: 999; top: 167.2px; left: 539.2px; transform: translate(-120.8px, 0px);" class="dropzone draggable ag-theme-dark" data-table-id="1" data-x="-120.79998779296875"
-            data-y="0">
-            <div class="ag-root-wrapper ag-layout-normal ag-ltr">
-                <div class="ag-root-wrapper-body ag-layout-normal" ref="rootWrapperBody">
-                    <!--AG-GRID-COMP-->
-                    <div class="ag-root ag-font-style ag-layout-normal" role="grid" ref="gridPanel">
-                        <!--AG-HEADER-ROOT-->
-                        <div class="ag-header" role="row" ref="headerRoot" style="height: 32px; min-height: 32px;">
-                            <div class="ag-pinned-left-header ag-hidden" ref="ePinnedLeftHeader" role="presentation" style="width: 0px;">
-                                <div class="ag-header-row" role="presentation" style="top: 0px; height: 32px; width: 0px;"></div>
-                            </div>
-                            <div class="ag-header-viewport" ref="eHeaderViewport" role="presentation">
-                                <div class="ag-header-container" ref="eHeaderContainer" role="presentation">
-                                    <div class="ag-header-row" role="presentation" style="top: 0px; height: 32px; width: 600px;">
-                                        <div class="ag-header-cell ag-header-cell-sortable" role="presentation" col-id="filed" style="width: 200px; left: 0px;">
-                                            <!--AG-CHECKBOX-->
-                                            <span class="ag-header-select-all ag-hidden" role="presentation" ref="cbSelectAll">
-                                                <span class="ag-checkbox-checked ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-checked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-unchecked" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-unchecked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-indeterminate ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-indeterminate"></span>
-                                                </span>
-                                                <span class="ag-checkbox-label" role="presentation"></span>
-                                            </span>
-                                            <div class="ag-cell-label-container ag-header-cell-sorted-none" role="presentation">
-                                                <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button" aria-hidden="true" style="opacity: 0; transition: opacity 0.2s, border 0.2s;">
-                                                    <span class="ag-icon ag-icon-menu"></span>
-                                                </span>
-                                                <div ref="eLabel" class="ag-header-cell-label" role="presentation">
-                                                    <span ref="eText" class="ag-header-cell-text" role="columnheader">header</span>
-                                                    <span ref="eFilter" class="ag-header-icon ag-filter-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-filter"></span>
-                                                    </span>
-                                                    <span ref="eSortOrder" class="ag-header-icon ag-sort-order ag-hidden" aria-hidden="true"></span>
-                                                    <span ref="eSortAsc" class="ag-header-icon ag-sort-ascending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-asc"></span>
-                                                    </span>
-                                                    <span ref="eSortDesc" class="ag-header-icon ag-sort-descending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-desc"></span>
-                                                    </span>
-                                                    <span ref="eSortNone" class="ag-header-icon ag-sort-none-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-none"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ag-header-cell ag-header-cell-sortable" role="presentation" col-id="field" style="width: 200px; left: 200px;">
-                                            <!--AG-CHECKBOX-->
-                                            <span class="ag-header-select-all ag-hidden" role="presentation" ref="cbSelectAll">
-                                                <span class="ag-checkbox-checked ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-checked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-unchecked" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-unchecked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-indeterminate ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-indeterminate"></span>
-                                                </span>
-                                                <span class="ag-checkbox-label" role="presentation"></span>
-                                            </span>
-                                            <div class="ag-cell-label-container ag-header-cell-sorted-none" role="presentation">
-                                                <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button" aria-hidden="true" style="opacity: 0; transition: opacity 0.2s, border 0.2s;">
-                                                    <span class="ag-icon ag-icon-menu"></span>
-                                                </span>
-                                                <div ref="eLabel" class="ag-header-cell-label" role="presentation">
-                                                    <span ref="eText" class="ag-header-cell-text" role="columnheader">header</span>
-                                                    <span ref="eFilter" class="ag-header-icon ag-filter-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-filter"></span>
-                                                    </span>
-                                                    <span ref="eSortOrder" class="ag-header-icon ag-sort-order ag-hidden" aria-hidden="true"></span>
-                                                    <span ref="eSortAsc" class="ag-header-icon ag-sort-ascending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-asc"></span>
-                                                    </span>
-                                                    <span ref="eSortDesc" class="ag-header-icon ag-sort-descending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-desc"></span>
-                                                    </span>
-                                                    <span ref="eSortNone" class="ag-header-icon ag-sort-none-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-none"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ag-header-cell ag-header-cell-sortable" role="presentation" col-id="field_1" style="width: 200px; left: 400px;">
-                                            <!--AG-CHECKBOX-->
-                                            <span class="ag-header-select-all ag-hidden" role="presentation" ref="cbSelectAll">
-                                                <span class="ag-checkbox-checked ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-checked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-unchecked" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-unchecked"></span>
-                                                </span>
-                                                <span class="ag-checkbox-indeterminate ag-hidden" role="presentation">
-                                                    <span class="ag-icon ag-icon-checkbox-indeterminate"></span>
-                                                </span>
-                                                <span class="ag-checkbox-label" role="presentation"></span>
-                                            </span>
-                                            <div class="ag-cell-label-container ag-header-cell-sorted-none" role="presentation">
-                                                <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button" aria-hidden="true" style="opacity: 0; transition: opacity 0.2s, border 0.2s;">
-                                                    <span class="ag-icon ag-icon-menu"></span>
-                                                </span>
-                                                <div ref="eLabel" class="ag-header-cell-label" role="presentation">
-                                                    <span ref="eText" class="ag-header-cell-text" role="columnheader">header</span>
-                                                    <span ref="eFilter" class="ag-header-icon ag-filter-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-filter"></span>
-                                                    </span>
-                                                    <span ref="eSortOrder" class="ag-header-icon ag-sort-order ag-hidden" aria-hidden="true"></span>
-                                                    <span ref="eSortAsc" class="ag-header-icon ag-sort-ascending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-asc"></span>
-                                                    </span>
-                                                    <span ref="eSortDesc" class="ag-header-icon ag-sort-descending-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-desc"></span>
-                                                    </span>
-                                                    <span ref="eSortNone" class="ag-header-icon ag-sort-none-icon ag-hidden" aria-hidden="true">
-                                                        <span class="ag-icon ag-icon-none"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ag-pinned-right-header ag-hidden" ref="ePinnedRightHeader" role="presentation" style="width: 0px;">
-                                <div class="ag-header-row" role="presentation" style="top: 0px; height: 32px; width: 0px;"></div>
-                            </div>
-                        </div>
-                        <div class="ag-floating-top" ref="eTop" role="presentation" style="min-height: 0px; height: 0px;">
-                            <div class="ag-pinned-left-floating-top" ref="eLeftTop" role="presentation" style="width: 0px; min-width: 0px;"></div>
-                            <div class="ag-floating-top-viewport ag-layout-normal" ref="eTopViewport" role="presentation">
-                                <div class="ag-floating-top-container" ref="eTopContainer" role="presentation" style="width: 600px;"></div>
-                            </div>
-                            <div class="ag-pinned-right-floating-top" ref="eRightTop" role="presentation" style="width: 0px; min-width: 0px;"></div>
-                            <div class="ag-floating-top-full-width-container ag-hidden" ref="eTopFullWidthContainer" role="presentation"></div>
-                        </div>
-                        <div class="ag-body ag-layout-normal ag-row-no-animation" ref="eBody" role="presentation">
-                            <div class="ag-pinned-left-cols-viewport-wrapper ag-hidden" ref="eLeftViewportWrapper" role="presentation" style="width: 0px; min-width: 0px;">
-                                <div class="ag-pinned-left-cols-viewport" ref="eLeftViewport" role="presentation" style="width: 0px; min-width: 0px;">
-                                    <div class="ag-pinned-left-cols-container" ref="eLeftContainer" role="presentation" style="width: 0px; min-width: 0px; height: 1px;"></div>
-                                </div>
-                            </div>
-                            <div class="ag-body-viewport-wrapper" role="presentation">
-                                <div class="ag-body-viewport ag-layout-normal" ref="eBodyViewport" role="presentation">
-                                    <div class="ag-body-container ag-layout-normal" ref="eBodyContainer" role="presentation" style="width: 600px; height: 1px;"></div>
-                                </div>
-                            </div>
-                            <div class="ag-pinned-right-cols-viewport-wrapper ag-hidden" ref="eRightViewportWrapper" role="presentation" style="width: 0px; min-width: 0px;">
-                                <div class="ag-pinned-right-cols-viewport" ref="eRightViewport" role="presentation" style="width: 0px; min-width: 0px;">
-                                    <div class="ag-pinned-right-cols-container" ref="eRightContainer" role="presentation" style="width: 0px; min-width: 0px; height: 1px;"></div>
-                                </div>
-                            </div>
-                            <div class="ag-full-width-viewport-wrapper" ref="eFullWidthViewportWrapper" role="presentation" style="">
-                                <div class="ag-full-width-viewport ag-hidden" ref="eFullWidthViewport" role="presentation">
-                                    <div class="ag-full-width-container" ref="eFullWidthContainer" role="presentation" style="height: 1px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ag-floating-bottom" ref="eBottom" role="presentation" style="min-height: 0px; height: 0px;">
-                            <div class="ag-pinned-left-floating-bottom" ref="eLeftBottom" role="presentation" style="width: 0px; min-width: 0px;"></div>
-                            <div class="ag-floating-bottom-viewport" ref="eBottomViewport" role="presentation">
-                                <div class="ag-floating-bottom-container" ref="eBottomContainer" role="presentation" style="width: 600px;"></div>
-                            </div>
-                            <div class="ag-pinned-right-floating-bottom" ref="eRightBottom" role="presentation" style="width: 0px; min-width: 0px;"></div>
-                            <div class="ag-floating-bottom-full-width-container ag-hidden" ref="eBottomFullWidthContainer" role="presentation"></div>
-                        </div>
-                        <div class="ag-overlay" ref="eOverlay">
-                            <div class="ag-overlay-panel" role="presentation">
-                                <div class="ag-overlay-wrapper ag-overlay-loading-wrapper" ref="loadingOverlayWrapper">
-                                    <span class="ag-overlay-loading-center">Loading...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--AG-PAGINATION-->
-                <div class="ag-paging-panel ag-font-style ag-hidden">
-                    <span ref="eSummaryPanel" class="ag-paging-row-summary-panel">
-                        <span ref="lbFirstRowOnPage"></span> to
-                        <span ref="lbLastRowOnPage"></span> of
-                        <span ref="lbRecordCount"></span>
-                    </span>
-                    <span class="ag-paging-page-summary-panel">
-                        <button type="button" class="ag-paging-button" ref="btFirst">First</button>
-                        <button type="button" class="ag-paging-button" ref="btPrevious">Previous</button> Page
-                        <span ref="lbCurrent"></span> of
-                        <span ref="lbTotal"></span>
-                        <button type="button" class="ag-paging-button" ref="btNext">Next</button>
-                        <button type="button" class="ag-paging-button" ref="btLast">Last</button>
-                    </span>
+        <div class="everyOutbox-right draggable" style="position: absolute; z-index: 999; top: 117.6px; left: 692px; transform: translate(-216px, 2.40001px);" data-x="-216" data-y="2.4000091552734375">
+            <div class="btn-group">
+                <div class="dailyBox">
+                    <select data-auto-select-id="" data-component-id="html/autoselectinput@oee" class="form-control" lustyle="height: 2.8rem;width:13rem" data-url="http://localhost:8080/api/options/countries"> </select>
                 </div>
             </div>
         </div>
+        <div class="everyOutbox-right draggable" style="position: absolute; z-index: 999; top: 164.8px; left: 740px;">
+            <div class="btn-group">
+                <div class="dailyBox">
+                    <select data-auto-select-id="" data-component-id="html/autoselectinput@oee" class="form-control" lustyle="height: 2.8rem;width:13rem" data-url="https://reqres.in/api/users"> </select>
+                </div>
+            </div>
+        </div>
+        <div class="everyOutbox-right draggable" style="position: absolute; z-index: 999; top: 191.2px; left: 520.8px;">
+            <div class="btn-group">
+                <div class="dailyBox">
+                    <select data-component-id="html/manualselectinput@oee" class="form-control" lustyle="height: 2.8rem;width:13rem">
+                        <option value="value1">Text 1</option>
+                        <option value="value2">Text 2</option>
+                        <option value="value3">Text 3</option>
+                        <option value="value">Text</option>
+                        <option value="value">Text</option>
+                        <option value="value">Text</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <script>
+            function generateOptions(el, response) {
+                response.forEach(function(option) {
+                    $('<option></option>').val(option.value).text(option.text).appendTo($(el));
+                });
+            }
+            Array.from($('body').find('[data-auto-select-id]')).filter(function(el) {
+                return $(el).attr('data-url');
+            }).forEach(function(el) {
+                $.ajax({
+                    url: $(el).attr('data-url'),
+                    success: function(response) {
+                        generateOptions(el, response);
+                    }
+                });
+            });
+        </script>
     </body>
 
 </html>
