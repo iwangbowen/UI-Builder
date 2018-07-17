@@ -1,7 +1,7 @@
 import { SectionInput } from './inputs/inputs';
 import {
-	removeUnusedTags, emptyChildren, generateTableScript,
-	generateCalendarOnclickAttr, generateSelectOptionsScript
+	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
+	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
@@ -950,7 +950,8 @@ Vvveb.Builder = {
 		const { doctype, html } = this.getHtml();
 		return html_beautify(`${doctype}
 							  ${htmlGenerator(html, removeUnusedTags, emptyChildren,
-				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript)}`,
+				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
+				generateSubmitFormScript, generateButtonOnclickAttr)}`,
 			{
 				preserve_newlines: false,
 				indent_inner_html: true,

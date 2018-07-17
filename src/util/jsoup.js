@@ -1,10 +1,11 @@
 import unusedTags from './unusedTags';
-import { emptyChildrenSelectors, tableSelector, autoselectinputSelector } from './selectors';
+import { emptyChildrenSelectors, tableSelector, submitButtonSelector } from './selectors';
 import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
-import submitFormTemplate from '../templates/submitform';
+import { template as submitFormTemplate } from '../templates/submitform';
 import table from '../components/@oee/table';
-import { calendarSelector, setOnclickAttr } from './calendar';
+import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './calendar';
+import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 
 const alwaysTrue = () => true;
 
@@ -40,7 +41,7 @@ function generateTableScript(el) {
 
 function generateCalendarOnclickAttr(el) {
     $(el).find(calendarSelector).each(function () {
-        $(this).attr('onclick') || setOnclickAttr(this);
+        $(this).attr('onclick') || setCalendarOnclickAttr(this);
     });
     return el;
 }
@@ -49,11 +50,18 @@ function generateSelectOptionsScript(el) {
     return appendScript(el, autoselectinputTemplate());
 }
 
-function generateSubmitFormScript() {
+function generateSubmitFormScript(el) {
+    return appendScript(el, submitFormTemplate());
+}
 
+function generateButtonOnclickAttr(el) {
+    $(el).find(submitButtonSelector).each(function () {
+        $(this).attr('onclick') || setButtonOnclickAttr(this);
+    });
+    return el;
 }
 
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-    generateSelectOptionsScript, generateSubmitFormScript
+    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr
 };

@@ -75,7 +75,11 @@ const table = {
                         tables[$(node).attr(dataTableId)].columnDefs = colDefs;
                         setColumnDefsAndRender(node, colDefs);
                     } else {
-                        colDefs[keyIndex][input.name] = value && parseInt(value);
+                        if (input.name == 'width') {
+                            colDefs[keyIndex][input.name] = value && parseInt(value);
+                        } else {
+                            colDefs[keyIndex][input.name] = value;
+                        }
                         // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
                         tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
                     }
