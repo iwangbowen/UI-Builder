@@ -74,25 +74,30 @@ $(document).ready(() => {
                 },
                 // call this function on every dragend event
                 onend: event => {
-                    const left = $element.offset().left - $('#iframeId').offset().left,
-                        top = $element.offset().top - $('#iframeId').offset().top;
+                    const component = Vvveb.Components.matchNode($element[0]);
                     isElementCreated = false;
-                    // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
-                    // 获得html字符串，然后再进行替换
-                    self.frameBody.append($element.prop("outerHTML"));
-                    const appendedElement = self.frameBody.children('body > *:last');
-                    appendedElement
-                        .css({
-                            transform: '',
-                            left: '',
-                            top: ''
-                        })
-                        .offset({
-                            left,
-                            top
-                        })
-                        .removeAttr('data-x data-y');
-                    $element.remove();
+                    if (component.onDrop) {
+                        component.onDrop($element[0]);
+                    } else {
+                        const left = $element.offset().left - $('#iframeId').offset().left,
+                            top = $element.offset().top - $('#iframeId').offset().top;
+                        // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
+                        // 获得html字符串，然后再进行替换
+                        self.frameBody.append($element.prop("outerHTML"));
+                        const appendedElement = self.frameBody.children('body > *:last');
+                        appendedElement
+                            .css({
+                                transform: '',
+                                left: '',
+                                top: ''
+                            })
+                            .offset({
+                                left,
+                                top
+                            })
+                            .removeAttr('data-x data-y');
+                        $element.remove();
+                    }
                 }
             });
     };

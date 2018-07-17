@@ -16,11 +16,26 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "ag-Grid",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue"></div>`,
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue horizontal-stripes"></div>`,
+    onDrop(node) {
+        $(node)
+            .css({
+                height: 'calc(100% - 25px)',
+                width: '100%',
+                position: '',
+                left: '',
+                top: '',
+                transform: ''
+            })
+            .removeClass('draggable');
+        Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea').append($(node).prop('outerHTML'));
+        $(node).remove();
+    },
     getTable(key) {
         return tables[key];
     },
     beforeInit: function (node) {
+        $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {
             const id = index++;
             $(node).attr(dataTableId, id);
