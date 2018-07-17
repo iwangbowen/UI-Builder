@@ -42,6 +42,11 @@ const calendar = {
             const configInfo = getParsedConfigInfo(node)
             configInfo.dateFmt = value;
             setDataConfigInfo(node, configInfo);
+
+            if (node.attr('onclick')) {
+                return setOnclickAttr(cloneWithoutOnclick(node));
+            }
+            return node;
         },
         data: {
             options: [{

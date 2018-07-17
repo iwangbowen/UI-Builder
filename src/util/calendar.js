@@ -15,7 +15,7 @@ function setDataConfigInfo(node, newValue) {
 }
 
 function setOnclickAttr(node) {
-    $(node).attr('onclick', `WdatePicker(${getDataConfigInfo(node)})`);
+    return $(node).attr('onclick', `WdatePicker(${getDataConfigInfo(node)})`);
 }
 
 function getParsedConfigInfo(node) {
@@ -27,7 +27,9 @@ function getDateFmt(node) {
 }
 
 function cloneWithoutOnclick(node) {
-    $(node).replaceWith($(node).removeAttr('onclick').clone());
+    const $clone = $(node).removeAttr('onclick').clone();
+    $(node).replaceWith($clone);
+    return $clone;
 }
 
 function replaceOtherShowingCalendarInputs(element, context) {
