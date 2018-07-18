@@ -1,4 +1,5 @@
 import Vvveb from './builder';
+import $ from '../js/jquery.min';
 
 $(document).ready(() => {
     $('#menu-panel .navbar-nav a').on('click', function () {

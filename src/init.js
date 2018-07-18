@@ -1,5 +1,6 @@
 import Vvveb from './builder';
 import pages from './pages';
+import $ from '../js/jquery.min';
 
 function setIframeHeight(iframe) {
     if (iframe) {

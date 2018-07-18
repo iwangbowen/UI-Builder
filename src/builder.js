@@ -5,9 +5,12 @@ import {
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
-import { dataComponentId, dataCalendarId } from './components/common'
+import { dataComponentId } from './components/common'
 import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/calendar';
+import { getStyle } from './util/dom';
+import { getParentOrSelf } from './util/selectors';
+import $ from '../js/jquery.min';
 
 (function () {
 	var cache = {};
@@ -49,23 +52,6 @@ var delay = (function () {
 		timer = setTimeout(callback, ms);
 	};
 })();
-
-function getStyle(el, styleProp) {
-	value = "";
-	//var el = document.getElementById(el);
-	if (el.style && el.style.length > 0 && el.style[styleProp])//check inline
-		var value = el.style[styleProp];
-	else
-		if (el.currentStyle)	//check defined css
-			var value = el.currentStyle[styleProp];
-		else if (window.getComputedStyle) {
-			var value = document.defaultView.getDefaultComputedStyle ?
-				document.defaultView.getDefaultComputedStyle(el, null).getPropertyValue(styleProp) :
-				window.getComputedStyle(el, null).getPropertyValue(styleProp);
-		}
-
-	return value;
-}
 
 if (Vvveb === undefined) var Vvveb = {};
 
@@ -702,6 +688,7 @@ Vvveb.Builder = {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
 
 			if (event.target) {
+				const node = getParentOrSelf(event.target);
 				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
 					$('#attribute-settings')
 						.addClass('active')
@@ -710,8 +697,8 @@ Vvveb.Builder = {
 					$('#left-panel').hide();
 					$('#right-panel').show();
 				}
-				self.selectNode(event.target);
-				self.loadNodeComponent(event.target);
+				self.selectNode(node);
+				self.loadNodeComponent(node);
 
 				event.preventDefault();
 				return false;

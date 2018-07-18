@@ -1,4 +1,6 @@
 import { dataConfigInfo, dataCalendarId } from '../components/common';
+import $ from '../../js/jquery.min';
+
 const calendarSelector = `input[${dataCalendarId}]`;
 const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;
 // <input data-id="{'a', b}"> 替换包含'\''的属性值为合法的json字符串

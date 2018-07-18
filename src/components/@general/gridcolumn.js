@@ -1,4 +1,5 @@
 import { GridInput } from '../../inputs/inputs';
+import $ from '../../../js/jquery.min';
 
 const gridcolumn = {
     name: "Grid Column",

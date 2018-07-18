@@ -1,6 +1,7 @@
 import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
 import { dataComponentId, dataTableId } from '../common';
 import Vvveb from '../../builder';
+import $ from '../../../js/jquery.min';
 
 const tables = {};
 let index = 1;

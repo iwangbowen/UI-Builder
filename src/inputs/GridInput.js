@@ -1,4 +1,5 @@
 import Input from './Input';
+import $ from '../../js/jquery.min';
 
 const GridInput = $.extend({}, Input, {
 	events: [

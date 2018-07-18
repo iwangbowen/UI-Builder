@@ -6,6 +6,7 @@ import { template as submitFormTemplate } from '../templates/submitform';
 import table from '../components/@oee/table';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './calendar';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
+import $ from '../../js/jquery.min';
 
 const alwaysTrue = () => true;
 

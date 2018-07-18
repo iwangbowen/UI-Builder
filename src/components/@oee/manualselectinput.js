@@ -2,6 +2,7 @@ import Vvveb from '../../builder';
 import { TextValueInput, ButtonInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
+import $ from '../../../js/jquery.min';
 
 const autoselectinput = {
     nodes: ["select"],

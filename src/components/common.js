@@ -1,3 +1,5 @@
+import $ from '../../js/jquery.min';
+
 const bgcolorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark", "bg-white"];
 
 const bgcolorSelectOptions =
