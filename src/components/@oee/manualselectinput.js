@@ -1,5 +1,5 @@
 import Vvveb from '../../builder';
-import { TextValueInput, ButtonInput } from '../../inputs/inputs';
+import { TextValueInput, ButtonInput, TextInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import $ from '../../../js/jquery.min';
@@ -86,6 +86,11 @@ const autoselectinput = {
             Vvveb.Components.render(manualselectinputid);
             return node;
         }
+    }, {
+        name: 'Onchange',
+        key: 'onchange',
+        htmlAttr: 'onchange',
+        inputtype: TextInput
     }]
 };
 

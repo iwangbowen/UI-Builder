@@ -250,7 +250,13 @@ Vvveb.Components = {
 					else if (property.htmlAttr == "style") {
 						element = element.css(property.key, value);
 					}
-					else {
+					else if (property.noValueAttr) {
+						if (value) {
+							element = element.attr(property.htmlAttr, '');
+						} else {
+							element = element.removeAttr(property.htmlAttr);
+						}
+					} else {
 						element = element.attr(property.htmlAttr, value);
 					}
 
@@ -308,6 +314,10 @@ Vvveb.Components = {
 					value = value.split(" ").filter(function (el) {
 						return property.validValues.indexOf(el) != -1
 					});
+				}
+
+				if (property.noValueAttr) {
+					value = element.attr(property.htmlAttr) ? property.validValues : [];
 				}
 
 				property.inputtype.setValue(value);

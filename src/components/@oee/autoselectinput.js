@@ -30,6 +30,11 @@ const autoselectinput = {
         key: "dataUrl",
         htmlAttr: dataUrl,
         inputtype: TextInput
+    }, {
+        name: 'Onchange',
+        key: 'onchange',
+        htmlAttr: 'onchange',
+        inputtype: TextInput
     }]
 };
 
