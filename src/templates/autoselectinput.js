@@ -1,13 +1,15 @@
-import { dataUrl } from "../components/common";
+import { dataUrl, dataValueMapping, dataTextMapping } from "../components/common";
 import { autoselectinputSelector } from '../util/selectors';
 
 function template() {
     return `
         function generateOptions(el, response) {
+            var value = $(el).attr('${dataValueMapping}') || 'value';
+            var text = $(el).attr('${dataTextMapping}') || 'text';
             response.forEach(function (option) {
                 $('<option></option>')
-                    .val(option.value)
-                    .text(option.text)
+                    .val(option[value])
+                    .text(option[text])
                     .appendTo($(el));
             });
         }
@@ -18,7 +20,9 @@ function template() {
                 $.ajax({
                     url: $(el).attr('${dataUrl}'),
                     success: function (response) {
-                        generateOptions(el, response);
+                        if (response.code == 200) {
+                            generateOptions(el, response.data);
+                        }
                     }
                 });
             });

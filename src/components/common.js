@@ -60,9 +60,11 @@ const dataCalendarId = 'data-calendar-id';
 const dataConfigInfo = 'data-config-info';
 const dataAutoSelectId = 'data-auto-select-id';
 const dataButtonId = 'data-button-id';
-const dataUrl = 'data-url'
+const dataUrl = 'data-url';
+const dataValueMapping = 'data-value-mapping';
+const dataTextMapping = 'data-text-mapping';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
-    dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId
+    dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping
 };

@@ -1,6 +1,6 @@
 import { TextInput } from '../../inputs/inputs';
 import { autoselectinputid } from './ids';
-import { dataComponentId, dataUrl, dataAutoSelectId } from '../common';
+import { dataComponentId, dataUrl, dataAutoSelectId, dataValueMapping, dataTextMapping } from '../common';
 
 const autoselectinput = {
     nodes: ["select"],
@@ -16,6 +16,16 @@ const autoselectinput = {
            </div>
     `,
     properties: [{
+        name: 'Value Mapping',
+        key: 'valueMapping',
+        htmlAttr: dataValueMapping,
+        inputtype: TextInput
+    }, {
+        name: 'Text Mapping',
+        key: 'textMaping',
+        htmlAttr: dataTextMapping,
+        inputtype: TextInput
+    }, {
         name: "Data Url",
         key: "dataUrl",
         htmlAttr: dataUrl,
