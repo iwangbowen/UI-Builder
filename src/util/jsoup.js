@@ -11,9 +11,11 @@ import $ from '../../js/jquery.min';
 const alwaysTrue = () => true;
 
 // this refers to html element
-function removeTag({ name, filter = alwaysTrue }) {
+function removeTag({ name, init, filter = alwaysTrue }) {
+    let data;
+    init && (data = init(this));
     Array.from(this.getElementsByTagName(name))
-        .filter(filter)
+        .filter(filter.bind(data))
         .forEach(tag => tag.parentNode.removeChild(tag));
 }
 
