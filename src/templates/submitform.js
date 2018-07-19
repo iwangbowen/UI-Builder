@@ -6,7 +6,7 @@ function template() {
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         function ${functionName}(el, formId) {
             $.ajax({
-                url: config.fundodooWebDomainUrl + $(el).attr('data-url'),
+                url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
                 dataType: 'json',
                 method : 'POST',
                 data: (formId ? $('#formId') : $('form')).serializeJSON(),
