@@ -18,7 +18,7 @@ function template() {
                 return $(el).attr('${dataUrl}');
             }).forEach(function (el) {
                 $.ajax({
-                    url: $(el).attr('${dataUrl}'),
+                    url: config.fundodooWebDomainUrl + $(el).attr('${dataUrl}'),
                     success: function (response) {
                         if (response.code == 200) {
                             generateOptions(el, response.data);

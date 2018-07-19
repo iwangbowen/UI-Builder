@@ -10,7 +10,6 @@ import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/calendar';
 import { getStyle } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
-import $ from '../js/jquery.min';
 
 (function () {
 	var cache = {};

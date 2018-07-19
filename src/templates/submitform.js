@@ -4,10 +4,9 @@ const functionName = 'submitForm';
 function template() {
     return `
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
-        function ${functionName}(element, formId) {
+        function ${functionName}(el, formId) {
             $.ajax({
-                // url: config.fundodooWebDomainUrl + $(element).attr('data-url'),
-                url: 'http://localhost:8080/api/data',
+                url: config.fundodooWebDomainUrl + $(el).attr('data-url'),
                 dataType: 'json',
                 method : 'POST',
                 data: (formId ? $('#formId') : $('form')).serializeJSON(),
