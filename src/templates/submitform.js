@@ -3,6 +3,7 @@ import { dataTableId } from "../components/common";
 const functionName = 'submitForm';
 function template() {
     return `
+        // 右侧内容查询开始
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         function ${functionName}(el, formId) {
             $.ajax({
