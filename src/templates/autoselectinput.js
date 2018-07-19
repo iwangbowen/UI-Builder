@@ -13,7 +13,7 @@ function template() {
                     .appendTo($(el));
             });
         }
-        Array.from($('body').find('${autoselectinputSelector}'))
+        [].slice.call($('body').find('${autoselectinputSelector}'))
             .filter(function (el) {
                 return $(el).attr('${dataUrl}');
             }).forEach(function (el) {
