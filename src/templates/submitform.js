@@ -10,6 +10,7 @@ function template() {
                 dataType: 'json',
                 method : 'POST',
                 data: (formId ? $('#formId') : $('form')).serializeJSON(),
+                fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function (rs, status, xhr) {
                     if (rs.code == 200) {
                         gridOptionsIdentifier.api.setRowData(rs.data);
