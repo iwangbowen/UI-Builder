@@ -1,4 +1,38 @@
 "use strict";
+var getFundodooTime = function(){
+	var nowTime = new Date();
+	var year = nowTime.getFullYear();
+    var month = nowTime.getMonth() + 1;
+    var day = nowTime.getDate();
+        
+    var hh = nowTime.getHours();
+    var mm = nowTime.getMinutes();
+    var ss = nowTime.getSeconds();
+        
+    if(month < 10){
+    	month = "0" + month;
+    }
+                
+    if(day < 10){
+    	day = "0" + day;
+    }
+        
+    if(hh < 10){
+    	hh = "0" + hh;
+    }
+            
+    if (mm < 10){
+    	mm = "0" + mm;
+    }
+         
+    if (ss < 10){
+    	ss = "0" + ss;
+    }
+       
+	var fundodooTime = "" + year + month + day + hh + mm + ss + nowTime.getMilliseconds();
+	return fundodooTime;  
+};
+
 var getSeq = function(){
 	var seq = sessionStorage.getItem("FUNDODOO_SEQ")
 	if(seq){
@@ -7,10 +41,10 @@ var getSeq = function(){
 		seq = 1;
 	}
 	sessionStorage.setItem('FUNDODOO_SEQ',seq);
-	return "PC"+sessionStorage.getItem("FUNDODOO_USERID")+new Date().getTime()+seq;
+	return "PC"+sessionStorage.getItem("FUNDODOO_USERID")+getFundodooTime()+seq;
 };
 
-var urlFormat = function(url){
+var urlFormat = function(url,menuId){
 	if(url != null){
 		if(url.indexOf("http") >= 0){
 			if(url.indexOf("?") >= 0){
@@ -21,7 +55,7 @@ var urlFormat = function(url){
 		}else if("#" === url.charAt(url.length - 1)){
 			
 		}else{
-			url = config.fundodooWebDomainUrl + url;
+			url = config.fundodooWebDomainUrl + url + "?menuId=" + menuId;
 		}
 	}
 	return url;
@@ -39,7 +73,7 @@ $.ajaxSetup({
         "Powered-By": "https://www.fundodoo.com/",
         "Accept": "application/json; charset=utf-8",
         "tok": sessionStorage.getItem("FUNDODOO_TOKEN"),
-        "sid": getSeq(),
+        "sid":getSeq(),
         "Authorization": sessionStorage.getItem("FUNDODOO_TOKEN")
 	}
 });
@@ -68,11 +102,10 @@ var login = function(){
 		},
 		success: function(rs,status,xhr){
 			if("200" === rs.code){
-			debugger;
 				sessionStorage.setItem('FUNDODOO_TOKEN',rs.data.tok);
-				sessionStorage.setItem('FUNDODOO_LOGINOWNER',rs.data.loginOwner);
-				sessionStorage.setItem('FUNDODOO_USERID',rs.data.userId);
-				sessionStorage.setItem('FUNDODOO_USERNNAME',rs.data.userName);
+				sessionStorage.setItem('FUNDODOO_LOGINOWNER',rs.data.sessionUser.loginOwner);
+				sessionStorage.setItem('FUNDODOO_USERID',rs.data.sessionUser.userId);
+				sessionStorage.setItem('FUNDODOO_USERNNAME',rs.data.sessionUser.userName);
 				top.location.href = config.fundodooWebDomainUrl+'index.html';
 			}else{
 				//TODO  \u62a5\u9519\u4fe1\u606f
@@ -152,6 +185,7 @@ $(document).ready(function() {
 	            	layer.close(fundodooIndex);
 	            },
 	          	success:function(DT,TS,XHR){
+	          	debugger;
 	          		if("401" === DT.code){
 	          			sessionStorage.clear();
 						top.location.href = config.fundodooWebDomainUrl+'html/login.html';
@@ -184,7 +218,8 @@ $(document).ready(function() {
 	        var _opt = $.extend(opt,{
 	        	beforeSend:function(XHR,ST){
 	            	//\u63d0\u4ea4\u524d\u56de\u8c03\u65b9\u6cd5 
-	            	if (sessionStorage.getItem('FUNDODOO_TOKEN') || ST.url === config.login) {
+	            	if (sessionStorage.getItem('FUNDODOO_TOKEN') || ST.url === config.whiteList.login
+	            	|| ST.url === config.whiteList.allOwnerList) {
 	            		return fn.beforeSend(XHR,ST);		
 					 } else {
 					      top.location.href = config.fundodooWebDomainUrl + 'html/login.html';
