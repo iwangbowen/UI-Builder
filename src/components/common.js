@@ -1,3 +1,5 @@
+import $ from '../../js/jquery.min';
+
 const bgcolorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark", "bg-white"];
 
 const bgcolorSelectOptions =
@@ -59,9 +61,12 @@ const dataTableId = 'data-table-id';
 const dataCalendarId = 'data-calendar-id';
 const dataConfigInfo = 'data-config-info';
 const dataAutoSelectId = 'data-auto-select-id';
-const dataUrl = 'data-url'
+const dataButtonId = 'data-button-id';
+const dataUrl = 'data-url';
+const dataValueMapping = 'data-value-mapping';
+const dataTextMapping = 'data-text-mapping';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
-    dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId
+    dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping
 };

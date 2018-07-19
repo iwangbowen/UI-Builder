@@ -1,7 +1,18 @@
-import { dataTableId, dataAutoSelectId } from '../components/common';
+import { dataTableId, dataAutoSelectId, dataButtonId } from '../components/common';
+import $ from '../../js/jquery.min';
 
 const tableSelector = `[${dataTableId}]`;
 const emptyChildrenSelectors = [tableSelector];
 const autoselectinputSelector = `[${dataAutoSelectId}]`;
+const submitButtonSelector = `button[${dataButtonId}]`;
+const parentSelector = [tableSelector].join(', ');
 
-export { emptyChildrenSelectors, tableSelector, autoselectinputSelector };
+function getParentOrSelf(node) {
+    const parents = $(node).parents(parentSelector);
+    return parents.length ? parents[0] : node;
+}
+
+export {
+    emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
+    parentSelector, getParentOrSelf
+};

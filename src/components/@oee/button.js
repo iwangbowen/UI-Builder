@@ -1,10 +1,12 @@
 import { LinkInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
+import { dataButtonId, dataComponentId } from "../common";
+import { buttonid } from './ids';
 
 const button = {
     classes: ["btn", "btn-link", 'btn@oee'],
     name: "Button",
     image: "icons/button.svg",
-    html: `<button type="button" class="btn@oee draggable">
+    html: `<button ${dataComponentId}=${buttonid} ${dataButtonId} type="button" class="draggable">
             <span class="glyphicon glyphicon-search">Search</span>
            </button>`,
     properties: [{
@@ -91,6 +93,11 @@ const button = {
         name: "Target",
         key: "target",
         htmlAttr: "target",
+        inputtype: TextInput
+    }, {
+        name: 'onclick',
+        key: 'onclick',
+        htmlAttr: 'onclick',
         inputtype: TextInput
     }, {
         name: 'Data Url',

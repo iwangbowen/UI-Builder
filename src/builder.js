@@ -1,13 +1,15 @@
 import { SectionInput } from './inputs/inputs';
 import {
-	removeUnusedTags, emptyChildren, generateTableScript,
-	generateCalendarOnclickAttr, generateSelectOptionsScript
+	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
+	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
-import { dataComponentId, dataCalendarId } from './components/common'
+import { dataComponentId } from './components/common'
 import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/calendar';
+import { getStyle } from './util/dom';
+import { getParentOrSelf } from './util/selectors';
 
 (function () {
 	var cache = {};
@@ -49,23 +51,6 @@ var delay = (function () {
 		timer = setTimeout(callback, ms);
 	};
 })();
-
-function getStyle(el, styleProp) {
-	value = "";
-	//var el = document.getElementById(el);
-	if (el.style && el.style.length > 0 && el.style[styleProp])//check inline
-		var value = el.style[styleProp];
-	else
-		if (el.currentStyle)	//check defined css
-			var value = el.currentStyle[styleProp];
-		else if (window.getComputedStyle) {
-			var value = document.defaultView.getDefaultComputedStyle ?
-				document.defaultView.getDefaultComputedStyle(el, null).getPropertyValue(styleProp) :
-				window.getComputedStyle(el, null).getPropertyValue(styleProp);
-		}
-
-	return value;
-}
 
 if (Vvveb === undefined) var Vvveb = {};
 
@@ -264,7 +249,13 @@ Vvveb.Components = {
 					else if (property.htmlAttr == "style") {
 						element = element.css(property.key, value);
 					}
-					else {
+					else if (property.noValueAttr) {
+						if (value) {
+							element = element.attr(property.htmlAttr, '');
+						} else {
+							element = element.removeAttr(property.htmlAttr);
+						}
+					} else {
 						element = element.attr(property.htmlAttr, value);
 					}
 
@@ -322,6 +313,10 @@ Vvveb.Components = {
 					value = value.split(" ").filter(function (el) {
 						return property.validValues.indexOf(el) != -1
 					});
+				}
+
+				if (property.noValueAttr) {
+					value = element.attr(property.htmlAttr) ? property.validValues : [];
 				}
 
 				property.inputtype.setValue(value);
@@ -702,6 +697,7 @@ Vvveb.Builder = {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
 
 			if (event.target) {
+				const node = getParentOrSelf(event.target);
 				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
 					$('#attribute-settings')
 						.addClass('active')
@@ -710,8 +706,8 @@ Vvveb.Builder = {
 					$('#left-panel').hide();
 					$('#right-panel').show();
 				}
-				self.selectNode(event.target);
-				self.loadNodeComponent(event.target);
+				self.selectNode(node);
+				self.loadNodeComponent(node);
 
 				event.preventDefault();
 				return false;
@@ -950,7 +946,8 @@ Vvveb.Builder = {
 		const { doctype, html } = this.getHtml();
 		return html_beautify(`${doctype}
 							  ${htmlGenerator(html, removeUnusedTags, emptyChildren,
-				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript)}`,
+				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
+				generateSubmitFormScript, generateButtonOnclickAttr)}`,
 			{
 				preserve_newlines: false,
 				indent_inner_html: true,

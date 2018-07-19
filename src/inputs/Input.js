@@ -1,3 +1,5 @@
+import $ from '../../js/jquery.min';
+
 const Input = {
 	
 	init: function(name) {

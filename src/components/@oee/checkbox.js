@@ -12,11 +12,16 @@ const checkbox = {
              </div>
             </div>`,
     properties: [{
+        name: 'Onclick',
+        key: 'onclick',
+        htmlAttr: 'onclick',
+        inputtype: TextInput
+    }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",
         inputtype: TextInput
-    }]
+    },]
 };
 
 export default checkbox;

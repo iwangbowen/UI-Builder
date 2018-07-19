@@ -1,7 +1,8 @@
 import Vvveb from '../../builder';
-import { TextValueInput, ButtonInput } from '../../inputs/inputs';
+import { TextValueInput, ButtonInput, TextInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
+import $ from '../../../js/jquery.min';
 
 const autoselectinput = {
     nodes: ["select"],
@@ -10,7 +11,7 @@ const autoselectinput = {
     html: `<div class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <select ${dataComponentId}="${manualselectinputid}" class="form-control" lustyle="height: 2.8rem;width:13rem">
+                    <select ${dataComponentId}="${manualselectinputid}" class="form-control fundodooSelect" lustyle="height:2.8rem;width:13rem">
                         <option value="value1">Text 1</option>
                         <option value="value2">Text 2</option>
                         <option value="value3">Text 3</option>
@@ -85,6 +86,11 @@ const autoselectinput = {
             Vvveb.Components.render(manualselectinputid);
             return node;
         }
+    }, {
+        name: 'Onchange',
+        key: 'onchange',
+        htmlAttr: 'onchange',
+        inputtype: TextInput
     }]
 };
 

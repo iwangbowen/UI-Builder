@@ -1,6 +1,7 @@
 import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
 import { dataComponentId, dataTableId } from '../common';
 import Vvveb from '../../builder';
+import $ from '../../../js/jquery.min';
 
 const tables = {};
 let index = 1;
@@ -16,19 +17,34 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "ag-Grid",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue"></div>`,
+    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue horizontal-stripes"></div>`,
+    onDrop(node) {
+        $(node)
+            .css({
+                height: 'calc(100% - 25px)',
+                width: '100%',
+                position: '',
+                left: '',
+                top: '',
+                transform: ''
+            })
+            .removeClass('draggable');
+        Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea').append($(node).prop('outerHTML'));
+        $(node).remove();
+    },
     getTable(key) {
         return tables[key];
     },
     beforeInit: function (node) {
+        $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {
             const id = index++;
             $(node).attr(dataTableId, id);
             tables[id] = {
                 columnDefs: [
-                    { headerName: "header", field: "filed" },
-                    { headerName: "header", field: "field" },
-                    { headerName: "header", field: "field" }
+                    { headerName: "header", field: "filed", width: '' },
+                    { headerName: "header", field: "field", width: '' },
+                    { headerName: "header", field: "field", width: '' }
                 ],
                 enableSorting: false,
                 enableFilter: false
@@ -48,7 +64,8 @@ const table = {
                 data: {
                     id: 'tableheader@oee',
                     headerName: cur.headerName,
-                    field: cur.field
+                    field: cur.field,
+                    width: cur.width
                 },
                 onChange: function (node, value, input) {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
@@ -59,7 +76,11 @@ const table = {
                         tables[$(node).attr(dataTableId)].columnDefs = colDefs;
                         setColumnDefsAndRender(node, colDefs);
                     } else {
-                        colDefs[keyIndex][input.name] = value;
+                        if (input.name == 'width') {
+                            colDefs[keyIndex][input.name] = value && parseInt(value);
+                        } else {
+                            colDefs[keyIndex][input.name] = value;
+                        }
                         // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
                         tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
                     }
@@ -130,13 +151,14 @@ const table = {
                 const colDefs = tables[$(node).attr(dataTableId)].columnDefs;
                 colDefs.push({
                     headerName: 'header',
-                    field: 'field'
+                    field: 'field',
+                    width: ''
                 });
 
                 setColumnDefsAndRender(node, colDefs);
                 return node;
             }
-        },]
+        }]
 };
 
 export default table;

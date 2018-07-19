@@ -1,4 +1,4 @@
-import { TextInput, SelectInput } from '../../inputs/inputs';
+import { TextInput, SelectInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { inputTypes, inputTypeNames } from '../inputTypes';
 import { dataComponentId } from '../common';
 
@@ -19,6 +19,16 @@ const textinput = {
         htmlAttr: "value",
         inputtype: TextInput
     }, {
+        name: 'Onchange',
+        key: 'onchange',
+        htmlAttr: 'onchange',
+        inputtype: TextInput
+    }, {
+        name: 'Maxlength',
+        key: 'maxlength',
+        htmlAttr: 'maxlength',
+        inputtype: NumberInput
+    }, {
         name: "Placeholder",
         key: "placeholder",
         htmlAttr: "placeholder",
@@ -29,12 +39,23 @@ const textinput = {
         htmlAttr: 'name',
         inputtype: TextInput
     }, {
-        name: 'type',
+        name: 'Type',
         key: 'type',
         htmlAttr: 'type',
         inputtype: SelectInput,
         data: {
             options: inputTypes
+        }
+    }, {
+        name: "Readonly",
+        key: "readonly",
+        htmlAttr: 'readonly',
+        validValues: ["readonly"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'readonly',
+            off: ''
         }
     }]
 };

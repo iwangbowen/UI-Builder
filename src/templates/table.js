@@ -8,7 +8,7 @@ function template(node, table) {
     return `
     var columnDefs${key} = [
         ${table.getTable(key).columnDefs.map(def => {
-            return `{headerName: "${def.headerName}", field: "${def.field}"}`;
+            return `{headerName: "${def.headerName}", field: "${def.field}", width: ${def.width ? def.width : '""'}}`;
         }).join(',')}
     ];
     var gridOptions${key} = {

@@ -9,6 +9,11 @@ const radiobutton = {
             <div style="display:inline;"><input class="radioInput" name="Fruit" type="radio" value="" /><span ${dataComponentId}="html/span@oee">单选1</span></div>
            </div>`,
     properties: [{
+        name: 'Onclick',
+        key: 'onclick',
+        htmlAttr: 'onclick',
+        inputtype: TextInput
+    }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",
