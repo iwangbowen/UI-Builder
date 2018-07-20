@@ -1,7 +1,7 @@
 function isAlign(targetOffset, currentOffset) {
     return {
-        isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 1,
-        isVerticalAlign: Math.abs(targetOffset.left - currentOffset.left) <= 1
+        isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 0.7,
+        isVerticalAlign: Math.abs(targetOffset.left - currentOffset.left) <= 0.7
     };
 }
 
@@ -13,9 +13,10 @@ function drawAlignmentLine(target) {
     let horizontalLineExists = false;
     let verticalLineExists = false;
     const targetOffset = $(target).offset();
-
-    Array.from($('body *:visible:not(script)'))
-        .filter(currentValue => currentValue != target)
+    // 排除自身元素和该元素子元素
+    [...$('body *:visible:not(script)')
+        .not(target)
+        .not($(target).find('*'))]
         .some(currentValue => {
             const currentOffset = $(currentValue).offset();
             const { isHorizontalAlign, isVerticalAlign } = isAlign(targetOffset, currentOffset);
