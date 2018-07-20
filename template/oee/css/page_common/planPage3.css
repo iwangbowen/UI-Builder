@@ -352,6 +352,35 @@ html, body {
     margin-right: 14px;
 }
 
+button.search-btn {
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    position: absolute;
+    background-color: #3385ff;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    top: 3px;
+    right: 21px;
+    font-weight: normal;
+    line-height: 30px;
+    touch-action: manipulation;
+    cursor: pointer;
+    border-radius: 5px;
+    /*    font-family: inherit;*/
+    font-family: 宋体;
+    color: #fff;
+    border-color: #2e6da4;
+    border-bottom: 1px solid #2d78f4;
+    /* add margin-right by makeqiang 2018-3-29 09:12:02  */
+    margin-right: 14px;
+}
+
 .containerleft .bottom-searchButton button:hover {
     background-color: #317ef3;
     border-bottom: 1px solid #2868c8;

@@ -6,7 +6,7 @@ const button = {
     classes: ["btn", "btn-link", 'btn@oee'],
     name: "Button",
     image: "icons/button.svg",
-    html: `<button ${dataComponentId}=${buttonid} ${dataButtonId} type="button" class="draggable">
+    html: `<button ${dataComponentId}=${buttonid} ${dataButtonId} type="button" class="draggable search-btn">
             <span class="glyphicon glyphicon-search">Search</span>
            </button>`,
     properties: [{
