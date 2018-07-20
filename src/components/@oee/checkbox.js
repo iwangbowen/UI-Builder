@@ -7,7 +7,7 @@ const checkbox = {
     image: "icons/checkbox.svg",
     html: `<div class="everyOutbox-right draggable">
              <div style="display:inline;">
-                <input ${dataComponentId}="html/checkbox@oee" type="checkbox" class="checkboxInput" id="\${it.site}eprCheck" name="paramItems[\${loop.index}].eprCheck" value="true"/>
+                <input ${dataComponentId}="html/checkbox@oee" type="checkbox" class="checkboxInput"/>
                 <label ${dataComponentId}="html/span@oee">选项1</label>
              </div>
             </div>`,

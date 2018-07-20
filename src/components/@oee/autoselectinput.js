@@ -35,6 +35,11 @@ const autoselectinput = {
         key: 'onchange',
         htmlAttr: 'onchange',
         inputtype: TextInput
+    }, {
+        name: "Name",
+        key: "name",
+        htmlAttr: "name",
+        inputtype: TextInput
     }]
 };
 
