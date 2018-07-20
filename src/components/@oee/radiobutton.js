@@ -14,6 +14,11 @@ const radiobutton = {
         htmlAttr: 'onclick',
         inputtype: TextInput
     }, {
+        name: "Value",
+        key: "value",
+        htmlAttr: "value",
+        inputtype: TextInput
+    }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",

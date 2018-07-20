@@ -10,6 +10,11 @@ const checkbox = {
         key: "name",
         htmlAttr: "name",
         inputtype: TextInput
+    }, {
+        name: "Value",
+        key: "value",
+        htmlAttr: "value",
+        inputtype: TextInput
     }]
 };
 
