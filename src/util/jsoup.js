@@ -7,6 +7,7 @@ import table from '../components/@oee/table';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './calendar';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import $ from '../../js/jquery.min';
+import uglify from 'uglifyjs-browser';
 
 const alwaysTrue = () => true;
 
@@ -59,12 +60,6 @@ function generateButtonOnclickAttr(el) {
     return el;
 }
 
-function getExternalContent(url) {
-    return $.ajax({
-        url
-    })
-}
-
 function concatContent(prev, cur) {
     return prev.then(prevContent =>
         cur.then(curContent => `
@@ -72,11 +67,6 @@ function concatContent(prev, cur) {
             ${curContent}
         `)
     );
-}
-
-function constructURL(el) {
-    const uri = el.tagName == 'LINK' ? 'href' : 'src';
-    return new URL($(el).attr(uri), new URL($('#iframeId').attr('src'), el.baseURI)).toString();
 }
 
 function appendScript(el, jsStr) {
@@ -89,35 +79,52 @@ function appendStylesheet(el, styleStr) {
     return el;
 }
 
-function replaceWithExternalStylesheet(el) {
-    return [...$(el).find('link[rel=stylesheet]')]
-        .map(getStylesheetLinkContent)
-        .reduce(concatContent, Promise.resolve(''))
-        .then(content => {
-            $(el).remove('link[rel=stylesheet]');
-            return appendStylesheet(el, content);
-        });
+function constructURL(el) {
+    const uri = el.tagName == 'LINK' ? 'href' : 'src';
+    return new URL($(el).attr(uri), new URL($('#iframeId').attr('src'), el.baseURI)).toString();
 }
 
-function getStylesheetLinkContent(link) {
-    return getExternalContent(constructURL(link));
+function getExternalContent(tag) {
+    return $.ajax({
+        url: constructURL(tag)
+    });
+}
+
+function minify(code) {
+    return uglify.minify(code, {
+        compress: true,
+        output: {
+            beautify: false,
+            indent_level: 0
+        }
+    }).code;
 }
 
 function getScriptContent(script) {
     if ($(script).attr('src')) {
-        return getExternalContent(constructURL(script));
+        return getExternalContent(script);
     } else {
         return Promise.resolve($(script).text());
     }
 }
 
 function replaceWithExternalScript(el) {
-    return [...$(el).find('script[src]')]
+    return [...$(el).find('script')]
         .map(getScriptContent)
         .reduce(concatContent, Promise.resolve(''))
         .then(content => {
             $(el).find('script').remove();
             return appendScript(el, content);
+        });
+}
+
+function replaceWithExternalStylesheet(el) {
+    return [...$(el).find('link[rel=stylesheet]')]
+        .map(getExternalContent)
+        .reduce(concatContent, Promise.resolve(''))
+        .then(content => {
+            $(el).find('link[rel=stylesheet]').remove();
+            return appendStylesheet(el, content);
         });
 }
 

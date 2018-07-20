@@ -1091,7 +1091,7 @@ Vvveb.Gui = {
 
 	downloadWithExternalFiles() {
 		Vvveb.Builder.getBeautifiedHtml(true)
-			.then(html => downloadAsTextFile('index', html));
+			.then(html => downloadAsTextFile('index.html', html));
 	},
 
 	preview: function () {
