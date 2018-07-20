@@ -81,7 +81,7 @@ function appendStylesheet(el, styleStr) {
 
 function constructURL(el) {
     const uri = el.tagName == 'LINK' ? 'href' : 'src';
-    return new URL($(el).attr(uri), new URL($('#iframeId').attr('src'), el.baseURI)).toString();
+    return new URL($(el).attr(uri), new URL($('#iframeId').attr('src'), el.baseURI)).href;
 }
 
 function getExternalContent(tag) {
