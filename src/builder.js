@@ -1,7 +1,8 @@
 import { SectionInput } from './inputs/inputs';
 import {
 	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr
+	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
+	replaceWithExternalFiles, beautify_options
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
@@ -936,23 +937,23 @@ Vvveb.Builder = {
 
 	},
 
-	getBeautifiedHtml() {
+	getBeautifiedHtml(withExternalFiles = false) {
 		/*
 		-I, --indent-inner-html            Indent <head> and <body> sections. Default is false.
 		-U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
 										   use empty array to denote that no tags should not be reformatted
 		 */
 
-		const { doctype, html } = this.getHtml();
-		return html_beautify(`${doctype}
-							  ${htmlGenerator(html, removeUnusedTags, emptyChildren,
-				generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
-				generateSubmitFormScript, generateButtonOnclickAttr)}`,
-			{
-				preserve_newlines: false,
-				indent_inner_html: true,
-				unformatted: []
-			});
+		let { doctype, html } = this.getHtml();
+		html = htmlGenerator(html, removeUnusedTags, emptyChildren,
+			generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
+			generateSubmitFormScript, generateButtonOnclickAttr);
+		return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
+			${html}
+		`, beautify_options)) : html_beautify(`
+			${doctype}
+			${html}
+		`, beautify_options);
 	},
 
 	getHtml: function () {
@@ -1086,6 +1087,11 @@ Vvveb.Gui = {
 
 	download() {
 		downloadAsTextFile('index', Vvveb.Builder.getBeautifiedHtml());
+	},
+
+	downloadWithExternalFiles() {
+		Vvveb.Builder.getBeautifiedHtml(true)
+			.then(html => downloadAsTextFile('index', html));
 	},
 
 	preview: function () {

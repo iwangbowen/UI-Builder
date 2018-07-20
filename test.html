@@ -17,15 +17,17 @@
     </div>
     <div id="yes" onclick='"helo"' style="left: 20px; height: 50px; background: orange;"></div>
     <div id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div>
-    <script src="js/jquery.min.js"></script>
+    <script id="script1" src="js/jquery.min.js"></script>
     <script src="./libs/ag-grid/ag-grid.min.noStyle.js"></script>
-    <script>
-        // $('div').offset({
-        //     left: 100,
-        //     right: 100
-        // })
+    <script id="script2">
+        function hello() {
+
+        }
     </script>
     <script>
+    </script>
+    <script>
+        console.log($('script2').prop('baseURI'));
         // specify the columns
         var columnDefs = [
             { headerName: "Make", field: "make" },

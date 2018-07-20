@@ -19,10 +19,9 @@ function template() {
             }).forEach(function (el) {
                 $.ajax({
                     url: config.fundodooApiDomainUrl + $(el).attr('${dataUrl}'),
+                    async: true,
                     success: function (response) {
-                        if (response.code == 200) {
-                            generateOptions(el, response.data);
-                        }
+                        generateOptions(el, response.data);
                     }
                 });
             });

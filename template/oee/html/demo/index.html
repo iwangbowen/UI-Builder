@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="醉探索戈壁(https://blog.fundodoo.com/)">
+        <meta name="author" content="醉探索戈壁(https://blog.fundodoo.com/)">
+        <title>Demo(https://www.fundodoo.com/)</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome4.6.min.css" rel="stylesheet">
+        <!-- <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style4.1.0.min.css?v=4.1.0" rel="stylesheet"> -->
+        <link rel="stylesheet" href="../../css/page_common/planPage3.css">
+        <link rel="stylesheet" href="../../js/plugins/ag-grid/ag-grid.css"> </head>
+
+    <body class="fixed-sidebar full-height-layout gray-bg  pace-done" style="overflow:hidden">
+        <div class="pace  pace-inactive">
+            <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+                <div class="pace-progress-inner"></div>
+            </div>
+            <div class="pace-activity"></div>
+        </div>
+        <div class="fullpagearea">
+            <div class="fullpagoutbox">
+                <div id="carea" class="containerarea">
+                    <div class="leftBefore">
+                        <div class="show-icon glyphicon glyphicon-chevron-right"> </div>
+                        <div class="hide-icon glyphicon glyphicon-chevron-left"> </div>
+                    </div>
+                    <div id="cleft" class="containerleft" style="width: 275px;">
+                        <div class="searchInput">
+                            <div class="btn-group ">
+                                <!-- <select class="form-control selectpicker" multiple="multiple" id="siteSelect">
+                            <option value="site-one">T1</option>
+                            <option value="site-two">T2</option>
+                            <option value="site-three">T3</option>
+                        </select> -->
+                            </div>
+                            <!-- <div class="iconarea">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="arrow-down-Open" contenteditable="true">
+                        <ul >
+                        <li><a href="javascript:void(0)">AAAAAA</a></li>
+                        <li><a href="javascript:void(0)" >Glass</a></li>
+                        <li><a href="javascript:void(0)" >LLLLL</a></li>
+                    </ul>
+                    </div> --></div>
+                        <div style="clear:both;"></div>
+                        <form class="form-box" action="">
+                            <div class="searcharea">
+                                <!--//以下结构是为了方便模板制作-->
+                                <div class="siteOutbox">
+                                    <!--  siteOutbox为了解决拖拽滚动条时site掉下去的问题-->
+                                    <div class="everySite site-one">
+                                        <div class="Button-template" style="height: 100%;">
+                                            <div class="bigTittle">
+                                                <span></span>
+                                            </div>
+                                            <div class="allButton" style="height: calc(100% - 28px);">
+                                                <!--搜索条件text开始-->
+                                                <div class="allButton-text dropzone" style="height: 100%;"> </div>
+                                                <!--搜索条件text结束-->
+                                                <!--搜索条件控件开始-->
+                                                <div class="allButton-button dropzone" style="height: 100%;"> </div>
+                                                <!--搜索条件控件结束-->
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <!--//以上结构是为了方便模板制作-->
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div class="bottom-searchButton dropzone">
+                                <button type="button" class="draggable" data-button-id="" data-component-id="html/button@oee" onclick="submitForm(this)">
+                                    <span class="glyphicon glyphicon-search">Search</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="cmiddle" class="containerMiddle" style="left: 275px;">
+                        <div class="innerbox"></div>
+                    </div>
+                    <div id="cright" class="containerRight" style="left: calc(287px);">
+                        <div class="allContent">
+                            <div class="topContent">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="everyBox col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="boxarea">
+                                                <div class="tittle">
+                                                    <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>
+                                                    <strong>Demo Title</strong>
+                                                    <div class="icon" title="最大化"></div>
+                                                </div>
+                                                <!-- 右侧内容区开始 -->
+                                                <!-- <div>
+                                                Table
+                                            </div> -->
+                                                <!-- 右侧内容区结束 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="openPage">
+                        <div class="openPage-top">
+                            <span class="top-tittle">top-tittle</span>
+                            <span class="closespan  fa fa-times"></span>
+                        </div>
+                        <div class="openPage-body" id="openPageCHart"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../js/plugins/datepicker/WdatePicker.js"></script>
+        <script src="../../js/bootstrap.min.js?v=3.3.7" type="text/javascript"></script>
+        <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../../js/plugins/layer/layer.min.js" type="text/javascript"></script>
+        <script src="../../js/config.js" type="text/javascript"></script>
+        <script src="../../js/plugins/fundodoo.js" type="text/javascript"></script>
+        <script src="../../js/plugins/pace/pace.min.js" type="text/javascript"></script>
+        <!-- 操作提示 -->
+        <script src="../../js/plugins/noty/jquery.noty.packaged.js" type="text/javascript"></script>
+        <script src="../../js/page_common/fundodooPageTemplate.js" type="text/javascript"></script>
+        <script src="../../js/page_common/common.js" type="text/javascript"></script>
+        <script src="../../js/plugins/jquery.serializejson.min.js"></script>
+        <script src="../../js/plugins/ag-grid/ag-grid.min.noStyle.js"></script>
+        <!-- 功能页面javascript开始 -->
+        <script type="text/javascript">
+            //条件控件初始化
+            //条件控件结束
+            var add = function() {}
+            var edit = function() {}
+            var del = function() {}
+            //右侧内容查询结束
+            $(document).ready(function() {});
+        </script>
+        <!-- 功能页面javascript结束 -->
+        <script>
+            function generateOptions(el, response) {
+                var value = $(el).attr('data-value-mapping') || 'value';
+                var text = $(el).attr('data-text-mapping') || 'text';
+                response.forEach(function(option) {
+                    $('<option></option>').val(option[value]).text(option[text]).appendTo($(el));
+                });
+            }
+            [].slice.call($('body').find('[data-auto-select-id]')).filter(function(el) {
+                return $(el).attr('data-url');
+            }).forEach(function(el) {
+                $.ajax({
+                    url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
+                    success: function(response) {
+                        if (response.code == 200) {
+                            generateOptions(el, response.data);
+                        }
+                    }
+                });
+            });
+        </script>
+        <script>
+            // 右侧内容查询开始
+            var gridOptionsIdentifier = window['gridOptions' + $('[data-table-id]').attr('data-table-id')];
+
+            function submitForm(el, formId) {
+                $.ajax({
+                    url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
+                    dataType: 'json',
+                    method: 'POST',
+                    data: (formId ? $('#formId') : $('form')).serializeJSON(),
+                    fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                    success: function(rs, status, xhr) {
+                        if (rs.code == 200) {
+                            gridOptionsIdentifier.api.setRowData(rs.data);
+                        }
+                    }
+                });
+            }
+        </script>
+    </body>
+
+</html>
