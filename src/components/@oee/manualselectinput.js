@@ -14,7 +14,6 @@ const autoselectinput = {
                     <select ${dataComponentId}="${manualselectinputid}" class="form-control fundodooSelect" lustyle="height:2.8rem;width:13rem">
                         <option value="value1">Text 1</option>
                         <option value="value2">Text 2</option>
-                        <option value="value3">Text 3</option>
                     </select>
                 </div>
             </div>
@@ -61,32 +60,13 @@ const autoselectinput = {
         });
 
         //add remaining properties to generated column properties
-        properties.push(this.properties[0]);
+        properties.push(...this.properties);
 
         this.properties = properties;
         return node;
     },
 
     properties: [{
-        name: "Option",
-        key: "option1",
-        inputtype: TextValueInput
-    }, {
-        name: "Option",
-        key: "option2",
-        inputtype: TextValueInput
-    }, {
-        name: "",
-        key: "addChild",
-        inputtype: ButtonInput,
-        data: { text: "Add option" },
-        onChange: function (node) {
-            $(node).append('<option value="value">Text</option>');
-            //render component properties again to include the new column inputs
-            Vvveb.Components.render(manualselectinputid);
-            return node;
-        }
-    }, {
         name: 'Onchange',
         key: 'onchange',
         htmlAttr: 'onchange',
@@ -96,6 +76,17 @@ const autoselectinput = {
         key: "name",
         htmlAttr: "name",
         inputtype: TextInput
+    }, {
+        name: "Add option",
+        key: "addChild",
+        inputtype: ButtonInput,
+        data: { text: "Add option" },
+        onChange: function (node) {
+            $(node).append('<option value="value">Text</option>');
+            //render component properties again to include the new column inputs
+            Vvveb.Components.render(manualselectinputid);
+            return node;
+        }
     }]
 };
 
