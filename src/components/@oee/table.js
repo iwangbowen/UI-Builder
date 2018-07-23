@@ -16,7 +16,7 @@ const table = {
     nodes: ["table"],
     classes: ["table"],
     image: "icons/table.svg",
-    name: "ag-Grid",
+    name: "Base ag-Grid",
     html: `<div style="width: 500px; height: 200px;" class="draggable ag-theme-blue horizontal-stripes"></div>`,
     getTable(key) {
         return tables[key];
