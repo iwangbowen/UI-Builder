@@ -67,9 +67,6 @@ const calendar = {
             }, {
                 value: 'yyyy',
                 text: 'yyyy'
-            }, {
-                value: 'yyyy年M月',
-                text: 'yyyy年M月'
             }]
         }
     }, {

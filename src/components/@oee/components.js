@@ -41,11 +41,12 @@ import calendar from './calendar';
 import text from './text';
 import autoselectinput from './autoselectinput';
 import manualselectinput from './manualselectinput';
+import commontable from './commontable';
 
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
     table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, calendar, text,
-    autoselectinput, manualselectinput
+    autoselectinput, manualselectinput, commontable
 };

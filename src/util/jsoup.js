@@ -4,10 +4,12 @@ import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
 import table from '../components/@oee/table';
+import commontable from '../components/@oee/commontable';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './calendar';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import $ from '../../js/jquery.min';
 import uglify from 'uglifyjs-browser';
+import { dataTableId } from '../components/common';
 
 const alwaysTrue = () => true;
 
@@ -33,7 +35,7 @@ function emptyChildren(el) {
 function generateTableScript(el) {
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
-                ${tableTemplate($(element), table)}`;
+                ${tableTemplate($(element), $(prev).attr(dataTableId) ? table : commontable)}`;
     }, '');
     return appendScript(el, jsStr);
 }
