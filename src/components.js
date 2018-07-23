@@ -86,6 +86,7 @@ Vvveb.Components.extend('_base', 'html/calendar@oee', _oee.calendar);
 Vvveb.Components.extend('_base', 'html/text@oee', _oee.text);
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
+Vvveb.Components.extend('_base', _oee_ids.tableid, _oee.table);
 Vvveb.Components.extend('_base', _oee_ids.customtableid, _oee.customtable);
 Vvveb.Components.extend('_base', _oee_ids.commontableid, _oee.commontable);
 

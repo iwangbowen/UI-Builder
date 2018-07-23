@@ -1,5 +1,5 @@
 import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
-import { dataTableId } from '../common';
+import { dataTableId, dataComponentId } from '../common';
 import Vvveb from '../../builder';
 import $ from '../../../js/jquery.min';
 
@@ -9,7 +9,7 @@ function setColumnDefsAndRender(node, colDefs) {
     // Call to set new column definitions into the grid. 
     // The grid will redraw all the column headers, and then redraw all of the rows.
     tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
-    Vvveb.Components.render("html/table@oee");
+    Vvveb.Components.render($(node).attr(dataComponentId));
 }
 
 const table = {
