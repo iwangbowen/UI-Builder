@@ -1,5 +1,5 @@
 import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
-import { dataComponentId, dataTableId } from '../common';
+import { dataTableId } from '../common';
 import Vvveb from '../../builder';
 import $ from '../../../js/jquery.min';
 
@@ -17,21 +17,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "ag-Grid",
-    html: `<div ${dataComponentId}="html/table@oee" style="width: 500px; height: 200px;" class="dropzone draggable ag-theme-blue horizontal-stripes"></div>`,
-    onDrop(node) {
-        $(node)
-            .css({
-                height: 'calc(100% - 25px)',
-                width: '100%',
-                position: '',
-                left: '',
-                top: '',
-                transform: ''
-            })
-            .removeClass('draggable');
-        Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea').append($(node).prop('outerHTML'));
-        $(node).remove();
-    },
+    html: `<div style="width: 500px; height: 200px;" class="draggable ag-theme-blue horizontal-stripes"></div>`,
     getTable(key) {
         return tables[key];
     },

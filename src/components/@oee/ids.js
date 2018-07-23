@@ -1,6 +1,7 @@
 const manualselectinputid = 'html/manualselectinput@oee';
 const autoselectinputid = 'html/autoselectinput@oee';
 const buttonid = 'html/button@oee';
-const commontableid = 'html/commontable@oee'
+const commontableid = 'html/commontable@oee';
+const customtableid = 'html/customtable@oee';
 
-export { manualselectinputid, autoselectinputid, buttonid, commontableid };
+export { manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid };

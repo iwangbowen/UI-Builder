@@ -1,7 +1,7 @@
-import { dataTableId, dataCommonTableId, dataAutoSelectId, dataButtonId } from '../components/common';
+import { dataTableId, dataAutoSelectId, dataButtonId } from '../components/common';
 import $ from '../../js/jquery.min';
 
-const tableSelector = `[${dataTableId}][${dataCommonTableId}]`;
+const tableSelector = `[${dataTableId}]`;
 const emptyChildrenSelectors = [tableSelector];
 const autoselectinputSelector = `[${dataAutoSelectId}]`;
 const submitButtonSelector = `button[${dataButtonId}]`;
