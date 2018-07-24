@@ -3,8 +3,7 @@ import { emptyChildrenSelectors, tableSelector, submitButtonSelector } from './s
 import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
-import table from '../components/@oee/table';
-import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './calendar';
+import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import $ from '../../js/jquery.min';
 import uglify from 'uglifyjs-browser';
@@ -33,7 +32,7 @@ function emptyChildren(el) {
 function generateTableScript(el) {
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
-                ${tableTemplate($(element), table)}`;
+                ${tableTemplate($(element))}`;
     }, '');
     return appendScript(el, jsStr);
 }
@@ -69,8 +68,15 @@ function concatContent(prev, cur) {
     );
 }
 
+const generatedScript = 'generatedScript';
+
 function appendScript(el, jsStr) {
-    jsStr && $('<script></script>').text(jsStr).appendTo($(el).find('body'));
+    jsStr && $(`<script class="${generatedScript}"></script>`).text(jsStr).appendTo($(el).find('body'));
+    return el;
+}
+
+function removeGeneratedScript(el) {
+    $(el).find(`script[class=${generatedScript}]`).remove();
     return el;
 }
 
@@ -135,6 +141,18 @@ function replaceWithExternalFiles(html) {
         .then(() => $(el).prop('outerHTML'));
 }
 
+const importedPageHref = 'template/oee/html/demo/importedPage.html';
+function generateBaseTag(el) {
+    $('<base>').attr('href', importedPageHref).prependTo($(el).find('head'));
+    return el;
+}
+
+function generateDevDependentTags(el) {
+    $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
+    $(el).find('body').append('<script src="../../../../dist/iframe-drag-n-drop.js"></script>');
+    return el;
+}
+
 const beautify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
@@ -142,7 +160,8 @@ const beautify_options = {
 }
 
 export {
-    removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
+    removeUnusedTags, emptyChildren, removeGeneratedScript, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-    replaceWithExternalFiles, beautify_options
+    replaceWithExternalFiles, beautify_options, generateBaseTag, importedPageHref,
+    generateDevDependentTags
 };

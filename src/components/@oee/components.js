@@ -29,7 +29,7 @@ import progress from './progress';
 import radiobutton from './radiobutton';
 import selectinput from './selectinput';
 import tableheadercell from './tableheadercell';
-import table from './table';
+import { table } from './table';
 import tablebody from './tablebody';
 import tablecell from './tablecell';
 import tablehead from './tablehead';

@@ -4,7 +4,7 @@ import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
-} from '../../util/calendar'
+} from '../../util/dataAttr';
 
 const calendar = {
     name: "Datetime Input",

@@ -2,15 +2,16 @@ import { SectionInput } from './inputs/inputs';
 import {
 	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
 	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-	replaceWithExternalFiles, beautify_options
+	replaceWithExternalFiles, beautify_options, generateBaseTag, removeGeneratedScript
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
 import { dataComponentId } from './components/common'
 import htmlGenerator from './util/htmlGenerator';
-import { replaceOtherShowingCalendarInputs } from './util/calendar';
+import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import { getStyle } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
+import { importedPage } from './constants';
 
 (function () {
 	var cache = {};
@@ -425,7 +426,7 @@ Vvveb.Builder = {
 
 	dragMoveMutation: false,
 
-	init: function (url, callback) {
+	init: function (url, srcdoc, callback) {
 
 		self = this;
 
@@ -438,7 +439,7 @@ Vvveb.Builder = {
 		self.documentFrame = $("#iframe-wrapper > iframe");
 		self.canvas = $("#canvas");
 
-		self._loadIframe(url);
+		self._loadIframe(url, srcdoc);
 
 		self._initDragdrop();
 
@@ -486,10 +487,11 @@ Vvveb.Builder = {
 	},
 
 	/* iframe */
-	_loadIframe: function (url) {
+	_loadIframe: function (url, srcdoc) {
 
 		self.iframe = this.documentFrame.get(0);
 		self.iframe.src = url;
+		srcdoc && (self.iframe.srcdoc = srcdoc);
 
 		return this.documentFrame.on("load", function () {
 
@@ -945,7 +947,7 @@ Vvveb.Builder = {
 		 */
 
 		let { doctype, html } = this.getHtml();
-		html = htmlGenerator(html, removeUnusedTags, emptyChildren,
+		html = htmlGenerator(html, removeUnusedTags, emptyChildren, removeGeneratedScript,
 			generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
 			generateSubmitFormScript, generateButtonOnclickAttr);
 		return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
@@ -958,12 +960,18 @@ Vvveb.Builder = {
 
 	getHtml: function () {
 		doc = window.FrameDocument;
-		const doctype = "<!DOCTYPE "
+		let doctype;
+		if (doc.doctype) {
+			doctype = "<!DOCTYPE "
 			+ doc.doctype.name
 			+ (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
 			+ (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
 			+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
 			+ ">\n";
+		} else {
+			doctype = '<!DOCTYPE html>';
+		}
+		
 		const html = `${doctype}
 					  <html>
 						  ${doc.documentElement.innerHTML}
@@ -1089,6 +1097,30 @@ Vvveb.Gui = {
 		downloadAsTextFile('index', Vvveb.Builder.getBeautifiedHtml());
 	},
 
+	upload() {
+		$('#file-input')
+			.change(function () {
+				const file = this.files[0];
+				if (file) {
+					new Promise(function (resolve, reject) {
+						const reader = new FileReader();
+						reader.readAsText(file, "UTF-8");
+						reader.onload = function (evt) {
+							resolve(evt.target.result);
+						}
+						reader.onerror = function (evt) {
+							reject(evt)
+						}
+					}).then(function (html) {
+						localStorage.setItem(importedPage, html);
+						window.location.href = `#${importedPage}`;
+						window.location.reload();
+					})
+				}
+			})
+			.click();
+	},
+
 	downloadWithExternalFiles() {
 		Vvveb.Builder.getBeautifiedHtml(true)
 			.then(html => downloadAsTextFile('index.html', html));
@@ -1155,12 +1187,13 @@ Vvveb.FileManager = {
 		return this.pages[name];
 	},
 
-	addPage: function (name, title, url) {
+	addPage: function (name, title, url, srcdoc) {
 
 		this.pages[name] = {
 			name,
 			title,
-			url
+			url,
+			srcdoc
 		};
 
 		this.tree.append(
@@ -1169,7 +1202,7 @@ Vvveb.FileManager = {
 
 	addPages: function (pages) {
 		for (page in pages) {
-			this.addPage(pages[page]['name'], pages[page]['title'], pages[page]['url']);
+			this.addPage(pages[page].name, pages[page].title, pages[page].url, pages[page].srcdoc);
 		}
 	},
 

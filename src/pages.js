@@ -1,5 +1,5 @@
 const pages = [
-    { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html'},
+    { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' },
     // { name: 'pds_commo', title: 'PDS Common Template', url: 'template/oee/html/demo/common_demo.html' },
     { name: 'playground', title: 'Playground', url: 'demo/playground/index.html' }
     // { name: "narrow-jumbotron", title: "Jumbotron", url: "demo/narrow-jumbotron/index.html" },

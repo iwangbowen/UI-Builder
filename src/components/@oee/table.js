@@ -3,12 +3,19 @@ import { dataTableId, dataComponentId } from '../common';
 import Vvveb from '../../builder';
 import $ from '../../../js/jquery.min';
 
-const tables = {};
 let index = 1;
+const iframeWindow = document.getElementById('iframeId').contentWindow;
+const columnDefs = 'columnDefs';
+const gridOptions = 'gridOptions';
+
+function getComputedProperty(node) {
+    return `${gridOptions}${$(node).attr(dataTableId)}`;
+}
+
 function setColumnDefsAndRender(node, colDefs) {
     // Call to set new column definitions into the grid. 
     // The grid will redraw all the column headers, and then redraw all of the rows.
-    tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
+    iframeWindow[getComputedProperty(node)].api.setColumnDefs(colDefs);
     Vvveb.Components.render($(node).attr(dataComponentId));
 }
 
@@ -18,15 +25,12 @@ const table = {
     image: "icons/table.svg",
     name: "Base ag-Grid",
     html: `<div style="width: 500px; height: 200px;" class="draggable ag-theme-blue horizontal-stripes"></div>`,
-    getTable(key) {
-        return tables[key];
-    },
     beforeInit: function (node) {
         $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {
             const id = index++;
             $(node).attr(dataTableId, id);
-            tables[id] = {
+            iframeWindow[getComputedProperty(node)] = {
                 columnDefs: [
                     { headerName: "header", field: "filed", width: '' },
                     { headerName: "header", field: "field", width: '' },
@@ -35,11 +39,11 @@ const table = {
                 enableSorting: false,
                 enableFilter: false
             };
-            new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, tables[id]);
-            tables[id].api.setRowData([]);
+            new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, iframeWindow[getComputedProperty(node)]);
+            iframeWindow[getComputedProperty(node)].api.setRowData([]);
         }
         let i = 0;
-        const properties = tables[$(node).attr(dataTableId)].columnDefs.reduce((prev, cur) => {
+        const properties = iframeWindow[getComputedProperty(node)].columnDefs.reduce((prev, cur) => {
             i++;
             prev.push({
                 name: "Header " + i,
@@ -55,11 +59,11 @@ const table = {
                 },
                 onChange: function (node, value, input) {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
-                    let colDefs = tables[$(node).attr(dataTableId)].columnDefs;
+                    let colDefs = iframeWindow[getComputedProperty(node)].columnDefs;
                     if (input.nodeName == 'BUTTON') {
                         colDefs = colDefs
                             .filter((value, index) => index != keyIndex);
-                        tables[$(node).attr(dataTableId)].columnDefs = colDefs;
+                        iframeWindow[getComputedProperty(node)].columnDefs = colDefs;
                         setColumnDefsAndRender(node, colDefs);
                     } else {
                         if (input.name == 'width') {
@@ -68,7 +72,7 @@ const table = {
                             colDefs[keyIndex][input.name] = value;
                         }
                         // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
-                        tables[$(node).attr(dataTableId)].api.setColumnDefs(colDefs);
+                        iframeWindow[getComputedProperty(node)].api.setColumnDefs(colDefs);
                     }
                     return node;
                 },
@@ -94,7 +98,7 @@ const table = {
                 node.addClass(value);
 
                 // Code copied form official site example https://www.ag-grid.com/example.php#/
-                const gridOptions = tables[node.attr(dataTableId)];
+                const gridOptions = iframeWindow[getComputedProperty(node)];
                 gridOptions.api.resetRowHeights();
                 gridOptions.api.redrawRows();
                 gridOptions.api.refreshHeader();
@@ -134,7 +138,7 @@ const table = {
             inputtype: ButtonInput,
             data: { text: "Add header" },
             onChange: function (node) {
-                const colDefs = tables[$(node).attr(dataTableId)].columnDefs;
+                const colDefs = iframeWindow[getComputedProperty(node)].columnDefs;
                 colDefs.push({
                     headerName: 'header',
                     field: 'field',
@@ -147,4 +151,6 @@ const table = {
         }]
 };
 
-export default table;
+export {
+    table, columnDefs, gridOptions, getComputedProperty
+};
