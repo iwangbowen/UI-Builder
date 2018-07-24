@@ -32,6 +32,7 @@ function emptyChildren(el) {
 function generateTableScript(el) {
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
+                
                 ${tableTemplate($(element))}`;
     }, '');
     return appendScript(el, jsStr);

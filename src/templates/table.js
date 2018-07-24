@@ -1,10 +1,8 @@
 import { dataTableId } from '../components/common';
 import { columnDefs, gridOptions, getComputedProperty } from '../components/@oee/table';
 
-let index = 1;
-
-function template(node, table) {
-    const id = node.attr('id') || (node.attr('id', `table${index++}`), node.attr('id'));
+function template(node) {
+    const id = node.attr('id') || (node.attr('id', `table${node.attr(dataTableId)}`), node.attr('id'));
     const key = node.attr(dataTableId);
     return `
     var ${columnDefs}${key} = [

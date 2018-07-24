@@ -3,7 +3,6 @@ import { dataTableId, dataComponentId } from '../common';
 import Vvveb from '../../builder';
 import $ from '../../../js/jquery.min';
 
-let index = 1;
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
 const gridOptions = 'gridOptions';
@@ -28,8 +27,7 @@ const table = {
     beforeInit: function (node) {
         $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {
-            const id = index++;
-            $(node).attr(dataTableId, id);
+            $(node).attr(dataTableId, new Date().getTime());
             iframeWindow[getComputedProperty(node)] = {
                 columnDefs: [
                     { headerName: "header", field: "filed", width: '' },
