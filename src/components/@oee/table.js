@@ -6,6 +6,35 @@ import $ from '../../../js/jquery.min';
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
 const gridOptions = 'gridOptions';
+const themeOptions = [
+    {
+        value: "ag-theme-balham",
+        text: "Balham"
+    },
+    {
+        value: "ag-theme-balham-dark",
+        text: "Balham (dark)"
+    },
+    {
+        value: "ag-theme-blue",
+        text: "Blue"
+    },
+    {
+        value: "ag-theme-bootstrap",
+        text: "Bootstrap"
+    },
+    {
+        value: "ag-theme-dark",
+        text: "Dark"
+    },
+    {
+        value: "ag-theme-fresh",
+        text: "Fresh"
+    },
+    {
+        value: "ag-theme-material",
+        text: "Material"
+    }];
 
 function getComputedProperty(node) {
     return `${gridOptions}${$(node).attr(dataTableId)}`;
@@ -103,31 +132,7 @@ const table = {
                 gridOptions.api.refreshToolPanel();
             },
             data: {
-                options: [{
-                    value: "Default",
-                    text: ""
-                }, {
-                    value: "ag-theme-balham",
-                    text: "Balham"
-                }, {
-                    value: "ag-theme-balham-dark",
-                    text: "Balham (dark)"
-                }, {
-                    value: "ag-theme-blue",
-                    text: "Blue"
-                }, {
-                    value: "ag-theme-bootstrap",
-                    text: "Bootstrap"
-                }, {
-                    value: "ag-theme-dark",
-                    text: "Dark"
-                }, {
-                    value: "ag-theme-fresh",
-                    text: "Fresh"
-                }, {
-                    value: "ag-theme-material",
-                    text: "Material"
-                }]
+                options: themeOptions
             }
         },
         {
@@ -150,5 +155,5 @@ const table = {
 };
 
 export {
-    table, columnDefs, gridOptions, getComputedProperty
+    table, columnDefs, gridOptions, getComputedProperty, themeOptions
 };

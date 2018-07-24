@@ -5,8 +5,10 @@ import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
+import { themeOptions } from '../components/@oee/table';
 import $ from '../../js/jquery.min';
 import uglify from 'uglifyjs-browser';
+import _ from 'lodash';
 
 const alwaysTrue = () => true;
 
@@ -32,7 +34,6 @@ function emptyChildren(el) {
 function generateTableScript(el) {
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
-                
                 ${tableTemplate($(element))}`;
     }, '');
     return appendScript(el, jsStr);
@@ -150,6 +151,11 @@ function generateBaseTag(el) {
 
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
+    const hrefs = [...$(el).find('link[rel=stylesheet]')]
+        .map(el => $(el).attr('href'));
+    themeOptions.forEach(({ value }) => {
+        _.find(hrefs, href => _.includes(href, value)) || $(el).find('head').append(`<link rel="stylesheet" href="../../js/plugins/ag-grid/${value}.css">`);
+    });
     $(el).find('body').append('<script src="../../../../dist/iframe-drag-n-drop.js"></script>');
     return el;
 }
