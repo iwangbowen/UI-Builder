@@ -35,6 +35,23 @@ const themeOptions = [
         value: "ag-theme-material",
         text: "Material"
     }];
+const dummyData = [{
+    athelete: 'Michael Phelps',
+    age: 23,
+    country: 'United States'
+}, {
+    athelete: 'Aleksey Nemov',
+    age: 24,
+    country: 'Russia'
+}, {
+    athelete: 'Alicia Coutts',
+    age: 24,
+    country: 'Australia'
+}, {
+    athelete: 'Cindy Klassen',
+    age: 26,
+    country: 'Canada'
+}];
 
 function getComputedProperty(node) {
     return `${gridOptions}${$(node).attr(dataTableId)}`;
@@ -59,15 +76,16 @@ const table = {
             $(node).attr(dataTableId, new Date().getTime());
             iframeWindow[getComputedProperty(node)] = {
                 columnDefs: [
-                    { headerName: "header", field: "filed", width: '' },
-                    { headerName: "header", field: "field", width: '' },
-                    { headerName: "header", field: "field", width: '' }
+                    { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                    { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                    { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
                 ],
+                rowSelection: 'multiple',
                 enableSorting: false,
                 enableFilter: false
             };
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, iframeWindow[getComputedProperty(node)]);
-            iframeWindow[getComputedProperty(node)].api.setRowData([]);
+            iframeWindow[getComputedProperty(node)].api.setRowData(dummyData);
         }
         let i = 0;
         const properties = iframeWindow[getComputedProperty(node)].columnDefs.reduce((prev, cur) => {
@@ -82,7 +100,9 @@ const table = {
                     id: 'tableheader@oee',
                     headerName: cur.headerName,
                     field: cur.field,
-                    width: cur.width
+                    width: cur.width,
+                    checkboxSelection: cur.checkboxSelection,
+                    headerCheckboxSelection: cur.headerCheckboxSelection
                 },
                 onChange: function (node, value, input) {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
@@ -95,6 +115,8 @@ const table = {
                     } else {
                         if (input.name == 'width') {
                             colDefs[keyIndex][input.name] = value && parseInt(value);
+                        } else if (input.name == 'checkboxSelection' || input.name == 'headerCheckboxSelection') {
+                            colDefs[keyIndex][input.name] = value == 'true';
                         } else {
                             colDefs[keyIndex][input.name] = value;
                         }
@@ -145,7 +167,9 @@ const table = {
                 colDefs.push({
                     headerName: 'header',
                     field: 'field',
-                    width: ''
+                    width: '',
+                    checkboxSelection: false,
+                    headerCheckboxSelection: false
                 });
 
                 setColumnDefsAndRender(node, colDefs);

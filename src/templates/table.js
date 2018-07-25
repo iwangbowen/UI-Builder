@@ -7,13 +7,15 @@ function template(node) {
     return `
     var ${columnDefs}${key} = [
         ${document.getElementById('iframeId').contentWindow[getComputedProperty(node)].columnDefs.map(def => {
-            return `{headerName: "${def.headerName}", field: "${def.field}", width: ${def.width ? def.width : '""'}}`;
+            return `{headerName: "${def.headerName}", field: "${def.field}", width: ${def.width ? def.width : '""'},
+                     checkboxSelection: ${def.checkboxSelection}, headerCheckboxSelection: ${def.headerCheckboxSelection}}`;
         }).join(',')}
     ];
     var ${gridOptions}${key} = {
         columnDefs: ${columnDefs}${key},
         enableSorting: false,
-        enableFilter: false
+        enableFilter: false,
+        rowSelection: 'multiple',
       };
     var eGridDiv${key} = document.querySelector('#${id}');
     new agGrid.Grid(eGridDiv${key}, ${gridOptions}${key});
