@@ -31,6 +31,9 @@ const unusedTags = [
 		name: 'hr',
 		filter: tag => $(tag).hasClass('horizontal-line')
 			|| $(tag).hasClass('vertical-line')
+	},
+	{
+		name: 'base'
 	}
 ];
 
