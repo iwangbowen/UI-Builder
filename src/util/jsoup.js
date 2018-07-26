@@ -3,6 +3,7 @@ import { emptyChildrenSelectors, tableSelector, submitButtonSelector } from './s
 import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
+import layerTemplate from '../templates/layer';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
@@ -74,11 +75,6 @@ const generatedScript = 'generatedScript';
 
 function appendScript(el, jsStr) {
     jsStr && $(`<script class="${generatedScript}"></script>`).text(jsStr).appendTo($(el).find('body'));
-    return el;
-}
-
-function removeGeneratedScript(el) {
-    $(el).find(`script[class=${generatedScript}]`).remove();
     return el;
 }
 
@@ -160,6 +156,10 @@ function generateDevDependentTags(el) {
     return el;
 }
 
+function generateLayerScript(el) {
+    return appendScript(el, layerTemplate());
+}
+
 const beautify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
@@ -167,8 +167,8 @@ const beautify_options = {
 }
 
 export {
-    removeUnusedTags, emptyChildren, removeGeneratedScript, generateTableScript, generateCalendarOnclickAttr,
+    removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
     replaceWithExternalFiles, beautify_options, generateBaseTag, importedPageHref,
-    generateDevDependentTags
+    generateDevDependentTags, generateLayerScript, generatedScript
 };

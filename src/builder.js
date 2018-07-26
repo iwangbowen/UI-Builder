@@ -2,7 +2,7 @@ import { SectionInput } from './inputs/inputs';
 import {
 	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
 	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-	replaceWithExternalFiles, beautify_options, generateBaseTag, removeGeneratedScript
+	replaceWithExternalFiles, beautify_options, generateLayerScript
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
@@ -947,9 +947,9 @@ Vvveb.Builder = {
 		 */
 
 		let { doctype, html } = this.getHtml();
-		html = htmlGenerator(html, removeUnusedTags, emptyChildren, removeGeneratedScript,
-			generateTableScript, generateCalendarOnclickAttr, generateSelectOptionsScript,
-			generateSubmitFormScript, generateButtonOnclickAttr);
+		html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
+			generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
+			generateButtonOnclickAttr, generateLayerScript);
 		return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
 			${html}
 		`, beautify_options)) : html_beautify(`
@@ -963,15 +963,15 @@ Vvveb.Builder = {
 		let doctype;
 		if (doc.doctype) {
 			doctype = "<!DOCTYPE "
-			+ doc.doctype.name
-			+ (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
-			+ (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
-			+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
-			+ ">\n";
+				+ doc.doctype.name
+				+ (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
+				+ (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
+				+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
+				+ ">\n";
 		} else {
 			doctype = '<!DOCTYPE html>';
 		}
-		
+
 		const html = `${doctype}
 					  <html>
 						  ${doc.documentElement.innerHTML}

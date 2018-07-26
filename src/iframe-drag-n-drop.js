@@ -1,8 +1,14 @@
 import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine } from './util/drag-n-drop';
 import interact from '../node_modules/interactjs/src/index';
+import { addData, editData, deleteData, getAddContent, getEditContent, getDialogType } from './layer';
 
 self.interact = interact;
 self.arrowKeyMove = arrowKeyMove;
+self.addData = addData;
+self.editData = editData;
+self.deleteData = deleteData;
+self.getAddContent = getAddContent;
+self.getEditContent = getEditContent;
 
 $(document).ready(() => {
     let enteredDropzone = false;

@@ -2335,7 +2335,7 @@ html, body {
 }
 
 .Button-template .allButton .allButton-button {
-    width: 60%;
+    width: 62%;
     /*    防止浮动下去*/
     float: left;
 }
@@ -3529,6 +3529,23 @@ div .formright {
 
 .dropdown-menu {
     cursor: pointer;
+}
+
+.iconArea {
+    float: right;
+    padding: 0.2rem;
+    position: relative;
+    top: 3px;
+    right: 3px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
 /* common_base  end  */

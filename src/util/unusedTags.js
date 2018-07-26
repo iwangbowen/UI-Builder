@@ -1,12 +1,14 @@
 import $ from '../../js/jquery.min';
 import { tableSelector } from './selectors';
 import _ from 'lodash';
+import { generatedScript } from './jsoup';
 
 const unusedTags = [
 	{
 		name: 'script',
 		filter: tag => tag.getAttribute('src')
 			&& tag.getAttribute('src').includes('iframe-drag-n-drop')
+			|| $(tag).hasClass(generatedScript)
 	},
 	{
 		name: 'link',
@@ -34,6 +36,14 @@ const unusedTags = [
 	},
 	{
 		name: 'base'
+	},
+	{
+		name: 'div',
+		filter: tag => $(tag).hasClass('layui-layer-shade')
+			|| $(tag).hasClass('layui-layer')
+			|| $(tag).hasClass('layui-anim')
+			|| $(tag).hasClass('layui-layer-page')
+			|| $(tag).hasClass('layui-layer-rim')
 	}
 ];
 
