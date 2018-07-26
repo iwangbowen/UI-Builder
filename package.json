@@ -18,7 +18,7 @@
     "concat": "grunt concat",
     "build": "grunt build",
     "build:dev": "grunt build:dev",
-    "bild:prod": "grunt build:prod",
+    "build:prod": "grunt build:prod",
     "transpile": "grunt transpile"
   },
   "dependencies": {
