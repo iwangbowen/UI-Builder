@@ -11,7 +11,7 @@ import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import { getStyle } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
-import { importedPage } from './constants';
+import { importedPage, defaultFilename } from './constants';
 
 (function () {
 	var cache = {};
@@ -1094,7 +1094,7 @@ Vvveb.Gui = {
 	},
 
 	download() {
-		downloadAsTextFile('index', Vvveb.Builder.getBeautifiedHtml());
+		downloadAsTextFile(defaultFilename, Vvveb.Builder.getBeautifiedHtml());
 	},
 
 	upload() {
@@ -1123,7 +1123,7 @@ Vvveb.Gui = {
 
 	downloadWithExternalFiles() {
 		Vvveb.Builder.getBeautifiedHtml(true)
-			.then(html => downloadAsTextFile('index.html', html));
+			.then(html => downloadAsTextFile(defaultFilename, html));
 	},
 
 	preview: function () {
