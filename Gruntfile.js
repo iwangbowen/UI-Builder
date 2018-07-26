@@ -35,25 +35,33 @@ module.exports = function (grunt) {
             },
             production: {
                 src: [
-                    "src/*.js"
+                    "src/init.js",
+                    'src/components.js',
+                    'src/undo.js',
+                    'src/plugin-codemirror.js',
+                    'src/drag-n-drop.js',
+                    'src/iframe-drag-n-drop.js'
                 ],
-                dest: 'dist/common.min.js',
+                dest: 'dist/common.js',
                 options: {
                     browserifyOptions: { debug: false },
                     transform: [["babelify", { "presets": ["es2015"] }]],
                     plugin: [
                         ["factor-bundle", {
                             outputs: [
-                                'transpiled/builder.min.js',
-                                'transpiled/components-bootstrap4.min.js',
-                                'transpiled/inputs.min.js',
-                                'transpiled/undo.min.js'
+                                'dist/init.js',
+                                'dist/components.js',
+                                'dist/undo.js',
+                                'dist/plugin-codemirror.js',
+                                'dist/drag-n-drop.js',
+                                'dist/iframe-drag-n-drop.js'
                             ]
                         }],
                         ["minifyify", { map: false }]
-                    ]
+                    ],
+                    keepAlive: true,
                 }
-            }
+            },
         },
         babel: {
             options: {
@@ -112,7 +120,7 @@ module.exports = function (grunt) {
 
     // Register tasks
     grunt.registerTask("build:dev", ['clean:all', 'browserify:development']);
-    grunt.registerTask("build:prod", ['browserify:production']);
+    grunt.registerTask("build:prod", ['clean:all', 'browserify:production']);
     grunt.registerTask('build', ['clean:all', 'concat:es5', 'babel:build']);
     grunt.registerTask('transpile', ['babel:transpile']);
     grunt.registerTask('clean:all', ['clean:concated', 'clean:built', 'clean:transpiled']);
