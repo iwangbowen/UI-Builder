@@ -5,7 +5,7 @@ import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
 import layerTemplate from '../templates/layer';
 import multivalueselectTemplate from '../templates/multivalueselect';
-import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
+import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr, multivalueSelectSelector } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import $ from '../../js/jquery.min';
@@ -176,10 +176,28 @@ const beautify_options = {
     unformatted: []
 }
 
+// select multiple options, just name it as an array[]
+// https://github.com/marioizquierdo/jquery.serializeJSON
+function addNameBrackets(el) {
+    $(el).find(multivalueSelectSelector).each(function () {
+        $(this).attr('name') && $(this).attr('name', `${$(this).attr('name')}[]`);
+    });
+    return el;
+}
+
+function removeNameBrackets(el) {
+    $(el).find(multivalueSelectSelector).each(function () {
+        $(this).attr('name')
+            && $(this).attr('name').endsWith('[]')
+            && $(this).attr('name', $(this).attr('name').substr(0, $(this).attr('name').length - 2))
+    });
+    return el;
+}
+
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
     replaceWithExternalFiles, beautify_options, generateBaseTag, importedPageHref,
     generateDevDependentTags, generateLayerScript, generatedScript, generateMultivalueSelectScript,
-    removeGeneratedScripts
+    removeGeneratedScripts, addNameBrackets, removeNameBrackets
 };

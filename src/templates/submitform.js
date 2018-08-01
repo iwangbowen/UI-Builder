@@ -1,4 +1,5 @@
 import { dataTableId } from "../components/common";
+import { dataUrl } from '../util/dataAttr';
 
 const functionName = 'submitForm';
 function template() {
@@ -7,10 +8,11 @@ function template() {
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         function ${functionName}(el, formId) {
             $.ajax({
-                url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
+                url: config.fundodooApiDomainUrl + $(el).attr('${dataUrl}'),
                 dataType: 'json',
                 method : 'POST',
                 async: true,
+                traditional: true,
                 data: (formId ? $('#formId') : $('form')).serializeJSON(),
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function (response, status, xhr) {

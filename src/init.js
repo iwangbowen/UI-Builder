@@ -3,7 +3,10 @@ import pages from './pages';
 import $ from '../js/jquery.min';
 import { importedPage } from './constants';
 import htmlGenerator from './util/htmlGenerator';
-import { generateBaseTag, importedPageHref, generateDevDependentTags, removeGeneratedScripts } from './util/jsoup';
+import {
+    generateBaseTag, importedPageHref, generateDevDependentTags, removeGeneratedScripts,
+    removeNameBrackets
+} from './util/jsoup';
 
 $(document).ready(function () {
     Vvveb.Gui.init();
@@ -14,7 +17,7 @@ $(document).ready(function () {
             name: importedPage,
             title: 'Imported Page',
             url: importedPageHref,
-            srcdoc: htmlGenerator(localStorage.getItem(importedPage), generateDevDependentTags, generateBaseTag, removeGeneratedScripts)
+            srcdoc: htmlGenerator(localStorage.getItem(importedPage), generateDevDependentTags, generateBaseTag, removeGeneratedScripts, removeNameBrackets)
         });
     }
     Vvveb.FileManager.addPages(pages);

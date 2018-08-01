@@ -1,8 +1,11 @@
-import { dataConfigInfo, dataCalendarId } from '../components/common';
+import { dataConfigInfo, dataCalendarId, dataMultivalueSelectId } from '../components/common';
 import $ from '../../js/jquery.min';
 
+const dataUrl = 'data-url';
 const calendarSelector = `input[${dataCalendarId}]`;
 const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;
+const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
+
 // <input data-id="{'a', b}"> 替换包含'\''的属性值为合法的json字符串
 function getDataConfigInfo(node) {
     return $(node).attr(dataConfigInfo);
@@ -46,5 +49,5 @@ export {
     replaceOtherShowingCalendarInputs, cloneWithoutOnclick,
     calendarSelector, calendarOnclickSelector,
     getDataConfigInfo, getDateFmt, getParsedConfigInfo,
-    setOnclickAttr, setDataConfigInfo
+    setOnclickAttr, setDataConfigInfo, dataUrl, multivalueSelectSelector
 };
