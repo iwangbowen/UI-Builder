@@ -4,12 +4,18 @@ import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
 import layerTemplate from '../templates/layer';
+import multivalueselectTemplate from '../templates/multivalueselect';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import $ from '../../js/jquery.min';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
+
+function removeGeneratedScripts(el) {
+    $(el).find(`script[class=${generatedScript}]`).remove();
+    return el;
+}
 
 const alwaysTrue = () => true;
 
@@ -160,6 +166,10 @@ function generateLayerScript(el) {
     return appendScript(el, layerTemplate());
 }
 
+function generateMultivalueSelectScript(el) {
+    return appendScript(el, multivalueselectTemplate());
+}
+
 const beautify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
@@ -170,5 +180,6 @@ export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
     replaceWithExternalFiles, beautify_options, generateBaseTag, importedPageHref,
-    generateDevDependentTags, generateLayerScript, generatedScript
+    generateDevDependentTags, generateLayerScript, generatedScript, generateMultivalueSelectScript,
+    removeGeneratedScripts
 };

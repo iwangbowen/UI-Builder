@@ -43,11 +43,12 @@ import autoselectinput from './autoselectinput';
 import manualselectinput from './manualselectinput';
 import commontable from './commontable';
 import customtable from './customtable';
+import multivalueselect from './multivalueselect';
 
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
     table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, calendar, text,
-    autoselectinput, manualselectinput, commontable, customtable
+    autoselectinput, manualselectinput, commontable, customtable, multivalueselect
 };

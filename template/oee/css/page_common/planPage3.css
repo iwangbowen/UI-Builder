@@ -896,7 +896,7 @@ button.search-btn {
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input {
+.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:not(.select2-search__field) {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -2485,7 +2485,7 @@ html, body {
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input {
+.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:not(.select2-search__field) {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;

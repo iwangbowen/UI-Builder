@@ -2,7 +2,7 @@ import { SectionInput } from './inputs/inputs';
 import {
 	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
 	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-	replaceWithExternalFiles, beautify_options, generateLayerScript
+	replaceWithExternalFiles, beautify_options, generateLayerScript, generateMultivalueSelectScript
 } from './util/jsoup';
 import { downloadAsTextFile } from './util/download';
 import { launchFullScreen } from './util/fullScreen';
@@ -949,7 +949,7 @@ Vvveb.Builder = {
 		let { doctype, html } = this.getHtml();
 		html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
 			generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-			generateButtonOnclickAttr, generateLayerScript);
+			generateButtonOnclickAttr, generateLayerScript, generateMultivalueSelectScript);
 		return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
 			${html}
 		`, beautify_options)) : html_beautify(`
