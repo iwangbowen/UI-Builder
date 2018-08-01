@@ -1,7 +1,6 @@
 import { dataConfigInfo, dataCalendarId, dataMultivalueSelectId } from '../components/common';
 import $ from '../../js/jquery.min';
 
-const dataUrl = 'data-url';
 const calendarSelector = `input[${dataCalendarId}]`;
 const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;
 const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
@@ -49,5 +48,5 @@ export {
     replaceOtherShowingCalendarInputs, cloneWithoutOnclick,
     calendarSelector, calendarOnclickSelector,
     getDataConfigInfo, getDateFmt, getParsedConfigInfo,
-    setOnclickAttr, setDataConfigInfo, dataUrl, multivalueSelectSelector
+    setOnclickAttr, setDataConfigInfo, multivalueSelectSelector
 };

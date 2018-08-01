@@ -1,13 +1,15 @@
-import { dataUrl } from '../util/dataAttr';
+import { dataUrl, dataValueMapping, dataTextMapping } from "../components/common";
 
 function template() {
     return `
-    function processResults (res) {
+    function processResults (res, el) {
+        var value = $(el).attr('${dataValueMapping}') || 'value';
+        var text = $(el).attr('${dataTextMapping}') || 'text';
         return {
             data: res.data.map(function (v) {
                 return {
-                    id: v.value,
-                    text: v.text
+                    id: v[value],
+                    text: v[text]
                 };
             })
         };
@@ -20,7 +22,7 @@ function template() {
                     url: config.fundodooApiDomainUrl + $(self).attr('${dataUrl}'),
                     dataType: 'json',
                     success: function (res) {
-                        $(self).select2(processResults(res));
+                        $(self).select2(processResults(res, self));
                     }
                 });
             } else {

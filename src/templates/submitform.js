@@ -1,5 +1,4 @@
-import { dataTableId } from "../components/common";
-import { dataUrl } from '../util/dataAttr';
+import { dataUrl, dataTableId } from "../components/common";
 
 const functionName = 'submitForm';
 function template() {
