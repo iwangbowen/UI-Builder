@@ -5,12 +5,10 @@ import {
 	replaceWithExternalFiles, beautify_options, generateLayerScript, generateMultivalueSelectScript,
 	addNameBrackets
 } from './util/jsoup';
-import { downloadAsTextFile } from './util/download';
-import { launchFullScreen } from './util/fullScreen';
 import { dataComponentId } from './components/common'
 import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
-import { getStyle } from './util/dom';
+import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
 import { importedPage, defaultFilename } from './constants';
 

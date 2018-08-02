@@ -104,4 +104,8 @@ function editData() {
 function deleteData() {
 }
 
-export { addData, editData, deleteData, getAddContent, getEditContent };
+function exportData() {
+
+}
+
+export { addData, editData, deleteData, exportData, getAddContent, getEditContent };

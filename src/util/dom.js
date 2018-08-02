@@ -24,4 +24,55 @@ function setIframeHeight(iframe) {
     }
 }
 
-export { getStyle, setIframeHeight };
+// Toggle fullscreen
+function launchFullScreen(document) {
+    if (document.documentElement.requestFullScreen) {
+
+        if (document.FullScreenElement)
+            document.exitFullScreen();
+        else
+            document.documentElement.requestFullScreen();
+        //mozilla		
+    } else if (document.documentElement.mozRequestFullScreen) {
+
+        if (document.mozFullScreenElement)
+            document.mozCancelFullScreen();
+        else
+            document.documentElement.mozRequestFullScreen();
+        //webkit	  
+    } else if (document.documentElement.webkitRequestFullScreen) {
+
+        if (document.webkitFullscreenElement)
+            document.webkitExitFullscreen();
+        else
+            document.documentElement.webkitRequestFullScreen();
+        //ie	  
+    } else if (document.documentElement.msRequestFullscreen) {
+
+        if (document.msFullScreenElement)
+            document.msExitFullscreen();
+        else
+            document.documentElement.msRequestFullscreen();
+    }
+}
+
+function downloadAsTextFile(filename, text) {
+    const element = document.createElement('a');
+    if (text.length < 2 * 1024 * 1024) {
+        element.setAttribute('href', `data:text/html;charset=utf-8,${encodeURIComponent(text)}`);
+    } else {
+        const blob = new Blob([text]);
+        element.setAttribute('href', URL.createObjectURL(blob));
+    }
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+
+export { getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile };

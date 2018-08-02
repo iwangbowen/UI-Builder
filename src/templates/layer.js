@@ -1,3 +1,5 @@
+import { dataTableId } from "../components/common";
+
 function template(el) {
     return `
     var addContent = '${document.getElementById('iframeId').contentWindow.getAddContent()}';
@@ -23,7 +25,12 @@ function template(el) {
             zIndex: 15,
             content: editContent
           });
-    }`;
+    }
+    function exportData() {
+        var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
+        gridOptionsIdentifier.api.exportDataAsCsv();
+    }
+    `;
 }
 
 export default template;
