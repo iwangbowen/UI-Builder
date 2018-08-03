@@ -1,3 +1,11 @@
+import {
+    removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
+    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
+    replaceWithExternalFiles, beautify_options, generateLayerScript, generateMultivalueSelectScript,
+    addNameBrackets
+} from './jsoup';
+import htmlGenerator from './htmlGenerator';
+
 function getStyle(el, styleProp) {
     value = "";
     //var el = document.getElementById(el);
@@ -74,5 +82,61 @@ function downloadAsTextFile(filename, text) {
     document.body.removeChild(element);
 }
 
+function getDoctype(doc) {
+    if (doc.doctype) {
+        return "<!DOCTYPE "
+            + doc.doctype.name
+            + (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
+            + (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
+            + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
+            + ">\n";
+    } else {
+        return '<!DOCTYPE html>';
+    }
+}
 
-export { getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile };
+function getHtml(doc) {
+    return `${getDoctype(doc)}
+            <html>
+                ${doc.documentElement.innerHTML}
+            </html>`;
+}
+
+function destructDoc(doc) {
+    return {
+        doctype: getDoctype(doc),
+        html: `<html>${doc.documentElement.innerHTML}</html>`
+    }
+}
+
+function getBeautifiedHtml(doc, withExternalFiles = false) {
+    /*
+    -I, --indent-inner-html            Indent <head> and <body> sections. Default is false.
+    -U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
+                                       use empty array to denote that no tags should not be reformatted
+     */
+
+    let { doctype, html } = destructDoc(doc);
+    html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
+        generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
+        generateButtonOnclickAttr, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
+    return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
+        ${html}
+    `, beautify_options)) : html_beautify(`
+        ${doctype}
+        ${html}
+    `, beautify_options);
+}
+
+const delay = (function () {
+    var timer = 0;
+    return function (callback, ms) {
+        clearTimeout(timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+
+export {
+    getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
+    getHtml
+};

@@ -1,16 +1,10 @@
 import { SectionInput } from './inputs/inputs';
-import {
-	removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-	generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-	replaceWithExternalFiles, beautify_options, generateLayerScript, generateMultivalueSelectScript,
-	addNameBrackets
-} from './util/jsoup';
 import { dataComponentId } from './components/common'
-import htmlGenerator from './util/htmlGenerator';
 import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
 import { importedPage, defaultFilename } from './constants';
+import { getBeautifiedHtml } from './util/dom';
 
 (function () {
 	var cache = {};
@@ -42,14 +36,6 @@ import { importedPage, defaultFilename } from './constants';
 				+ "');}return p.join('');");
 		// Provide some basic currying to the user
 		return data ? fn(data) : fn;
-	};
-})();
-
-var delay = (function () {
-	var timer = 0;
-	return function (callback, ms) {
-		clearTimeout(timer);
-		timer = setTimeout(callback, ms);
 	};
 })();
 
@@ -937,50 +923,6 @@ Vvveb.Builder = {
 		});
 
 	},
-
-	getBeautifiedHtml(withExternalFiles = false) {
-		/*
-		-I, --indent-inner-html            Indent <head> and <body> sections. Default is false.
-		-U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
-										   use empty array to denote that no tags should not be reformatted
-		 */
-
-		let { doctype, html } = this.getHtml();
-		html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
-			generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-			generateButtonOnclickAttr, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
-		return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
-			${html}
-		`, beautify_options)) : html_beautify(`
-			${doctype}
-			${html}
-		`, beautify_options);
-	},
-
-	getHtml: function () {
-		doc = window.FrameDocument;
-		let doctype;
-		if (doc.doctype) {
-			doctype = "<!DOCTYPE "
-				+ doc.doctype.name
-				+ (doc.doctype.publicId ? ' PUBLIC "' + doc.doctype.publicId + '"' : '')
-				+ (!doc.doctype.publicId && doc.doctype.systemId ? ' SYSTEM' : '')
-				+ (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
-				+ ">\n";
-		} else {
-			doctype = '<!DOCTYPE html>';
-		}
-
-		const html = `${doctype}
-					  <html>
-						  ${doc.documentElement.innerHTML}
-					  </html>`;
-		return {
-			doctype,
-			html
-		};
-	},
-
 	setHtml: function (html) {
 		//update only body to avoid breaking iframe css/js relative paths
 		start = html.indexOf("<body");
@@ -1001,47 +943,6 @@ Vvveb.Builder = {
 		//return self.documentFrame.attr("srcdoc", html);
 	}
 };
-
-Vvveb.CodeEditor = {
-
-	isActive: false,
-	oldValue: '',
-	doc: false,
-
-	init: function (doc) {
-		$("#vvveb-code-editor textarea").val(Vvveb.Builder.getBeautifiedHtml());
-
-		$("#vvveb-code-editor textarea").keyup(function () {
-			delay(Vvveb.Builder.setHtml(this.value), 1000);
-		});
-
-		//load code on document changes
-		Vvveb.Builder.frameBody.on("vvveb.undo.add vvveb.undo.restore", function (e) { Vvveb.CodeEditor.setValue(); });
-		//load code when a new url is loaded
-		Vvveb.Builder.documentFrame.on("load", function (e) { Vvveb.CodeEditor.setValue(); });
-
-		this.isActive = true;
-	},
-
-	setValue: function (value) {
-		if (this.isActive) {
-			$("#vvveb-code-editor textarea").val(Vvveb.Builder.getBeautifiedHtml());
-		}
-	},
-
-	destroy: function (element) {
-		//this.isActive = false;
-	},
-
-	toggle: function () {
-		if (this.isActive != true) {
-			this.isActive = true;
-			return this.init();
-		}
-		this.isActive = false;
-		this.destroy();
-	}
-}
 
 let shownPanel, hiddenPanel, isPreview;
 
@@ -1079,7 +980,7 @@ Vvveb.Gui = {
 	},
 
 	check: function () {
-		$('#textarea-modal textarea').val(Vvveb.Builder.getBeautifiedHtml());
+		$('#textarea-modal textarea').val(getBeautifiedHtml(window.FrameDocument));
 		$('#textarea-modal').modal();
 	},
 
@@ -1092,8 +993,12 @@ Vvveb.Gui = {
 		Vvveb.CodeEditor.toggle();
 	},
 
+	formatCode() {
+		Vvveb.CodeEditor.formatCode();
+	},
+
 	download() {
-		downloadAsTextFile(defaultFilename, Vvveb.Builder.getBeautifiedHtml());
+		downloadAsTextFile(defaultFilename, getBeautifiedHtml(window.FrameDocument));
 	},
 
 	upload() {
@@ -1121,7 +1026,7 @@ Vvveb.Gui = {
 	},
 
 	downloadWithExternalFiles() {
-		Vvveb.Builder.getBeautifiedHtml(true)
+		getBeautifiedHtml(window.FrameDocument, true)
 			.then(html => downloadAsTextFile(defaultFilename, html));
 	},
 
