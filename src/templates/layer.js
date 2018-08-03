@@ -30,6 +30,11 @@ function template(el) {
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         gridOptionsIdentifier.api.exportDataAsCsv();
     }
+    function deleteData() {
+        layer.confirm('确定删除吗', {
+            btn: ['删除', '取消']
+        });
+    }
     `;
 }
 
