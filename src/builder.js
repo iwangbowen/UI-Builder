@@ -706,7 +706,18 @@ Vvveb.Builder = {
 			if (self.selectedEl && self.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
 					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, self.selectedEl);
-					e.preventDefault(); // prevent the default action (scroll / move caret)
+					e.preventDefault();
+				} else if (e.ctrlKey) {
+					const kc = e.which || e.keyCode;
+					// Delete
+					if (String.fromCharCode(kc).toUpperCase() == "D") {
+						$("#delete-box").trigger('click');
+					}
+					// Copy
+					if (String.fromCharCode(kc).toUpperCase() == "C") {
+						$("#clone-box").trigger('click');
+					}
+					e.preventDefault();
 				}
 			}
 		});
@@ -717,7 +728,6 @@ Vvveb.Builder = {
 			self.isDragging = true;
 
 			node = self.dragElement.get(0);
-
 
 			self.dragMoveMutation = {
 				type: 'move',

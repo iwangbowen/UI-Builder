@@ -43,16 +43,22 @@
     </div>
     <div id="yes" onclick='"helo"' style="left: 20px; height: 50px; background: orange;"></div>
     <div id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div> -->
-    <script id="script1" src="js/jquery.min.js"></script>
+    <script id="script1" src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.hotkeys.js"></script>
     <script src="./libs/ag-grid/ag-grid.min.noStyle.js"></script>
-    <script id="script2">
-        function hello() {
+    <script>
+        $(document).bind('keydown', 'alt+d', console.log);
 
-        }
-    </script>
-    <script>
-    </script>
-    <script>
+        $(document).on('keydown', function (e) {
+            var kc = e.which || e.keyCode;
+
+            if (e.ctrlKey && String.fromCharCode(kc).toUpperCase() == "D") {
+                e.preventDefault();
+                console.log(String.fromCharCode(kc).toUpperCase());
+                // window.location.href = 'your url here';
+            }
+        });
+
         $.ajax({
             method: 'POST',
             url: 'api',
@@ -60,7 +66,7 @@
                 countries: 'China',
                 companies: 'Apple'
             }
-        })
+        });
         console.log($('script2').prop('baseURI'));
         // specify the columns
         var columnDefs = [
