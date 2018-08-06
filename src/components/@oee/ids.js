@@ -5,5 +5,9 @@ const buttonid = 'html/button@oee';
 const tableid = 'html/table@oee';
 const commontableid = 'html/commontable@oee';
 const customtableid = 'html/customtable@oee';
+const textareaid = 'html/textarea@oee';
 
-export { manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid, multivalueselectid };
+export {
+    manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid,
+    multivalueselectid, textareaid
+};

@@ -1,6 +1,7 @@
 import { TextInput, SelectInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { inputTypes, inputTypeNames } from '../inputTypes';
 import { dataComponentId } from '../common';
+
 const textinput = {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
