@@ -803,8 +803,15 @@ Vvveb.Builder = {
 			return false;
 		});
 
+		function getElementWithDraggable(element) {
+			return element
+				.hasClass('draggable') ?
+				element :
+				getElementWithDraggable(element.parent());
+		}
+
 		$("#clone-box").on("click", function (event) {
-			clone = self.selectedEl.clone();
+			clone = getElementWithDraggable(self.selectedEl).clone();
 
 			self.selectedEl.after(clone);
 
