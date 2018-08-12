@@ -35,23 +35,7 @@ const themeOptions = [
         value: "ag-theme-material",
         text: "Material"
     }];
-const dummyData = [{
-    athelete: 'Michael Phelps',
-    age: 23,
-    country: 'United States'
-}, {
-    athelete: 'Aleksey Nemov',
-    age: 24,
-    country: 'Russia'
-}, {
-    athelete: 'Alicia Coutts',
-    age: 24,
-    country: 'Australia'
-}, {
-    athelete: 'Cindy Klassen',
-    age: 26,
-    country: 'Canada'
-}];
+const dummyData = [];
 
 function getComputedProperty(node) {
     return `${gridOptions}${$(node).attr(dataTableId)}`;
