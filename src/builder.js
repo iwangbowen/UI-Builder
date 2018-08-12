@@ -5,6 +5,7 @@ import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
 import { importedPage, defaultFilename } from './constants';
 import { getBeautifiedHtml } from './util/dom';
+import { tableSelector } from './util/selectors';
 
 (function () {
 	var cache = {};
@@ -381,9 +382,10 @@ Vvveb.WysiwygEditor = {
 	},
 
 	edit(element) {
-		element.attr({ 'contenteditable': true, 'spellcheckker': false });
+		if (!element.parentsUntil(tableSelector).length) {
+			element.attr({ 'contenteditable': true, 'spellcheckker': false });
+		}
 		$("#wysiwyg-editor").show();
-
 		this.element = element;
 		this.isActive = true;
 		this.oldValue = element.html();
