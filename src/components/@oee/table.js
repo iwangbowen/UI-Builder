@@ -76,7 +76,7 @@ const table = {
             $(node).attr(dataTableId, new Date().getTime());
             iframeWindow[getComputedProperty(node)] = {
                 columnDefs: [
-                    { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                    { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: true, headerCheckboxSelection: true },
                     { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
                     { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
                 ],
