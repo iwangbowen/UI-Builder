@@ -1,4 +1,4 @@
-import { TextInput } from '../../inputs/inputs';
+import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { autoselectinputid } from './ids';
 import { dataComponentId, dataUrl, dataAutoSelectId, dataValueMapping, dataTextMapping } from '../common';
 import $ from '../../../js/jquery.min';
@@ -42,6 +42,17 @@ const autoselectinput = $.extend({}, input, {
         key: "name",
         htmlAttr: "name",
         inputtype: TextInput
+    }, {
+        name: "Required",
+        key: "required",
+        htmlAttr: 'required',
+        validValues: ["required"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'required',
+            off: ''
+        }
     }]
 });
 

@@ -1,5 +1,5 @@
 import Vvveb from '../../builder';
-import { TextValueInput, ButtonInput, TextInput } from '../../inputs/inputs';
+import { TextValueInput, ButtonInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import $ from '../../../js/jquery.min';
@@ -87,6 +87,17 @@ const autoselectinput = $.extend({}, input, {
             //render component properties again to include the new column inputs
             Vvveb.Components.render(manualselectinputid);
             return node;
+        }
+    }, {
+        name: "Required",
+        key: "required",
+        htmlAttr: 'required',
+        validValues: ["required"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'required',
+            off: ''
         }
     }]
 });
