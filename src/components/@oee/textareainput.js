@@ -45,6 +45,17 @@ const textareainput = $.extend({}, input, {
             on: 'readonly',
             off: ''
         }
+    }, {
+        name: "Required",
+        key: "required",
+        htmlAttr: 'required',
+        validValues: ["required"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'required',
+            off: ''
+        }
     }]
 });
 

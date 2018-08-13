@@ -1,4 +1,4 @@
-import { TextInput } from '../../inputs/inputs';
+import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { checkboxid, spanid } from './ids';
 import $ from '../../../js/jquery.min';
@@ -29,6 +29,17 @@ const checkbox = $.extend({}, input, {
         key: "name",
         htmlAttr: "name",
         inputtype: TextInput
+    }, {
+        name: "Required",
+        key: "required",
+        htmlAttr: 'required',
+        validValues: ["required"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'required',
+            off: ''
+        }
     }]
 });
 

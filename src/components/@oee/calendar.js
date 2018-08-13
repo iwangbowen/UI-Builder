@@ -88,6 +88,17 @@ const calendar = $.extend({}, input, {
             on: 'on',
             off: 'off'
         }
+    }, {
+        name: "Required",
+        key: "required",
+        htmlAttr: 'required',
+        validValues: ["required"],
+        noValueAttr: true,
+        inputtype: ToggleInput,
+        data: {
+            on: 'required',
+            off: ''
+        }
     }]
 });
 
