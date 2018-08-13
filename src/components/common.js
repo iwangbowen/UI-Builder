@@ -65,9 +65,10 @@ const dataUrl = 'data-url';
 const dataValueMapping = 'data-value-mapping';
 const dataTextMapping = 'data-text-mapping';
 const dataMultivalueSelectId = 'data-multi-value-select-id';
+const dataRequiredSpanId = 'data-required-span-id';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
-    dataCommonTableId, dataMultivalueSelectId
+    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId
 };

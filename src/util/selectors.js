@@ -1,6 +1,7 @@
-import { dataTableId, dataAutoSelectId, dataButtonId } from '../components/common';
+import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpanId } from '../components/common';
 
 const tableSelector = `[${dataTableId}]`;
+const requiredSpanSelector = `[${dataRequiredSpanId}]`;
 const emptyChildrenSelectors = [tableSelector];
 const autoselectinputSelector = `[${dataAutoSelectId}]`;
 const submitButtonSelector = `button[${dataButtonId}]`;
@@ -13,5 +14,5 @@ function getParentOrSelf(node) {
 
 export {
     emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
-    parentSelector, getParentOrSelf
+    parentSelector, getParentOrSelf, requiredSpanSelector
 };
