@@ -13,7 +13,7 @@ function template(node) {
     ];
     var ${gridOptions}${key} = {
         columnDefs: ${columnDefs}${key},
-        enableSorting: false,
+        enableSorting: true,
         enableFilter: false,
         rowSelection: 'multiple',
       };

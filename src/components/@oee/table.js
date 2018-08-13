@@ -81,7 +81,7 @@ const table = {
                     { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
                 ],
                 rowSelection: 'multiple',
-                enableSorting: false,
+                enableSorting: true,
                 enableFilter: false
             };
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, iframeWindow[getComputedProperty(node)]);
