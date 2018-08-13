@@ -1,7 +1,6 @@
 import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
 import { dataTableId, dataComponentId } from '../common';
 import Vvveb from '../../builder';
-import $ from '../../../js/jquery.min';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';

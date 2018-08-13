@@ -1,5 +1,4 @@
 import { dataTableId, dataAutoSelectId, dataButtonId } from '../components/common';
-import $ from '../../js/jquery.min';
 
 const tableSelector = `[${dataTableId}]`;
 const emptyChildrenSelectors = [tableSelector];

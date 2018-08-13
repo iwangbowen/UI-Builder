@@ -1,5 +1,4 @@
 import { dataConfigInfo, dataCalendarId, dataMultivalueSelectId } from '../components/common';
-import $ from '../../js/jquery.min';
 
 const calendarSelector = `input[${dataCalendarId}]`;
 const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;

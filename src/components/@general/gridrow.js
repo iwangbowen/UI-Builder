@@ -1,5 +1,4 @@
 import { GridInput, ButtonInput } from '../../inputs/inputs';
-import $ from '../../../js/jquery.min';
 
 const gridrow = {
     name: "Grid Row",

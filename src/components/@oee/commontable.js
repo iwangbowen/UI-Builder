@@ -1,6 +1,5 @@
 import { dataComponentId } from '../common';
 import { table } from './table';
-import $ from '../../../js/jquery.min';
 import { commontableid } from './ids';
 
 const commontable = $.extend({}, table, {

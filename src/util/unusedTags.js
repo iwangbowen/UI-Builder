@@ -1,4 +1,3 @@
-import $ from '../../js/jquery.min';
 import { tableSelector } from './selectors';
 import _ from 'lodash';
 import { generatedScript } from './jsoup';

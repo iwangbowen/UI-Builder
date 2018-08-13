@@ -323,6 +323,9 @@ Vvveb.Components = {
 			else {
 				row = $(tmpl('vvveb-property', property));
 				row.find('.input').append(property.input);
+
+				property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
+				
 				section.append(row);
 			}
 		}

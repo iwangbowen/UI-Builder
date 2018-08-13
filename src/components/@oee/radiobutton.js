@@ -1,7 +1,6 @@
 import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { radiobuttonid } from './ids';
-import $ from '../../../js/jquery.min';
 import input from './input';
 
 const radiobutton = $.extend({}, input, {

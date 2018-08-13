@@ -1,7 +1,6 @@
 import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { autoselectinputid } from './ids';
 import { dataComponentId, dataUrl, dataAutoSelectId, dataValueMapping, dataTextMapping } from '../common';
-import $ from '../../../js/jquery.min';
 import input from './input';
 
 const autoselectinput = $.extend({}, input, {

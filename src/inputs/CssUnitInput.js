@@ -1,5 +1,4 @@
 import Input from './Input';
-import $ from '../../js/jquery.min';
 
 const CssUnitInput = $.extend({}, Input, {
 

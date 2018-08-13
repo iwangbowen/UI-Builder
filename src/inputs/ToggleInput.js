@@ -1,5 +1,4 @@
 import TextInput from './TextInput';
-import $ from '../../js/jquery.min';
 
 const ToggleInput = $.extend({}, TextInput, {
 

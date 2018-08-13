@@ -1,6 +1,5 @@
 import Vvveb from './builder';
 import pages from './pages';
-import $ from '../js/jquery.min';
 import { importedPage } from './constants';
 import htmlGenerator from './util/htmlGenerator';
 import {

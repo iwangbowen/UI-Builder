@@ -1,5 +1,4 @@
 import RadioInput from './RadioInput';
-import $ from '../../js/jquery.min';
 
 const RadioButtonInput = $.extend({}, RadioInput, {
 

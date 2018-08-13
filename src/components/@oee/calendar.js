@@ -6,7 +6,6 @@ import {
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
 import input from './input';
-import $ from '../../../js/jquery.min';
 import { calendarid } from './ids';
 
 const calendar = $.extend({}, input, {

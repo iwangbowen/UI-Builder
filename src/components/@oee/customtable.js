@@ -2,7 +2,6 @@ import { dataComponentId } from '../common';
 import { table } from './table';
 import Vvveb from '../../builder';
 import { customtableid } from './ids';
-import $ from '../../../js/jquery.min';
 
 const customtable = $.extend({}, table, {
     name: "Custom ag-Grid",

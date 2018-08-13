@@ -1,4 +1,3 @@
-import $ from '../../js/jquery.min';
 import _ from 'lodash';
 
 function htmlGenerator(html, ...fns) {

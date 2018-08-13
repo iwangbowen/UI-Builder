@@ -1,7 +1,6 @@
 import { TextInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { textareaid } from './ids';
-import $ from '../../../js/jquery.min';
 import input from './input';
 
 const textareainput = $.extend({}, input, {

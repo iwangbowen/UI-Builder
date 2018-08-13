@@ -8,7 +8,6 @@ import multivalueselectTemplate from '../templates/multivalueselect';
 import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr, multivalueSelectSelector } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
-import $ from '../../js/jquery.min';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
 

@@ -1,5 +1,4 @@
 import Input from './Input';
-import $ from '../../js/jquery.min';
 
 var NumberInput = $.extend({}, Input, {
 

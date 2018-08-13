@@ -2,7 +2,6 @@ import Vvveb from '../../builder';
 import { TextValueInput, ButtonInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
-import $ from '../../../js/jquery.min';
 import input from './input';
 
 const autoselectinput = $.extend({}, input, {

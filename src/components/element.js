@@ -1,4 +1,4 @@
-import { SectionInput, TextInput } from '../inputs/inputs';
+import { SectionInput, TextInput, Select2Input } from '../inputs/inputs';
 import { inc_base_sort } from './common';
 
 const element = {
@@ -10,17 +10,17 @@ const element = {
         sort: inc_base_sort(),
         data: { header: "General" },
     }, {
-        name: "Id",
-        key: "id",
-        htmlAttr: "id",
-        sort: inc_base_sort(),
-        inline: true,
-        col: 6,
-        inputtype: TextInput
-    }, {
         name: "Class",
         key: "class",
         htmlAttr: "class",
+        sort: inc_base_sort(),
+        inline: true,
+        col: 12,
+        inputtype: Select2Input
+    }, {
+        name: "Id",
+        key: "id",
+        htmlAttr: "id",
         sort: inc_base_sort(),
         inline: true,
         col: 6,
