@@ -1,8 +1,10 @@
 import { TextInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { textareaid } from './ids';
+import $ from '../../../js/jquery.min';
+import input from './input';
 
-const textareainput = {
+const textareainput = $.extend({}, input, {
     nodes: [`textarea`],
     name: "Text Area",
     image: "icons/text_area.svg",
@@ -44,6 +46,6 @@ const textareainput = {
             off: ''
         }
     }]
-};
+});
 
 export default textareainput;

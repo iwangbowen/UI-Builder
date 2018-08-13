@@ -5,15 +5,18 @@ import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
+import input from './input';
+import $ from '../../../js/jquery.min';
+import { calendarid } from './ids';
 
-const calendar = {
+const calendar = $.extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
-    html: `<div class="everyOutbox-right draggable">
+    html: `<div ${dataComponentId}="${calendarid}" class="everyOutbox-right draggable">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="html/calendar@oee" lustyle="height: 2.8rem;width:13rem " 
+                    <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${calendarid}" lustyle="height: 2.8rem;width:13rem " 
                     type="text" class="form-control Wdate"/>
                  </div>
             </div>
@@ -86,6 +89,6 @@ const calendar = {
             off: 'off'
         }
     }]
-};
+});
 
 export default calendar;

@@ -1,15 +1,18 @@
 import { TextInput, SelectInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { inputTypes, inputTypeNames } from '../inputTypes';
 import { dataComponentId } from '../common';
+import input from './input';
+import $ from '../../../js/jquery.min';
+import { textinputid } from './ids';
 
-const textinput = {
+const textinput = $.extend({}, input, {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
-    html: `<div class="everyOutbox-right draggable">
+    html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${textinputid}">
             <div class="btn-group">
                 <div class="dailyBox">
-                    <input ${dataComponentId}="html/textinput@oee" lustyle="height: 2.8rem;width:13rem" type="text" class="form-control"/>
+                    <input ${dataComponentId}="${textinputid}" lustyle="height: 2.8rem;width:13rem" type="text" class="form-control"/>
                  </div>
             </div>
            </div>`,
@@ -58,6 +61,6 @@ const textinput = {
             off: ''
         }
     }]
-};
+});
 
 export default textinput;

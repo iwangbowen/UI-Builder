@@ -1,11 +1,14 @@
 import { TextInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
+import { radiobuttonid } from './ids';
+import $ from '../../../js/jquery.min';
+import input from './input';
 
-const radiobutton = {
+const radiobutton = $.extend({}, input, {
     name: "Radio Button",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",
-    html: `<div ${dataComponentId}="html/radiobutton@oee" class="everyOutbox-right draggable">
+    html: `<div ${dataComponentId}="${radiobuttonid}" class="everyOutbox-right draggable">
             <div style="display:inline;"><input class="radioInput" type="radio" value="" /><span ${dataComponentId}="html/span@oee">单选1</span></div>
            </div>`,
     properties: [{
@@ -24,6 +27,6 @@ const radiobutton = {
         htmlAttr: "name",
         inputtype: TextInput
     }]
-};
+});
 
 export default radiobutton;

@@ -3,12 +3,13 @@ import { TextValueInput, ButtonInput, TextInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import $ from '../../../js/jquery.min';
+import input from './input';
 
-const autoselectinput = {
+const autoselectinput = $.extend({}, input, {
     nodes: ["select"],
     name: "Manual Select Input",
     image: "icons/select_input.svg",
-    html: `<div class="everyOutbox-right draggable">
+    html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${manualselectinputid}">
             <div class="btn-group">
                 <div class="dailyBox">
                     <select ${dataComponentId}="${manualselectinputid}" class="form-control fundodooSelect" lustyle="height:2.8rem;width:13rem">
@@ -88,6 +89,6 @@ const autoselectinput = {
             return node;
         }
     }]
-};
+});
 
 export default autoselectinput;

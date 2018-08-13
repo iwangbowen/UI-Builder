@@ -1,12 +1,14 @@
 import { TextInput } from '../../inputs/inputs';
 import { autoselectinputid } from './ids';
 import { dataComponentId, dataUrl, dataAutoSelectId, dataValueMapping, dataTextMapping } from '../common';
+import $ from '../../../js/jquery.min';
+import input from './input';
 
-const autoselectinput = {
+const autoselectinput = $.extend({}, input, {
     nodes: ["select"],
     name: "Auto Select Input",
     image: "icons/select_input.svg",
-    html: `<div class="everyOutbox-right draggable">
+    html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${autoselectinputid}">
             <div class="btn-group">
                 <div class="dailyBox">
                     <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control fundodooSelect" lustyle="height: 2.8rem;width:13rem">
@@ -41,6 +43,6 @@ const autoselectinput = {
         htmlAttr: "name",
         inputtype: TextInput
     }]
-};
+});
 
 export default autoselectinput;
