@@ -25,7 +25,7 @@ const labeldiv = {
                 ? validValues
                 : []
         },
-        onChange(node, value) {
+        onChange(node) {
             node.find(requiredSpanSelector).toggle();
             return node;
         },
