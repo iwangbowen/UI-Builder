@@ -5,7 +5,7 @@ import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
 import { importedPage, defaultFilename } from './constants';
 import { getBeautifiedHtml } from './util/dom';
-import { tableSelector } from './util/selectors';
+import { noneditableSelector } from './util/selectors';
 
 (function () {
 	var cache = {};
@@ -385,9 +385,6 @@ Vvveb.WysiwygEditor = {
 	},
 
 	edit(element) {
-		if (!element.parentsUntil(tableSelector).length) {
-			element.attr({ 'contenteditable': true, 'spellcheckker': false });
-		}
 		$("#wysiwyg-editor").show();
 		this.element = element;
 		this.isActive = true;
@@ -666,13 +663,11 @@ Vvveb.Builder = {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
 
 			self.texteditEl = target = jQuery(event.target);
-
 			Vvveb.WysiwygEditor.edit(self.texteditEl);
-
-			self.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
-
+			if (!self.texteditEl.parents(noneditableSelector).length) {
+				self.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
+			}
 			self.texteditEl.on("blur keyup paste input", function (event) {
-
 				jQuery("#select-box").css({
 					"width": self.texteditEl.outerWidth(),
 					"height": self.texteditEl.outerHeight()

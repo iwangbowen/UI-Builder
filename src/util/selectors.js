@@ -6,6 +6,7 @@ const emptyChildrenSelectors = [tableSelector];
 const autoselectinputSelector = `[${dataAutoSelectId}]`;
 const submitButtonSelector = `button[${dataButtonId}]`;
 const parentSelector = [tableSelector].join(', ');
+const noneditableSelector = [tableSelector].join('');
 
 function getParentOrSelf(node) {
     const parents = $(node).parents(parentSelector);
@@ -14,5 +15,5 @@ function getParentOrSelf(node) {
 
 export {
     emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
-    parentSelector, getParentOrSelf, requiredSpanSelector
+    parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector
 };
