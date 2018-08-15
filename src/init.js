@@ -1,26 +1,25 @@
 import Vvveb from './builder';
-import pages from './pages';
-import { importedPage } from './constants';
-import htmlGenerator from './util/htmlGenerator';
 import {
-    generateBaseTag, importedPageHref, generateDevDependentTags, removeGeneratedScripts,
-    removeNameBrackets
-} from './util/jsoup';
+    importedPageName, importedPageTitle, importedPageHref, lastEditedName,
+    lastEditedTitle, lastEditedHref, pages
+} from './constants';
+import { getBeautifiedHtml, getHash, getPage } from './util/dom';
 
 $(document).ready(function () {
     Vvveb.Gui.init();
     Vvveb.FileManager.init();
-    const hash = window.location.hash && window.location.hash.substr(1);
-    if (hash == importedPage) {
-        localStorage.getItem(importedPage) && pages.unshift({
-            name: importedPage,
-            title: 'Imported Page',
-            url: importedPageHref,
-            srcdoc: htmlGenerator(localStorage.getItem(importedPage), generateDevDependentTags, generateBaseTag, removeGeneratedScripts, removeNameBrackets)
-        });
+
+    let hash = getHash();
+    if ((!hash || hash == lastEditedName) && localStorage.getItem(lastEditedName)) {
+        page.unshift(getPage(lastEditedName, lastEditedTitle, lastEditedHref));
+        window.location.href = `#${lastEditedName}`;
+        hash = getHash();
+    } else if (hash == importedPageName && localStorage.getItem(importedPageName)) {
+        page.unshift(getPage(importedPageName, importedPageTitle, importedPageHref));
     }
+
     Vvveb.FileManager.addPages(pages);
-    var page = Vvveb.FileManager.getPage(hash);
+    const page = Vvveb.FileManager.getPage(hash);
     if (page) {
         Vvveb.Builder.init(page.url, page.srcdoc, function () {
         });
@@ -30,4 +29,9 @@ $(document).ready(function () {
         });
         Vvveb.FileManager.showActive(pages[0].name);
     }
+
+    // Automatically save every 2 seconds
+    setInterval(() => {
+        localStorage.setItem(lastEditedName, getBeautifiedHtml(window.FrameDocument));
+    }, 2000);
 });

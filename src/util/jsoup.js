@@ -10,13 +10,16 @@ import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
+import { importedPageHref, generatedScript } from '../constants';
 
 function removeGeneratedScripts(el) {
     $(el).find(`script[class=${generatedScript}]`).remove();
     return el;
 }
 
-const alwaysTrue = () => true;
+function alwaysTrue() {
+    return true;
+}
 
 // this refers to html element
 function removeTag({ name, init, filter = alwaysTrue }) {
@@ -75,8 +78,6 @@ function concatContent(prev, cur) {
         `)
     );
 }
-
-const generatedScript = 'generatedScript';
 
 function appendScript(el, jsStr) {
     jsStr && $(`<script class="${generatedScript}"></script>`).text(jsStr).appendTo($(el).find('body'));
@@ -144,7 +145,6 @@ function replaceWithExternalFiles(html) {
         .then(() => $(el).prop('outerHTML'));
 }
 
-const importedPageHref = 'template/oee/html/demo/importedPage.html';
 function generateBaseTag(el) {
     $('<base>').attr('href', importedPageHref).prependTo($(el).find('head'));
     return el;
@@ -169,12 +169,6 @@ function generateMultivalueSelectScript(el) {
     return appendScript(el, multivalueselectTemplate());
 }
 
-const beautify_options = {
-    preserve_newlines: false,
-    indent_inner_html: true,
-    unformatted: []
-}
-
 // select multiple options, just name it as an array[]
 // https://github.com/marioizquierdo/jquery.serializeJSON
 function addNameBrackets(el) {
@@ -193,10 +187,17 @@ function removeNameBrackets(el) {
     return el;
 }
 
+function htmlGenerator(html, ...fns) {
+    _.startsWith(html, '<!DOCTYPE') && (html = `<!DOCTYPE html>${html}`);
+    const el = document.createElement('html');
+    el.innerHTML = html;
+    return $(fns.reduce((el, fn) => fn(el), el)).prop('outerHTML');
+}
+
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-    replaceWithExternalFiles, beautify_options, generateBaseTag, importedPageHref,
-    generateDevDependentTags, generateLayerScript, generatedScript, generateMultivalueSelectScript,
-    removeGeneratedScripts, addNameBrackets, removeNameBrackets
+    replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
+    generateLayerScript, generateMultivalueSelectScript, removeGeneratedScripts,
+    addNameBrackets, removeNameBrackets, htmlGenerator
 };

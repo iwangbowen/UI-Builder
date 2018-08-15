@@ -1,10 +1,11 @@
 import {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
-    replaceWithExternalFiles, beautify_options, generateLayerScript, generateMultivalueSelectScript,
-    addNameBrackets
+    replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
+    addNameBrackets, generateBaseTag, generateDevDependentTags, removeGeneratedScripts,
+    removeNameBrackets, htmlGenerator
 } from './jsoup';
-import htmlGenerator from './htmlGenerator';
+import { beautify_options } from '../constants';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -111,7 +112,6 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     -U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
                                        use empty array to denote that no tags should not be reformatted
      */
-
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
@@ -132,7 +132,24 @@ const delay = (function () {
     };
 })();
 
+function getHash() {
+    return window.location.hash && window.location.hash.substr(1);
+}
+
+function generateHtmlFromLocalStorageItemKey(key) {
+    return htmlGenerator(localStorage.getItem(key), generateDevDependentTags, generateBaseTag, removeGeneratedScripts, removeNameBrackets);
+}
+
+function getPage(pageName, pageTitle, pageHref) {
+    return {
+        name: pageName,
+        title: pageTitle,
+        url: pageHref,
+        srcdoc: generateHtmlFromLocalStorageItemKey(pageName)
+    };
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
-    getHtml
+    getHtml, getHash, getPage
 };
