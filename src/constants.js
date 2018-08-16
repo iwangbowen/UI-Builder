@@ -62,6 +62,8 @@ const lastEditedName = 'lastEdited';
 const lastEditedTitle = 'Last Edited';
 const lastEditedHref = `template/oee/html/demo/${lastEditedName}.html`;
 
+const savedHtml = 'savedHtml';
+
 const pages = [
     { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' },
     // { name: 'pds_commo', title: 'PDS Common Template', url: 'template/oee/html/demo/common_demo.html' },
@@ -77,5 +79,5 @@ const pages = [
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename, lastEditedName,
-    lastEditedTitle, lastEditedHref, pages, generatedScript, beautify_options, unusedTags
+    lastEditedTitle, lastEditedHref, pages, generatedScript, beautify_options, unusedTags, savedHtml
 };

@@ -1,7 +1,7 @@
 import Vvveb from './builder';
 import {
     importedPageName, importedPageTitle, importedPageHref, lastEditedName,
-    lastEditedTitle, lastEditedHref, pages
+    lastEditedTitle, lastEditedHref, pages, savedHtml
 } from './constants';
 import { getHash, getPage, autoSave } from './util/dom';
 
@@ -10,11 +10,11 @@ $(document).ready(function () {
     Vvveb.FileManager.init();
 
     let hash = getHash();
-    if ((!hash || hash == lastEditedName) && localStorage.getItem(lastEditedName)) {
+    if ((!hash || hash == lastEditedName) && localStorage.getItem(savedHtml)) {
         pages.unshift(getPage(lastEditedName, lastEditedTitle, lastEditedHref));
         window.location.href = `#${lastEditedName}`;
         hash = getHash();
-    } else if (hash == importedPageName && localStorage.getItem(importedPageName)) {
+    } else if (hash == importedPageName && localStorage.getItem(savedHtml)) {
         pages.unshift(getPage(importedPageName, importedPageTitle, importedPageHref));
     }
 

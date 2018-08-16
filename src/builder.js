@@ -3,7 +3,7 @@ import { dataComponentId } from './components/common'
 import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
 import { getParentOrSelf } from './util/selectors';
-import { importedPageName, defaultFilename } from './constants';
+import { importedPageName, defaultFilename, savedHtml } from './constants';
 import { getBeautifiedHtml } from './util/dom';
 import { noneditableSelector } from './util/selectors';
 
@@ -876,8 +876,8 @@ Vvveb.Builder = {
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
-		start = html.indexOf("<body");
-		end = html.indexOf("</body");
+		let start = html.indexOf("<body");
+		let end = html.indexOf("</body");
 
 		if (start >= 0 && end >= 0) {
 			body = html.slice(html.indexOf(">", start) + 1, end);
@@ -956,7 +956,7 @@ Vvveb.Gui = {
 							reject(evt)
 						}
 					}).then(function (html) {
-						localStorage.setItem(importedPageName, html);
+						localStorage.setItem(savedHtml, html);
 						window.location.href = `#${importedPageName}`;
 						window.location.reload();
 					})

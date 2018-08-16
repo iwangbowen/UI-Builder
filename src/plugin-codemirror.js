@@ -33,20 +33,17 @@ Vvveb.CodeEditor = {
 
 		return this.codemirror;
 	},
-
 	setValue(formatCode = false) {
 		if (this.isActive == true) {
-			var scrollInfo = this.codemirror.getScrollInfo();
+			let scrollInfo = this.codemirror.getScrollInfo();
 			this.codemirror.setValue(formatCode ? getBeautifiedHtml(window.FrameDocument) : getHtml(window.FrameDocument));
 			this.codemirror.scrollTo(scrollInfo.left, scrollInfo.top);
 		}
 	},
-
 	formatCode() {
 		this.formated = true;
 		this.setValue(true);
 	},
-
 	destroy(element) {
 		/*
 		//save memory by destroying but lose scroll on editor toggle
@@ -55,10 +52,9 @@ Vvveb.CodeEditor = {
 		*/
 		this.isActive = false;
 	},
-
 	toggle() {
-		var toggleEditorBtn = $('#bottom-panel #code-editor-btn');
-		var formatCodeBtn = $('#bottom-panel #format-code-btn');
+		let toggleEditorBtn = $('#bottom-panel #code-editor-btn');
+		let formatCodeBtn = $('#bottom-panel #format-code-btn');
 		if (this.isActive != true) {
 			this.isActive = true;
 			toggleEditorBtn.children().removeClass('ion-chevron-up').addClass('ion-chevron-down');
