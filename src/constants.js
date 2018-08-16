@@ -6,7 +6,7 @@ const unusedTags = [
         name: 'script',
         filter: tag => tag.getAttribute('src')
             && tag.getAttribute('src').includes('iframe-drag-n-drop')
-            || $(tag).hasClass(generatedScript)
+            || $(tag).hasClass(removeableScript)
     },
     {
         name: 'link',
@@ -47,7 +47,6 @@ const unusedTags = [
 
 const baseHref = 'baseHref';
 const defaultFilename = 'index.html';
-const generatedScript = 'generatedScript';
 const beautify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
@@ -64,6 +63,9 @@ const lastEditedHref = `template/oee/html/demo/${lastEditedName}.html`;
 
 const savedHtml = 'savedHtml';
 
+const removeableScript = 'removeableScript';
+const tableScript = 'tableScript';
+
 const pages = [
     { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' },
     // { name: 'pds_commo', title: 'PDS Common Template', url: 'template/oee/html/demo/common_demo.html' },
@@ -79,5 +81,6 @@ const pages = [
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename, lastEditedName,
-    lastEditedTitle, lastEditedHref, pages, generatedScript, beautify_options, unusedTags, savedHtml
+    lastEditedTitle, lastEditedHref, pages, beautify_options, unusedTags, savedHtml,
+    removeableScript, tableScript
 };

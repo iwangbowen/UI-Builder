@@ -9,10 +9,10 @@ import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
-import { generatedScript, unusedTags } from '../constants';
+import { unusedTags, removeableScript, tableScript } from '../constants';
 
-function removeGeneratedScripts(el) {
-    $(el).find(`script[class=${generatedScript}]`).remove();
+function removeRemoveableScripts(el) {
+    $(el).find(`script[class=${removeableScript}]`).remove();
     return el;
 }
 
@@ -40,12 +40,12 @@ function emptyChildren(el) {
 }
 
 function generateTableScript(el) {
+    $(el).find(`script[class=${tableScript}]`).remove();
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
                 ${tableTemplate($(element))}`;
     }, '');
-    // Do not add generatedScript class for table script
-    return appendScript(el, jsStr, false);
+    return appendScript(el, jsStr, tableScript);
 }
 
 function generateCalendarOnclickAttr(el) {
@@ -79,8 +79,8 @@ function concatContent(prev, cur) {
     );
 }
 
-function appendScript(el, jsStr, addGeneragedScriptClass = true) {
-    jsStr && $(`<script ${addGeneragedScriptClass ? `class="${generatedScript}"` : ''}></script>`).text(jsStr).appendTo($(el).find('body'));
+function appendScript(el, jsStr, scriptClass = removeableScript) {
+    jsStr && $(`<script class="${scriptClass}"></script>`).text(jsStr).appendTo($(el).find('body'));
     return el;
 }
 
@@ -198,6 +198,6 @@ export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
-    generateLayerScript, generateMultivalueSelectScript, removeGeneratedScripts,
+    generateLayerScript, generateMultivalueSelectScript, removeRemoveableScripts,
     addNameBrackets, removeNameBrackets, htmlGenerator
 };

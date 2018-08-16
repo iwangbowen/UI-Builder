@@ -2,7 +2,7 @@ import {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
     replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
-    addNameBrackets, generateBaseTag, generateDevDependentTags, removeGeneratedScripts,
+    addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
 import { beautify_options, savedHtml } from '../constants';
@@ -139,7 +139,7 @@ function getHash() {
 
 function generateHtmlFromLocalStorageItemKey(pageHref) {
     return htmlGenerator(localStorage.getItem(savedHtml),
-        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeGeneratedScripts, removeNameBrackets);
+        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts, removeNameBrackets);
 }
 
 function getPage(pageName, pageTitle, pageHref) {
