@@ -145,8 +145,8 @@ function replaceWithExternalFiles(html) {
         .then(() => $(el).prop('outerHTML'));
 }
 
-function generateBaseTag(el) {
-    $('<base>').attr('href', importedPageHref).prependTo($(el).find('head'));
+function generateBaseTag(el, pageHref) {
+    $('<base>').attr('href', pageHref).prependTo($(el).find('head'));
     return el;
 }
 

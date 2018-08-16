@@ -5,7 +5,8 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeGeneratedScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
-import { beautify_options } from '../constants';
+import { beautify_options, lastEditedName } from '../constants';
+import _ from 'lodash';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -136,8 +137,9 @@ function getHash() {
     return window.location.hash && window.location.hash.substr(1);
 }
 
-function generateHtmlFromLocalStorageItemKey(key) {
-    return htmlGenerator(localStorage.getItem(key), generateDevDependentTags, generateBaseTag, removeGeneratedScripts, removeNameBrackets);
+function generateHtmlFromLocalStorageItemKey(key, pageHref) {
+    return htmlGenerator(localStorage.getItem(key),
+        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeGeneratedScripts, removeNameBrackets);
 }
 
 function getPage(pageName, pageTitle, pageHref) {
@@ -145,11 +147,15 @@ function getPage(pageName, pageTitle, pageHref) {
         name: pageName,
         title: pageTitle,
         url: pageHref,
-        srcdoc: generateHtmlFromLocalStorageItemKey(pageName)
+        srcdoc: generateHtmlFromLocalStorageItemKey(pageName, pageHref)
     };
 }
 
+function autoSave() {
+    localStorage.setItem(lastEditedName, getBeautifiedHtml(window.FrameDocument));
+}            
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
-    getHtml, getHash, getPage
+    getHtml, getHash, getPage, autoSave
 };
