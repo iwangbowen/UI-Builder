@@ -1,8 +1,5 @@
-import { dataConfigInfo, dataCalendarId, dataMultivalueSelectId } from '../components/common';
-
-const calendarSelector = `input[${dataCalendarId}]`;
-const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;
-const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
+import { dataConfigInfo } from '../components/common';
+import { calendarOnclickSelector } from './selectors'
 
 // <input data-id="{'a', b}"> 替换包含'\''的属性值为合法的json字符串
 function getDataConfigInfo(node) {
@@ -45,7 +42,6 @@ function replaceOtherShowingCalendarInputs(element, context) {
 
 export {
     replaceOtherShowingCalendarInputs, cloneWithoutOnclick,
-    calendarSelector, calendarOnclickSelector,
     getDataConfigInfo, getDateFmt, getParsedConfigInfo,
-    setOnclickAttr, setDataConfigInfo, multivalueSelectSelector
+    setOnclickAttr, setDataConfigInfo
 };

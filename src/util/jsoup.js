@@ -1,10 +1,13 @@
-import { emptyChildrenSelectors, tableSelector, submitButtonSelector } from './selectors';
+import {
+    emptyChildrenSelectors, tableSelector, submitButtonSelector, calendarSelector,
+    multivalueSelectSelector
+} from './selectors';
 import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
 import { template as submitFormTemplate } from '../templates/submitform';
 import layerTemplate from '../templates/layer';
 import multivalueselectTemplate from '../templates/multivalueselect';
-import { calendarSelector, setOnclickAttr as setCalendarOnclickAttr, multivalueSelectSelector } from './dataAttr';
+import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
