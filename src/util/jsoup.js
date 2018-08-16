@@ -44,7 +44,8 @@ function generateTableScript(el) {
         return `${prev}
                 ${tableTemplate($(element))}`;
     }, '');
-    return appendScript(el, jsStr);
+    // Do not add generatedScript class for table script
+    return appendScript(el, jsStr, false);
 }
 
 function generateCalendarOnclickAttr(el) {
@@ -78,8 +79,8 @@ function concatContent(prev, cur) {
     );
 }
 
-function appendScript(el, jsStr) {
-    jsStr && $(`<script class="${generatedScript}"></script>`).text(jsStr).appendTo($(el).find('body'));
+function appendScript(el, jsStr, addGeneragedScriptClass = true) {
+    jsStr && $(`<script ${addGeneragedScriptClass ? `class="${generatedScript}"` : ''}></script>`).text(jsStr).appendTo($(el).find('body'));
     return el;
 }
 
