@@ -1,4 +1,3 @@
-import unusedTags from './unusedTags';
 import { emptyChildrenSelectors, tableSelector, submitButtonSelector } from './selectors';
 import tableTemplate from '../templates/table';
 import autoselectinputTemplate from '../templates/autoselectinput';
@@ -10,7 +9,7 @@ import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
-import { importedPageHref, generatedScript } from '../constants';
+import { generatedScript, unusedTags } from '../constants';
 
 function removeGeneratedScripts(el) {
     $(el).find(`script[class=${generatedScript}]`).remove();

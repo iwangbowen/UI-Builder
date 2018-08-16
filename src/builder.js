@@ -9,7 +9,6 @@ import { noneditableSelector } from './util/selectors';
 
 (function () {
 	var cache = {};
-
 	this.tmpl = function tmpl(str, data) {
 		// Figure out if we're getting a template, or if we need to
 		// load the template - and be sure to cache the result.
@@ -51,22 +50,15 @@ Vvveb.ComponentsGroup = {};
 
 Vvveb.Components = {
 	_components: {},
-
 	_nodesLookup: {},
-
 	_attributesLookup: {},
-
 	_classesLookup: {},
-
 	_classesRegexLookup: {},
-
 	init(url) {
 	},
-
 	get(type) {
 		return this._components[type];
 	},
-
 	add(type, data) {
 		data.type = type;
 
@@ -113,9 +105,7 @@ Vvveb.Components = {
 			}
 		}
 	},
-
 	extend(inheritType, type, data) {
-
 		newData = data;
 
 		if (inheritData = this._components[inheritType]) {
@@ -136,8 +126,6 @@ Vvveb.Components = {
 		});
 		this.add(type, newData);
 	},
-
-
 	matchNode(node) {
 		if ($(node).attr(dataComponentId) && this._components[$(node).attr(dataComponentId)]) {
 			return this._components[$(node).attr(dataComponentId)];
@@ -156,7 +144,6 @@ Vvveb.Components = {
 
 				if (attr in this._attributesLookup) {
 					component = this._attributesLookup[attr];
-
 					//currently we check that is not a component by looking at name attribute
 					//if we have a collection of objects it means that attribute value must be checked
 					if (typeof component["name"] === "undefined") {
@@ -197,9 +184,7 @@ Vvveb.Components = {
 		//return false;
 		return this.get(Vvveb.defaultComponent);
 	},
-
 	render(type) {
-
 		component = this._components[type];
 
 		rightPanel = jQuery("#right-panel #component-properties");
@@ -325,23 +310,18 @@ Vvveb.Components = {
 				row.find('.input').append(property.input);
 
 				property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
-				
+
 				section.append(row);
 			}
 		}
-
 		if (component.init) component.init(Vvveb.Builder.selectedEl.get(0));
 	}
 };
 
-
-
 Vvveb.WysiwygEditor = {
-
 	isActive: false,
 	oldValue: '',
 	doc: false,
-
 	init(doc) {
 		this.doc = doc;
 
@@ -375,28 +355,22 @@ Vvveb.WysiwygEditor = {
 			return false;
 		});
 	},
-
 	undo(element) {
 		this.doc.execCommand('undo', false, null);
 	},
-
 	redo(element) {
 		this.doc.execCommand('redo', false, null);
 	},
-
 	edit(element) {
 		$("#wysiwyg-editor").show();
 		this.element = element;
 		this.isActive = true;
 		this.oldValue = element.html();
 	},
-
 	destroy(element) {
 		element.removeAttr('contenteditable spellcheckker');
 		$("#wysiwyg-editor").hide();
 		this.isActive = false;
-
-
 		node = this.element.get(0);
 		Vvveb.Undo.addMutation({
 			type: 'characterData',
@@ -408,13 +382,9 @@ Vvveb.WysiwygEditor = {
 }
 
 Vvveb.Builder = {
-
 	dragMoveMutation: false,
-
 	init(url, srcdoc, callback) {
-
 		self = this;
-
 		self.loadControlGroups();
 
 		self.selectedEl = null;
@@ -430,10 +400,8 @@ Vvveb.Builder = {
 
 		self.dragElement = null;
 	},
-
 	/* controls */
 	loadControlGroups() {
-
 		componentsList = $("#components-list");
 		componentsList.empty();
 
@@ -448,49 +416,44 @@ Vvveb.Builder = {
 			for (i in components) {
 				componentType = components[i];
 				component = Vvveb.Components.get(componentType);
-
 				if (component) {
 					item = $('<li data-section="' + group + '" data-type="' + componentType + '" data-search="' + component.name.toLowerCase() + '"><a href="#">' + component.name + "</a></li>");
 
 					if (component.image) {
-
 						item.css({
 							backgroundImage: "url(" + 'libs/builder/' + component.image + ")",
 							backgroundRepeat: "no-repeat"
 						})
 					}
-
 					componentsSubList.append(item)
 				}
 			}
 		}
 	},
-
 	loadUrl(url) {
 		jQuery("#select-box").hide();
 		self.iframe.src = url;
 	},
-
 	/* iframe */
 	_loadIframe(url, srcdoc) {
-
 		self.iframe = this.documentFrame.get(0);
-		self.iframe.src = url;
-		srcdoc && (self.iframe.srcdoc = srcdoc);
-
+		// srcdoc && (self.iframe.srcdoc = srcdoc);
+		if (srcdoc) {
+			self.iframe.srcdoc = srcdoc
+		} else {
+			self.iframe.src = url;
+		}
 		return this.documentFrame.on("load", function () {
-
 			window.FrameWindow = self.iframe.contentWindow;
 			window.FrameDocument = self.iframe.contentWindow.document;
 
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
-			if (self.initCallback) self.initCallback();
-
+			if (self.initCallback) {
+				self.initCallback()
+			};
 			return self._frameLoaded();
 		});
-
 	},
-
 	_frameLoaded() {
 
 		self.frameDoc = $(window.FrameDocument);
@@ -499,12 +462,9 @@ Vvveb.Builder = {
 
 		this._initHightlight();
 	},
-
 	_getElementType(el) {
-
 		//search for component attribute
 		componentName = '';
-
 		if (el.attributes)
 			for (var j = 0; j < el.attributes.length; j++) {
 
@@ -517,7 +477,6 @@ Vvveb.Builder = {
 
 		if (el.attributes)
 			for (var j = 0; j < el.attributes.length; j++) {
-
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
 					componentName = el.attributes[j].nodeName.replace('data-component-', '');
 				}
@@ -527,15 +486,11 @@ Vvveb.Builder = {
 		//if (className) return componentName;
 		return el.tagName;
 	},
-
 	loadNodeComponent(node) {
 		data = Vvveb.Components.matchNode(node);
 		if (data) Vvveb.Components.render(data.type);
-
 	},
-
 	selectNode(node = false) {
-
 		if (!node) {
 			jQuery("#select-box").hide();
 			return;
@@ -549,8 +504,6 @@ Vvveb.Builder = {
 
 		self.selectedEl = target = jQuery(node);
 		offset = target.offset();
-
-
 		jQuery("#select-box").css(
 			{
 				"top": offset.top - self.frameDoc.scrollTop(),
@@ -563,10 +516,8 @@ Vvveb.Builder = {
 		jQuery("#highlight-name").html(self._getElementType(node));
 
 	},
-
 	/* iframe highlight */
 	_initHightlight() {
-
 		moveEvent = { target: null, };
 
 		this.frameBody.on("mousemove touchmove", function (event) {
@@ -609,7 +560,6 @@ Vvveb.Builder = {
 					// 	console.log(err);
 					// }
 				} else {
-
 					jQuery("#highlight-box").css(
 						{
 							"top": offset.top - self.frameDoc.scrollTop(),
@@ -623,7 +573,6 @@ Vvveb.Builder = {
 				}
 			}
 		});
-
 
 		this.frameBody.on("mouseup touchend", function (event) {
 			if (self.isDragging) {
@@ -658,7 +607,6 @@ Vvveb.Builder = {
 			}
 		});
 
-
 		this.frameBody.on("dblclick", function (event) {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
 
@@ -677,7 +625,6 @@ Vvveb.Builder = {
 			jQuery("#select-box").addClass("text-edit").find("#select-actions").hide();
 			jQuery("#highlight-box").hide();
 		});
-
 
 		this.frameBody.on("click", function (event) {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
@@ -708,11 +655,11 @@ Vvveb.Builder = {
 				} else if (e.ctrlKey) {
 					const kc = e.which || e.keyCode;
 					// Delete
-					if (String.fromCharCode(kc).toUpperCase() == "D") {
+					if (String.fromCharCode(kc).toUpperCase() == 'D') {
 						$("#delete-box").trigger('click');
 					}
 					// Copy
-					if (String.fromCharCode(kc).toUpperCase() == "C") {
+					if (String.fromCharCode(kc).toUpperCase() == 'C') {
 						$("#clone-box").trigger('click');
 					}
 					e.preventDefault();
@@ -733,7 +680,6 @@ Vvveb.Builder = {
 				oldParent: node.parentNode,
 				oldNextSibling: node.nextSibling
 			};
-
 			//self.selectNode(false);
 			event.preventDefault();
 			return false;
@@ -869,12 +815,10 @@ Vvveb.Builder = {
 						"height": self.selectedEl.outerHeight(),
 						//"display": "block"
 					});
-
 			}
 
 			if (self.highlightEl) {
 				offset = self.highlightEl.offset();
-
 				jQuery("#highlight-box").css(
 					{
 						"top": offset.top - self.frameDoc.scrollTop(),
@@ -885,12 +829,9 @@ Vvveb.Builder = {
 					});
 			}
 		});
-
 	},
-
 	/* drag and drop */
 	_initDragdrop() {
-
 		self.isDragging = false;
 		component = {};
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
@@ -911,15 +852,12 @@ Vvveb.Builder = {
 
 			self.isDragging = true;
 		});
-
-
 		$('body').on('mouseup touchend', function (event) {
 			if (self.isDragging == true) {
 				self.isDragging = false;
 				// $("#component-clone").remove();
 			}
 		});
-
 		$('body').on('mousemove touchmove', function (event) {
 			if (self.isDragging == true) {
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
@@ -931,12 +869,10 @@ Vvveb.Builder = {
 				}
 			}
 		});
-
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
 			self.isDragging = false;
 			// $("#component-clone").remove();
 		});
-
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
@@ -948,10 +884,8 @@ Vvveb.Builder = {
 		} else {
 			body = html
 		}
-
 		//self.frameBody.html(body);
 		window.FrameDocument.body.innerHTML = body;
-
 		//below methods brake document relative css and js paths
 		//return self.iframe.outerHTML = html;
 		//return self.documentFrame.html(html);
@@ -962,7 +896,6 @@ Vvveb.Builder = {
 let shownPanel, hiddenPanel, isPreview;
 
 Vvveb.Gui = {
-
 	init() {
 		$("[data-vvveb-action]").each(function () {
 			on = "click";
@@ -975,7 +908,6 @@ Vvveb.Gui = {
 			}
 		});
 	},
-
 	undo() {
 		if (Vvveb.WysiwygEditor.isActive) {
 			Vvveb.WysiwygEditor.undo();
@@ -984,7 +916,6 @@ Vvveb.Gui = {
 		}
 		Vvveb.Builder.selectNode();
 	},
-
 	redo() {
 		if (Vvveb.WysiwygEditor.isActive) {
 			Vvveb.WysiwygEditor.redo();
@@ -993,29 +924,23 @@ Vvveb.Gui = {
 		}
 		Vvveb.Builder.selectNode();
 	},
-
 	check() {
 		$('#textarea-modal textarea').val(getBeautifiedHtml(window.FrameDocument));
 		$('#textarea-modal').modal();
 	},
-
 	viewport() {
 		$("#canvas").attr("class", this.dataset.view);
 	},
-
 	toggleEditor() {
 		$("#vvveb-builder").toggleClass("bottom-panel-expand");
 		Vvveb.CodeEditor.toggle();
 	},
-
 	formatCode() {
 		Vvveb.CodeEditor.formatCode();
 	},
-
 	download() {
 		downloadAsTextFile(defaultFilename, getBeautifiedHtml(window.FrameDocument));
 	},
-
 	upload() {
 		$('#file-input')
 			.change(function () {
@@ -1039,12 +964,10 @@ Vvveb.Gui = {
 			})
 			.click();
 	},
-
 	downloadWithExternalFiles() {
 		getBeautifiedHtml(window.FrameDocument, true)
 			.then(html => downloadAsTextFile(defaultFilename, html));
 	},
-
 	preview() {
 		if ($('#left-panel').is(':visible')) {
 			shownPanel = 'left-panel';
@@ -1066,22 +989,17 @@ Vvveb.Gui = {
 		$("#iframe-layer").toggle();
 		$("#vvveb-builder").toggleClass("preview");
 	},
-
 	fullscreen() {
 		launchFullScreen(document); // the whole page
 	},
-
 	componentSearch() {
 		searchText = this.value;
-
 		$("#components-list li ol li").each(function () {
 			$this = $(this);
-
 			$this.hide();
 			if ($this.data("search").indexOf(searchText) > -1) $this.show();
 		});
 	},
-
 	clearComponentSearch: function () {
 		$("#component-search").val("").keyup();
 	}
@@ -1090,10 +1008,8 @@ Vvveb.Gui = {
 Vvveb.FileManager = {
 	tree: false,
 	pages: {},
-
 	init() {
 		this.tree = $("#filemanager .tree > ol").html("");
-
 		$(this.tree).on("click", "li[data-page] span", function (e) {
 			window.location.href = `#${$(this).parents('li').data('page')}`;
 			window.location.reload();
@@ -1101,47 +1017,38 @@ Vvveb.FileManager = {
 			return false;
 		})
 	},
-
 	getPage(name) {
 		return this.pages[name];
 	},
-
 	addPage(name, title, url, srcdoc) {
-
 		this.pages[name] = {
 			name,
 			title,
 			url,
 			srcdoc
 		};
-
 		this.tree.append(
 			tmpl("vvveb-filemanager-page", { name, title, url }));
 	},
-
 	addPages(pages) {
 		for (page in pages) {
 			this.addPage(pages[page].name, pages[page].title, pages[page].url, pages[page].srcdoc);
 		}
 	},
-
 	addComponent(name, url, title, page) {
 		$("[data-page='" + page + "'] > ol", this.tree).append(
 			tmpl("vvveb-filemanager-component", { name, url, title }));
 	},
-
 	showActive(name) {
 		$("[data-page]", this.tree).removeClass("active");
 		$("[data-page='" + name + "']", this.tree).addClass("active");
 	},
-
 	loadPage(name) {
 		$("[data-page]", this.tree).removeClass("active");
 		$("[data-page='" + name + "']", this.tree).addClass("active");
 
 		Vvveb.Builder.loadUrl(this.pages[name]['url']);
 	},
-
 }
 
 export default Vvveb;
