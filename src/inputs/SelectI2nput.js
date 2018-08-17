@@ -11,11 +11,13 @@ const Select2Input = $.extend({}, Input, {
         return this.render("select2", data);
     },
     afterAppend(input, element) {
-        const data = element.attr('class').split(' ').map(className => ({
-            id: className,
-            text: className,
-            selected: true
-        }));
+        const data = element.attr('class').split(' ')
+            .filter(v => v)
+            .map(className => ({
+                id: className,
+                text: className,
+                selected: true
+            }));
         input
             .select2({
                 tags: true,
