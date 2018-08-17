@@ -6,7 +6,20 @@ function template() {
         // 右侧内容查询开始
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         function ${functionName}(el, formId) {
-            $.ajax({
+            var valid = true;
+            $('form.form-box input[required], form.form-box select[required], form.form-box textarea[required]')
+                .each(function () {
+                    if (!this.value) {
+                        valid = false;
+                        layer.alert(this.name + '输入不能为空', {
+                            icon: 2,
+                            shadeClose: true,
+                            title: '提示'
+                        });
+                        return false;
+                    }
+                });
+            valid && $.ajax({
                 url: config.fundodooApiDomainUrl + $(el).attr('${dataUrl}'),
                 dataType: 'json',
                 method : 'POST',
