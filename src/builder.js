@@ -6,7 +6,7 @@ import { getParentOrSelf } from './util/selectors';
 import { importedPageName, defaultFilename, savedHtml } from './constants';
 import { getBeautifiedHtml } from './util/dom';
 import { noneditableSelector } from './util/selectors';
-import tmpl from './tmpl';
+import tmpl from './util/tmpl';
 
 window.tmpl = tmpl;
 
