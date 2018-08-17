@@ -149,7 +149,7 @@ function replaceWithExternalFiles(html) {
 }
 
 function generateBaseTag(el, pageHref) {
-    $('<base>').attr('href', pageHref).prependTo($(el).find('head'));
+    $('<base>').attr('href', `${window.location.origin}/${pageHref}`).prependTo($(el).find('head'));
     return el;
 }
 

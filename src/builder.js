@@ -437,7 +437,6 @@ Vvveb.Builder = {
 	/* iframe */
 	_loadIframe(url, srcdoc) {
 		self.iframe = this.documentFrame.get(0);
-		// srcdoc && (self.iframe.srcdoc = srcdoc);
 		if (srcdoc) {
 			self.iframe.srcdoc = srcdoc
 		} else {
@@ -448,9 +447,7 @@ Vvveb.Builder = {
 			window.FrameDocument = self.iframe.contentWindow.document;
 
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
-			if (self.initCallback) {
-				self.initCallback()
-			};
+			self.initCallback && self.initCallback();
 			return self._frameLoaded();
 		});
 	},
