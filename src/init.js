@@ -3,7 +3,7 @@ import {
     importedPageName, importedPageTitle, importedPageHref, lastEditedName,
     lastEditedTitle, lastEditedHref, pages, savedHtml
 } from './constants';
-import { getHash, getPage, autoSave } from './util/dom';
+import { getHash, getPage, loadCallback } from './util/dom';
 
 $(document).ready(function () {
     Vvveb.Gui.init();
@@ -26,10 +26,5 @@ $(document).ready(function () {
     } else {
         Vvveb.Builder.init(pages[0].url, pages[0].srcdoc, loadCallback);
         Vvveb.FileManager.showActive(pages[0].name);
-    }
-
-    function loadCallback() {
-        // Save automatically every 2 seconds
-        setInterval(autoSave, 2000);
     }
 });

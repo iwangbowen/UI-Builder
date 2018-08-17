@@ -153,9 +153,14 @@ function getPage(pageName, pageTitle, pageHref) {
 
 function autoSave() {
     localStorage.setItem(savedHtml, getBeautifiedHtml(window.FrameDocument));
-}            
+}    
+
+function loadCallback() {
+    // Save automatically every 2 seconds
+    setInterval(autoSave, 2000);
+}
 
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
-    getHtml, getHash, getPage, autoSave
+    getHtml, getHash, getPage, loadCallback
 };
