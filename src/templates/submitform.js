@@ -7,7 +7,7 @@ function template() {
         var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
         function ${functionName}(el, formId) {
             var valid = true;
-            $('form.form-box input[required], form.form-box select[required], form.form-box textarea[required]')
+            $('form.form-box').find('input[required], select[required], textarea[required]')
                 .each(function () {
                     if (!this.value) {
                         valid = false;
