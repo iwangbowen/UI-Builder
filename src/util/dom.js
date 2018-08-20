@@ -181,7 +181,6 @@ function addOrRemoveElement(element) {
     } else {
         selectedElements.push(draggableElement);
     }
-
     addStyleForSelectedElements();
 }
 
@@ -236,10 +235,10 @@ function highlightwhenSelected(target, ctrlKeyPressed) {
     $("#highlight-name").html(self._getElementType(target));
 }
 
-function getLeftest() {
+function getLeftestOrTopest(direction) {
     return _.chain(selectedElements)
         .map($)
-        .map(v => v.offset().left)
+        .map(v => v.offset()[direction])
         .min()
         .value();
 }
@@ -252,6 +251,19 @@ function getRightest() {
         .value();
 }
 
+function getBottomest() {
+    return _.chain(selectedElements)
+        .map($)
+        .map(v => v.offset().top + v.outerHeight())
+        .max()
+        .value();
+}
+
+function preventDefault(event) {
+    event.preventDefault();
+    return false;
+}
+
 function moveToLeft(leftest) {
     _.each(selectedElements, function (element) {
         const $element = $(element);
@@ -259,6 +271,17 @@ function moveToLeft(leftest) {
         $element.offset({
             left: leftest,
             top
+        })
+    });
+}
+
+function moveToTop(topest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { left } = $element.offset();
+        $element.offset({
+            left,
+            top: topest
         })
     });
 }
@@ -274,16 +297,55 @@ function moveToRight(rightest) {
     });
 }
 
+function moveToBottom(bottomest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { left } = $element.offset();
+        $element.offset({
+            left,
+            top: bottomest - $element.outerHeight()
+        })
+    });
+}
+
 function leftAlign() {
-    moveToLeft(getLeftest());
+    moveToLeft(getLeftestOrTopest('left'));
+}
+function topAlign() {
+    moveToTop(getLeftestOrTopest('top'));
 }
 
 function rightAlign() {
     moveToRight(getRightest());
 }
 
+function bottomAlign() {
+    moveToBottom(getBottomest());
+}
+
+function leftAlignCallback(event) {
+    leftAlign();
+    return preventDefault(event);
+}
+
+function rightAlignCallback(event) {
+    rightAlign();
+    return preventDefault(event);
+}
+
+function topAlignCallback(event) {
+    topAlign();
+    return preventDefault(event);
+}
+
+function bottomAlignCallback(event) {
+    bottomAlign();
+    return preventDefault(event);
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
-    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlign, rightAlign
+    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
+    rightAlignCallback, topAlignCallback, bottomAlignCallback
 };
