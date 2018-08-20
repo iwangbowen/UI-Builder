@@ -4,7 +4,7 @@ import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import {
 	getStyle, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, getSelectedElements,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithDraggable
+	getElementWithDraggable, leftAlign, rightAlign
 } from './util/dom';
 import { importedPageName, defaultFilename, savedHtml } from './constants';
 import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
@@ -472,9 +472,7 @@ Vvveb.Builder = {
 			self.texteditEl = null;
 		}
 		self.selectedEl = target = jQuery(node);
-		if (!ctrlKeyPressed) {
-			highlightwhenSelected(node);
-		}
+		highlightwhenSelected(node, ctrlKeyPressed);
 	},
 	/* iframe highlight */
 	_initHightlight() {
@@ -749,6 +747,19 @@ Vvveb.Builder = {
 
 			self.selectedEl.remove();
 
+			event.preventDefault();
+			return false;
+		});
+
+		$('#left-align').on('click', function (event) {
+			leftAlign();
+
+			event.preventDefault();
+			return false;
+		});
+		$('#right-align').on('click', function (event) {
+			rightAlign();
+			
 			event.preventDefault();
 			return false;
 		});

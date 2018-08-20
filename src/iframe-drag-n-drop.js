@@ -22,11 +22,11 @@ $(document).ready(() => {
             // Require a 75% element overlap for a drop to be possible
             overlap: 0.50,
             // listen for drop related events:
-            ondropactivate: function (event) {
+            ondropactivate(event) {
                 // add active dropzone feedback
                 event.target.classList.add('drop-active');
             },
-            ondragenter: function (event) {
+            ondragenter(event) {
                 var draggableElement = event.relatedTarget,
                     dropzoneElement = event.target;
 
@@ -34,13 +34,13 @@ $(document).ready(() => {
                 dropzoneElement.classList.add('drop-target');
                 draggableElement.classList.add('can-drop');
             },
-            ondragleave: function (event) {
+            ondragleave(event) {
                 // remove the drop feedback style
                 event.target.classList.remove('drop-target');
                 event.relatedTarget.classList.remove('can-drop');
                 enteredDropzone = false;
             },
-            ondrop: event => {
+            ondrop(event) {
                 enteredDropzone = true;
                 // offset()函数用于设置或返回当前匹配元素相对于当前文档的偏移，也就是相对于当前文档的坐标
                 // 元素可以是任意定位方式的元素
@@ -56,7 +56,7 @@ $(document).ready(() => {
                     .offset(offset)
                     .removeAttr('data-x data-y');
             },
-            ondropdeactivate: function (event) {
+            ondropdeactivate(event) {
                 // remove active dropzone feedback
                 event.target.classList.remove('drop-active');
                 event.target.classList.remove('drop-target');
@@ -117,9 +117,8 @@ $(document).ready(() => {
             },
             // enable autoScroll
             autoScroll: true,
-
             // call this function on every dragmove event
-            onmove: event => {
+            onmove(event) {
                 removeAlignmentLines();
                 const target = event.target;
                 const selectedElements = window.parent.getSelectedElements();

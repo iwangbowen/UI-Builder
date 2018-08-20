@@ -15,6 +15,9 @@ const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
 
 const multiSelectedSelector = `.${multiSelectedClass}`;
 
+const withCtrlKeyActionsSelector = '#select-actions #with-ctrl-key';
+const withoutCtrlKeyActionsSelector = '#select-actions #without-ctrl-key';
+
 const selectBox = '#select-box';
 
 function getParentOrSelf(node) {
@@ -25,5 +28,6 @@ function getParentOrSelf(node) {
 export {
     emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
     parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
-    calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox
+    calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
+    withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector
 };

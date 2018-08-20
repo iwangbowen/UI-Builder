@@ -7,7 +7,7 @@ import {
 } from './jsoup';
 import { beautify_options, savedHtml, multiSelectedClass } from '../constants';
 import _ from 'lodash';
-import { multiSelectedSelector, selectBox } from './selectors';
+import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -216,23 +216,74 @@ function highlightWhenHovering(target) {
     jQuery("#highlight-name").html(self._getElementType(target));
 }
 
-function highlightwhenSelected(target) {
+function highlightwhenSelected(target, ctrlKeyPressed) {
     const $target = $(target);
-	const offset = $target.offset();
-    $(selectBox).css(
-        {
-            "top": offset.top - self.frameDoc.scrollTop(),
-            "left": offset.left - self.frameDoc.scrollLeft(),
-            "width": $target.outerWidth(),
-            "height": $target.outerHeight(),
-            "display": "block",
-        });
-
+    const offset = $target.offset();
+    $(selectBox).css({
+        "top": offset.top - self.frameDoc.scrollTop(),
+        "left": offset.left - self.frameDoc.scrollLeft(),
+        "width": $target.outerWidth(),
+        "height": $target.outerHeight(),
+        "display": "block",
+    });
+    if (ctrlKeyPressed) {
+        jQuery(selectBox).find(withCtrlKeyActionsSelector).show();
+        jQuery(selectBox).find(withoutCtrlKeyActionsSelector).hide();
+    } else {
+        jQuery(selectBox).find(withoutCtrlKeyActionsSelector).show();
+        jQuery(selectBox).find(withCtrlKeyActionsSelector).hide();
+    }
     $("#highlight-name").html(self._getElementType(target));
+}
+
+function getLeftest() {
+    return _.chain(selectedElements)
+        .map($)
+        .map(v => v.offset().left)
+        .min()
+        .value();
+}
+
+function getRightest() {
+    return _.chain(selectedElements)
+        .map($)
+        .map(v => v.offset().left + v.outerWidth())
+        .max()
+        .value();
+}
+
+function moveToLeft(leftest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { top } = $element.offset();
+        $element.offset({
+            left: leftest,
+            top
+        })
+    });
+}
+
+function moveToRight(rightest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { top } = $element.offset();
+        $element.offset({
+            left: rightest - $element.outerWidth(),
+            top
+        })
+    });
+}
+
+function leftAlign() {
+    moveToLeft(getLeftest());
+}
+
+function rightAlign() {
+    moveToRight(getRightest());
 }
 
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
-    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected
+    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlign, rightAlign
 };
