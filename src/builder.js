@@ -1,14 +1,17 @@
 import { SectionInput } from './inputs/inputs';
 import { dataComponentId } from './components/common'
 import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
-import { getStyle, launchFullScreen, downloadAsTextFile } from './util/dom';
-import { getParentOrSelf } from './util/selectors';
+import {
+	getStyle, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, getSelectedElements,
+	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
+	getElementWithDraggable
+} from './util/dom';
 import { importedPageName, defaultFilename, savedHtml } from './constants';
-import { getBeautifiedHtml } from './util/dom';
-import { noneditableSelector } from './util/selectors';
+import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
 import tmpl from './util/tmpl';
 
 window.tmpl = tmpl;
+window.getSelectedElements = getSelectedElements;
 
 if (Vvveb === undefined) var Vvveb = {};
 
@@ -402,7 +405,7 @@ Vvveb.Builder = {
 		}
 	},
 	loadUrl(url) {
-		jQuery("#select-box").hide();
+		jQuery(selectBox).hide();
 		self.iframe.src = url;
 	},
 	/* iframe */
@@ -458,36 +461,24 @@ Vvveb.Builder = {
 		data = Vvveb.Components.matchNode(node);
 		if (data) Vvveb.Components.render(data.type);
 	},
-	selectNode(node = false) {
+	selectNode(node = false, ctrlKeyPressed = false) {
 		if (!node) {
-			jQuery("#select-box").hide();
+			jQuery(selectBox).hide();
 			return;
 		}
-
 		if (self.texteditEl && self.selectedEl.get(0) != node) {
 			Vvveb.WysiwygEditor.destroy(self.texteditEl);
-			jQuery("#select-box").removeClass("text-edit").find("#select-actions").show();
+			jQuery(selectBox).removeClass("text-edit").find("#select-actions").show();
 			self.texteditEl = null;
 		}
-
 		self.selectedEl = target = jQuery(node);
-		offset = target.offset();
-		jQuery("#select-box").css(
-			{
-				"top": offset.top - self.frameDoc.scrollTop(),
-				"left": offset.left - self.frameDoc.scrollLeft(),
-				"width": target.outerWidth(),
-				"height": target.outerHeight(),
-				"display": "block",
-			});
-
-		jQuery("#highlight-name").html(self._getElementType(node));
-
+		if (!ctrlKeyPressed) {
+			highlightwhenSelected(node);
+		}
 	},
 	/* iframe highlight */
 	_initHightlight() {
 		moveEvent = { target: null, };
-
 		this.frameBody.on("mousemove touchmove", function (event) {
 			//delay for half a second if dragging over same element
 			// if (event.target == moveEvent.target && ((event.timeStamp - moveEvent.timeStamp) < 500)) return;
@@ -528,16 +519,9 @@ Vvveb.Builder = {
 					// 	console.log(err);
 					// }
 				} else {
-					jQuery("#highlight-box").css(
-						{
-							"top": offset.top - self.frameDoc.scrollTop(),
-							"left": offset.left - self.frameDoc.scrollLeft(),
-							"width": width,
-							"height": height,
-							"display": event.target.hasAttribute('contenteditable') ? "none" : "block"
-						});
-
-					jQuery("#highlight-name").html(self._getElementType(event.target));
+					if (!event.ctrlKey) {
+						highlightWhenHovering(event.target);
+					}
 				}
 			}
 		});
@@ -584,20 +568,25 @@ Vvveb.Builder = {
 				self.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
 			}
 			self.texteditEl.on("blur keyup paste input", function (event) {
-				jQuery("#select-box").css({
+				jQuery(selectBox).css({
 					"width": self.texteditEl.outerWidth(),
 					"height": self.texteditEl.outerHeight()
 				});
 			});
 
-			jQuery("#select-box").addClass("text-edit").find("#select-actions").hide();
+			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
 			jQuery("#highlight-box").hide();
 		});
 
 		this.frameBody.on("click", function (event) {
 			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
-
 			if (event.target) {
+				if (event.ctrlKey) {
+					addOrRemoveElement(event.target);
+				} else {
+					clearSelectedElements();
+				}
+
 				const node = getParentOrSelf(event.target);
 				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
 					$('#attribute-settings')
@@ -607,7 +596,8 @@ Vvveb.Builder = {
 					$('#left-panel').hide();
 					$('#right-panel').show();
 				}
-				self.selectNode(node);
+
+				self.selectNode(node, event.ctrlKey);
 				self.loadNodeComponent(node);
 
 				event.preventDefault();
@@ -636,7 +626,7 @@ Vvveb.Builder = {
 		});
 
 		$("#drag-box").on("mousedown", function (event) {
-			jQuery("#select-box").hide();
+			jQuery(selectBox).hide();
 			self.dragElement = self.selectedEl;
 			self.isDragging = true;
 
@@ -654,7 +644,7 @@ Vvveb.Builder = {
 		});
 
 		$("#down-box").on("click", function (event) {
-			jQuery("#select-box").hide();
+			jQuery(selectBox).hide();
 
 			node = self.selectedEl.get(0);
 			oldParent = node.parentNode;
@@ -685,7 +675,7 @@ Vvveb.Builder = {
 		});
 
 		$("#up-box").on("click", function (event) {
-			jQuery("#select-box").hide();
+			jQuery(selectBox).hide();
 
 			node = self.selectedEl.get(0);
 			oldParent = node.parentNode;
@@ -714,13 +704,6 @@ Vvveb.Builder = {
 			event.preventDefault();
 			return false;
 		});
-
-		function getElementWithDraggable(element) {
-			return element
-				.hasClass('draggable') ?
-				element :
-				getElementWithDraggable(element.parent());
-		}
 
 		$("#clone-box").on("click", function (event) {
 			clone = getElementWithDraggable(self.selectedEl).clone();
@@ -753,7 +736,7 @@ Vvveb.Builder = {
 		});
 
 		$("#delete-box").on("click", function (event) {
-			jQuery("#select-box").hide();
+			jQuery(selectBox).hide();
 
 			node = self.selectedEl.get(0);
 
@@ -775,7 +758,7 @@ Vvveb.Builder = {
 			if (self.selectedEl) {
 				offset = self.selectedEl.offset();
 
-				jQuery("#select-box").css(
+				jQuery(selectBox).css(
 					{
 						"top": offset.top - self.frameDoc.scrollTop(),
 						"left": offset.left - self.frameDoc.scrollLeft(),

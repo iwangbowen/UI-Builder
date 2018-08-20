@@ -5,8 +5,9 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
-import { beautify_options, savedHtml } from '../constants';
+import { beautify_options, savedHtml, multiSelectedClass } from '../constants';
 import _ from 'lodash';
+import { multiSelectedSelector, selectBox } from './selectors';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -153,14 +154,85 @@ function getPage(pageName, pageTitle, pageHref) {
 
 function autoSave() {
     localStorage.setItem(savedHtml, getBeautifiedHtml(window.FrameDocument));
-}    
+}
 
 function loadCallback() {
     // Save automatically every 2 seconds
     setInterval(autoSave, 2000);
 }
 
+function getElementWithDraggable(element) {
+    return element
+        .hasClass('draggable') ?
+        element :
+        getElementWithDraggable(element.parent());
+}
+
+let selectedElements = [];
+
+function getSelectedElements() {
+    return selectedElements;
+}
+
+function addOrRemoveElement(element) {
+    const draggableElement = getElementWithDraggable($(element)).get(0);
+    if (_.includes(selectedElements, draggableElement)) {
+        _.remove(selectedElements, v => v == draggableElement)
+    } else {
+        selectedElements.push(draggableElement);
+    }
+
+    addStyleForSelectedElements();
+}
+
+function clearSelectedElements() {
+    selectedElements = [];
+    removeStyleForSelectedElements();
+}
+
+function removeStyleForSelectedElements() {
+    self.frameDoc.find(multiSelectedSelector).removeClass(multiSelectedClass);
+}
+
+function addStyleForSelectedElements() {
+    $(selectBox).hide();
+    removeStyleForSelectedElements();
+    _.each(selectedElements, element => $(element).addClass(multiSelectedClass));
+}
+
+function highlightWhenHovering(target) {
+    const $target = $(target);
+    const offset = $target.offset();
+    const width = $target.outerWidth();
+    const height = $target.outerHeight();
+    jQuery("#highlight-box").css(
+        {
+            top: offset.top - self.frameDoc.scrollTop(),
+            left: offset.left - self.frameDoc.scrollLeft(),
+            width,
+            height,
+            display: target.hasAttribute('contenteditable') ? "none" : "block"
+        });
+    jQuery("#highlight-name").html(self._getElementType(target));
+}
+
+function highlightwhenSelected(target) {
+    const $target = $(target);
+	const offset = $target.offset();
+    $(selectBox).css(
+        {
+            "top": offset.top - self.frameDoc.scrollTop(),
+            "left": offset.left - self.frameDoc.scrollLeft(),
+            "width": $target.outerWidth(),
+            "height": $target.outerHeight(),
+            "display": "block",
+        });
+
+    $("#highlight-name").html(self._getElementType(target));
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
-    getHtml, getHash, getPage, loadCallback
+    getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
+    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected
 };

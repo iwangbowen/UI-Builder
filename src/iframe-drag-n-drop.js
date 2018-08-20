@@ -1,4 +1,4 @@
-import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine } from './util/drag-n-drop';
+import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine, updatePosition } from './util/drag-n-drop';
 import interact from '../node_modules/interactjs/src/index';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
@@ -121,20 +121,14 @@ $(document).ready(() => {
             // call this function on every dragmove event
             onmove: event => {
                 removeAlignmentLines();
-                var target = event.target,
-                    // keep the dragged position in the data-x/data-y attributes
-                    x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-                // translate the element
-                target.style.webkitTransform =
-                    target.style.transform =
-                    'translate(' + x + 'px, ' + y + 'px)';
-
-                // update the posiion attributes
-                target.setAttribute('data-x', x);
-                target.setAttribute('data-y', y);
-
-                drawAlignmentLine(target);
+                const target = event.target;
+                const selectedElements = window.parent.getSelectedElements();
+                if (selectedElements.includes(target)) {
+                    selectedElements.forEach(target => updatePosition(target, event));
+                } else {
+                    updatePosition(target, event);
+                    drawAlignmentLine(target);
+                }
             },
             // call this function on every dragend event
             onend: removeAlignmentLines

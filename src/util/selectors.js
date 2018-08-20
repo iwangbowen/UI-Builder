@@ -1,4 +1,5 @@
 import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpanId, dataCalendarId, dataMultivalueSelectId } from '../components/common';
+import { multiSelectedClass } from '../constants';
 
 const tableSelector = `[${dataTableId}]`;
 const requiredSpanSelector = `[${dataRequiredSpanId}]`;
@@ -12,6 +13,10 @@ const calendarSelector = `input[${dataCalendarId}]`;
 const calendarOnclickSelector = `input[${dataCalendarId}][onclick]`;
 const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
 
+const multiSelectedSelector = `.${multiSelectedClass}`;
+
+const selectBox = '#select-box';
+
 function getParentOrSelf(node) {
     const parents = $(node).parents(parentSelector);
     return parents.length ? parents[0] : node;
@@ -20,5 +25,5 @@ function getParentOrSelf(node) {
 export {
     emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
     parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
-    calendarOnclickSelector, multivalueSelectSelector
+    calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox
 };

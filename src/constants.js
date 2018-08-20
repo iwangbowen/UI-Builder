@@ -66,6 +66,8 @@ const savedHtml = 'savedHtml';
 const removeableScript = 'removeableScript';
 const tableScript = 'tableScript';
 
+const multiSelectedClass = 'selected-with-ctrl-key';
+
 const pages = [
     { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' },
     // { name: 'pds_commo', title: 'PDS Common Template', url: 'template/oee/html/demo/common_demo.html' },
@@ -82,5 +84,5 @@ const pages = [
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename, lastEditedName,
     lastEditedTitle, lastEditedHref, pages, beautify_options, unusedTags, savedHtml,
-    removeableScript, tableScript
+    removeableScript, tableScript, multiSelectedClass
 };
