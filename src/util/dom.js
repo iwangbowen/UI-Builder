@@ -115,7 +115,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
                                        use empty array to denote that no tags should not be reformatted
      */
     let { doctype, html } = destructDoc(doc);
-    html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript,
+    html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickAttr, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
@@ -186,16 +186,17 @@ function addOrRemoveElement(element) {
 
 function clearSelectedElements() {
     selectedElements = [];
-    removeStyleForSelectedElements();
+    removeStyleForSelectedElements(self.frameDoc.get(0));
 }
 
-function removeStyleForSelectedElements() {
-    self.frameDoc.find(multiSelectedSelector).removeClass(multiSelectedClass);
+function removeStyleForSelectedElements(el) {
+    $(el).find(multiSelectedSelector).removeClass(multiSelectedClass);
+    return el;
 }
 
 function addStyleForSelectedElements() {
     $(selectBox).hide();
-    removeStyleForSelectedElements();
+    removeStyleForSelectedElements(self.frameDoc.get(0));
     _.each(selectedElements, element => $(element).addClass(multiSelectedClass));
 }
 
