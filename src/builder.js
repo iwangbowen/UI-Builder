@@ -4,7 +4,8 @@ import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
 import {
 	getStyle, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, getSelectedElements,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithDraggable, bottomAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback
+	getElementWithDraggable, bottomAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
+	middleAlignCallback, centerAlignCallback
 } from './util/dom';
 import { importedPageName, defaultFilename, savedHtml } from './constants';
 import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
@@ -752,8 +753,10 @@ Vvveb.Builder = {
 		});
 
 		$('#left-align').on('click', leftAlignCallback);
+		$('#center-align').on('click', centerAlignCallback);
 		$('#right-align').on('click', rightAlignCallback);
 		$('#top-align').on('click', topAlignCallback);
+		$('#middle-align').on('click', middleAlignCallback);
 		$('#bottom-align').on('click', bottomAlignCallback);
 
 		jQuery(window.FrameWindow).on("scroll resize", function (event) {

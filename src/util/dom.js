@@ -259,6 +259,22 @@ function getBottomest() {
         .value();
 }
 
+function getCenterest() {
+    return _.chain(selectedElements)
+        .map($)
+        .map(v => v.offset().left + v.outerWidth() / 2)
+        .mean()
+        .value();
+}
+
+function getMiddlest() {
+    return _.chain(selectedElements)
+        .map($)
+        .map(v => v.offset().top + v.outerHeight() / 2)
+        .mean()
+        .value();
+}
+
 function preventDefault(event) {
     event.preventDefault();
     return false;
@@ -308,6 +324,28 @@ function moveToBottom(bottomest) {
     });
 }
 
+function moveToCenter(centerest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { top } = $element.offset();
+        $element.offset({
+            left: centerest - $element.outerWidth() / 2,
+            top
+        })
+    });
+}
+
+function moveToMiddle(middlest) {
+    _.each(selectedElements, function (element) {
+        const $element = $(element);
+        const { left } = $element.offset();
+        $element.offset({
+            left,
+            top: middlest - $element.outerHeight() / 2
+        })
+    });
+}
+
 function leftAlign() {
     moveToLeft(getLeftestOrTopest('left'));
 }
@@ -321,6 +359,14 @@ function rightAlign() {
 
 function bottomAlign() {
     moveToBottom(getBottomest());
+}
+
+function centerAlign() {
+    moveToCenter(getCenterest());
+}
+
+function middleAlign() {
+    moveToMiddle(getMiddlest());
 }
 
 function leftAlignCallback(event) {
@@ -343,9 +389,20 @@ function bottomAlignCallback(event) {
     return preventDefault(event);
 }
 
+function centerAlignCallback(event) {
+    centerAlign();
+    return preventDefault(event);
+}
+
+function middleAlignCallback(event) {
+    middleAlign();
+    return preventDefault(event);
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
-    rightAlignCallback, topAlignCallback, bottomAlignCallback
+    rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
+    middleAlignCallback
 };
