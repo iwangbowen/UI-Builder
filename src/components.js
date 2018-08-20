@@ -14,6 +14,7 @@ Vvveb.ComponentsGroup['定制组件'] =
     ['html/labeldiv@oee', _oee_ids.buttonid, 'html/textinput@oee', 'html/calendar@oee', _oee_ids.multivalueselectid, _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,
         _oee_ids.textareaid, 'html/radiobutton@oee', 'html/checkbox@oee', _oee_ids.customtableid, _oee_ids.commontableid];
 
+Vvveb.ComponentsGroup['通用组件'] = [];
 // Vvveb.ComponentsGroup['通用组件'] =
 //     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
 //         'html/buttontoolbar@general', 'html/form@general', 'html/textinput@general', 'html/textareainput@general',
