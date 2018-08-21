@@ -1,10 +1,19 @@
-import { dataUrl, dataTableId } from "../components/common";
+import { dataUrl, dataTableId, dataResponseDataKey } from "../components/common";
 
 const functionName = 'submitForm';
 function template() {
     return `
         // 右侧内容查询开始
-        var gridOptionsIdentifier = window['gridOptions' + $('[${dataTableId}]').attr('${dataTableId}')];
+        var grids = $('[${dataTableId}]')
+            .toArray()
+            .map(function (element) {
+                var id = $(element).attr('${dataTableId}');
+                var key = $(element).attr('${dataResponseDataKey}');
+                return {
+                    gridOptions: window['gridOptions' + id],
+                    key: key
+                };
+            })
         function ${functionName}(el, formId) {
             var valid = true;
             $('form.form-box').find('input[required], select[required], textarea[required]')
@@ -28,7 +37,18 @@ function template() {
                 data: (formId ? $('#formId') : $('form')).serializeJSON(),
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function (response, status, xhr) {
-                    gridOptionsIdentifier.api.setRowData(response.data);
+                    if (Array.isArray(response.data)) {
+                        grids.length && grid[0].gridOptions.api.setRowData(response.data);
+                    } else {
+                        $.each(response.data, function (key, value) {
+                            $.each(grids, function (i, grid) {
+                                if (grid.key == key) {
+                                    grid.gridOptions.api.setRowData(value);
+                                    return false;
+                                }
+                            });
+                        });
+                    }
                 }
             });
         }
