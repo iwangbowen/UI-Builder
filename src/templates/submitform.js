@@ -38,7 +38,7 @@ function template() {
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function (response, status, xhr) {
                     if (Array.isArray(response.data)) {
-                        grids.length && grid[0].gridOptions.api.setRowData(response.data);
+                        grids.length && grids[0].gridOptions.api.setRowData(response.data);
                     } else {
                         $.each(response.data, function (key, value) {
                             $.each(grids, function (i, grid) {

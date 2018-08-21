@@ -1,5 +1,5 @@
-import { ButtonInput, TextValueInput, SelectInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId } from '../common';
+import { ButtonInput, TextValueInput, SelectInput, TextInput } from '../../inputs/inputs';
+import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
 import Vvveb from '../../builder';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
@@ -155,6 +155,12 @@ const table = {
             data: {
                 options: themeOptions
             }
+        },
+        {
+            name: 'Data key',
+            key: 'dataKey',
+            htmlAttr: dataResponseDataKey,
+            inputtype: TextInput
         },
         {
             name: "",
