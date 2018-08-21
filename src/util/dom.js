@@ -233,7 +233,6 @@ function highlightwhenSelected(target, ctrlKeyPressed) {
         jQuery(selectBox).find(withoutCtrlKeyActionsSelector).show();
         jQuery(selectBox).find(withCtrlKeyActionsSelector).hide();
     }
-    $("#highlight-name").html(self._getElementType(target));
 }
 
 function getLeftestOrTopest(direction) {

@@ -11730,7 +11730,7 @@ body {
 
 #vvveb-builder #select-actions, #vvveb-builder #wysiwyg-editor {
   position: absolute;
-  right: -1px;
+  /* right: -1px; */
   top: -25px;
   background: #4285f4;
   color: #fff;
