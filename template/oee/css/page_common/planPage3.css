@@ -422,9 +422,9 @@ button.search-btn {
     color: #ce8483;
 }
 
-.fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
+/* .fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
     cursor: w-resize;
-}
+} */
 
 .fullpagearea .fullpagoutbox .containerarea .containerRight {
     position: absolute;
@@ -2018,9 +2018,9 @@ html, body {
     color: #ce8483;
 }
 
-.fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
+/* .fullpagearea .fullpagoutbox .containerarea .containerMiddle:hover {
     cursor: w-resize;
-}
+} */
 
 .fullpagearea .fullpagoutbox .containerarea .containerRight {
     position: absolute;
