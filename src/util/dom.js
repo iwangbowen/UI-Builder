@@ -405,5 +405,5 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback
+    middleAlignCallback, getElementWithDraggable
 };
