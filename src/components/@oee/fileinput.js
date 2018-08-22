@@ -1,10 +1,24 @@
-const fileinput = {
-    name: "Input group",
-    attributes: { "type": "file" },
-    image: "icons/text_input.svg",
-    html: '<div class="form-group">\
-			  <input type="file" class="form-control">\
-			</div>'
-};
+import input from './input';
+import { TextInput } from '../../inputs/inputs';
+
+const fileinput = $.extend({}, input, {
+  name: 'File Input',
+  attributes: { 'type': 'file' },
+  image: 'icons/upload.svg',
+  html: `<div class="btn-group draggable">
+			    <input type="file" class=".form-control-file" style="width:147px;">
+        </div>`,
+  properties: [{
+    name: 'Name',
+    key: 'name',
+    htmlAttr: 'name',
+    inputtype: TextInput
+  }, {
+    name: 'Data Url',
+    key: 'dataUrl',
+    htmlAttr: 'data-url',
+    inputtype: TextInput
+  }]
+});
 
 export default fileinput;

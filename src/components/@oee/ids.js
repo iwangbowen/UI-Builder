@@ -12,9 +12,10 @@ const radiobuttonid = 'html/radiobutton@oee';
 const checkboxid = 'html/checkbox@oee';
 const spanid = 'html/span@oee';
 const labeldivid = 'html/labeldiv@oee';
+const fileinputid = 'html/fileinput@oee'
 
 export {
     manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid,
     multivalueselectid, textareaid, textinputid, calendarid, radiobuttonid,
-    checkboxid, spanid, labeldivid
+    checkboxid, spanid, labeldivid, fileinputid
 };
