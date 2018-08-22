@@ -31,6 +31,7 @@ function template() {
             valid && $.ajax({
                 url: config.fundodooApiDomainUrl + $(el).attr('${dataUrl}'),
                 dataType: 'json',
+                contentType: $('form.form-box').find('input[type=file]').length ? 'multipart/form-data' : 'application/x-www-form-urlencoded',
                 method : 'POST',
                 async: true,
                 traditional: true,
