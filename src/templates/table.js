@@ -7,7 +7,7 @@ function template(node) {
     return `
     var ${columnDefs}${key} = [
         ${document.getElementById('iframeId').contentWindow[getComputedProperty(node)].columnDefs.map(def => {
-            return `{headerName: "${def.headerName}", field: "${def.field}", width: ${def.width ? def.width : '""'},
+            return `{headerName: '${def.headerName}', field: '${def.field}', width: ${def.width ? def.width : '\'\''},
                      checkboxSelection: ${def.checkboxSelection}, headerCheckboxSelection: ${def.headerCheckboxSelection}}`;
         }).join(',')}
     ];
