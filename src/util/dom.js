@@ -399,10 +399,21 @@ function middleAlignCallback(event) {
     return preventDefault(event);
 }
 
+// stackoverflow answer to how to check two elements overlap
+// https://stackoverflow.com/questions/12066870/how-to-check-if-an-element-is-overlapping-other-elements
+function isOverlap(fstElement, sndElement) {
+    const fstRect = fstElement.getBoundingClientRect();
+    const sndRect = sndElement.getBoundingClientRect();
+    return !(fstRect.right < sndRect.left ||
+        fstRect.left > sndRect.right ||
+        fstRect.bottom < sndRect.top ||
+        fstRect.top > sndRect.bottom)
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggable
+    middleAlignCallback, getElementWithDraggable, isOverlap
 };

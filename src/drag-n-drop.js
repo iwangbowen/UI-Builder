@@ -1,5 +1,6 @@
 import Vvveb from './builder';
 import { dragMoveListener } from './util/drag-n-drop';
+import { isOverlap } from './util/dom';
 
 $(document).ready(() => {
     $('#menu-panel .navbar-nav a').on('click', function () {
@@ -100,11 +101,10 @@ $(document).ready(() => {
                             top = $element.offset().top - $('#iframeId').offset().top;
                         // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
                         // 获得html字符串，然后再进行替换
-                        let appendToElement;
-                        if (component.dropzone) {
+                        let appendToElement = self.frameBody;
+                        if (component.dropzone
+                            && isOverlap($element.get(0), self.frameBody.find(component.dropzone).get(0))) {
                             appendToElement = self.frameBody.find(component.dropzone);
-                        } else {
-                            appendToElement = self.frameBody;
                         }
                         appendToElement.append($element.prop("outerHTML"));
                         const appendedElement = appendToElement.children('*:last');
