@@ -579,29 +579,34 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("click", function (event) {
-			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
-			if (event.target) {
-				if (event.ctrlKey) {
-					addOrRemoveElement(event.target);
-				} else {
-					clearSelectedElements();
+			$(document.getElementById('iframeId').contentWindow.document)
+				.find('.horizontal-line, .vertical-line')
+				.hide();
+			if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
+				replaceOtherShowingCalendarInputs(event.target, self.frameBody);
+				if (event.target) {
+					if (event.ctrlKey) {
+						addOrRemoveElement(event.target);
+					} else {
+						clearSelectedElements();
+					}
+
+					const node = getParentOrSelf(event.target);
+					if (!isPreview && !$('#attribute-settings').hasClass('active')) {
+						$('#attribute-settings')
+							.addClass('active')
+							.siblings()
+							.removeClass('active');
+						$('#left-panel').hide();
+						$('#right-panel').show();
+					}
+
+					self.selectNode(node, event.ctrlKey);
+					self.loadNodeComponent(node);
+
+					event.preventDefault();
+					return false;
 				}
-
-				const node = getParentOrSelf(event.target);
-				if (!isPreview && !$('#attribute-settings').hasClass('active')) {
-					$('#attribute-settings')
-						.addClass('active')
-						.siblings()
-						.removeClass('active');
-					$('#left-panel').hide();
-					$('#right-panel').show();
-				}
-
-				self.selectNode(node, event.ctrlKey);
-				self.loadNodeComponent(node);
-
-				event.preventDefault();
-				return false;
 			}
 		});
 
