@@ -11494,12 +11494,11 @@ body {
   height: 100%;
   position: fixed;
   top: 56px;
-  left: 0px;
   z-index: 10; }
 
 #vvveb-builder #left-panel {
   float: left;
-  left: 0px;
+  right: 0px;
   border-right-width: 1px;
   overflow: hidden;
   /*
@@ -11629,7 +11628,7 @@ body {
 #vvveb-builder #menu-panel {
   position: fixed;
   top: 0px;
-  left: 0px;
+  right: 0px;
 }
     
 #vvveb-builder #top-panel {
@@ -11652,8 +11651,8 @@ body {
   bottom: 0px;
   position: fixed;
   border-top: 1px solid #eee;
-  left: 260px;
-  right: 0px;
+  left: 0px;
+  right: 260px;
   background-color: #fff; }
   #vvveb-builder #bottom-panel #vvveb-code-editor {
     width: 100%;
@@ -11681,7 +11680,6 @@ body {
   height: calc( 100vh - 35px);
   /* top: 35px; */
   position: fixed;
-  right: 0px;
   transition: width 0.35s, left 0.35s; }
   #vvveb-builder #canvas #iframe-wrapper, #vvveb-builder #canvas iframe {
     width: 100%;
