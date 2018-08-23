@@ -1,5 +1,5 @@
 import Vvveb from './builder';
-import { dragMoveListener } from './util/drag-n-drop';
+import { dragMoveListener } from './util/drag-n-drop-util';
 import { isOverlap } from './util/dom';
 
 $(document).ready(() => {

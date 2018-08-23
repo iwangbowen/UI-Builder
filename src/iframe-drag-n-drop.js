@@ -1,4 +1,7 @@
-import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine, updatePosition } from './util/i-drag-n-drop';
+import {
+    hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition,
+    hideHighlightAreas
+} from './util/iframe-drag-n-drop-util';
 import interact from '../node_modules/interactjs/src/index';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
@@ -29,7 +32,6 @@ $(document).ready(() => {
             ondragenter(event) {
                 var draggableElement = event.relatedTarget,
                     dropzoneElement = event.target;
-
                 // feedback the possibility of a drop
                 dropzoneElement.classList.add('drop-target');
                 draggableElement.classList.add('can-drop');
@@ -143,18 +145,18 @@ $(document).ready(() => {
             autoScroll: true,
             // call this function on every dragmove event
             onmove(event) {
-                removeAlignmentLines();
+                hideAlignmentLines();
+                hideHighlightAreas();
                 const target = event.target;
                 const selectedElements = window.parent.getSelectedElements();
-                $(window.parent.document).find('#select-box, #highlight-box').hide();
                 if (selectedElements.includes(target)) {
                     selectedElements.forEach(target => updatePosition(target, event));
                 } else {
                     updatePosition(target, event);
-                    drawAlignmentLine(target);
+                    showAlignmentLines(target);
                 }
             },
             // call this function on every dragend event
-            onend: removeAlignmentLines
+            onend: hideAlignmentLines
         });
 });
