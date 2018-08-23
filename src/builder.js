@@ -13,6 +13,7 @@ import tmpl from './util/tmpl';
 
 window.tmpl = tmpl;
 window.getSelectedElements = getSelectedElements;
+window.getElementWithDraggable = getElementWithDraggable;
 
 if (Vvveb === undefined) var Vvveb = {};
 
