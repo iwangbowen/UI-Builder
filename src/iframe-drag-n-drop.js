@@ -1,4 +1,4 @@
-import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine, updatePosition } from './util/drag-n-drop';
+import { removeAlignmentLines, arrowKeyMove, drawAlignmentLine, updatePosition } from './util/i-drag-n-drop';
 import interact from '../node_modules/interactjs/src/index';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
