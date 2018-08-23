@@ -146,6 +146,7 @@ $(document).ready(() => {
                 removeAlignmentLines();
                 const target = event.target;
                 const selectedElements = window.parent.getSelectedElements();
+                $(window.parent.document).find('#select-box, #highlight-box').hide();
                 if (selectedElements.includes(target)) {
                     selectedElements.forEach(target => updatePosition(target, event));
                 } else {
