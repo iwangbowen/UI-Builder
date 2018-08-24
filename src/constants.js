@@ -59,6 +59,7 @@ const importedPageHref = `template/oee/html/demo/${importedPageName}.html`;
 
 const removeableScript = 'removeableScript';
 const tableScript = 'tableScript';
+const appendableScript = 'appendableScript';
 
 const multiSelectedClass = 'selected-with-ctrl-key';
 
@@ -77,5 +78,6 @@ const pages = [
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
-    pages, beautify_options, unusedTags, removeableScript, tableScript, multiSelectedClass
+    pages, beautify_options, unusedTags, removeableScript, tableScript, multiSelectedClass,
+    appendableScript
 };

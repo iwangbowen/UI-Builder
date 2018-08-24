@@ -67,9 +67,10 @@ const dataTextMapping = 'data-text-mapping';
 const dataMultivalueSelectId = 'data-multi-value-select-id';
 const dataRequiredSpanId = 'data-required-span-id';
 const dataResponseDataKey = 'data-response-data-key';
+const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
-    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey
+    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated
 };

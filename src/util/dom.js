@@ -1,6 +1,6 @@
 import {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
+    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
@@ -117,7 +117,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickAttr, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
+        generateButtonOnclickScript, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, beautify_options)) : html_beautify(`

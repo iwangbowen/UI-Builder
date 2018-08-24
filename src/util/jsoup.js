@@ -7,12 +7,14 @@ import autoselectinputTemplate from '../script-templates/autoselectinput';
 import { template as submitFormTemplate } from '../script-templates/submitform';
 import layerTemplate from '../script-templates/layer';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
+import functionTemplate from '../script-templates/function';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
-import { unusedTags, removeableScript, tableScript } from '../constants';
+import { unusedTags, removeableScript, tableScript, appendableScript } from '../constants';
+import { dataOnclickFunctionGenerated } from '../components/common';
 
 function removeRemoveableScripts(el) {
     $(el).find(`script[class=${removeableScript}]`).remove();
@@ -66,9 +68,26 @@ function generateSubmitFormScript(el) {
     return appendScript(el, submitFormTemplate());
 }
 
-function generateButtonOnclickAttr(el) {
+function generateButtonOnclickScript(el) {
     $(el).find(submitButtonSelector).each(function () {
-        $(this).attr('onclick') || setButtonOnclickAttr(this);
+        let onclick = $(this).attr('onclick');
+        if (onclick) {
+            if (!$(this).attr(dataOnclickFunctionGenerated)) {
+                _.endsWith(onclick, ';') && (onclick = onclick.substr(0, onclick.length - 1));
+                const appendableScriptElement = $(el).find(`script[class=${appendableScript}]`);
+                if (appendableScriptElement.length) {
+                    appendableScriptElement.html(`
+                            ${appendableScriptElement.html()}
+                            ${functionTemplate(onclick)}
+                        `);
+                } else {
+                    appendScript(el, functionTemplate(onclick), appendableScript);
+                }
+                $(this).attr(dataOnclickFunctionGenerated, 'true');
+            }
+        } else {
+            setButtonOnclickAttr(this);
+        }
     });
     return el;
 }
@@ -199,7 +218,7 @@ function htmlGenerator(html, ...fns) {
 
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickAttr,
+    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generateLayerScript, generateMultivalueSelectScript, removeRemoveableScripts,
     addNameBrackets, removeNameBrackets, htmlGenerator
