@@ -4,8 +4,6 @@ let cache = {};
 export default function tmpl(str, data) {
     // Figure out if we're getting a template, or if we need to
     // load the template - and be sure to cache the result.
-    // console.log(str);
-    // console.log(templates[str]);
     let fn = /^[-a-zA-Z0-9]+$/.test(str) ?
         cache[str] = cache[str] ||
         tmpl(templates[str]) :
