@@ -167,7 +167,7 @@ Vvveb.Components = {
 		section = rightPanel.find('.section[data-section="default"]');
 
 		if (!(Vvveb.preservePropertySections && section.length)) {
-			rightPanel.html('').append(tmpl("vvveb-input-sectioninput", { key: "default", header: component.name }));
+			rightPanel.html('').append(tmpl("inputsectioninput", { key: "default", header: component.name }));
 			section = rightPanel.find(".section");
 		}
 
@@ -282,7 +282,7 @@ Vvveb.Components = {
 				}
 			}
 			else {
-				row = $(tmpl('vvveb-property', property));
+				row = $(tmpl('property', property));
 				row.find('.input').append(property.input);
 
 				property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
@@ -993,7 +993,7 @@ Vvveb.FileManager = {
 			srcdoc
 		};
 		this.tree.append(
-			tmpl("vvveb-filemanager-page", { name, title, url }));
+			tmpl("filemanagerpage", { name, title, url }));
 	},
 	addPages(pages) {
 		for (page in pages) {
@@ -1002,7 +1002,7 @@ Vvveb.FileManager = {
 	},
 	addComponent(name, url, title, page) {
 		$("[data-page='" + page + "'] > ol", this.tree).append(
-			tmpl("vvveb-filemanager-component", { name, url, title }));
+			tmpl("filemanagercomponent", { name, url, title }));
 	},
 	showActive(name) {
 		$("[data-page]", this.tree).removeClass("active");

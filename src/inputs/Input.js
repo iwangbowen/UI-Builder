@@ -8,7 +8,7 @@ const Input = {
 		}
 	},
 	renderTemplate: function (name, data) {
-		return tmpl("vvveb-input-" + name, data);
+		return tmpl("input" + name, data);
 	},
 	render: function (name, data) {
 		this.element = $(this.renderTemplate(name, data));
