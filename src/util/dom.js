@@ -5,7 +5,7 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
-import { beautify_options, savedHtml, multiSelectedClass } from '../constants';
+import { beautify_options, multiSelectedClass } from '../constants';
 import _ from 'lodash';
 import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
 

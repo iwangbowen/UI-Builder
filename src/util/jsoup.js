@@ -2,11 +2,11 @@ import {
     emptyChildrenSelectors, tableSelector, submitButtonSelector, calendarSelector,
     multivalueSelectSelector
 } from './selectors';
-import tableTemplate from '../templates/table';
-import autoselectinputTemplate from '../templates/autoselectinput';
-import { template as submitFormTemplate } from '../templates/submitform';
-import layerTemplate from '../templates/layer';
-import multivalueselectTemplate from '../templates/multivalueselect';
+import tableTemplate from '../script-templates/table';
+import autoselectinputTemplate from '../script-templates/autoselectinput';
+import { template as submitFormTemplate } from '../script-templates/submitform';
+import layerTemplate from '../script-templates/layer';
+import multivalueselectTemplate from '../script-templates/multivalueselect';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
