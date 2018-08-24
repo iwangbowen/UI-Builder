@@ -5,9 +5,9 @@ import {
 	getStyle, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, getSelectedElements,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
 	getElementWithDraggable, bottomAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
-	middleAlignCallback, centerAlignCallback
+	middleAlignCallback, centerAlignCallback, getHash
 } from './util/dom';
-import { importedPageName, defaultFilename, savedHtml } from './constants';
+import { importedPageName, defaultFilename } from './constants';
 import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
 import tmpl from './util/tmpl';
 
@@ -919,7 +919,7 @@ Vvveb.Gui = {
 							reject(evt)
 						}
 					}).then(function (html) {
-						localStorage.setItem(savedHtml, html);
+						localStorage.setItem(importedPageName, html);
 						window.location.href = `#${importedPageName}`;
 						window.location.reload();
 					})
@@ -974,7 +974,9 @@ Vvveb.FileManager = {
 	init() {
 		this.tree = $("#filemanager .tree > ol").html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
-			window.location.href = `#${$(this).parents('li').data('page')}`;
+			const hash = $(this).parents('li').data('page');
+			localStorage.removeItem(hash);
+			window.location.href = `#${hash}`;
 			window.location.reload();
 			// Vvveb.FileManager.loadPage($(this).parents("li").data("page"));
 			return false;

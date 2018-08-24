@@ -138,8 +138,8 @@ function getHash() {
     return window.location.hash && window.location.hash.substr(1);
 }
 
-function generateHtmlFromLocalStorageItemKey(pageHref) {
-    return htmlGenerator(localStorage.getItem(savedHtml),
+function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
+    return htmlGenerator(localStorage.getItem(itemKey),
         generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts, removeNameBrackets);
 }
 
@@ -148,12 +148,12 @@ function getPage(pageName, pageTitle, pageHref) {
         name: pageName,
         title: pageTitle,
         url: pageHref,
-        srcdoc: generateHtmlFromLocalStorageItemKey(pageHref)
+        srcdoc: generateHtmlFromLocalStorageItemKey(pageHref, pageName)
     };
 }
 
 function autoSave() {
-    localStorage.setItem(savedHtml, getBeautifiedHtml(window.FrameDocument));
+    localStorage.setItem(getHash(), getBeautifiedHtml(window.FrameDocument));
 }
 
 function loadCallback() {
@@ -415,5 +415,5 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggable, isOverlap
+    middleAlignCallback, getElementWithDraggable, isOverlap, generateHtmlFromLocalStorageItemKey
 };

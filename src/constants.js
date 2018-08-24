@@ -57,12 +57,6 @@ const importedPageName = 'importedPage';
 const importedPageTitle = 'Imported Page';
 const importedPageHref = `template/oee/html/demo/${importedPageName}.html`;
 
-const lastEditedName = 'lastEdited';
-const lastEditedTitle = 'Last Edited';
-const lastEditedHref = `template/oee/html/demo/${lastEditedName}.html`;
-
-const savedHtml = 'savedHtml';
-
 const removeableScript = 'removeableScript';
 const tableScript = 'tableScript';
 
@@ -82,7 +76,6 @@ const pages = [
 ];
 
 export {
-    importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename, lastEditedName,
-    lastEditedTitle, lastEditedHref, pages, beautify_options, unusedTags, savedHtml,
-    removeableScript, tableScript, multiSelectedClass
+    importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
+    pages, beautify_options, unusedTags, removeableScript, tableScript, multiSelectedClass
 };
