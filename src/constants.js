@@ -1,5 +1,6 @@
 import { tableSelector } from './util/selectors';
 import _ from 'lodash';
+import 'core-js/es6/string';
 
 const unusedTags = [
     {
