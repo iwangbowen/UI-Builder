@@ -393,15 +393,14 @@ Vvveb.Builder = {
 				componentType = components[i];
 				component = Vvveb.Components.get(componentType);
 				if (component) {
-					item = $('<li data-section="' + group + '" data-type="' + componentType + '" data-search="' + component.name.toLowerCase() + '"><a href="#">' + component.name + "</a></li>");
-
+					const item = $('<li data-section="' + group + '" data-type="' + componentType + '" data-search="' + component.name.toLowerCase() + '"><a href="#">' + component.name + "</a></li>");
 					if (component.image) {
 						item.css({
 							backgroundImage: "url(" + 'libs/builder/' + component.image + ")",
 							backgroundRepeat: "no-repeat"
 						})
 					}
-					componentsSubList.append(item)
+					componentsSubList.append(item);
 				}
 			}
 		}
