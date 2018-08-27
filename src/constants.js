@@ -78,8 +78,10 @@ const pages = [
     // { name: "product", title: "Product", url: "demo/product/index.html" } 
 ];
 
+const common = {};
+
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     pages, beautify_options, unusedTags, removeableScript, tableScript, multiSelectedClass,
-    appendableScript
+    appendableScript, common
 };

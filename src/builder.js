@@ -7,9 +7,10 @@ import {
 	getElementWithDraggable, bottomAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	middleAlignCallback, centerAlignCallback, getHash
 } from './util/dom';
-import { importedPageName, defaultFilename } from './constants';
+import { importedPageName, defaultFilename, common } from './constants';
 import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
 import tmpl from './util/tmpl';
+import _ from 'lodash';
 
 window.tmpl = tmpl;
 window.getSelectedElements = getSelectedElements;
@@ -360,21 +361,21 @@ Vvveb.WysiwygEditor = {
 Vvveb.Builder = {
 	dragMoveMutation: false,
 	init(url, srcdoc, callback) {
-		self = this;
-		self.loadControlGroups();
+		_.extend(common, this);
+		common.loadControlGroups();
 
-		self.selectedEl = null;
-		self.highlightEl = null;
-		self.initCallback = callback;
+		common.selectedEl = null;
+		common.highlightEl = null;
+		common.initCallback = callback;
 
-		self.documentFrame = $("#iframe-wrapper > iframe");
-		self.canvas = $("#canvas");
+		common.documentFrame = $("#iframe-wrapper > iframe");
+		common.canvas = $("#canvas");
 
-		self._loadIframe(url, srcdoc);
+		common._loadIframe(url, srcdoc);
 
-		self._initDragdrop();
+		common._initDragdrop();
 
-		self.dragElement = null;
+		common.dragElement = null;
 	},
 	/* controls */
 	loadControlGroups() {
@@ -407,30 +408,30 @@ Vvveb.Builder = {
 	},
 	loadUrl(url) {
 		jQuery(selectBox).hide();
-		self.iframe.src = url;
+		common.iframe.src = url;
 	},
 	/* iframe */
 	_loadIframe(url, srcdoc) {
-		self.iframe = this.documentFrame.get(0);
+		common.iframe = this.documentFrame.get(0);
 		if (srcdoc) {
-			self.iframe.srcdoc = srcdoc
+			common.iframe.srcdoc = srcdoc
 		} else {
-			self.iframe.src = url;
+			common.iframe.src = url;
 		}
 		return this.documentFrame.on("load", function () {
-			window.FrameWindow = self.iframe.contentWindow;
-			window.FrameDocument = self.iframe.contentWindow.document;
+			window.FrameWindow = common.iframe.contentWindow;
+			window.FrameDocument = common.iframe.contentWindow.document;
 
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
-			self.initCallback && self.initCallback();
-			return self._frameLoaded();
+			common.initCallback && common.initCallback();
+			return common._frameLoaded();
 		});
 	},
 	_frameLoaded() {
 
-		self.frameDoc = $(window.FrameDocument);
-		self.frameHtml = $(window.FrameDocument).find("html");
-		self.frameBody = $(window.FrameDocument).find('body');
+		common.frameDoc = $(window.FrameDocument);
+		common.frameHtml = $(window.FrameDocument).find("html");
+		common.frameBody = $(window.FrameDocument).find('body');
 
 		this._initHightlight();
 	},
@@ -467,12 +468,12 @@ Vvveb.Builder = {
 			jQuery(selectBox).hide();
 			return;
 		}
-		if (self.texteditEl && self.selectedEl.get(0) != node) {
-			Vvveb.WysiwygEditor.destroy(self.texteditEl);
+		if (common.texteditEl && common.selectedEl.get(0) != node) {
+			Vvveb.WysiwygEditor.destroy(common.texteditEl);
 			jQuery(selectBox).removeClass("text-edit").find("#select-actions").show();
-			self.texteditEl = null;
+			common.texteditEl = null;
 		}
-		self.selectedEl = target = jQuery(node);
+		common.selectedEl = target = jQuery(node);
 		highlightwhenSelected(node, ctrlKeyPressed);
 	},
 	/* iframe highlight */
@@ -484,34 +485,34 @@ Vvveb.Builder = {
 			if (event.target) {
 				moveEvent = event;
 
-				self.highlightEl = target = jQuery(event.target);
+				common.highlightEl = target = jQuery(event.target);
 				offset = target.offset();
 				width = target.outerWidth();
 				height = target.outerHeight();
 
-				if (self.isDragging) {
-					self.dragElement.css({
+				if (common.isDragging) {
+					common.dragElement.css({
 						display: 'none'
 					});
-					parent = self.highlightEl;
-					parentOffset = self.dragElement.offset();
+					parent = common.highlightEl;
+					parentOffset = common.dragElement.offset();
 					// try {
-					// 	self.dragElement.css({
+					// 	common.dragElement.css({
 					// 		display: 'none'
 					// 	});
 					// 	if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
 					// 		if (offset.top > (event.originalEvent.y - 10)) {
-					// 			parent.before(self.dragElement);
+					// 			parent.before(common.dragElement);
 					// 		} else {
-					// 			parent.prepend(self.dragElement);
-					// 			self.dragElement.prependTo(parent);
+					// 			parent.prepend(common.dragElement);
+					// 			common.dragElement.prependTo(parent);
 					// 		}
 					// 	} else {
 					// 		if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-					// 			parent.before(self.dragElement);
+					// 			parent.before(common.dragElement);
 					// 		} else {
-					// 			parent.append(self.dragElement);
-					// 			self.dragElement.appendTo(parent);
+					// 			parent.append(common.dragElement);
+					// 			common.dragElement.appendTo(parent);
 					// 		}
 					// 	}
 					// } catch (err) {
@@ -526,22 +527,22 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("mouseup touchend", function (event) {
-			if (self.isDragging) {
-				self.isDragging = false;
+			if (common.isDragging) {
+				common.isDragging = false;
 
 				if (component.dragHtml) //if dragHtml is set for dragging then set real component html
 				{
 					newElement = $(component.html);
-					self.dragElement.replaceWith(newElement);
-					self.dragElement = newElement;
+					common.dragElement.replaceWith(newElement);
+					common.dragElement = newElement;
 				}
-				if (component.afterDrop) self.dragElement = component.afterDrop(self.dragElement);
+				if (component.afterDrop) common.dragElement = component.afterDrop(common.dragElement);
 
-				node = self.dragElement.get(0);
-				self.selectNode(node);
-				self.loadNodeComponent(node);
+				node = common.dragElement.get(0);
+				common.selectNode(node);
+				common.loadNodeComponent(node);
 
-				if (self.dragMoveMutation === false) {
+				if (common.dragMoveMutation === false) {
 					Vvveb.Undo.addMutation({
 						type: 'childList',
 						target: node.parentNode,
@@ -549,27 +550,27 @@ Vvveb.Builder = {
 						nextSibling: node.nextSibling
 					});
 				} else {
-					self.dragMoveMutation.newParent = node.parentNode;
-					self.dragMoveMutation.newNextSibling = node.nextSibling;
+					common.dragMoveMutation.newParent = node.parentNode;
+					common.dragMoveMutation.newNextSibling = node.nextSibling;
 
-					Vvveb.Undo.addMutation(self.dragMoveMutation);
-					self.dragMoveMutation = false;
+					Vvveb.Undo.addMutation(common.dragMoveMutation);
+					common.dragMoveMutation = false;
 				}
 			}
 		});
 
 		this.frameBody.on("dblclick", function (event) {
-			replaceOtherShowingCalendarInputs(event.target, self.frameBody);
+			replaceOtherShowingCalendarInputs(event.target, common.frameBody);
 
-			self.texteditEl = target = jQuery(event.target);
-			Vvveb.WysiwygEditor.edit(self.texteditEl);
-			if (!self.texteditEl.parents(noneditableSelector).length) {
-				self.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
+			common.texteditEl = target = jQuery(event.target);
+			Vvveb.WysiwygEditor.edit(common.texteditEl);
+			if (!common.texteditEl.parents(noneditableSelector).length) {
+				common.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
 			}
-			self.texteditEl.on("blur keyup paste input", function (event) {
+			common.texteditEl.on("blur keyup paste input", function (event) {
 				jQuery(selectBox).css({
-					"width": self.texteditEl.outerWidth(),
-					"height": self.texteditEl.outerHeight()
+					"width": common.texteditEl.outerWidth(),
+					"height": common.texteditEl.outerHeight()
 				});
 			});
 
@@ -582,7 +583,7 @@ Vvveb.Builder = {
 				.find('.horizontal-line, .vertical-line')
 				.hide();
 			if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
-				replaceOtherShowingCalendarInputs(event.target, self.frameBody);
+				replaceOtherShowingCalendarInputs(event.target, common.frameBody);
 				if (event.target) {
 					if (event.ctrlKey) {
 						addOrRemoveElement(event.target);
@@ -600,8 +601,8 @@ Vvveb.Builder = {
 						$('#right-panel').show();
 					}
 
-					self.selectNode(node, event.ctrlKey);
-					self.loadNodeComponent(node);
+					common.selectNode(node, event.ctrlKey);
+					common.loadNodeComponent(node);
 
 					event.preventDefault();
 					return false;
@@ -610,9 +611,9 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.keydown(e => {
-			if (self.selectedEl && self.selectedEl.prop('tagName') != 'BODY') {
+			if (common.selectedEl && common.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
-					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, self.selectedEl);
+					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, common.selectedEl);
 					e.preventDefault();
 				} else if (e.ctrlKey) {
 					const kc = e.which || e.keyCode;
@@ -631,18 +632,18 @@ Vvveb.Builder = {
 
 		$("#drag-box").on("mousedown", function (event) {
 			jQuery(selectBox).hide();
-			self.dragElement = self.selectedEl;
-			self.isDragging = true;
+			common.dragElement = common.selectedEl;
+			common.isDragging = true;
 
-			node = self.dragElement.get(0);
+			node = common.dragElement.get(0);
 
-			self.dragMoveMutation = {
+			common.dragMoveMutation = {
 				type: 'move',
 				target: node,
 				oldParent: node.parentNode,
 				oldNextSibling: node.nextSibling
 			};
-			//self.selectNode(false);
+			//common.selectNode(false);
 			event.preventDefault();
 			return false;
 		});
@@ -650,16 +651,16 @@ Vvveb.Builder = {
 		$("#down-box").on("click", function (event) {
 			jQuery(selectBox).hide();
 
-			node = self.selectedEl.get(0);
+			node = common.selectedEl.get(0);
 			oldParent = node.parentNode;
 			oldNextSibling = node.nextSibling;
 
-			next = self.selectedEl.next();
+			next = common.selectedEl.next();
 
 			if (next.length > 0) {
-				next.after(self.selectedEl);
+				next.after(common.selectedEl);
 			} else {
-				self.selectedEl.parent().after(self.selectedEl);
+				common.selectedEl.parent().after(common.selectedEl);
 			}
 
 			newParent = node.parentNode;
@@ -681,16 +682,16 @@ Vvveb.Builder = {
 		$("#up-box").on("click", function (event) {
 			jQuery(selectBox).hide();
 
-			node = self.selectedEl.get(0);
+			node = common.selectedEl.get(0);
 			oldParent = node.parentNode;
 			oldNextSibling = node.nextSibling;
 
-			next = self.selectedEl.prev();
+			next = common.selectedEl.prev();
 
 			if (next.length > 0) {
-				next.before(self.selectedEl);
+				next.before(common.selectedEl);
 			} else {
-				self.selectedEl.parent().before(self.selectedEl);
+				common.selectedEl.parent().before(common.selectedEl);
 			}
 
 			newParent = node.parentNode;
@@ -710,11 +711,11 @@ Vvveb.Builder = {
 		});
 
 		$("#clone-box").on("click", function (event) {
-			clone = getElementWithDraggable(self.selectedEl).clone();
+			clone = getElementWithDraggable(common.selectedEl).clone();
 
-			self.selectedEl.after(clone);
+			common.selectedEl.after(clone);
 
-			self.selectedEl = clone.click();
+			common.selectedEl = clone.click();
 
 			node = clone.get(0);
 			Vvveb.Undo.addMutation({
@@ -730,10 +731,10 @@ Vvveb.Builder = {
 
 		$("#parent-box").on("click", function (event) {
 
-			node = self.selectedEl.parent().get(0);
+			node = common.selectedEl.parent().get(0);
 
-			self.selectNode(node);
-			self.loadNodeComponent(node);
+			common.selectNode(node);
+			common.loadNodeComponent(node);
 
 			event.preventDefault();
 			return false;
@@ -742,7 +743,7 @@ Vvveb.Builder = {
 		$("#delete-box").on("click", function (event) {
 			jQuery(selectBox).hide();
 
-			node = self.selectedEl.get(0);
+			node = common.selectedEl.get(0);
 
 			Vvveb.Undo.addMutation({
 				type: 'childList',
@@ -751,7 +752,7 @@ Vvveb.Builder = {
 				nextSibling: node.nextSibling
 			});
 
-			self.selectedEl.remove();
+			common.selectedEl.remove();
 
 			event.preventDefault();
 			return false;
@@ -766,27 +767,27 @@ Vvveb.Builder = {
 
 		jQuery(window.FrameWindow).on("scroll resize", function (event) {
 
-			if (self.selectedEl) {
-				offset = self.selectedEl.offset();
+			if (common.selectedEl) {
+				offset = common.selectedEl.offset();
 
 				jQuery(selectBox).css(
 					{
-						"top": offset.top - self.frameDoc.scrollTop(),
-						"left": offset.left - self.frameDoc.scrollLeft(),
-						"width": self.selectedEl.outerWidth(),
-						"height": self.selectedEl.outerHeight(),
+						"top": offset.top - common.frameDoc.scrollTop(),
+						"left": offset.left - common.frameDoc.scrollLeft(),
+						"width": common.selectedEl.outerWidth(),
+						"height": common.selectedEl.outerHeight(),
 						//"display": "block"
 					});
 			}
 
-			if (self.highlightEl) {
-				offset = self.highlightEl.offset();
+			if (common.highlightEl) {
+				offset = common.highlightEl.offset();
 				jQuery("#highlight-box").css(
 					{
-						"top": offset.top - self.frameDoc.scrollTop(),
-						"left": offset.left - self.frameDoc.scrollLeft(),
-						"width": self.highlightEl.outerWidth(),
-						"height": self.highlightEl.outerHeight(),
+						"top": offset.top - common.frameDoc.scrollTop(),
+						"left": offset.left - common.frameDoc.scrollLeft(),
+						"width": common.highlightEl.outerWidth(),
+						"height": common.highlightEl.outerHeight(),
 						//"display": "block"
 					});
 			}
@@ -794,7 +795,7 @@ Vvveb.Builder = {
 	},
 	/* drag and drop */
 	_initDragdrop() {
-		self.isDragging = false;
+		common.isDragging = false;
 		component = {};
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
 			$this = jQuery(this);
@@ -808,31 +809,31 @@ Vvveb.Builder = {
 				html = component.html;
 			}
 
-			self.dragElement = $(html);
+			common.dragElement = $(html);
 
-			if (component.dragStart) self.dragElement = component.dragStart(self.dragElement);
+			if (component.dragStart) common.dragElement = component.dragStart(common.dragElement);
 
-			self.isDragging = true;
+			common.isDragging = true;
 		});
 		$('body').on('mouseup touchend', function (event) {
-			if (self.isDragging == true) {
-				self.isDragging = false;
+			if (common.isDragging == true) {
+				common.isDragging = false;
 				// $("#component-clone").remove();
 			}
 		});
 		$('body').on('mousemove touchmove', function (event) {
-			if (self.isDragging == true) {
+			if (common.isDragging == true) {
 				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
 				//if drag elements hovers over iframe switch to iframe mouseover handler	
 				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
-					self.frameBody.trigger("mousemove", event);
+					common.frameBody.trigger("mousemove", event);
 					event.stopPropagation();
-					self.selectNode(false);
+					common.selectNode(false);
 				}
 			}
 		});
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
-			self.isDragging = false;
+			common.isDragging = false;
 			// $("#component-clone").remove();
 		});
 	},
@@ -846,12 +847,12 @@ Vvveb.Builder = {
 		} else {
 			body = html
 		}
-		//self.frameBody.html(body);
+		//common.frameBody.html(body);
 		window.FrameDocument.body.innerHTML = body;
 		//below methods brake document relative css and js paths
-		//return self.iframe.outerHTML = html;
-		//return self.documentFrame.html(html);
-		//return self.documentFrame.attr("srcdoc", html);
+		//return common.iframe.outerHTML = html;
+		//return common.documentFrame.html(html);
+		//return common.documentFrame.attr("srcdoc", html);
 	}
 };
 

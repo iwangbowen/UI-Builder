@@ -5,7 +5,7 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
-import { beautify_options, multiSelectedClass } from '../constants';
+import { beautify_options, multiSelectedClass, common } from '../constants';
 import _ from 'lodash';
 import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
 
@@ -186,7 +186,7 @@ function addOrRemoveElement(element) {
 
 function clearSelectedElements() {
     selectedElements = [];
-    removeStyleForSelectedElements(self.frameDoc.get(0));
+    removeStyleForSelectedElements(common.frameDoc.get(0));
 }
 
 function removeStyleForSelectedElements(el) {
@@ -196,7 +196,7 @@ function removeStyleForSelectedElements(el) {
 
 function addStyleForSelectedElements() {
     $(selectBox).hide();
-    removeStyleForSelectedElements(self.frameDoc.get(0));
+    removeStyleForSelectedElements(common.frameDoc.get(0));
     _.each(selectedElements, element => $(element).addClass(multiSelectedClass));
 }
 
@@ -207,21 +207,21 @@ function highlightWhenHovering(target) {
     const height = $target.outerHeight();
     jQuery("#highlight-box").css(
         {
-            top: offset.top - self.frameDoc.scrollTop(),
-            left: offset.left - self.frameDoc.scrollLeft(),
+            top: offset.top - common.frameDoc.scrollTop(),
+            left: offset.left - common.frameDoc.scrollLeft(),
             width,
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
         });
-    jQuery("#highlight-name").html(self._getElementType(target));
+    jQuery("#highlight-name").html(common._getElementType(target));
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {
     const $target = $(target);
     const offset = $target.offset();
     $(selectBox).css({
-        "top": offset.top - self.frameDoc.scrollTop(),
-        "left": offset.left - self.frameDoc.scrollLeft(),
+        "top": offset.top - common.frameDoc.scrollTop(),
+        "left": offset.left - common.frameDoc.scrollLeft(),
         "width": $target.outerWidth(),
         "height": $target.outerHeight(),
         "display": "block",
