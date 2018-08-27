@@ -5,9 +5,10 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator
 } from './jsoup';
-import { beautify_options, multiSelectedClass, common } from '../constants';
+import { beautify_options, multiSelectedClass } from '../constants';
 import _ from 'lodash';
 import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
+import Vvveb from '../builder';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -186,7 +187,7 @@ function addOrRemoveElement(element) {
 
 function clearSelectedElements() {
     selectedElements = [];
-    removeStyleForSelectedElements(common.frameDoc.get(0));
+    removeStyleForSelectedElements(Vvveb.Builder.frameDoc.get(0));
 }
 
 function removeStyleForSelectedElements(el) {
@@ -196,7 +197,7 @@ function removeStyleForSelectedElements(el) {
 
 function addStyleForSelectedElements() {
     $(selectBox).hide();
-    removeStyleForSelectedElements(common.frameDoc.get(0));
+    removeStyleForSelectedElements(Vvveb.Builder.frameDoc.get(0));
     _.each(selectedElements, element => $(element).addClass(multiSelectedClass));
 }
 
@@ -207,21 +208,21 @@ function highlightWhenHovering(target) {
     const height = $target.outerHeight();
     jQuery("#highlight-box").css(
         {
-            top: offset.top - common.frameDoc.scrollTop(),
-            left: offset.left - common.frameDoc.scrollLeft(),
+            top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
+            left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
             width,
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
         });
-    jQuery("#highlight-name").html(common._getElementType(target));
+    jQuery("#highlight-name").html(Vvveb.Builder._getElementType(target));
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {
     const $target = $(target);
     const offset = $target.offset();
     $(selectBox).css({
-        "top": offset.top - common.frameDoc.scrollTop(),
-        "left": offset.left - common.frameDoc.scrollLeft(),
+        "top": offset.top - Vvveb.Builder.frameDoc.scrollTop(),
+        "left": offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
         "width": $target.outerWidth(),
         "height": $target.outerHeight(),
         "display": "block",
