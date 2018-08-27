@@ -4,7 +4,7 @@ import {
 } from './selectors';
 import tableTemplate from '../script-templates/table';
 import autoselectinputTemplate from '../script-templates/autoselectinput';
-import { template as submitFormTemplate } from '../script-templates/submitform';
+import { template as submitFormTemplate, functionName } from '../script-templates/submitform';
 import layerTemplate from '../script-templates/layer';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
@@ -73,22 +73,21 @@ function generateSubmitFormScript(el) {
 function generateButtonOnclickScript(el) {
     $(el).find(submitButtonSelector).each(function () {
         let onclick = $(this).attr('onclick');
-        if (onclick) {
-            if (!$(this).attr(dataOnclickFunctionGenerated)) {
-                _.endsWith(onclick, ';') && (onclick = onclick.substr(0, onclick.length - 1));
-                const appendableScriptElement = $(el).find(`script[class=${appendableScript}]`);
-                if (appendableScriptElement.length) {
-                    appendableScriptElement.html(`
-                            ${appendableScriptElement.html()}
-                            ${functionTemplate(onclick)}
-                        `);
-                } else {
-                    appendScript(el, functionTemplate(onclick), appendableScript);
-                }
-                $(this).attr(dataOnclickFunctionGenerated, 'true');
-            }
-        } else {
+        if (!onclick) {
             setButtonOnclickAttr(this);
+        } else if (!onclick.includes(`${functionName}(this)`)
+            && !$(this).attr(dataOnclickFunctionGenerated)) {
+            _.endsWith(onclick, ';') && (onclick = onclick.substr(0, onclick.length - 1));
+            const appendableScriptElement = $(el).find(`script[class=${appendableScript}]`);
+            if (appendableScriptElement.length) {
+                appendableScriptElement.html(`
+                        ${appendableScriptElement.html()}
+                        ${functionTemplate(onclick)}
+                    `);
+            } else {
+                appendScript(el, functionTemplate(onclick), appendableScript);
+            }
+            $(this).attr(dataOnclickFunctionGenerated, 'true');
         }
     });
     return el;
