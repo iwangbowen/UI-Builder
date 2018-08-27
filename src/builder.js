@@ -11,6 +11,7 @@ import { importedPageName, defaultFilename } from './constants';
 import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
 import tmpl from './util/tmpl';
 import _ from 'lodash';
+import 'core-js/es6/promise';
 
 window.tmpl = tmpl;
 window.getSelectedElements = getSelectedElements;
