@@ -180,7 +180,8 @@ function generateDevDependentTags(el) {
     themeOptions.forEach(({ value }) => {
         _.find(hrefs, href => _.includes(href, value)) || $(el).find('head').append(`<link rel="stylesheet" href="../../js/plugins/ag-grid/${value}.css">`);
     });
-    $(el).find('body').append('<script src="../../../../dist/iframe-drag-n-drop.js"></script>');
+    $(el).find('body').append('<script src="/js/interact-1.3.4.js"></script>');
+    $(el).find('body').append('<script src="/dist/iframe-drag-n-drop.js"></script>');
     return el;
 }
 

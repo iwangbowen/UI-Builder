@@ -2,7 +2,6 @@ import {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition,
     hideHighlightAreas
 } from './util/iframe-drag-n-drop-util';
-import interact from '../node_modules/interactjs/src/index';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
 $(document).ready(() => {
@@ -13,7 +12,6 @@ $(document).ready(() => {
     self.deleteData = deleteData;
     self.getAddContent = getAddContent;
     self.getEditContent = getEditContent;
-
     let enteredDropzone = false;
     const isDropzoneParent = element => !!$(element).parents('.dropzone').length;
 
