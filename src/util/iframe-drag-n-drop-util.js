@@ -23,11 +23,9 @@ function showAlignmentLines(target) {
     let verticalLineShown = false;
     const targetOffset = $(target).offset();
     // 排除自身元素和该元素子元素
-    [
-        ...$('body *:visible:not(script)')
-            .not(target)
-            .not($(target).find('*'))
-    ]
+    Array.prototype.slice.call($('body *:visible:not(script)')
+        .not(target)
+        .not($(target).find('*')))
         .some(currentValue => {
             const currentOffset = $(currentValue).offset();
             const { isHorizontalAlign, isVerticalAlign } = isAlign(targetOffset, currentOffset);

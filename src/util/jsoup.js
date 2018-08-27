@@ -15,7 +15,7 @@ import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
 import { unusedTags, removeableScript, tableScript, appendableScript } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
-import 'core-js/es6/array';
+import 'core-js/es7/array';
 
 function removeRemoveableScripts(el) {
     $(el).find(`script[class=${removeableScript}]`).remove();
