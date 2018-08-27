@@ -414,9 +414,12 @@ Vvveb.Builder = {
 	_loadIframe(url, srcdoc) {
 		this.iframe = this.documentFrame.get(0);
 		if (srcdoc) {
-			this.iframe.srcdoc = srcdoc
+			const iframeDocument = this.iframe.contentWindow.document;
+			iframeDocument.open('text/html', 'replace');
+			iframeDocument.write(srcdoc);
+			iframeDocument.close();
 		} else {
-			this.iframe.src = url;
+			this.iframe.src = `${window.location.origin}/${url}`;
 		}
 		const _this = this;
 		return this.documentFrame.on("load", function () {

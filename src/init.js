@@ -25,5 +25,3 @@ $(document).ready(function () {
         Vvveb.FileManager.showActive(pages[0].name);
     }
 });
-
-// 如果用户点击可以直接清空缓存
