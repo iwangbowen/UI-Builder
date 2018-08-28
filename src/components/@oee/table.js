@@ -1,10 +1,13 @@
-import { ButtonInput, TextValueInput, SelectInput, TextInput } from '../../inputs/inputs';
+import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
 import Vvveb from '../../builder';
+import _ from 'lodash';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
 const gridOptions = 'gridOptions';
+const checkboxSelection = 'checkboxSelection';
+const headerCheckboxSelection = 'headerCheckboxSelection';
 const themeOptions = [
     {
         value: "ag-theme-balham",
@@ -34,33 +37,85 @@ const themeOptions = [
         value: "ag-theme-material",
         text: "Material"
     }];
-const dummyData = [{
-    athelete: 'Michael Phelps',
-    age: 23,
-    country: 'United States'
-}, {
-    athelete: 'Aleksey Nemov',
-    age: 24,
-    country: 'Russia'
-}, {
-    athelete: 'Alicia Coutts',
-    age: 24,
-    country: 'Australia'
-}, {
-    athelete: 'Cindy Klassen',
-    age: 26,
-    country: 'Canada'
-}];
+const dummyData = [
+    {
+        athelete: 'Michael Phelps',
+        age: 23,
+        country: 'United States'
+    }, {
+        athelete: 'Aleksey Nemov',
+        age: 24,
+        country: 'Russia'
+    }, {
+        athelete: 'Alicia Coutts',
+        age: 24,
+        country: 'Australia'
+    }, {
+        athelete: 'Cindy Klassen',
+        age: 26,
+        country: 'Canada'
+    }];
 
-function getComputedProperty(node) {
+function getGridOptionsIdentifier(node) {
     return `${gridOptions}${$(node).attr(dataTableId)}`;
+}
+
+function getGridOptions(node) {
+    return iframeWindow[getGridOptionsIdentifier(node)];
+}
+
+function getColumnDefs(node) {
+    return getGridOptions(node).columnDefs;
+}
+
+function getColumnDefProperty(colDef, property) {
+    return colDef[property];
+}
+
+function getCheckboxProperty(node, property) {
+    const colDefs = getColumnDefs(node);
+    if (colDefs.length) {
+        return getColumnDefProperty(colDefs[0], property);
+    } else {
+        return false;
+    }
+}
+
+function setColumnDefProperty(colDef, property, value) {
+    colDef[property] = value;
+}
+
+function setColumnDefs(node, colDefs = getColumnDefs(node)) {
+    getGridOptions(node).api.setColumnDefs(colDefs);
+}
+
+function setRowData(node, data) {
+    getGridOptions(node).api.setRowData(data)
 }
 
 function setColumnDefsAndRender(node, colDefs) {
     // Call to set new column definitions into the grid. 
     // The grid will redraw all the column headers, and then redraw all of the rows.
-    iframeWindow[getComputedProperty(node)].api.setColumnDefs(colDefs);
+    getGridOptions(node).columnDefs = colDefs;
+    setColumnDefs(node, colDefs);
     Vvveb.Components.render($(node).attr(dataComponentId));
+}
+
+function setGridOptions(node, gridOptions) {
+    iframeWindow[getGridOptionsIdentifier(node)] = gridOptions;
+}
+
+function checkboxToggled(node, value, property) {
+    const colDefs = getColumnDefs(node);
+    if (colDefs.length) {
+        setColumnDefProperty(colDefs[0], property, value == 'true');
+        setColumnDefs(node);
+    }
+}
+
+// Toggle Input对应的是checkbox，对应多个值
+function transformToToggleValue(value) {
+    return [value];
 }
 
 const table = {
@@ -73,21 +128,22 @@ const table = {
         $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {
             $(node).attr(dataTableId, new Date().getTime());
-            iframeWindow[getComputedProperty(node)] = {
-                columnDefs: [
-                    { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: true, headerCheckboxSelection: true },
-                    { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
-                    { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
-                ],
-                rowSelection: 'multiple',
-                enableSorting: true,
-                enableFilter: false
-            };
-            new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, iframeWindow[getComputedProperty(node)]);
-            iframeWindow[getComputedProperty(node)].api.setRowData(dummyData);
+            setGridOptions(node,
+                {
+                    columnDefs: [
+                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                        { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                        { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
+                    ],
+                    rowSelection: 'multiple',
+                    enableSorting: true,
+                    enableFilter: false
+                });
+            new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, getGridOptions(node));
+            setRowData(node, dummyData);
         }
         let i = 0;
-        const properties = iframeWindow[getComputedProperty(node)].columnDefs.reduce((prev, cur) => {
+        const properties = getColumnDefs(node).reduce((prev, cur) => {
             i++;
             prev.push({
                 name: "Header " + i,
@@ -105,22 +161,19 @@ const table = {
                 },
                 onChange: function (node, value, input) {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
-                    let colDefs = iframeWindow[getComputedProperty(node)].columnDefs;
+                    let colDefs = getColumnDefs(node);
                     if (input.nodeName == 'BUTTON') {
                         colDefs = colDefs
                             .filter((value, index) => index != keyIndex);
-                        iframeWindow[getComputedProperty(node)].columnDefs = colDefs;
                         setColumnDefsAndRender(node, colDefs);
                     } else {
                         if (input.name == 'width') {
                             colDefs[keyIndex][input.name] = value && parseInt(value);
-                        } else if (input.name == 'checkboxSelection' || input.name == 'headerCheckboxSelection') {
-                            colDefs[keyIndex][input.name] = value == 'true';
                         } else {
                             colDefs[keyIndex][input.name] = value;
                         }
                         // 重新渲染会失去输入框焦点，只需要用新的colDefs更新表格即可，右侧的部分不需要重新渲染。
-                        iframeWindow[getComputedProperty(node)].api.setColumnDefs(colDefs);
+                        setColumnDefs(node, colDefs);
                     }
                     return node;
                 },
@@ -135,6 +188,28 @@ const table = {
     },
     properties: [
         {
+            name: "Checkbox Selection",
+            key: checkboxSelection,
+            inputtype: ToggleInput,
+            data: {
+                on: true,
+                off: false
+            },
+            init: _.flow([_.curry(getCheckboxProperty)(_, checkboxSelection), transformToToggleValue]),
+            onChange: _.partial(checkboxToggled, _, _, checkboxSelection)
+        },
+        {
+            name: "Header Checkbox Selection",
+            key: headerCheckboxSelection,
+            inputtype: ToggleInput,
+            data: {
+                on: true,
+                off: false
+            },
+            init: _.flow([_.curry(getCheckboxProperty)(_, headerCheckboxSelection), transformToToggleValue]),
+            onChange: _.partial(checkboxToggled, _, _, headerCheckboxSelection)
+        },
+        {
             name: "Theme",
             key: "theme",
             htmlAttr: "class",
@@ -144,9 +219,8 @@ const table = {
             onChange: function (node, value) {
                 node.removeClass(this.validValues.join(" "));
                 node.addClass(value);
-
                 // Code copied form official site example https://www.ag-grid.com/example.php#/
-                const gridOptions = iframeWindow[getComputedProperty(node)];
+                const gridOptions = getGridOptions(node);
                 gridOptions.api.resetRowHeights();
                 gridOptions.api.redrawRows();
                 gridOptions.api.refreshHeader();
@@ -168,7 +242,7 @@ const table = {
             inputtype: ButtonInput,
             data: { text: "Add header" },
             onChange: function (node) {
-                const colDefs = iframeWindow[getComputedProperty(node)].columnDefs;
+                const colDefs = getColumnDefs(node);
                 colDefs.push({
                     headerName: 'header',
                     field: 'field',
@@ -184,5 +258,5 @@ const table = {
 };
 
 export {
-    table, columnDefs, gridOptions, getComputedProperty, themeOptions
+    table, columnDefs, gridOptions, getGridOptionsIdentifier, themeOptions
 };
