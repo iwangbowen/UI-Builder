@@ -11,6 +11,10 @@ const unusedTags = [
             : $(tag).hasClass(removeableScript)
     },
     {
+        name: 'style',
+        filter: tag => tag.getAttribute('type') == 'text/css'
+    },
+    {
         name: 'link',
         init(el) {
             return _.chain([...$(el).find(tableSelector)])
