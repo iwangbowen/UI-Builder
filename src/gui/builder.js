@@ -373,49 +373,38 @@ Vvveb.Builder = {
 		});
 
 		$("#clone-box").on("click", function (event) {
-			clone = getElementWithDraggable(_this.selectedEl).clone();
-
+			const clone = getElementWithDraggable(_this.selectedEl).clone();
 			_this.selectedEl.after(clone);
-
 			_this.selectedEl = clone.click();
-
-			node = clone.get(0);
+			const node = clone.get(0);
 			Vvveb.Undo.addMutation({
 				type: 'childList',
 				target: node.parentNode,
 				addedNodes: [node],
 				nextSibling: node.nextSibling
 			});
-
 			event.preventDefault();
 			return false;
 		});
 
 		$("#parent-box").on("click", function (event) {
-
-			node = _this.selectedEl.parent().get(0);
-
+			const node = _this.selectedEl.parent().get(0);
 			_this.selectNode(node);
 			_this.loadNodeComponent(node);
-
 			event.preventDefault();
 			return false;
 		});
 
 		$("#delete-box").on("click", function (event) {
 			jQuery(selectBox).hide();
-
-			node = _this.selectedEl.get(0);
-
+			const node = getElementWithDraggable(_this.selectedEl).get(0);
 			Vvveb.Undo.addMutation({
 				type: 'childList',
 				target: node.parentNode,
 				removedNodes: [node],
 				nextSibling: node.nextSibling
 			});
-
-			_this.selectedEl.remove();
-
+			$(node).remove();
 			event.preventDefault();
 			return false;
 		});
