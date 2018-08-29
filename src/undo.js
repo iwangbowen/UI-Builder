@@ -1,22 +1,4 @@
 /*
-Copyright 2017 Ziadin Givan
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-https://github.com/givanz/VvvebJs
-*/
-
-/*
 https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
 
 childList 				Set to true if additions and removals of the target node's child elements (including text nodes) are to be observed.
@@ -52,7 +34,6 @@ MutationRecord.oldValue 			String 		The return value depends on the MutationReco
 import Vvveb from './builder';
 
 Vvveb.Undo = {
-
 	undos: [],
 	mutations: [],
 	undoIndex: -1,
@@ -69,12 +50,9 @@ Vvveb.Undo = {
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);
 	},
-
 	restore(mutation, undo) {
-
 		switch (mutation.type) {
 			case 'childList':
-
 				if (undo == true) {
 					addedNodes = mutation.removedNodes;
 					removedNodes = mutation.addedNodes;
@@ -83,7 +61,6 @@ Vvveb.Undo = {
 					addedNodes = mutation.addedNodes;
 					removedNodes = mutation.removedNodes;
 				}
-
 				if (addedNodes) for (i in addedNodes) {
 					node = addedNodes[i];
 					if (mutation.nextSibling) {
@@ -92,7 +69,6 @@ Vvveb.Undo = {
 						mutation.target.append(node);
 					}
 				}
-
 				if (removedNodes) for (i in removedNodes) {
 					node = removedNodes[i];
 					node.parentNode.removeChild(node);
@@ -107,7 +83,6 @@ Vvveb.Undo = {
 					parent = mutation.newParent;
 					sibling = mutation.newNextSibling;
 				}
-
 				if (sibling) {
 					sibling.parentNode.insertBefore(mutation.target, sibling);
 				} else {
@@ -119,30 +94,24 @@ Vvveb.Undo = {
 				break;
 			case 'attributes':
 				value = undo ? mutation.oldValue : mutation.newValue;
-
 				if (value || value === false || value === 0)
 					mutation.target.setAttribute(mutation.attributeName, value);
 				else
 					mutation.target.removeAttribute(mutation.attributeName);
-
 				break;
 		}
-
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.restore");
 	},
-
 	undo() {
 		if (this.undoIndex >= 0) {
 			this.restore(this.mutations[this.undoIndex--], true);
 		}
 	},
-
 	redo() {
 		if (this.undoIndex < this.mutations.length - 1) {
 			this.restore(this.mutations[++this.undoIndex], false);
 		}
 	},
-
 	hasChanges() {
 		return this.mutations.length;
 	},

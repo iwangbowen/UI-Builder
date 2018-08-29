@@ -1,3 +1,5 @@
+import tmpl from '../util/tmpl';
+
 const Input = {
 	init: function (name) {
 	},

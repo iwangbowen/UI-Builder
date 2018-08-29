@@ -1,16 +1,11 @@
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
-
     // Configuration
     grunt.initConfig({
         browserify: {
             development: {
                 src: [
                     "src/init.js",
-                    'src/components.js',
-                    'src/undo.js',
-                    'src/plugin-codemirror.js',
-                    'src/drag-n-drop.js',
                     'src/iframe-drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
@@ -21,10 +16,6 @@ module.exports = function (grunt) {
                         ["factor-bundle", {
                             outputs: [
                                 'dist/init.js',
-                                'dist/components.js',
-                                'dist/undo.js',
-                                'dist/plugin-codemirror.js',
-                                'dist/drag-n-drop.js',
                                 'dist/iframe-drag-n-drop.js'
                             ]
                         }]
@@ -36,10 +27,6 @@ module.exports = function (grunt) {
             production: {
                 src: [
                     "src/init.js",
-                    'src/components.js',
-                    'src/undo.js',
-                    'src/plugin-codemirror.js',
-                    'src/drag-n-drop.js',
                     'src/iframe-drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
@@ -50,10 +37,6 @@ module.exports = function (grunt) {
                         ["factor-bundle", {
                             outputs: [
                                 'dist/init.js',
-                                'dist/components.js',
-                                'dist/undo.js',
-                                'dist/plugin-codemirror.js',
-                                'dist/drag-n-drop.js',
                                 'dist/iframe-drag-n-drop.js'
                             ]
                         }],

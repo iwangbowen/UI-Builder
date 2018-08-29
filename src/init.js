@@ -1,10 +1,24 @@
 import Vvveb from './builder';
+import './components';
+import './wysiwyg-editor';
+import './gui';
+import './file-manager';
+import './undo';
+import './plugin-codemirror';
+import './load-components';
 import {
     importedPageName, importedPageTitle, importedPageHref, pages
 } from './constants';
-import { getHash, getPage, loadCallback, generateHtmlFromLocalStorageItemKey } from './util/dom';
+import {
+    getHash, getPage, loadCallback, generateHtmlFromLocalStorageItemKey,
+    getSelectedElements, getElementWithDraggable
+} from './util/dom';
+import './drag-n-drop';
 
 $(document).ready(function () {
+    window.getSelectedElements = getSelectedElements;
+    window.getElementWithDraggable = getElementWithDraggable;
+
     Vvveb.Gui.init();
     Vvveb.FileManager.init();
     const hash = getHash();
