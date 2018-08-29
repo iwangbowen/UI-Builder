@@ -7,7 +7,6 @@ import { getHash, getPage, loadCallback, generateHtmlFromLocalStorageItemKey } f
 $(document).ready(function () {
     Vvveb.Gui.init();
     Vvveb.FileManager.init();
-
     const hash = getHash();
     if (hash == importedPageName && localStorage.getItem(importedPageName)) {
         pages.unshift(getPage(importedPageName, importedPageTitle, importedPageHref));
