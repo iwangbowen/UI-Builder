@@ -1,6 +1,6 @@
 import { dataComponentId } from '../common';
 import { table } from './table';
-import Vvveb from '../../builder';
+import Vvveb from '../../gui/builder';
 import { customtableid } from './ids';
 
 const customtable = $.extend({}, table, {

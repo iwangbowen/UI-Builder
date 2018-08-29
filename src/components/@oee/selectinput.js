@@ -1,4 +1,4 @@
-import Vvveb from '../../builder';
+import Vvveb from '../../gui/builder';
 import { TextValueInput, ButtonInput } from '../../inputs/inputs';
 
 const selectinput = {

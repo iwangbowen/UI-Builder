@@ -1,11 +1,11 @@
-import Vvveb from './builder';
-import './components';
-import './wysiwyg-editor';
-import './gui';
-import './file-manager';
-import './undo';
-import './plugin-codemirror';
-import './load-components';
+import Vvveb from './gui/builder';
+import './gui/components';
+import './gui/wysiwyg-editor';
+import './gui/actions';
+import './gui/file-manager';
+import './gui/undo';
+import './gui/plugin-codemirror';
+import './components-loader';
 import {
     importedPageName, importedPageTitle, importedPageHref, pages
 } from './constants';
@@ -19,7 +19,7 @@ $(document).ready(function () {
     window.getSelectedElements = getSelectedElements;
     window.getElementWithDraggable = getElementWithDraggable;
 
-    Vvveb.Gui.init();
+    Vvveb.Actions.init();
     Vvveb.FileManager.init();
     const hash = getHash();
     if (hash == importedPageName && localStorage.getItem(importedPageName)) {

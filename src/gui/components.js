@@ -1,8 +1,8 @@
 import Vvveb from './builder';
-import { SectionInput } from './inputs/inputs';
-import { dataComponentId } from './components/common';
-import { getStyle } from './util/dom';
-import tmpl from './util/tmpl';
+import { SectionInput } from '../inputs/inputs';
+import { dataComponentId } from '../components/common';
+import { getStyle } from '../util/dom';
+import tmpl from '../util/tmpl';
 
 Vvveb.Components = {
 	_components: {},

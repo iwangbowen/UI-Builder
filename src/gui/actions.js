@@ -1,18 +1,18 @@
 import Vvveb from './builder';
-import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from './util/dom';
+import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util/dom';
 import 'core-js/es6/promise';
-import { importedPageName, defaultFilename } from './constants';
+import { importedPageName, defaultFilename } from '../constants';
 
-Vvveb.Gui = {
+Vvveb.Actions = {
     init() {
         $("[data-vvveb-action]").each(function () {
             on = "click";
             if (this.dataset.vvvebOn) on = this.dataset.vvvebOn;
 
-            $(this).on(on, Vvveb.Gui[this.dataset.vvvebAction]);
+            $(this).on(on, Vvveb.Actions[this.dataset.vvvebAction]);
             if (this.dataset.vvvebShortcut) {
-                $(document).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Gui[this.dataset.vvvebAction]);
-                $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Gui[this.dataset.vvvebAction]);
+                $(document).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
+                $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
             }
         });
     },

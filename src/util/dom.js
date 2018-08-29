@@ -8,7 +8,7 @@ import {
 import { beautify_options, multiSelectedClass } from '../constants';
 import _ from 'lodash';
 import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
-import Vvveb from '../builder';
+import Vvveb from '../gui/builder';
 
 function getStyle(el, styleProp) {
     value = "";

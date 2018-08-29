@@ -1,5 +1,5 @@
 import Vvveb from './builder';
-import tmpl from './util/tmpl';
+import tmpl from '../util/tmpl';
 
 Vvveb.FileManager = {
 	tree: false,

@@ -1,5 +1,5 @@
 import Vvveb from './builder';
-import { getHtml, getBeautifiedHtml, delay } from './util/dom';
+import { getHtml, getBeautifiedHtml, delay } from '../util/dom';
 
 Vvveb.CodeEditor = {
 	isActive: false,

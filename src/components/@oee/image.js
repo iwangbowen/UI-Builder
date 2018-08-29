@@ -1,4 +1,4 @@
-import Vvveb from '../../builder'
+import Vvveb from '../../gui/builder'
 import { FileUploadInput, TextInput } from '../../inputs/inputs';
 
 const image = {

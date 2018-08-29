@@ -1,6 +1,6 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
-import Vvveb from '../../builder';
+import Vvveb from '../../gui/builder';
 import _ from 'lodash';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;

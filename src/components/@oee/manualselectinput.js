@@ -1,4 +1,4 @@
-import Vvveb from '../../builder';
+import Vvveb from '../../gui/builder';
 import { TextValueInput, ButtonInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';

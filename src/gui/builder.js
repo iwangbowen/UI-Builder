@@ -1,10 +1,10 @@
-import { replaceOtherShowingCalendarInputs } from './util/dataAttr';
+import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
 	getElementWithDraggable, bottomAlignCallback
-} from './util/dom';
-import { noneditableSelector, getParentOrSelf, selectBox } from './util/selectors';
+} from '../util/dom';
+import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
 
 if (Vvveb === undefined) var Vvveb = {};
@@ -254,7 +254,7 @@ Vvveb.Builder = {
 					}
 
 					const node = getParentOrSelf(event.target);
-					if (!Vvveb.Gui.isPreview && !$('#attribute-settings').hasClass('active')) {
+					if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
 						$('#attribute-settings')
 							.addClass('active')
 							.siblings()

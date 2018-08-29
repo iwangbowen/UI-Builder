@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         browserify: {
             development: {
                 src: [
-                    "src/init.js",
+                    "src/main.js",
                     'src/iframe-drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
@@ -15,7 +15,7 @@ module.exports = function (grunt) {
                     plugin: [
                         ["factor-bundle", {
                             outputs: [
-                                'dist/init.js',
+                                'dist/main.js',
                                 'dist/iframe-drag-n-drop.js'
                             ]
                         }]
@@ -26,7 +26,7 @@ module.exports = function (grunt) {
             },
             production: {
                 src: [
-                    "src/init.js",
+                    "src/main.js",
                     'src/iframe-drag-n-drop.js'
                 ],
                 dest: 'dist/common.js',
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     plugin: [
                         ["factor-bundle", {
                             outputs: [
-                                'dist/init.js',
+                                'dist/main.js',
                                 'dist/iframe-drag-n-drop.js'
                             ]
                         }],
