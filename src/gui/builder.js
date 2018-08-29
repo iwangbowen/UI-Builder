@@ -36,20 +36,20 @@ Vvveb.Builder = {
 	},
 	/* controls */
 	loadControlGroups() {
-		componentsList = $("#components-list");
+		const componentsList = $("#components-list");
 		componentsList.empty();
 
 		for (group in Vvveb.ComponentsGroup) {
 			componentsList.append('<li class="header" data-section="' + group + '"  data-search=""><label class="header" for="comphead_' + group + '">' + group + '  <div class="header-arrow"></div>\
 								   </label><input class="header_check" type="checkbox" checked="true" id="comphead_' + group + '">  <ol></ol></li>');
 
-			componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
+			const componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
 
 			components = Vvveb.ComponentsGroup[group];
 
 			for (i in components) {
-				componentType = components[i];
-				component = Vvveb.Components.get(componentType);
+				const componentType = components[i];
+				const component = Vvveb.Components.get(componentType);
 				if (component) {
 					const item = $('<li data-section="' + group + '" data-type="' + componentType + '" data-search="' + component.name.toLowerCase() + '"><a href="#">' + component.name + "</a></li>");
 					if (component.image) {
@@ -98,7 +98,7 @@ Vvveb.Builder = {
 	},
 	_getElementType(el) {
 		//search for component attribute
-		componentName = '';
+		let componentName = '';
 		if (el.attributes)
 			for (var j = 0; j < el.attributes.length; j++) {
 
@@ -121,7 +121,7 @@ Vvveb.Builder = {
 		return el.tagName;
 	},
 	loadNodeComponent(node) {
-		data = Vvveb.Components.matchNode(node);
+		const data = Vvveb.Components.matchNode(node);
 		if (data) Vvveb.Components.render(data.type);
 	},
 	selectNode(node = false, ctrlKeyPressed = false) {

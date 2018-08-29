@@ -50,28 +50,27 @@ Vvveb.Undo = {
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);
 	},
+	getMutations() {
+		return this.mutations;
+	},
 	restore(mutation, undo) {
 		switch (mutation.type) {
 			case 'childList':
-				if (undo == true) {
-					addedNodes = mutation.removedNodes;
-					removedNodes = mutation.addedNodes;
-				} else //redo
-				{
-					addedNodes = mutation.addedNodes;
-					removedNodes = mutation.removedNodes;
-				}
-				if (addedNodes) for (i in addedNodes) {
-					node = addedNodes[i];
-					if (mutation.nextSibling) {
-						mutation.nextSibling.parentNode.insertBefore(node, mutation.nextSibling);
-					} else {
-						mutation.target.append(node);
+				const addedNodes = undo ? mutation.removedNodes : mutation.addedNodes;
+				const removedNodes = undo ? mutation.addedNodes : mutation.removedNodes;
+				if (addedNodes) {
+					for (const node of addedNodes) {
+						if (mutation.nextSibling) {
+							mutation.nextSibling.parentNode.insertBefore(node, mutation.nextSibling);
+						} else {
+							mutation.target.append(node);
+						}
 					}
 				}
-				if (removedNodes) for (i in removedNodes) {
-					node = removedNodes[i];
-					node.parentNode.removeChild(node);
+				if (removedNodes) {
+					for (const node of removedNodes) {
+						node.parentNode.removeChild(node);
+					}
 				}
 				break;
 			case 'move':

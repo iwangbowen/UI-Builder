@@ -17,8 +17,9 @@ const customtable = $.extend({}, table, {
                 transform: ''
             })
             .removeClass('draggable');
-        Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea').append($(node).prop('outerHTML'));
-        $(node).remove();
+        const appendToElement = Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea');
+        appendToElement.append($(node).prop('outerHTML'));
+        return appendToElement.children('*:last');
     }
 });
 
