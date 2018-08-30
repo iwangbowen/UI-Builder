@@ -1,7 +1,7 @@
 import Vvveb from './gui/builder';
 import { dragMoveListener } from './util/drag-n-drop-util';
 import { isOverlap } from './util/dom';
-import { ChildListMutation } from './models/mutation';
+import ChildListMutation from './models/mutation/child-list-mutation';
 
 $(document).ready(() => {
     $('#menu-panel .navbar-nav a').on('click', function () {

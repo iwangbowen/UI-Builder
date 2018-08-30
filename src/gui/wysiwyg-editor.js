@@ -1,4 +1,5 @@
 import Vvveb from './builder';
+import CharacterDataMutation from '../models/mutation/character-data-mutation'
 
 Vvveb.WysiwygEditor = {
     isActive: false,
@@ -49,11 +50,10 @@ Vvveb.WysiwygEditor = {
         $("#wysiwyg-editor").hide();
         this.isActive = false;
         node = this.element.get(0);
-        Vvveb.Undo.addMutation({
-            type: 'characterData',
+        Vvveb.Undo.addMutation(new CharacterDataMutation({
             target: node,
             oldValue: this.oldValue,
             newValue: node.innerHTML
-        });
+        }));
     }
 }

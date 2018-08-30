@@ -51,9 +51,6 @@ Vvveb.Undo = {
 	},
 	restore(mutation, undo) {
 		switch (mutation.type) {
-			case 'characterData':
-				mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;
-				break;
 			case 'attributes':
 				const value = undo ? mutation.oldValue : mutation.newValue;
 				if (value || value === false || value === 0)
@@ -62,7 +59,7 @@ Vvveb.Undo = {
 					mutation.target.removeAttribute(mutation.attributeName);
 				break;
 		}
-		if (mutation.type == 'childList' || mutation.type == 'move') {
+		if (mutation.type == 'childList' || mutation.type == 'move' || mutation.type == 'characterData') {
 			if (undo) {
 				mutation.undo();
 			} else {

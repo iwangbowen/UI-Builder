@@ -134,7 +134,6 @@ Vvveb.Components = {
 		}
 		tagName = node.tagName.toLowerCase();
 		if (tagName in this._nodesLookup) return this._nodesLookup[tagName];
-
 		//return false;
 		return this.get(Vvveb.defaultComponent);
 	},
@@ -154,9 +153,9 @@ Vvveb.Components = {
 
 		if (component.beforeInit) component.beforeInit(Vvveb.Builder.selectedEl.get(0));
 
-		fn = function (component, property) {
+		function fn(component, property) {
 			return property.input.on('propertyChange', function (event, value, input) {
-				element = Vvveb.Builder.selectedEl;
+				let element = Vvveb.Builder.selectedEl;
 				if (property.child) element = element.find(property.child);
 				if (property.parent) element = element.parent(property.parent);
 
@@ -170,11 +169,9 @@ Vvveb.Components = {
 					} else if (property.htmlAttr == "class" && property.validValues) {
 						element.removeClass(property.validValues.join(" "));
 						element = element.addClass(value);
-					}
-					else if (property.htmlAttr == "style") {
+					} else if (property.htmlAttr == "style") {
 						element = element.css(property.key, value);
-					}
-					else if (property.noValueAttr) {
+					} else if (property.noValueAttr) {
 						if (value) {
 							element = element.attr(property.htmlAttr, '');
 						} else {
@@ -258,13 +255,11 @@ Vvveb.Components = {
 					rightPanel.append(property.input);
 					section = rightPanel.find('.section[data-section="' + property.key + '"]');
 				}
-			}
-			else {
+			} else {
 				row = $(tmpl('property', property));
 				row.find('.input').append(property.input);
 
 				property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
-
 				section.append(row);
 			}
 		}

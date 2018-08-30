@@ -6,7 +6,7 @@ import {
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
-import { ChildListMutation } from '../models/mutation';
+import ChildListMutation from '../models/mutation/child-list-mutation';
 
 if (Vvveb === undefined) var Vvveb = {};
 
@@ -416,10 +416,8 @@ Vvveb.Builder = {
 		$('#bottom-align').on('click', bottomAlignCallback);
 
 		jQuery(window.FrameWindow).on("scroll resize", function (event) {
-
 			if (_this.selectedEl) {
 				offset = _this.selectedEl.offset();
-
 				jQuery(selectBox).css(
 					{
 						"top": offset.top - _this.frameDoc.scrollTop(),
@@ -450,7 +448,6 @@ Vvveb.Builder = {
 		const _this = this;
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
 			$this = jQuery(this);
-
 			// $("#component-clone").remove();
 			component = Vvveb.Components.get($this.data("type"));
 
