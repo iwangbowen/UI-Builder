@@ -112,4 +112,15 @@ function updatePosition(target, event) {
     target.setAttribute('data-y', y);
 }
 
-export { hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas };
+function getAttributes(element) {
+    return [].slice.call(element.attributes)
+        .reduce((attrs, attr) => {
+            attrs[attr.name] = attr.value;
+            return attrs
+        }, {});
+}
+
+export {
+    hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
+    getAttributes
+};

@@ -76,13 +76,12 @@ Vvveb.Undo = {
 			case 'move':
 				let parent = undo ? mutation.oldParent : mutation.newParent;
 				let sibling = undo ? mutation.oldNextSibling : mutation.newNextSibling;
-				$(mutation.target).attr(undo ? mutation.oldAttr : mutation.newAttr);
+				$(mutation.target).attr(undo ? mutation.oldAttrs : mutation.newAttrs);
 				if (sibling) {
 					sibling.parentNode.insertBefore(mutation.target, sibling);
 				} else {
 					parent.append(mutation.target);
 				}
-				// $(mutation.target).replaceWith(undo ? mutation.oldHtml : mutation.newHtml);
 				break;
 			case 'characterData':
 				mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;

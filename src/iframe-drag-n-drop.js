@@ -1,6 +1,6 @@
 import {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition,
-    hideHighlightAreas
+    hideHighlightAreas, getAttributes
 } from './util/iframe-drag-n-drop-util';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
@@ -150,12 +150,7 @@ $(document).ready(() => {
                     target,
                     oldParent: target.parentNode,
                     oldNextSibling: target.nextSibling,
-                    oldAttr: {
-                        'data-x': $(target).attr('data-x'),
-                        'data-y': $(target).attr('data-y'),
-                        'style': $(target).attr('style')
-                    },
-                    oldHtml: $(target).prop("outerHTML")
+                    oldAttrs: getAttributes(target)
                 }
             },
             onmove(event) {
@@ -177,11 +172,7 @@ $(document).ready(() => {
                 mutation.newParent = target.parentNode;
                 mutation.newNextSibling = target.nextSibling;
                 mutation.newHtml = $(target).prop("outerHTML");
-                mutation.newAttr = {
-                    'data-x': $(target).attr('data-x'),
-                    'data-y': $(target).attr('data-y'),
-                    'style': $(target).attr('style')
-                };
+                mutation.newAttrs = getAttributes(target);
                 window.parent.Vvveb.Undo.addMutation(mutation);
             }
         });
