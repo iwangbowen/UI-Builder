@@ -3,43 +3,34 @@ module.exports = function (grunt) {
     // Configuration
     grunt.initConfig({
         browserify: {
-            development: {
-                src: [
-                    "src/main.js",
-                    'src/iframe-drag-n-drop.js'
-                ],
-                dest: 'dist/common.js',
+            dev: {
+                files: [{
+                    src: 'src/main.js',
+                    dest: 'dist/main.js'
+                }, {
+                    src: 'src/iframe-drag-n-drop.js',
+                    dest: 'dist/iframe-drag-n-drop.js'
+                }],
                 options: {
                     browserifyOptions: { debug: true },
                     transform: [["babelify", { "presets": ["es2015"] }]],
-                    plugin: [
-                        ["factor-bundle", {
-                            outputs: [
-                                'dist/main.js',
-                                'dist/iframe-drag-n-drop.js'
-                            ]
-                        }]
-                    ],
+                    plugin: [],
                     watch: true,
                     keepAlive: true,
                 }
             },
-            production: {
-                src: [
-                    "src/main.js",
-                    'src/iframe-drag-n-drop.js'
-                ],
-                dest: 'dist/common.js',
+            prod: {
+                files: [{
+                    src: 'src/main.js',
+                    dest: 'dist/main.js'
+                }, {
+                    src: 'src/iframe-drag-n-drop.js',
+                    dest: 'dist/iframe-drag-n-drop.js'
+                }],
                 options: {
                     browserifyOptions: { debug: false },
                     transform: [["babelify", { "presets": ["es2015"] }]],
                     plugin: [
-                        ["factor-bundle", {
-                            outputs: [
-                                'dist/main.js',
-                                'dist/iframe-drag-n-drop.js'
-                            ]
-                        }],
                         ["minifyify", { map: false }]
                     ],
                     keepAlive: true,
@@ -102,8 +93,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browserify');
 
     // Register tasks
-    grunt.registerTask("build:dev", ['clean:all', 'browserify:development']);
-    grunt.registerTask("build:prod", ['clean:all', 'browserify:production']);
+    grunt.registerTask("build:dev", ['clean:all', 'browserify:dev']);
+    grunt.registerTask("build:prod", ['clean:all', 'browserify:prod']);
     grunt.registerTask('build', ['clean:all', 'concat:es5', 'babel:build']);
     grunt.registerTask('transpile', ['babel:transpile']);
     grunt.registerTask('clean:all', ['clean:concated', 'clean:built', 'clean:transpiled']);

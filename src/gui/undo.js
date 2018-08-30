@@ -43,10 +43,6 @@ Vvveb.Undo = {
 	},
 	*/
 	addMutation(mutation) {
-		/*
-			this.mutations.push(mutation);
-			this.undoIndex++;
-		*/
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);
 	},
@@ -87,7 +83,7 @@ Vvveb.Undo = {
 				mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;
 				break;
 			case 'attributes':
-				value = undo ? mutation.oldValue : mutation.newValue;
+				const value = undo ? mutation.oldValue : mutation.newValue;
 				if (value || value === false || value === 0)
 					mutation.target.setAttribute(mutation.attributeName, value);
 				else

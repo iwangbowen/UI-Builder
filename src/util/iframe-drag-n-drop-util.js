@@ -1,3 +1,5 @@
+import 'core-js/es6/array';
+
 function isAlign(targetOffset, currentOffset) {
     return {
         isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 0.7,
@@ -23,7 +25,7 @@ function showAlignmentLines(target) {
     let verticalLineShown = false;
     const targetOffset = $(target).offset();
     // 排除自身元素和该元素子元素
-    Array.prototype.slice.call($('body *:visible:not(script)')
+    Array.from($('body *:visible:not(script)')
         .not(target)
         .not($(target).find('*')))
         .some(currentValue => {
@@ -113,7 +115,7 @@ function updatePosition(target, event) {
 }
 
 function getAttributes(element) {
-    return [].slice.call(element.attributes)
+    return Array.from(element.attributes)
         .reduce((attrs, attr) => {
             attrs[attr.name] = attr.value;
             return attrs
