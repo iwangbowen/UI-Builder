@@ -3,7 +3,7 @@ import {
     hideHighlightAreas, getAttributes
 } from './util/iframe-drag-n-drop-util';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
-import { ChildListMutation } from './models/mutation';
+import { MoveMutation } from './models/mutation';
 
 $(document).ready(() => {
     self.interact = interact;
@@ -146,13 +146,12 @@ $(document).ready(() => {
             // call this function on every dragmove event
             onstart(event) {
                 const target = event.target;
-                mutation = {
-                    type: 'move',
+                mutation = new MoveMutation({
                     target,
                     oldParent: target.parentNode,
                     oldNextSibling: target.nextSibling,
                     oldAttrs: getAttributes(target)
-                }
+                });
             },
             onmove(event) {
                 hideAlignmentLines();
@@ -172,7 +171,6 @@ $(document).ready(() => {
                 const target = event.target;
                 mutation.newParent = target.parentNode;
                 mutation.newNextSibling = target.nextSibling;
-                mutation.newHtml = $(target).prop("outerHTML");
                 mutation.newAttrs = getAttributes(target);
                 window.parent.Vvveb.Undo.addMutation(mutation);
             }

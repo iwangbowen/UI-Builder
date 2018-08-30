@@ -12,23 +12,25 @@ class Mutation {
 
     addNodes(nodes) {
         if (nodes) {
-            nodes.forEach(node => {
-                if (this.nextSibing) {
-                    this.nextSibling.parentNode.insertBefore(node, this.nextSibling);
-                } else {
-                    this.target.append(node);
-                }
-            });
+            nodes.forEach(node => this.addNode(this.target, this.nextSibling, node));
+        }
+    }
+
+    addNode(parent, nextSibling, node) {
+        if (nextSibling) {
+            nextSibling.parentNode.insertBefore(node, nextSibling);
+        } else {
+            parent.append(node);
         }
     }
 }
 
 class ChildListMutation extends Mutation {
-    constructor({ target, addedNodes, removedNodes, nextSibing }) {
+    constructor({ target, addedNodes, removedNodes, nextSibling }) {
         super('childList', target);
         this.addedNodes = addedNodes;
         this.removedNodes = removedNodes;
-        this.nextSibing = nextSibing;
+        this.nextSibling = nextSibling;
     }
 
     redo() {
@@ -43,7 +45,25 @@ class ChildListMutation extends Mutation {
 }
 
 class MoveMutation extends Mutation {
+    constructor({ target, oldParent, oldNextSibling, oldAttrs, newParent, newNextSibling, newAttrs }) {
+        super('move', target);
+        this.oldParent = oldParent;
+        this.oldNextSibling = oldNextSibling;
+        this.oldAttrs = oldAttrs;
+        this.newParent = newParent;
+        this.newNextSibling = newNextSibling;
+        this.newAttrs = newAttrs;
+    }
 
+    redo() {
+        $(this.target).attr(this.newAttrs);
+        this.addNode(this.newParent, this.newNextSibling, this.target);
+    }
+
+    undo() {
+        $(this.target).attr(this.oldAttrs);
+        this.addNode(this.oldParent, this.oldNextSibling, this.target);
+    }
 }
 
 export { ChildListMutation, MoveMutation };
