@@ -6,6 +6,7 @@ import {
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
+import { ChildListMutation } from '../models/mutation';
 
 if (Vvveb === undefined) var Vvveb = {};
 
@@ -377,12 +378,11 @@ Vvveb.Builder = {
 			_this.selectedEl.after(clone);
 			_this.selectedEl = clone.click();
 			const node = clone.get(0);
-			Vvveb.Undo.addMutation({
-				type: 'childList',
+			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				addedNodes: [node],
 				nextSibling: node.nextSibling
-			});
+			}));
 			event.preventDefault();
 			return false;
 		});
@@ -398,12 +398,11 @@ Vvveb.Builder = {
 		$("#delete-box").on("click", function (event) {
 			jQuery(selectBox).hide();
 			const node = getElementWithDraggable(_this.selectedEl).get(0);
-			Vvveb.Undo.addMutation({
-				type: 'childList',
+			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				removedNodes: [node],
 				nextSibling: node.nextSibling
-			});
+			}));
 			$(node).remove();
 			event.preventDefault();
 			return false;

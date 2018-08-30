@@ -1,6 +1,7 @@
 import Vvveb from './gui/builder';
 import { dragMoveListener } from './util/drag-n-drop-util';
 import { isOverlap } from './util/dom';
+import { ChildListMutation } from './models/mutation';
 
 $(document).ready(() => {
     $('#menu-panel .navbar-nav a').on('click', function () {
@@ -120,12 +121,11 @@ $(document).ready(() => {
                             .removeAttr('data-x data-y');
                     }
                     $element.remove();
-                    Vvveb.Undo.addMutation({
-                        type: 'childList',
+                    Vvveb.Undo.addMutation(new ChildListMutation({
                         target: appendedElement.get(0).parentNode,
                         addedNodes: [appendedElement.get(0)],
                         nextSibing: appendedElement[0].nextSibing
-                    });
+                    }));
                 }
             });
     };

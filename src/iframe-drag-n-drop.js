@@ -3,6 +3,7 @@ import {
     hideHighlightAreas, getAttributes
 } from './util/iframe-drag-n-drop-util';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
+import { ChildListMutation } from './models/mutation';
 
 $(document).ready(() => {
     self.interact = interact;
