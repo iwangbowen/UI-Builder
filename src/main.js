@@ -18,6 +18,7 @@ import './drag-n-drop';
 $(document).ready(function () {
     window.getSelectedElements = getSelectedElements;
     window.getElementWithDraggable = getElementWithDraggable;
+    window.Vvveb = Vvveb;
 
     Vvveb.Actions.init();
     Vvveb.FileManager.init();

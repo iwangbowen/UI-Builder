@@ -14,6 +14,7 @@ $(document).ready(() => {
     self.getEditContent = getEditContent;
     let enteredDropzone = false;
     const isDropzoneParent = element => !!$(element).parents('.dropzone').length;
+    let mutation;
 
     // enable draggables to be dropped into this
     interact('.dropzone')
@@ -142,6 +143,21 @@ $(document).ready(() => {
             // enable autoScroll
             autoScroll: true,
             // call this function on every dragmove event
+            onstart(event) {
+                const target = event.target;
+                mutation = {
+                    type: 'move',
+                    target,
+                    oldParent: target.parentNode,
+                    oldNextSibling: target.nextSibling,
+                    oldAttr: {
+                        'data-x': $(target).attr('data-x'),
+                        'data-y': $(target).attr('data-y'),
+                        'style': $(target).attr('style')
+                    },
+                    oldHtml: $(target).prop("outerHTML")
+                }
+            },
             onmove(event) {
                 hideAlignmentLines();
                 hideHighlightAreas();
@@ -155,6 +171,18 @@ $(document).ready(() => {
                 }
             },
             // call this function on every dragend event
-            onend: hideAlignmentLines
+            onend(event) {
+                hideAlignmentLines();
+                const target = event.target;
+                mutation.newParent = target.parentNode;
+                mutation.newNextSibling = target.nextSibling;
+                mutation.newHtml = $(target).prop("outerHTML");
+                mutation.newAttr = {
+                    'data-x': $(target).attr('data-x'),
+                    'data-y': $(target).attr('data-y'),
+                    'style': $(target).attr('style')
+                };
+                window.parent.Vvveb.Undo.addMutation(mutation);
+            }
         });
 });

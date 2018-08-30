@@ -74,19 +74,15 @@ Vvveb.Undo = {
 				}
 				break;
 			case 'move':
-				if (undo == true) {
-					parent = mutation.oldParent;
-					sibling = mutation.oldNextSibling;
-				} else //redo
-				{
-					parent = mutation.newParent;
-					sibling = mutation.newNextSibling;
-				}
+				let parent = undo ? mutation.oldParent : mutation.newParent;
+				let sibling = undo ? mutation.oldNextSibling : mutation.newNextSibling;
+				$(mutation.target).attr(undo ? mutation.oldAttr : mutation.newAttr);
 				if (sibling) {
 					sibling.parentNode.insertBefore(mutation.target, sibling);
 				} else {
-					parent.append(node);
+					parent.append(mutation.target);
 				}
+				// $(mutation.target).replaceWith(undo ? mutation.oldHtml : mutation.newHtml);
 				break;
 			case 'characterData':
 				mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;
