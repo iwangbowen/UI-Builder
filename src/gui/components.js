@@ -3,6 +3,7 @@ import { SectionInput } from '../inputs/inputs';
 import { dataComponentId } from '../components/common';
 import { getStyle } from '../util/dom';
 import tmpl from '../util/tmpl';
+import AttributesMutation from '../models/mutation/attributes-mutation';
 
 Vvveb.Components = {
 	_components: {},
@@ -180,14 +181,12 @@ Vvveb.Components = {
 					} else {
 						element = element.attr(property.htmlAttr, value);
 					}
-
-					Vvveb.Undo.addMutation({
-						type: 'attributes',
+					Vvveb.Undo.addMutation(new AttributesMutation({
 						target: element.get(0),
 						attributeName: property.htmlAttr,
 						oldValue: oldValue,
 						newValue: element.attr(property.htmlAttr)
-					});
+					}));
 				}
 
 				if (component.onChange) {

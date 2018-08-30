@@ -50,21 +50,10 @@ Vvveb.Undo = {
 		return this.mutations;
 	},
 	restore(mutation, undo) {
-		switch (mutation.type) {
-			case 'attributes':
-				const value = undo ? mutation.oldValue : mutation.newValue;
-				if (value || value === false || value === 0)
-					mutation.target.setAttribute(mutation.attributeName, value);
-				else
-					mutation.target.removeAttribute(mutation.attributeName);
-				break;
-		}
-		if (mutation.type == 'childList' || mutation.type == 'move' || mutation.type == 'characterData') {
-			if (undo) {
-				mutation.undo();
-			} else {
-				mutation.redo();
-			}
+		if (undo) {
+			mutation.undo();
+		} else {
+			mutation.redo();
 		}
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.restore");
 	},
