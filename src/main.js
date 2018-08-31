@@ -19,8 +19,7 @@ $(document).ready(function () {
     window.getSelectedElements = getSelectedElements;
     window.getElementWithDraggable = getElementWithDraggable;
     window.Vvveb = Vvveb;
-
-    Vvveb.Actions.init();
+    
     Vvveb.FileManager.init();
     const hash = getHash();
     if (hash == importedPageName && localStorage.getItem(importedPageName)) {

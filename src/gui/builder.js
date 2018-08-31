@@ -84,6 +84,7 @@ Vvveb.Builder = {
 			window.FrameWindow = _this.iframe.contentWindow;
 			window.FrameDocument = _this.iframe.contentWindow.document;
 
+			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			_this.initCallback && _this.initCallback();
 			return _this._frameLoaded();
