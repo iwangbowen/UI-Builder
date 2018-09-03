@@ -376,7 +376,12 @@ Vvveb.Builder = {
 
 		$("#clone-box").on("click", function (event) {
 			const clone = getElementWithDraggable(_this.selectedEl).clone();
-			_this.selectedEl.after(clone);
+			const {left, top} = clone.offset();
+			getElementWithDraggable(_this.selectedEl)
+				.after(clone.offset({
+					left: left + 10,
+					top: top + 10
+				}));
 			_this.selectedEl = clone.click();
 			const node = clone.get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
