@@ -24,6 +24,6 @@ export default class AttributesMutation extends Mutation {
         } else {
             this.target.removeAttribute(this.attributeName)
         }
-        this.inputtype.undo(this.newValue);
+        this.inputtype.redo(this.newValue);
     }
 }

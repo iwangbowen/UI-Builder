@@ -27,6 +27,14 @@ class Input {
 		}
 		return this.element;
 	}
+	
+	undo(value) {
+		this.setValue(value);
+	}
+	
+	redo() {
+		this.setValue(value);
+	}
 };
 
 export default Input;

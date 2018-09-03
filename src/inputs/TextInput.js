@@ -15,14 +15,6 @@ class TextInput extends Input {
 	init(data) {
 		return this.render("textinput", data);
 	}
-
-	undo(value) {
-		this.setValue(value);
-	}
-
-	redo() {
-		this.setValue(value);
-	}
 }
 
 export default TextInput;
