@@ -11,7 +11,9 @@ const Select2Input = $.extend({}, Input, {
         return this.render("select2", data);
     },
     afterAppend(input, element) {
-        const data = element.attr('class').split(' ')
+        const data = (element.attr('class')
+            ? element.attr('class').split(' ')
+            : [])
             .filter(v => v)
             .map(className => ({
                 id: className,
