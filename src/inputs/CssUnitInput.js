@@ -1,9 +1,17 @@
 import Input from './Input';
 
-const CssUnitInput = $.extend({}, Input, {
-	number: 0,
-	unit: "px",
-	onChange: function (event) {
+class CssUnitInput extends Input {
+	constructor() {
+		super();
+		this.number = 0;
+		this.unit = 'px';
+		this.events = [
+			["change", "onChange", "select"],
+			["change", "onChange", "input"],
+		];
+	}
+
+	onChange(event) {
 		if (event.data && event.data.element) {
 			input = event.data.input;
 			input[this.name] = this.value;// this.name = unit or number	
@@ -20,12 +28,9 @@ const CssUnitInput = $.extend({}, Input, {
 
 			event.data.element.trigger('propertyChange', [value, this]);
 		}
-	},
-	events: [
-		["change", "onChange", "select"],
-		["change", "onChange", "input"],
-	],
-	setValue: function (value) {
+	}
+
+	setValue(value) {
 		this.number = parseInt(value);
 		this.unit = value.replace(this.number, '');
 
@@ -33,10 +38,11 @@ const CssUnitInput = $.extend({}, Input, {
 
 		$('input', this.element).val(this.number);
 		$('select', this.element).val(this.unit);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("cssunitinput", data);
-	},
-});
+	}
+}
 
 export default CssUnitInput;

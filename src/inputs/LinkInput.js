@@ -1,15 +1,20 @@
 import TextInput from './TextInput';
 
-const LinkInput = $.extend({}, TextInput, {
-	events: [
-		["change", "onChange", "input"],
-	],
-	setValue: function (value) {
+class LinkInput extends TextInput {
+	constructor() {
+		super();
+		this.events = [
+			["change", "onChange", "input"],
+		];
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("textinput", data);
-	},
-});
+	}
+}
 
 export default LinkInput;

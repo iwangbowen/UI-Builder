@@ -9,12 +9,12 @@ const span = {
         name: "For id",
         key: "for",
         htmlAttr: "for",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Text',
         key: 'text',
         htmlAttr: 'text',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 

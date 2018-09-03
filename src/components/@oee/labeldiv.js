@@ -19,7 +19,7 @@ const labeldiv = {
         htmlAttr: 'style',
         validValues,
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         init(element) {
             return $(element).find(requiredSpanSelector).css('display') == 'inline'
                 ? validValues

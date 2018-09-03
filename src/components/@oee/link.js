@@ -7,12 +7,12 @@ const link = {
         name: "Url",
         key: "href",
         htmlAttr: "href",
-        inputtype: LinkInput
+        inputtype: new LinkInput()
     }, {
         name: "Target",
         key: "target",
         htmlAttr: "target",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 

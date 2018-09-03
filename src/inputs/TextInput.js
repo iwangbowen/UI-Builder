@@ -1,15 +1,28 @@
 import Input from './Input';
 
-const TextInput = $.extend({}, Input, {
-	events: [
-		["keyup", "onChange", "input"],
-	],
-	setValue: function (value) {
+class TextInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["keyup", "onChange", "input"],
+		];
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("textinput", data);
-	},
-});
+	}
+
+	undo(value) {
+		this.setValue(value);
+	}
+
+	redo() {
+		this.setValue(value);
+	}
+}
 
 export default TextInput;

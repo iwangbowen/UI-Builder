@@ -150,7 +150,7 @@ const table = {
                 key: "option" + i,
                 //index: i - 1,
                 optionNode: this,
-                inputtype: TextValueInput,
+                inputtype: new TextValueInput(),
                 data: {
                     id: 'tableheader@oee',
                     headerName: cur.headerName,
@@ -190,7 +190,7 @@ const table = {
         {
             name: "Checkbox Selection",
             key: checkboxSelection,
-            inputtype: ToggleInput,
+            inputtype: new ToggleInput(),
             data: {
                 on: true,
                 off: false
@@ -201,7 +201,7 @@ const table = {
         {
             name: "Header Checkbox Selection",
             key: headerCheckboxSelection,
-            inputtype: ToggleInput,
+            inputtype: new ToggleInput(),
             data: {
                 on: true,
                 off: false
@@ -215,7 +215,7 @@ const table = {
             htmlAttr: "class",
             validValues: ['ag-theme-balham-dark', 'ag-theme-balham', 'ag-theme-blue', 'ag-theme-bootstrap',
                 'ag-theme-dark', 'ag-theme-fresh', 'ag-theme-material'],
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             onChange: function (node, value) {
                 node.removeClass(this.validValues.join(" "));
                 node.addClass(value);
@@ -234,12 +234,12 @@ const table = {
             name: 'Data key',
             key: 'dataKey',
             htmlAttr: dataResponseDataKey,
-            inputtype: TextInput
+            inputtype: new TextInput()
         },
         {
             name: "",
             key: "addChild",
-            inputtype: ButtonInput,
+            inputtype: new ButtonInput(),
             data: { text: "Add header" },
             onChange: function (node) {
                 const colDefs = getColumnDefs(node);

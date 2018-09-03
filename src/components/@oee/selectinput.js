@@ -31,32 +31,26 @@ const selectinput = {
                 key: "option" + i,
                 //index: i - 1,
                 optionNode: this,
-                inputtype: TextValueInput,
+                inputtype: new TextValueInput(),
                 data: data,
                 onChange: function (node, value, input) {
-
                     option = $(this.optionNode);
-
                     //if remove button is clicked remove option and render row properties
                     if (input.nodeName == 'BUTTON') {
                         option.remove();
                         Vvveb.Components.render("html/selectinput");
                         return node;
                     }
-
                     if (input.name == "value") option.attr("value", value);
                     else if (input.name == "text") option.text(value);
-
                     return node;
                 },
             });
         });
-
         //remove all option properties
         this.properties = this.properties.filter(function (item) {
             return item.key.indexOf("option") === -1;
         });
-
         //add remaining properties to generated column properties
         properties.push(this.properties[0]);
 
@@ -67,22 +61,20 @@ const selectinput = {
     properties: [{
         name: "Option",
         key: "option1",
-        inputtype: TextValueInput
+        inputtype: new TextValueInput()
     }, {
         name: "Option",
         key: "option2",
-        inputtype: TextValueInput
+        inputtype: new TextValueInput()
     }, {
         name: "",
         key: "addChild",
-        inputtype: ButtonInput,
+        inputtype: new ButtonInput(),
         data: { text: "Add option" },
         onChange: function (node) {
             $(node).append('<option value="value">Text</option>');
-
             //render component properties again to include the new column inputs
             Vvveb.Components.render("html/selectinput");
-
             return node;
         }
     }]

@@ -9,7 +9,7 @@ const breadcrumbitem = {
         key: "active",
         htmlAttr: "class",
         validValues: ["", "active"],
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: "active",
             off: ""

@@ -1,15 +1,20 @@
 import Input from './Input';
 
-const RangeInput = $.extend({}, Input, {
-	events: [
-		["change", "onChange", "input"],
-	],
-	setValue: function (value) {
+class RangeInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["change", "onChange", "input"],
+		];
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("rangeinput", data);
-	},
-});
+	}
+}
 
 export default RangeInput;

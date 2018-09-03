@@ -14,24 +14,24 @@ const radiobutton = $.extend({}, input, {
         name: 'Onclick',
         key: 'onclick',
         htmlAttr: 'onclick',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Value",
         key: "value",
         htmlAttr: "value",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Required",
         key: "required",
         htmlAttr: 'required',
         validValues: ["required"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'required',
             off: ''

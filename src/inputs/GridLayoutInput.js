@@ -1,15 +1,20 @@
 import TextInput from './TextInput';
 
-const GridLayoutInput = $.extend({}, TextInput, {
-	events: [
-		["keyup", "onChange", "input"],
-	],
-	setValue: function (value) {
+class GridLayoutInput extends TextInput {
+	constructor() {
+		super();
+		this.events = [
+			["keyup", "onChange", "input"],
+		];
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("textinput", data);
-	},
-});
+	}
+}
 
 export default GridLayoutInput;

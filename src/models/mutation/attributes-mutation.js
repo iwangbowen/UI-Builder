@@ -1,9 +1,10 @@
 import Mutation from './mutation';
 
 export default class AttributesMutation extends Mutation {
-    constructor({ target, attributeName, oldValue, newValue }) {
+    constructor({ target, attributeName, inputtype, oldValue, newValue }) {
         super('attributes', target);
         this.attributeName = attributeName;
+        this.inputtype = inputtype;
         this.oldValue = oldValue;
         this.newValue = newValue;
     }
@@ -14,6 +15,7 @@ export default class AttributesMutation extends Mutation {
         } else {
             this.target.removeAttribute(this.attributeName)
         }
+        this.inputtype.undo(this.oldValue);
     }
 
     redo() {
@@ -22,5 +24,6 @@ export default class AttributesMutation extends Mutation {
         } else {
             this.target.removeAttribute(this.attributeName)
         }
+        this.inputtype.undo(this.newValue);
     }
 }

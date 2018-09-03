@@ -9,13 +9,13 @@ const pageitem = {
         key: "href",
         htmlAttr: "href",
         child: ".page-link",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Disabled",
         key: "disabled",
         htmlAttr: "class",
         validValues: ["disabled"],
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: "disabled",
             off: ""

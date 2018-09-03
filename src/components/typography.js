@@ -5,7 +5,7 @@ const typography = {
     properties: [
         {
             key: "typography_header",
-            inputtype: SectionInput,
+            inputtype: new SectionInput(),
             name: false,
             sort: inc_base_sort(),
             data: { header: "Typography" },
@@ -16,7 +16,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             data: {
                 options: [{
                     value: "",
@@ -69,7 +69,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             data: {
                 options: [{
                     value: "",
@@ -110,7 +110,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 12,
             inline: true,
-            inputtype: RadioButtonInput,
+            inputtype: new RadioButtonInput(),
             data: {
                 extraclass: "btn-group-sm btn-group-fullwidth",
                 options: [{
@@ -152,7 +152,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Letter spacing",
             key: "letter-spacing",
@@ -160,7 +160,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Text decoration",
             key: "text-decoration-line",
@@ -168,7 +168,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 12,
             inline: true,
-            inputtype: RadioButtonInput,
+            inputtype: new RadioButtonInput(),
             data: {
                 extraclass: "btn-group-sm btn-group-fullwidth",
                 options: [{
@@ -210,7 +210,7 @@ const typography = {
             col: 6,
             inline: true,
             htmlAttr: "style",
-            inputtype: ColorInput,
+            inputtype: new ColorInput(),
         }, {
             name: "Decoration style",
             key: "text-decoration-style",
@@ -218,7 +218,7 @@ const typography = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             data: {
                 options: [{
                     value: "",

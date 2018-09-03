@@ -10,7 +10,7 @@ const badge = {
         key: "color",
         htmlAttr: "class",
         validValues: ["badge-primary", "badge-secondary", "badge-success", "badge-danger", "badge-warning", "badge-info", "badge-light", "badge-dark"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",

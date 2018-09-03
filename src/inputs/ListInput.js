@@ -1,15 +1,20 @@
 import Input from './Input';
 
-const ListInput = $.extend({}, Input, {
-	events: [
-		["change", "onChange", "select"],
-	],
-	setValue: function (value) {
+class ListInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["change", "onChange", "select"],
+		];
+	}
+
+	setValue (value) {
 		$('select', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init (data) {
 		return this.render("listinput", data);
-	},
-});
+	}
+}
 
 export default ListInput;

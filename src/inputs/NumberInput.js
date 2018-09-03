@@ -1,15 +1,20 @@
 import Input from './Input';
 
-var NumberInput = $.extend({}, Input, {
-	events: [
-		["change", "onChange", "input"],
-	],
-	setValue: function (value) {
+class NumberInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["change", "onChange", "input"],
+		];
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("numberinput", data);
-	},
-});
+	}
+}
 
 export default NumberInput;

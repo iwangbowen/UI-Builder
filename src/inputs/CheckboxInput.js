@@ -1,20 +1,26 @@
 import Input from './Input';
 
-const CheckboxInput = $.extend({}, Input, {
-	onChange: function (event, node) {
+class CheckboxInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["change", "onChange", "input"],
+		];
+	}
+
+	onChange(event, node) {
 		if (event.data && event.data.element) {
 			event.data.element.trigger('propertyChange', [this.checked, this]);
 		}
-	},
-	events: [
-		["change", "onChange", "input"],
-	],
-	setValue: function (value) {
+	}
+
+	setValue(value) {
 		$('input', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("checkboxinput", data);
-	},
-});
+	}
+}
 
 export default CheckboxInput;

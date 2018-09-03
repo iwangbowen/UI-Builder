@@ -70,16 +70,16 @@ const autoselectinput = $.extend({}, input, {
         name: 'Onchange',
         key: 'onchange',
         htmlAttr: 'onchange',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Add option",
         key: "addChild",
-        inputtype: ButtonInput,
+        inputtype: new ButtonInput(),
         data: { text: "Add option" },
         onChange: function (node) {
             $(node).append('<option value="value">Text</option>');
@@ -93,7 +93,7 @@ const autoselectinput = $.extend({}, input, {
         htmlAttr: 'required',
         validValues: ["required"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'required',
             off: ''

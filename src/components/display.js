@@ -5,7 +5,7 @@ const display  = {
     properties: [
         {
             key: "display_header",
-            inputtype: SectionInput,
+            inputtype: new SectionInput(),
             name: false,
             sort: inc_base_sort(),
             data: { header: "Display" },
@@ -16,7 +16,7 @@ const display  = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             validValues: ["block", "inline", "inline-block", "none"],
             data: {
                 options: [{
@@ -40,7 +40,7 @@ const display  = {
             sort: inc_base_sort(),
             col: 6,
             inline: true,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             validValues: ["static", "fixed", "relative", "absolute"],
             data: {
                 options: [{
@@ -65,7 +65,7 @@ const display  = {
             col: 6,
             inline: true,
             parent: "",
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Left",
             key: "left",
@@ -74,7 +74,7 @@ const display  = {
             col: 6,
             inline: true,
             parent: "",
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Bottom",
             key: "bottom",
@@ -83,7 +83,7 @@ const display  = {
             col: 6,
             inline: true,
             parent: "",
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Right",
             key: "right",
@@ -92,7 +92,7 @@ const display  = {
             col: 6,
             inline: true,
             parent: "",
-            inputtype: CssUnitInput
+            inputtype: new CssUnitInput()
         }, {
             name: "Float",
             key: "float",
@@ -100,7 +100,7 @@ const display  = {
             sort: inc_base_sort(),
             col: 12,
             inline: true,
-            inputtype: RadioButtonInput,
+            inputtype: new RadioButtonInput(),
             data: {
                 extraclass: "btn-group-sm btn-group-fullwidth",
                 options: [{
@@ -131,7 +131,7 @@ const display  = {
             col: 12,
             inline: true,
             parent: "",
-            inputtype: RangeInput,
+            inputtype: new RangeInput(),
             data: {
                 max: 1, //max zoom level
                 min: 0,
@@ -144,7 +144,7 @@ const display  = {
             col: 6,
             inline: true,
             htmlAttr: "style",
-            inputtype: ColorInput,
+            inputtype: new ColorInput(),
         }, {
             name: "Text Color",
             key: "color",
@@ -152,7 +152,7 @@ const display  = {
             col: 6,
             inline: true,
             htmlAttr: "style",
-            inputtype: ColorInput,
+            inputtype: new ColorInput(),
         }]
 };
 

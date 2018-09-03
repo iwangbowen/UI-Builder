@@ -20,34 +20,34 @@ const autoselectinput = $.extend({}, input, {
         name: 'Value Mapping',
         key: 'valueMapping',
         htmlAttr: dataValueMapping,
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Text Mapping',
         key: 'textMaping',
         htmlAttr: dataTextMapping,
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Data Url",
         key: "dataUrl",
         htmlAttr: dataUrl,
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Onchange',
         key: 'onchange',
         htmlAttr: 'onchange',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Name",
         key: "name",
         htmlAttr: "name",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Required",
         key: "required",
         htmlAttr: 'required',
         validValues: ["required"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'required',
             off: ''

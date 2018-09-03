@@ -8,7 +8,7 @@ const tablerow = {
         name: "Type",
         key: "type",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["", "success", "danger", "warning", "active"],
         data: {
             options: [{

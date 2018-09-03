@@ -16,22 +16,22 @@ const image = {
         name: "Image",
         key: "src",
         htmlAttr: "src",
-        inputtype: FileUploadInput
+        inputtype: new FileUploadInput()
     }, {
         name: "Width",
         key: "width",
         htmlAttr: "width",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Height",
         key: "height",
         htmlAttr: "height",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Alt",
         key: "alt",
         htmlAttr: "alt",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 

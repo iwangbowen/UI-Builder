@@ -1,15 +1,20 @@
 import Input from './Input';
 
-const SectionInput = $.extend({}, Input, {
-	events: [
-		["click", "onChange", "button" /*'select'*/],
-	],
-	setValue: function (value) {
+class SectionInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["click", "onChange", "button" /*'select'*/],
+		];
+	}
+
+	setValue(value) {
 		return false;
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("sectioninput", data);
-	},
-});
+	}
+}
 
 export default SectionInput;

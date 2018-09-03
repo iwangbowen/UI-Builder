@@ -4,7 +4,7 @@ import { inc_base_sort } from './common';
 const border = {
     properties: [{
         key: "border_header",
-        inputtype: SectionInput,
+        inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
         data: { header: "Border", expanded: false },

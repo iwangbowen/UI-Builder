@@ -35,7 +35,7 @@ const navbar = {
         key: "color",
         htmlAttr: "class",
         validValues: ["navbar-light", "navbar-dark"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",
@@ -53,7 +53,7 @@ const navbar = {
         key: "background",
         htmlAttr: "class",
         validValues: bgcolorClasses,
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: bgcolorSelectOptions
         }
@@ -62,7 +62,7 @@ const navbar = {
         key: "placement",
         htmlAttr: "class",
         validValues: ["fixed-top", "fixed-bottom", "sticky-top"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",

@@ -8,7 +8,7 @@ const tablehead = {
         name: "Type",
         key: "type",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["", "success", "danger", "warning", "info"],
         data: {
             options: [{

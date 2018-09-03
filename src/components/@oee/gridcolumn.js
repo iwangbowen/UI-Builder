@@ -8,7 +8,7 @@ const gridcolumn = {
     properties: [{
         name: "Column",
         key: "column",
-        inputtype: GridInput,
+        inputtype: new GridInput(),
         data: { hide_remove: true },
 
         beforeInit: function (node) {

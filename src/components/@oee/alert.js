@@ -15,7 +15,7 @@ const alert = {
         key: "type",
         htmlAttr: "class",
         validValues: ["alert-primary", "alert-secondary", "alert-success", "alert-danger", "alert-warning", "alert-info", "alert-light", "alert-dark"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "alert-primary",

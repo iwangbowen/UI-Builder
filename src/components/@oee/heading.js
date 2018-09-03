@@ -12,13 +12,11 @@ const heading =  {
             name: "Size",
             key: "id",
             htmlAttr: "id",
-            inputtype: SelectInput,
-
+            inputtype: new SelectInput(),
             onChange: function (node, value) {
 
                 return changeNodeName(node, "h" + value);
             },
-
             init: function (node) {
                 var regex;
                 regex = /H(\d)/.exec(node.nodeName);

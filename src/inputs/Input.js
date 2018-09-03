@@ -1,17 +1,20 @@
 import tmpl from '../util/tmpl';
 
-const Input = {
-	init: function (name) {
-	},
-	onChange: function (event, node) {
+class Input {
+	init(name) {
+	}
+
+	onChange(event, node) {
 		if (event.data && event.data.element) {
 			event.data.element.trigger('propertyChange', [this.value, this]);
 		}
-	},
-	renderTemplate: function (name, data) {
+	}
+
+	renderTemplate(name, data) {
 		return tmpl("input" + name, data);
-	},
-	render: function (name, data) {
+	}
+	
+	render(name, data) {
 		this.element = $(this.renderTemplate(name, data));
 		//bind events
 		if (this.events) {

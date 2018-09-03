@@ -11,7 +11,7 @@ const progress = {
         key: "background",
         htmlAttr: "class",
         validValues: bgcolorClasses,
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: bgcolorSelectOptions
         }
@@ -22,7 +22,7 @@ const progress = {
         child: ".progress-bar",
         htmlAttr: "class",
         validValues: ["", "w-25", "w-50", "w-75", "w-100"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",
@@ -48,7 +48,7 @@ const progress = {
         child: ".progress-bar",
         htmlAttr: "class",
         validValues: bgcolorClasses,
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: bgcolorSelectOptions
         }
@@ -58,7 +58,7 @@ const progress = {
         child: ".progress-bar",
         htmlAttr: "class",
         validValues: ["", "progress-bar-striped"],
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: "progress-bar-striped",
             off: "",
@@ -69,7 +69,7 @@ const progress = {
         child: ".progress-bar",
         htmlAttr: "class",
         validValues: ["", "progress-bar-animated"],
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: "progress-bar-animated",
             off: "",

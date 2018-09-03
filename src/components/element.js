@@ -5,7 +5,7 @@ const element = {
     name: "Element",
     properties: [{
         key: "element_header",
-        inputtype: SectionInput,
+        inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
         data: { header: "General" },
@@ -16,7 +16,7 @@ const element = {
         sort: inc_base_sort(),
         inline: true,
         col: 12,
-        inputtype: Select2Input
+        inputtype: new Select2Input()
     }, {
         name: "Id",
         key: "id",
@@ -24,7 +24,7 @@ const element = {
         sort: inc_base_sort(),
         inline: true,
         col: 6,
-        inputtype: TextInput
+        inputtype: new TextInput()
     }
     ]
 };

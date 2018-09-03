@@ -214,7 +214,7 @@ Vvveb.Components = {
 					property.inputtype.setValue(value);
 				}
 				addPropertyChangeListener(component, property);
-				if (property.inputtype == SectionInput) {
+				if (property.inputtype instanceof SectionInput) {
 					section = rightPanel.find('.section[data-section="' + property.key + '"]');
 					if (Vvveb.preservePropertySections && section.length) {
 						section.html("");

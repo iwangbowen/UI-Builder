@@ -1,15 +1,20 @@
 import Input from './Input';
 
-const ButtonInput = $.extend({}, Input, {
-	events: [
-		["click", "onChange", "button" /*'select'*/],
-	],
-	setValue: function (value) {
+class ButtonInput extends Input {
+	constructor() {
+		super();
+		this.events = [
+			["click", "onChange", "button" /*'select'*/],
+		];
+	}
+
+	setValue(value) {
 		$('button', this.element).val(value);
-	},
-	init: function (data) {
+	}
+
+	init(data) {
 		return this.render("button", data);
-	},
-});
+	}
+}
 
 export default ButtonInput;

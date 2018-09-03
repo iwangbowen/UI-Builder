@@ -29,7 +29,7 @@ const gridrow = {
                 //index: i - 1,
                 columnNode: this,
                 inline: true,
-                inputtype: GridInput,
+                inputtype: new GridInput(),
                 data: data,
                 onChange: function (node, value, input) {
 
@@ -72,17 +72,17 @@ const gridrow = {
     properties: [{
         name: "Column",
         key: "column1",
-        inputtype: GridInput
+        inputtype: new GridInput()
     }, {
         name: "Column",
         key: "column1",
         inline: true,
         col: 12,
-        inputtype: GridInput
+        inputtype: new GridInput()
     }, {
         name: "",
         key: "addChild",
-        inputtype: ButtonInput,
+        inputtype: new ButtonInput(),
         data: { text: "Add column" },
         onChange: function (node) {
             $(node).append('<div class="col-3">Col-3</div>');

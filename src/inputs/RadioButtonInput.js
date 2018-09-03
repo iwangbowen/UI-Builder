@@ -1,9 +1,9 @@
 import RadioInput from './RadioInput';
 
-const RadioButtonInput = $.extend({}, RadioInput, {
-    init: function (data) {
+class RadioButtonInput extends RadioInput {
+    init(data) {
         return this.render("radiobuttoninput", data);
-    },
-});
+    }
+}
 
 export default RadioButtonInput;

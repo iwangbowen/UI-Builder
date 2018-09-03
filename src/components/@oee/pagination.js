@@ -18,7 +18,7 @@ const pagination = {
         name: "Size",
         key: "size",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["btn-lg", "btn-sm"],
         data: {
             options: [{
@@ -36,7 +36,7 @@ const pagination = {
         name: "Alignment",
         key: "alignment",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["justify-content-center", "justify-content-end"],
         data: {
             options: [{

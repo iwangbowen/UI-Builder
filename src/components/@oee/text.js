@@ -10,7 +10,7 @@ const text = {
         name: 'Text',
         key: 'text',
         htmlAttr: 'text',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 

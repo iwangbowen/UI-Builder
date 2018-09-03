@@ -4,7 +4,7 @@ import { inc_base_sort } from './common';
 const size = {
     properties: [{
         key: "size_header",
-        inputtype: SectionInput,
+        inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
         data: { header: "Size", expanded: false },
@@ -15,7 +15,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Height",
         key: "height",
@@ -23,7 +23,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Min Width",
         key: "min-width",
@@ -31,7 +31,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Min Height",
         key: "min-height",
@@ -39,7 +39,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Max Width",
         key: "max-width",
@@ -47,7 +47,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Max Height",
         key: "max-height",
@@ -55,7 +55,7 @@ const size = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }]
 };
 

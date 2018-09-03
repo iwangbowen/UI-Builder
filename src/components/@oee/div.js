@@ -11,7 +11,7 @@ const div = {
             name: "Type",
             key: "type",
             htmlAttr: "class",
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             validValues: ["container", "container-fluid"],
             data: {
                 options: [{
@@ -28,7 +28,7 @@ const div = {
             key: "background",
             htmlAttr: "class",
             validValues: bgcolorClasses,
-            inputtype: SelectInput,
+            inputtype: new SelectInput(),
             data: {
                 options: bgcolorSelectOptions
             }
@@ -37,13 +37,13 @@ const div = {
             name: "Background Color",
             key: "background-color",
             htmlAttr: "style",
-            inputtype: ColorInput,
+            inputtype: new ColorInput(),
         },
         {
             name: "Text Color",
             key: "color",
             htmlAttr: "style",
-            inputtype: ColorInput,
+            inputtype: new ColorInput(),
         }],
 };
 

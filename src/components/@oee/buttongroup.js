@@ -9,7 +9,7 @@ const buttongroup = {
         name: "Size",
         key: "size",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["btn-group-lg", "btn-group-sm"],
         data: {
             options: [{
@@ -27,7 +27,7 @@ const buttongroup = {
         name: "Alignment",
         key: "alignment",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["btn-group", "btn-group-vertical"],
         data: {
             options: [{

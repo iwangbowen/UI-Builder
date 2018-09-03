@@ -4,7 +4,7 @@ import { inc_base_sort } from './common';
 const margin = {
     properties: [{
         key: "margins_header",
-        inputtype: SectionInput,
+        inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
         data: { header: "Margin", expanded: false },
@@ -15,7 +15,7 @@ const margin = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Right",
         key: "margin-right",
@@ -23,7 +23,7 @@ const margin = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Bottom",
         key: "margin-bottom",
@@ -31,7 +31,7 @@ const margin = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Left",
         key: "margin-Left",
@@ -39,7 +39,7 @@ const margin = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }]
 };
 

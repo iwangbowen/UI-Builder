@@ -12,34 +12,34 @@ const textareainput = $.extend({}, input, {
         name: "Value",
         key: "value",
         htmlAttr: "value",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Onchange',
         key: 'onchange',
         htmlAttr: 'onchange',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Maxlength',
         key: 'maxlength',
         htmlAttr: 'maxlength',
-        inputtype: NumberInput
+        inputtype: new NumberInput()
     }, {
         name: "Placeholder",
         key: "placeholder",
         htmlAttr: "placeholder",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Name',
         key: 'name',
         htmlAttr: 'name',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Readonly",
         key: "readonly",
         htmlAttr: 'readonly',
         validValues: ["readonly"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'readonly',
             off: ''
@@ -50,7 +50,7 @@ const textareainput = $.extend({}, input, {
         htmlAttr: 'required',
         validValues: ["required"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'required',
             off: ''

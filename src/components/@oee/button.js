@@ -13,12 +13,12 @@ const button = {
         name: "Link To",
         key: "href",
         htmlAttr: "href",
-        inputtype: LinkInput
+        inputtype: new LinkInput()
     }, {
         name: "Type",
         key: "type",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["btn-default", "btn-primary", "btn-info", "btn-success", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-outline-primary", "btn-outline-info", "btn-outline-success", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-link"],
         data: {
             options: [{
@@ -75,7 +75,7 @@ const button = {
         name: "Size",
         key: "size",
         htmlAttr: "class",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         validValues: ["btn-lg", "btn-sm"],
         data: {
             options: [{
@@ -93,22 +93,22 @@ const button = {
         name: "Target",
         key: "target",
         htmlAttr: "target",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'onclick',
         key: 'onclick',
         htmlAttr: 'onclick',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Data Url',
         key: 'dataUrl',
         htmlAttr: 'data-url',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Disabled",
         key: "disabled",
         htmlAttr: "class",
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         validValues: ["disabled"],
         data: {
             on: "disabled",

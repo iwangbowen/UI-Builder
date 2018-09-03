@@ -3,12 +3,12 @@ import * as _general from './components/@general/components';
 import * as _oee from './components/@oee/components';
 import * as _oee_ids from './components/@oee/ids';
 import element from './components/element';
-// import border from './components/border';
-// import padding from './components/padding';
-// import display from './components/display';
-// import typography from './components/typography';
-// import size from './components/size';
-// import margin from './components/margin';
+import border from './components/border';
+import padding from './components/padding';
+import display from './components/display';
+import typography from './components/typography';
+import size from './components/size';
+import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
     ['html/labeldiv@oee', _oee_ids.buttonid, 'html/textinput@oee', 'html/calendar@oee', _oee_ids.fileinputid, _oee_ids.multivalueselectid, _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,

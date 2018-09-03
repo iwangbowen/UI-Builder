@@ -10,7 +10,7 @@ const form = {
         key: "style",
         htmlAttr: "class",
         validValues: ["", "form-search", "form-inline", "form-horizontal"],
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",
@@ -30,12 +30,12 @@ const form = {
         name: "Action",
         key: "action",
         htmlAttr: "action",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Method",
         key: "method",
         htmlAttr: "method",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 

@@ -12,12 +12,12 @@ const fileinput = $.extend({}, input, {
     name: 'Name',
     key: 'name',
     htmlAttr: 'name',
-    inputtype: TextInput
+    inputtype: new TextInput()
   }, {
     name: 'Data Url',
     key: 'dataUrl',
     htmlAttr: 'data-url',
-    inputtype: TextInput
+    inputtype: new TextInput()
   }]
 });
 

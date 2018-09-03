@@ -24,21 +24,21 @@ const calendar = $.extend({}, input, {
         name: "Value",
         key: "value",
         htmlAttr: "value",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Placeholder",
         key: "placeholder",
         htmlAttr: "placeholder",
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: 'Name',
         key: 'name',
         htmlAttr: 'name',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }, {
         name: "Date Format",
         key: "dateFmt",
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         init: getDateFmt,
         onChange: function (node, value) {
             const configInfo = getParsedConfigInfo(node)
@@ -75,7 +75,7 @@ const calendar = $.extend({}, input, {
         name: "Show Datetime",
         key: "showDatetime",
         validValues: ["table-responsive"],
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         onChange(node, value) {
             if (value == 'on') {
                 setOnclickAttr(node);
@@ -93,7 +93,7 @@ const calendar = $.extend({}, input, {
         htmlAttr: 'required',
         validValues: ["required"],
         noValueAttr: true,
-        inputtype: ToggleInput,
+        inputtype: new ToggleInput(),
         data: {
             on: 'required',
             off: ''

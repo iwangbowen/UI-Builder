@@ -9,7 +9,7 @@ const label = {
         name: 'For id',
         htmlAttr: 'for',
         key: 'for',
-        inputtype: TextInput
+        inputtype: new TextInput()
     }]
 };
 
