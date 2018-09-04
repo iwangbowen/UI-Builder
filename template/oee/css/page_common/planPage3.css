@@ -774,24 +774,24 @@ button.search-btn {
     margin-top: 5px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
+.Button-template .allButton .everyOutbox-right .btn-group {
     width: 147px;
     /*  margin-left: 5px;*/
     height: 100%;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .fundodooSelect {
+.Button-template .allButton .everyOutbox-right .btn-group .fundodooSelect {
     height: 24px;
     padding: 3px;
     font-size: 12px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .bootstrap-select {
+.Button-template .allButton .everyOutbox-right .btn-group .bootstrap-select {
     height: 100%;
     width: 100%;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group button {
+.Button-template .allButton .everyOutbox-right .btn-group button {
     height: 100%;
     width: 100%;
     background-color: snow;
@@ -800,19 +800,19 @@ button.search-btn {
     font-size: 12px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group button:hover {
+.Button-template .allButton .everyOutbox-right .btn-group button:hover {
     background-color: #c8e5bc;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group button:active {
+.Button-template .allButton .everyOutbox-right .btn-group button:active {
     border: 2px solid dodgerblue;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input {
+.Button-template .allButton .everyOutbox-right .btn-group input {
     background-color: snow;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group button:hover {
+.Button-template .allButton .everyOutbox-right .btn-group button:hover {
     background-color: #c8e5bc;
 }
 
@@ -896,7 +896,7 @@ button.search-btn {
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:not(.select2-search__field) {
+.Button-template .allButton .everyOutbox-right .btn-group input:not(.select2-search__field) {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -904,13 +904,13 @@ button.search-btn {
     font-size: 12px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:hover {
+.Button-template .allButton .everyOutbox-right .btn-group input:hover {
     background-color: #c8e5bc;
 }
 
 /*日期控件设置样式*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .dailyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .dailyBox {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -920,12 +920,12 @@ button.search-btn {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .dailyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .dailyBox input {
     height: 100% !important;
     line-height: 100% !important;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -934,7 +934,7 @@ button.search-btn {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox input {
     height: 100% !important;
     line-height: 100% !important;
     /* 必须加important*/
@@ -943,7 +943,7 @@ button.search-btn {
     left: 0;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox button {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox button {
     width: 60px;
     height: 100% !important;
     /* 必须加important*/
@@ -952,7 +952,7 @@ button.search-btn {
     left: 60px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .weeklyBox {
     height: 100% !important;
     width: 100% !important;
     padding-left: 8px;
@@ -960,7 +960,7 @@ button.search-btn {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .weeklyBox input {
     height: 100% !important;
     line-height: 100% !important;
     width: 50% !important;
@@ -2363,20 +2363,20 @@ html, body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right {
+.Button-template .allButton .everyOutbox-right {
     /*   border: 1px solid black;*/
     border-left: 0;
     height: 25px;
     margin-top: 5px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
+.Button-template .allButton .everyOutbox-right .btn-group {
     width: 147px;
     /*  margin-left: 5px;*/
     height: 100%;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .bootstrap-select {
+.Button-template .allButton .everyOutbox-right .btn-group .bootstrap-select {
     height: 100%;
     width: 100%;
 }
@@ -2398,7 +2398,7 @@ html, body {
     border: 2px solid dodgerblue;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input {
+.Button-template .allButton .everyOutbox-right .btn-group input {
     background-color: snow;
 }
 
@@ -2485,7 +2485,7 @@ html, body {
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:not(.select2-search__field) {
+.Button-template .allButton .everyOutbox-right .btn-group input:not(.select2-search__field) {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -2493,13 +2493,13 @@ html, body {
     font-size: 12px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group input:hover {
+.Button-template .allButton .everyOutbox-right .btn-group input:hover {
     background-color: #c8e5bc;
 }
 
 /*日期控件设置样式*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .dailyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .dailyBox {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -2509,12 +2509,12 @@ html, body {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .dailyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .dailyBox input {
     height: 100% !important;
     line-height: 100% !important;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox {
     height: 100% !important;
     /* 必须加important*/
     width: 100% !important;
@@ -2523,7 +2523,7 @@ html, body {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox input {
     height: 100% !important;
     line-height: 100% !important;
     /* 必须加important*/
@@ -2532,7 +2532,7 @@ html, body {
     left: 0;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .monthlyBox button {
+.Button-template .allButton .everyOutbox-right .btn-group .monthlyBox button {
     width: 60px;
     height: 100% !important;
     /* 必须加important*/
@@ -2541,7 +2541,7 @@ html, body {
     left: 60px;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox {
+.Button-template .allButton .everyOutbox-right .btn-group .weeklyBox {
     height: 100% !important;
     width: 100% !important;
     padding-left: 8px;
@@ -2549,7 +2549,7 @@ html, body {
     position: relative;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox input {
+.Button-template .allButton .everyOutbox-right .btn-group .weeklyBox input {
     height: 100% !important;
     line-height: 100% !important;
     width: 50% !important;

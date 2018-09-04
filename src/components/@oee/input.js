@@ -1,5 +1,5 @@
 const input = {
-    dropzone: '.allButton-button.dropzone',
+    dropzone: '.allButton.dropzone',
 };
 
 export default input;
