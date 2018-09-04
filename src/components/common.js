@@ -54,6 +54,7 @@ function inc_base_sort() {
     return base_sort++;
 }
 
+const draggableComponent = 'draggable-component';
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
 const dataCommonTableId = 'data-common-table-id';
@@ -72,5 +73,6 @@ const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
-    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated
+    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
+    draggableComponent
 };

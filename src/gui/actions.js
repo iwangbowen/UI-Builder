@@ -92,7 +92,6 @@ Vvveb.Actions = {
             $(`#${this.shownPanel}`).show();
             $(`#${this.hiddenPanel}`).hide();
         }
-
         $('#menu-panel').toggle();
         $("#iframe-layer").toggle();
         $("#vvveb-builder").toggleClass("preview");
@@ -101,7 +100,7 @@ Vvveb.Actions = {
         launchFullScreen(document); // the whole page
     },
     componentSearch() {
-        searchText = this.value;
+        const searchText = this.value;
         $("#components-list li ol li").each(function () {
             $this = $(this);
             $this.hide();

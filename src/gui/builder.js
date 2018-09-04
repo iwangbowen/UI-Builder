@@ -134,23 +134,14 @@ Vvveb.Builder = {
 	},
 	/* iframe highlight */
 	_initHightlight() {
-		moveEvent = { target: null, };
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
-			//delay for half a second if dragging over same element
-			// if (event.target == moveEvent.target && ((event.timeStamp - moveEvent.timeStamp) < 500)) return;
 			if (event.target) {
-				moveEvent = event;
 				_this.highlightEl = target = jQuery(event.target);
-				offset = target.offset();
-				width = target.outerWidth();
-				height = target.outerHeight();
 				if (_this.isDragging) {
 					_this.dragElement.css({
 						display: 'none'
 					});
-					parent = _this.highlightEl;
-					parentOffset = _this.dragElement.offset();
 				} else {
 					if (!event.ctrlKey) {
 						highlightWhenHovering(event.target);
@@ -163,13 +154,13 @@ Vvveb.Builder = {
 			if (_this.isDragging) {
 				_this.isDragging = false;
 				if (component.dragHtml) {
-					newElement = $(component.html);
+					const newElement = $(component.html);
 					_this.dragElement.replaceWith(newElement);
 					_this.dragElement = newElement;
 				}
 				if (component.afterDrop) _this.dragElement = component.afterDrop(_this.dragElement);
 
-				node = _this.dragElement.get(0);
+				const node = _this.dragElement.get(0);
 				_this.selectNode(node);
 				_this.loadNodeComponent(node);
 
@@ -372,19 +363,18 @@ Vvveb.Builder = {
 
 		jQuery(window.FrameWindow).on("scroll resize", function (event) {
 			if (_this.selectedEl) {
-				offset = _this.selectedEl.offset();
+				const offset = _this.selectedEl.offset();
 				jQuery(selectBox).css(
 					{
-						"top": offset.top - _this.frameDoc.scrollTop(),
-						"left": offset.left - _this.frameDoc.scrollLeft(),
-						"width": _this.selectedEl.outerWidth(),
-						"height": _this.selectedEl.outerHeight(),
+						top: offset.top - _this.frameDoc.scrollTop(),
+						left: offset.left - _this.frameDoc.scrollLeft(),
+						width: _this.selectedEl.outerWidth(),
+						height: _this.selectedEl.outerHeight(),
 						//"display": "block"
 					});
 			}
-
 			if (_this.highlightEl) {
-				offset = _this.highlightEl.offset();
+				const offset = _this.highlightEl.offset();
 				jQuery("#highlight-box").css(
 					{
 						"top": offset.top - _this.frameDoc.scrollTop(),
@@ -402,38 +392,12 @@ Vvveb.Builder = {
 		component = {};
 		const _this = this;
 		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
-			$this = jQuery(this);
-			// $("#component-clone").remove();
-			component = Vvveb.Components.get($this.data("type"));
-			if (component.dragHtml) {
-				html = component.dragHtml;
-			} else {
-				html = component.html;
-			}
-			_this.dragElement = $(html);
-			if (component.dragStart) _this.dragElement = component.dragStart(_this.dragElement);
-			_this.isDragging = true;
 		});
 		$('body').on('mouseup touchend', function (event) {
-			if (_this.isDragging == true) {
-				_this.isDragging = false;
-				// $("#component-clone").remove();
-			}
 		});
 		$('body').on('mousemove touchmove', function (event) {
-			if (_this.isDragging == true) {
-				elementMouseIsOver = document.elementFromPoint(event.clientX - 60, event.clientY - 40);
-				//if drag elements hovers over iframe switch to iframe mouseover handler	
-				if (elementMouseIsOver && elementMouseIsOver.tagName == 'IFRAME') {
-					_this.frameBody.trigger("mousemove", event);
-					event.stopPropagation();
-					_this.selectNode(false);
-				}
-			}
 		});
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
-			_this.isDragging = false;
-			// $("#component-clone").remove();
 		});
 	},
 	setHtml(html) {

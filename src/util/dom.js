@@ -9,6 +9,7 @@ import { beautify_options, multiSelectedClass } from '../constants';
 import _ from 'lodash';
 import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
 import Vvveb from '../gui/builder';
+import { draggableComponent } from '../components/common';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -165,10 +166,10 @@ function loadCallback() {
 }
 
 function getElementWithDraggable(element) {
-    return element
-        .hasClass('draggable') ?
-        element :
-        getElementWithDraggable(element.parent());
+    return (element.hasClass('draggable')
+        || element.hasClass(draggableComponent))
+        ? element
+        : getElementWithDraggable(element.parent());
 }
 
 let selectedElements = [];
