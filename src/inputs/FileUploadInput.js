@@ -1,13 +1,6 @@
 import TextInput from './TextInput';
 
 class FileUploadInput extends TextInput {
-	constructor() {
-		super();
-		this.events = [
-			["keyup", "onChange", "input"],
-		];
-	}
-
 	setValue(value) {
 		$('input', this.element).val(value);
 	}

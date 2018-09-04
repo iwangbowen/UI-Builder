@@ -1,6 +1,12 @@
 import tmpl from '../util/tmpl';
 
 class Input {
+	constructor() {
+		this.events = [
+			["keyup", "onChange", "input"],
+		];
+	}
+
 	init(name) {
 	}
 
@@ -13,7 +19,7 @@ class Input {
 	renderTemplate(name, data) {
 		return tmpl("input" + name, data);
 	}
-	
+
 	render(name, data) {
 		this.element = $(this.renderTemplate(name, data));
 		//bind events
@@ -27,11 +33,11 @@ class Input {
 		}
 		return this.element;
 	}
-	
+
 	undo(value) {
 		this.setValue(value);
 	}
-	
+
 	redo() {
 		this.setValue(value);
 	}
