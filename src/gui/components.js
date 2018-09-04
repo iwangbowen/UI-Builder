@@ -93,7 +93,7 @@ Vvveb.Components = {
 		}
 	},
 	extend(inheritType, type, data) {
-		newData = data;
+		let newData = data;
 		if (inheritData = this._components[inheritType]) {
 			newData = $.extend(true, {}, inheritData, data);
 			newData.properties = $.merge($.merge([], inheritData.properties ? inheritData.properties : []), data.properties ? data.properties : []);
@@ -155,7 +155,7 @@ Vvveb.Components = {
 				}
 			}
 		}
-		tagName = node.tagName.toLowerCase();
+		const tagName = node.tagName.toLowerCase();
 		if (tagName in this._nodesLookup) return this._nodesLookup[tagName];
 		//return false;
 		return this.get(Vvveb.defaultComponent);

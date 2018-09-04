@@ -15,7 +15,7 @@ const border = {
         sort: inc_base_sort(),
         col: 12,
         inline: true,
-        inputtype: SelectInput,
+        inputtype: new SelectInput(),
         data: {
             options: [{
                 value: "",
@@ -38,7 +38,7 @@ const border = {
         sort: inc_base_sort(),
         col: 6,
         inline: true,
-        inputtype: CssUnitInput
+        inputtype: new CssUnitInput()
     }, {
         name: "Color",
         key: "border-color",
@@ -46,7 +46,7 @@ const border = {
         col: 6,
         inline: true,
         htmlAttr: "style",
-        inputtype: ColorInput,
+        inputtype: new ColorInput()
     }]
 };
 
