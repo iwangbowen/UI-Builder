@@ -2,6 +2,7 @@ import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from
 import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
 import Vvveb from '../../gui/builder';
 import _ from 'lodash';
+import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -163,6 +164,12 @@ const table = {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
                     let colDefs = getColumnDefs(node);
                     if (input.nodeName == 'BUTTON') {
+                        Vvveb.Undo.addMutation(new TableHeaderMutation({
+                            target: node,
+                            addHeader: false,
+                            index: keyIndex,
+                            colDef: getColumnDefs(node)[keyIndex]
+                        }));
                         colDefs = colDefs
                             .filter((value, index) => index != keyIndex);
                         setColumnDefsAndRender(node, colDefs);
@@ -243,14 +250,19 @@ const table = {
             data: { text: "Add header" },
             onChange: function (node) {
                 const colDefs = getColumnDefs(node);
-                colDefs.push({
+                const colDef = {
                     headerName: 'header',
                     field: 'field',
                     width: '',
                     checkboxSelection: false,
                     headerCheckboxSelection: false
-                });
-
+                };
+                colDefs.push(colDef);
+                Vvveb.Undo.addMutation(new TableHeaderMutation({
+                    target: node,
+                    addHeader: true,
+                    colDef
+                }));
                 setColumnDefsAndRender(node, colDefs);
                 return node;
             }
@@ -258,5 +270,6 @@ const table = {
 };
 
 export {
-    table, columnDefs, gridOptions, getGridOptionsIdentifier, themeOptions
+    table, columnDefs, gridOptions, getGridOptionsIdentifier, themeOptions,
+    setColumnDefsAndRender, getColumnDefs
 };
