@@ -35,11 +35,15 @@ Vvveb.Builder = {
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
-
 		for (group in Vvveb.ComponentsGroup) {
-			componentsList.append('<li class="header" data-section="' + group + '"  data-search=""><label class="header" for="comphead_' + group + '">' + group + '  <div class="header-arrow"></div>\
-								   </label><input class="header_check" type="checkbox" checked="true" id="comphead_' + group + '">  <ol></ol></li>');
-
+			componentsList.append(`
+			<li class="header" data-section="${group}" data-search="">
+				<label class="header" for="comphead_${group}">${group}
+					<div class="header-arrow"></div>
+				</label>
+				<input class="header_check" type="checkbox" checked="true" id="comphead_${group}">
+				<ol></ol>
+			</li>`);
 			const componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
 			const components = Vvveb.ComponentsGroup[group];
 			for (i in components) {
@@ -77,7 +81,6 @@ Vvveb.Builder = {
 		return this.documentFrame.on("load", function () {
 			window.FrameWindow = _this.iframe.contentWindow;
 			window.FrameDocument = _this.iframe.contentWindow.document;
-
 			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			_this.initCallback && _this.initCallback();
@@ -93,13 +96,16 @@ Vvveb.Builder = {
 	_getElementType(el) {
 		//search for component attribute
 		let componentName = '';
-		if (el.attributes)
+		if (el.attributes) {
 			for (var j = 0; j < el.attributes.length; j++) {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
 					componentName = el.attributes[j].nodeName.replace('data-component-', '');
 				}
 			}
-		if (componentName != '') return componentName;
+		}
+		if (componentName != '') {
+			return componentName;
+		}
 		if (el.attributes) {
 			for (var j = 0; j < el.attributes.length; j++) {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
@@ -151,34 +157,6 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("mouseup touchend", function (event) {
-			if (_this.isDragging) {
-				_this.isDragging = false;
-				if (component.dragHtml) {
-					const newElement = $(component.html);
-					_this.dragElement.replaceWith(newElement);
-					_this.dragElement = newElement;
-				}
-				if (component.afterDrop) _this.dragElement = component.afterDrop(_this.dragElement);
-
-				const node = _this.dragElement.get(0);
-				_this.selectNode(node);
-				_this.loadNodeComponent(node);
-
-				if (_this.dragMoveMutation === false) {
-					Vvveb.Undo.addMutation({
-						type: 'childList',
-						target: node.parentNode,
-						addedNodes: [node],
-						nextSibling: node.nextSibling
-					});
-				} else {
-					_this.dragMoveMutation.newParent = node.parentNode;
-					_this.dragMoveMutation.newNextSibling = node.nextSibling;
-
-					Vvveb.Undo.addMutation(_this.dragMoveMutation);
-					_this.dragMoveMutation = false;
-				}
-			}
 		});
 
 		this.frameBody.on("dblclick", function (event) {
@@ -246,22 +224,6 @@ Vvveb.Builder = {
 					e.preventDefault();
 				}
 			}
-		});
-
-		$("#drag-box").on("mousedown", function (event) {
-			jQuery(selectBox).hide();
-			_this.dragElement = _this.selectedEl;
-			_this.isDragging = true;
-			const node = _this.dragElement.get(0);
-			_this.dragMoveMutation = {
-				type: 'move',
-				target: node,
-				oldParent: node.parentNode,
-				oldNextSibling: node.nextSibling
-			};
-			//_this.selectNode(false);
-			event.preventDefault();
-			return false;
 		});
 
 		$("#down-box").on("click", function (event) {
