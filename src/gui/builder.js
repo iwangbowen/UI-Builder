@@ -29,16 +29,17 @@ Vvveb.Builder = {
 
 		this._loadIframe(url, srcdoc);
 		this._initDragdrop();
-
 		this.dragElement = null;
 	},
 	/* controls */
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
+
 		for (group in Vvveb.ComponentsGroup) {
 			componentsList.append('<li class="header" data-section="' + group + '"  data-search=""><label class="header" for="comphead_' + group + '">' + group + '  <div class="header-arrow"></div>\
 								   </label><input class="header_check" type="checkbox" checked="true" id="comphead_' + group + '">  <ol></ol></li>');
+
 			const componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
 			const components = Vvveb.ComponentsGroup[group];
 			for (i in components) {
@@ -76,6 +77,7 @@ Vvveb.Builder = {
 		return this.documentFrame.on("load", function () {
 			window.FrameWindow = _this.iframe.contentWindow;
 			window.FrameDocument = _this.iframe.contentWindow.document;
+
 			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			_this.initCallback && _this.initCallback();
@@ -91,16 +93,13 @@ Vvveb.Builder = {
 	_getElementType(el) {
 		//search for component attribute
 		let componentName = '';
-		if (el.attributes) {
+		if (el.attributes)
 			for (var j = 0; j < el.attributes.length; j++) {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
 					componentName = el.attributes[j].nodeName.replace('data-component-', '');
 				}
 			}
-		}
-		if (componentName != '') {
-			return componentName;
-		}
+		if (componentName != '') return componentName;
 		if (el.attributes) {
 			for (var j = 0; j < el.attributes.length; j++) {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
@@ -135,11 +134,24 @@ Vvveb.Builder = {
 	},
 	/* iframe highlight */
 	_initHightlight() {
+		moveEvent = { target: null, };
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
+			//delay for half a second if dragging over same element
+			// if (event.target == moveEvent.target && ((event.timeStamp - moveEvent.timeStamp) < 500)) return;
 			if (event.target) {
+				moveEvent = event;
 				_this.highlightEl = target = jQuery(event.target);
-				if (!_this.isDragging) {
+				offset = target.offset();
+				width = target.outerWidth();
+				height = target.outerHeight();
+				if (_this.isDragging) {
+					_this.dragElement.css({
+						display: 'none'
+					});
+					parent = _this.highlightEl;
+					parentOffset = _this.dragElement.offset();
+				} else {
 					if (!event.ctrlKey) {
 						highlightWhenHovering(event.target);
 					}
@@ -148,10 +160,39 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("mouseup touchend", function (event) {
+			if (_this.isDragging) {
+				_this.isDragging = false;
+				if (component.dragHtml) {
+					newElement = $(component.html);
+					_this.dragElement.replaceWith(newElement);
+					_this.dragElement = newElement;
+				}
+				if (component.afterDrop) _this.dragElement = component.afterDrop(_this.dragElement);
+
+				node = _this.dragElement.get(0);
+				_this.selectNode(node);
+				_this.loadNodeComponent(node);
+
+				if (_this.dragMoveMutation === false) {
+					Vvveb.Undo.addMutation({
+						type: 'childList',
+						target: node.parentNode,
+						addedNodes: [node],
+						nextSibling: node.nextSibling
+					});
+				} else {
+					_this.dragMoveMutation.newParent = node.parentNode;
+					_this.dragMoveMutation.newNextSibling = node.nextSibling;
+
+					Vvveb.Undo.addMutation(_this.dragMoveMutation);
+					_this.dragMoveMutation = false;
+				}
+			}
 		});
 
 		this.frameBody.on("dblclick", function (event) {
 			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+
 			_this.texteditEl = target = jQuery(event.target);
 			Vvveb.WysiwygEditor.edit(_this.texteditEl);
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
@@ -341,6 +382,7 @@ Vvveb.Builder = {
 						//"display": "block"
 					});
 			}
+
 			if (_this.highlightEl) {
 				offset = _this.highlightEl.offset();
 				jQuery("#highlight-box").css(
@@ -373,6 +415,10 @@ Vvveb.Builder = {
 			_this.isDragging = true;
 		});
 		$('body').on('mouseup touchend', function (event) {
+			if (_this.isDragging == true) {
+				_this.isDragging = false;
+				// $("#component-clone").remove();
+			}
 		});
 		$('body').on('mousemove touchmove', function (event) {
 			if (_this.isDragging == true) {
@@ -386,18 +432,21 @@ Vvveb.Builder = {
 			}
 		});
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
+			_this.isDragging = false;
+			// $("#component-clone").remove();
 		});
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
-		let start = html.indexOf("<body");
-		let end = html.indexOf("</body");
+		const start = html.indexOf("<body");
+		const end = html.indexOf("</body");
 		let body;
 		if (start >= 0 && end >= 0) {
 			body = html.slice(html.indexOf(">", start) + 1, end);
 		} else {
 			body = html;
 		}
+		//this.frameBody.html(body);
 		window.FrameDocument.body.innerHTML = body;
 		//below methods brake document relative css and js paths
 		//return this.iframe.outerHTML = html;
