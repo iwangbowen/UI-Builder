@@ -12,9 +12,7 @@ if (Vvveb === undefined) var Vvveb = {};
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
-
 Vvveb.baseUrl = document.currentScript ? document.currentScript.src.replace(/[^\/]*?\.js$/, '') : '';
-
 Vvveb.ComponentsGroup = {};
 
 Vvveb.Builder = {
@@ -30,7 +28,6 @@ Vvveb.Builder = {
 		this.canvas = $("#canvas");
 
 		this._loadIframe(url, srcdoc);
-
 		this._initDragdrop();
 
 		this.dragElement = null;
@@ -39,15 +36,11 @@ Vvveb.Builder = {
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
-
 		for (group in Vvveb.ComponentsGroup) {
 			componentsList.append('<li class="header" data-section="' + group + '"  data-search=""><label class="header" for="comphead_' + group + '">' + group + '  <div class="header-arrow"></div>\
 								   </label><input class="header_check" type="checkbox" checked="true" id="comphead_' + group + '">  <ol></ol></li>');
-
 			const componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
-
-			components = Vvveb.ComponentsGroup[group];
-
+			const components = Vvveb.ComponentsGroup[group];
 			for (i in components) {
 				const componentType = components[i];
 				const component = Vvveb.Components.get(componentType);
@@ -83,7 +76,6 @@ Vvveb.Builder = {
 		return this.documentFrame.on("load", function () {
 			window.FrameWindow = _this.iframe.contentWindow;
 			window.FrameDocument = _this.iframe.contentWindow.document;
-
 			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			_this.initCallback && _this.initCallback();
@@ -91,40 +83,42 @@ Vvveb.Builder = {
 		});
 	},
 	_frameLoaded() {
-
 		this.frameDoc = $(window.FrameDocument);
 		this.frameHtml = $(window.FrameDocument).find("html");
 		this.frameBody = $(window.FrameDocument).find('body');
-
 		this._initHightlight();
 	},
 	_getElementType(el) {
 		//search for component attribute
 		let componentName = '';
-		if (el.attributes)
-			for (var j = 0; j < el.attributes.length; j++) {
-
-				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
-					componentName = el.attributes[j].nodeName.replace('data-component-', '');
-				}
-			}
-
-		if (componentName != '') return componentName;
-
-		if (el.attributes)
+		if (el.attributes) {
 			for (var j = 0; j < el.attributes.length; j++) {
 				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
 					componentName = el.attributes[j].nodeName.replace('data-component-', '');
 				}
 			}
-
-		if (componentName != '') return componentName;
+		}
+		if (componentName != '') {
+			return componentName;
+		}
+		if (el.attributes) {
+			for (var j = 0; j < el.attributes.length; j++) {
+				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
+					componentName = el.attributes[j].nodeName.replace('data-component-', '');
+				}
+			}
+		}
+		if (componentName != '') {
+			return componentName;
+		}
 		//if (className) return componentName;
 		return el.tagName;
 	},
 	loadNodeComponent(node) {
 		const data = Vvveb.Components.matchNode(node);
-		if (data) Vvveb.Components.render(data.type);
+		if (data) {
+			Vvveb.Components.render(data.type);
+		}
 	},
 	selectNode(node = false, ctrlKeyPressed = false) {
 		if (!node) {
@@ -141,48 +135,11 @@ Vvveb.Builder = {
 	},
 	/* iframe highlight */
 	_initHightlight() {
-		moveEvent = { target: null, };
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
-			//delay for half a second if dragging over same element
-			// if (event.target == moveEvent.target && ((event.timeStamp - moveEvent.timeStamp) < 500)) return;
 			if (event.target) {
-				moveEvent = event;
-
 				_this.highlightEl = target = jQuery(event.target);
-				offset = target.offset();
-				width = target.outerWidth();
-				height = target.outerHeight();
-
-				if (_this.isDragging) {
-					_this.dragElement.css({
-						display: 'none'
-					});
-					parent = _this.highlightEl;
-					parentOffset = _this.dragElement.offset();
-					// try {
-					// 	_this.dragElement.css({
-					// 		display: 'none'
-					// 	});
-					// 	if (event.originalEvent && (offset.left > (event.originalEvent.x - 10))) {
-					// 		if (offset.top > (event.originalEvent.y - 10)) {
-					// 			parent.before(_this.dragElement);
-					// 		} else {
-					// 			parent.prepend(_this.dragElement);
-					// 			_this.dragElement.prependTo(parent);
-					// 		}
-					// 	} else {
-					// 		if (event.originalEvent && offset.top > ((event.originalEvent.y - 10))) {
-					// 			parent.before(_this.dragElement);
-					// 		} else {
-					// 			parent.append(_this.dragElement);
-					// 			_this.dragElement.appendTo(parent);
-					// 		}
-					// 	}
-					// } catch (err) {
-					// 	console.log(err);
-					// }
-				} else {
+				if (!_this.isDragging) {
 					if (!event.ctrlKey) {
 						highlightWhenHovering(event.target);
 					}
@@ -191,41 +148,10 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("mouseup touchend", function (event) {
-			if (_this.isDragging) {
-				_this.isDragging = false;
-
-				if (component.dragHtml) //if dragHtml is set for dragging then set real component html
-				{
-					newElement = $(component.html);
-					_this.dragElement.replaceWith(newElement);
-					_this.dragElement = newElement;
-				}
-				if (component.afterDrop) _this.dragElement = component.afterDrop(_this.dragElement);
-
-				node = _this.dragElement.get(0);
-				_this.selectNode(node);
-				_this.loadNodeComponent(node);
-
-				if (_this.dragMoveMutation === false) {
-					Vvveb.Undo.addMutation({
-						type: 'childList',
-						target: node.parentNode,
-						addedNodes: [node],
-						nextSibling: node.nextSibling
-					});
-				} else {
-					_this.dragMoveMutation.newParent = node.parentNode;
-					_this.dragMoveMutation.newNextSibling = node.nextSibling;
-
-					Vvveb.Undo.addMutation(_this.dragMoveMutation);
-					_this.dragMoveMutation = false;
-				}
-			}
 		});
 
 		this.frameBody.on("dblclick", function (event) {
 			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
-
 			_this.texteditEl = target = jQuery(event.target);
 			Vvveb.WysiwygEditor.edit(_this.texteditEl);
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
@@ -237,7 +163,6 @@ Vvveb.Builder = {
 					"height": _this.texteditEl.outerHeight()
 				});
 			});
-
 			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
 			jQuery("#highlight-box").hide();
 		});
@@ -254,7 +179,6 @@ Vvveb.Builder = {
 					} else {
 						clearSelectedElements();
 					}
-
 					const node = getParentOrSelf(event.target);
 					if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
 						$('#attribute-settings')
@@ -264,10 +188,8 @@ Vvveb.Builder = {
 						$('#left-panel').hide();
 						$('#right-panel').show();
 					}
-
 					_this.selectNode(node, event.ctrlKey);
 					_this.loadNodeComponent(node);
-
 					event.preventDefault();
 					return false;
 				}
@@ -298,9 +220,7 @@ Vvveb.Builder = {
 			jQuery(selectBox).hide();
 			_this.dragElement = _this.selectedEl;
 			_this.isDragging = true;
-
-			node = _this.dragElement.get(0);
-
+			const node = _this.dragElement.get(0);
 			_this.dragMoveMutation = {
 				type: 'move',
 				target: node,
@@ -314,69 +234,57 @@ Vvveb.Builder = {
 
 		$("#down-box").on("click", function (event) {
 			jQuery(selectBox).hide();
-
-			node = _this.selectedEl.get(0);
-			oldParent = node.parentNode;
-			oldNextSibling = node.nextSibling;
-
-			next = _this.selectedEl.next();
-
+			const node = _this.selectedEl.get(0);
+			const oldParent = node.parentNode;
+			const oldNextSibling = node.nextSibling;
+			const next = _this.selectedEl.next();
 			if (next.length > 0) {
 				next.after(_this.selectedEl);
 			} else {
 				_this.selectedEl.parent().after(_this.selectedEl);
 			}
-
-			newParent = node.parentNode;
-			newNextSibling = node.nextSibling;
-
+			const newParent = node.parentNode;
+			const newNextSibling = node.nextSibling;
 			Vvveb.Undo.addMutation({
 				type: 'move',
 				target: node,
-				oldParent: oldParent,
-				newParent: newParent,
-				oldNextSibling: oldNextSibling,
-				newNextSibling: newNextSibling
+				oldParent,
+				newParent,
+				oldNextSibling,
+				newNextSibling
 			});
-
 			event.preventDefault();
 			return false;
 		});
 
 		$("#up-box").on("click", function (event) {
 			jQuery(selectBox).hide();
-
-			node = _this.selectedEl.get(0);
-			oldParent = node.parentNode;
-			oldNextSibling = node.nextSibling;
-
-			next = _this.selectedEl.prev();
-
+			const node = _this.selectedEl.get(0);
+			const oldParent = node.parentNode;
+			const oldNextSibling = node.nextSibling;
+			const next = _this.selectedEl.prev();
 			if (next.length > 0) {
 				next.before(_this.selectedEl);
 			} else {
 				_this.selectedEl.parent().before(_this.selectedEl);
 			}
-
-			newParent = node.parentNode;
-			newNextSibling = node.nextSibling;
-
+			const newParent = node.parentNode;
+			const newNextSibling = node.nextSibling;
 			Vvveb.Undo.addMutation({
 				type: 'move',
 				target: node,
-				oldParent: oldParent,
-				newParent: newParent,
-				oldNextSibling: oldNextSibling,
-				newNextSibling: newNextSibling
+				oldParent,
+				newParent,
+				oldNextSibling,
+				newNextSibling
 			});
-
 			event.preventDefault();
 			return false;
 		});
 
 		$("#clone-box").on("click", function (event) {
 			const clone = getElementWithDraggable(_this.selectedEl).clone();
-			const {left, top} = clone.offset();
+			const { left, top } = clone.offset();
 			getElementWithDraggable(_this.selectedEl)
 				.after(clone.offset({
 					left: left + 10,
@@ -433,7 +341,6 @@ Vvveb.Builder = {
 						//"display": "block"
 					});
 			}
-
 			if (_this.highlightEl) {
 				offset = _this.highlightEl.offset();
 				jQuery("#highlight-box").css(
@@ -456,24 +363,16 @@ Vvveb.Builder = {
 			$this = jQuery(this);
 			// $("#component-clone").remove();
 			component = Vvveb.Components.get($this.data("type"));
-
 			if (component.dragHtml) {
 				html = component.dragHtml;
 			} else {
 				html = component.html;
 			}
-
 			_this.dragElement = $(html);
-
 			if (component.dragStart) _this.dragElement = component.dragStart(_this.dragElement);
-
 			_this.isDragging = true;
 		});
 		$('body').on('mouseup touchend', function (event) {
-			if (_this.isDragging == true) {
-				_this.isDragging = false;
-				// $("#component-clone").remove();
-			}
 		});
 		$('body').on('mousemove touchmove', function (event) {
 			if (_this.isDragging == true) {
@@ -487,21 +386,18 @@ Vvveb.Builder = {
 			}
 		});
 		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
-			_this.isDragging = false;
-			// $("#component-clone").remove();
 		});
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
 		let start = html.indexOf("<body");
 		let end = html.indexOf("</body");
-
+		let body;
 		if (start >= 0 && end >= 0) {
 			body = html.slice(html.indexOf(">", start) + 1, end);
 		} else {
-			body = html
+			body = html;
 		}
-		//this.frameBody.html(body);
 		window.FrameDocument.body.innerHTML = body;
 		//below methods brake document relative css and js paths
 		//return this.iframe.outerHTML = html;
