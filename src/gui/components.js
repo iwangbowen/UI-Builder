@@ -161,9 +161,9 @@ Vvveb.Components = {
 		return this.get(Vvveb.defaultComponent);
 	},
 	render(type) {
-		component = this._components[type];
-		rightPanel = jQuery("#right-panel #component-properties");
-		section = rightPanel.find('.section[data-section="default"]');
+		const component = this._components[type];
+		const rightPanel = jQuery("#right-panel #component-properties");
+		let section = rightPanel.find('.section[data-section="default"]');
 		if (!(Vvveb.preservePropertySections && section.length)) {
 			rightPanel.html('').append(tmpl("inputsectioninput", { key: "default", header: component.name }));
 			section = rightPanel.find(".section");
@@ -173,12 +173,12 @@ Vvveb.Components = {
 		if (component.beforeInit) {
 			component.beforeInit(Vvveb.Builder.selectedEl.get(0));
 		}
-		nodeElement = Vvveb.Builder.selectedEl;
+		const nodeElement = Vvveb.Builder.selectedEl;
 		component.properties.forEach(property => {
 				if (property.beforeInit) {
 					property.beforeInit(element.get(0));
 				}
-				element = nodeElement;
+				let element = nodeElement;
 				if (property.child) {
 					element = element.find(property.child);
 				}
@@ -194,6 +194,7 @@ Vvveb.Components = {
 				if (property.init) {
 					property.inputtype.setValue(property.init(element.get(0)));
 				} else if (property.htmlAttr) {
+					let value;
 					if (property.htmlAttr == 'text') {
 						value = element.text();
 					} else if (property.htmlAttr == "style") {
@@ -223,7 +224,7 @@ Vvveb.Components = {
 						section = rightPanel.find('.section[data-section="' + property.key + '"]');
 					}
 				} else {
-					row = $(tmpl('property', property));
+					const row = $(tmpl('property', property));
 					row.find('.input').append(property.input);
 					property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
 					section.append(row);
