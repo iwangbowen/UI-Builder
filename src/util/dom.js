@@ -3,11 +3,15 @@ import {
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
-    removeNameBrackets, htmlGenerator
+    removeNameBrackets, htmlGenerator, changeScriptType
 } from './jsoup';
-import { beautify_options, multiSelectedClass } from '../constants';
+import { beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType } from '../constants';
 import _ from 'lodash';
-import { multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector } from './selectors';
+import {
+    multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
+    userDefinedScriptSelector,
+    nonTemplateScriptSelector
+} from './selectors';
 import Vvveb from '../gui/builder';
 import { draggableComponent } from '../components/common';
 
@@ -121,7 +125,8 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickScript, generateLayerScript, generateMultivalueSelectScript, addNameBrackets);
+        generateButtonOnclickScript, generateLayerScript, generateMultivalueSelectScript, addNameBrackets,
+        _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, beautify_options)) : html_beautify(`
@@ -144,7 +149,8 @@ function getHash() {
 
 function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
     return htmlGenerator(localStorage.getItem(itemKey),
-        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts, removeNameBrackets);
+        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
+        _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }
 
 function getPage(pageName, pageTitle, pageHref) {

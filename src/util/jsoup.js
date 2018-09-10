@@ -173,6 +173,11 @@ function generateBaseTag(el, pageHref) {
     return el;
 }
 
+function changeScriptType(el, selector, type) {
+    $(el).find(selector).attr('type', type);
+    return el;
+}
+
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
     const hrefs = [...$(el).find('link[rel=stylesheet]')]
@@ -224,5 +229,5 @@ export {
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generateLayerScript, generateMultivalueSelectScript, removeRemoveableScripts,
-    addNameBrackets, removeNameBrackets, htmlGenerator
+    addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType
 };
