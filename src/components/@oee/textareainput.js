@@ -7,7 +7,13 @@ const textareainput = $.extend({}, input, {
     nodes: [`textarea`],
     name: "Text Area",
     image: "icons/text_area.svg",
-    html: `<div ${dataComponentId}="${textareaid}" class="form-group draggable"><textarea class="form-control"></textarea></div>`,
+    html: `<div ${dataComponentId}="${textareaid}" class="everyOutbox-right form-group draggable">
+               <div class="btn-group">
+                   <div class="dailyBox">
+                       <textarea class="form-control"></textarea>
+                   </div>
+               </div>
+           </div>`,
     properties: [{
         name: "Value",
         key: "value",
