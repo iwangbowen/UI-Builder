@@ -143,14 +143,16 @@ Vvveb.Builder = {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
 			if (event.target) {
-				_this.highlightEl = target = jQuery(event.target);
-				if (_this.isDragging) {
-					_this.dragElement.css({
-						display: 'none'
-					});
-				} else {
-					if (!event.ctrlKey) {
-						highlightWhenHovering(event.target);
+				if (getElementWithDraggable($(event.target))) {
+					_this.highlightEl = target = jQuery(event.target);
+					if (_this.isDragging) {
+						_this.dragElement.css({
+							display: 'none'
+						});
+					} else {
+						if (!event.ctrlKey) {
+							highlightWhenHovering(event.target);
+						}
 					}
 				}
 			}
@@ -181,27 +183,29 @@ Vvveb.Builder = {
 			$(document.getElementById('iframeId').contentWindow.document)
 				.find('.horizontal-line, .vertical-line')
 				.hide();
-			if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
-				replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
-				if (event.target) {
-					if (event.ctrlKey) {
-						addOrRemoveElement(event.target);
-					} else {
-						clearSelectedElements();
+			if (getElementWithDraggable($(event.target))) {
+				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
+					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+					if (event.target) {
+						if (event.ctrlKey) {
+							addOrRemoveElement(event.target);
+						} else {
+							clearSelectedElements();
+						}
+						const node = getParentOrSelf(event.target);
+						if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
+							$('#attribute-settings')
+								.addClass('active')
+								.siblings()
+								.removeClass('active');
+							$('#left-panel').hide();
+							$('#right-panel').show();
+						}
+						_this.selectNode(node, event.ctrlKey);
+						_this.loadNodeComponent(node);
+						event.preventDefault();
+						return false;
 					}
-					const node = getParentOrSelf(event.target);
-					if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
-						$('#attribute-settings')
-							.addClass('active')
-							.siblings()
-							.removeClass('active');
-						$('#left-panel').hide();
-						$('#right-panel').show();
-					}
-					_this.selectNode(node, event.ctrlKey);
-					_this.loadNodeComponent(node);
-					event.preventDefault();
-					return false;
 				}
 			}
 		});
