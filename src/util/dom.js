@@ -166,7 +166,8 @@ function loadCallback() {
 }
 
 function getElementWithDraggable(element) {
-    return (element.hasClass('draggable')
+    return (!element.length
+        || element.hasClass('draggable')
         || element.hasClass(draggableComponent))
         ? element
         : getElementWithDraggable(element.parent());

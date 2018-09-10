@@ -143,7 +143,7 @@ Vvveb.Builder = {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
 			if (event.target) {
-				if (getElementWithDraggable($(event.target))) {
+				if (getElementWithDraggable($(event.target)).length) {
 					_this.highlightEl = target = jQuery(event.target);
 					if (_this.isDragging) {
 						_this.dragElement.css({
@@ -183,7 +183,7 @@ Vvveb.Builder = {
 			$(document.getElementById('iframeId').contentWindow.document)
 				.find('.horizontal-line, .vertical-line')
 				.hide();
-			if (getElementWithDraggable($(event.target))) {
+			if (getElementWithDraggable($(event.target)).length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 					if (event.target) {
