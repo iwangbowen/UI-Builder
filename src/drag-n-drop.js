@@ -13,7 +13,6 @@ $(document).ready(() => {
         }
     });
 
-    let isElementCreated = false;
     let $element;
     const draggableElements = '#components-list li ol li';
 
@@ -50,33 +49,30 @@ $(document).ready(() => {
                 },
                 // enable autoScroll
                 autoScroll: true,
+                onstart(event) {
+                    const component = Vvveb.Components.get($(event.target).data("type"));
+                    const html = component.dragHtml || component.html;
+
+                    $element = $(html).appendTo($('body'));
+                    const display = $element.css('display');
+                    if (display == 'inline-block') {
+                        $element.css({
+                            position: 'absolute',
+                            left: event.pageX - $element.outerWidth() / 2,
+                            top: event.pageY - $element.outerHeight() / 2,
+                            'z-index': 999
+                        });
+                    } else {
+                        $element.css({
+                            position: 'absolute',
+                            left: event.pageX - 20,
+                            top: event.pageY - 20,
+                            'z-index': 999
+                        });
+                    }
+                },
                 // call this function on every dragmove event
                 onmove: event => {
-                    if (!isElementCreated) {
-                        const component = Vvveb.Components.get($(event.target).data("type"));
-                        const html = component.dragHtml || component.html;
-
-                        $element = $(html).appendTo($('body'));
-                        const display = $element.css('display');
-                        if (display == 'inline-block') {
-                            $element.css({
-                                position: 'absolute',
-                                left: event.pageX - $element.outerWidth() / 2,
-                                top: event.pageY - $element.outerHeight() / 2,
-                                'z-index': 999
-                            });
-                        } else {
-                            $element.css({
-                                position: 'absolute',
-                                left: event.pageX - 20,
-                                top: event.pageY - 20,
-                                'z-index': 999
-                            });
-                        }
-
-                        isElementCreated = true;
-                    }
-
                     const x = (parseFloat($element.attr('data-x')) || 0) + event.dx,
                         y = (parseFloat($element.attr('data-y')) || 0) + event.dy;
 
