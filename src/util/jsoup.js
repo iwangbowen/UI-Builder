@@ -8,12 +8,13 @@ import { template as submitFormTemplate, functionName } from '../script-template
 import layerTemplate from '../script-templates/layer';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
+import tooltipTemplate from '../script-templates/tooltip';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
-import { unusedTags, removeableScript, tableScript, appendableScript } from '../constants';
+import { unusedTags, removeableScript, tableScript, appendableScript, reservedScript } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
@@ -91,6 +92,18 @@ function generateButtonOnclickScript(el) {
         }
     });
     return el;
+}
+
+function generateLayerScript(el) {
+    return appendScript(el, layerTemplate());
+}
+
+function generateMultivalueSelectScript(el) {
+    return appendScript(el, multivalueselectTemplate());
+}
+
+function generateTooltipScript(el) {
+    return appendScript(el, tooltipTemplate(), reservedScript);
 }
 
 function concatContent(prev, cur) {
@@ -191,14 +204,6 @@ function generateDevDependentTags(el) {
     return el;
 }
 
-function generateLayerScript(el) {
-    return appendScript(el, layerTemplate());
-}
-
-function generateMultivalueSelectScript(el) {
-    return appendScript(el, multivalueselectTemplate());
-}
-
 // select multiple options, just name it as an array[]
 // https://github.com/marioizquierdo/jquery.serializeJSON
 function addNameBrackets(el) {
@@ -228,6 +233,6 @@ export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
-    generateLayerScript, generateMultivalueSelectScript, removeRemoveableScripts,
-    addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType
+    generateLayerScript, generateMultivalueSelectScript, generateTooltipScript,
+    removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType
 };

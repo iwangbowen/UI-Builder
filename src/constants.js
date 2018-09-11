@@ -66,6 +66,7 @@ const importedPageHref = `template/oee/html/demo/${importedPageName}.html`;
 const removeableScript = 'removeableScript';
 const tableScript = 'tableScript';
 const appendableScript = 'appendableScript';
+const reservedScript = 'reservedScript';
 const nonTemplateScriptType = 'text/non-template';
 const javascriptScriptType = 'text/javascript';
 
@@ -78,6 +79,6 @@ const pages = [
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
-    pages, beautify_options, unusedTags, removeableScript, tableScript, multiSelectedClass,
-    appendableScript, nonTemplateScriptType, javascriptScriptType
+    pages, beautify_options, unusedTags, removeableScript, tableScript, reservedScript,
+    multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType
 };

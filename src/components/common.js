@@ -69,10 +69,11 @@ const dataMultivalueSelectId = 'data-multi-value-select-id';
 const dataRequiredSpanId = 'data-required-span-id';
 const dataResponseDataKey = 'data-response-data-key';
 const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
+const dataTitle = 'data-title';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
-    draggableComponent
+    draggableComponent, dataTitle
 };

@@ -38,6 +38,9 @@ function addPropertyChangeListener(component, property) {
 				newValue: element.attr(property.htmlAttr)
 			}));
 		}
+		if (property.afterChange) {
+			property.afterChange(element, value, input, component);
+		}
 		if (component.onChange) {
 			element = component.onChange(element, property, value, input);
 		}

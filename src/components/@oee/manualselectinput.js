@@ -3,6 +3,7 @@ import { TextValueInput, ButtonInput, TextInput, ToggleInput } from '../../input
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import input from './input';
+import { property as tooltipProperty } from '../tooltip';
 
 const autoselectinput = $.extend({}, input, {
     nodes: ["select"],
@@ -98,7 +99,7 @@ const autoselectinput = $.extend({}, input, {
             on: 'required',
             off: ''
         }
-    }]
+    }, tooltipProperty]
 });
 
 export default autoselectinput;

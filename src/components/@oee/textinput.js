@@ -3,6 +3,7 @@ import { inputTypes, inputTypeNames } from '../inputTypes';
 import { dataComponentId } from '../common';
 import input from './input';
 import { textinputid } from './ids';
+import { property as tooltipProperty } from '../tooltip';
 
 const textinput = $.extend({}, input, {
     name: "Text Input",
@@ -30,7 +31,7 @@ const textinput = $.extend({}, input, {
         key: 'maxlength',
         htmlAttr: 'maxlength',
         inputtype: new NumberInput()
-    }, {
+    }, tooltipProperty, {
         name: "Placeholder",
         key: "placeholder",
         htmlAttr: "placeholder",

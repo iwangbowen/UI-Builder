@@ -2,6 +2,7 @@ import { TextInput, NumberInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { textareaid } from './ids';
 import input from './input';
+import { property as tooltipProperty } from '../tooltip';
 
 const textareainput = $.extend({}, input, {
     nodes: [`textarea`],
@@ -29,7 +30,7 @@ const textareainput = $.extend({}, input, {
         key: 'maxlength',
         htmlAttr: 'maxlength',
         inputtype: new NumberInput()
-    }, {
+    }, tooltipProperty, {
         name: "Placeholder",
         key: "placeholder",
         htmlAttr: "placeholder",

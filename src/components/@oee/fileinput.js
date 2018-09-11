@@ -1,5 +1,6 @@
 import input from './input';
 import { TextInput } from '../../inputs/inputs';
+import { property as tooltipProperty } from '../tooltip';
 
 const fileinput = $.extend({}, input, {
   name: 'File Input',
@@ -18,7 +19,7 @@ const fileinput = $.extend({}, input, {
     key: 'dataUrl',
     htmlAttr: 'data-url',
     inputtype: new TextInput()
-  }]
+  }, tooltipProperty]
 });
 
 export default fileinput;

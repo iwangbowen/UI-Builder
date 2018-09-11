@@ -3,7 +3,7 @@ import {
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
-    removeNameBrackets, htmlGenerator, changeScriptType
+    removeNameBrackets, htmlGenerator, changeScriptType, generateTooltipScript
 } from './jsoup';
 import { beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType } from '../constants';
 import _ from 'lodash';
@@ -125,8 +125,8 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickScript, generateLayerScript, generateMultivalueSelectScript, addNameBrackets,
-        _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
+        generateButtonOnclickScript, generateLayerScript, generateMultivalueSelectScript, generateTooltipScript,
+        addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, beautify_options)) : html_beautify(`

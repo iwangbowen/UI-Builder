@@ -7,6 +7,7 @@ import {
 } from '../../util/dataAttr';
 import input from './input';
 import { calendarid } from './ids';
+import { property as tooltipProperty } from '../tooltip';
 
 const calendar = $.extend({}, input, {
     name: "Datetime Input",
@@ -98,7 +99,7 @@ const calendar = $.extend({}, input, {
             on: 'required',
             off: ''
         }
-    }]
+    }, tooltipProperty]
 });
 
 export default calendar;
