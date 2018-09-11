@@ -1,6 +1,6 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
-import Vvveb from '../../gui/builder';
+import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 

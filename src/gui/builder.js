@@ -1,3 +1,4 @@
+import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
@@ -7,8 +8,7 @@ import {
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
-
-if (Vvveb === undefined) var Vvveb = {};
+import { initDragAndDrop } from '../util/drag-n-drop-util';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -58,6 +58,8 @@ Vvveb.Builder = {
 						})
 					}
 					componentsSubList.append(item);
+
+					initDragAndDrop(item, Vvveb.Components.get($(item).data("type")));
 				}
 			}
 		}
@@ -355,16 +357,6 @@ Vvveb.Builder = {
 	/* drag and drop */
 	_initDragdrop() {
 		this.isDragging = false;
-		component = {};
-		const _this = this;
-		$('#components ul > li > ol > li').on("mousedown touchstart", function (event) {
-		});
-		$('body').on('mouseup touchend', function (event) {
-		});
-		$('body').on('mousemove touchmove', function (event) {
-		});
-		$('#components ul > ol > li > li').on("mouseup touchend", function (event) {
-		});
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths

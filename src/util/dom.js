@@ -12,7 +12,7 @@ import {
     userDefinedScriptSelector,
     nonTemplateScriptSelector
 } from './selectors';
-import Vvveb from '../gui/builder';
+import Vvveb from '../gui/components';
 import { draggableComponent } from '../components/common';
 
 function getStyle(el, styleProp) {
@@ -30,6 +30,17 @@ function getStyle(el, styleProp) {
         }
 
     return value;
+}
+
+function initPanelToggle() {
+    $('#menu-panel .navbar-nav a').on('click', function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            $('#left-panel').toggle();
+            $('#right-panel').toggle();
+        }
+    });
 }
 
 function setIframeHeight(iframe) {
@@ -426,5 +437,6 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggable, isOverlap, generateHtmlFromLocalStorageItemKey
+    middleAlignCallback, getElementWithDraggable, isOverlap, generateHtmlFromLocalStorageItemKey,
+    initPanelToggle
 };

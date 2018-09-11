@@ -1,4 +1,4 @@
-import Vvveb from './gui/builder';
+import Vvveb from './gui/components';
 import * as _general from './components/@general/components';
 import * as _oee from './components/@oee/components';
 import * as _oee_ids from './components/@oee/ids';

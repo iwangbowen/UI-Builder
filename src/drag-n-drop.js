@@ -1,23 +1,13 @@
-import Vvveb from './gui/builder';
+import Vvveb from './gui/components';
 import { isOverlap } from './util/dom';
 import ChildListMutation from './models/mutation/child-list-mutation';
 
 $(document).ready(() => {
-    $('#menu-panel .navbar-nav a').on('click', function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active');
-            $('#left-panel').toggle();
-            $('#right-panel').toggle();
-        }
-    });
-
     let $element;
-    const draggableElements = '#components-list li ol li';
 
     document.querySelector('iframe').onload = function (event) {
         window.interact = frames[0].interact;
-        setInteractables();
+        // setInteractables();
     };
 
     function setInteractables() {
@@ -27,7 +17,7 @@ $(document).ready(() => {
             cursor: 'e-resize'
         });
         
-        interact(draggableElements, { context: document })
+        interact('#components-list li ol li', { context: document })
             .draggable({
                 // enable inertial throwing
                 inertia: true,

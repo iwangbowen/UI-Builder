@@ -1,4 +1,3 @@
-import Vvveb from './builder';
 import { SectionInput } from '../inputs/inputs';
 import { dataComponentId } from '../components/common';
 import { getStyle } from '../util/dom';
@@ -49,6 +48,8 @@ function addPropertyChangeListener(component, property) {
 		}
 	});
 };
+
+if (Vvveb === undefined) var Vvveb = {};
 
 Vvveb.Components = {
 	_components: {},
@@ -238,3 +239,5 @@ Vvveb.Components = {
 		}
 	}
 };
+
+export default Vvveb;

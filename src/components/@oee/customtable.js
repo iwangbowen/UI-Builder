@@ -1,6 +1,6 @@
 import { dataComponentId, draggableComponent } from '../common';
 import { table } from './table';
-import Vvveb from '../../gui/builder';
+import Vvveb from '../../gui/components';
 import { customtableid } from './ids';
 
 const customtable = $.extend({}, table, {

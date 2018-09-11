@@ -1,5 +1,5 @@
-import Vvveb from './gui/builder';
-import './gui/components';
+import Vvveb from './gui/components';
+import './gui/builder';
 import './gui/wysiwyg-editor';
 import './gui/actions';
 import './gui/file-manager';
@@ -11,15 +11,19 @@ import {
 } from './constants';
 import {
     getHash, getPage, loadCallback, generateHtmlFromLocalStorageItemKey,
-    getSelectedElements, getElementWithDraggable
+    getSelectedElements, getElementWithDraggable, initPanelToggle
 } from './util/dom';
 import './drag-n-drop';
+import { initTopPanelDrag } from './util/drag-n-drop-util';
 
 $(document).ready(function () {
+    initTopPanelDrag();
+    initPanelToggle();
+
     window.getSelectedElements = getSelectedElements;
     window.getElementWithDraggable = getElementWithDraggable;
     window.Vvveb = Vvveb;
-    
+
     Vvveb.FileManager.init();
     const hash = getHash();
     if (hash == importedPageName && localStorage.getItem(importedPageName)) {
