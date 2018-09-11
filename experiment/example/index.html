@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../libs/jquery-ui-1.12.1/jquery-ui.min.css">
+    <style>
+        #draggable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe style="width: 1000px; height: 1000px;" src="iframe.html"></iframe>
+    <div id="draggable" class="ui-widget-content">
+        <p>Drag me around</p>
+    </div>
+    <ul id="components-list" class="clearfix">
+        <li class="header" data-section="定制组件" data-search="">
+            <label class="header" for="comphead_定制组件">定制组件
+                <div class="header-arrow"></div>
+            </label>
+            <input class="header_check" type="checkbox" checked="true" id="comphead_定制组件">
+            <ol>
+                <li data-section="定制组件" data-type="html/labeldiv@oee" data-search="label div" style="background-image: url(&quot;libs/builder/icons/label.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Label Div</a></li>
+                <li data-section="定制组件" data-type="html/button@oee" data-search="button" style="background-image: url(&quot;libs/builder/icons/button.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Button</a></li>
+                <li data-section="定制组件" data-type="html/textinput@oee" data-search="text input" style="background-image: url(&quot;libs/builder/icons/text_input.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Text Input</a></li>
+                <li data-section="定制组件" data-type="html/calendar@oee" data-search="datetime input" style="background-image: url(&quot;libs/builder/icons/calendar.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Datetime Input</a></li>
+                <li data-section="定制组件" data-type="html/fileinput@oee" data-search="file input" style="background-image: url(&quot;libs/builder/icons/upload.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">File Input</a></li>
+                <li data-section="定制组件" data-type="html/autoselectinput@oee" data-search="auto select input" style="background-image: url(&quot;libs/builder/icons/select_input.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Auto Select Input</a></li>
+                <li data-section="定制组件" data-type="html/manualselectinput@oee" data-search="manual select input" style="background-image: url(&quot;libs/builder/icons/select_input.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Manual Select Input</a></li>
+                <li data-section="定制组件" data-type="html/multivalueselect@oee" data-search="multi-value select" style="background-image: url(&quot;libs/builder/icons/select_input.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Multi-value Select</a></li>
+                <li data-section="定制组件" data-type="html/textarea@oee" data-search="text area" style="background-image: url(&quot;libs/builder/icons/text_area.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Text Area</a></li>
+                <li data-section="定制组件" data-type="html/radiobutton@oee" data-search="radio button" style="background-image: url(&quot;libs/builder/icons/radio.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Radio Button</a></li>
+                <li data-section="定制组件" data-type="html/checkbox@oee" data-search="checkbox" style="background-image: url(&quot;libs/builder/icons/checkbox.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Checkbox</a></li>
+                <li data-section="定制组件" data-type="html/customtable@oee" data-search="custom ag-grid" style="background-image: url(&quot;libs/builder/icons/table.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Custom ag-Grid</a></li>
+                <li data-section="定制组件" data-type="html/commontable@oee" data-search="common ag-grid" style="background-image: url(&quot;libs/builder/icons/table.svg&quot;); background-repeat: no-repeat;"><a
+                        href="#">Common ag-Grid</a></li>
+            </ol>
+        </li>
+        <li class="header" data-section="通用组件" data-search="">
+            <label class="header" for="comphead_通用组件">通用组件
+                <div class="header-arrow"></div>
+            </label>
+            <input class="header_check" type="checkbox" checked="true" id="comphead_通用组件">
+            <ol></ol>
+        </li>
+    </ul>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            console.log($('#components-list li ol li'));
+            $("#draggable").draggable({
+                iframeFix: true,
+            });
+        });
+    </script>
+</body>
+
+</html>
