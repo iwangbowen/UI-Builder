@@ -12,7 +12,6 @@ import tooltipTemplate from '../script-templates/tooltip';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
-import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
 import { unusedTags, removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
@@ -139,16 +138,6 @@ function getExternalContent(tag) {
     return $.ajax({
         url: constructURL(tag)
     });
-}
-
-function minify(code) {
-    return uglify.minify(code, {
-        compress: true,
-        output: {
-            beautify: false,
-            indent_level: 0
-        }
-    }).code;
 }
 
 function getScriptContent(script) {
