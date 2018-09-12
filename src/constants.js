@@ -48,6 +48,7 @@ const unusedTags = [
             || $(tag).hasClass('layui-anim')
             || $(tag).hasClass('layui-layer-page')
             || $(tag).hasClass('layui-layer-rim')
+            || $(tag).hasClass('ui-helper-hidden-accessible')
     }
 ];
 
