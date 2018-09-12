@@ -8,7 +8,9 @@ import {
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
-import { initIframeDrop, initComponentDrag, initIframeFormDrop } from '../util/drag-n-drop-util';
+import {
+	initIframeDrop, initComponentDrag, initIframeFormDrop
+} from '../util/drag-n-drop-util';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
