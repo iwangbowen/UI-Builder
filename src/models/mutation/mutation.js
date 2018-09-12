@@ -17,7 +17,6 @@ export default class Mutation {
     }
 
     addNode(parent, nextSibling, node) {
-        console.log(parent);
         if (nextSibling) {
             nextSibling.parentNode.insertBefore(node, nextSibling);
         } else {

@@ -44,7 +44,7 @@ function initTopPanelDrag() {
 }
 
 function drop(event, { helper, offset }) {
-    const component = Vvveb.Components.matchNode(helper);
+    const component = Vvveb.Components.matchNode(helper.get(0));
     let appendedElement;
     if (component.onDrop) {
         appendedElement = component.onDrop(helper);
