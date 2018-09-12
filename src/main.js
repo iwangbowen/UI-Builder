@@ -13,7 +13,6 @@ import {
     getHash, getPage, loadCallback, generateHtmlFromLocalStorageItemKey,
     getSelectedElements, getElementWithDraggable, initPanelToggle
 } from './util/dom';
-import './drag-n-drop';
 import { initTopPanelDrag } from './util/drag-n-drop-util';
 
 $(document).ready(function () {

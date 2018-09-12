@@ -8,7 +8,7 @@ import {
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
-import { initDragAndDrop } from '../util/drag-n-drop-util';
+import { initIframeDrop, initComponentDrag, initIframeFormDrop } from '../util/drag-n-drop-util';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -35,7 +35,7 @@ Vvveb.Builder = {
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
-		for (group in Vvveb.ComponentsGroup) {
+		for (const group in Vvveb.ComponentsGroup) {
 			componentsList.append(`
 			<li class="header" data-section="${group}" data-search="">
 				<label class="header" for="comphead_${group}">${group}
@@ -44,22 +44,24 @@ Vvveb.Builder = {
 				<input class="header_check" type="checkbox" checked="true" id="comphead_${group}">
 				<ol></ol>
 			</li>`);
-			const componentsSubList = componentsList.find('li[data-section="' + group + '"]  ol');
+			const componentsSubList = componentsList.find(`li[data-section="${group}"] ol`);
 			const components = Vvveb.ComponentsGroup[group];
-			for (i in components) {
+			for (const i in components) {
 				const componentType = components[i];
 				const component = Vvveb.Components.get(componentType);
 				if (component) {
-					const item = $('<li data-section="' + group + '" data-type="' + componentType + '" data-search="' + component.name.toLowerCase() + '"><a href="#">' + component.name + "</a></li>");
+					const item = $(`
+					<li data-section="${group}" data-type="${componentType}" data-search="${component.name.toLowerCase()}">
+						<a href="#">${component.name}</a>
+					</li>`);
 					if (component.image) {
 						item.css({
-							backgroundImage: "url(" + 'libs/builder/' + component.image + ")",
+							backgroundImage: `url(libs/builder/${component.image})`,
 							backgroundRepeat: "no-repeat"
 						})
 					}
 					componentsSubList.append(item);
-
-					initDragAndDrop(item, Vvveb.Components.get($(item).data("type")));
+					initComponentDrag(item, Vvveb.Components.get($(item).data("type")));
 				}
 			}
 		}
@@ -86,14 +88,14 @@ Vvveb.Builder = {
 			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			_this.initCallback && _this.initCallback();
-			return _this._frameLoaded();
+			_this.frameDoc = $(window.FrameDocument);
+			_this.frameHtml = $(window.FrameDocument).find("html");
+			_this.frameBody = $(window.FrameDocument).find('body');
+
+			initIframeDrop();
+			initIframeFormDrop();
+			return _this._initHightlight();
 		});
-	},
-	_frameLoaded() {
-		this.frameDoc = $(window.FrameDocument);
-		this.frameHtml = $(window.FrameDocument).find("html");
-		this.frameBody = $(window.FrameDocument).find('body');
-		this._initHightlight();
 	},
 	_getElementType(el) {
 		//search for component attribute
@@ -158,9 +160,6 @@ Vvveb.Builder = {
 					}
 				}
 			}
-		});
-
-		this.frameBody.on("mouseup touchend", function (event) {
 		});
 
 		this.frameBody.on("dblclick", function (event) {

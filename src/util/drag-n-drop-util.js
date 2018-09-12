@@ -1,3 +1,6 @@
+import Vvveb from '../gui/components';
+import ChildListMutation from '../models/mutation/child-list-mutation';
+
 function getCursorAt($element) {
     const display = $element.css('display');
     if (display == 'inline-block') {
@@ -13,7 +16,7 @@ function getCursorAt($element) {
     }
 }
 
-function initDragAndDrop(item, component) {
+function initComponentDrag(item, component) {
     const html = component.dragHtml || component.html;
     const cursorAt = getCursorAt($(html));
     $(item).draggable({
@@ -23,7 +26,12 @@ function initDragAndDrop(item, component) {
             $element.css({ 'z-index': 999 });
             return $element;
         },
-        cursorAt
+        cursorAt,
+        drag() {
+        },
+        stop() {
+        },
+        revert: 'invalid'
     });
 }
 
@@ -35,7 +43,33 @@ function initTopPanelDrag() {
     });
 }
 
+function drop(event, { helper }) {
+    const appendedElement = $(this).append(helper.prop("outerHTML")).children('*:last');
+    Vvveb.Undo.addMutation(new ChildListMutation({
+        target: appendedElement.get(0).parentNode,
+        addedNodes: [...appendedElement],
+        nextSibing: appendedElement[0].nextSibing
+    }));
+}
+
+function initIframeDrop() {
+    Vvveb.Builder.frameBody.droppable({
+        drop
+    });
+}
+
+function initIframeFormDrop() {
+    Vvveb.Builder.frameBody
+        .find('.allButton.dropzone')
+        .droppable({
+            greedy: true,
+            drop
+        });
+}
+
 export {
     initTopPanelDrag,
-    initDragAndDrop
+    initComponentDrag,
+    initIframeDrop,
+    initIframeFormDrop
 };

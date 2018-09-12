@@ -7,16 +7,10 @@ $(document).ready(() => {
 
     document.querySelector('iframe').onload = function (event) {
         window.interact = frames[0].interact;
-        // setInteractables();
+        setInteractables();
     };
 
     function setInteractables() {
-        $('#top-panel').draggable({
-            iframeFix: true,
-            axis: 'x',
-            cursor: 'e-resize'
-        });
-        
         interact('#components-list li ol li', { context: document })
             .draggable({
                 // enable inertial throwing
