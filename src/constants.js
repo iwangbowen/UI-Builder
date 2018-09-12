@@ -69,6 +69,8 @@ const appendableScript = 'appendableScript';
 const reservedScript = 'reservedScript';
 const nonTemplateScriptType = 'text/non-template';
 const javascriptScriptType = 'text/javascript';
+const dataScriptType = 'data-script-type';
+const tooltipScriptType = 'tooltip';
 
 const multiSelectedClass = 'selected-with-ctrl-key';
 
@@ -80,5 +82,6 @@ const pages = [
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     pages, beautify_options, unusedTags, removeableScript, tableScript, reservedScript,
-    multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType
+    multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
+    dataScriptType, tooltipScriptType
 };

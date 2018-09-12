@@ -14,7 +14,7 @@ import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import { themeOptions } from '../components/@oee/table';
 import uglify from 'uglifyjs-browser';
 import _ from 'lodash';
-import { unusedTags, removeableScript, tableScript, appendableScript, reservedScript } from '../constants';
+import { unusedTags, removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
@@ -103,7 +103,11 @@ function generateMultivalueSelectScript(el) {
 }
 
 function generateTooltipScript(el) {
-    return appendScript(el, tooltipTemplate(), reservedScript);
+    if ($(el).find(`[${dataScriptType}=${tooltipScriptType}]`).length) {
+        return el;
+    } else {
+        return appendScript(el, tooltipTemplate(), reservedScript, tooltipScriptType);
+    }
 }
 
 function concatContent(prev, cur) {
@@ -115,8 +119,9 @@ function concatContent(prev, cur) {
     );
 }
 
-function appendScript(el, jsStr, scriptClass = removeableScript) {
-    jsStr && $(`<script class="${scriptClass}"></script>`).text(jsStr).appendTo($(el).find('body'));
+function appendScript(el, jsStr, scriptClass = removeableScript, type) {
+    jsStr && $(`<script class="${scriptClass}"${type ? ` ${dataScriptType}="${type}"` : ''}></script>`)
+        .text(jsStr).appendTo($(el).find('body'));
     return el;
 }
 
