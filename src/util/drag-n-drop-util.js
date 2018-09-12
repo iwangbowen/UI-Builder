@@ -43,8 +43,16 @@ function initTopPanelDrag() {
     });
 }
 
-function drop(event, { helper }) {
-    const appendedElement = $(this).append(helper.prop("outerHTML")).children('*:last');
+function drop(event, { helper, offset }) {
+    const component = Vvveb.Components.matchNode(helper);
+    let appendedElement;
+    if (component.onDrop) {
+        appendedElement = component.onDrop(helper);
+    } else {
+        appendedElement = $(this).append(helper.prop("outerHTML"))
+            .children('*:last')
+            .offset(offset);
+    }
     Vvveb.Undo.addMutation(new ChildListMutation({
         target: appendedElement.get(0).parentNode,
         addedNodes: [...appendedElement],
