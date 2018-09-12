@@ -107,7 +107,6 @@ function initComponentDragWithInteract() {
             onstart(event) {
                 const component = Vvveb.Components.get($(event.target).data("type"));
                 const html = component.dragHtml || component.html;
-
                 $element = $(html).appendTo($('body'));
                 const display = $element.css('display');
                 if (display == 'inline-block') {
@@ -130,7 +129,6 @@ function initComponentDragWithInteract() {
             onmove: event => {
                 const x = (parseFloat($element.attr('data-x')) || 0) + event.dx,
                     y = (parseFloat($element.attr('data-y')) || 0) + event.dy;
-
                 $element
                     .css({
                         transform: `translate(${x}px, ${y}px)`
