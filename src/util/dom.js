@@ -5,7 +5,10 @@ import {
     addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
     removeNameBrackets, htmlGenerator, changeScriptType, generateTooltipScript
 } from './jsoup';
-import { beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType } from '../constants';
+import {
+    beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
+    importedPageName, importedPageTitle, importedPageHref, pages
+} from '../constants';
 import _ from 'lodash';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
@@ -41,6 +44,25 @@ function initPanelToggle() {
             $('#right-panel').toggle();
         }
     });
+}
+
+function initBuilderPage() {
+    const hash = getHash();
+    if (hash == importedPageName && localStorage.getItem(importedPageName)) {
+        pages.unshift(getPage(importedPageName, importedPageTitle, importedPageHref));
+    }
+    Vvveb.FileManager.addPages(pages);
+    const page = Vvveb.FileManager.getPage(hash);
+    if (page) {
+        localStorage.getItem(page.name)
+            && (page.srcdoc = generateHtmlFromLocalStorageItemKey(page.url, page.name));
+        Vvveb.Builder.init(page.url, page.srcdoc, loadCallback);
+        Vvveb.FileManager.showActive(page.name);
+    } else {
+        window.location.href = `#${pages[0].name}`;
+        Vvveb.Builder.init(pages[0].url, pages[0].srcdoc, loadCallback);
+        Vvveb.FileManager.showActive(pages[0].name);
+    }
 }
 
 function setIframeHeight(iframe) {
@@ -432,11 +454,17 @@ function isOverlap(fstElement, sndElement) {
         fstRect.top > sndRect.bottom)
 }
 
+function setGlobalVariables() {
+    window.getSelectedElements = getSelectedElements;
+    window.getElementWithDraggable = getElementWithDraggable;
+    window.Vvveb = Vvveb;
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithDraggable, isOverlap, generateHtmlFromLocalStorageItemKey,
-    initPanelToggle
+    initPanelToggle, initBuilderPage, setGlobalVariables
 };
