@@ -34,16 +34,16 @@ Vvveb.FileManager = {
 		}
 	},
 	addComponent(name, url, title, page) {
-		$("[data-page='" + page + "'] > ol", this.tree).append(
+		$(`[data-page='${page}'] > ol`, this.tree).append(
 			tmpl("filemanagercomponent", { name, url, title }));
 	},
 	showActive(name) {
 		$("[data-page]", this.tree).removeClass("active");
-		$("[data-page='" + name + "']", this.tree).addClass("active");
+		$(`[data-page='${name}']`, this.tree).addClass("active");
 	},
 	loadPage(name) {
 		$("[data-page]", this.tree).removeClass("active");
-		$("[data-page='" + name + "']", this.tree).addClass("active");
+		$(`[data-page='${name}']`, this.tree).addClass("active");
 		Vvveb.Builder.loadUrl(this.pages[name]['url']);
 	},
 }

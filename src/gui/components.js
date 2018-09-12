@@ -179,60 +179,60 @@ Vvveb.Components = {
 		}
 		const nodeElement = Vvveb.Builder.selectedEl;
 		component.properties.forEach(property => {
-				if (property.beforeInit) {
-					property.beforeInit(element.get(0));
-				}
-				let element = nodeElement;
-				if (property.child) {
-					element = element.find(property.child);
-				}
-				if (property.data) {
-					property.data["key"] = property.key;
+			if (property.beforeInit) {
+				property.beforeInit(element.get(0));
+			}
+			let element = nodeElement;
+			if (property.child) {
+				element = element.find(property.child);
+			}
+			if (property.data) {
+				property.data["key"] = property.key;
+			} else {
+				property.data = { "key": property.key };
+			}
+			if (typeof property.group === 'undefined') {
+				property.group = null;
+			}
+			property.input = property.inputtype.init(property.data);
+			if (property.init) {
+				property.inputtype.setValue(property.init(element.get(0)));
+			} else if (property.htmlAttr) {
+				let value;
+				if (property.htmlAttr == 'text') {
+					value = element.text();
+				} else if (property.htmlAttr == "style") {
+					//value = element.css(property.key);//jquery css returns computed style
+					value = getStyle(element.get(0), property.key);//getStyle returns declared style
 				} else {
-					property.data = { "key": property.key };
+					value = element.attr(property.htmlAttr);
 				}
-				if (typeof property.group === 'undefined') {
-					property.group = null;
+				//if attribute is class check if one of valid values is included as class to set the select
+				if (value && property.htmlAttr == "class" && property.validValues) {
+					value = value.split(" ").filter(function (el) {
+						return property.validValues.indexOf(el) != -1
+					});
 				}
-				property.input = property.inputtype.init(property.data);
-				if (property.init) {
-					property.inputtype.setValue(property.init(element.get(0)));
-				} else if (property.htmlAttr) {
-					let value;
-					if (property.htmlAttr == 'text') {
-						value = element.text();
-					} else if (property.htmlAttr == "style") {
-						//value = element.css(property.key);//jquery css returns computed style
-						value = getStyle(element.get(0), property.key);//getStyle returns declared style
-					} else {
-						value = element.attr(property.htmlAttr);
-					}
-					//if attribute is class check if one of valid values is included as class to set the select
-					if (value && property.htmlAttr == "class" && property.validValues) {
-						value = value.split(" ").filter(function (el) {
-							return property.validValues.indexOf(el) != -1
-						});
-					}
-					if (property.noValueAttr) {
-						value = element.attr(property.htmlAttr) ? property.validValues : [];
-					}
-					property.inputtype.setValue(value);
+				if (property.noValueAttr) {
+					value = element.attr(property.htmlAttr) ? property.validValues : [];
 				}
-				addPropertyChangeListener(component, property);
-				if (property.inputtype instanceof SectionInput) {
-					section = rightPanel.find('.section[data-section="' + property.key + '"]');
-					if (Vvveb.preservePropertySections && section.length) {
-						section.html("");
-					} else {
-						rightPanel.append(property.input);
-						section = rightPanel.find('.section[data-section="' + property.key + '"]');
-					}
+				property.inputtype.setValue(value);
+			}
+			addPropertyChangeListener(component, property);
+			if (property.inputtype instanceof SectionInput) {
+				section = rightPanel.find(`.section[data-section="${property.key}"]`);
+				if (Vvveb.preservePropertySections && section.length) {
+					section.html("");
 				} else {
-					const row = $(tmpl('property', property));
-					row.find('.input').append(property.input);
-					property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
-					section.append(row);
+					rightPanel.append(property.input);
+					section = rightPanel.find(`.section[data-section="${property.key}"]`);
 				}
+			} else {
+				const row = $(tmpl('property', property));
+				row.find('.input').append(property.input);
+				property.inputtype.afterAppend && property.inputtype.afterAppend(property.input, element);
+				section.append(row);
+			}
 		});
 		if (component.init) {
 			component.init(Vvveb.Builder.selectedEl.get(0));
