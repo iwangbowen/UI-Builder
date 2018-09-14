@@ -213,6 +213,22 @@ function initDropzone() {
         });
 }
 
+function resizeMove(event) {
+    let target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+    // update the element's style
+    target.style.width = event.rect.width + 'px';
+    target.style.height = event.rect.height + 'px';
+    // translate when resizing from top or left edges
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + x + 'px,' + y + 'px)';
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
 function initResizeDrag() {
     interact('.resize-drag')
         .resizable({
@@ -229,21 +245,26 @@ function initResizeDrag() {
             },
             inertia: true,
         })
-        .on('resizemove', function (event) {
-            var target = event.target,
-                x = (parseFloat(target.getAttribute('data-x')) || 0),
-                y = (parseFloat(target.getAttribute('data-y')) || 0);
-            // update the element's style
-            target.style.width = event.rect.width + 'px';
-            target.style.height = event.rect.height + 'px';
-            // translate when resizing from top or left edges
-            x += event.deltaRect.left;
-            y += event.deltaRect.top;
-            target.style.webkitTransform = target.style.transform =
-                'translate(' + x + 'px,' + y + 'px)';
-            target.setAttribute('data-x', x);
-            target.setAttribute('data-y', y);
-        });
+        .on('resizemove', resizeMove);
+}
+
+function initResizeVetically() {
+    interact('.resize-vertically')
+        .resizable({
+            // resize from all edges and corners
+            edges: { bottom: true, top: true },
+            // keep the edges inside the parent
+            restrictEdges: {
+                outer: 'parent',
+                endOnly: true,
+            },
+            // minimum size
+            restrictSize: {
+                min: { height: 30 },
+            },
+            inertia: true,
+        })
+        .on('resizemove', resizeMove);
 }
 
 function initDraggable() {
@@ -296,5 +317,5 @@ function initDraggable() {
 
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
-    getAttributes, initDropzone, initResizeDrag, initDraggable
+    getAttributes, initDropzone, initResizeDrag, initDraggable, initResizeVetically
 };
