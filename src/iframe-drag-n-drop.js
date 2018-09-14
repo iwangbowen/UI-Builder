@@ -1,5 +1,5 @@
 import {
-    arrowKeyMove, initDropzone, initResizeDrag, initDraggable
+    arrowKeyMove, initDropzone, initResizeDrag, initDraggable, initResizeVetically
 } from './util/iframe-drag-n-drop-util';
 import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
 
@@ -20,5 +20,6 @@ $(document).ready(() => {
 
     initDropzone();
     initResizeDrag();
+    initResizeVetically();
     initDraggable();
 });
