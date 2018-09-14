@@ -34,7 +34,7 @@ const autoselectinput = $.extend({}, input, {
                 key: "option" + i,
                 //index: i - 1,
                 optionNode: this,
-                inputtype: TextValueInput,
+                inputtype: new TextValueInput(),
                 data: data,
                 onChange: function (node, value, input) {
 
