@@ -2032,7 +2032,7 @@ body {
     height: 100%;
     /* 要通过js控制*/
     width: calc(100% - 275px - 2px - 12px);
-    /* border: 1px solid black;*/
+    border: 1px solid black;
     border-radius: 6px;
     /*  要通过js控制*/
     left: calc(275px + 12px);
