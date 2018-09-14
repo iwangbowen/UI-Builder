@@ -3611,16 +3611,16 @@ div#rMenu ul li {
 
 .userList {
     width: 100% !important;
-    height: 100%;
+    height: calc(100% - 25px);
     float: none !important;
 }
 
 .userList .searchArea {
-    position: absolute;
-    /*width: 100% !important;*/
-    width: 819px !important;
+    /* position: absolute; */
+    width: 100% !important;
+    /* width: 819px !important; */
     height: 45px;
-    /*	border: 1px solid red;*/
+    border-top: 1px solid black;
     bottom: 0px;
     z-index: 888;
 }
