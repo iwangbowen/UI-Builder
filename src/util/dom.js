@@ -16,7 +16,7 @@ import {
     nonTemplateScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
-import { draggableComponent } from '../components/common';
+import { draggableComponent, configurableComponent } from '../components/common';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -81,19 +81,19 @@ function launchFullScreen(document) {
             document.exitFullScreen();
         else
             document.documentElement.requestFullScreen();
-        //mozilla		
+        //mozilla
     } else if (document.documentElement.mozRequestFullScreen) {
         if (document.mozFullScreenElement)
             document.mozCancelFullScreen();
         else
             document.documentElement.mozRequestFullScreen();
-        //webkit	  
+        //webkit
     } else if (document.documentElement.webkitRequestFullScreen) {
         if (document.webkitFullscreenElement)
             document.webkitExitFullscreen();
         else
             document.documentElement.webkitRequestFullScreen();
-        //ie	  
+        //ie
     } else if (document.documentElement.msRequestFullscreen) {
         if (document.msFullScreenElement)
             document.msExitFullscreen();
@@ -204,12 +204,13 @@ function loadCallback() {
     setInterval(autoSave, 2000);
 }
 
-function getElementWithDraggable(element) {
+function getElementWithDraggableOrConfigurable(element) {
     return (!element.length
         || element.hasClass('draggable')
         || element.hasClass(draggableComponent))
+        || element.hasClass(configurableComponent)
         ? element
-        : getElementWithDraggable(element.parent());
+        : getElementWithDraggableOrConfigurable(element.parent());
 }
 
 let selectedElements = [];
@@ -219,7 +220,7 @@ function getSelectedElements() {
 }
 
 function addOrRemoveElement(element) {
-    const draggableElement = getElementWithDraggable($(element)).get(0);
+    const draggableElement = getElementWithDraggableOrConfigurable($(element)).get(0);
     if (_.includes(selectedElements, draggableElement)) {
         _.remove(selectedElements, v => v == draggableElement)
     } else {
@@ -456,7 +457,7 @@ function isOverlap(fstElement, sndElement) {
 
 function setGlobalVariables() {
     window.getSelectedElements = getSelectedElements;
-    window.getElementWithDraggable = getElementWithDraggable;
+    window.getElementWithDraggableOrConfigurable = getElementWithDraggableOrConfigurable;
     window.Vvveb = Vvveb;
 }
 
@@ -465,6 +466,6 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggable, isOverlap, generateHtmlFromLocalStorageItemKey,
+    middleAlignCallback, getElementWithDraggableOrConfigurable, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables
 };

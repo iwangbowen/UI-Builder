@@ -15,131 +15,6 @@
 	<link rel="stylesheet" href="../../../../css/drag-n-drop.css">
 	<link rel="stylesheet" href="../../js/plugins/select2/select2.min.css">
 	<link rel="stylesheet" href="../../js/plugins/jquery-ui/jquery-ui.min.css">
-	<style type="text/css">
-		div#rMenu {
-			position: absolute;
-			visibility: hidden;
-			top: 0;
-			background-color: #555;
-			text-align: left;
-			padding: 2px;
-		}
-
-		div#rMenu ul li {
-			margin: 1px 0;
-			padding: 0 5px;
-			cursor: pointer;
-			list-style: none outside none;
-			background-color: #DFDFDF;
-		}
-
-		.userList {
-			width: 100% !important;
-			height: 100%;
-			float: none;
-		}
-
-		.userList .searchArea {
-			position: absolute;
-			/*width: 100% !important;*/
-			width: 819px !important;
-			height: 45px;
-			/*	border: 1px solid red;*/
-			bottom: 0px;
-			z-index: 888;
-		}
-
-		.userList .searchArea .btn {
-			position: absolute;
-			right: 22px;
-			margin-right: 0px;
-			top: 7px;
-		}
-
-		.userList .searchArea .iconArea {
-			width: 100% !important;
-			height: 100%;
-			margin-left: 0px;
-		}
-
-		.userList .searchArea .iconArea .owner {
-			margin-top: 6px;
-			height: 28px;
-			margin-left: 20px;
-			float: left;
-		}
-
-		.userList .searchArea .iconArea .owner select {
-			background-color: #fffafa;
-			width: 95px;
-			height: 28px;
-			border: 1px solid #CCCCCC;
-			border-radius: 5px;
-		}
-
-		.userList .searchArea .iconArea button {
-			margin-top: 6px;
-			margin-left: 20px;
-			color: white;
-			height: 28px;
-			width: 55px;
-			text-align: center;
-			/*padding-top: 8px;*/
-			background-color: dodgerblue;
-			font-size: 15px;
-			border-radius: 8px;
-		}
-
-		.userList .searchArea .iconArea .joinGroup {
-			width: 85px !important;
-		}
-
-		.userList .searchArea .iconArea .fa,
-		.setContentStyle .userList .searchArea .iconArea .glyphicon {
-			margin-top: 12px;
-			float: right;
-			margin-right: 30px;
-			color: #6D22DD;
-			cursor: pointer;
-			font-size: 17px;
-		}
-
-		.userList .searchArea .iconArea .fa:hover {
-			/*   background-color: #FFFFFF;*/
-			transform: scale(1.2);
-		}
-
-		.userList .searchArea .iconArea .glyphicon:hover {
-			transform: scale(1.2);
-		}
-
-		.userTree {
-			border: 1px solid black;
-			width: 220px !important;
-			border-top: none;
-			border-left: none;
-			border-right: none;
-			border-bottom: none;
-			float: left;
-			height: 100% !important;
-		}
-
-		.ztree {
-			border-top-left-radius: 5px;
-			border-bottom-left-radius: 5px;
-			height: 100% !important;
-			margin-top: 0 !important;
-		}
-
-		.boxarea {
-			width: 100% !important;
-			float: left;
-			border: 1px solid #617775;
-			border-left: none !important;
-			border-bottom-left-radius: 0px !important;
-			border-top-left-radius: 0px !important;
-		}
-	</style>
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -194,7 +69,7 @@
 						</div>
 						<div style="clear:both;"></div>
 						<div class="bottom-searchButton">
-							<button id="dataSearch"><span class="glyphicon glyphicon-search"></span> Search</button>
+							<button id="dataSearch" class="configurable-component"><span class="glyphicon glyphicon-search"></span> Search</button>
 						</div>
 					</form>
 				</div>
@@ -219,9 +94,9 @@
 													<div class="iconArea">
 														<div class="owner">
 														</div>
-														<button class="permissionAdd">新增</button>
-														<button id="edit">修改</button>
-														<button class="permissionDelete">删除</button>
+														<button class="permissionAdd configurable-component">新增</button>
+														<button id="edit" class="configurable-component">修改</button>
+														<button class="permissionDelete configurable-component">删除</button>
 													</div>
 												</div>
 											</div>

@@ -4,6 +4,7 @@ import { buttonid } from './ids';
 
 const button = {
     classes: ["btn", "btn-link", 'btn@oee'],
+    nodes: ['button'],
     name: "Button",
     image: "icons/button.svg",
     html: `<button ${dataComponentId}=${buttonid} ${dataButtonId} type="button" class="draggable search-btn">
