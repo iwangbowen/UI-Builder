@@ -23,6 +23,8 @@ const selectBox = '#select-box';
 const userDefinedScriptSelector = 'script:not([class]):not([src])';
 const nonTemplateScriptSelector = `script[type='${nonTemplateScriptType}']`;
 
+const componentSelector = '#components-list li ol li';
+
 function getParentOrSelf(node) {
     const parents = $(node).parents(parentSelector);
     return parents.length ? parents[0] : node;
@@ -33,5 +35,5 @@ export {
     parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
-    nonTemplateScriptSelector
+    nonTemplateScriptSelector, componentSelector
 };

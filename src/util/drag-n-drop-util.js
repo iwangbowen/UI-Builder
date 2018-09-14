@@ -1,6 +1,7 @@
 import Vvveb from '../gui/components';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
+import { componentSelector } from './selectors';
 
 function getCursorAt($element) {
     const display = $element.css('display');
@@ -68,6 +69,7 @@ function drop(event, { draggable, helper, offset }) {
 
 function initIframeDrop() {
     Vvveb.Builder.frameBody.droppable({
+        accept: componentSelector,
         drop
     });
 }
@@ -77,6 +79,7 @@ function initIframeFormDrop() {
         .find('.allButton.dropzone')
         .droppable({
             greedy: true,
+            accept: componentSelector,
             drop
         });
 }
@@ -92,7 +95,7 @@ function initIframeDrag() {
 function initComponentDragWithInteract() {
     let $element;
     window.interact = frames[0].interact;
-    interact('#components-list li ol li', { context: document })
+    interact(componentSelector, { context: document })
         .draggable({
             // enable inertial throwing
             inertia: true,
