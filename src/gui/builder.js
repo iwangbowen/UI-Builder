@@ -136,7 +136,7 @@ Vvveb.Builder = {
 			jQuery(selectBox).hide();
 			return;
 		}
-		if (this.texteditEl && this.selectedEl.get(0) != node) {
+		if (this.texteditEl && this.selectedEl && this.selectedEl.get(0) != node) {
 			Vvveb.WysiwygEditor.destroy(this.texteditEl);
 			jQuery(selectBox).removeClass("text-edit").find("#select-actions").show();
 			this.texteditEl = null;
