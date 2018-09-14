@@ -24,9 +24,8 @@
 }
 
 .dropzone {
-  background-color: #ccc;
-  border: dashed transparent;
-  border-width: 4px 0;
+  border: dashed 2px transparent;
+  border-color: #aaa;
   /* border-radius: 4px; */
   /* margin: 10px auto 10px; */
   /* padding: 10px; */
@@ -35,13 +34,16 @@
 }
 
 .drop-active {
-  border-color: #aaa;
+  border-color:#29e;
 }
 
 .drop-target {
-  background-color: #29e;
-  border-color: #fff;
+  border-color:#29e;
   border-style: solid;
+}
+
+.drop-deactive {
+  border-color: #aaa;
 }
 
 .drag-drop {
