@@ -9,7 +9,7 @@ const customtable = $.extend({}, table, {
     onDrop(node) {
         $(node)
             .css({
-                height: 'calc(100% - 25px)',
+                height: '100%',
                 width: '100%',
                 position: '',
                 left: '',
@@ -17,7 +17,7 @@ const customtable = $.extend({}, table, {
                 transform: ''
             })
             .removeClass('draggable');
-        const appendToElement = Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea');
+        const appendToElement = Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid');
         appendToElement.append($(node).prop('outerHTML'));
         return appendToElement.children('*:last');
     }
