@@ -312,9 +312,9 @@ body {
     /*     overflow-y: scroll; */
 }
 
-.containerleft .form-box .searcharea .siteOutbox .everySite::-webkit-scrollbar {
-    /*  display: none;*/
-}
+/* .containerleft .form-box .searcharea .siteOutbox .everySite::-webkit-scrollbar {
+     display: none;
+} */
 
 .containerleft .bottom-searchButton {
     border-top: 1px solid #8c8c8c;
@@ -888,9 +888,9 @@ button.search-btn {
 
 /*如果是多选单选切换框（彭涛模式）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
-    /*    overflow: hidden;*/
-}
+/* .Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
+       overflow: hidden;
+} */
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
@@ -987,12 +987,12 @@ button.search-btn {
     height: 100%;
 }
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox .select-outbox .dropdown-menu {
-    /* width:100% !important;
-	min-width:100% !important; */
-    /* max-height:100% !important;
-	overflow:hidden !important; */
-}
+/* .Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox .select-outbox .dropdown-menu {
+    width:100% !important;
+	min-width:100% !important;
+    max-height:100% !important;
+	overflow:hidden !important;
+} */
 
 .Button-template .allButton .allButton-button .everyOutbox-right .btn-group .weeklyBox .select-outbox button {
     height: 100% !important;
@@ -1116,10 +1116,10 @@ button.search-btn {
     border-bottom-style: dotted;
 }
 
-.excelTittle .numList:focus {
-    /* box-sizing: border-box;
-    border: 1px solid black;  */
-}
+/* .excelTittle .numList:focus {
+    box-sizing: border-box;
+    border: 1px solid black;
+} */
 
 /*   分类样式*/
 
@@ -1941,9 +1941,9 @@ body {
     /*     overflow-y: scroll; */
 }
 
-.containerleft .form-box .searcharea .siteOutbox .everySite::-webkit-scrollbar {
-    /*  display: none;*/
-}
+/* .containerleft .form-box .searcharea .siteOutbox .everySite::-webkit-scrollbar {
+     display: none;
+} */
 
 .containerleft .bottom-searchButton {
     border-top: 1px solid #8c8c8c;
@@ -2481,9 +2481,9 @@ body {
 
 /*如果是多选单选切换框（彭涛模式）的话，样式如下*/
 
-.Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
-    /*    overflow: hidden;*/
-}
+/* .Button-template .allButton .allButton-button .everyOutbox-right .btn-group {
+       overflow: hidden;
+} */
 
 /*如果日器控件（包括日周月）的话，样式如下*/
 
@@ -2797,7 +2797,7 @@ ul.dropdown ul {
     font-size: 11px;
 }
 
-ul.dropdown ul li {}
+/* ul.dropdown ul li {} */
 
 ul.dropdown *.dir {
     padding-right: 25px;
@@ -3085,7 +3085,7 @@ ul.dropdown ul {
     font-size: 11px;
 }
 
-ul.dropdown ul li {}
+/* ul.dropdown ul li {} */
 
 ul.dropdown *.dir {
     padding-right: 25px;
