@@ -278,7 +278,7 @@ body {
 }
 
 .containerleft .form-box {
-    border-top: 1px solid black;
+    /* border-top: 1px solid black; */
     margin-top: 8px;
     width: 100%;
     height: calc(100% - 81px);
@@ -1906,7 +1906,7 @@ body {
 }
 
 .containerleft .form-box {
-    border-top: 1px solid black;
+    /* border-top: 1px solid black; */
     margin-top: 8px;
     width: 100%;
     height: calc(100% - 81px);
@@ -3733,4 +3733,9 @@ div#rMenu ul li {
     border-left: none !important;
     border-bottom-left-radius: 0px !important;
     border-top-left-radius: 0px !important;
+}
+
+.containerleft form hr {
+    margin-top: 40px;
+    border-top-color: #000;
 }
