@@ -9,7 +9,7 @@ import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selecto
 import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
-	initIframeDrop, initComponentDrag, initIframeFormDrop
+	initIframeDrop, initComponentDrag, initIframeFormAndPopupDrop
 } from '../util/drag-n-drop-util';
 
 Vvveb.defaultComponent = "_base";
@@ -95,7 +95,7 @@ Vvveb.Builder = {
 			_this.frameBody = $(window.FrameDocument).find('body');
 
 			initIframeDrop();
-			initIframeFormDrop();
+			initIframeFormAndPopupDrop();
 			return _this._initHightlight();
 		});
 	},

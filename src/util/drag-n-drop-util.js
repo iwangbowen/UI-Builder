@@ -54,8 +54,17 @@ function drop(event, { draggable, helper, offset }) {
         let appendedElement;
         if (component.onDrop) {
             appendedElement = component.onDrop(helper);
+        } else if (component.sortable) {
+            appendedElement = $(this).find('.saveArea')
+                .before(helper.prop('outerHTML'))
+                .prev()
+                .css({
+                    position: '',
+                    left: '',
+                    top: ''
+                });
         } else {
-            appendedElement = $(this).append(helper.prop("outerHTML"))
+            appendedElement = $(this).append(helper.prop('outerHTML'))
                 .children('*:last')
                 .offset(offset);
         }
@@ -74,9 +83,9 @@ function initIframeDrop() {
     });
 }
 
-function initIframeFormDrop() {
+function initIframeFormAndPopupDrop() {
     Vvveb.Builder.frameBody
-        .find('.allButton.dropzone')
+        .find('.allButton.dropzone, div.popup-form form')
         .droppable({
             greedy: true,
             accept: componentSelector,
@@ -186,7 +195,7 @@ export {
     initTopPanelDrag,
     initComponentDrag,
     initIframeDrop,
-    initIframeFormDrop,
+    initIframeFormAndPopupDrop,
     initIframeDrag,
     initComponentDragWithInteract
 };

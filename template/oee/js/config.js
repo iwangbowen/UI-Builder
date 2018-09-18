@@ -1,5 +1,5 @@
 var config = {
-	fundodooApiDomainUrl : 'http://127.0.0.1:7080/api/',
+	fundodooApiDomainUrl : 'http://localhost:8080/api/',
 	fundodooWebDomainUrl : 'http://127.0.0.1:7080/web/',
 	login : 'http://127.0.0.1:7080/api/UserLogin',
 	whiteList : {

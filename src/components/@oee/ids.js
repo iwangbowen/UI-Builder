@@ -13,9 +13,10 @@ const checkboxid = 'html/checkbox@oee';
 const spanid = 'html/span@oee';
 const labeldivid = 'html/labeldiv@oee';
 const fileinputid = 'html/fileinput@oee'
+const popuptextinputid = 'html/popuptextinput@oee';
 
 export {
     manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid,
     multivalueselectid, textareaid, textinputid, calendarid, radiobuttonid,
-    checkboxid, spanid, labeldivid, fileinputid
+    checkboxid, spanid, labeldivid, fileinputid, popuptextinputid
 };
