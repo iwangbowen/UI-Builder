@@ -101,11 +101,4 @@ function editData() {
     });
 }
 
-function deleteData() {
-}
-
-function exportData() {
-
-}
-
-export { addData, editData, deleteData, exportData, getAddContent, getEditContent };
+export { addData, editData, getAddContent, getEditContent };

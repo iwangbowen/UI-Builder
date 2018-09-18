@@ -1,7 +1,8 @@
 import {
     arrowKeyMove, initDropzone, initResizeDrag, initDraggable, initResizeVetically
 } from './util/iframe-drag-n-drop-util';
-import { addData, editData, deleteData, getAddContent, getEditContent } from './layer';
+import { addData, editData, getAddContent, getEditContent } from './layer';
+import { add, edit, batchDelete } from './util/popup';
 
 /**
  * TODO:
@@ -14,9 +15,11 @@ $(document).ready(() => {
     self.arrowKeyMove = arrowKeyMove;
     self.addData = addData;
     self.editData = editData;
-    self.deleteData = deleteData;
     self.getAddContent = getAddContent;
     self.getEditContent = getEditContent;
+    self.add = add;
+    self.edit = edit;
+    self.batchDelete = batchDelete;
 
     initDropzone();
     initResizeDrag();

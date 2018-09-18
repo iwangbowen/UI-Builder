@@ -6,6 +6,7 @@ import tableTemplate from '../script-templates/table';
 import autoselectinputTemplate from '../script-templates/autoselectinput';
 import { template as submitFormTemplate, functionName } from '../script-templates/submitform';
 import layerTemplate from '../script-templates/layer';
+import popupTemplate from '../script-templates/popup';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
 import tooltipTemplate from '../script-templates/tooltip';
@@ -94,6 +95,10 @@ function generateButtonOnclickScript(el) {
 
 function generateLayerScript(el) {
     return appendScript(el, layerTemplate());
+}
+
+function generatePopupScript(el) {
+    return appendScript(el, popupTemplate());
 }
 
 function generateMultivalueSelectScript(el) {
@@ -220,6 +225,6 @@ export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
-    generateLayerScript, generateMultivalueSelectScript, generateTooltipScript,
+    generateLayerScript, generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType
 };
