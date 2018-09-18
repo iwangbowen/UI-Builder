@@ -11,7 +11,6 @@ import functionTemplate from '../script-templates/function';
 import tooltipTemplate from '../script-templates/tooltip';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
-import { themeOptions } from '../components/@oee/table';
 import _ from 'lodash';
 import { unusedTags, removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
@@ -187,12 +186,6 @@ function changeScriptType(el, selector, type) {
 
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
-    const hrefs = [...$(el).find('link[rel=stylesheet]')]
-        .map(el => $(el).attr('href'));
-    // Theme css files have been included in script file
-    // themeOptions.forEach(({ value }) => {
-    //     _.find(hrefs, href => _.includes(href, value)) || $(el).find('head').append(`<link rel="stylesheet" href="../../js/plugins/ag-grid/${value}.css">`);
-    // });
     $(el).find('body').append('<script src="/js/interact-1.3.4.js"></script>');
     $(el).find('body').append('<script src="/dist/iframe-drag-n-drop.js"></script>');
     return el;
