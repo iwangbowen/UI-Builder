@@ -1,5 +1,6 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
+import { add, edit, batchDelete } from '../util/popup';
 
 function isAlign(targetOffset, currentOffset) {
     return {
@@ -315,7 +316,15 @@ function initDraggable() {
         });
 }
 
+function setGlobalVariables() {
+    self.interact = interact;
+    self.arrowKeyMove = arrowKeyMove;
+    self.add = add;
+    self.edit = edit;
+    self.batchDelete = batchDelete;
+}
+
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
-    getAttributes, initDropzone, initResizeDrag, initDraggable, initResizeVetically
+    getAttributes, initDropzone, initResizeDrag, initDraggable, initResizeVetically, setGlobalVariables
 };
