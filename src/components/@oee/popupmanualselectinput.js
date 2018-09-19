@@ -6,7 +6,7 @@ const popupmanualselectinput = $.extend({}, manualselectinput, {
     name: "Popup Manual Select",
     sortable: true,
     html: `<div class="everyInput ${sortableClass}" ${dataComponentId}="${popupmanualselectinputid}">
-			<div class="inputText">Options</div>
+            <span class="inputText">Options</span>
 			<select class="addInput" type="text" name="active" ${dataComponentId}="${popupmanualselectinputid}">
                 <option value="value1">Text 1</option>
                 <option value="value2">Text 2</option>
