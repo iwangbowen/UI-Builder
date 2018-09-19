@@ -85,7 +85,7 @@ function initIframeDrop() {
 
 function initIframeFormAndPopupDrop() {
     Vvveb.Builder.frameBody
-        .find('.allButton.dropzone, div.popup-form form')
+        .find('.allButton.dropzone, div.popup-window form.popup-form')
         .droppable({
             greedy: true,
             accept: componentSelector,
@@ -98,6 +98,14 @@ function initIframeDrag() {
         .find('.draggable')
         .draggable({
             containment: 'document'
+        });
+}
+
+function initIframePopupSortable() {
+    Vvveb.Builder.frameBody
+        .find('form.popup-form')
+        .sortable({
+            cursor: 'move'
         });
 }
 
@@ -197,5 +205,6 @@ export {
     initIframeDrop,
     initIframeFormAndPopupDrop,
     initIframeDrag,
-    initComponentDragWithInteract
+    initComponentDragWithInteract,
+    initIframePopupSortable
 };

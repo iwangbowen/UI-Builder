@@ -3377,7 +3377,7 @@ div .formright {
     padding-bottom: 0px;
 }
 
-限制多选Selected 宽度 .selectpicker_max_width {
+.selectpicker_max_width {
     width: 160px !important;
     overflow: hidden;
 }
@@ -3386,7 +3386,7 @@ select multiple .select_multiple {
     height: 50px;
 }
 
-***************************** .eleSize {
+.eleSize {
     width: 7rem !important;
     font-size: 0.5em !important;
     margin: 0.1rem 0.1rem !important;
@@ -3414,7 +3414,7 @@ select multiple .select_multiple {
     width: 4rem !important;
 }
 
-列表头样式 .oeeTable_header_default {
+.oeeTable_header_default {
     color: #fff;
     background-color: #aaa !important;
 }
@@ -3558,7 +3558,7 @@ div .formright {
     width: 100%;
 }
 
-菜单栏优化 ：1、自动展开菜单，2、鼠标手势 .dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu {
     display: block;
 }
 
@@ -3583,15 +3583,6 @@ div .formright {
     transition: all 0.3s;
 }
 
-/* common_base  end  */
-
-/* 以上是一些基本css样式的整合,包括
-common.css/
-common_base.cs/
-popus.css/
-menu_default.css/
-default.css/
-menu_dropdown.css */
 div#rMenu {
     position: absolute;
     visibility: hidden;
@@ -3740,25 +3731,29 @@ div#rMenu ul li {
     border-top-color: #000;
 }
 
-.popup-form {
+input, select {
+    border: 2px inset;
+}
+
+.popup-window {
     width: 100%;
     height: 100%;
 }
 
-.popup-form form {
+.popup-window form {
     position: relative;
     width: 100%;
     height: 100% !important;
 }
 
-.popup-form form .everyInput {
+.popup-window form .everyInput {
     height: 32px;
     width: 48%;
     float: left;
     margin-top: 25px;
 }
 
-.popup-form form .everyInput .inputText {
+.popup-window form .everyInput .inputText {
     height: 32px;
     line-height: 32px;
     width: 90px;
@@ -3766,7 +3761,7 @@ div#rMenu ul li {
     padding-left: 10px;
 }
 
-.popup-form form .everyInput input {
+.popup-window form .everyInput input {
     height: 100%;
     width: calc(100% - 105px);
     float: left;
@@ -3775,8 +3770,8 @@ div#rMenu ul li {
     line-height: 100%;
 }
 
-.popup-form form .everyInput input,
-.popup-form form .everyInput select {
+.popup-window form .everyInput input,
+.popup-window form .everyInput select {
     height: 100%;
     width: calc(100% - 105px);
     float: left;
@@ -3786,7 +3781,7 @@ div#rMenu ul li {
     line-height: 100%;
 }
 
-.popup-form form .saveArea {
+.popup-window form .saveArea {
     width: 100%;
     position: absolute;
     bottom: 10px;
@@ -3794,7 +3789,7 @@ div#rMenu ul li {
     line-height: 28px;
 }
 
-.popup-form form .saveArea .permissionEditSave {
+.popup-window form .saveArea .permissionEditSave {
     width: 70px;
     float: right;
     margin-right: 20px;
