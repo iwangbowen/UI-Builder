@@ -14,7 +14,7 @@ function add() {
 }
 
 function edit() {
-    function popupEdit() {
+    var popupEdit = function () {
         layer.open({
             type: 1,
             title: '修改',
@@ -25,7 +25,15 @@ function edit() {
                 $('div.popup-window#edit form').trigger('reset');
             }
         });
-    }
+    };
+    var setFormValues = function (selectedRow) {
+        $('div.popup-window#edit form')
+            .find('input:not([type=submit]), select')
+            .each(function () {
+                var field = $(this).attr('data-row-field') || $(this).attr('name');
+                $(this).val(selectedRow[field]);
+            })
+    };
     if (isInBuilder) {
         popupEdit();
     } else {
@@ -36,6 +44,7 @@ function edit() {
             } else if (selectedRows.length > 1) {
                 layer.msg('只允许同时修改一条数据', { icon: 5 });
             } else {
+                setFormValues(selectedRows[0]);
                 popupEdit();
             }
         } else {
@@ -45,13 +54,13 @@ function edit() {
 }
 
 function batchDelete() {
-    function popupDelete() {
+    var popupDelete = function () {
         layer.confirm('您确定需要删除吗？', {
             btn: ['确定', '取消']
         }, function () {
         }, function () {
         });
-    }
+    };
     if (isInBuilder) {
         popupDelete();
     } else {

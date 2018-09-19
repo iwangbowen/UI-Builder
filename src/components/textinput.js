@@ -1,6 +1,7 @@
 import { TextInput, SelectInput, NumberInput, ToggleInput } from '../inputs/inputs';
 import { property as tooltipProperty } from './tooltip';
 import { inputTypes } from './inputTypes';
+import { dataRowFieldProperty } from './properties';
 
 const properties = [{
     name: "Value",
@@ -46,7 +47,7 @@ const properties = [{
         on: 'readonly',
         off: ''
     }
-}, {
+}, dataRowFieldProperty, {
     name: "Required",
     key: "required",
     htmlAttr: 'required',

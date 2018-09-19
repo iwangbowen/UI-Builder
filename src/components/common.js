@@ -71,11 +71,12 @@ const dataRequiredSpanId = 'data-required-span-id';
 const dataResponseDataKey = 'data-response-data-key';
 const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 const dataTitle = 'data-title';
+const dataRowField = 'data-row-field';
 const sortableClass = 'sortable';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
-    draggableComponent, dataTitle, configurableComponent, sortableClass
+    draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField
 };

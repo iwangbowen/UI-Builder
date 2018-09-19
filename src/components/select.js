@@ -3,6 +3,7 @@ import { property as tooltipProperty } from './tooltip';
 import { manualselectinputid } from './@oee/ids';
 import Vvveb from '../gui/components';
 import { dataUrl, dataValueMapping, dataTextMapping } from './common';
+import { dataRowFieldProperty } from './properties';
 
 const manualselectProperties = [
     {
@@ -115,7 +116,7 @@ const autoselectProperties = [{
         on: 'required',
         off: ''
     }
-}, tooltipProperty];
+}, dataRowFieldProperty, tooltipProperty];
 
 export {
     manualselectProperties,
