@@ -3,7 +3,7 @@ import {
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
-    htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript
+    htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -156,8 +156,8 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
                                        use empty array to denote that no tags should not be reformatted
      */
     let { doctype, html } = destructDoc(doc);
-    html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
-        generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
+    html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, emptyChildren, generateTableScript,
+        removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateMultivalueSelectScript,
         generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}

@@ -216,10 +216,22 @@ function htmlGenerator(html, ...fns) {
     return $(fns.reduce((el, fn) => fn(el), el)).prop('outerHTML');
 }
 
+function replacePopupWithForm(el) {
+    const popup = $(el).find('div.layui-layer');
+    if (popup.length) {
+        const form = $(popup).find('div.popup-window');
+        if (form.length) {
+            popup.replaceWith(form);
+        }
+    }
+    return el;
+}
+
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
-    removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType
+    removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
+    replacePopupWithForm
 };
