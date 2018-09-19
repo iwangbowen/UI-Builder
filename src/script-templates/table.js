@@ -7,8 +7,7 @@ function template(node) {
     return `
     var ${columnDefs}${key} = [
         ${document.getElementById('iframeId').contentWindow[getGridOptionsIdentifier(node)].columnDefs.map(def => {
-            return `{headerName: '${def.headerName}', field: '${def.field}', width: ${def.width ? def.width : '\'\''},
-                     checkboxSelection: ${def.checkboxSelection}, headerCheckboxSelection: ${def.headerCheckboxSelection}}`;
+            return `${JSON.stringify(def)}`;
         }).join(',')}
     ];
     var ${gridOptions}${key} = {
@@ -24,4 +23,3 @@ function template(node) {
 }
 
 export default template;
-

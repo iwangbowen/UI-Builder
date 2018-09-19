@@ -87,7 +87,16 @@ function setColumnDefProperty(colDef, property, value) {
 }
 
 function setColumnDefs(node, colDefs = getColumnDefs(node)) {
-    getGridOptions(node).api.setColumnDefs(colDefs);
+    getGridOptions(node).api.setColumnDefs(colDefs.map((colDef, i) => {
+        // Make the first column undraggable.
+        // The column property suppressMovable changes whether the column can be dragged.
+        if (i == 0) {
+            colDef.suppressMovable = true;
+        } else {
+            colDef.suppressMovable = false;
+        }
+        return colDef;
+    }));
 }
 
 function setRowData(node, data) {
@@ -95,7 +104,7 @@ function setRowData(node, data) {
 }
 
 function setColumnDefsAndRender(node, colDefs) {
-    // Call to set new column definitions into the grid. 
+    // Call to set new column definitions into the grid.
     // The grid will redraw all the column headers, and then redraw all of the rows.
     getGridOptions(node).columnDefs = colDefs;
     setColumnDefs(node, colDefs);
@@ -132,7 +141,7 @@ const table = {
             setGridOptions(node,
                 {
                     columnDefs: [
-                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false },
+                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false, suppressMovable: true },
                         { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
                         { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
                     ],
