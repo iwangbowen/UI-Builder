@@ -141,7 +141,7 @@ const table = {
             setGridOptions(node,
                 {
                     columnDefs: [
-                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: false, headerCheckboxSelection: false, suppressMovable: true },
+                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: true, headerCheckboxSelection: false, suppressMovable: true },
                         { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
                         { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
                     ],

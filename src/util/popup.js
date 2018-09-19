@@ -13,7 +13,7 @@ function add() {
 }
 
 function edit() {
-    if (isInBuilder) {
+    function popupEdit() {
         layer.open({
             type: 1,
             title: '修改',
@@ -23,20 +23,46 @@ function edit() {
             end: function () {
             }
         });
+    }
+    if (isInBuilder) {
+        popupEdit();
     } else {
-        layer.msg('请选择需要修改的数据', { icon: 5 });
+        if (grids.length) {
+            var selectedRows = grids[0].gridOptions.api.getSelectedRows();
+            if (selectedRows.length == 0) {
+                layer.msg('请选择需要修改的数据', { icon: 5 });
+            } else if (selectedRows.length > 1) {
+                layer.msg('只允许同时修改一条数据', { icon: 5 });
+            } else {
+                popupEdit();
+            }
+        } else {
+            layer.msg('请选择需要修改的数据', { icon: 5 });
+        }
     }
 }
 
 function batchDelete() {
-    if (isInBuilder) {
+    function popupDelete() {
         layer.confirm('您确定需要删除吗？', {
             btn: ['确定', '取消']
         }, function () {
         }, function () {
         });
+    }
+    if (isInBuilder) {
+        popupDelete();
     } else {
-        layer.msg('请选择需要删除的数据', { icon: 5 });
+        if (grids.length) {
+            var selectedRows = grids[0].gridOptions.api.getSelectedRows();
+            if (selectedRows.length == 0) {
+                layer.msg('请选择需要删除的数据', { icon: 5 });
+            } else {
+                popupDelete();
+            }
+        } else {
+            layer.msg('请选择需要删除的数据', { icon: 5 });
+        }
     }
 }
 
