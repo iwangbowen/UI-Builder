@@ -1,12 +1,11 @@
-import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { autoselectinputid } from './ids';
-import { dataComponentId, dataUrl, dataAutoSelectId, dataValueMapping, dataTextMapping } from '../common';
+import { dataComponentId, dataAutoSelectId } from '../common';
 import input from './input';
-import { property as tooltipProperty } from '../tooltip';
+import { autoselectProperties as properties } from '../select';
 
 const autoselectinput = $.extend({}, input, {
     nodes: ["select"],
-    name: "Auto Select Input",
+    name: "Auto Select",
     image: "icons/select_input.svg",
     html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${autoselectinputid}">
             <div class="btn-group">
@@ -17,43 +16,7 @@ const autoselectinput = $.extend({}, input, {
             </div>
            </div>
     `,
-    properties: [{
-        name: 'Value Mapping',
-        key: 'valueMapping',
-        htmlAttr: dataValueMapping,
-        inputtype: new TextInput()
-    }, {
-        name: 'Text Mapping',
-        key: 'textMaping',
-        htmlAttr: dataTextMapping,
-        inputtype: new TextInput()
-    }, {
-        name: "Data Url",
-        key: "dataUrl",
-        htmlAttr: dataUrl,
-        inputtype: new TextInput()
-    }, {
-        name: 'Onchange',
-        key: 'onchange',
-        htmlAttr: 'onchange',
-        inputtype: new TextInput()
-    }, {
-        name: "Name",
-        key: "name",
-        htmlAttr: "name",
-        inputtype: new TextInput()
-    }, {
-        name: "Required",
-        key: "required",
-        htmlAttr: 'required',
-        validValues: ["required"],
-        noValueAttr: true,
-        inputtype: new ToggleInput(),
-        data: {
-            on: 'required',
-            off: ''
-        }
-    }, tooltipProperty]
+    properties
 });
 
 export default autoselectinput;

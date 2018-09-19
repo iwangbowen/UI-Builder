@@ -1,13 +1,11 @@
-import Vvveb from '../../gui/components';
-import { TextValueInput, ButtonInput, TextInput, ToggleInput } from '../../inputs/inputs';
 import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import input from './input';
-import { property as tooltipProperty } from '../tooltip';
+import { manualselectProperties as properties, manualselectBeforeInit as beforeInit } from '../select';
 
 const autoselectinput = $.extend({}, input, {
     nodes: ["select"],
-    name: "Manual Select Input",
+    name: "Manual Select",
     image: "icons/select_input.svg",
     html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${manualselectinputid}">
             <div class="btn-group">
@@ -20,86 +18,8 @@ const autoselectinput = $.extend({}, input, {
             </div>
            </div>
     `,
-    beforeInit: function (node) {
-        properties = [];
-        var i = 0;
-
-        $(node).find('option').each(function () {
-
-            data = { "value": this.value, "text": this.text };
-
-            i++;
-            properties.push({
-                name: "Option " + i,
-                key: "option" + i,
-                //index: i - 1,
-                optionNode: this,
-                inputtype: new TextValueInput(),
-                data: data,
-                onChange: function (node, value, input) {
-
-                    option = $(this.optionNode);
-
-                    //if remove button is clicked remove option and render row properties
-                    if (input.nodeName == 'BUTTON') {
-                        option.remove();
-                        Vvveb.Components.render(manualselectinputid);
-                        return node;
-                    }
-
-                    if (input.name == "value") option.attr("value", value);
-                    else if (input.name == "text") option.text(value);
-
-                    return node;
-                },
-            });
-        });
-
-        //remove all option properties
-        this.properties = this.properties.filter(function (item) {
-            return item.key.indexOf("option") === -1;
-        });
-
-        //add remaining properties to generated column properties
-        properties.push(...this.properties);
-
-        this.properties = properties;
-        return node;
-    },
-
-    properties: [{
-        name: 'Onchange',
-        key: 'onchange',
-        htmlAttr: 'onchange',
-        inputtype: new TextInput()
-    }, {
-        name: "Name",
-        key: "name",
-        htmlAttr: "name",
-        inputtype: new TextInput()
-    }, {
-        name: "Add option",
-        key: "addChild",
-        inputtype: new ButtonInput(),
-        data: { text: "Add option" },
-        onChange: function (node) {
-            $(node).append('<option value="value">Text</option>');
-            //render component properties again to include the new column inputs
-            Vvveb.Components.render(manualselectinputid);
-            return node;
-        }
-    }, {
-        name: "Required",
-        key: "required",
-        htmlAttr: 'required',
-        validValues: ["required"],
-        noValueAttr: true,
-        inputtype: new ToggleInput(),
-        data: {
-            on: 'required',
-            off: ''
-        }
-    }, tooltipProperty]
+    beforeInit,
+    properties
 });
 
 export default autoselectinput;
