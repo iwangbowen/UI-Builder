@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithDraggableOrConfigurable, bottomAlignCallback
+	getElementWithDraggableConfigurableOrSortable, bottomAlignCallback
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
@@ -149,7 +149,7 @@ Vvveb.Builder = {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
 			if (event.target) {
-				if (getElementWithDraggableOrConfigurable($(event.target)).length) {
+				if (getElementWithDraggableConfigurableOrSortable($(event.target)).length) {
 					_this.highlightEl = target = jQuery(event.target);
 					if (_this.isDragging) {
 						_this.dragElement.css({
@@ -186,7 +186,7 @@ Vvveb.Builder = {
 			$(document.getElementById('iframeId').contentWindow.document)
 				.find('.horizontal-line, .vertical-line')
 				.hide();
-			if (getElementWithDraggableOrConfigurable($(event.target)).length) {
+			if (getElementWithDraggableConfigurableOrSortable($(event.target)).length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 					if (event.target) {
@@ -284,9 +284,9 @@ Vvveb.Builder = {
 		});
 
 		$("#clone-box").on("click", function (event) {
-			const clone = getElementWithDraggableOrConfigurable(_this.selectedEl).clone();
+			const clone = getElementWithDraggableConfigurableOrSortable(_this.selectedEl).clone();
 			const { left, top } = clone.offset();
-			getElementWithDraggableOrConfigurable(_this.selectedEl)
+			getElementWithDraggableConfigurableOrSortable(_this.selectedEl)
 				.after(clone.offset({
 					left: left + 10,
 					top: top + 10
@@ -312,7 +312,7 @@ Vvveb.Builder = {
 
 		$("#delete-box").on("click", function (event) {
 			jQuery(selectBox).hide();
-			const node = getElementWithDraggableOrConfigurable(_this.selectedEl).get(0);
+			const node = getElementWithDraggableConfigurableOrSortable(_this.selectedEl).get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				removedNodes: [node],

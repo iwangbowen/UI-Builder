@@ -1,9 +1,9 @@
 import {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
-    replaceWithExternalFiles, generateLayerScript, generateMultivalueSelectScript,
-    addNameBrackets, generateBaseTag, generateDevDependentTags, removeRemoveableScripts,
-    removeNameBrackets, htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript
+    replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
+    generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
+    htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -16,7 +16,7 @@ import {
     nonTemplateScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
-import { draggableComponent, configurableComponent } from '../components/common';
+import { draggableComponent, configurableComponent, sortableClass } from '../components/common';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -158,7 +158,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, removeUnusedTags, emptyChildren, generateTableScript, removeStyleForSelectedElements,
         generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickScript, generateLayerScript, generatePopupScript, generateMultivalueSelectScript,
+        generateButtonOnclickScript, generatePopupScript, generateMultivalueSelectScript,
         generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
@@ -204,13 +204,14 @@ function loadCallback() {
     setInterval(autoSave, 2000);
 }
 
-function getElementWithDraggableOrConfigurable(element) {
+function getElementWithDraggableConfigurableOrSortable(element) {
     return (!element.length
         || element.hasClass('draggable')
         || element.hasClass(draggableComponent))
         || element.hasClass(configurableComponent)
+        || element.hasClass(sortableClass)
         ? element
-        : getElementWithDraggableOrConfigurable(element.parent());
+        : getElementWithDraggableConfigurableOrSortable(element.parent());
 }
 
 let selectedElements = [];
@@ -220,7 +221,7 @@ function getSelectedElements() {
 }
 
 function addOrRemoveElement(element) {
-    const draggableElement = getElementWithDraggableOrConfigurable($(element)).get(0);
+    const draggableElement = getElementWithDraggableConfigurableOrSortable($(element)).get(0);
     if (_.includes(selectedElements, draggableElement)) {
         _.remove(selectedElements, v => v == draggableElement)
     } else {
@@ -457,7 +458,7 @@ function isOverlap(fstElement, sndElement) {
 
 function setGlobalVariables() {
     window.getSelectedElements = getSelectedElements;
-    window.getElementWithDraggableOrConfigurable = getElementWithDraggableOrConfigurable;
+    window.getElementWithDraggableConfigurableOrSortable = getElementWithDraggableConfigurableOrSortable;
     window.Vvveb = Vvveb;
 }
 
@@ -466,6 +467,6 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggableOrConfigurable, isOverlap, generateHtmlFromLocalStorageItemKey,
+    middleAlignCallback, getElementWithDraggableConfigurableOrSortable, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables
 };
