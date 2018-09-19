@@ -11,6 +11,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initIframeDrop, initComponentDrag, initIframeFormAndPopupDrop, initIframePopupSortable, initIframeResizeVetically
 } from '../util/drag-n-drop-util';
+import { sortableClass } from '../components/common';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -286,15 +287,18 @@ Vvveb.Builder = {
 		});
 
 		$("#clone-box").on("click", function (event) {
-			const clone = getElementWithDraggableConfigurableOrSortable(_this.selectedEl).clone();
-			const { left, top } = clone.offset();
-			getElementWithDraggableConfigurableOrSortable(_this.selectedEl)
-				.after(clone.offset({
+			const original = getElementWithDraggableConfigurableOrSortable(_this.selectedEl);
+			const cloned = original.clone();
+			if (!cloned.hasClass(sortableClass)) {
+				const { left, top } = cloned.offset();
+				cloned.offset({
 					left: left + 10,
 					top: top + 10
-				}));
-			_this.selectedEl = clone.click();
-			const node = clone.get(0);
+				});
+			}
+			original.after(cloned);
+			_this.selectedEl = cloned.click();
+			const node = cloned.get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				addedNodes: [node],
