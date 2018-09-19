@@ -109,6 +109,14 @@ function initIframePopupSortable() {
         });
 }
 
+function initIframeResizeVetically() {
+    Vvveb.Builder.frameBody
+        .find('.resize-vertically')
+        .resizable({
+            handles: 's'
+        });
+}
+
 function initComponentDragWithInteract() {
     let $element;
     window.interact = frames[0].interact;
@@ -206,5 +214,6 @@ export {
     initIframeFormAndPopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,
-    initIframePopupSortable
+    initIframePopupSortable,
+    initIframeResizeVetically
 };

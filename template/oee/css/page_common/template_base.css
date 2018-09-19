@@ -277,14 +277,6 @@ body {
     text-decoration: none;
 }
 
-.containerleft .form-box {
-    /* border-top: 1px solid black; */
-    margin-top: 8px;
-    width: 100%;
-    height: calc(100% - 81px);
-    /*    border-bottom: 1px solid red;*/
-}
-
 .containerleft .searcharea {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -1909,7 +1901,7 @@ body {
     /* border-top: 1px solid black; */
     margin-top: 8px;
     width: 100%;
-    height: calc(100% - 81px);
+    height: calc(100% - 42px);
     /*    border-bottom: 1px solid red;*/
 }
 

@@ -249,25 +249,6 @@ function initResizeDrag() {
         .on('resizemove', resizeMove);
 }
 
-function initResizeVetically() {
-    interact('.resize-vertically')
-        .resizable({
-            // resize from all edges and corners
-            edges: { bottom: true, top: true },
-            // keep the edges inside the parent
-            restrictEdges: {
-                outer: 'parent',
-                endOnly: true,
-            },
-            // minimum size
-            restrictSize: {
-                min: { height: 30 },
-            },
-            inertia: true,
-        })
-        .on('resizemove', resizeMove);
-}
-
 function initDraggable() {
     let mutation;
     interact('body *.draggable')
@@ -326,5 +307,5 @@ function setGlobalVariables() {
 
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
-    getAttributes, initDropzone, initResizeDrag, initDraggable, initResizeVetically, setGlobalVariables
+    getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables
 };
