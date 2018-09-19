@@ -8,6 +8,7 @@ function add() {
         skin: 'layui-layer-rim', //加上边框
         content: $('div.popup-window#add'),
         end: function () {
+            $('div.popup-window#add form').trigger('reset');
         }
     });
 }
@@ -21,6 +22,7 @@ function edit() {
             skin: 'layui-layer-rim', //加上边框
             content: $('div.popup-window#edit'),
             end: function () {
+                $('div.popup-window#edit form').trigger('reset');
             }
         });
     }
