@@ -66,4 +66,4 @@ Vvveb.CodeEditor = {
 		formatCodeBtn.hide();
 		this.destroy();
 	}
-}
+};

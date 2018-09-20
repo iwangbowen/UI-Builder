@@ -107,7 +107,7 @@ Vvveb.Actions = {
             if ($this.data("search").indexOf(searchText) > -1) $this.show();
         });
     },
-    clearComponentSearch: function () {
+    clearComponentSearch() {
         $("#component-search").val("").keyup();
     }
-}
+};

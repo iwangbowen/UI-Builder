@@ -46,4 +46,4 @@ Vvveb.FileManager = {
 		$(`[data-page='${name}']`, this.tree).addClass("active");
 		Vvveb.Builder.loadUrl(this.pages[name]['url']);
 	},
-}
+};

@@ -56,4 +56,4 @@ Vvveb.WysiwygEditor = {
             newValue: node.innerHTML
         }));
     }
-}
+};

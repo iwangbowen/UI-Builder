@@ -34,7 +34,6 @@ Vvveb.Builder = {
 		this._initDragdrop();
 		this.dragElement = null;
 	},
-	/* controls */
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
@@ -147,7 +146,6 @@ Vvveb.Builder = {
 		this.selectedEl = target = jQuery(node);
 		highlightwhenSelected(node, ctrlKeyPressed);
 	},
-	/* iframe highlight */
 	_initHightlight() {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
@@ -361,7 +359,6 @@ Vvveb.Builder = {
 			}
 		});
 	},
-	/* drag and drop */
 	_initDragdrop() {
 		this.isDragging = false;
 	},
