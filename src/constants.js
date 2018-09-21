@@ -49,6 +49,8 @@ const unusedTags = [
             || $(tag).hasClass('layui-layer-page')
             || $(tag).hasClass('layui-layer-rim')
             || $(tag).hasClass('ui-helper-hidden-accessible')
+            // Generated div.ui-resizable-handle by resizable would interfere with sortable elements
+            || $(tag).hasClass('ui-resizable-handle')
     }
 ];
 

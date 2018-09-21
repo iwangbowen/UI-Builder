@@ -142,6 +142,8 @@ function initIframeSortable() {
     initIframePopupSortable();
 }
 
+// Resizing element would create elements right above the resizable element,
+// which could interfere with the sortable elements.
 function initIframeResizeVetically() {
     Vvveb.Builder.frameBody
         .find('.resize-vertically')
