@@ -1,6 +1,6 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
-import { add, edit, batchDelete } from '../util/popup';
+import { popupAdd, popupEdit, popupDelete } from '../util/popup';
 
 function isAlign(targetOffset, currentOffset) {
     return {
@@ -300,9 +300,9 @@ function initDraggable() {
 function setGlobalVariables() {
     self.interact = interact;
     self.arrowKeyMove = arrowKeyMove;
-    self.add = add;
-    self.edit = edit;
-    self.batchDelete = batchDelete;
+    self.popupAdd = popupAdd;
+    self.popupEdit = popupEdit;
+    self.popupDelete = popupDelete;
 }
 
 export {

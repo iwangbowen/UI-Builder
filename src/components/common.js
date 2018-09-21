@@ -64,6 +64,7 @@ const dataConfigInfo = 'data-config-info';
 const dataAutoSelectId = 'data-auto-select-id';
 const dataButtonId = 'data-button-id';
 const dataUrl = 'data-url';
+const dataRelatedButton = 'data-related-button';
 const dataValueMapping = 'data-value-mapping';
 const dataTextMapping = 'data-text-mapping';
 const dataMultivalueSelectId = 'data-multi-value-select-id';
@@ -78,5 +79,5 @@ export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
-    draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField
+    draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton
 };

@@ -6,6 +6,7 @@ import tableTemplate from '../script-templates/table';
 import autoselectinputTemplate from '../script-templates/autoselectinput';
 import { template as submitFormTemplate, functionName } from '../script-templates/submitform';
 import popupTemplate from '../script-templates/popup';
+import queryTempate from '../script-templates/query';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
 import tooltipTemplate from '../script-templates/tooltip';
@@ -94,6 +95,10 @@ function generateButtonOnclickScript(el) {
 
 function generatePopupScript(el) {
     return appendScript(el, popupTemplate());
+}
+
+function generateQueryScript(el) {
+    return appendScript(el, queryTempate());
 }
 
 function generateMultivalueSelectScript(el) {
@@ -233,5 +238,5 @@ export {
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
-    replacePopupWithForm
+    replacePopupWithForm, generateQueryScript
 };

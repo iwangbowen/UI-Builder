@@ -1,6 +1,6 @@
 const isInBuilder = true;
 
-function add() {
+function popupAdd() {
     layer.open({
         type: 1,
         title: '新增',
@@ -13,8 +13,8 @@ function add() {
     });
 }
 
-function edit() {
-    var popupEdit = function () {
+function popupEdit() {
+    var openPopup = function () {
         layer.open({
             type: 1,
             title: '修改',
@@ -35,7 +35,7 @@ function edit() {
             })
     };
     if (isInBuilder) {
-        popupEdit();
+        openPopup();
     } else {
         if (grids.length) {
             var selectedRows = grids[0].gridOptions.api.getSelectedRows();
@@ -45,7 +45,7 @@ function edit() {
                 layer.msg('只允许同时修改一条数据', { icon: 5 });
             } else {
                 setFormValues(selectedRows[0]);
-                popupEdit();
+                openPopup();
             }
         } else {
             layer.msg('请选择需要修改的数据', { icon: 5 });
@@ -53,8 +53,8 @@ function edit() {
     }
 }
 
-function batchDelete() {
-    var popupDelete = function () {
+function popupDelete() {
+    var openPopup = function () {
         layer.confirm('您确定需要删除吗？', {
             btn: ['确定', '取消']
         }, function () {
@@ -62,14 +62,14 @@ function batchDelete() {
         });
     };
     if (isInBuilder) {
-        popupDelete();
+        openPopup();
     } else {
         if (grids.length) {
             var selectedRows = grids[0].gridOptions.api.getSelectedRows();
             if (selectedRows.length == 0) {
                 layer.msg('请选择需要删除的数据', { icon: 5 });
             } else {
-                popupDelete();
+                openPopup();
             }
         } else {
             layer.msg('请选择需要删除的数据', { icon: 5 });
@@ -78,7 +78,7 @@ function batchDelete() {
 }
 
 export {
-    add,
-    edit,
-    batchDelete
+    popupAdd,
+    popupEdit,
+    popupDelete
 };

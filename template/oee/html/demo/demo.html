@@ -51,7 +51,7 @@
 						</div>
 						<div style="clear:both;"></div>
 						<div class="bottom-searchButton">
-							<button id="dataSearch" class="configurable-component" onclick="submitForm(this);"><span class="glyphicon glyphicon-search"></span> Search</button>
+							<button id="dataSearch" class="configurable-component"><span class="glyphicon glyphicon-search"></span> Search</button>
 						</div>
 					</form>
 				</div>
@@ -76,9 +76,9 @@
 													<div class="iconArea">
 														<div class="owner">
 														</div>
-														<button class="permissionAdd configurable-component" onclick="add(this);">新增</button>
-														<button id="edit" class="configurable-component" onclick="edit(this);">修改</button>
-														<button class="permissionDelete configurable-component" onclick="batchDelete(this);">删除</button>
+														<button id="add" class="permissionAdd configurable-component" onclick="popupAdd(this);">新增</button>
+														<button id="edit" class="configurable-component" onclick="popupEdit(this);">修改</button>
+														<button id="delete" class="permissionDelete configurable-component" onclick="popupDelete(this);">删除</button>
 													</div>
 												</div>
 											</div>
@@ -94,12 +94,12 @@
 		</div>
 	</div>
 	<div id="add" class="popup-window" style="display: none;">
-		<form class="popup-form" autoComplete="off" ame="form1" method="post" onsubmit="return false;">
+		<form class="popup-form" data-related-button="add" autoComplete="off" ame="form1" method="post" onsubmit="return false;">
 			<div class="saveArea"><input class="permissionEditSave" type="submit" name="submit" value="提交" /></div>
 		</form>
 	</div>
 	<div id="edit" class="popup-window" style="display: none;">
-		<form class="popup-form" autoComplete="off" ame="form1" method="post" onsubmit="return false;">
+		<form class="popup-form" data-related-button="edit" autoComplete="off" ame="form1" method="post" onsubmit="return false;">
 			<div class="saveArea"><input class="permissionEditSave" type="submit" name="submit" value="提交" /></div>
 		</form>
 	</div>

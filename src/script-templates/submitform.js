@@ -37,9 +37,9 @@ function template() {
                 }
             });
         });
-        function ${functionName}(el, formId) {
+        function ${functionName}(form, url, successCb, errorCb) {
             var valid = true;
-            $('form.form-box').find('input[required], select[required], textarea[required]')
+            form.find('input[required], select[required], textarea[required]')
                 .each(function () {
                     if (!this.value) {
                         valid = false;
@@ -53,16 +53,16 @@ function template() {
                 });
             if (valid) {
                 var formData = new FormData();
-                var data = (formId ? $('#formId') : $('form')).serializeJSON();
+                var data = form.serializeJSON();
                 $.each($('input[type=file]'), function (i, element) {
                     formData.append(element.name, element.files[0]);
                 });
                 Object.keys(data).forEach(function (value) {
                     formData.append(value, data[value]);
                 });
-                var containsFileInput = $('form.form-box').find('input[type=file]').length > 0;
+                var containsFileInput = form.find('input[type=file]').length > 0;
                 $.ajax({
-                    url: config.fundodooApiDomainUrl + $(el).attr('${dataUrl}'),
+                    url: config.fundodooApiDomainUrl + url,
                     dataType: 'json',
                     contentType: containsFileInput ? false : 'application/x-www-form-urlencoded',
                     method : 'POST',
@@ -71,20 +71,8 @@ function template() {
                     traditional: true,
                     data: containsFileInput ? formData : data,
                     fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
-                    success: function (response, status, xhr) {
-                        if (Array.isArray(response.data)) {
-                            grids.length && grids[0].gridOptions.api.setRowData(response.data);
-                        } else {
-                            $.each(response.data, function (key, value) {
-                                $.each(grids, function (i, grid) {
-                                    if (grid.key == key) {
-                                        grid.gridOptions.api.setRowData(value);
-                                        return false;
-                                    }
-                                });
-                            });
-                        }
-                    }
+                    success: successCb,
+                    error: errorCb
                 });
             }
         }
