@@ -1,28 +1,25 @@
 import { TextInput, SelectInput, ToggleInput } from '../../inputs/inputs';
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, dataConfigInfo, dataCalendarId, sortableClass } from '../common';
+import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
 import input from './input';
-import { calendarid, spanid } from './ids';
+import { calendarid } from './ids';
 import { property as tooltipProperty } from '../tooltip';
 
 const calendar = $.extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
-    sortable: true,
-    html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${calendarid}">
-               <div class="form-label" style="float: left; margin-left: 7px;">
-                   <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
-                   <span data-component-id="${spanid}" class="theme">Time</span>
-                   <span data-required-span-id="" style="color:red">*</span>
-               </div>
-               <div class="input-block" style="margin-left: 105px;">
-                   <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${calendarid}" type="text" class="form-control Wdate">
-               </div>
+    html: `<div ${dataComponentId}="${calendarid}" class="everyOutbox-right draggable">
+            <div class="btn-group">
+                <div class="dailyBox">
+                    <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${calendarid}" lustyle="height: 2.8rem;width:13rem "
+                    type="text" class="form-control Wdate"/>
+                 </div>
+            </div>
            </div>`,
     properties: [{
         name: "Value",
