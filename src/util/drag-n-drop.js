@@ -55,14 +55,25 @@ function drop(event, { draggable, helper, offset }) {
         if (component.onDrop) {
             appendedElement = component.onDrop(helper);
         } else if (component.sortable) {
-            appendedElement = $(this).find('.saveArea')
-                .before(helper.prop('outerHTML'))
-                .prev()
-                .css({
-                    position: '',
-                    left: '',
-                    top: ''
-                });
+            // Check if the drop zone is popup form
+            if ($(this).is('form')) {
+                appendedElement = $(this).find('.saveArea')
+                    .before(helper.prop('outerHTML'))
+                    .prev()
+                    .css({
+                        position: '',
+                        left: '',
+                        top: ''
+                    });
+            } else {
+                appendedElement = $(this).append(helper.prop('outerHTML'))
+                    .children('*:last')
+                    .css({
+                        position: '',
+                        left: '',
+                        top: ''
+                    });
+            }
         } else {
             appendedElement = $(this).append(helper.prop('outerHTML'))
                 .children('*:last')
@@ -101,12 +112,34 @@ function initIframeDrag() {
         });
 }
 
+function initIfameFormSortable(selector, classes) {
+    Vvveb.Builder.frameBody
+        .find('.allButton.dropzone')
+        .sortable({
+            cursor: 'move',
+            classes: {
+                'ui-state-highlight': 'form-sortable-placeholder'
+            },
+            placeholder: 'ui-state-highlight',
+            forcePlaceholderSize: true,
+            // Prevents sorting if you start on elements matching the selector.
+            // Default: "input,textarea,button,select,option"
+            cancel: "button, option, div.ui-resizable-handle"
+        });
+}
+
 function initIframePopupSortable() {
     Vvveb.Builder.frameBody
-        .find('form.popup-form')
+        .find('div.popup-window form.popup-form')
         .sortable({
-            cursor: 'move'
+            cursor: 'move',
+            cancel: "button, option, div.ui-resizable-handle"
         });
+}
+
+function initIframeSortable() {
+    initIfameFormSortable();
+    initIframePopupSortable();
 }
 
 function initIframeResizeVetically() {
@@ -214,6 +247,6 @@ export {
     initIframeFormAndPopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,
-    initIframePopupSortable,
+    initIframeSortable,
     initIframeResizeVetically
 };
