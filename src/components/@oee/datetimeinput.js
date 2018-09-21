@@ -1,29 +1,23 @@
 import { TextInput, SelectInput, ToggleInput } from '../../inputs/inputs';
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, dataConfigInfo, dataCalendarId, sortableClass } from '../common';
+import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
 import input from './input';
-import { calendarid, spanid } from './ids';
+import { datetimeinputid } from './ids';
 import { property as tooltipProperty } from '../tooltip';
 
-const calendar = $.extend({}, input, {
+const datetimeinput = $.extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
     sortable: true,
-    html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${calendarid}">
-               <div class="form-label" style="float: left; margin-left: 7px;">
-                   <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
-                   <span data-component-id="${spanid}" class="theme">Time</span>
-                   <span data-required-span-id="" style="color:red">*</span>
-               </div>
-               <div class="input-block" style="margin-left: 105px;">
-                   <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${calendarid}" type="text" class="form-control Wdate">
-               </div>
-           </div>`,
+    html: `<div class="input-block" style="margin-left: 105px;">
+            <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${datetimeinputid}" type="text" class="form-control Wdate">
+           </div>
+           `,
     properties: [{
         name: "Value",
         key: "value",
@@ -105,4 +99,4 @@ const calendar = $.extend({}, input, {
     }, tooltipProperty]
 });
 
-export default calendar;
+export default datetimeinput;

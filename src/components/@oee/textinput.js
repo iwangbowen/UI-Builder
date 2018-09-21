@@ -1,7 +1,7 @@
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, sortableClass } from '../common';
+import { dataComponentId } from '../common';
 import input from './input';
-import { textinputid, spanid} from './ids';
+import { textinputid } from './ids';
 import { properties } from '../textinput';
 
 const textinput = $.extend({}, input, {
@@ -9,15 +9,8 @@ const textinput = $.extend({}, input, {
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
     sortable: true,
-    html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${textinputid}">
-               <div class="form-label" style="float: left; margin-left: 7px;">
-                   <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
-                   <span data-component-id="${spanid}" class="theme">Period</span>
-                   <span data-required-span-id="" style="color:red">*</span>
-               </div>
-               <div class="input-block" style="margin-left: 105px;">
-                   <input ${dataComponentId}="${textinputid}" type="text" class="form-control">
-               </div>
+    html: `<div class="input-block" style="margin-left: 105px;">
+            <input ${dataComponentId}="${textinputid}" type="text" class="form-control">
            </div>`,
     properties
 });

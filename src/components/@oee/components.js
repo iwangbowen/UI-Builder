@@ -37,7 +37,8 @@ import tablerow from './tablerow';
 import textareainput from './textareainput';
 import labeldiv from './labeldiv';
 import span from './span';
-import calendar from './calendar';
+import datetimeinput from './datetimeinput';
+import datetimeinputfield from './datetimeinputfield';
 import text from './text';
 import autoselectinput from './autoselectinput';
 import manualselectinput from './manualselectinput';
@@ -46,12 +47,13 @@ import customtable from './customtable';
 import multivalueselect from './multivalueselect';
 import popuptextinput from './popuptextinput';
 import popupmanualselectinput from './popupmanualselectinput';
+import textinputfield from './textinputfield';
 
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
     buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, calendar, text,
-    autoselectinput, manualselectinput, commontable, customtable, multivalueselect, popuptextinput,
-    popupmanualselectinput
+    table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, datetimeinput,
+    datetimeinputfield, text, autoselectinput, manualselectinput, commontable, customtable, multivalueselect, popuptextinput,
+    popupmanualselectinput, textinputfield
 };

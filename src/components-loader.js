@@ -11,7 +11,7 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] =
-    ['html/labeldiv@oee', _oee_ids.buttonid, 'html/textinput@oee', 'html/calendar@oee', _oee_ids.fileinputid, _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,
+    ['html/labeldiv@oee', _oee_ids.buttonid, _oee_ids.textinputfieldid, _oee_ids.datetimeinputfieldid, _oee_ids.fileinputid, _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,
         _oee_ids.multivalueselectid, _oee_ids.textareaid, 'html/radiobutton@oee', 'html/checkbox@oee', _oee_ids.popuptextinputid, _oee_ids.popupmanualselectinputid,
         _oee_ids.customtableid, _oee_ids.commontableid];
 
@@ -72,13 +72,15 @@ Vvveb.Components.add("_base", element);
 // Vvveb.Components.add("html/gridrow@general", _general.gridrow);
 
 Vvveb.Components.add('html/labeldiv@oee', _oee.labeldiv);
-Vvveb.Components.extend('_base', 'html/textinput@oee', _oee.textinput);
+Vvveb.Components.extend('_base', _oee_ids.textinputid, _oee.textinput);
+Vvveb.Components.extend('_base', _oee_ids.datetimeinputid, _oee.datetimeinput);
+Vvveb.Components.extend('_base', _oee_ids.datetimeinputfieldid, _oee.datetimeinputfield);
 Vvveb.Components.extend('_base', _oee_ids.buttonid, _oee.button);
+Vvveb.Components.extend('_base', _oee_ids.textinputfieldid, _oee.textinputfield);
 Vvveb.Components.extend('_base', 'html/radiobutton@oee', _oee.radiobutton);
 Vvveb.Components.extend('_base', 'html/span@oee', _oee.span);
 Vvveb.Components.extend('_base', 'html/checkbox@oee', _oee.checkbox);
 Vvveb.Components.extend('_base', 'html/selectinput@oee', _oee.selectinput);
-Vvveb.Components.extend('_base', 'html/calendar@oee', _oee.calendar);
 Vvveb.Components.extend('_base', 'html/text@oee', _oee.text);
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
