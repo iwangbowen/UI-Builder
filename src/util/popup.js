@@ -58,6 +58,24 @@ function popupDelete() {
         layer.confirm('您确定需要删除吗？', {
             btn: ['确定', '取消']
         }, function () {
+            if (!isInBuilder) {
+                $.ajax({
+                    url: config.fundodooApiDomainUrl + $('button#delete').attr('data-url'),
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded',
+                    method : 'POST',
+                    async: true,
+                    traditional: true,
+                    data: grids[0].gridOptions.api.getSelectedRows(),
+                    fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                    success: function () {
+                        layer.closeAll();
+                        query();
+                    },
+                    error: function () {
+                    }
+                });
+            }
         }, function () {
         });
     };
