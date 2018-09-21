@@ -224,7 +224,9 @@ function htmlGenerator(html, ...fns) {
 function replacePopupWithForm(el) {
     const popup = $(el).find('div.layui-layer');
     if (popup.length) {
-        const form = $(popup).find('div.popup-window');
+        const form = $(popup).find('div.popup-window').css({
+            display: 'none'
+        });
         if (form.length) {
             popup.replaceWith(form);
         }
