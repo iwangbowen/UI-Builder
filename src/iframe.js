@@ -1,6 +1,6 @@
 import {
     initDropzone, initResizeDrag, initDraggable, setGlobalVariables
-} from './util/iframe-drag-n-drop-util';
+} from './util/iframe-drag-n-drop';
 
 /**
  * TODO:

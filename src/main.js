@@ -9,7 +9,7 @@ import './components-loader';
 import {
     initPanelToggle, initBuilderPage, setGlobalVariables
 } from './util/dom';
-import { initTopPanelDrag } from './util/drag-n-drop-util';
+import { initTopPanelDrag } from './util/drag-n-drop';
 
 $(document).ready(function () {
     initTopPanelDrag();

@@ -6,7 +6,7 @@ const unusedTags = [
     {
         name: 'script',
         filter: tag => tag.getAttribute('src')
-            ? (tag.getAttribute('src').includes('iframe-drag-n-drop')
+            ? (tag.getAttribute('src').includes('iframe')
                 || tag.getAttribute('src').includes('interact'))
             : $(tag).hasClass(removeableScript)
     },
