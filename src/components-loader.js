@@ -10,10 +10,22 @@ import typography from './components/typography';
 import size from './components/size';
 import margin from './components/margin';
 
-Vvveb.ComponentsGroup['定制组件'] =
-    ['html/labeldiv@oee', _oee_ids.buttonid, _oee_ids.textinputfieldid, _oee_ids.datetimeinputfieldid, _oee_ids.fileinputid, _oee_ids.autoselectinputid, _oee_ids.manualselectinputid,
-        _oee_ids.multivalueselectid, _oee_ids.textareaid, 'html/radiobutton@oee', 'html/checkbox@oee', _oee_ids.popuptextinputid, _oee_ids.popupmanualselectinputid,
-        _oee_ids.customtableid, _oee_ids.commontableid];
+Vvveb.ComponentsGroup['定制组件'] = [
+    _oee_ids.formlabelid,
+    _oee_ids.buttonid,
+    _oee_ids.textinputfieldid,
+    _oee_ids.datetimeinputfieldid,
+    _oee_ids.fileinputid,
+    _oee_ids.autoselectinputid,
+    _oee_ids.manualselectinputid,
+    _oee_ids.multivalueselectid,
+    _oee_ids.textareaid,
+    _oee_ids.radiobuttonid,
+    _oee_ids.checkboxid,
+    _oee_ids.popuptextinputid,
+    _oee_ids.popupmanualselectinputid,
+    _oee_ids.customtableid,
+    _oee_ids.commontableid];
 
 Vvveb.ComponentsGroup['通用组件'] = [];
 // Vvveb.ComponentsGroup['通用组件'] =
@@ -77,11 +89,11 @@ Vvveb.Components.extend('_base', _oee_ids.datetimeinputid, _oee.datetimeinput);
 Vvveb.Components.extend('_base', _oee_ids.datetimeinputfieldid, _oee.datetimeinputfield);
 Vvveb.Components.extend('_base', _oee_ids.buttonid, _oee.button);
 Vvveb.Components.extend('_base', _oee_ids.textinputfieldid, _oee.textinputfield);
-Vvveb.Components.extend('_base', 'html/radiobutton@oee', _oee.radiobutton);
-Vvveb.Components.extend('_base', 'html/span@oee', _oee.span);
-Vvveb.Components.extend('_base', 'html/checkbox@oee', _oee.checkbox);
-Vvveb.Components.extend('_base', 'html/selectinput@oee', _oee.selectinput);
-Vvveb.Components.extend('_base', 'html/text@oee', _oee.text);
+Vvveb.Components.extend('_base', _oee_ids.radiobuttonid, _oee.radiobutton);
+Vvveb.Components.extend('_base', _oee_ids.spanid, _oee.span);
+Vvveb.Components.extend('_base', _oee_ids.checkboxid, _oee.checkbox);
+Vvveb.Components.extend('_base', _oee_ids.selectinputid, _oee.selectinput);
+Vvveb.Components.extend('_base', _oee_ids.textid, _oee.text);
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
 Vvveb.Components.extend('_base', _oee_ids.tableid, _oee.table);
@@ -92,3 +104,4 @@ Vvveb.Components.extend('_base', _oee_ids.textareaid, _oee.textareainput);
 Vvveb.Components.extend('_base', _oee_ids.fileinputid, _oee.fileinput);
 Vvveb.Components.extend('_base', _oee_ids.popuptextinputid, _oee.popuptextinput);
 Vvveb.Components.extend('_base', _oee_ids.popupmanualselectinputid, _oee.popupmanualselectinput);
+Vvveb.Components.extend('_base', _oee_ids.formlabelid, _oee.formlabel);

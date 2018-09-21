@@ -3,7 +3,7 @@ import { dataComponentId, sortableClass } from '../common';
 import input from './input';
 import { textinputfieldid } from './ids';
 import textinput from './textinput';
-import span from './span';
+import formlabel from './formlabel';
 import _ from 'lodash';
 
 const textinputfield = _.extend({}, input, {
@@ -12,7 +12,7 @@ const textinputfield = _.extend({}, input, {
     image: "icons/text_input.svg",
     sortable: true,
     html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${textinputfieldid}">
-               ${span.html}
+               ${formlabel.html}
                ${textinput.html}
            </div>`
 });

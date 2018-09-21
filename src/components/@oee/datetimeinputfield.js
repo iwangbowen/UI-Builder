@@ -6,7 +6,7 @@ import {
 } from '../../util/dataAttr';
 import input from './input';
 import { datetimeinputfieldid } from './ids';
-import span from './span';
+import formlabel from './formlabel';
 import datetimeinput from './datetimeinput';
 import _ from 'lodash';
 
@@ -16,7 +16,7 @@ const datetimeinputfield = _.extend({}, input, {
     image: "icons/calendar.svg",
     sortable: true,
     html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
-               ${span.html}
+               ${formlabel.html}
                ${datetimeinput.html}
            </div>`
 });

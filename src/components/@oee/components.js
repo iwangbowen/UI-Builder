@@ -48,6 +48,7 @@ import multivalueselect from './multivalueselect';
 import popuptextinput from './popuptextinput';
 import popupmanualselectinput from './popupmanualselectinput';
 import textinputfield from './textinputfield';
+import formlabel from './formlabel';
 
 export {
     label, textinput, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
@@ -55,5 +56,5 @@ export {
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
     table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, datetimeinput,
     datetimeinputfield, text, autoselectinput, manualselectinput, commontable, customtable, multivalueselect, popuptextinput,
-    popupmanualselectinput, textinputfield
+    popupmanualselectinput, textinputfield, formlabel
 };
