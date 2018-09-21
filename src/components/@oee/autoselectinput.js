@@ -2,8 +2,9 @@ import { autoselectinputid } from './ids';
 import { dataComponentId, dataAutoSelectId } from '../common';
 import input from './input';
 import { autoselectProperties as properties } from '../select';
+import _ from 'lodash';
 
-const autoselectinput = $.extend({}, input, {
+const autoselectinput = _.extend({}, input, {
     nodes: ["select"],
     name: "Auto Select",
     image: "icons/select_input.svg",

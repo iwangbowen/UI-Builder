@@ -2,8 +2,9 @@ import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { radiobuttonid } from './ids';
 import input from './input';
+import _ from 'lodash';
 
-const radiobutton = $.extend({}, input, {
+const radiobutton = _.extend({}, input, {
     name: "Radio Button",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",

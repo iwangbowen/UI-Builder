@@ -8,8 +8,9 @@ import input from './input';
 import { datetimeinputfieldid } from './ids';
 import span from './span';
 import datetimeinput from './datetimeinput';
+import _ from 'lodash';
 
-const datetimeinputfield = $.extend({}, input, {
+const datetimeinputfield = _.extend({}, input, {
     name: "Datetime Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",

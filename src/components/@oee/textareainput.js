@@ -3,8 +3,9 @@ import { dataComponentId } from '../common';
 import { textareaid } from './ids';
 import input from './input';
 import { property as tooltipProperty } from '../tooltip';
+import _ from 'lodash';
 
-const textareainput = $.extend({}, input, {
+const textareainput = _.extend({}, input, {
     nodes: [`textarea`],
     name: "Text Area",
     image: "icons/text_area.svg",

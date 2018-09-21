@@ -8,8 +8,9 @@ import {
 import input from './input';
 import { calendarid } from './ids';
 import { property as tooltipProperty } from '../tooltip';
+import _ from 'lodash';
 
-const calendar = $.extend({}, input, {
+const calendar = _.extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",

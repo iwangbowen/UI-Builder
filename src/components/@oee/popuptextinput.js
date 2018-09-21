@@ -1,8 +1,9 @@
 import { dataComponentId, sortableClass } from '../common';
 import { popuptextinputid } from './ids';
 import textinput from './textinput';
+import _ from 'lodash';
 
-const popuptextinput = $.extend({}, textinput, {
+const popuptextinput = _.extend({}, textinput, {
     name: 'Popup Text Input',
     sortable: true,
     html: `<div class="everyInput ${sortableClass}" ${dataComponentId}="${popuptextinputid}">

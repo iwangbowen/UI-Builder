@@ -6,7 +6,6 @@ const heading =  {
     name: "Heading",
     nodes: ["h1", "h2", "h3", "h4", "h5", "h6"],
     html: "<h1>Heading</h1>",
-
     properties: [
         {
             name: "Size",
@@ -14,7 +13,6 @@ const heading =  {
             htmlAttr: "id",
             inputtype: new SelectInput(),
             onChange: function (node, value) {
-
                 return changeNodeName(node, "h" + value);
             },
             init: function (node) {

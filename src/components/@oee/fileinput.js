@@ -1,8 +1,9 @@
 import input from './input';
 import { TextInput } from '../../inputs/inputs';
 import { property as tooltipProperty } from '../tooltip';
+import _ from 'lodash';
 
-const fileinput = $.extend({}, input, {
+const fileinput = _.extend({}, input, {
   name: 'File Input',
   attributes: { 'type': 'file' },
   image: 'icons/upload.svg',

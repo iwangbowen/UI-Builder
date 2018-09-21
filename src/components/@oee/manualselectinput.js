@@ -2,8 +2,9 @@ import { manualselectinputid } from './ids';
 import { dataComponentId } from '../common';
 import input from './input';
 import { manualselectProperties as properties, manualselectBeforeInit as beforeInit } from '../select';
+import _ from 'lodash';
 
-const autoselectinput = $.extend({}, input, {
+const autoselectinput = _.extend({}, input, {
     nodes: ["select"],
     name: "Manual Select",
     image: "icons/select_input.svg",

@@ -3,8 +3,9 @@ import { dataComponentId } from '../common';
 import input from './input';
 import { textinputid } from './ids';
 import { properties } from '../textinput';
+import _ from 'lodash';
 
-const textinput = $.extend({}, input, {
+const textinput = _.extend({}, input, {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",

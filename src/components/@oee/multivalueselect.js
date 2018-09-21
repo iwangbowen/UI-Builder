@@ -1,8 +1,9 @@
 import { multivalueselectid } from './ids';
 import autoselectinput from './autoselectinput';
 import { dataComponentId, dataMultivalueSelectId } from '../common';
+import _ from 'lodash';
 
-const multivalueselect = $.extend({}, autoselectinput, {
+const multivalueselect = _.extend({}, autoselectinput, {
     name: "Multi-value Select",
     html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${multivalueselectid}">
             <div class="btn-group">

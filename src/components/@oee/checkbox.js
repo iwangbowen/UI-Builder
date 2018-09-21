@@ -2,8 +2,9 @@ import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { checkboxid, spanid } from './ids';
 import input from './input';
+import _ from 'lodash';
 
-const checkbox = $.extend({}, input, {
+const checkbox = _.extend({}, input, {
     name: "Checkbox",
     attributes: { "type": "checkbox" },
     image: "icons/checkbox.svg",

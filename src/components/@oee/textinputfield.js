@@ -4,8 +4,9 @@ import input from './input';
 import { textinputfieldid } from './ids';
 import textinput from './textinput';
 import span from './span';
+import _ from 'lodash';
 
-const textinputfield = $.extend({}, input, {
+const textinputfield = _.extend({}, input, {
     name: "Text Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",

@@ -5,7 +5,6 @@ const gridrow = {
     image: "icons/grid_row.svg",
     classes: ["row"],
     html: '<div class="row"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
-
     beforeInit: function (node) {
         properties = [];
         var i = 0;
