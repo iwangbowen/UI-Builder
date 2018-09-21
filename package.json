@@ -14,14 +14,10 @@
     "git:push": "git push && git push github",
     "git:merge": "git checkout sageui_1_0_0 && git merge dev && git push && git checkout dev",
     "clean": "grunt clean:all",
-    "clean:concated": "grunt clean:concated",
     "clean:built": "grunt clean:built",
-    "clean:transpiled": "grunt clean:transpiled",
     "concat": "grunt concat",
-    "build": "grunt build",
     "build:dev": "grunt build:dev",
-    "build:prod": "git pull && grunt build:prod",
-    "transpile": "grunt transpile"
+    "build:prod": "git pull && grunt build:prod"
   },
   "dependencies": {
     "core-js": "^2.5.7",
