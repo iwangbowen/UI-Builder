@@ -35,7 +35,9 @@ import navbar from './navbar';
 import pageitem from './pageitem';
 import pagination from './pagination';
 import progress from './progress';
-import radiobutton from './radiobutton';
+import radio from './radio';
+import radiofield from './radiofield';
+import radiocustom from './radiocustom';
 import selectinput from './selectinput';
 import tableheadercell from './tableheadercell';
 import { table } from './table';
@@ -58,7 +60,7 @@ import popupmanualselectinput from './popupmanualselectinput';
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
     buttongroup, buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
-    link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
+    link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom, selectinput, tableheadercell,
     table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom, textareainputfield,
     labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput,
     commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield

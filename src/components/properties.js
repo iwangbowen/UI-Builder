@@ -34,6 +34,13 @@ const onchangeProperty = {
     inputtype: new TextInput()
 };
 
+const onclickProperty = {
+    name: 'Onclick',
+    key: 'onclick',
+    htmlAttr: 'onclick',
+    inputtype: new TextInput()
+};
+
 const maxlengthProperty = {
     name: 'Maxlength',
     key: 'maxlength',
@@ -151,6 +158,7 @@ export {
     dataUrlProperty,
     valueProperty,
     onchangeProperty,
+    onclickProperty,
     maxlengthProperty,
     placeholderProperty,
     nameProperty,

@@ -72,7 +72,7 @@ function showAlignmentLines(target) {
 }
 
 function arrowKeyMove(key, element) {
-    element = window.parent.getElementWithDraggableConfigurableOrSortable(element);
+    element = window.parent.getElementWithSpecifiedClass(element);
     hideAlignmentLines();
     hideHighlightAreas();
     let dx = 0, dy = 0;

@@ -1,6 +1,6 @@
 import { property as tooltipProperty } from './tooltip';
 import {
-    dataUrlProperty, nameProperty, valueProperty, onchangeProperty, maxlengthProperty,
+    dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty
 } from './properties';
 
@@ -19,10 +19,16 @@ const commonProperties = [
     placeholderProperty,
 ];
 
+const radioProperties = [
+    ...baseProperties,
+    onclickProperty,
+    valueProperty,
+
+];
+
 const textinputProperties = [
     ...commonProperties,
     typeProperty
-
 ];
 
 const datetimeinputProperties = [
@@ -32,5 +38,6 @@ const datetimeinputProperties = [
 const fileinputProperties = [...baseProperties, dataUrlProperty];
 
 export {
-    commonProperties, textinputProperties, fileinputProperties, datetimeinputProperties
+    commonProperties, textinputProperties, fileinputProperties, datetimeinputProperties,
+    radioProperties
 };

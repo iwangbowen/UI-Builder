@@ -4,12 +4,12 @@ import { radiobuttonid } from './ids';
 import input from './input';
 import _ from 'lodash';
 
-const radiobutton = _.extend({}, input, {
+const radiocustom = _.extend({}, input, {
     name: "Radio Button",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",
     html: `<div ${dataComponentId}="${radiobuttonid}" class="everyOutbox-right draggable">
-            <div style="display:inline;"><input class="radioInput" type="radio" value="" /><span ${dataComponentId}="html/span@oee">单选1</span></div>
+            <div style="display:inline;"><input class="radioInput" type="radio" value="" /><span ${dataComponentId}="html/span@oee">ĺé1</span></div>
            </div>`,
     properties: [{
         name: 'Onclick',
@@ -40,4 +40,4 @@ const radiobutton = _.extend({}, input, {
     }]
 });
 
-export default radiobutton;
+export default radiocustom;

@@ -9,7 +9,8 @@ const textareaid = 'html/textarea@oee';
 const textareafieldid = 'html/textareafield@oee';
 const textinputid = 'html/textinput@oee';
 const calendarid = 'html/calendar@oee';
-const radiobuttonid = 'html/radiobutton@oee';
+const radioid = 'html/radio@oee';
+const radiofieldid = 'html/radiofield@oee';
 const checkboxid = 'html/checkbox@oee';
 const spanid = 'html/span@oee';
 const labeldivid = 'html/labeldiv@oee';
@@ -26,7 +27,7 @@ const fileinputfieldid = 'html/fileinputfield@oee';
 
 export {
     manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid,
-    multivalueselectid, textareaid, textareafieldid, textinputid, calendarid, radiobuttonid,
+    multivalueselectid, textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid,
     checkboxid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid,
     textinputfieldid, datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid,
     textid, fileinputfieldid

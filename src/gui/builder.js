@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithDraggableConfigurableOrSortable, bottomAlignCallback
+	getElementWithSpecifiedClass, bottomAlignCallback
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
@@ -11,7 +11,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initIframeDrop, initComponentDrag, initIframeFormAndPopupDrop, initIframeSortable, initIframeResizeVetically
 } from '../util/drag-n-drop';
-import { sortableClass } from '../components/common';
+import { sortableClass, cloneableComponent } from '../components/common';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -150,7 +150,7 @@ Vvveb.Builder = {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
 			if (event.target) {
-				if (getElementWithDraggableConfigurableOrSortable($(event.target)).length) {
+				if (getElementWithSpecifiedClass($(event.target)).length) {
 					_this.highlightEl = target = jQuery(event.target);
 					if (_this.isDragging) {
 						_this.dragElement.css({
@@ -187,7 +187,7 @@ Vvveb.Builder = {
 			$(document.getElementById('iframeId').contentWindow.document)
 				.find('.horizontal-line, .vertical-line')
 				.hide();
-			if (getElementWithDraggableConfigurableOrSortable($(event.target)).length) {
+			if (getElementWithSpecifiedClass($(event.target)).length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 					if (event.target) {
@@ -285,9 +285,9 @@ Vvveb.Builder = {
 		});
 
 		$("#clone-box").on("click", function (event) {
-			const original = getElementWithDraggableConfigurableOrSortable(_this.selectedEl);
+			const original = getElementWithSpecifiedClass(_this.selectedEl);
 			const cloned = original.clone();
-			if (!cloned.hasClass(sortableClass)) {
+			if (!cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
 				const { left, top } = cloned.offset();
 				cloned.offset({
 					left: left + 10,
@@ -316,7 +316,7 @@ Vvveb.Builder = {
 
 		$("#delete-box").on("click", function (event) {
 			jQuery(selectBox).hide();
-			const node = getElementWithDraggableConfigurableOrSortable(_this.selectedEl).get(0);
+			const node = getElementWithSpecifiedClass(_this.selectedEl).get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				removedNodes: [node],

@@ -3826,12 +3826,29 @@ input, select {
 
 .input-block {
     width: 147px;
+    margin-bottom: 5px;
     margin-left: 105px;
 }
 
 .input-block input {
+    display: inline-block;
     height: 25px;
     background-color: snow;
+}
+
+.radio-input-block {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.radio-input-block input[type='radio'] {
+    margin-top: -3px;
+}
+
+.radio-input-block span {
+    margin-left: 5px;
+    float: right;
 }
 
 .input-block input[type='file'] {

@@ -56,6 +56,8 @@ function inc_base_sort() {
 
 const draggableComponent = 'draggable-component';
 const configurableComponent = 'configurable-component';
+const cloneableComponent = 'cloneable-component';
+const deletableComponent = 'deletable-component';
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
 const dataCommonTableId = 'data-common-table-id';
@@ -76,11 +78,12 @@ const dataRowField = 'data-row-field';
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
+const radioInputBlockClass = 'radio-input-block';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
-    formItemClass, inputBlockClass
+    formItemClass, inputBlockClass, radioInputBlockClass, cloneableComponent, deletableComponent
 };

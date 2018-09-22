@@ -16,7 +16,7 @@ import {
     nonTemplateScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
-import { draggableComponent, configurableComponent, sortableClass } from '../components/common';
+import { draggableComponent, configurableComponent, sortableClass, cloneableComponent, deletableComponent } from '../components/common';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -204,14 +204,16 @@ function loadCallback() {
     setInterval(autoSave, 2000);
 }
 
-function getElementWithDraggableConfigurableOrSortable(element) {
+function getElementWithSpecifiedClass(element) {
     return (!element.length
         || element.hasClass('draggable')
         || element.hasClass(draggableComponent))
         || element.hasClass(configurableComponent)
         || element.hasClass(sortableClass)
+        || element.hasClass(cloneableComponent)
+        || element.hasClass(deletableComponent)
         ? element
-        : getElementWithDraggableConfigurableOrSortable(element.parent());
+        : getElementWithSpecifiedClass(element.parent());
 }
 
 let selectedElements = [];
@@ -221,7 +223,7 @@ function getSelectedElements() {
 }
 
 function addOrRemoveElement(element) {
-    const draggableElement = getElementWithDraggableConfigurableOrSortable($(element)).get(0);
+    const draggableElement = getElementWithSpecifiedClass($(element)).get(0);
     if (_.includes(selectedElements, draggableElement)) {
         _.remove(selectedElements, v => v == draggableElement)
     } else {
@@ -458,7 +460,7 @@ function isOverlap(fstElement, sndElement) {
 
 function setGlobalVariables() {
     window.getSelectedElements = getSelectedElements;
-    window.getElementWithDraggableConfigurableOrSortable = getElementWithDraggableConfigurableOrSortable;
+    window.getElementWithSpecifiedClass = getElementWithSpecifiedClass;
     window.Vvveb = Vvveb;
 }
 
@@ -467,6 +469,6 @@ export {
     getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithDraggableConfigurableOrSortable, isOverlap, generateHtmlFromLocalStorageItemKey,
+    middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables
 };
