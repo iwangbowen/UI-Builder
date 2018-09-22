@@ -5,7 +5,7 @@ import { textinputid } from './ids';
 import { properties } from '../textinput';
 import _ from 'lodash';
 
-const textinput = _.extend({}, input, {
+const textinputcustom = _.extend({}, input, {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
@@ -19,4 +19,4 @@ const textinput = _.extend({}, input, {
     properties
 });
 
-export default textinput;
+export default textinputcustom;

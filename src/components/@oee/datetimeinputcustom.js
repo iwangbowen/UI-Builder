@@ -10,7 +10,7 @@ import { calendarid } from './ids';
 import { property as tooltipProperty } from '../tooltip';
 import _ from 'lodash';
 
-const calendar = _.extend({}, input, {
+const datetimeinputcustom = _.extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
@@ -103,4 +103,4 @@ const calendar = _.extend({}, input, {
     }, tooltipProperty]
 });
 
-export default calendar;
+export default datetimeinputcustom;
