@@ -10,6 +10,19 @@ import datetimeinputfield from './datetimeinputfield';
 import datetimeinputcustom from './datetimeinputcustom';
 import fileinput from './fileinput';
 import fileinputfield from './fileinputfield';
+import autoselectinput from './autoselectinput';
+import autoselectinputfield from './autoselectinputfield';
+import autoselectinputcustom from './autoselectinputcustom';
+import manualselectinput from './manualselectinput';
+import checkbox from './checkbox';
+import checkboxcustom from './checkboxcustom';
+import checkboxfield from './checkboxfield';
+import radio from './radio';
+import radiofield from './radiofield';
+import radiocustom from './radiocustom';
+import textareainput from './textareainput';
+import textareainputcustom from './textareainputcustom';
+import textareainputfield from './textareainputfield';
 import button from './button';
 import div from './div';
 import container from './container';
@@ -20,9 +33,6 @@ import breadcrumbs from './breadcrumbs';
 import buttongroup from './buttongroup';
 import buttontoolbar from './buttontoolbar';
 import card from './card';
-import checkbox from './checkbox';
-import checkboxcustom from './checkboxcustom';
-import checkboxfield from './checkboxfield';
 import form from './form';
 import gridcolumn from './gridcolumn';
 import gridrow from './gridrow';
@@ -37,9 +47,6 @@ import navbar from './navbar';
 import pageitem from './pageitem';
 import pagination from './pagination';
 import progress from './progress';
-import radio from './radio';
-import radiofield from './radiofield';
-import radiocustom from './radiocustom';
 import selectinput from './selectinput';
 import tableheadercell from './tableheadercell';
 import { table } from './table';
@@ -47,12 +54,7 @@ import tablebody from './tablebody';
 import tablecell from './tablecell';
 import tablehead from './tablehead';
 import tablerow from './tablerow';
-import textareainput from './textareainput';
-import textareainputcustom from './textareainputcustom';
-import textareainputfield from './textareainputfield';
 import labeldiv from './labeldiv';
-import autoselectinput from './autoselectinput';
-import manualselectinput from './manualselectinput';
 import commontable from './commontable';
 import customtable from './customtable';
 import multivalueselect from './multivalueselect';
@@ -64,6 +66,6 @@ export {
     buttongroup, buttontoolbar, card, checkbox, checkboxfield, checkboxcustom, fileinput, form, gridcolumn, gridrow, heading,
     hr, image, jumbotron, link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom,
     selectinput, tableheadercell, table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom,
-    textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput,
-    commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
+    textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, autoselectinputfield,
+    autoselectinputcustom, manualselectinput, commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
 };

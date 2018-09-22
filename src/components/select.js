@@ -1,22 +1,23 @@
-import { ButtonInput, TextInput, TextValueInput, ToggleInput } from '../inputs/inputs';
+import { ButtonInput, TextValueInput } from '../inputs/inputs';
 import { property as tooltipProperty } from './tooltip';
 import { manualselectinputid } from './@oee/ids';
 import Vvveb from '../gui/components';
-import { dataUrl, dataValueMapping, dataTextMapping } from './common';
-import { dataRowFieldProperty } from './properties';
+import {
+    dataRowFieldProperty, dataUrlProperty, onchangeProperty, nameProperty,
+    requiredProperty, valueMappingProperty, textMappingProperty
+} from './properties';
+
+const baseProperties = [
+    nameProperty,
+    requiredProperty,
+    tooltipProperty,
+    dataRowFieldProperty,
+    onchangeProperty
+];
 
 const manualselectProperties = [
+    ...baseProperties,
     {
-        name: 'Onchange',
-        key: 'onchange',
-        htmlAttr: 'onchange',
-        inputtype: new TextInput()
-    }, {
-        name: "Name",
-        key: "name",
-        htmlAttr: "name",
-        inputtype: new TextInput()
-    }, {
         name: "Add option",
         key: "addChild",
         inputtype: new ButtonInput(),
@@ -27,18 +28,8 @@ const manualselectProperties = [
             Vvveb.Components.render(manualselectinputid);
             return node;
         }
-    }, {
-        name: "Required",
-        key: "required",
-        htmlAttr: 'required',
-        validValues: ["required"],
-        noValueAttr: true,
-        inputtype: new ToggleInput(),
-        data: {
-            on: 'required',
-            off: ''
-        }
-    }, tooltipProperty];
+    }
+];
 
 function manualselectBeforeInit(node) {
     const properties = [];
@@ -80,43 +71,12 @@ function manualselectBeforeInit(node) {
     return node;
 }
 
-const autoselectProperties = [{
-    name: 'Value Mapping',
-    key: 'valueMapping',
-    htmlAttr: dataValueMapping,
-    inputtype: new TextInput()
-}, {
-    name: 'Text Mapping',
-    key: 'textMaping',
-    htmlAttr: dataTextMapping,
-    inputtype: new TextInput()
-}, {
-    name: "Data Url",
-    key: "dataUrl",
-    htmlAttr: dataUrl,
-    inputtype: new TextInput()
-}, {
-    name: 'Onchange',
-    key: 'onchange',
-    htmlAttr: 'onchange',
-    inputtype: new TextInput()
-}, {
-    name: "Name",
-    key: "name",
-    htmlAttr: "name",
-    inputtype: new TextInput()
-}, {
-    name: "Required",
-    key: "required",
-    htmlAttr: 'required',
-    validValues: ["required"],
-    noValueAttr: true,
-    inputtype: new ToggleInput(),
-    data: {
-        on: 'required',
-        off: ''
-    }
-}, dataRowFieldProperty, tooltipProperty];
+const autoselectProperties = [
+    ...baseProperties,
+    dataUrlProperty,
+    valueMappingProperty,
+    textMappingProperty
+];
 
 export {
     manualselectProperties,

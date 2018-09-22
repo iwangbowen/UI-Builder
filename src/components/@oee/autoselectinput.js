@@ -8,13 +8,9 @@ const autoselectinput = _.extend({}, input, {
     nodes: ["select"],
     name: "Auto Select",
     image: "icons/select_input.svg",
-    html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${autoselectinputid}">
-            <div class="btn-group">
-                <div class="dailyBox">
-                    <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control fundodooSelect" lustyle="height: 2.8rem;width:13rem">
-                    </select>
-                </div>
-            </div>
+    html: `<div class="input-block">
+            <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control">
+            </select>
            </div>
     `,
     properties

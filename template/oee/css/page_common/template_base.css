@@ -3830,7 +3830,7 @@ input, select {
     margin-left: 105px;
 }
 
-.input-block input {
+.input-block input, .input-block select {
     display: inline-block;
     height: 25px;
     background-color: snow;

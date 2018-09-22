@@ -1,5 +1,5 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput } from "../inputs/inputs";
-import { dataRowField } from "./common";
+import { dataRowField, dataValueMapping, dataTextMapping } from "./common";
 import { inputTypes } from './inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -153,6 +153,19 @@ const showDatetimeProperty = {
     }
 };
 
+const valueMappingProperty = {
+    name: 'Value Mapping',
+    key: 'valueMapping',
+    htmlAttr: dataValueMapping,
+    inputtype: new TextInput()
+};
+const textMappingProperty = {
+    name: 'Text Mapping',
+    key: 'textMaping',
+    htmlAttr: dataTextMapping,
+    inputtype: new TextInput()
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -166,5 +179,7 @@ export {
     readonlyProperty,
     requiredProperty,
     datetimeFormatProperty,
-    showDatetimeProperty
+    showDatetimeProperty,
+    valueMappingProperty,
+    textMappingProperty
 };
