@@ -2,16 +2,14 @@ import input from './input';
 import { TextInput } from '../../inputs/inputs';
 import { property as tooltipProperty } from '../tooltip';
 import _ from 'lodash';
-import { inputBlockClass, dataComponentId } from '../common';
-import { fileinputid } from './ids';
 
 const fileinput = _.extend({}, input, {
   name: 'File Input',
   attributes: { 'type': 'file' },
   image: 'icons/upload.svg',
-  html: `<div class="${inputBlockClass}">
-			    <input type="file" class="form-control-file" ${dataComponentId}="${fileinputid}">
-         </div>`,
+  html: `<div class="btn-group draggable">
+			    <input type="file" class=".form-control-file" style="width:147px;">
+        </div>`,
   properties: [{
     name: 'Name',
     key: 'name',

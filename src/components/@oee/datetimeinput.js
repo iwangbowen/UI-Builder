@@ -15,10 +15,9 @@ const datetimeinput = _.extend({}, input, {
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
     sortable: true,
-    html: `<div class="input-block" style="margin-left: 105px;">
+    html: `<div class="input-block">
             <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${datetimeinputid}" type="text" class="form-control Wdate">
-           </div>
-           `,
+           </div>`,
     properties: [{
         name: "Value",
         key: "value",

@@ -21,11 +21,12 @@ const datetimeinputfieldid = 'html/datetimeinputfield@oee';
 const formlabelid = 'html/formlabel@oee';
 const selectinputid = 'html/selectinput@oee';
 const textid = 'html/text@oee';
+const fileinputfieldid = 'html/fileinputfield@oee';
 
 export {
     manualselectinputid, autoselectinputid, buttonid, commontableid, customtableid, tableid,
     multivalueselectid, textareaid, textinputid, calendarid, radiobuttonid,
     checkboxid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid,
     textinputfieldid, datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid,
-    textid
+    textid, fileinputfieldid
 };

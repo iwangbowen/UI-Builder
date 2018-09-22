@@ -1,17 +1,16 @@
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, sortableClass } from '../common';
-import input from './input';
+import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { textinputfieldid } from './ids';
 import textinput from './textinput';
 import formlabel from './formlabel';
 import _ from 'lodash';
+import inputfield from './inputfield';
 
-const textinputfield = _.extend({}, input, {
+const textinputfield = _.extend({}, inputfield, {
     name: "Text Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
-    sortable: true,
-    html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${textinputfieldid}">
+    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${textinputfieldid}">
                ${formlabel.html}
                ${textinput.html}
            </div>`

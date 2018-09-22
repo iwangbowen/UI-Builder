@@ -1,21 +1,16 @@
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, sortableClass } from '../common';
-import {
-    cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
-    setDataConfigInfo, setOnclickAttr
-} from '../../util/dataAttr';
-import input from './input';
+import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { datetimeinputfieldid } from './ids';
 import formlabel from './formlabel';
 import datetimeinput from './datetimeinput';
 import _ from 'lodash';
+import inputfield from './inputfield';
 
-const datetimeinputfield = _.extend({}, input, {
+const datetimeinputfield = _.extend({}, inputfield, {
     name: "Datetime Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
-    sortable: true,
-    html: `<div class="form-item ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
+    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
                ${formlabel.html}
                ${datetimeinput.html}
            </div>`

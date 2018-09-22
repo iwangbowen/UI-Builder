@@ -3824,10 +3824,18 @@ input, select {
     margin-left: 5px;
 }
 
+.input-block {
+    margin-left: 105px;
+}
+
 .input-block input {
     height: 25px;
     width: 147px;
     background-color: snow;
+}
+
+.input-block input[type='file'] {
+    height: 28px;
 }
 
 .input-block input:hover {
