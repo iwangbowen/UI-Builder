@@ -11,7 +11,6 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] = [
-    _oee_ids.formlabelid,
     _oee_ids.buttonid,
     _oee_ids.textinputfieldid,
     _oee_ids.datetimeinputfieldid,
@@ -25,7 +24,8 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _oee_ids.popuptextinputid,
     _oee_ids.popupmanualselectinputid,
     _oee_ids.customtableid,
-    _oee_ids.commontableid];
+    _oee_ids.commontableid
+];
 
 Vvveb.ComponentsGroup['通用组件'] = [];
 // Vvveb.ComponentsGroup['通用组件'] =
