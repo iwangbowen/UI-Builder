@@ -14,6 +14,8 @@ import autoselectinput from './autoselectinput';
 import autoselectinputfield from './autoselectinputfield';
 import autoselectinputcustom from './autoselectinputcustom';
 import manualselectinput from './manualselectinput';
+import manualselectinputfield from './manualselectinputfield';
+import manualselectinputcustom from './manualselectinputcustom';
 import checkbox from './checkbox';
 import checkboxcustom from './checkboxcustom';
 import checkboxfield from './checkboxfield';
@@ -67,5 +69,6 @@ export {
     hr, image, jumbotron, link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom,
     selectinput, tableheadercell, table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom,
     textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, autoselectinputfield,
-    autoselectinputcustom, manualselectinput, commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
+    autoselectinputcustom, manualselectinput, commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel,
+    fileinputfield, manualselectinputfield, manualselectinputcustom
 };

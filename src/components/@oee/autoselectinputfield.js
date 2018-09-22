@@ -8,7 +8,7 @@ import inputfield from './inputfield';
 const autoselectinputfield = _.extend({}, inputfield, {
     name: "Auto Select Field",
     image: 'icons/select_input.svg',
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
+    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${autoselectinputfield}">
                ${formlabel.html}
                ${autoselectinput.html}
            </div>`

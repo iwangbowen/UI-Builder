@@ -1,4 +1,6 @@
 const manualselectinputid = 'html/manualselectinput@oee';
+const manualselectinputcustomid = 'html/manualselectinputcustom@oee';
+const manualselectinputfieldid = 'html/manualselectinputfield@oee';
 const autoselectinputid = 'html/autoselectinput@oee';
 const autoselectinputfieldid = 'html/autoselectinputfield@oee';
 const multivalueselectid = 'html/multivalueselect@oee';
@@ -29,9 +31,9 @@ const textid = 'html/text@oee';
 const fileinputfieldid = 'html/fileinputfield@oee';
 
 export {
-    manualselectinputid, autoselectinputid, autoselectinputfieldid, buttonid, commontableid, customtableid, tableid,
-    multivalueselectid, textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid,
-    checkboxid, checkboxfieldid, checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid,
-    popupmanualselectinputid, textinputfieldid, datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid,
+    manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
+    buttonid, commontableid, customtableid, tableid, multivalueselectid, textareaid, textareafieldid, textinputid,
+    calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid, checkboxcustomid, spanid, labeldivid, fileinputid,
+    popuptextinputid, popupmanualselectinputid, textinputfieldid, datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid,
     textid, fileinputfieldid
 };

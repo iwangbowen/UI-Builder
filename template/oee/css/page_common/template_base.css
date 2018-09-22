@@ -3832,7 +3832,7 @@ input, select {
 
 .input-block input, .input-block select {
     display: inline-block;
-    height: 25px;
+    height: 28px;
     background-color: snow;
 }
 

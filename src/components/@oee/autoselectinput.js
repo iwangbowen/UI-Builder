@@ -11,8 +11,7 @@ const autoselectinput = _.extend({}, input, {
     html: `<div class="input-block">
             <select ${dataAutoSelectId} ${dataComponentId}="${autoselectinputid}" class="form-control">
             </select>
-           </div>
-    `,
+           </div>`,
     properties
 });
 

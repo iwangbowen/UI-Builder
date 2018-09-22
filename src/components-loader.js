@@ -17,7 +17,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _oee_ids.datetimeinputfieldid,
     _oee_ids.fileinputfieldid,
     _oee_ids.autoselectinputfieldid,
-    _oee_ids.manualselectinputid,
+    _oee_ids.manualselectinputfieldid,
     _oee_ids.multivalueselectid,
     _oee_ids.textareafieldid,
     _oee_ids.radiofieldid,
@@ -99,6 +99,7 @@ Vvveb.Components.extend('_base', _oee_ids.textid, _oee.text);
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputfieldid, _oee.autoselectinputfield);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
+Vvveb.Components.extend('_base', _oee_ids.manualselectinputfieldid, _oee.manualselectinputfield);
 Vvveb.Components.extend('_base', _oee_ids.tableid, _oee.table);
 Vvveb.Components.extend('_base', _oee_ids.customtableid, _oee.customtable);
 Vvveb.Components.extend('_base', _oee_ids.commontableid, _oee.commontable);
