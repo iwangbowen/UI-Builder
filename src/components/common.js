@@ -78,12 +78,12 @@ const dataRowField = 'data-row-field';
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
-const radioInputBlockClass = 'radio-input-block';
+const radioCheckboxBlockClass = 'radio-checkbox-block';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
-    formItemClass, inputBlockClass, radioInputBlockClass, cloneableComponent, deletableComponent
+    formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent
 };

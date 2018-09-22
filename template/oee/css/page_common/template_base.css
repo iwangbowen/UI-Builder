@@ -3836,17 +3836,17 @@ input, select {
     background-color: snow;
 }
 
-.radio-input-block {
+.radio-checkbox-block {
     display: inline-block;
     margin-left: 10px;
     margin-top: 2px;
 }
 
-.radio-input-block input[type='radio'] {
+.radio-checkbox-block input[type='radio'], .radio-checkbox-block input[type='checkbox'] {
     margin-top: -3px;
 }
 
-.radio-input-block span {
+.radio-checkbox-block span {
     margin-left: 5px;
     float: right;
 }

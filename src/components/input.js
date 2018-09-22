@@ -22,8 +22,13 @@ const commonProperties = [
 const radioProperties = [
     ...baseProperties,
     onclickProperty,
-    valueProperty,
+    valueProperty
+];
 
+const checkboxProperties = [
+    ...baseProperties,
+    onclickProperty,
+    valueProperty
 ];
 
 const textinputProperties = [
@@ -39,5 +44,5 @@ const fileinputProperties = [...baseProperties, dataUrlProperty];
 
 export {
     commonProperties, textinputProperties, fileinputProperties, datetimeinputProperties,
-    radioProperties
+    radioProperties, checkboxProperties
 };

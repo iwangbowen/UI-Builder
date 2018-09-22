@@ -1,5 +1,5 @@
 import {
-    dataComponentId, inputBlockClass, radioInputBlockClass,
+    dataComponentId, inputBlockClass, radioCheckboxBlockClass,
     cloneableComponent, deletableComponent
 } from '../common';
 import { radioid } from './ids';
@@ -12,9 +12,9 @@ const radio = _.extend({}, input, {
     attributes: { "type": "radio" },
     image: "icons/radio.svg",
     html: `<div class="${inputBlockClass}">
-                <div ${dataComponentId}="${radioid}" class="${radioInputBlockClass} ${cloneableComponent} ${deletableComponent}">
+                <div ${dataComponentId}="${radioid}" class="${radioCheckboxBlockClass} ${cloneableComponent} ${deletableComponent}">
                     <input class="radioInput" type="radio" value="" />
-                    <span>Radio</span>
+                    <span>Option</span>
                 </div>
             </div>`,
     properties

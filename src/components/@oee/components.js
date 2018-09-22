@@ -21,6 +21,8 @@ import buttongroup from './buttongroup';
 import buttontoolbar from './buttontoolbar';
 import card from './card';
 import checkbox from './checkbox';
+import checkboxcustom from './checkboxcustom';
+import checkboxfield from './checkboxfield';
 import form from './form';
 import gridcolumn from './gridcolumn';
 import gridrow from './gridrow';
@@ -59,9 +61,9 @@ import popupmanualselectinput from './popupmanualselectinput';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
-    buttongroup, buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
-    link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom, textareainputfield,
-    labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput,
+    buttongroup, buttontoolbar, card, checkbox, checkboxfield, checkboxcustom, fileinput, form, gridcolumn, gridrow, heading,
+    hr, image, jumbotron, link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom,
+    selectinput, tableheadercell, table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom,
+    textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput,
     commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
 };
