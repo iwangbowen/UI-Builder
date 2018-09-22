@@ -1,5 +1,5 @@
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId } from '../common';
+import { dataComponentId, inputBlockClass } from '../common';
 import input from './input';
 import { textinputid } from './ids';
 import { properties } from '../textinput';
@@ -9,7 +9,7 @@ const textinput = _.extend({}, input, {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
-    html: `<div class="input-block">
+    html: `<div class="${inputBlockClass}">
             <input ${dataComponentId}="${textinputid}" type="text" class="form-control">
            </div>`,
     properties

@@ -44,6 +44,8 @@ import tablecell from './tablecell';
 import tablehead from './tablehead';
 import tablerow from './tablerow';
 import textareainput from './textareainput';
+import textareainputcustom from './textareainputcustom';
+import textareainputfield from './textareainputfield';
 import labeldiv from './labeldiv';
 import autoselectinput from './autoselectinput';
 import manualselectinput from './manualselectinput';
@@ -54,10 +56,10 @@ import popuptextinput from './popuptextinput';
 import popupmanualselectinput from './popupmanualselectinput';
 
 export {
-    label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs, buttongroup,
-    buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
+    label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
+    buttongroup, buttontoolbar, card, checkbox, fileinput, form, gridcolumn, gridrow, heading, hr, image, jumbotron,
     link, listgroup, listitem, navbar, pageitem, pagination, progress, radiobutton, selectinput, tableheadercell,
-    table, tablebody, tablecell, tablehead, tablerow, textareainput, labeldiv, span, datetimeinput,
-    datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput, commontable, customtable,
-    multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
+    table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom, textareainputfield,
+    labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, manualselectinput,
+    commontable, customtable, multivalueselect, popuptextinput, popupmanualselectinput, formlabel, fileinputfield
 };

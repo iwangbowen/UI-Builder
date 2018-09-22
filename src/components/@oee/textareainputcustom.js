@@ -1,16 +1,20 @@
 import { TextInput, NumberInput, ToggleInput } from '../../inputs/inputs';
-import { dataComponentId, inputBlockClass } from '../common';
+import { dataComponentId } from '../common';
 import { textareaid } from './ids';
 import input from './input';
 import { property as tooltipProperty } from '../tooltip';
 import _ from 'lodash';
 
-const textareainput = _.extend({}, input, {
+const textareainputcustom = _.extend({}, input, {
     nodes: [`textarea`],
-    name: "Textarea",
+    name: "Text Area",
     image: "icons/text_area.svg",
-    html: `<div class="${inputBlockClass}">
-            <textarea class="form-control" ${dataComponentId}="${textareaid}"></textarea>
+    html: `<div ${dataComponentId}="${textareaid}" class="everyOutbox-right form-group draggable">
+               <div class="btn-group">
+                   <div class="dailyBox">
+                       <textarea class="form-control"></textarea>
+                   </div>
+               </div>
            </div>`,
     properties: [{
         name: "Value",
@@ -62,4 +66,4 @@ const textareainput = _.extend({}, input, {
     }]
 });
 
-export default textareainput;
+export default textareainputcustom;

@@ -3825,16 +3825,17 @@ input, select {
 }
 
 .input-block {
+    width: 147px;
     margin-left: 105px;
 }
 
 .input-block input {
     height: 25px;
-    width: 147px;
     background-color: snow;
 }
 
 .input-block input[type='file'] {
+    width: 147px;
     height: 28px;
 }
 
