@@ -3,7 +3,7 @@ import autoselectinput from './autoselectinput';
 import { dataComponentId, dataMultivalueSelectId } from '../common';
 import _ from 'lodash';
 
-const multivalueselect = _.extend({}, autoselectinput, {
+const multivalueselectcustom = _.extend({}, autoselectinput, {
     name: "Multi-value Select",
     html: `<div class="everyOutbox-right draggable" ${dataComponentId}="${multivalueselectid}">
             <div class="btn-group">
@@ -12,8 +12,7 @@ const multivalueselect = _.extend({}, autoselectinput, {
                     </select>
                 </div>
             </div>
-           </div>
-    `,
+           </div>`,
 });
 
-export default multivalueselect;
+export default multivalueselectcustom;

@@ -3,7 +3,9 @@ const manualselectinputcustomid = 'html/manualselectinputcustom@oee';
 const manualselectinputfieldid = 'html/manualselectinputfield@oee';
 const autoselectinputid = 'html/autoselectinput@oee';
 const autoselectinputfieldid = 'html/autoselectinputfield@oee';
-const multivalueselectid = 'html/multivalueselect@oee';
+const multivalueselectinputid = 'html/multivalueselectinput@oee';
+const multivalueselectinputcustomid = 'html/multivalueselectinputcustom@oee';
+const multivalueselectinputfieldid = 'html/multivalueselectinputfield@oee';
 const buttonid = 'html/button@oee';
 const tableid = 'html/table@oee';
 const commontableid = 'html/commontable@oee';
@@ -32,8 +34,8 @@ const fileinputfieldid = 'html/fileinputfield@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
-    buttonid, commontableid, customtableid, tableid, multivalueselectid, textareaid, textareafieldid, textinputid,
-    calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid, checkboxcustomid, spanid, labeldivid, fileinputid,
-    popuptextinputid, popupmanualselectinputid, textinputfieldid, datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid,
-    textid, fileinputfieldid
+    buttonid, commontableid, customtableid, tableid, multivalueselectinputid, multivalueselectinputcustomid, multivalueselectinputfieldid,
+    textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid,
+    checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid, textinputfieldid,
+    datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid
 };

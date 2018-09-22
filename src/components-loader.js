@@ -17,7 +17,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _oee_ids.fileinputfieldid,
     _oee_ids.autoselectinputfieldid,
     _oee_ids.manualselectinputfieldid,
-    _oee_ids.multivalueselectid,
+    _oee_ids.multivalueselectinputfieldid,
     _oee_ids.textareafieldid,
     _oee_ids.radiofieldid,
     _oee_ids.checkboxfieldid,
@@ -100,10 +100,11 @@ Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinpu
 Vvveb.Components.extend('_base', _oee_ids.autoselectinputfieldid, _oee.autoselectinputfield);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
 Vvveb.Components.extend('_base', _oee_ids.manualselectinputfieldid, _oee.manualselectinputfield);
+Vvveb.Components.extend('_base', _oee_ids.multivalueselectinputid, _oee.multivalueselectinput);
+Vvveb.Components.extend('_base', _oee_ids.multivalueselectinputfieldid, _oee.multivalueselectinputfield);
 Vvveb.Components.extend('_base', _oee_ids.tableid, _oee.table);
 Vvveb.Components.extend('_base', _oee_ids.customtableid, _oee.customtable);
 Vvveb.Components.extend('_base', _oee_ids.commontableid, _oee.commontable);
-Vvveb.Components.extend('_base', _oee_ids.multivalueselectid, _oee.multivalueselect);
 Vvveb.Components.extend('_base', _oee_ids.textareaid, _oee.textareainput);
 Vvveb.Components.extend('_base', _oee_ids.textareafieldid, _oee.textareainputfield);
 Vvveb.Components.extend('_base', _oee_ids.fileinputid, _oee.fileinput);
