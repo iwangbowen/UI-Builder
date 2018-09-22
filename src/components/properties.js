@@ -5,6 +5,7 @@ import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
 } from '../util/dataAttr';
+import { requiredSpanSelector, inputBlockClassSelector } from "../util/selectors";
 
 const dataRowFieldProperty = {
     name: 'Row Field',
@@ -92,6 +93,15 @@ const requiredProperty = {
     validValues: ["required"],
     noValueAttr: true,
     inputtype: new ToggleInput(),
+    onChange(node, value) {
+        if (value) {
+            node.attr(this.htmlAttr, value);
+        } else {
+            node.removeAttr(this.htmlAttr);
+        }
+        node.parents(inputBlockClassSelector).prev().find(requiredSpanSelector).toggle();
+        return node;
+    },
     data: {
         on: 'required',
         off: ''

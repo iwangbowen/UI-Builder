@@ -1,4 +1,4 @@
-import { dataComponentId, dataRequiredSpanId } from '../common';
+import { dataComponentId, dataRequiredSpan } from '../common';
 import { labeldivid, spanid } from './ids';
 import { ToggleInput } from '../../inputs/inputs';
 import { requiredSpanSelector } from '../../util/selectors';
@@ -11,7 +11,7 @@ const labeldiv = {
     html: `<div ${dataComponentId}="${labeldivid}" class="everyOutbox-left draggable">
                 <i class="fa fa-caret-square-o-right text-danger" aria-hidden="true"></i>
                 <span ${dataComponentId}="${spanid}" class="theme">Period</span>
-                <span ${dataRequiredSpanId} style="color:red">*</span>
+                <span ${dataRequiredSpan} style="color:red">*</span>
            </div>`,
     properties: [{
         name: "Required",

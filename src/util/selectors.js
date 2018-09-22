@@ -1,8 +1,9 @@
-import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpanId, dataCalendarId, dataMultivalueSelectId } from '../components/common';
+import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpan, dataCalendarId, dataMultivalueSelectId, inputBlockClass } from '../components/common';
 import { multiSelectedClass, nonTemplateScriptType } from '../constants';
 
 const tableSelector = `[${dataTableId}]`;
-const requiredSpanSelector = `[${dataRequiredSpanId}]`;
+const requiredSpanSelector = `[${dataRequiredSpan}]`;
+const inputBlockClassSelector = `.${inputBlockClass}`;
 const emptyChildrenSelectors = [tableSelector];
 const autoselectinputSelector = `[${dataAutoSelectId}]`;
 const submitButtonSelector = `button[${dataButtonId}]`;
@@ -35,5 +36,5 @@ export {
     parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
-    nonTemplateScriptSelector, componentSelector
+    nonTemplateScriptSelector, componentSelector, inputBlockClassSelector
 };

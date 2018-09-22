@@ -70,7 +70,7 @@ const dataRelatedButton = 'data-related-button';
 const dataValueMapping = 'data-value-mapping';
 const dataTextMapping = 'data-text-mapping';
 const dataMultivalueSelectId = 'data-multi-value-select-id';
-const dataRequiredSpanId = 'data-required-span-id';
+const dataRequiredSpan = 'data-required-span-id';
 const dataResponseDataKey = 'data-response-data-key';
 const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 const dataTitle = 'data-title';
@@ -83,7 +83,7 @@ const radioCheckboxBlockClass = 'radio-checkbox-block';
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
-    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpanId, dataResponseDataKey, dataOnclickFunctionGenerated,
+    dataCommonTableId, dataMultivalueSelectId, dataRequiredSpan, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent
 };
