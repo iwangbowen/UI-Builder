@@ -1,4 +1,4 @@
-import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpan, dataCalendarId, dataMultivalueSelectId, inputBlockClass } from '../components/common';
+import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpan, dataCalendarId, dataMultivalueSelectId, inputBlockClass, sortableClass } from '../components/common';
 import { multiSelectedClass, nonTemplateScriptType } from '../constants';
 
 const tableSelector = `[${dataTableId}]`;
@@ -26,6 +26,8 @@ const nonTemplateScriptSelector = `script[type='${nonTemplateScriptType}']`;
 
 const componentSelector = '#components-list li ol li';
 
+const sortableDivSelector = `div:not(.ui-sortable-placeholder).${sortableClass}`;
+
 function getParentOrSelf(node) {
     const parents = $(node).parents(parentSelector);
     return parents.length ? parents[0] : node;
@@ -36,5 +38,5 @@ export {
     parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
-    nonTemplateScriptSelector, componentSelector, inputBlockClassSelector
+    nonTemplateScriptSelector, componentSelector, inputBlockClassSelector, sortableDivSelector
 };

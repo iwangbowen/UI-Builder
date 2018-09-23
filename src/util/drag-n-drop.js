@@ -1,7 +1,8 @@
 import Vvveb from '../gui/components';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
-import { componentSelector } from './selectors';
+import { componentSelector, sortableDivSelector } from './selectors';
+import MoveMutation from '../models/mutation/move-mutation';
 
 function getCursorAt($element) {
     const display = $element.css('display');
@@ -112,7 +113,30 @@ function initIframeDrag() {
         });
 }
 
-function initIfameFormSortable(selector, classes) {
+let sortingMutation;
+
+function getNextSortableSiblingElement(target) {
+    // exclude div.ui-sortable-placeholder
+    return $(target).nextAll(sortableDivSelector).get(0);
+}
+
+function onSortingStarts(event, { item }) {
+    const target = item.get(0);
+    sortingMutation = new MoveMutation({
+        target,
+        oldParent: target.parentNode,
+        oldNextSibling: getNextSortableSiblingElement(target)
+    });
+}
+
+function onSortingUpdates(event, { item }) {
+    const target = item.get(0);
+    sortingMutation.newParent = target.parentNode;
+    sortingMutation.newNextSibling = getNextSortableSiblingElement(target);
+    Vvveb.Undo.addMutation(sortingMutation);
+}
+
+function initIfameFormSortable() {
     Vvveb.Builder.frameBody
         .find('.allButton.dropzone')
         .sortable({
@@ -124,7 +148,9 @@ function initIfameFormSortable(selector, classes) {
             forcePlaceholderSize: true,
             // Prevents sorting if you start on elements matching the selector.
             // Default: "input,textarea,button,select,option"
-            cancel: "button, option, div.ui-resizable-handle"
+            cancel: "button, option, div.ui-resizable-handle",
+            start: onSortingStarts,
+            update: onSortingUpdates
         });
 }
 
@@ -133,7 +159,9 @@ function initIframePopupSortable() {
         .find('div.popup-window form.popup-form')
         .sortable({
             cursor: 'move',
-            cancel: "button, option, div.ui-resizable-handle"
+            cancel: "button, option, div.ui-resizable-handle",
+            start: onSortingStarts,
+            update: onSortingUpdates
         });
 }
 

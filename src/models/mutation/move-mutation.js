@@ -12,12 +12,16 @@ export default class MoveMutation extends Mutation {
     }
 
     redo() {
-        $(this.target).attr(this.newAttrs);
+        if (this.newAttrs) {
+            $(this.target).attr(this.newAttrs);
+        }
         this.addNode(this.newParent, this.newNextSibling, this.target);
     }
 
     undo() {
-        $(this.target).attr(this.oldAttrs);
+        if (this.oldAttrs) {
+            $(this.target).attr(this.oldAttrs);
+        }
         this.addNode(this.oldParent, this.oldNextSibling, this.target);
     }
 }
