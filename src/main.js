@@ -11,6 +11,11 @@ import {
 } from './util/dom';
 import { initTopPanelDrag } from './util/drag-n-drop';
 
+/**
+ * TODO:
+ * 1. Use connect list to drag elements from component group
+ * and make them sortable.
+ */
 $(document).ready(function () {
     initTopPanelDrag();
     initPanelToggle();
