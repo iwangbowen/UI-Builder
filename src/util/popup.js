@@ -95,8 +95,15 @@ function popupDelete() {
     }
 }
 
+function exportData() {
+    if (grids.length) {
+        grids[0].gridOptions.api.exportDataAsCsv();
+    }
+}
+
 export {
     popupAdd,
     popupEdit,
-    popupDelete
+    popupDelete,
+    exportData
 };
