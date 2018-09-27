@@ -1,0 +1,53 @@
+.form-item {
+    margin-bottom: 5px;
+}
+
+.form-label {
+    float: left;
+    margin-left: 7px;
+    margin-top: 2.5px;
+}
+
+.form-label i {
+    color: #8a6d3b;
+}
+
+.form-label i + span {
+    margin-left: 5px;
+}
+
+.input-block {
+    width: 147px;
+    margin-bottom: 5px;
+    margin-left: 105px;
+}
+
+.input-block input, .input-block select {
+    display: inline-block;
+    height: 28px;
+    background-color: snow;
+}
+
+.radio-checkbox-block {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.radio-checkbox-block input[type='radio'], .radio-checkbox-block input[type='checkbox'] {
+    margin-top: -3px;
+}
+
+.radio-checkbox-block span {
+    margin-left: 5px;
+    float: right;
+}
+
+.input-block input[type='file'] {
+    width: 147px;
+    height: 28px;
+}
+
+.input-block input:hover {
+    background-color: #c8e5bc;
+}
