@@ -3,6 +3,14 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
 import { componentSelector, sortableDivSelector } from './selectors';
 import MoveMutation from '../models/mutation/move-mutation';
+import _ from 'lodash';
+import {
+    textinputfieldid, datetimeinputfieldid, fileinputfieldid,
+    autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
+    textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
+    customtableid, commontableid
+} from '../components/@oee/ids';
+import 'core-js/es7/array';
 
 function getCursorAt($element) {
     const display = $element.css('display');
@@ -88,19 +96,55 @@ function drop(event, { draggable, helper, offset }) {
     }
 }
 
-function initIframeDrop() {
+const formItems = [
+    textinputfieldid,
+    datetimeinputfieldid,
+    fileinputfieldid,
+    autoselectinputfieldid,
+    manualselectinputfieldid,
+    multivalueselectinputfieldid,
+    textareafieldid,
+    radiofieldid,
+    checkboxfieldid
+];
+
+const popupFormItems = [
+    popuptextinputid,
+    popupmanualselectinputid
+];
+
+const tables = [
+    customtableid,
+    commontableid
+];
+
+function accept(draggable, components) {
+    return components.includes(draggable.data('type'));
+}
+
+function initIframeTableDrop() {
     Vvveb.Builder.frameBody.droppable({
-        accept: componentSelector,
+        accept: _.curry(accept)(_, tables),
         drop
     });
 }
 
-function initIframeFormAndPopupDrop() {
+function initIframeFormDrop() {
     Vvveb.Builder.frameBody
-        .find('.allButton.dropzone, div.popup-window form.popup-form')
+        .find('.allButton.dropzone')
         .droppable({
             greedy: true,
-            accept: componentSelector,
+            accept: _.curry(accept)(_, formItems),
+            drop
+        });
+}
+
+function initIframePopupDrop() {
+    Vvveb.Builder.frameBody
+        .find('div.popup-window form.popup-form')
+        .droppable({
+            greedy: true,
+            accept: _.curry(accept)(_, popupFormItems),
             drop
         });
 }
@@ -273,8 +317,9 @@ function initComponentDragWithInteract() {
 export {
     initTopPanelDrag,
     initComponentDrag,
-    initIframeDrop,
-    initIframeFormAndPopupDrop,
+    initIframeTableDrop,
+    initIframeFormDrop,
+    initIframePopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,

@@ -9,7 +9,8 @@ import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selecto
 import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
-	initIframeDrop, initComponentDrag, initIframeFormAndPopupDrop, initIframeSortable, initIframeResizeVetically
+	initComponentDrag, initIframeSortable, initIframeResizeVetically,
+	initIframeFormDrop, initIframePopupDrop, initIframeTableDrop
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent } from '../components/common';
 
@@ -94,9 +95,10 @@ Vvveb.Builder = {
 			_this.frameHtml = $(window.FrameDocument).find("html");
 			_this.frameBody = $(window.FrameDocument).find('body');
 
-			initIframeDrop();
+			initIframeTableDrop();
+			initIframeFormDrop();
+			initIframePopupDrop();
 			initIframeResizeVetically();
-			initIframeFormAndPopupDrop();
 			initIframeSortable();
 			return _this._initHightlight();
 		});
