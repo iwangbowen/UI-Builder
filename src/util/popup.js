@@ -96,8 +96,10 @@ function popupDelete() {
 }
 
 function exportData() {
-    if (grids.length) {
-        grids[0].gridOptions.api.exportDataAsCsv();
+    if (!isInBuilder) {
+        if (grids.length) {
+            grids[0].gridOptions.api.exportDataAsCsv();
+        }
     }
 }
 
