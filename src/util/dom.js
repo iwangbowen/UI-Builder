@@ -12,11 +12,14 @@ import {
 import _ from 'lodash';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
-    userDefinedScriptSelector,
-    nonTemplateScriptSelector
+    userDefinedScriptSelector, nonTemplateScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
-import { draggableComponent, configurableComponent, sortableClass, cloneableComponent, deletableComponent } from '../components/common';
+import {
+    draggableComponent, configurableComponent, sortableClass, cloneableComponent,
+    deletableComponent
+} from '../components/common';
+import format from 'date-fns/format';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -195,8 +198,10 @@ function getPage(pageName, pageTitle, pageHref) {
     };
 }
 
+let time = format(new Date(), 'YYYY-MM-DD HH:mm');
+
 function autoSave() {
-    localStorage.setItem(getHash(), getBeautifiedHtml(window.FrameDocument));
+    localStorage.setItem(getHash() + time, getBeautifiedHtml(window.FrameDocument));
 }
 
 function loadCallback() {
