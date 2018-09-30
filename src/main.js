@@ -10,6 +10,7 @@ import {
     initPanelToggle, initBuilderPage, setGlobalVariables
 } from './util/dom';
 import { initTopPanelDrag } from './util/drag-n-drop';
+import { beBackwardCompatible } from './util/common';
 
 /**
  * TODO:
@@ -17,6 +18,7 @@ import { initTopPanelDrag } from './util/drag-n-drop';
  * and make them sortable.
  */
 $(document).ready(function () {
+    beBackwardCompatible();
     initTopPanelDrag();
     initPanelToggle();
     setGlobalVariables();
