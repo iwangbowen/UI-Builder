@@ -179,10 +179,10 @@ Vvveb.Components = {
 		}
 		const nodeElement = Vvveb.Builder.selectedEl;
 		component.properties.forEach(property => {
+			let element = nodeElement;
 			if (property.beforeInit) {
 				property.beforeInit(element.get(0));
 			}
-			let element = nodeElement;
 			if (property.child) {
 				element = element.find(property.child);
 			}

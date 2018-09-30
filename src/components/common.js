@@ -60,6 +60,7 @@ const cloneableComponent = 'cloneable-component';
 const deletableComponent = 'deletable-component';
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
+const dataRelatedTable = 'data-related-table';
 const dataCommonTableId = 'data-common-table-id';
 const dataCalendarId = 'data-calendar-id';
 const dataConfigInfo = 'data-config-info';
@@ -85,5 +86,6 @@ export {
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpan, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
-    formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent
+    formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
+    dataRelatedTable
 };

@@ -1,4 +1,4 @@
-import { dataTableId } from '../components/common';
+import { dataTableId, dataRelatedTable } from '../components/common';
 import { gridOptions, getGridOptionsIdentifier } from '../components/@oee/table';
 
 function template(node) {
@@ -10,9 +10,17 @@ function template(node) {
         enableSorting: true,
         enableFilter: false,
         rowSelection: 'multiple',
+        onRowSelected: function (event) {
+            if (event.node.isSelected() && eGridDiv${key}.attr('${dataRelatedTable}')) {
+                if (window['gridOptions' + eGridDiv${key}.attr('${dataRelatedTable}')]) {
+                    window['gridOptions' + eGridDiv${key}.attr('${dataRelatedTable}')]
+                        .api.setRowData([event.data]);
+                }
+            }
+        }
       };
-    var eGridDiv${key} = document.querySelector('#${id}');
-    new agGrid.Grid(eGridDiv${key}, ${gridOptions}${key});
+    var eGridDiv${key} = $('#${id}');
+    new agGrid.Grid(eGridDiv${key}.get(0), ${gridOptions}${key});
     ${gridOptions}${key}.api.setRowData([]);
     `;
 }

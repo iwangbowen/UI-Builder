@@ -1,8 +1,9 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey } from '../common';
+import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable } from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
+import { tableSelector } from '../../util/selectors';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -245,6 +246,28 @@ const table = {
             data: {
                 options: themeOptions
             }
+        },
+        {
+            name: 'Related Table',
+            key: 'relatedTable',
+            htmlAttr: dataRelatedTable,
+            inputtype: new SelectInput(),
+            beforeInit(node) {
+                this.data = {
+                    options: [...iframeWindow.$(tableSelector)]
+                        .map(e => ({
+                            value: $(e).attr(dataTableId),
+                            text: $(e).attr(dataTableId)
+                        }))
+                        .filter(option => option.value != $(node).attr(dataTableId))
+                };
+            }
+        },
+        {
+            name: 'Table Key',
+            key: 'tableKey',
+            htmlAttr: dataTableId,
+            inputtype: new TextInput()
         },
         {
             name: 'Data key',
