@@ -22,8 +22,7 @@ const tooltipScriptType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
 
 const pages = [
-    { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' },
-    { name: 'playground', title: 'Playground', url: 'demo/playground/index.html' }
+    { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' }
 ];
 
 export {
