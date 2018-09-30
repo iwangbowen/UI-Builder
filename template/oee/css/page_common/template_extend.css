@@ -28,6 +28,11 @@
     background-color: snow;
 }
 
+.input-block select {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
 .radio-checkbox-block {
     display: inline-block;
     margin-left: 10px;
