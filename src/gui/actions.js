@@ -2,6 +2,7 @@ import Vvveb from './builder';
 import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util/dom';
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
+import { addDatetime } from '../util/common';
 
 Vvveb.Actions = {
     init() {
@@ -64,8 +65,9 @@ Vvveb.Actions = {
                             reject(evt)
                         }
                     }).then(function (html) {
-                        localStorage.setItem(importedPageName, html);
-                        window.location.href = `#${importedPageName}`;
+                        const itemKey = addDatetime(importedPageName);
+                        localStorage.setItem(itemKey, html);
+                        window.location.href = `#${itemKey}`;
                         window.location.reload();
                     })
                 }

@@ -7,7 +7,7 @@ import {
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageName, importedPageTitle, importedPageHref, pages
+    importedPageName, importedPageTitle, importedPageHref, pages, pdsPage
 } from '../constants';
 import _ from 'lodash';
 import {
@@ -19,7 +19,8 @@ import {
     draggableComponent, configurableComponent, sortableClass, cloneableComponent,
     deletableComponent
 } from '../components/common';
-import format from 'date-fns/format';
+import { addDatetime } from './common';
+import 'core-js/es7/array';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -50,21 +51,24 @@ function initPanelToggle() {
 }
 
 function initBuilderPage() {
-    const hash = getHash();
-    if (hash == importedPageName && localStorage.getItem(importedPageName)) {
-        pages.unshift(getPage(importedPageName, importedPageTitle, importedPageHref));
+    const decodedHash = decodeURI(getHash());
+    const savedItems = Object.keys(localStorage);
+    if (!savedItems.includes(decodedHash)) {
+        window.location.href = `#${addDatetime(pdsPage.name)}`;
     }
+
+    const savedPages = savedItems.map(item => getPage(item, item, importedPageHref));
+    pages.unshift(...savedPages);
     Vvveb.FileManager.addPages(pages);
-    const page = Vvveb.FileManager.getPage(hash);
+    const page = Vvveb.FileManager.getPage(decodedHash);
     if (page) {
         localStorage.getItem(page.name)
             && (page.srcdoc = generateHtmlFromLocalStorageItemKey(page.url, page.name));
         Vvveb.Builder.init(page.url, page.srcdoc, loadCallback);
         Vvveb.FileManager.showActive(page.name);
     } else {
-        window.location.href = `#${pages[0].name}`;
-        Vvveb.Builder.init(pages[0].url, pages[0].srcdoc, loadCallback);
-        Vvveb.FileManager.showActive(pages[0].name);
+        Vvveb.Builder.init(pdsPage.url, pdsPage.srcdoc, loadCallback);
+        Vvveb.FileManager.showActive(pdsPage.name);
     }
 }
 
@@ -198,10 +202,8 @@ function getPage(pageName, pageTitle, pageHref) {
     };
 }
 
-let time = format(new Date(), 'YYYY-MM-DD HH:mm');
-
 function autoSave() {
-    localStorage.setItem(getHash() + time, getBeautifiedHtml(window.FrameDocument));
+    localStorage.setItem(decodeURI(getHash()), getBeautifiedHtml(window.FrameDocument));
 }
 
 function loadCallback() {

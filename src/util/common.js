@@ -1,3 +1,5 @@
+import format from 'date-fns/format';
+
 function getRandomString(length = 2) {
     let result = '';
     while(!result) {
@@ -6,6 +8,13 @@ function getRandomString(length = 2) {
     return result;
 }
 
+
+const delimiter = '_';
+function addDatetime(name) {
+    return `${name}${delimiter}${format(new Date(), 'YYYY-MM-DD HH:mm:ss')}`;
+}
+
 export {
-    getRandomString
+    getRandomString,
+    addDatetime
 };

@@ -7,9 +7,7 @@ Vvveb.FileManager = {
 	init() {
 		this.tree = $("#filemanager .tree > ol").html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
-			const hash = $(this).parents('li').data('page');
-			localStorage.removeItem(hash);
-			window.location.href = `#${hash}`;
+			window.location.href = `#${$(this).parents('li').data('page')}`;
 			window.location.reload();
 			// Vvveb.FileManager.loadPage($(this).parents("li").data("page"));
 			return false;

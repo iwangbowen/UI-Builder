@@ -21,13 +21,18 @@ const dataScriptType = 'data-script-type';
 const tooltipScriptType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
 
+const pdsPage = {
+    name: `pds`,
+    title: `pds`,
+    url: 'template/oee/html/demo/demo.html'
+};
 const pages = [
-    { name: 'pds', title: 'PDS Template', url: 'template/oee/html/demo/demo.html' }
+    pdsPage
 ];
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     pages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType
+    dataScriptType, tooltipScriptType, pdsPage
 };
