@@ -4,3 +4,5 @@ transpiled/
 .vscode/
 .idea/
 dist/
+.settings/
+.project
