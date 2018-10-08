@@ -7,7 +7,7 @@ import {
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageName, importedPageTitle, importedPageHref, pages, pdsPage
+    importedPageHref, pages, pdsPage
 } from '../constants';
 import _ from 'lodash';
 import {
