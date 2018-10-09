@@ -18,225 +18,234 @@
 	<link href="./template/oee/css/page_common/template_extend.css" rel="stylesheet">
 	<link href="./libs/select2/select2.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="./libs/jquery-ui-1.12.1/jquery-ui.min.css">
+</head>
 
-	<body>
-		<div id="vvveb-builder">
-			<div id="top-panel">
-				<div class="btn-group mr-3" role="group">
-					<button class="btn btn-light" title="Undo (Ctrl/Cmd + Z)" id="undo-btn" data-vvveb-action="undo" data-vvveb-shortcut="ctrl+z">
-						<i class="la la-undo"></i>
-					</button>
-					<button class="btn btn-light" title="Redo (Ctrl/Cmd + Y)" id="redo-btn" data-vvveb-action="redo" data-vvveb-shortcut="ctrl+y">
-						<i class="la la-undo la-flip-horizontal"></i>
-					</button>
-				</div>
-				<div class="btn-group mr-3" role="group">
-					<button class="btn btn-light" title="Fullscreen (F11)" id="fullscreen-btn" data-toggle="button" aria-pressed="false" data-vvveb-action="fullscreen">
-						<i class="la la-arrows"></i>
-					</button>
-					<button class="btn btn-light" title="Preview" id="preview-btn" type="button" data-toggle="button" aria-pressed="false" data-vvveb-action="preview">
-						<i class="la la-eye"></i>
-					</button>
-					<button class="btn btn-light" title="Check generated file" id="check-btn" data-vvveb-action="check" data-vvveb-shortcut="ctrl+e">
-						<i class="la la-file-text"></i>
-					</button>
-					<input type="file" id="file-input" style="display:none" accept=".htm, .html">
-					<button class="btn btn-light" title="Upload" id="upload-btn" data-vvveb-action="upload">
-						<i class="la la-cloud-upload"></i>
-					</button>
-					<button class="btn btn-light" title="Download (Ctrl + D)" id="download-btn" data-vvveb-action="download" data-vvveb-shortcut="ctrl+d">
-						<i class="la la-cloud-download"></i>
-					</button>
-					<!-- <button class="btn btn-light" title="Download with external files" id="download-with-external-files-btn" data-vvveb-action="downloadWithExternalFiles">
+<body>
+	<div id="vvveb-builder">
+		<div id="top-panel">
+			<div class="btn-group mr-3" role="group">
+				<button class="btn btn-light" title="Undo (Ctrl/Cmd + Z)" id="undo-btn" data-vvveb-action="undo"
+				 data-vvveb-shortcut="ctrl+z">
+					<i class="la la-undo"></i>
+				</button>
+				<button class="btn btn-light" title="Redo (Ctrl/Cmd + Y)" id="redo-btn" data-vvveb-action="redo"
+				 data-vvveb-shortcut="ctrl+y">
+					<i class="la la-undo la-flip-horizontal"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-3" role="group">
+				<button class="btn btn-light" title="Fullscreen (F11)" id="fullscreen-btn" data-toggle="button" aria-pressed="false"
+				 data-vvveb-action="fullscreen">
+					<i class="la la-arrows"></i>
+				</button>
+				<button class="btn btn-light" title="Preview" id="preview-btn" type="button" data-toggle="button" aria-pressed="false"
+				 data-vvveb-action="preview">
+					<i class="la la-eye"></i>
+				</button>
+				<button class="btn btn-light" title="Check generated file" id="check-btn" data-vvveb-action="check"
+				 data-vvveb-shortcut="ctrl+e">
+					<i class="la la-file-text"></i>
+				</button>
+				<input type="file" id="file-input" style="display:none" accept=".htm, .html">
+				<button class="btn btn-light" title="Upload" id="upload-btn" data-vvveb-action="upload">
+					<i class="la la-cloud-upload"></i>
+				</button>
+				<button class="btn btn-light" title="Download (Ctrl + D)" id="download-btn" data-vvveb-action="download"
+				 data-vvveb-shortcut="ctrl+d">
+					<i class="la la-cloud-download"></i>
+				</button>
+				<!-- <button class="btn btn-light" title="Download with external files" id="download-with-external-files-btn" data-vvveb-action="downloadWithExternalFiles">
 						<i class="la la-archive"></i>
 					</button> -->
-				</div>
-				<div class="btn-group float-right" role="group">
-					<button id="mobile-view" data-view="mobile" class="btn btn-light" title="Mobile view" data-vvveb-action="viewport">
-						<i class="ion-iphone"></i>
-					</button>
-					<button id="tablet-view" data-view="tablet" class="btn btn-light" title="Tablet view" data-vvveb-action="viewport">
-						<i class="ion-ipad"></i>
-					</button>
-					<button id="desktop-view" data-view="" class="btn btn-light" title="Desktop view" data-vvveb-action="viewport">
-						<i class="ion-monitor"></i>
-					</button>
-				</div>
 			</div>
-			<div id="canvas">
-				<div id="iframe-wrapper">
-					<div id="iframe-layer">
-						<div id="highlight-box">
-							<div id="highlight-name"></div>
+			<div class="btn-group float-right" role="group">
+				<button id="mobile-view" data-view="mobile" class="btn btn-light" title="Mobile view" data-vvveb-action="viewport">
+					<i class="ion-iphone"></i>
+				</button>
+				<button id="tablet-view" data-view="tablet" class="btn btn-light" title="Tablet view" data-vvveb-action="viewport">
+					<i class="ion-ipad"></i>
+				</button>
+				<button id="desktop-view" data-view="" class="btn btn-light" title="Desktop view" data-vvveb-action="viewport">
+					<i class="ion-monitor"></i>
+				</button>
+			</div>
+		</div>
+		<div id="canvas">
+			<div id="iframe-wrapper">
+				<div id="iframe-layer">
+					<div id="highlight-box">
+						<div id="highlight-name"></div>
+					</div>
+					<div id="select-box">
+						<div id="wysiwyg-editor">
+							<a id="bold-btn" href="" title="Bold">
+								<i>
+									<strong>B</strong>
+								</i>
+							</a>
+							<a id="italic-btn" href="" title="Italic">
+								<i>I</i>
+							</a>
+							<a id="underline-btn" href="" title="Underline">
+								<u>u</u>
+							</a>
+							<a id="strike-btn" href="" title="Strikeout">
+								<strike>S</strike>
+							</a>
+							<a id="link-btn" href="" title="Create link">
+								<strong>a</strong>
+							</a>
 						</div>
-						<div id="select-box">
-							<div id="wysiwyg-editor">
-								<a id="bold-btn" href="" title="Bold">
-									<i>
-										<strong>B</strong>
-									</i>
+						<div id="select-actions">
+							<div id="with-ctrl-key">
+								<a id="left-align" href="" title="Left">
+									<i class="la la-align-left"></i>
 								</a>
-								<a id="italic-btn" href="" title="Italic">
-									<i>I</i>
+								<a id="center-align" href="" title="Center">
+									<i class="la la-align-center"></i>
 								</a>
-								<a id="underline-btn" href="" title="Underline">
-									<u>u</u>
+								<a id="right-align" href="" title="Right">
+									<i class="la la-align-right"></i>
 								</a>
-								<a id="strike-btn" href="" title="Strikeout">
-									<strike>S</strike>
+								<a id="top-align" href="" title="Top">
+									<i class="la la-align-left" style="transform: rotate(90deg);"></i>
 								</a>
-								<a id="link-btn" href="" title="Create link">
-									<strong>a</strong>
+								<a id="middle-align" href="" title="Middle">
+									<i class="la la-align-center"></i>
+								</a>
+								<a id="bottom-align" href="" title="Bottom">
+									<i class="la la-align-right" style="transform: rotate(90deg);"></i>
 								</a>
 							</div>
-							<div id="select-actions">
-								<div id="with-ctrl-key">
-									<a id="left-align" href="" title="Left">
-										<i class="la la-align-left"></i>
-									</a>
-									<a id="center-align" href="" title="Center">
-										<i class="la la-align-center"></i>
-									</a>
-									<a id="right-align" href="" title="Right">
-										<i class="la la-align-right"></i>
-									</a>
-									<a id="top-align" href="" title="Top">
-										<i class="la la-align-left" style="transform: rotate(90deg);"></i>
-									</a>
-									<a id="middle-align" href="" title="Middle">
-										<i class="la la-align-center"></i>
-									</a>
-									<a id="bottom-align" href="" title="Bottom">
-										<i class="la la-align-right" style="transform: rotate(90deg);"></i>
-									</a>
-								</div>
-								<div id="without-ctrl-key">
-									<!-- <a id="drag-box" href="" title="Drag element">
+							<div id="without-ctrl-key">
+								<!-- <a id="drag-box" href="" title="Drag element">
 											<i class="ion-arrow-move"></i>
 										</a> -->
-									<a id="parent-box" href="" title="Select parent">
-										<i class="ion-reply"></i>
-									</a>
-									<a id="up-box" href="" title="Move element up">
-										<i class="ion-arrow-up-a"></i>
-									</a>
-									<a id="down-box" href="" title="Move element down">
-										<i class="ion-arrow-down-a"></i>
-									</a>
-									<a id="clone-box" href="" title="Clone element">
-										<i class="ion-ios-copy"></i>
-									</a>
-									<a id="delete-box" href="" title="Remove element">
-										<i class="ion-trash-a"></i>
-									</a>
-								</div>
+								<a id="parent-box" href="" title="Select parent">
+									<i class="ion-reply"></i>
+								</a>
+								<a id="up-box" href="" title="Move element up">
+									<i class="ion-arrow-up-a"></i>
+								</a>
+								<a id="down-box" href="" title="Move element down">
+									<i class="ion-arrow-down-a"></i>
+								</a>
+								<a id="clone-box" href="" title="Clone element">
+									<i class="ion-ios-copy"></i>
+								</a>
+								<a id="delete-box" href="" title="Remove element">
+									<i class="ion-trash-a"></i>
+								</a>
 							</div>
 						</div>
 					</div>
-					<iframe src="about:none" id="iframeId" name="myFrame"></iframe>
+				</div>
+				<iframe src="about:none" id="iframeId" name="myFrame"></iframe>
+			</div>
+		</div>
+		<div id="menu-panel">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#" style="font-size: 18px;">Gui Builder</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+				 aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="javascript:void(0);">组件库
+							<span class="sr-only">(current)</span>
+						</a>
+						<a id="attribute-settings" class="nav-item nav-link" href="javascript:void(0);">属性设置</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div id="left-panel">
+			<div id="filemanager">
+				<div class="header">
+					<a href="#">Pages</a>
+				</div>
+				<div class="tree">
+					<ol>
+					</ol>
 				</div>
 			</div>
-			<div id="menu-panel">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a class="navbar-brand" href="#" style="font-size: 18px;">Gui Builder</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-					 aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
+			<div id="components">
+				<div class="header">
+					<input class="form-control form-control-sm" placeholder="点击搜索组件" type="text" id="component-search"
+					 data-vvveb-action="componentSearch" data-vvveb-on="keyup">
+					<button id="clear-backspace" data-vvveb-action="clearComponentSearch">
+						<i class="ion-backspace"></i>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-						<div class="navbar-nav">
-							<a class="nav-item nav-link active" href="javascript:void(0);">组件库
-								<span class="sr-only">(current)</span>
-							</a>
-							<a id="attribute-settings" class="nav-item nav-link" href="javascript:void(0);">属性设置</a>
-						</div>
-					</div>
-				</nav>
-			</div>
-			<div id="left-panel">
-				<div id="filemanager">
-					<div class="header">
-						<a href="#">Pages</a>
-					</div>
-					<div class="tree">
-						<ol>
-						</ol>
+				</div>
+				<div id="components-sidepane" class="sidepane">
+					<div>
+						<ul id="components-list" class="clearfix">
+						</ul>
 					</div>
 				</div>
-				<div id="components">
-					<div class="header">
-						<input class="form-control form-control-sm" placeholder="点击搜索组件" type="text" id="component-search" data-vvveb-action="componentSearch"
-						 data-vvveb-on="keyup">
-						<button id="clear-backspace" data-vvveb-action="clearComponentSearch">
-							<i class="ion-backspace"></i>
+			</div>
+		</div>
+		<div id="right-panel">
+			<div id="component-properties">
+			</div>
+		</div>
+		<div id="bottom-panel">
+			<div class="btn-group" role="group">
+				<button id="code-editor-btn" data-view="mobile" class="btn btn-light btn-sm" title="Code editor" data-vvveb-action="toggleEditor">
+					<i class="ion-chevron-up"></i> Code editor
+				</button>
+				<button style="display: none;" id="format-code-btn" data-view="mobile" class="btn btn-light btn-sm" title="format Code"
+				 data-vvveb-action="formatCode">
+					<i class="ion-code"></i> Format Code
+				</button>
+			</div>
+			<div id="vvveb-code-editor">
+				<textarea class="form-control"></textarea>
+				<div>
+				</div>
+			</div>
+		</div>
+		<!-- export html modal-->
+		<div class="modal fade" id="textarea-modal" tabindex="-1" role="dialog" aria-labelledby="textarea-modal" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Export html</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div id="components-sidepane" class="sidepane">
-						<div>
-							<ul id="components-list" class="clearfix">
-							</ul>
-						</div>
+					<div class="modal-body">
+						<textarea rows="25" cols="150" class="form-control"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
-			<div id="right-panel">
-				<div id="component-properties">
-				</div>
-			</div>
-			<div id="bottom-panel">
-				<div class="btn-group" role="group">
-					<button id="code-editor-btn" data-view="mobile" class="btn btn-light btn-sm" title="Code editor" data-vvveb-action="toggleEditor">
-						<i class="ion-chevron-up"></i> Code editor
-					</button>
-					<button style="display: none;" id="format-code-btn" data-view="mobile" class="btn btn-light btn-sm" title="format Code" data-vvveb-action="formatCode">
-						<i class="ion-code"></i> Format Code
-					</button>
-				</div>
-				<div id="vvveb-code-editor">
-					<textarea class="form-control"></textarea>
-					<div>
-					</div>
-				</div>
-			</div>
-			<!-- export html modal-->
-			<div class="modal fade" id="textarea-modal" tabindex="-1" role="dialog" aria-labelledby="textarea-modal" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Export html</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<textarea rows="25" cols="150" class="form-control"></textarea>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- jquery-->
-			<script src="js/jquery.min.js"></script>
-			<script src="libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-			<script src="js/jquery.hotkeys.js"></script>
-			<script src="libs/select2/select2.min.js"></script>
-			<!-- bootstrap-->
-			<script src="js/popper.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<!-- js-beautify -->
-			<script src="libs/beautify.js"></script>
-			<script src="libs/beautify-css.js"></script>
-			<script src="libs/beautify-html.js"></script>
-			<!-- <script src="libs/builder/components-widgets.js"></script> -->
-			<script src="dist/main.js"></script>
-			<!-- code mirror - code editor syntax highlight -->
-			<link href="libs/codemirror/lib/codemirror.css" rel="stylesheet" />
-			<link href="libs/codemirror/theme/material.css" rel="stylesheet" />
-			<script src="libs/codemirror/lib/codemirror.js"></script>
-			<script src="libs/codemirror/lib/xml.js"></script>
-			<script src="libs/codemirror/lib/formatting.js"></script>
-	</body>
+		</div>
+	</div>
+	<!-- jquery-->
+	<script src="js/jquery.min.js"></script>
+	<script src="libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<script src="js/jquery.hotkeys.js"></script>
+	<script src="libs/select2/select2.min.js"></script>
+	<!-- bootstrap-->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- js-beautify -->
+	<script src="libs/beautify.js"></script>
+	<script src="libs/beautify-css.js"></script>
+	<script src="libs/beautify-html.js"></script>
+	<!-- <script src="libs/builder/components-widgets.js"></script> -->
+	<script src="dist/main.js"></script>
+	<!-- code mirror - code editor syntax highlight -->
+	<link href="libs/codemirror/lib/codemirror.css" rel="stylesheet" />
+	<link href="libs/codemirror/theme/material.css" rel="stylesheet" />
+	<script src="libs/codemirror/lib/codemirror.js"></script>
+	<script src="libs/codemirror/lib/xml.js"></script>
+	<script src="libs/codemirror/lib/formatting.js"></script>
+</body>
 
 </html>
