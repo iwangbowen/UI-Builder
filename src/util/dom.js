@@ -4,7 +4,7 @@ import {
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateGridScript
+    generateQueryScript, generateGridScript, generateAddNewItemDiv
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -189,7 +189,7 @@ function getHash() {
 }
 
 function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
-    return htmlGenerator(localStorage.getItem(itemKey),
+    return htmlGenerator(localStorage.getItem(itemKey), generateAddNewItemDiv,
         generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }

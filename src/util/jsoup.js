@@ -264,6 +264,15 @@ function generateDevDependentTags(el) {
     return el;
 }
 
+function generateAddNewItemDiv(el) {
+    $(el).find('div.gridster').after(`
+    <div class="grid-footer">
+        <button class="add-more-items btn btn-primary">Add new item</button>
+    </div>
+    `);
+    return el;
+}
+
 // select multiple options, just name it as an array[]
 // https://github.com/marioizquierdo/jquery.serializeJSON
 function addNameBrackets(el) {
@@ -308,5 +317,5 @@ export {
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
-    replacePopupWithForm, generateQueryScript, generateGridScript
+    replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv
 };
