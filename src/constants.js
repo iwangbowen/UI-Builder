@@ -26,7 +26,14 @@ const pdsPage = {
     title: `pds`,
     url: 'template/oee/html/demo/demo.html'
 };
+const gridPage = {
+    name: 'layout',
+    title: 'layout',
+    url: 'layout/grid.html'
+};
+
 const pages = [
+    gridPage,
     pdsPage
 ];
 
