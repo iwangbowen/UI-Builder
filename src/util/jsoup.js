@@ -7,6 +7,7 @@ import autoselectinputTemplate from '../script-templates/autoselectinput';
 import { template as submitFormTemplate, functionName } from '../script-templates/submitform';
 import popupTemplate from '../script-templates/popup';
 import queryTempate from '../script-templates/query';
+import gridTemplate from '../script-templates/grid';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
 import tooltipTemplate from '../script-templates/tooltip';
@@ -42,7 +43,9 @@ const unusedTags = [
         name: 'script',
         filter: tag => tag.getAttribute('src')
             ? (tag.getAttribute('src').includes('iframe')
-                || tag.getAttribute('src').includes('interact'))
+                || tag.getAttribute('src').includes('interact')
+                // Remove layout.js in Builder
+                || tag.getAttribute('src').includes('layout'))
             : $(tag).hasClass(removeableScript)
     },
     {
@@ -86,6 +89,8 @@ const unusedTags = [
             || $(tag).hasClass('ui-helper-hidden-accessible')
             // Generated div.ui-resizable-handle by resizable would interfere with sortable elements
             || $(tag).hasClass('ui-resizable-handle')
+            // Remove Add new item button in layout
+            || $(tag).hasClass('grid-footer')
     }
 ];
 
@@ -148,6 +153,10 @@ function generateButtonOnclickScript(el) {
 
 function generatePopupScript(el) {
     return appendScript(el, popupTemplate());
+}
+
+function generateGridScript(el) {
+    return appendScript(el, gridTemplate());
 }
 
 function generateQueryScript(el) {
@@ -293,5 +302,5 @@ export {
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
-    replacePopupWithForm, generateQueryScript
+    replacePopupWithForm, generateQueryScript, generateGridScript
 };

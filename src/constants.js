@@ -1,6 +1,8 @@
 const baseHref = 'baseHref';
 const defaultFilename = 'index.html';
 
+const isInBuilder = true;
+
 const beautify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
@@ -29,7 +31,7 @@ const pdsPage = {
 const gridPage = {
     name: 'layout',
     title: 'layout',
-    url: 'layout/grid.html'
+    url: 'template/oee/html/demo/grid.html'
 };
 
 const pages = [
@@ -41,5 +43,5 @@ export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     pages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage
+    dataScriptType, tooltipScriptType, pdsPage, isInBuilder
 };
