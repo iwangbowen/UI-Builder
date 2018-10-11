@@ -8,7 +8,7 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid
+    customtableid, commontableid, formid
 } from '../components/@oee/ids';
 import 'core-js/es7/array';
 
@@ -118,6 +118,10 @@ const tables = [
     commontableid
 ];
 
+const form = [
+    formid
+];
+
 function accept(draggable, components) {
     return components.includes(draggable.data('type'));
 }
@@ -130,6 +134,13 @@ function initIframeTableDrop() {
 }
 
 function initIframeFormDrop() {
+    Vvveb.Builder.frameBody.droppable({
+        accept: _.curry(accept)(_, form),
+        drop
+    });
+}
+
+function initIframeFormItemsDrop() {
     Vvveb.Builder.frameBody
         .find('.allButton.dropzone')
         .droppable({
@@ -319,6 +330,7 @@ export {
     initComponentDrag,
     initIframeTableDrop,
     initIframeFormDrop,
+    initIframeFormItemsDrop,
     initIframePopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,

@@ -10,7 +10,7 @@ import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
-	initIframeFormDrop, initIframePopupDrop, initIframeTableDrop
+	initIframeFormDrop, initIframeFormItemsDrop, initIframePopupDrop, initIframeTableDrop
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent } from '../components/common';
 
@@ -97,6 +97,7 @@ Vvveb.Builder = {
 
 			initIframeTableDrop();
 			initIframeFormDrop();
+			initIframeFormItemsDrop();
 			initIframePopupDrop();
 			initIframeResizeVetically();
 			initIframeSortable();

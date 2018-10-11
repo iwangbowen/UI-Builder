@@ -11,6 +11,7 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] = [
+    _oee_ids.formid,
     _oee_ids.buttonid,
     _oee_ids.textinputfieldid,
     _oee_ids.datetimeinputfieldid,
@@ -84,6 +85,7 @@ Vvveb.Components.add("_base", element);
 // Vvveb.Components.add("html/gridrow@general", _general.gridrow);
 
 Vvveb.Components.add('html/labeldiv@oee', _oee.labeldiv);
+Vvveb.Components.extend('_base', _oee_ids.formid, _oee.form);
 Vvveb.Components.extend('_base', _oee_ids.textinputid, _oee.textinput);
 Vvveb.Components.extend('_base', _oee_ids.datetimeinputid, _oee.datetimeinput);
 Vvveb.Components.extend('_base', _oee_ids.datetimeinputfieldid, _oee.datetimeinputfield);

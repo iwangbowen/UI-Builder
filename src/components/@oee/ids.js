@@ -31,11 +31,13 @@ const formlabelid = 'html/formlabel@oee';
 const selectinputid = 'html/selectinput@oee';
 const textid = 'html/text@oee';
 const fileinputfieldid = 'html/fileinputfield@oee';
+const formid = 'html/form@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
     buttonid, commontableid, customtableid, tableid, multivalueselectinputid, multivalueselectinputcustomid, multivalueselectinputfieldid,
     textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid,
     checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid, textinputfieldid,
-    datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid
+    datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid,
+    formid
 };
