@@ -251,10 +251,16 @@ function changeScriptType(el, selector, type) {
     return el;
 }
 
+const devScripts = [
+    '/js/interact-1.3.4.js',
+    '/dist/iframe.js',
+    '/dist/layout.js'
+];
+
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
-    $(el).find('body').append('<script src="/js/interact-1.3.4.js"></script>');
-    $(el).find('body').append('<script src="/dist/iframe.js"></script>');
+    devScripts.forEach((value) =>
+        $(el).find('body').append(`<script src="${value}"></script>`));
     return el;
 }
 
