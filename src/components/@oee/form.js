@@ -1,10 +1,14 @@
 import { TextInput, SelectInput } from '../../inputs/inputs';
+import textinputfield from './textinputfield';
 
 const form = {
     nodes: ["form"],
     image: "icons/form.svg",
     name: "Form",
-    html: '<form class="dropzone"></form>',
+    html: `<form class="dropzone">
+            ${textinputfield.html}
+            ${textinputfield.html}
+           </form>`,
     properties: [{
         name: "Style",
         key: "style",

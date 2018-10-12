@@ -91,6 +91,12 @@ const unusedTags = [
             || $(tag).hasClass('ui-resizable-handle')
             // Remove Add new item button in layout
             || $(tag).hasClass('grid-footer')
+    },
+    {
+        name: 'span',
+        filter: tag => $(tag).hasClass('gs-remove-handle')
+            || $(tag).hasClass('gs-resize-handle')
+            || $(tag).hasClass(' gs-resize-handle-both')
     }
 ];
 
@@ -273,6 +279,15 @@ function generateAddNewItemDiv(el) {
     return el;
 }
 
+function generateGridRemoveItemSpan(el) {
+    $(el).find('div.gridster div').each(function () {
+        if (!$(this).has('span.gs-remove-handle').length) {
+            $(this).append('<span class="gs-remove-handle"></span>');
+        }
+    });
+    return el;
+}
+
 // select multiple options, just name it as an array[]
 // https://github.com/marioizquierdo/jquery.serializeJSON
 function addNameBrackets(el) {
@@ -317,5 +332,6 @@ export {
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
-    replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv
+    replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
+    generateGridRemoveItemSpan
 };

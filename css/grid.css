@@ -80,6 +80,29 @@ table {
     height: 100%;
 }
 
+.gs-remove-handle {
+    opacity: 0;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    right: 2px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACmSURBVDhP7dNNDoIwEIbhOYjiIRASVkYg3H+vMdwB6Fb7kZkotT9Mt/omLNoOT+gC+kfm2pzMcD7yMthyqQ+mLwte+sPA1FaPuavvMRQYZjCLD+Dt72TQPs8Qumdmk/sC1nykxyQfmo1JDjDyk4dJjAq0wtkY8oHY42NdsSurUQdbAVz1vVfddqM+jI9IjcYwSYV+/nqxQUGTvx4CmryKDWgS+4WIXmFO3sZEYTYaAAAAAElFTkSuQmCC');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.gs-w:hover .gs-remove-handle {
+    opacity: 1;
+}
+
+.gs-w.resizing .gs-remove-handle,
+.gs-w.dragging .gs-remove-handle {
+    opacity: 0;
+}
+
 .controls {
     margin-bottom: 20px;
 }

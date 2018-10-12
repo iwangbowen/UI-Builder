@@ -134,10 +134,12 @@ function initIframeTableDrop() {
 }
 
 function initIframeFormDrop() {
-    Vvveb.Builder.frameBody.droppable({
-        accept: _.curry(accept)(_, form),
-        drop
-    });
+    Vvveb.Builder.frameBody
+        .find('div.gridster > div')
+        .droppable({
+            accept: _.curry(accept)(_, form),
+            drop
+        });
 }
 
 function initIframeFormItemsDrop() {
@@ -193,7 +195,7 @@ function onSortingUpdates(event, { item }) {
 
 function initIfameFormSortable() {
     Vvveb.Builder.frameBody
-        .find('.allButton.dropzone')
+        .find('.allButton.dropzone form')
         .sortable({
             cursor: 'move',
             classes: {
