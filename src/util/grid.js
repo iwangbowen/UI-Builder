@@ -21,7 +21,7 @@ function grid() {
             gridster.remove_widget($(this).parent());
         });
     } else {
-        gridster.disable().disable_resize();
+        gridster.disable();
     }
     $('.grid-footer button').click(function () {
         gridster.add_widget('<div><span class="gs-remove-handle"></span></div>');
