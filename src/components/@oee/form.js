@@ -1,5 +1,5 @@
-import { TextInput, SelectInput } from '../../inputs/inputs';
 import textinputfield from './textinputfield';
+import { formProperties as properties } from '../form';
 
 const form = {
     nodes: ["form"],
@@ -9,38 +9,7 @@ const form = {
             ${textinputfield.html}
             ${textinputfield.html}
            </form>`,
-    properties: [{
-        name: "Style",
-        key: "style",
-        htmlAttr: "class",
-        validValues: ["", "form-search", "form-inline", "form-horizontal"],
-        inputtype: new SelectInput(),
-        data: {
-            options: [{
-                value: "",
-                text: "Default"
-            }, {
-                value: "form-search",
-                text: "Search"
-            }, {
-                value: "form-inline",
-                text: "Inline"
-            }, {
-                value: "form-horizontal",
-                text: "Horizontal"
-            }]
-        }
-    }, {
-        name: "Action",
-        key: "action",
-        htmlAttr: "action",
-        inputtype: new TextInput()
-    }, {
-        name: "Method",
-        key: "method",
-        htmlAttr: "method",
-        inputtype: new TextInput()
-    }]
+    properties
 };
 
 export default form;

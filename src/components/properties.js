@@ -176,6 +176,43 @@ const textMappingProperty = {
     inputtype: new TextInput()
 };
 
+const actionProperty = {
+    name: 'Action',
+    key: 'action',
+    htmlAttr: 'action',
+    inputtype: new TextInput()
+};
+
+const methodProperty = {
+    name: 'Method',
+    key: 'method',
+    htmlAttr: 'method',
+    inputtype: new TextInput()
+};
+
+const formStyleProperty = {
+    name: "Style",
+    key: "style",
+    htmlAttr: "class",
+    validValues: ["", "form-search", "form-inline", "form-horizontal"],
+    inputtype: new SelectInput(),
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "form-search",
+            text: "Search"
+        }, {
+            value: "form-inline",
+            text: "Inline"
+        }, {
+            value: "form-horizontal",
+            text: "Horizontal"
+        }]
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -191,5 +228,8 @@ export {
     datetimeFormatProperty,
     showDatetimeProperty,
     valueMappingProperty,
-    textMappingProperty
+    textMappingProperty,
+    actionProperty,
+    methodProperty,
+    formStyleProperty
 };
