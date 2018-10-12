@@ -1,7 +1,8 @@
 const isInBuilder = true;
 
 function grid() {
-    const gridster = $(".gridster ul").gridster({
+    const gridster = $(".gridster").gridster({
+        widget_selector: 'div',
         widget_margins: [5, 5],
         widget_base_dimensions: ['auto', 50],
         autogrow_cols: true,
@@ -14,7 +15,7 @@ function grid() {
         gridster.disable().disable_resize();
     }
     $('.grid-footer button').click(function () {
-        gridster.add_widget('<li></li>');
+        gridster.add_widget('<div></div>');
     });
 }
 

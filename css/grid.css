@@ -63,24 +63,15 @@ table {
     background: red !important;
 }
 
-.gridster ul {
+.gridster {
     background-color: #EFEFEF;
 }
 
-.gridster li {
+.gridster div {
     font-size: 1em;
     font-weight: bold;
     text-align: center;
     line-height: 100%;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    list-style: none;
-    font-weight: bold;
 }
 
 .gridster-box {
