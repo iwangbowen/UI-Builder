@@ -168,6 +168,9 @@ function initIframeGridDrop() {
     Vvveb.Builder.frameBody
         .find('div.gridster > div')
         .droppable({
+            classes: {
+                "ui-droppable-hover": "ui-state-hover"
+              },
             accept: _.curry(accept)(_, gridDroppables),
             drop
         });
