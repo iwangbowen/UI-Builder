@@ -57,6 +57,7 @@ function initTopPanelDrag() {
 function enableSortableAndDroppable(elements) {
     $(elements)
         .sortable({
+            connectWith: 'div.gridster > div > form',
             cursor: 'move',
             // Prevents sorting if you start on elements matching the selector.
             // Default: "input,textarea,button,select,option"
