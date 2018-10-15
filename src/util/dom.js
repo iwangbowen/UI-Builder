@@ -56,7 +56,7 @@ function initBuilderPage() {
     const decodedHash = decodeURI(getHash());
     const savedItems = Object.keys(localStorage);
     if (!savedItems.includes(decodedHash)) {
-        window.location.href = `#${addDatetime(pdsPage.name)}`;
+        window.location.href = `#${addDatetime(decodedHash)}`;
     }
 
     const savedPages = savedItems.map(item => getPage(item, item, importedPageHref));
