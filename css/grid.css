@@ -74,11 +74,6 @@ table {
     line-height: 100%;
 }
 
-.gridster > div > form {
-    border: dashed 2px transparent;
-    border-color: #7e7a7a;
-}
-
 .gridster-box {
     position: relative;
     width: 100%;

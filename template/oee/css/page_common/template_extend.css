@@ -1,3 +1,8 @@
+form {
+    background-color: white;
+    font-weight: normal;
+}
+
 .form-item {
     margin-bottom: 5px;
 }
