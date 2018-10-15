@@ -280,7 +280,7 @@ function generateAddNewItemDiv(el) {
 }
 
 function generateGridRemoveItemSpan(el) {
-    $(el).find('div.gridster div').each(function () {
+    $(el).find('div.gridster > div').each(function () {
         if (!$(this).has('span.gs-remove-handle').length) {
             $(this).append('<span class="gs-remove-handle"></span>');
         }

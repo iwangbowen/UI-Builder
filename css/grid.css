@@ -67,10 +67,10 @@ table {
     background-color: #EFEFEF;
 }
 
-.gridster div {
+.gridster > div {
     font-size: 1em;
     font-weight: bold;
-    text-align: center;
+    /* text-align: center; */
     line-height: 100%;
 }
 

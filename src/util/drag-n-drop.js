@@ -86,7 +86,14 @@ function drop(event, { draggable, helper, offset }) {
         } else {
             appendedElement = $(this).append(helper.prop('outerHTML'))
                 .children('*:last')
-                .offset(offset);
+                .css({
+                    position: 'none',
+                    left: 0,
+                    top: 0,
+                    width: '100%',
+                    height: '100%',
+                    // margin: '20px'
+                });
         }
         Vvveb.Undo.addMutation(new ChildListMutation({
             target: appendedElement.get(0).parentNode,
@@ -115,11 +122,11 @@ const popupFormItems = [
 
 const tables = [
     customtableid,
-    commontableid
 ];
 
-const form = [
-    formid
+const gridDroppables = [
+    formid,
+    commontableid
 ];
 
 function accept(draggable, components) {
@@ -133,11 +140,11 @@ function initIframeTableDrop() {
     });
 }
 
-function initIframeFormDrop() {
+function initIframeGridDrop() {
     Vvveb.Builder.frameBody
         .find('div.gridster > div')
         .droppable({
-            accept: _.curry(accept)(_, form),
+            accept: _.curry(accept)(_, gridDroppables),
             drop
         });
 }
@@ -331,7 +338,7 @@ export {
     initTopPanelDrag,
     initComponentDrag,
     initIframeTableDrop,
-    initIframeFormDrop,
+    initIframeGridDrop,
     initIframeFormItemsDrop,
     initIframePopupDrop,
     initIframeDrag,
