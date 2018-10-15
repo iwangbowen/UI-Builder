@@ -19,7 +19,6 @@ import { beBackwardCompatible } from './util/common';
  */
 $(document).ready(function () {
     beBackwardCompatible();
-    initTopPanelDrag();
     initPanelToggle();
     setGlobalVariables();
     Vvveb.FileManager.init();
