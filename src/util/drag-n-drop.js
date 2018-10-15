@@ -65,7 +65,7 @@ function drop(event, { draggable, helper, offset }) {
             appendedElement = component.onDrop(helper);
         } else if (component.sortable) {
             // Check if the drop zone is popup form
-            if ($(this).is('form')) {
+            if ($(this).is('form.popup-form')) {
                 appendedElement = $(this).find('.saveArea')
                     .before(helper.prop('outerHTML'))
                     .prev()
@@ -94,6 +94,22 @@ function drop(event, { draggable, helper, offset }) {
                     height: '100%',
                     // margin: '20px'
                 });
+            if (appendedElement.is('form')) {
+                appendedElement
+                    .sortable({
+                        cursor: 'move',
+                        // Prevents sorting if you start on elements matching the selector.
+                        // Default: "input,textarea,button,select,option"
+                        cancel: "button, option, div.ui-resizable-handle",
+                        start: onSortingStarts,
+                        update: onSortingUpdates
+                    })
+                    .droppable({
+                        greedy: true,
+                        accept: _.curry(accept)(_, formItems),
+                        drop
+                    });
+            }
         }
         Vvveb.Undo.addMutation(new ChildListMutation({
             target: appendedElement.get(0).parentNode,
@@ -202,7 +218,7 @@ function onSortingUpdates(event, { item }) {
 
 function initIfameFormSortable() {
     Vvveb.Builder.frameBody
-        .find('.allButton.dropzone form')
+        .find('.allButton.dropzone')
         .sortable({
             cursor: 'move',
             classes: {
