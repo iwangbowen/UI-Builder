@@ -6,7 +6,7 @@ const form = {
     nodes: ["form"],
     image: "icons/form.svg",
     name: "Form",
-    html: `<form class="dropzone ${configurableComponent}">
+    html: `<form class="${configurableComponent}">
             ${textinputfield.html}
             ${textinputfield.html}
            </form>`,
