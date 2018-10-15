@@ -11706,6 +11706,7 @@ body {
   white-space: nowrap; }
 
 #vvveb-builder #highlight-box {
+  display: none;
   position: absolute;
   border: 1px solid #4285f4;
   width: 0px;
