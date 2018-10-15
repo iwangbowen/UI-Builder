@@ -11576,7 +11576,7 @@ body {
   background: linear-gradient(right, #fff 85%, #fcfcfc 100%);
   box-shadow: 1px -2px 2px #f3f3f3 inset;
   width: 275px;
-  /*		
+  /*
 		&:hover
 		{
 			width:$builder-right-panel-width + 15;
@@ -11588,11 +11588,11 @@ body {
 			overflow-y: auto;
 			overflow-x: hidden;
 			width:$builder-right-panel-width + 15;
-		
+
 			//scrollbar on hover
 			&:hover
 			{
-				
+
 			}
 		}
 */
@@ -11630,7 +11630,7 @@ body {
   top: 0px;
   right: 0px;
 }
-    
+
 #vvveb-builder #top-panel {
   position: fixed;
   width: fit-content;
@@ -11678,7 +11678,7 @@ body {
   height: 100%;
   width: calc( 100vw - 275px);
   height: calc( 100vh - 35px);
-  /* top: 35px; */
+  top: 35px;
   position: fixed;
   transition: width 0.35s, left 0.35s; }
   #vvveb-builder #canvas #iframe-wrapper, #vvveb-builder #canvas iframe {
@@ -11790,7 +11790,7 @@ li[data-type] {
   border-color: #ddd;
   border-style: solid;
   border-width: 0px;
-  /*		  
+  /*
 		border-left-width:1px;
 		border-top-width:1px;
 		*/
@@ -11884,7 +11884,7 @@ li[data-type] {
             border-color: #ddd;
             border-style: solid;
             border-width: 0px;
-            /*		  
+            /*
 		border-left-width:1px;
 		border-top-width:1px;
 		*/
@@ -11910,7 +11910,7 @@ li[data-type] {
               display: block; }
 
 /*
-#right-panel 
+#right-panel
 {
 */
 label.header {
