@@ -34,7 +34,7 @@ function initComponentDrag(item, component) {
         iframeFix: true,
         helper() {
             const $element = $(html).appendTo($('body'));
-            $element.css({ 'z-index': 999 });
+            $element.css({ 'z-index': 15 });
             return $element;
         },
         cursorAt,
