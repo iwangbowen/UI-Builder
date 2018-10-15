@@ -1,6 +1,12 @@
 const isInBuilder = true;
 
 function grid() {
+    function hideToolBoxes() {
+        if (window.parent) {
+            $(window.parent.document)
+                .find('#select-box, #highlight-box, #highlight-name').hide();
+        }
+    }
     var gridster = $(".gridster").gridster({
         widget_selector: 'div.gridster > div',
         widget_margins: [5, 5],
@@ -8,15 +14,11 @@ function grid() {
         autogrow_cols: true,
         max_cols: 12,
         resize: {
-            enabled: isInBuilder
+            enabled: isInBuilder,
+            start: hideToolBoxes
         },
         draggable: {
-            start: function () {
-                if (window.parent) {
-                    $(window.parent.document)
-                        .find('#select-box, #highlight-box, #highlight-name').hide();
-                }
-            }
+            start: hideToolBoxes
         }
     }).data('gridster');
     if (isInBuilder) {
@@ -33,6 +35,7 @@ function grid() {
     }
     $('.grid-footer button').click(function () {
         gridster.add_widget('<div><span class="gs-remove-handle"></span></div>');
+        window.parent.initIframeGridDrop();
     });
 }
 

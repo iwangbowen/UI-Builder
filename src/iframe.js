@@ -1,10 +1,8 @@
 import {
-    initDropzone, initResizeDrag, initDraggable, setGlobalVariables
+    initDropzone, setGlobalVariables
 } from './util/iframe-drag-n-drop';
 
 $(document).ready(() => {
     setGlobalVariables();
     initDropzone();
-    initResizeDrag();
-    initDraggable();
 });

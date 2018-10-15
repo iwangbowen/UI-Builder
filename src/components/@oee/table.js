@@ -135,7 +135,7 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Base ag-Grid",
-    html: `<div style="width: 500px; height: 200px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
+    html: `<div style="width: 100px; height: 50px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
     beforeInit: function (node) {
         $(node).removeClass('horizontal-stripes');
         if (!$(node).attr(dataTableId)) {

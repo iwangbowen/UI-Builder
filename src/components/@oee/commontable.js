@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const commontable = _.extend({}, table, {
     name: "Common ag-Grid",
-    html: `<div ${dataComponentId}="${commontableid}" style="width: 500px; height: 200px;" class="resize-drag draggable ag-theme-blue horizontal-stripes"></div>`
+    html: `<div ${dataComponentId}="${commontableid}" style="width: 200px; height: 100px;" class="resize-drag draggable ag-theme-blue horizontal-stripes"></div>`
 });
 
 export default commontable;
