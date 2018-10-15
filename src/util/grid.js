@@ -12,6 +12,8 @@ function grid() {
         widget_margins: [5, 5],
         widget_base_dimensions: ['auto', 50],
         autogrow_cols: true,
+        shift_widgets_up: false,
+        shift_larger_widgets_down: false,
         max_cols: 12,
         resize: {
             enabled: isInBuilder,
