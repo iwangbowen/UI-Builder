@@ -35,7 +35,7 @@ function grid() {
         gridster.disable();
     }
     $('.grid-footer button').click(function () {
-        gridster.add_widget('<div><span class="gs-remove-handle"></span></div>');
+        gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
         window.parent.initIframeGridDrop();
     });
 }
