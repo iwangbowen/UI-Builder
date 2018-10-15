@@ -54,6 +54,23 @@ function initTopPanelDrag() {
     });
 }
 
+function enableSortableAndDroppable(elements) {
+    $(elements)
+        .sortable({
+            cursor: 'move',
+            // Prevents sorting if you start on elements matching the selector.
+            // Default: "input,textarea,button,select,option"
+            cancel: "button, option, div.ui-resizable-handle",
+            start: onSortingStarts,
+            update: onSortingUpdates
+        })
+        .droppable({
+            greedy: true,
+            accept: _.curry(accept)(_, formItems),
+            drop
+        });
+}
+
 function drop(event, { draggable, helper, offset }) {
     // Check drag elements from inside or out of iframe
     if (draggable == helper) {
@@ -95,20 +112,7 @@ function drop(event, { draggable, helper, offset }) {
                     // margin: '20px'
                 });
             if (appendedElement.is('form')) {
-                appendedElement
-                    .sortable({
-                        cursor: 'move',
-                        // Prevents sorting if you start on elements matching the selector.
-                        // Default: "input,textarea,button,select,option"
-                        cancel: "button, option, div.ui-resizable-handle",
-                        start: onSortingStarts,
-                        update: onSortingUpdates
-                    })
-                    .droppable({
-                        greedy: true,
-                        accept: _.curry(accept)(_, formItems),
-                        drop
-                    });
+                enableSortableAndDroppable(appendedElement);
             }
         }
         Vvveb.Undo.addMutation(new ChildListMutation({
@@ -360,5 +364,6 @@ export {
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,
-    initIframeResizeVetically
+    initIframeResizeVetically,
+    enableSortableAndDroppable
 };

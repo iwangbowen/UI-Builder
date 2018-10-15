@@ -22,6 +22,7 @@ function grid() {
         }
     }).data('gridster');
     if (isInBuilder) {
+        window.parent.enableSortableAndDroppable($('div.gridster > div > form'));
         $('div.gridster > div').each(function () {
             if (!$(this).has('span.gs-remove-handle').length) {
                 $('<span class="gs-remove-handle"></span>').appendTo(this);

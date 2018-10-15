@@ -22,7 +22,7 @@ import {
 } from '../components/common';
 import { addDatetime } from './common';
 import 'core-js/es7/array';
-import { initIframeGridDrop } from './drag-n-drop';
+import { initIframeGridDrop, enableSortableAndDroppable } from './drag-n-drop';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -472,6 +472,7 @@ function setGlobalVariables() {
     window.getElementWithSpecifiedClass = getElementWithSpecifiedClass;
     window.Vvveb = Vvveb;
     window.initIframeGridDrop = initIframeGridDrop;
+    window.enableSortableAndDroppable = enableSortableAndDroppable;
 }
 
 export {
