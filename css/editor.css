@@ -11677,7 +11677,7 @@ body {
   width: 100%;
   height: 100%;
   width: calc( 100vw - 275px);
-  height: calc( 100vh - 35px);
+  height: calc( 100vh - 70px);
   top: 35px;
   position: fixed;
   transition: width 0.35s, left 0.35s; }
