@@ -7,3 +7,4 @@ dist/
 .settings/
 .project
 template/oee/html/demo/index*.html
+.svn/
