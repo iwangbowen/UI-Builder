@@ -11,10 +11,10 @@ function grid() {
         widget_selector: 'div.gridster > div',
         widget_margins: [5, 5],
         widget_base_dimensions: ['auto', 50],
-        autogrow_cols: true,
         shift_widgets_up: false,
         shift_larger_widgets_down: false,
         max_cols: 12,
+        max_rows: 60,
         resize: {
             enabled: isInBuilder,
             start: hideToolBoxes
@@ -39,8 +39,8 @@ function grid() {
         gridster.disable();
     }
     $('.grid-footer button').click(function () {
-        gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
-        window.parent.initIframeGridDrop();
+        var addedWidget = gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
+        addedWidget && window.parent.enableGridItemDrop(addedWidget);
     });
 }
 

@@ -164,16 +164,19 @@ function initIframeTableDrop() {
     });
 }
 
-function initIframeGridDrop() {
-    Vvveb.Builder.frameBody
-        .find('div.gridster > div')
+function enableGridItemDrop(elements) {
+    $(elements)
         .droppable({
             classes: {
                 "ui-droppable-hover": "ui-state-hover"
-              },
+            },
             accept: _.curry(accept)(_, gridDroppables),
             drop
         });
+}
+
+function initIframeGridDrop() {
+    enableGridItemDrop(Vvveb.Builder.frameBody.find('div.gridster > div'));
 }
 
 function initIframeFormItemsDrop() {
@@ -372,5 +375,6 @@ export {
     initComponentDragWithInteract,
     initIframeSortable,
     initIframeResizeVetically,
-    enableSortableAndDroppable
+    enableSortableAndDroppable,
+    enableGridItemDrop
 };
