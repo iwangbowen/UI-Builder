@@ -1,7 +1,8 @@
 import { property as tooltipProperty } from './tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
-    placeholderProperty, typeProperty, readonlyProperty, requiredProperty
+    placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
+    showDatetimeProperty
 } from './properties';
 
 const baseProperties = [
@@ -37,7 +38,9 @@ const textinputProperties = [
 ];
 
 const datetimeinputProperties = [
-    ...commonProperties
+    ...commonProperties,
+    datetimeFormatProperty,
+    showDatetimeProperty
 ];
 
 const fileinputProperties = [...baseProperties, dataUrlProperty];
