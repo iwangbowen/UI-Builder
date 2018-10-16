@@ -20,7 +20,9 @@ function grid() {
             start: hideToolBoxes
         },
         draggable: {
-            start: hideToolBoxes
+            start: hideToolBoxes,
+            // exclude form children elements to prevent intervention with jquery-ui sortable
+            handle: '*:not(form *)'
         }
     }).data('gridster');
     if (isInBuilder) {
