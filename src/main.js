@@ -9,7 +9,6 @@ import './components-loader';
 import {
     initPanelToggle, initBuilderPage, setGlobalVariables
 } from './util/dom';
-import { initTopPanelDrag } from './util/drag-n-drop';
 import { beBackwardCompatible } from './util/common';
 
 /**
