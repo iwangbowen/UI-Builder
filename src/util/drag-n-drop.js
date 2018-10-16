@@ -32,6 +32,12 @@ function initComponentDrag(item, component) {
     const cursorAt = getCursorAt($(html));
     $(item).draggable({
         iframeFix: true,
+        // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
+        // iframe scroll issue
+        // Use jquery-ui scope instead of accept to circumvent bugs in
+        // https://github.com/maxazan/jquery-ui-droppable-iframe/issues/4
+        iframeScroll: true,
+        scope: componentScopes[item.data('type')],
         helper() {
             const $element = $(html).appendTo($('body'));
             $element.css({ 'z-index': 15 });
@@ -67,7 +73,7 @@ function enableSortableAndDroppable(elements) {
         })
         .droppable({
             greedy: true,
-            accept: _.curry(accept)(_, formItems),
+            scope: 'formItems',
             drop
         });
 }
@@ -144,7 +150,7 @@ const popupFormItems = [
     popupmanualselectinputid
 ];
 
-const tables = [
+const customTables = [
     customtableid,
 ];
 
@@ -153,15 +159,27 @@ const gridDroppables = [
     commontableid
 ];
 
-function accept(draggable, components) {
-    return components.includes(draggable.data('type'));
-}
+const componentScopes = _.reduce({
+    formItems,
+    customTables,
+    popupFormItems,
+    gridDroppables
+}, (prev, v, k) => {
+    _.extend(prev, ...v.map(v => {
+        const obj = {};
+        obj[v] = k;
+        return obj
+    }));
+    return prev;
+}, {});
 
 function initIframeTableDrop() {
-    Vvveb.Builder.frameBody.droppable({
-        accept: _.curry(accept)(_, tables),
-        drop
-    });
+    Vvveb.Builder.frameBody
+        .find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid')
+        .droppable({
+            scope: 'customTables',
+            drop
+        });
 }
 
 function enableGridItemDrop(elements) {
@@ -170,7 +188,7 @@ function enableGridItemDrop(elements) {
             classes: {
                 "ui-droppable-hover": "ui-state-hover"
             },
-            accept: _.curry(accept)(_, gridDroppables),
+            scope: 'gridDroppables',
             drop
         });
 }
@@ -184,7 +202,7 @@ function initIframeFormItemsDrop() {
         .find('.allButton.dropzone')
         .droppable({
             greedy: true,
-            accept: _.curry(accept)(_, formItems),
+            scope: 'formItems',
             drop
         });
 }
@@ -194,7 +212,7 @@ function initIframePopupDrop() {
         .find('div.popup-window form.popup-form')
         .droppable({
             greedy: true,
-            accept: _.curry(accept)(_, popupFormItems),
+            scope: 'popupFormItems',
             drop
         });
 }
