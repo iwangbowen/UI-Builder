@@ -258,7 +258,6 @@ function changeScriptType(el, selector, type) {
 }
 
 const devScripts = [
-    '/js/interact-1.3.4.js',
     '/dist/iframe.js',
     '/dist/layout.js'
 ];

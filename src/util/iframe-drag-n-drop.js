@@ -298,7 +298,6 @@ function initDraggable() {
 }
 
 function setGlobalVariables() {
-    self.interact = interact;
     self.arrowKeyMove = arrowKeyMove;
     self.popupAdd = popupAdd;
     self.popupEdit = popupEdit;
