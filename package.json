@@ -11,7 +11,7 @@
     "url": "https://github.com/iwangbowen/VvvebJs"
   },
   "scripts": {
-    "git:push": "git push && git push github",
+    "git:push": "git push && git push gitee",
     "git:merge": "git checkout sageui_1_0_0 && git merge dev && git push && git checkout dev",
     "clean": "grunt clean:all",
     "clean:built": "grunt clean:built",
