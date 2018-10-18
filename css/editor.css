@@ -11491,7 +11491,7 @@ body {
   border-style: solid;
   border-width: 0px;
   background-color: #fff;
-  height: 100%;
+  height: calc(100vh - 35px);
   position: fixed;
   top: 56px;
   z-index: 10; }

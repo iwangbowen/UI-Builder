@@ -39,9 +39,9 @@ Vvveb.ComponentsGroup['通用组件'] = [];
 //         'html/container@general', 'html/gridrow@general'];
 
 Vvveb.Components.add("_base", element);
-// Vvveb.Components.extend("_base", "_base", display);
+Vvveb.Components.extend("_base", "_base", size);
+Vvveb.Components.extend("_base", "_base", display);
 // Vvveb.Components.extend("_base", "_base", typography)
-// Vvveb.Components.extend("_base", "_base", size);
 // Vvveb.Components.extend("_base", "_base", margin);
 // Vvveb.Components.extend("_base", "_base", padding);
 // Vvveb.Components.extend("_base", "_base", border);

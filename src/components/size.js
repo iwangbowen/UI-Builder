@@ -7,7 +7,7 @@ const size = {
         inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
-        data: { header: "Size", expanded: false },
+        data: { header: "Size", expanded: true },
     }, {
         name: "Width",
         key: "width",
