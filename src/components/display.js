@@ -8,7 +8,7 @@ const display  = {
             inputtype: new SectionInput(),
             name: false,
             sort: inc_base_sort(),
-            data: { header: "Display" },
+            data: { header: "Display", expanded: false },
         }, {
             name: "Display",
             key: "display",

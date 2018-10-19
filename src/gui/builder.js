@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithSpecifiedClass, bottomAlignCallback
+	getElementWithSpecifiedClass, bottomAlignCallback, clearTimer, loadCallback
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
@@ -22,17 +22,34 @@ Vvveb.ComponentsGroup = {};
 
 Vvveb.Builder = {
 	dragMoveMutation: false,
-	init(url, srcdoc, callback) {
+	init({ url, srcdoc }) {
 		this.loadControlGroups();
 
 		this.selectedEl = null;
 		this.highlightEl = null;
-		this.initCallback = callback;
-
 		this.documentFrame = $("#iframe-wrapper > iframe");
 		this.canvas = $("#canvas");
 
+		Vvveb.Actions.init();
+
 		this._loadIframe(url, srcdoc);
+		this.documentFrame.on('load', () => {
+			window.FrameWindow = this.iframe.contentWindow;
+			window.FrameDocument = this.iframe.contentWindow.document;
+			Vvveb.WysiwygEditor.init(window.FrameDocument);
+			loadCallback();
+			this.frameDoc = $(window.FrameDocument);
+			this.frameHtml = $(window.FrameDocument).find("html");
+			this.frameBody = $(window.FrameDocument).find('body');
+
+			initIframeTableDrop();
+			initIframeGridDrop();
+			initIframeFormItemsDrop();
+			initIframePopupDrop();
+			initIframeResizeVetically();
+			initIframeSortable();
+			return this._initHightlight();
+		});
 		this._initDragdrop();
 		this.dragElement = null;
 	},
@@ -70,9 +87,9 @@ Vvveb.Builder = {
 			}
 		}
 	},
-	loadUrl(url) {
+	loadUrl(url, srcdoc) {
 		jQuery(selectBox).hide();
-		this.iframe.src = url;
+		this._loadIframe(url, srcdoc);
 	},
 	/* iframe */
 	_loadIframe(url, srcdoc) {
@@ -85,25 +102,6 @@ Vvveb.Builder = {
 		} else {
 			this.iframe.src = `${window.location.origin}/${url}`;
 		}
-		const _this = this;
-		return this.documentFrame.on("load", function () {
-			window.FrameWindow = _this.iframe.contentWindow;
-			window.FrameDocument = _this.iframe.contentWindow.document;
-			Vvveb.Actions.init();
-			Vvveb.WysiwygEditor.init(window.FrameDocument);
-			_this.initCallback && _this.initCallback();
-			_this.frameDoc = $(window.FrameDocument);
-			_this.frameHtml = $(window.FrameDocument).find("html");
-			_this.frameBody = $(window.FrameDocument).find('body');
-
-			initIframeTableDrop();
-			initIframeGridDrop();
-			initIframeFormItemsDrop();
-			initIframePopupDrop();
-			initIframeResizeVetically();
-			initIframeSortable();
-			return _this._initHightlight();
-		});
 	},
 	_getElementType(el) {
 		//search for component attribute

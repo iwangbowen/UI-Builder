@@ -10,44 +10,47 @@ $.ui.ddmanager.prepareOffsets = function(t, event) {
 
     for (i = 0; i < m.length; i++) {
 
-        //Iframe fixes        
+        //Iframe fixes
         if ((doc = m[i].document[0]) !== document) {
-            var iframe = $((doc.defaultView || doc.parentWindow).frameElement);
-            var iframeOffset = iframe.offset();
-            var el = m[i].element;
+            // Fix bugs when replacing the current iframe with another
+            if (doc.defaultView || doc.parentWindow) {
+                var iframe = $((doc.defaultView || doc.parentWindow).frameElement);
+                var iframeOffset = iframe.offset();
+                var el = m[i].element;
 
-            //Check our droppable element is in the viewport of out iframe
-            var viewport = {
-                top: iframe.contents().scrollTop(),
-                left: iframe.contents().scrollLeft()
-            };
-            viewport.right = viewport.left + iframe.width();
-            viewport.bottom = viewport.top + iframe.height();
+                //Check our droppable element is in the viewport of out iframe
+                var viewport = {
+                    top: iframe.contents().scrollTop(),
+                    left: iframe.contents().scrollLeft()
+                };
+                viewport.right = viewport.left + iframe.width();
+                viewport.bottom = viewport.top + iframe.height();
 
-            var bounds = el.offset();
-            bounds.right = bounds.left + el.outerWidth();
-            bounds.bottom = bounds.top + el.outerHeight();
-            if (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom)) {
-                //In view port
-                var ytop = bounds.top - iframe.contents().scrollTop();
-                ytop = ytop < 0 ? 0 : ytop;
-                var xtop = bounds.left - iframe.contents().scrollLeft();
-                xtop = xtop < 0 ? 0 : xtop;
-                var ybottom = bounds.top + el.height() - iframe.contents().scrollTop();
-                ybottom = ybottom > iframe.height() ? iframe.height() : ybottom;
-                var xbottom = bounds.left + el.width() - iframe.contents().scrollLeft();
-                xbottom = xbottom > iframe.width() ? iframe.width() : xbottom;
-                m[i].offset.top = iframeOffset.top + ytop;
-                m[i].offset.left = iframeOffset.left + xtop;
-                m[i].proportions({
-                    width: xbottom - xtop,
-                    height: ybottom - ytop,
-                });
+                var bounds = el.offset();
+                bounds.right = bounds.left + el.outerWidth();
+                bounds.bottom = bounds.top + el.outerHeight();
+                if (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom)) {
+                    //In view port
+                    var ytop = bounds.top - iframe.contents().scrollTop();
+                    ytop = ytop < 0 ? 0 : ytop;
+                    var xtop = bounds.left - iframe.contents().scrollLeft();
+                    xtop = xtop < 0 ? 0 : xtop;
+                    var ybottom = bounds.top + el.height() - iframe.contents().scrollTop();
+                    ybottom = ybottom > iframe.height() ? iframe.height() : ybottom;
+                    var xbottom = bounds.left + el.width() - iframe.contents().scrollLeft();
+                    xbottom = xbottom > iframe.width() ? iframe.width() : xbottom;
+                    m[i].offset.top = iframeOffset.top + ytop;
+                    m[i].offset.left = iframeOffset.left + xtop;
+                    m[i].proportions({
+                        width: xbottom - xtop,
+                        height: ybottom - ytop,
+                    });
 
-            } else {
-                //Out of view port - skip
-                m[i].proportions().height = 0;
-                continue;
+                } else {
+                    //Out of view port - skip
+                    m[i].proportions().height = 0;
+                    continue;
+                }
             }
 
         }

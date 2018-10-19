@@ -34,14 +34,14 @@ const gridPage = {
     url: './template/oee/html/demo/grid.html'
 };
 
-const pages = [
+const templatePages = [
     gridPage,
     pdsPage
 ];
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
-    pages, beautify_options, removeableScript, tableScript, reservedScript,
+    templatePages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipScriptType, pdsPage, isInBuilder
 };
