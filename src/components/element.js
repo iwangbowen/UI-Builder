@@ -8,7 +8,7 @@ const element = {
         inputtype: new SectionInput(),
         name: false,
         sort: inc_base_sort(),
-        data: { header: "General" },
+        data: { header: "General", expanded: false },
     }, {
         name: "Class",
         key: "class",
