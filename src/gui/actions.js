@@ -1,5 +1,5 @@
 import Vvveb from './builder';
-import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util/dom';
+import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, setPageSrcdoc } from '../util/dom';
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
@@ -16,6 +16,30 @@ Vvveb.Actions = {
                 $(document).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
                 $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
             }
+        });
+        this._initFileUpload();
+    },
+    _initFileUpload() {
+        $('#file-input').on('change', function () {
+            const file = this.files[0];
+            if (file) {
+                new Promise(function (resolve, reject) {
+                    const reader = new FileReader();
+                    reader.readAsText(file, "UTF-8");
+                    reader.onload = function (evt) {
+                        resolve(evt.target.result);
+                    }
+                    reader.onerror = function (evt) {
+                        reject(evt)
+                    }
+                }).then(function (html) {
+                    const itemKey = addDatetime(importedPageName);
+                    localStorage.setItem(itemKey, html);
+                    Vvveb.FileManager.loadPage(itemKey);
+                })
+            }
+            // Change file input value to allow the same name file to upload again
+            this.value = '';
         });
     },
     undo() {
@@ -52,28 +76,7 @@ Vvveb.Actions = {
         downloadAsTextFile(defaultFilename, getBeautifiedHtml(window.FrameDocument));
     },
     upload() {
-        $('#file-input')
-            .change(function () {
-                const file = this.files[0];
-                if (file) {
-                    new Promise(function (resolve, reject) {
-                        const reader = new FileReader();
-                        reader.readAsText(file, "UTF-8");
-                        reader.onload = function (evt) {
-                            resolve(evt.target.result);
-                        }
-                        reader.onerror = function (evt) {
-                            reject(evt)
-                        }
-                    }).then(function (html) {
-                        const itemKey = addDatetime(importedPageName);
-                        localStorage.setItem(itemKey, html);
-                        window.location.href = `#${itemKey}`;
-                        window.location.reload();
-                    })
-                }
-            })
-            .click();
+        $('#file-input').click();
     },
     downloadWithExternalFiles() {
         getBeautifiedHtml(window.FrameDocument, true)

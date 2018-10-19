@@ -1,7 +1,7 @@
 import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
-import { setPageSrcdoc, isTemplatePage, createPage, getSavedPages, clearTimer } from '../util/dom';
+import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer } from '../util/dom';
 import _ from 'lodash';
 import { templatePages } from '../constants';
 
@@ -57,16 +57,16 @@ Vvveb.FileManager = {
 		$(`[data-page='${name}']`, this.tree).addClass("active");
 		return this;
 	},
-	loadPage(clickedPageName) {
+	loadPage(pageName) {
 		this.addPages([...getSavedPages(), ...templatePages]);
-		if (isTemplatePage(clickedPageName)) {
-			const newPageName = addDatetime(clickedPageName);
+		if (isTemplatePage(pageName)) {
+			const newPageName = addDatetime(pageName);
 			window.location.href = `#${newPageName}`;
 		} else {
-			setPageSrcdoc(this.pages[clickedPageName]);
-			window.location.href = `#${clickedPageName}`;
+			setPageSrcdoc(this.pages[pageName]);
+			window.location.href = `#${pageName}`;
 		}
-		this.renderPages().showActive(clickedPageName);
-		Vvveb.Builder.loadUrl(this.pages[clickedPageName].url, this.pages[clickedPageName].srcdoc);
+		this.renderPages().showActive(pageName);
+		Vvveb.Builder.loadUrl(this.pages[pageName].url, this.pages[pageName].srcdoc);
 	},
 };
