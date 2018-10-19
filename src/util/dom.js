@@ -8,7 +8,7 @@ import {
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, pages, pdsPage
+    importedPageHref, templatePages, pdsPage
 } from '../constants';
 import _ from 'lodash';
 import {
@@ -52,26 +52,40 @@ function initPanelToggle() {
     });
 }
 
+function setPageSrcdoc(page) {
+    localStorage.getItem(page.name)
+        && (page.srcdoc = generateHtmlFromLocalStorageItemKey(page.url, page.name));
+}
+
+function getSavedPages() {
+    return Object.keys(localStorage)
+        .map(item => createPage(item, item));
+}
+
+function isTemplatePage(pageName) {
+    return templatePages.some(({ name }) => name == pageName);
+}
+
 function initBuilderPage() {
     const decodedHash = decodeURI(getHash());
     const savedItems = Object.keys(localStorage);
-    if (!savedItems.includes(decodedHash)) {
-        window.location.href = `#${addDatetime(decodedHash)}`;
-    }
+    const savedPages = getSavedPages();
+    const combinedPages = [...savedPages, ...templatePages];
+    Vvveb.FileManager
+        .addPages(combinedPages)
+        .renderPages();
 
-    const savedPages = savedItems.map(item => getPage(item, item, importedPageHref));
-    pages.unshift(...savedPages);
-    Vvveb.FileManager.addPages(pages);
-    const page = Vvveb.FileManager.getPage(decodedHash);
-    if (page) {
-        localStorage.getItem(page.name)
-            && (page.srcdoc = generateHtmlFromLocalStorageItemKey(page.url, page.name));
-        Vvveb.Builder.init(page.url, page.srcdoc, loadCallback);
-        Vvveb.FileManager.showActive(page.name);
+    let page = Vvveb.FileManager.getPage(decodedHash);
+    if (page && savedItems.includes(page.name)) {
+        setPageSrcdoc(page);
     } else {
-        Vvveb.Builder.init(pdsPage.url, pdsPage.srcdoc, loadCallback);
-        Vvveb.FileManager.showActive(pdsPage.name);
+        if (!page) {
+            page = pdsPage;
+        }
+        window.location.href = `#${addDatetime(page.name)}`;
     }
+    Vvveb.FileManager.showActive(page.name);
+    Vvveb.Builder.init(page);
 }
 
 function setIframeHeight(iframe) {
@@ -195,12 +209,11 @@ function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }
 
-function getPage(pageName, pageTitle, pageHref) {
+function createPage(pageName, pageTitle, pageHref = importedPageHref) {
     return {
         name: pageName,
         title: pageTitle,
-        url: pageHref,
-        srcdoc: generateHtmlFromLocalStorageItemKey(pageHref, pageName)
+        url: pageHref
     };
 }
 
@@ -208,9 +221,15 @@ function autoSave() {
     localStorage.setItem(decodeURI(getHash()), getBeautifiedHtml(window.FrameDocument));
 }
 
+let timer;
+
 function loadCallback() {
     // Save automatically every 2 seconds
-    setInterval(autoSave, 2000);
+    timer = setInterval(autoSave, 2000);
+}
+
+function clearTimer() {
+    clearInterval(timer);
 }
 
 function getElementWithSpecifiedClass(element) {
@@ -477,9 +496,10 @@ function setGlobalVariables() {
 
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
-    getHtml, getHash, getPage, loadCallback, getSelectedElements, clearSelectedElements,
+    getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
-    initPanelToggle, initBuilderPage, setGlobalVariables
+    initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
+    getSavedPages
 };
