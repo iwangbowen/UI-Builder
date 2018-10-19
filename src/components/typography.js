@@ -8,7 +8,7 @@ const typography = {
             inputtype: new SectionInput(),
             name: false,
             sort: inc_base_sort(),
-            data: { header: "Typography" },
+            data: { header: "Typography", expanded: false },
         }, {
             name: "Font family",
             key: "font-family",
