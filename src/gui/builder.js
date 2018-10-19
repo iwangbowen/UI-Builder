@@ -27,15 +27,15 @@ Vvveb.Builder = {
 
 		this.selectedEl = null;
 		this.highlightEl = null;
-
 		this.documentFrame = $("#iframe-wrapper > iframe");
 		this.canvas = $("#canvas");
+
+		Vvveb.Actions.init();
 
 		this._loadIframe(url, srcdoc);
 		this.documentFrame.on('load', () => {
 			window.FrameWindow = this.iframe.contentWindow;
 			window.FrameDocument = this.iframe.contentWindow.document;
-			Vvveb.Actions.init();
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			loadCallback();
 			this.frameDoc = $(window.FrameDocument);

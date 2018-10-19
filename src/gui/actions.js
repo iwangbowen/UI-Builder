@@ -7,9 +7,10 @@ import { addDatetime } from '../util/common';
 Vvveb.Actions = {
     init() {
         $("[data-vvveb-action]").each(function () {
-            on = "click";
-            if (this.dataset.vvvebOn) on = this.dataset.vvvebOn;
-
+            let on = "click";
+            if (this.dataset.vvvebOn) {
+                on = this.dataset.vvvebOn;
+            }
             $(this).on(on, Vvveb.Actions[this.dataset.vvvebAction]);
             if (this.dataset.vvvebShortcut) {
                 $(document).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
