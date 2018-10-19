@@ -50,8 +50,6 @@ Vvveb.Builder = {
 			initIframeSortable();
 			return this._initHightlight();
 		});
-		this._initDragdrop();
-		this.dragElement = null;
 	},
 	loadControlGroups() {
 		const componentsList = $("#components-list");
@@ -154,14 +152,8 @@ Vvveb.Builder = {
 			if (event.target) {
 				if (getElementWithSpecifiedClass($(event.target)).length) {
 					_this.highlightEl = target = jQuery(event.target);
-					if (_this.isDragging) {
-						_this.dragElement.css({
-							display: 'none'
-						});
-					} else {
-						if (!event.ctrlKey) {
-							highlightWhenHovering(event.target);
-						}
+					if (!event.ctrlKey) {
+						highlightWhenHovering(event.target);
 					}
 				}
 			}
@@ -360,9 +352,6 @@ Vvveb.Builder = {
 					});
 			}
 		});
-	},
-	_initDragdrop() {
-		this.isDragging = false;
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
