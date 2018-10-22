@@ -8,3 +8,4 @@ dist/
 .project
 template/oee/html/demo/index*.html
 .svn/
+doc/
