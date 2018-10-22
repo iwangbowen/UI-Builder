@@ -1,4 +1,4 @@
-import { TextInput, SelectInput, ToggleInput, NumberInput } from "../inputs/inputs";
+import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../inputs/inputs";
 import { dataRowField, dataValueMapping, dataTextMapping } from "./common";
 import { inputTypes } from './inputTypes';
 import {
@@ -213,6 +213,111 @@ const formStyleProperty = {
     }
 };
 
+const buttonSizeProperty = {
+    name: "Size",
+    key: "size",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["btn-lg", "btn-sm"],
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "btn-lg",
+            text: "Large"
+        }, {
+            value: "btn-sm",
+            text: "Small"
+        }]
+    }
+};
+
+const targetProperty = {
+    name: "Target",
+    key: "target",
+    htmlAttr: "target",
+    inputtype: new TextInput()
+};
+
+const buttonDisabledProperty = {
+    name: "Disabled",
+    key: "disabled",
+    htmlAttr: "class",
+    inputtype: new ToggleInput(),
+    validValues: ["disabled"],
+    data: {
+        on: "disabled",
+        off: ""
+    }
+};
+
+const linkToProperty = {
+    name: "Link To",
+    key: "href",
+    htmlAttr: "href",
+    inputtype: new LinkInput()
+};
+
+const buttonTypeProperty = {
+    name: "Type",
+    key: "type",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["btn-default", "btn-primary", "btn-info", "btn-success", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-outline-primary", "btn-outline-info", "btn-outline-success", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-link"],
+    data: {
+        options: [{
+            value: "btn-default",
+            text: "Default"
+        }, {
+            value: "btn-primary",
+            text: "Primary"
+        }, {
+            value: "btn btn-info",
+            text: "Info"
+        }, {
+            value: "btn-success",
+            text: "Success"
+        }, {
+            value: "btn-warning",
+            text: "Warning"
+        }, {
+            value: "btn-info",
+            text: "Info"
+        }, {
+            value: "btn-light",
+            text: "Light"
+        }, {
+            value: "btn-dark",
+            text: "Dark"
+        }, {
+            value: "btn-outline-primary",
+            text: "Primary outline"
+        }, {
+            value: "btn btn-outline-info",
+            text: "Info outline"
+        }, {
+            value: "btn-outline-success",
+            text: "Success outline"
+        }, {
+            value: "btn-outline-warning",
+            text: "Warning outline"
+        }, {
+            value: "btn-outline-info",
+            text: "Info outline"
+        }, {
+            value: "btn-outline-light",
+            text: "Light outline"
+        }, {
+            value: "btn-outline-dark",
+            text: "Dark outline"
+        }, {
+            value: "btn-link",
+            text: "Link"
+        }]
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -231,5 +336,10 @@ export {
     textMappingProperty,
     actionProperty,
     methodProperty,
-    formStyleProperty
+    formStyleProperty,
+    buttonSizeProperty,
+    buttonDisabledProperty,
+    targetProperty,
+    linkToProperty,
+    buttonTypeProperty
 };

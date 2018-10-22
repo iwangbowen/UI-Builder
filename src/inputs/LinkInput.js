@@ -7,11 +7,9 @@ class LinkInput extends TextInput {
 			["change", "onChange", "input"],
 		];
 	}
-
 	setValue(value) {
 		$('input', this.element).val(value);
 	}
-
 	init(data) {
 		return this.render("textinput", data);
 	}

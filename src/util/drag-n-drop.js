@@ -8,7 +8,7 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid, formid, gridrowid
+    customtableid, commontableid, formid, gridrowid, buttonid
 } from '../components/@oee/ids';
 import 'core-js/es7/array';
 
@@ -142,7 +142,8 @@ const formItems = [
     multivalueselectinputfieldid,
     textareafieldid,
     radiofieldid,
-    checkboxfieldid
+    checkboxfieldid,
+    buttonid
 ];
 
 const popupFormItems = [
