@@ -32,6 +32,7 @@ const selectinputid = 'html/selectinput@oee';
 const textid = 'html/text@oee';
 const fileinputfieldid = 'html/fileinputfield@oee';
 const formid = 'html/form@oee';
+const gridrowid = 'html/gridrow@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -39,5 +40,5 @@ export {
     textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid,
     checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid, textinputfieldid,
     datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid,
-    formid
+    formid, gridrowid
 };

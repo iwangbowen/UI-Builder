@@ -8,7 +8,7 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid, formid
+    customtableid, commontableid, formid, gridrowid
 } from '../components/@oee/ids';
 import 'core-js/es7/array';
 
@@ -156,7 +156,8 @@ const customTables = [
 
 const gridDroppables = [
     formid,
-    commontableid
+    commontableid,
+    gridrowid
 ];
 
 const componentScopes = _.reduce({

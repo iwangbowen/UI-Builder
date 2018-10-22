@@ -1,15 +1,19 @@
 import { GridInput, ButtonInput } from '../../inputs/inputs';
+import gridcolumn from './gridcolumn';
+import { configurableComponent } from '../common';
+import _ from 'lodash';
 
 const gridrow = {
     name: "Grid Row",
     image: "icons/grid_row.svg",
     classes: ["row"],
-    html: '<div class="row"><div class="col-sm-4"><h3>col-sm-4</h3></div><div class="col-sm-4 col-5"><h3>col-sm-4</h3></div><div class="col-sm-4"><h3>col-sm-4</h3></div></div>',
+    html: `<div class="row ${configurableComponent}">
+            ${_.repeat(gridcolumn.html, 3)}
+           </div>`,
     beforeInit: function (node) {
         properties = [];
         var i = 0;
         var j = 0;
-
         $(node).find('[class*="col-"]').each(function () {
             _class = $(this).attr("class");
 
