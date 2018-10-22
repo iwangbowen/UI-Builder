@@ -1,7 +1,7 @@
 import { dataComponentId, inputBlockClass } from '../common';
 import { textareaid } from './ids';
 import input from './input';
-import { commonProperties as properties } from '../input';
+import { commonProperties as properties } from '../properties/input';
 import _ from 'lodash';
 
 const textareainput = _.extend({}, input, {

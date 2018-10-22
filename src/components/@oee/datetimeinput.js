@@ -2,7 +2,7 @@ import { inputTypeNames } from '../inputTypes';
 import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
 import input from './input';
 import { datetimeinputid } from './ids';
-import {datetimeinputProperties as properties} from '../input';
+import {datetimeinputProperties as properties} from '../properties/input';
 import _ from 'lodash';
 
 const datetimeinput = _.extend({}, input, {

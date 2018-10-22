@@ -1,5 +1,5 @@
 import textinputfield from './textinputfield';
-import { formProperties as properties } from '../form';
+import { formProperties as properties } from '../properties/form';
 import { configurableComponent } from '../common';
 
 const form = {

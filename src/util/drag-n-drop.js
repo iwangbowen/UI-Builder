@@ -158,7 +158,8 @@ const customTables = [
 const gridDroppables = [
     formid,
     commontableid,
-    gridrowid
+    gridrowid,
+    buttonid
 ];
 
 const componentScopes = _.reduce({

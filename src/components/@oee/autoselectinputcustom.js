@@ -1,7 +1,7 @@
 import { autoselectinputid } from './ids';
 import { dataComponentId, dataAutoSelectId } from '../common';
 import input from './input';
-import { autoselectProperties as properties } from '../select';
+import { autoselectProperties as properties } from '../properties/select';
 import _ from 'lodash';
 
 const autoselectinputcustom = _.extend({}, input, {

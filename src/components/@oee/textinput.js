@@ -2,7 +2,7 @@ import { inputTypeNames } from '../inputTypes';
 import { dataComponentId, inputBlockClass } from '../common';
 import input from './input';
 import { textinputid } from './ids';
-import { textinputProperties as properties } from '../input';
+import { textinputProperties as properties } from '../properties/input';
 import _ from 'lodash';
 
 const textinput = _.extend({}, input, {

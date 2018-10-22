@@ -1,4 +1,4 @@
-import { property as tooltipProperty } from './tooltip';
+import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,

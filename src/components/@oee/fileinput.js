@@ -2,7 +2,7 @@ import input from './input';
 import _ from 'lodash';
 import { inputBlockClass, dataComponentId } from '../common';
 import { fileinputid } from './ids';
-import { fileinputProperties as properties } from '../input';
+import { fileinputProperties as properties } from '../properties/input';
 
 const fileinput = _.extend({}, input, {
   name: 'File Input',

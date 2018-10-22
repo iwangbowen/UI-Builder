@@ -1,7 +1,7 @@
-import { ButtonInput, TextValueInput } from '../inputs/inputs';
-import { property as tooltipProperty } from './tooltip';
-import { manualselectinputid } from './@oee/ids';
-import Vvveb from '../gui/components';
+import { ButtonInput, TextValueInput } from '../../inputs/inputs';
+import { property as tooltipProperty } from '../tooltip';
+import { manualselectinputid } from '../@oee/ids';
+import Vvveb from '../../gui/components';
 import {
     dataRowFieldProperty, dataUrlProperty, onchangeProperty, nameProperty,
     requiredProperty, valueMappingProperty, textMappingProperty

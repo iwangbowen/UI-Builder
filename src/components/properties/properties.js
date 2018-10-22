@@ -1,11 +1,11 @@
-import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping } from "./common";
-import { inputTypes } from './inputTypes';
+import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
+import { dataRowField, dataValueMapping, dataTextMapping } from "../common";
+import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
     setDataConfigInfo, setOnclickAttr
-} from '../util/dataAttr';
-import { requiredSpanSelector, inputBlockClassSelector } from "../util/selectors";
+} from '../../util/dataAttr';
+import { requiredSpanSelector, inputBlockClassSelector } from "../../util/selectors";
 
 const dataRowFieldProperty = {
     name: 'Row Field',
@@ -318,6 +318,20 @@ const buttonTypeProperty = {
     }
 };
 
+const textProperty = {
+    name: 'Text',
+    key: 'text',
+    htmlAttr: 'text',
+    inputtype: new TextInput()
+};
+
+const idProperty = {
+    name: "For id",
+    key: "for",
+    htmlAttr: "for",
+    inputtype: new TextInput()
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -341,5 +355,7 @@ export {
     buttonDisabledProperty,
     targetProperty,
     linkToProperty,
-    buttonTypeProperty
+    buttonTypeProperty,
+    textProperty,
+    idProperty
 };
