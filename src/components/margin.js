@@ -34,7 +34,7 @@ const margin = {
         inputtype: new CssUnitInput()
     }, {
         name: "Left",
-        key: "margin-Left",
+        key: "margin-left",
         htmlAttr: "style",
         sort: inc_base_sort(),
         col: 6,
