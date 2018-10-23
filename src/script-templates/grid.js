@@ -1,11 +1,10 @@
-import {grid} from '../util/grid';
+import { initGridOutofBuilder } from '../util/grid';
 
 function template() {
     return `
-    var isInBuilder = false;
-    ${grid.toString()}
+    ${initGridOutofBuilder.toString()}
     $(function () {
-        grid();
+        ${initGridOutofBuilder.name}();
     })`;
 }
 

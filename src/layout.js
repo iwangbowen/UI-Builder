@@ -1,5 +1,5 @@
-import { grid } from './util/grid';
+import { initGridInBuilder } from './util/grid';
 
 $(function () {
-    grid();
+    initGridInBuilder();
 });

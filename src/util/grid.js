@@ -1,6 +1,26 @@
-const isInBuilder = true;
+import {
+    formGridColumnSelector, gridColumnSelector, formGridColumnItemsScope,
+    gridColumnItemsScope,
+    formGridSelector,
+    formItemsScope
+} from "../common";
 
-function grid() {
+function initGridOutofBuilder() {
+    if ($('.gridster').length) {
+        var gridster = $(".gridster").gridster({
+            widget_selector: 'div.gridster > div',
+            widget_margins: [5, 5],
+            widget_base_dimensions: ['auto', 50],
+            shift_widgets_up: false,
+            shift_larger_widgets_down: false,
+            max_cols: 12,
+            max_rows: 60,
+        }).data('gridster');
+        gridster.disable();
+    }
+}
+
+function initGridInBuilder() {
     function hideToolBoxes() {
         if (window.parent) {
             $(window.parent.document)
@@ -17,7 +37,7 @@ function grid() {
             max_cols: 12,
             max_rows: 60,
             resize: {
-                enabled: isInBuilder,
+                enabled: true,
                 start: hideToolBoxes
             },
             draggable: {
@@ -26,19 +46,17 @@ function grid() {
                 handle: '*:not(form *, button)'
             }
         }).data('gridster');
-        if (isInBuilder) {
-            window.parent.enableSortableAndDroppable($('div.gridster > div > form'));
-            $('div.gridster > div').each(function () {
-                if (!$(this).has('span.gs-remove-handle').length) {
-                    $('<span class="gs-remove-handle"></span>').appendTo(this);
-                }
-            });
-            $('div.gridster').on('click', 'div > span.gs-remove-handle', function () {
-                gridster.remove_widget($(this).parent());
-            });
-        } else {
-            gridster.disable();
-        }
+        window.parent.enableSortableAndDroppable($(formGridSelector), formItemsScope, formGridSelector);
+        window.parent.enableSortableAndDroppable($(formGridColumnSelector), formGridColumnItemsScope, formGridColumnSelector);
+        window.parent.enableSortableAndDroppable($(gridColumnSelector), gridColumnItemsScope, gridColumnSelector);
+        $('div.gridster > div').each(function () {
+            if (!$(this).has('span.gs-remove-handle').length) {
+                $('<span class="gs-remove-handle"></span>').appendTo(this);
+            }
+        });
+        $('div.gridster').on('click', 'div > span.gs-remove-handle', function () {
+            gridster.remove_widget($(this).parent());
+        });
     }
     $('.grid-footer button').click(function () {
         var addedWidget = gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
@@ -47,5 +65,6 @@ function grid() {
 }
 
 export {
-    grid
+    initGridInBuilder,
+    initGridOutofBuilder
 };

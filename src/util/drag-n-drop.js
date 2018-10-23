@@ -10,145 +10,12 @@ import {
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
     customtableid, commontableid, formid, gridrowid, buttonid, formbuttonid, formgridrowid
 } from '../components/@oee/ids';
+import {
+    formGridColumnSelector, gridColumnSelector,
+    formItemsScope, gridColumnItemsScope, formGridColumnItemsScope,
+    popupFormItemsScope, customTablesScope, gridDroppablesScope, formGridSelector
+} from '../common';
 import 'core-js/es7/array';
-
-function getCursorAt($element) {
-    const display = $element.css('display');
-    if (display == 'inline-block') {
-        return {
-            left: $element.outerWidth() / 2,
-            top: $element.outerHeight() / 2,
-        };
-    } else {
-        return {
-            left: 20,
-            top: 20
-        };
-    }
-}
-
-function initComponentDrag(item, component) {
-    const html = component.dragHtml || component.html;
-    const cursorAt = getCursorAt($(html));
-    console.log(componentScopes[item.data('type')]);
-    $(item).draggable({
-        iframeFix: true,
-        // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
-        // iframe scroll issue
-        // Use jquery-ui scope instead of accept to circumvent bugs in
-        // https://github.com/maxazan/jquery-ui-droppable-iframe/issues/4
-        iframeScroll: true,
-        scope: componentScopes[item.data('type')],
-        helper() {
-            const $element = $(html).appendTo($('body'));
-            $element.css({ 'z-index': 15 });
-            return $element;
-        },
-        cursorAt,
-        drag() {
-        },
-        stop() {
-        },
-        revert: 'invalid'
-    });
-}
-
-function initTopPanelDrag() {
-    $('#top-panel').draggable({
-        iframeFix: true,
-        axis: 'x',
-        cursor: 'e-resize'
-    });
-}
-
-const droppableClasses = {
-    "ui-droppable-hover": "ui-state-hover"
-};
-
-function enableSortableAndDroppable(elements, scope = 'formItems', connectWith = 'div.gridster > div > form') {
-    $(elements)
-        .sortable({
-            connectWith,
-            cursor: 'move',
-            // Prevents sorting if you start on elements matching the selector.
-            // Default: "input,textarea,button,select,option"
-            cancel: "option, div.ui-resizable-handle",
-            start: onSortingStarts,
-            update: onSortingUpdates
-        })
-        .droppable({
-            classes: droppableClasses,
-            greedy: true,
-            scope,
-            drop
-        });
-}
-
-const gridItemSelector = 'div.gridster > div';
-
-function drop(event, { draggable, helper, offset }) {
-    // Check drag elements from inside or out of iframe
-    if (draggable == helper) {
-        $(this).append(draggable);
-    } else {
-        const component = Vvveb.Components.matchNode(helper.get(0));
-        let appendedElement;
-        if (component.onDrop) {
-            appendedElement = component.onDrop(helper);
-        } else if (component.sortable) {
-            // Check if the drop zone is popup form
-            if ($(this).is('form.popup-form')) {
-                appendedElement = $(this).find('.saveArea')
-                    .before(helper.prop('outerHTML'))
-                    .prev()
-                    .css({
-                        position: '',
-                        left: '',
-                        top: ''
-                    });
-            } else {
-                appendedElement = $(this).append(helper.prop('outerHTML'))
-                    .children('*:last')
-                    .css({
-                        position: '',
-                        left: '',
-                        top: ''
-                    });
-            }
-        } else {
-            appendedElement = $(this).append(helper.prop('outerHTML'))
-                .children('*:last')
-                .css({
-                    position: '',
-                    left: 0,
-                    top: 0,
-                    width: component.width || '100%',
-                    height: component.height || '100%',
-                    // margin: '20px'
-                });
-            if (appendedElement.is('form')) {
-                enableSortableAndDroppable(appendedElement, 'formItems');
-            } else if (appendedElement.is('div.row')) {
-                if ($(this).is('form')) {
-                    enableSortableAndDroppable(appendedElement.children(), 'formGridColumnItems', `${gridItemSelector} form div.row > div`);
-                } else {
-                    enableSortableAndDroppable(appendedElement.children(), 'gridColumnItems', `${gridItemSelector} div.row > div`);
-                }
-            }
-        }
-        if (component.afterDrop) {
-            component.afterDrop(appendedElement.get(0));
-        }
-        if (component.beforeInit) {
-            component.beforeInit(appendedElement.get(0));
-        }
-        Vvveb.Undo.addMutation(new ChildListMutation({
-            target: appendedElement.get(0).parentNode,
-            addedNodes: [...appendedElement],
-            nextSibing: appendedElement[0].nextSibing
-        }));
-    }
-}
 
 const formItems = [
     formgridrowid
@@ -203,11 +70,146 @@ const componentScopes = _.reduce({
     return prev;
 }, {});
 
+function getCursorAt($element) {
+    const display = $element.css('display');
+    if (display == 'inline-block') {
+        return {
+            left: $element.outerWidth() / 2,
+            top: $element.outerHeight() / 2,
+        };
+    } else {
+        return {
+            left: 20,
+            top: 20
+        };
+    }
+}
+
+function initComponentDrag(item, component) {
+    const html = component.dragHtml || component.html;
+    const cursorAt = getCursorAt($(html));
+    $(item).draggable({
+        iframeFix: true,
+        // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
+        // iframe scroll issue
+        // Use jquery-ui scope instead of accept to circumvent bugs in
+        // https://github.com/maxazan/jquery-ui-droppable-iframe/issues/4
+        iframeScroll: true,
+        scope: componentScopes[item.data('type')],
+        helper() {
+            const $element = $(html).appendTo($('body'));
+            $element.css({ 'z-index': 15 });
+            return $element;
+        },
+        cursorAt,
+        drag() {
+        },
+        stop() {
+        },
+        revert: 'invalid'
+    });
+}
+
+function initTopPanelDrag() {
+    $('#top-panel').draggable({
+        iframeFix: true,
+        axis: 'x',
+        cursor: 'e-resize'
+    });
+}
+
+const droppableClasses = {
+    "ui-droppable-hover": "ui-state-hover"
+};
+
+function enableSortableAndDroppable(elements, scope, connectWith = 'div.gridster > div > form') {
+    $(elements)
+        .sortable({
+            connectWith,
+            cursor: 'move',
+            // Prevents sorting if you start on elements matching the selector.
+            // Default: "input,textarea,button,select,option"
+            cancel: "option, div.ui-resizable-handle",
+            start: onSortingStarts,
+            update: onSortingUpdates
+        })
+        .droppable({
+            classes: droppableClasses,
+            greedy: true,
+            scope,
+            drop
+        });
+}
+
+function drop(event, { draggable, helper, offset }) {
+    // Check drag elements from inside or out of iframe
+    if (draggable == helper) {
+        $(this).append(draggable);
+    } else {
+        const component = Vvveb.Components.matchNode(helper.get(0));
+        let appendedElement;
+        if (component.onDrop) {
+            appendedElement = component.onDrop(helper);
+        } else if (component.sortable) {
+            // Check if the drop zone is popup form
+            if ($(this).is('form.popup-form')) {
+                appendedElement = $(this).find('.saveArea')
+                    .before(helper.prop('outerHTML'))
+                    .prev()
+                    .css({
+                        position: '',
+                        left: '',
+                        top: ''
+                    });
+            } else {
+                appendedElement = $(this).append(helper.prop('outerHTML'))
+                    .children('*:last')
+                    .css({
+                        position: '',
+                        left: '',
+                        top: ''
+                    });
+            }
+        } else {
+            appendedElement = $(this).append(helper.prop('outerHTML'))
+                .children('*:last')
+                .css({
+                    position: '',
+                    left: 0,
+                    top: 0,
+                    width: component.width || '100%',
+                    height: component.height || '100%',
+                    // margin: '20px'
+                });
+            if (appendedElement.is('form')) {
+                enableSortableAndDroppable(appendedElement, formItemsScope, formGridSelector);
+            } else if (appendedElement.is('div.row')) {
+                if ($(this).is('form')) {
+                    enableSortableAndDroppable(appendedElement.children(), formGridColumnItemsScope, formGridColumnSelector);
+                } else {
+                    enableSortableAndDroppable(appendedElement.children(), gridColumnItemsScope, gridColumnSelector);
+                }
+            }
+        }
+        if (component.afterDrop) {
+            component.afterDrop(appendedElement.get(0));
+        }
+        if (component.beforeInit) {
+            component.beforeInit(appendedElement.get(0));
+        }
+        Vvveb.Undo.addMutation(new ChildListMutation({
+            target: appendedElement.get(0).parentNode,
+            addedNodes: [...appendedElement],
+            nextSibing: appendedElement[0].nextSibing
+        }));
+    }
+}
+
 function initIframeTableDrop() {
     Vvveb.Builder.frameBody
         .find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid')
         .droppable({
-            scope: 'customTables',
+            scope: customTablesScope,
             drop
         });
 }
@@ -216,7 +218,7 @@ function enableGridItemDrop(elements) {
     $(elements)
         .droppable({
             classes: droppableClasses,
-            scope: 'gridDroppables',
+            scope: gridDroppablesScope,
             drop
         });
 }
@@ -230,7 +232,7 @@ function initIframeFormItemsDrop() {
         .find('.allButton.dropzone')
         .droppable({
             greedy: true,
-            scope: 'formItems',
+            scope: formItemsScope,
             drop
         });
 }
@@ -240,7 +242,7 @@ function initIframePopupDrop() {
         .find('div.popup-window form.popup-form')
         .droppable({
             greedy: true,
-            scope: 'popupFormItems',
+            scope: popupFormItemsScope,
             drop
         });
 }
