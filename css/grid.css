@@ -44,7 +44,7 @@ table {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.gridster .gs-w.ui-state-hover {
+.gridster .gs-w.ui-state-hover, div.row > div.ui-state-hover {
     background: #00c853;
 }
 

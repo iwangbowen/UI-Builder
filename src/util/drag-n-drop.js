@@ -61,10 +61,14 @@ function initTopPanelDrag() {
     });
 }
 
-function enableSortableAndDroppable(elements, scope = 'formItems') {
+const droppableClasses = {
+    "ui-droppable-hover": "ui-state-hover"
+};
+
+function enableSortableAndDroppable(elements, scope = 'formItems', connectWith = 'div.gridster > div > form') {
     $(elements)
         .sortable({
-            connectWith: 'div.gridster > div > form',
+            connectWith,
             cursor: 'move',
             // Prevents sorting if you start on elements matching the selector.
             // Default: "input,textarea,button,select,option"
@@ -73,6 +77,7 @@ function enableSortableAndDroppable(elements, scope = 'formItems') {
             update: onSortingUpdates
         })
         .droppable({
+            classes: droppableClasses,
             greedy: true,
             scope,
             drop
@@ -213,9 +218,7 @@ function initIframeTableDrop() {
 function enableGridItemDrop(elements) {
     $(elements)
         .droppable({
-            classes: {
-                "ui-droppable-hover": "ui-state-hover"
-            },
+            classes: droppableClasses,
             scope: 'gridDroppables',
             drop
         });
