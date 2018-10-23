@@ -87,3 +87,7 @@ div.horizontal-stripes {
   line-height: 287px;
   width: 287px;
 }
+
+div.row.gridrow-component > div, .form-border {
+  border: 1px dashed rgb(153, 153, 153);
+}

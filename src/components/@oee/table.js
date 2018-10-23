@@ -136,8 +136,10 @@ const table = {
     image: "icons/table.svg",
     name: "Base ag-Grid",
     html: `<div style="width: 100px; height: 50px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
-    beforeInit: function (node) {
+    afterDrop(node) {
         $(node).removeClass('horizontal-stripes');
+    },
+    beforeInit: function (node) {
         if (!$(node).attr(dataTableId)) {
             $(node).attr(dataTableId, `_${getRandomString(2)}`);
             setGridOptions(node,

@@ -56,6 +56,7 @@ function inc_base_sort() {
 
 const draggableComponent = 'draggable-component';
 const configurableComponent = 'configurable-component';
+const gridrowComponent = 'gridrow-component';
 const cloneableComponent = 'cloneable-component';
 const deletableComponent = 'deletable-component';
 const dataComponentId = 'data-component-id';
@@ -80,6 +81,7 @@ const sortableClass = 'sortable';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
 const radioCheckboxBlockClass = 'radio-checkbox-block';
+const formBorderClass = 'form-border';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
@@ -87,5 +89,5 @@ export {
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpan, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
-    dataRelatedTable
+    dataRelatedTable, gridrowComponent, formBorderClass
 };

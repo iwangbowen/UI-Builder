@@ -1,15 +1,17 @@
 import { GridInput, ButtonInput } from '../../inputs/inputs';
+import { gridrowid } from './ids';
 import gridcolumn from './gridcolumn';
-import { configurableComponent } from '../common';
+import { configurableComponent, gridrowComponent, dataComponentId } from '../common';
 import _ from 'lodash';
 
 const gridrow = {
     name: "Grid Row",
     image: "icons/grid_row.svg",
     classes: ["row"],
-    html: `<div class="row ${configurableComponent}">
+    html: `<div class="row ${configurableComponent} ${gridrowComponent}" ${dataComponentId}="${gridrowid}">
             ${_.repeat(gridcolumn.html, 3)}
            </div>`,
+    height: 'auto',
     beforeInit: function (node) {
         properties = [];
         var i = 0;
@@ -42,7 +44,7 @@ const gridrow = {
                     //if remove button is clicked remove column and render row properties
                     if (input.nodeName == 'BUTTON') {
                         column.remove();
-                        Vvveb.Components.render("html/gridrow");
+                        Vvveb.Components.render(gridrowid);
                         return node;
                     }
 
@@ -71,7 +73,6 @@ const gridrow = {
         this.properties = properties;
         return node;
     },
-
     properties: [{
         name: "Column",
         key: "column1",
@@ -89,10 +90,8 @@ const gridrow = {
         data: { text: "Add column" },
         onChange: function (node) {
             $(node).append('<div class="col-3">Col-3</div>');
-
             //render component properties again to include the new column inputs
-            Vvveb.Components.render("html/gridrow");
-
+            Vvveb.Components.render(gridrowid);
             return node;
         }
     }]

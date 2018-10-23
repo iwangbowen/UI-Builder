@@ -8,7 +8,7 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid, formid, gridrowid, buttonid
+    customtableid, commontableid, formid, gridrowid, buttonid, formbuttonid, formgridrowid
 } from '../components/@oee/ids';
 import 'core-js/es7/array';
 
@@ -30,6 +30,7 @@ function getCursorAt($element) {
 function initComponentDrag(item, component) {
     const html = component.dragHtml || component.html;
     const cursorAt = getCursorAt($(html));
+    console.log(componentScopes[item.data('type')]);
     $(item).draggable({
         iframeFix: true,
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
@@ -60,20 +61,20 @@ function initTopPanelDrag() {
     });
 }
 
-function enableSortableAndDroppable(elements) {
+function enableSortableAndDroppable(elements, scope = 'formItems') {
     $(elements)
         .sortable({
             connectWith: 'div.gridster > div > form',
             cursor: 'move',
             // Prevents sorting if you start on elements matching the selector.
             // Default: "input,textarea,button,select,option"
-            cancel: "button, option, div.ui-resizable-handle",
+            cancel: "option, div.ui-resizable-handle",
             start: onSortingStarts,
             update: onSortingUpdates
         })
         .droppable({
             greedy: true,
-            scope: 'formItems',
+            scope,
             drop
         });
 }
@@ -111,16 +112,30 @@ function drop(event, { draggable, helper, offset }) {
             appendedElement = $(this).append(helper.prop('outerHTML'))
                 .children('*:last')
                 .css({
-                    position: 'none',
+                    position: '',
                     left: 0,
                     top: 0,
-                    width: '100%',
-                    height: '100%',
+                    width: component.width || '100%',
+                    height: component.height || '100%',
                     // margin: '20px'
                 });
-            if (appendedElement.is('form')) {
-                enableSortableAndDroppable(appendedElement);
+            if ($(this).is('form')) {
+
+            } else {
+
             }
+            if (appendedElement.is('form')) {
+                enableSortableAndDroppable(appendedElement, 'formItems');
+            } else if (appendedElement.is('div.row')) {
+                if ($(this).is('form')) {
+                    enableSortableAndDroppable(appendedElement.children(), 'formGridColumnItems');
+                } else {
+                    enableSortableAndDroppable(appendedElement.children(), 'gridColumnItems');
+                }
+            }
+        }
+        if (component.afterDrop) {
+            component.afterDrop(appendedElement.get(0));
         }
         if (component.beforeInit) {
             component.beforeInit(appendedElement.get(0));
@@ -134,6 +149,14 @@ function drop(event, { draggable, helper, offset }) {
 }
 
 const formItems = [
+    formgridrowid
+];
+
+const gridColumnItems = [
+    buttonid
+];
+
+const formGridColumnItems = [
     textinputfieldid,
     datetimeinputfieldid,
     fileinputfieldid,
@@ -143,7 +166,7 @@ const formItems = [
     textareafieldid,
     radiofieldid,
     checkboxfieldid,
-    buttonid
+    formbuttonid
 ];
 
 const popupFormItems = [
@@ -166,7 +189,9 @@ const componentScopes = _.reduce({
     formItems,
     customTables,
     popupFormItems,
-    gridDroppables
+    gridDroppables,
+    gridColumnItems,
+    formGridColumnItems
 }, (prev, v, k) => {
     _.extend(prev, ...v.map(v => {
         const obj = {};

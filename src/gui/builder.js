@@ -42,11 +42,11 @@ Vvveb.Builder = {
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
 
-			initIframeTableDrop();
 			initIframeGridDrop();
-			initIframeFormItemsDrop();
-			initIframePopupDrop();
 			initIframeResizeVetically();
+			initIframePopupDrop();
+			initIframeFormItemsDrop();
+			initIframeTableDrop();
 			initIframeSortable();
 			return this._initHightlight();
 		});
