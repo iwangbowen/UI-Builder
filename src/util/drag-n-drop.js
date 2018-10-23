@@ -84,6 +84,8 @@ function enableSortableAndDroppable(elements, scope = 'formItems', connectWith =
         });
 }
 
+const gridItemSelector = 'div.gridster > div';
+
 function drop(event, { draggable, helper, offset }) {
     // Check drag elements from inside or out of iframe
     if (draggable == helper) {
@@ -124,18 +126,13 @@ function drop(event, { draggable, helper, offset }) {
                     height: component.height || '100%',
                     // margin: '20px'
                 });
-            if ($(this).is('form')) {
-
-            } else {
-
-            }
             if (appendedElement.is('form')) {
                 enableSortableAndDroppable(appendedElement, 'formItems');
             } else if (appendedElement.is('div.row')) {
                 if ($(this).is('form')) {
-                    enableSortableAndDroppable(appendedElement.children(), 'formGridColumnItems');
+                    enableSortableAndDroppable(appendedElement.children(), 'formGridColumnItems', `${gridItemSelector} form div.row > div`);
                 } else {
-                    enableSortableAndDroppable(appendedElement.children(), 'gridColumnItems');
+                    enableSortableAndDroppable(appendedElement.children(), 'gridColumnItems', `${gridItemSelector} div.row > div`);
                 }
             }
         }
