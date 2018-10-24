@@ -1,5 +1,5 @@
 import { GridInput } from '../../inputs/inputs';
-import { configurableComponent, dataComponentId } from '../common';
+import { configurableComponent, dataComponentId, colReg } from '../common';
 import { gridcolumnid } from './ids';
 
 const gridcolumn = {
@@ -14,9 +14,8 @@ const gridcolumn = {
         data: { hide_remove: true },
         beforeInit: function (node) {
             const _class = $(node).attr("class");
-            const reg = /col-([^-\$ ]*)?-?(\d+)/g;
             let match;
-            while ((match = reg.exec(_class)) != null) {
+            while ((match = colReg.exec(_class)) != null) {
                 this.data["col" + ((match[1] != undefined) ? "_" + match[1] : "")] = match[2];
             }
         },

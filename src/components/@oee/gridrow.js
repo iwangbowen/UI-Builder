@@ -1,7 +1,7 @@
 import { GridInput, ButtonInput } from '../../inputs/inputs';
 import { gridrowid } from './ids';
 import gridcolumn from './gridcolumn';
-import { configurableComponent, gridrowComponent, dataComponentId } from '../common';
+import { configurableComponent, gridrowComponent, dataComponentId, colReg } from '../common';
 import { enableSortableAndDroppable } from '../../util/drag-n-drop';
 import _ from 'lodash';
 
@@ -17,12 +17,11 @@ const gridrow = {
     beforeInit: function (node) {
         const properties = [];
         let i = 0;
-        const reg = /col-([^-\$ ]*)?-?(\d+)/g;
         $(node).find('[class*="col-"]').each(function () {
             let _class = $(this).attr("class");
             let match;
             const data = {};
-            while ((match = reg.exec(_class)) != null) {
+            while ((match = colReg.exec(_class)) != null) {
                 data["col" + ((match[1] != undefined) ? "_" + match[1] : "")] = match[2];
             }
             i++;
