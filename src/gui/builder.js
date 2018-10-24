@@ -33,6 +33,7 @@ Vvveb.Builder = {
 		Vvveb.Actions.init();
 
 		this._loadIframe(url, srcdoc);
+		this._initSelectBox();
 		this.documentFrame.on('load', () => {
 			window.FrameWindow = this.iframe.contentWindow;
 			window.FrameDocument = this.iframe.contentWindow.document;
@@ -146,88 +147,8 @@ Vvveb.Builder = {
 		this.selectedEl = target = jQuery(node);
 		highlightwhenSelected(node, ctrlKeyPressed);
 	},
-	_initHightlight() {
+	_initSelectBox() {
 		const _this = this;
-		this.frameBody.on("mousemove touchmove", function (event) {
-			if (event.target) {
-				if (getElementWithSpecifiedClass($(event.target)).length) {
-					_this.highlightEl = target = jQuery(event.target);
-					if (!event.ctrlKey) {
-						highlightWhenHovering(event.target);
-					}
-				}
-			}
-		});
-
-		this.frameBody.on("dblclick", function (event) {
-			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
-
-			_this.texteditEl = target = jQuery(event.target);
-			Vvveb.WysiwygEditor.edit(_this.texteditEl);
-			if (!_this.texteditEl.parents(noneditableSelector).length) {
-				_this.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
-			}
-			_this.texteditEl.on("blur keyup paste input", function (event) {
-				jQuery(selectBox).css({
-					"width": _this.texteditEl.outerWidth(),
-					"height": _this.texteditEl.outerHeight()
-				});
-			});
-			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
-			jQuery("#highlight-box").hide();
-		});
-
-		this.frameBody.on("click", function (event) {
-			$(document.getElementById('iframeId').contentWindow.document)
-				.find('.horizontal-line, .vertical-line')
-				.hide();
-			if (getElementWithSpecifiedClass($(event.target)).length) {
-				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
-					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
-					if (event.target) {
-						if (event.ctrlKey) {
-							addOrRemoveElement(event.target);
-						} else {
-							clearSelectedElements();
-						}
-						const node = getParentOrSelf(event.target);
-						if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
-							$('#attribute-settings')
-								.addClass('active')
-								.siblings()
-								.removeClass('active');
-							$('#left-panel').hide();
-							$('#right-panel').show();
-						}
-						_this.selectNode(node, event.ctrlKey);
-						_this.loadNodeComponent(node);
-						event.preventDefault();
-						return false;
-					}
-				}
-			}
-		});
-
-		this.frameBody.keydown(e => {
-			if (_this.selectedEl && _this.selectedEl.prop('tagName') != 'BODY') {
-				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
-					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, _this.selectedEl);
-					e.preventDefault();
-				} else if (e.ctrlKey) {
-					const kc = e.which || e.keyCode;
-					// Delete
-					if (String.fromCharCode(kc).toUpperCase() == 'D') {
-						$("#delete-box").trigger('click');
-					}
-					// Copy
-					if (String.fromCharCode(kc).toUpperCase() == 'C') {
-						$("#clone-box").trigger('click');
-					}
-					e.preventDefault();
-				}
-			}
-		});
-
 		$("#down-box").on("click", function (event) {
 			jQuery(selectBox).hide();
 			const node = _this.selectedEl.get(0);
@@ -327,6 +248,88 @@ Vvveb.Builder = {
 		$('#top-align').on('click', topAlignCallback);
 		$('#middle-align').on('click', middleAlignCallback);
 		$('#bottom-align').on('click', bottomAlignCallback);
+	},
+	_initHightlight() {
+		const _this = this;
+		this.frameBody.on("mousemove touchmove", function (event) {
+			if (event.target) {
+				if (getElementWithSpecifiedClass($(event.target)).length) {
+					_this.highlightEl = target = jQuery(event.target);
+					if (!event.ctrlKey) {
+						highlightWhenHovering(event.target);
+					}
+				}
+			}
+		});
+
+		this.frameBody.on("dblclick", function (event) {
+			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+
+			_this.texteditEl = target = jQuery(event.target);
+			Vvveb.WysiwygEditor.edit(_this.texteditEl);
+			if (!_this.texteditEl.parents(noneditableSelector).length) {
+				_this.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
+			}
+			_this.texteditEl.on("blur keyup paste input", function (event) {
+				jQuery(selectBox).css({
+					"width": _this.texteditEl.outerWidth(),
+					"height": _this.texteditEl.outerHeight()
+				});
+			});
+			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
+			jQuery("#highlight-box").hide();
+		});
+
+		this.frameBody.on("click", function (event) {
+			$(document.getElementById('iframeId').contentWindow.document)
+				.find('.horizontal-line, .vertical-line')
+				.hide();
+			if (getElementWithSpecifiedClass($(event.target)).length) {
+				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
+					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+					if (event.target) {
+						if (event.ctrlKey) {
+							addOrRemoveElement(event.target);
+						} else {
+							clearSelectedElements();
+						}
+						const node = getParentOrSelf(event.target);
+						if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
+							$('#attribute-settings')
+								.addClass('active')
+								.siblings()
+								.removeClass('active');
+							$('#left-panel').hide();
+							$('#right-panel').show();
+						}
+						_this.selectNode(node, event.ctrlKey);
+						_this.loadNodeComponent(node);
+						event.preventDefault();
+						return false;
+					}
+				}
+			}
+		});
+
+		this.frameBody.keydown(e => {
+			if (_this.selectedEl && _this.selectedEl.prop('tagName') != 'BODY') {
+				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
+					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, _this.selectedEl);
+					e.preventDefault();
+				} else if (e.ctrlKey) {
+					const kc = e.which || e.keyCode;
+					// Delete
+					if (String.fromCharCode(kc).toUpperCase() == 'D') {
+						$("#delete-box").trigger('click');
+					}
+					// Copy
+					if (String.fromCharCode(kc).toUpperCase() == 'C') {
+						$("#clone-box").trigger('click');
+					}
+					e.preventDefault();
+				}
+			}
+		});
 
 		jQuery(window.FrameWindow).on("scroll resize", function (event) {
 			if (_this.selectedEl) {
