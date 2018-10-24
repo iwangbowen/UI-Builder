@@ -125,3 +125,64 @@ $.ui.plugin.add("draggable", "iframeScroll", {
         clearInterval(i.scrollTimer);
     }
 });
+
+// Fix bug in iframe nested droppables
+// https://github.com/maxazan/jquery-ui-droppable-iframe/issues/1
+var intersect = $.ui.intersect;
+$.widget('ui.droppable', $.ui.droppable, {
+
+    _drop: function( event, custom ) {
+
+        var draggable = custom || $.ui.ddmanager.current,
+            childrenIntersection = false;
+
+        // Bail if draggable and droppable are same element
+        if ( !draggable || ( draggable.currentItem ||
+            draggable.element )[ 0 ] === this.element[ 0 ] ) {
+            return false;
+        }
+
+        this.element
+            .find( ":data(ui-droppable)" )
+            .not( ".ui-draggable-dragging" )
+            .each( function() {
+                var inst = $( this ).droppable( "instance" );
+                ///////// !!! 重要修改, 这里如果已经赋值了,就不用再赋值, 解决 iframe 内部droppable元素定位错误的bug !!!!
+                if( ! inst.offset ){
+                    inst.offset = inst.element.offset();
+                }
+                ///////////////////////////////
+                if (
+                    inst.options.greedy &&
+                    !inst.options.disabled &&
+                    inst.options.scope === draggable.options.scope &&
+                    inst.accept.call(
+                        inst.element[ 0 ], ( draggable.currentItem || draggable.element )
+                    ) &&
+                    intersect(
+                        draggable,
+                        inst,
+                        inst.options.tolerance, event
+                    )
+                ) {
+                    childrenIntersection = true;
+                    return false; }
+            } );
+        if ( childrenIntersection ) {
+            return false;
+        }
+
+        if ( this.accept.call( this.element[ 0 ],
+                ( draggable.currentItem || draggable.element ) ) ) {
+            this._removeActiveClass();
+            this._removeHoverClass();
+
+            this._trigger( "drop", event, this.ui( draggable ) );
+            return this.element;
+        }
+
+        return false;
+
+    }
+
+} );
