@@ -1,6 +1,7 @@
 import {
     combinedSelector
 } from "../common";
+import { auxiliaryElementsSelector } from "../common";
 
 function initGridOutofBuilder() {
     if ($('.gridster').length) {
@@ -21,7 +22,7 @@ function initGridInBuilder() {
     function hideToolBoxes() {
         if (window.parent) {
             $(window.parent.document)
-                .find('#select-box, #highlight-box, #highlight-name').hide();
+                .find(auxiliaryElementsSelector).hide();
         }
     }
     if ($('.gridster').length) {

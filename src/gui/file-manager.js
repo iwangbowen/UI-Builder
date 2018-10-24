@@ -1,7 +1,7 @@
 import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
-import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer } from '../util/dom';
+import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements } from '../util/dom';
 import _ from 'lodash';
 import { templatePages } from '../constants';
 
@@ -12,6 +12,7 @@ Vvveb.FileManager = {
 		this.tree = $("#filemanager .tree > ol").html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
 			clearTimer();
+			hideAuxiliaryElements();
 			const clickedPageName = $(this).parents('li').data('page');
 			// window.location.reload();
 			Vvveb.FileManager.loadPage(clickedPageName);

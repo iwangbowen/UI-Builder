@@ -12,6 +12,12 @@ const popupFormItemsScope = 'popupFormItems';
 const customTablesScope = 'customTables';
 const gridDroppablesScope = 'gridDroppables';
 
+const selectBoxSelector = '#select-box';
+const highlightBoxSelector = '#highlight-box';
+const highlightNameSelector = '#highlight-name';
+const wysiwygEditorSelector = '#wysiwyg-editor'
+const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}, ${highlightNameSelector}, ${wysiwygEditorSelector}`;
+
 export {
     gridItemSelector,
     formGridSelector,
@@ -24,5 +30,10 @@ export {
     formGridColumnItemsScope,
     popupFormItemsScope,
     customTablesScope,
-    gridDroppablesScope
+    gridDroppablesScope,
+    selectBoxSelector,
+    highlightBoxSelector,
+    highlightNameSelector,
+    wysiwygEditorSelector,
+    auxiliaryElementsSelector
 };

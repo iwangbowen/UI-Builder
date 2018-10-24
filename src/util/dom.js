@@ -23,6 +23,7 @@ import {
 import { addDatetime } from './common';
 import 'core-js/es7/array';
 import { enableGridItemDrop, enableSortableAndDroppable } from './drag-n-drop';
+import { auxiliaryElementsSelector } from '../common';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -50,6 +51,10 @@ function initPanelToggle() {
             $('#right-panel').toggle();
         }
     });
+}
+
+function hideAuxiliaryElements() {
+    $(auxiliaryElementsSelector).hide();
 }
 
 function setPageSrcdoc(page) {
@@ -501,5 +506,5 @@ export {
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
-    getSavedPages
+    getSavedPages, hideAuxiliaryElements
 };
