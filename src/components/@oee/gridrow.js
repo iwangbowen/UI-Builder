@@ -2,6 +2,7 @@ import { GridInput, ButtonInput } from '../../inputs/inputs';
 import { gridrowid } from './ids';
 import gridcolumn from './gridcolumn';
 import { configurableComponent, gridrowComponent, dataComponentId } from '../common';
+import { enableSortableAndDroppable } from '../../util/drag-n-drop';
 import _ from 'lodash';
 
 const gridrow = {
@@ -78,7 +79,7 @@ const gridrow = {
         inputtype: new ButtonInput(),
         data: { text: "Add column" },
         onChange: function (node) {
-            $(node).append(gridcolumn.html);
+            enableSortableAndDroppable($(gridcolumn.html).appendTo($(node)));
             //render component properties again to include the new column inputs
             Vvveb.Components.render(gridrowid);
             return node;
