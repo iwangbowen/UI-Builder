@@ -1,5 +1,5 @@
 const gridItemSelector = 'div.gridster > div';
-const formGridSelector =  `${gridItemSelector} form`;
+const formGridSelector = `${gridItemSelector} form`;
 const formGridRowSelector = `${formGridSelector} div.row`;
 const formGridColumnSelector = `${formGridSelector} div.row > div`;
 const gridColumnSelector = `${gridItemSelector} > div.row > div`;
