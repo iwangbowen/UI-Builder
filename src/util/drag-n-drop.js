@@ -37,7 +37,7 @@ const gridDroppables = [
     checkboxfieldid,
     formid,
     commontableid,
-    gridrowid,
+    gridrowid
 ];
 
 const componentScopes = _.reduce({
@@ -164,8 +164,8 @@ function drop(event, { draggable, helper, offset }) {
                     height: component.height || '100%',
                     // margin: '20px'
                 });
-            if (appendedElement.is('form')) {
-                enableSortableAndDroppable(appendedElement);
+            if (appendedElement.has('form')) {
+                enableSortableAndDroppable(appendedElement.children());
             } else if (appendedElement.is('div.row')) {
                 enableSortableAndDroppable(appendedElement.children());
             }

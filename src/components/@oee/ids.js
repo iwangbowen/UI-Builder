@@ -36,6 +36,7 @@ const formid = 'html/form@oee';
 const gridrowid = 'html/gridrow@oee';
 const formgridrowid = 'html/formgridrow@oee';
 const gridcolumnid = 'html/gridcolumn@oee';
+const divid = 'html/div@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -43,5 +44,5 @@ export {
     textareaid, textareafieldid, textinputid, calendarid, radioid, radiofieldid, checkboxid, checkboxfieldid,
     checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid, textinputfieldid,
     datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid,
-    formid, gridrowid, gridcolumnid, formgridrowid, formbuttonid
+    formid, gridrowid, gridcolumnid, formgridrowid, formbuttonid, divid
 };

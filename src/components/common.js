@@ -82,6 +82,7 @@ const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
 const radioCheckboxBlockClass = 'radio-checkbox-block';
 const formBorderClass = 'form-border';
+const dashBorderClass = 'dashed-border';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 
@@ -91,5 +92,5 @@ export {
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpan, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
-    dataRelatedTable, gridrowComponent, formBorderClass, colReg
+    dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass
 };
