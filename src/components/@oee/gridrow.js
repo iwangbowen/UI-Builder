@@ -14,20 +14,16 @@ const gridrow = {
     height: 'auto',
     width: 'auto',
     beforeInit: function (node) {
-        properties = [];
-        var i = 0;
-        var j = 0;
+        const properties = [];
+        let i = 0;
+        const reg = /col-([^-\$ ]*)?-?(\d+)/g;
         $(node).find('[class*="col-"]').each(function () {
-            _class = $(this).attr("class");
-
-            var reg = /col-([^-\$ ]*)?-?(\d+)/g;
-            var match;
-            data = {};
-
+            let _class = $(this).attr("class");
+            let match;
+            const data = {};
             while ((match = reg.exec(_class)) != null) {
                 data["col" + ((match[1] != undefined) ? "_" + match[1] : "")] = match[2];
             }
-
             i++;
             properties.push({
                 name: "Column " + i,
@@ -38,39 +34,31 @@ const gridrow = {
                 inputtype: new GridInput(),
                 data: data,
                 onChange: function (node, value, input) {
-
                     //column = $('[class*="col-"]:eq(' + this.index + ')', node);
-                    column = $(this.columnNode);
-
+                    const column = $(this.columnNode);
                     //if remove button is clicked remove column and render row properties
                     if (input.nodeName == 'BUTTON') {
                         column.remove();
                         Vvveb.Components.render(gridrowid);
                         return node;
                     }
-
                     //if select input then change column class
                     _class = column.attr("class");
-
                     //remove previous breakpoint column size
                     _class = _class.replace(new RegExp(input.name + '-\\d+?'), '');
                     //add new column size
                     if (value) _class += ' ' + input.name + '-' + value;
                     column.attr("class", _class);
-
                     return node;
                 },
             });
         });
-
         //remove all column properties
         this.properties = this.properties.filter(function (item) {
             return item.key.indexOf("column") === -1;
         });
-
         //add remaining properties to generated column properties
         properties.push(this.properties[0]);
-
         this.properties = properties;
         return node;
     },
@@ -90,7 +78,7 @@ const gridrow = {
         inputtype: new ButtonInput(),
         data: { text: "Add column" },
         onChange: function (node) {
-            $(node).append('<div class="col-3">Col-3</div>');
+            $(node).append(gridcolumn.html);
             //render component properties again to include the new column inputs
             Vvveb.Components.render(gridrowid);
             return node;
