@@ -8,35 +8,12 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid, formid, gridrowid, buttonid, formbuttonid, formgridrowid
+    customtableid, commontableid, formid, gridrowid, buttonid
 } from '../components/@oee/ids';
 import {
-    formGridColumnSelector, gridColumnSelector,
-    formItemsScope, gridColumnItemsScope, formGridColumnItemsScope,
-    popupFormItemsScope, customTablesScope, gridDroppablesScope, formGridSelector
+    popupFormItemsScope, customTablesScope, gridDroppablesScope, combinedSelector
 } from '../common';
 import 'core-js/es7/array';
-
-const formItems = [
-    formgridrowid
-];
-
-const gridColumnItems = [
-    buttonid
-];
-
-const formGridColumnItems = [
-    textinputfieldid,
-    datetimeinputfieldid,
-    fileinputfieldid,
-    autoselectinputfieldid,
-    manualselectinputfieldid,
-    multivalueselectinputfieldid,
-    textareafieldid,
-    radiofieldid,
-    checkboxfieldid,
-    formbuttonid
-];
 
 const popupFormItems = [
     popuptextinputid,
@@ -48,19 +25,25 @@ const customTables = [
 ];
 
 const gridDroppables = [
+    buttonid,
+    textinputfieldid,
+    datetimeinputfieldid,
+    fileinputfieldid,
+    autoselectinputfieldid,
+    manualselectinputfieldid,
+    multivalueselectinputfieldid,
+    textareafieldid,
+    radiofieldid,
+    checkboxfieldid,
     formid,
     commontableid,
     gridrowid,
-    buttonid
 ];
 
 const componentScopes = _.reduce({
-    formItems,
     customTables,
     popupFormItems,
     gridDroppables,
-    gridColumnItems,
-    formGridColumnItems
 }, (prev, v, k) => {
     _.extend(prev, ...v.map(v => {
         const obj = {};
@@ -122,7 +105,7 @@ const droppableClasses = {
     "ui-droppable-hover": "ui-state-hover"
 };
 
-function enableSortableAndDroppable(elements, scope, connectWith = 'div.gridster > div > form') {
+function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = combinedSelector) {
     $(elements)
         .sortable({
             connectWith,
@@ -143,6 +126,7 @@ function enableSortableAndDroppable(elements, scope, connectWith = 'div.gridster
 
 function drop(event, { draggable, helper, offset }) {
     // Check drag elements from inside or out of iframe
+    console.log(this);
     if (draggable == helper) {
         $(this).append(draggable);
     } else {
@@ -182,13 +166,9 @@ function drop(event, { draggable, helper, offset }) {
                     // margin: '20px'
                 });
             if (appendedElement.is('form')) {
-                enableSortableAndDroppable(appendedElement, formItemsScope, formGridSelector);
+                enableSortableAndDroppable(appendedElement);
             } else if (appendedElement.is('div.row')) {
-                if ($(this).is('form')) {
-                    enableSortableAndDroppable(appendedElement.children(), formGridColumnItemsScope, formGridColumnSelector);
-                } else {
-                    enableSortableAndDroppable(appendedElement.children(), gridColumnItemsScope, gridColumnSelector);
-                }
+                enableSortableAndDroppable(appendedElement.children());
             }
         }
         if (component.afterDrop) {
@@ -232,7 +212,7 @@ function initIframeFormItemsDrop() {
         .find('.allButton.dropzone')
         .droppable({
             greedy: true,
-            scope: formItemsScope,
+            scope: gridDroppablesScope,
             drop
         });
 }
