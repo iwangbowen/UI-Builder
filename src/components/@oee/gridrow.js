@@ -12,6 +12,7 @@ const gridrow = {
             ${_.repeat(gridcolumn.html, 3)}
            </div>`,
     height: 'auto',
+    width: 'auto',
     beforeInit: function (node) {
         properties = [];
         var i = 0;
