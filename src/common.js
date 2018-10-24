@@ -3,7 +3,7 @@ const formGridSelector =  `${gridItemSelector} form`;
 const formGridRowSelector = `${formGridSelector} div.row`;
 const formGridColumnSelector = `${formGridSelector} div.row > div`;
 const gridColumnSelector = `${gridItemSelector} > div.row > div`;
-const combinedSelector = `${gridItemSelector}, ${formGridSelector}, ${formGridColumnSelector}, ${gridColumnSelector}`;
+const combinedSelector = `${formGridSelector}, ${formGridColumnSelector}, ${gridColumnSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -15,6 +15,7 @@ const gridDroppablesScope = 'gridDroppables';
 export {
     gridItemSelector,
     formGridSelector,
+    formGridRowSelector,
     formGridColumnSelector,
     gridColumnSelector,
     combinedSelector,
