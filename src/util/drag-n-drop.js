@@ -126,7 +126,6 @@ function enableSortableAndDroppable(elements, scope = gridDroppablesScope, conne
 
 function drop(event, { draggable, helper, offset }) {
     // Check drag elements from inside or out of iframe
-    console.log(this);
     if (draggable == helper) {
         $(this).append(draggable);
     } else {
@@ -197,6 +196,7 @@ function initIframeTableDrop() {
 function enableGridItemDrop(elements) {
     $(elements)
         .droppable({
+            greedy: true,
             classes: droppableClasses,
             scope: gridDroppablesScope,
             drop

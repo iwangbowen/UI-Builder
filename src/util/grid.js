@@ -1,8 +1,5 @@
 import {
-    formGridColumnSelector, gridColumnSelector, formGridColumnItemsScope,
-    gridColumnItemsScope,
-    formGridSelector,
-    formItemsScope
+    combinedSelector
 } from "../common";
 
 function initGridOutofBuilder() {
@@ -43,12 +40,10 @@ function initGridInBuilder() {
             draggable: {
                 start: hideToolBoxes,
                 // exclude form children elements to prevent intervention with jquery-ui sortable
-                handle: '*:not(form *, button)'
+                handle: '*:not(form *, button, div.row *)'
             }
         }).data('gridster');
-        window.parent.enableSortableAndDroppable($(formGridSelector), formItemsScope, formGridSelector);
-        window.parent.enableSortableAndDroppable($(formGridColumnSelector), formGridColumnItemsScope, formGridColumnSelector);
-        window.parent.enableSortableAndDroppable($(gridColumnSelector), gridColumnItemsScope, gridColumnSelector);
+        window.parent.enableSortableAndDroppable($(combinedSelector));
         $('div.gridster > div').each(function () {
             if (!$(this).has('span.gs-remove-handle').length) {
                 $('<span class="gs-remove-handle"></span>').appendTo(this);
