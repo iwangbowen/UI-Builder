@@ -124,6 +124,31 @@ function enableSortableAndDroppable(elements, scope = gridDroppablesScope, conne
         });
 }
 
+const uiDraggableDraggingClass = 'ui-draggable-dragging';
+
+const resetCss = {
+    position: '',
+    left: '',
+    top: ''
+};
+
+// Append helper to droppable
+// https://stackoverflow.com/questions/4652305/jquery-ui-drop-helper
+// jquery-ui add 'ui-draggable-dragging' to helper and remove it after drop ends
+// We need to remove this class if we clone helper otherwise it will cause bugs
+// in _drop function
+function cloneAndAppendTo(helper, element, css = resetCss) {
+    return helper.clone(false).appendTo(element)
+        .css(css)
+        .removeClass(uiDraggableDraggingClass);
+}
+
+function cloneAndInsertBefore(helper, element, css = resetCss) {
+    return helper.clone(false).insertBefore(element)
+        .css(css)
+        .removeClass(uiDraggableDraggingClass);
+}
+
 function drop(event, { draggable, helper, offset }) {
     // Check drag elements from inside or out of iframe
     if (draggable == helper) {
@@ -136,36 +161,20 @@ function drop(event, { draggable, helper, offset }) {
         } else if (component.sortable) {
             // Check if the drop zone is popup form
             if ($(this).is('form.popup-form')) {
-                appendedElement = $(this).find('.saveArea')
-                    .before(helper.prop('outerHTML'))
-                    .prev()
-                    .css({
-                        position: '',
-                        left: '',
-                        top: ''
-                    });
+                appendedElement = cloneAndInsertBefore(helper, $(this).find('.saveArea'));
             } else {
-                appendedElement = $(this).append(helper.prop('outerHTML'))
-                    .children('*:last')
-                    .css({
-                        position: '',
-                        left: '',
-                        top: ''
-                    });
+                appendedElement = cloneAndAppendTo(helper, this);
             }
         } else {
-            appendedElement = $(this).append(helper.prop('outerHTML'))
-                .children('*:last')
-                .css({
-                    position: '',
-                    left: 0,
-                    top: 0,
-                    width: component.width || '100%',
-                    height: component.height || '100%',
-                    // margin: '20px'
-                });
-            if (appendedElement.has('form')) {
-                enableSortableAndDroppable(appendedElement.children());
+            appendedElement = cloneAndAppendTo(helper, this, {
+                position: '',
+                left: 0,
+                top: 0,
+                width: component.width || '100%',
+                height: component.height || '100%',
+            });
+            if (appendedElement.is('form')) {
+                enableSortableAndDroppable(appendedElement);
             } else if (appendedElement.is('div.row')) {
                 enableSortableAndDroppable(appendedElement.children());
             }

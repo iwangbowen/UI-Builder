@@ -1,10 +1,11 @@
-import { bgcolorSelectOptions, bgcolorClasses } from '../common';
+import { bgcolorSelectOptions, bgcolorClasses, dataComponentId } from '../common';
 import { SelectInput, ColorInput } from '../../inputs/inputs';
+import { divid } from './ids';
 
 const div = {
     classes: ["container", "container-fluid"],
     image: "icons/div.svg",
-    html: '<div style="width: 350px; height: 200px;" class="dropzone"></div>',
+    html: `<div ${dataComponentId}="${divid}" style="width: 350px; height: 200px;"></div>`,
     name: "Div",
     properties: [
         {

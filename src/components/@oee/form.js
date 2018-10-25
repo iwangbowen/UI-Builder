@@ -6,10 +6,8 @@ const form = {
     nodes: ["form"],
     image: "icons/form.svg",
     name: "Form",
-    html: `<div ${dataComponentId}="${formid}" style="height: 50px; width: 100px;" class="${dashBorderClass}">
-            <form class="${configurableComponent}" style="height: 100%;">
-            </form>
-           </div>`,
+    html: `<form class="${configurableComponent} ${dashBorderClass}" style="height: 50px; width: 100px;" ${dataComponentId}="${formid}">
+           </form>`,
     afterDrop(node) {
         $(node).removeClass(dashBorderClass);
     },
