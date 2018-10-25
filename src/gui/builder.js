@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithSpecifiedClass, bottomAlignCallback, clearTimer, loadCallback
+	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
@@ -331,7 +331,7 @@ Vvveb.Builder = {
 			}
 		});
 
-		jQuery(window.FrameWindow).on("scroll resize", function (event) {
+		function changeOffset() {
 			if (_this.selectedEl) {
 				const offset = _this.selectedEl.offset();
 				jQuery(selectBox).css(
@@ -354,7 +354,10 @@ Vvveb.Builder = {
 						//"display": "block"
 					});
 			}
-		});
+		}
+		// Fix scroll handler not called after changing pages
+		window.FrameWindow.addEventListener('scroll', changeOffset);
+		jQuery(window.FrameWindow).on('resize', changeOffset);
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
