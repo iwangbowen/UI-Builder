@@ -281,9 +281,8 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("click", function (event) {
-			$(document.getElementById('iframeId').contentWindow.document)
-				.find('.horizontal-line, .vertical-line')
-				.hide();
+			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
+
 			if (getElementWithSpecifiedClass($(event.target)).length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);

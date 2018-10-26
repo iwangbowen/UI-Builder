@@ -301,11 +301,11 @@ function highlightwhenSelected(target, ctrlKeyPressed) {
     const $target = $(target);
     const offset = $target.offset();
     $(selectBox).css({
-        "top": offset.top - Vvveb.Builder.frameDoc.scrollTop(),
-        "left": offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
-        "width": $target.outerWidth(),
-        "height": $target.outerHeight(),
-        "display": "block",
+        top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
+        left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
+        width: $target.outerWidth(),
+        height: $target.outerHeight(),
+        display: "block",
     });
     if (ctrlKeyPressed) {
         jQuery(selectBox).find(withCtrlKeyActionsSelector).show();

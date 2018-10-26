@@ -298,6 +298,7 @@ function initDraggable() {
 }
 
 function setGlobalVariables() {
+    self.hideAlignmentLines = hideAlignmentLines;
     self.arrowKeyMove = arrowKeyMove;
     self.popupAdd = popupAdd;
     self.popupEdit = popupEdit;
