@@ -91,3 +91,10 @@ div.horizontal-stripes {
 div.row.gridrow-component > div, .form-border, .dashed-border {
   border: 1px dashed rgb(153, 153, 153);
 }
+
+.gridster .gs-w.ui-state-hover,
+.gridster .gs-w form.ui-state-hover,
+div.row > div.ui-state-hover,
+.allButton.dropzone.ui-state-hover {
+  background: #00c853;
+}

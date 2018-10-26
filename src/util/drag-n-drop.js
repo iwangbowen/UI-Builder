@@ -221,6 +221,7 @@ function initIframeFormItemsDrop() {
         .find('.allButton.dropzone')
         .droppable({
             greedy: true,
+            classes: droppableClasses,
             scope: gridDroppablesScope,
             drop
         });
