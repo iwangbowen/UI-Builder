@@ -7,9 +7,6 @@ module.exports = function (grunt) {
     }, {
         src: 'src/iframe.js',
         dest: 'dist/iframe.js'
-    }, {
-        src: 'src/layout.js',
-        dest: 'dist/layout.js'
     }];
     grunt.initConfig({
         browserify: {

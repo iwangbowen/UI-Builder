@@ -43,9 +43,7 @@ const unusedTags = [
         name: 'script',
         filter: tag => tag.getAttribute('src')
             ? (tag.getAttribute('src').includes('iframe')
-                || tag.getAttribute('src').includes('interact')
-                // Remove layout.js in Builder
-                || tag.getAttribute('src').includes('layout'))
+                || tag.getAttribute('src').includes('interact'))
             : $(tag).hasClass(removeableScript)
     },
     {
@@ -258,8 +256,7 @@ function changeScriptType(el, selector, type) {
 }
 
 const devScripts = [
-    '/dist/iframe.js',
-    '/dist/layout.js'
+    '/dist/iframe.js'
 ];
 
 function generateDevDependentTags(el) {
