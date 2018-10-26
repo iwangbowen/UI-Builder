@@ -11,6 +11,7 @@
     "url": "https://github.com/iwangbowen/VvvebJs"
   },
   "scripts": {
+    "test": "browser-sync start --server --serveStatic --startPath \"/editor.html\" --files \"src/**\" --single --port 4000",
     "git:push": "git push && git push gitee",
     "git:merge": "git checkout sageui_1_0_0 && git merge dev && git push && git checkout dev",
     "clean": "grunt clean:all",
@@ -44,6 +45,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^8.0.0",
+    "browser-sync": "^2.26.3",
     "eslint": "^5.6.0",
     "grunt": "^1.0.3",
     "grunt-babel": "^7.0.0",
