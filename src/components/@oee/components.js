@@ -74,6 +74,8 @@ import bootstrapfileinput from './bootstrapfileinput';
 import bootstrapfileinputfield from './bootstrapfileinputfield';
 import bootstrapautoselectinput from './bootstrapautoselectinput';
 import bootstrapautoselectinputfield from './bootstrapautoselectinputfield';
+import bootstrapmanualselectinput from './bootstrapmanualselectinput';
+import bootstrapmanualselectinputfield from './bootstrapmanualselectinputfield';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
@@ -85,5 +87,6 @@ export {
     fileinputfield, manualselectinputfield, manualselectinputcustom, multivalueselectinput, multivalueselectinputfield,
     multivalueselectinputcustom, formgridrow, formbutton, bootstraptextinputfield, bootstraptextinput,
     bootstraptextareainput, bootstraptextareainputfield, bootstrapfileinput, bootstrapfileinputfield,
-    bootstrapautoselectinput, bootstrapautoselectinputfield
+    bootstrapautoselectinput, bootstrapautoselectinputfield, bootstrapmanualselectinput,
+    bootstrapmanualselectinputfield
 };
