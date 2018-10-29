@@ -71,6 +71,7 @@ table {
     /* font-weight: bold; */
     /* text-align: center; */
     line-height: 100%;
+    padding: 0.3rem;
 }
 
 .gridster-box {
