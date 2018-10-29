@@ -85,6 +85,7 @@ const formBorderClass = 'form-border';
 const dashBorderClass = 'dashed-border';
 const formGroup = 'form-group';
 const formControl = 'form-control';
+const formControlFile = 'form-control-file';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 
@@ -95,5 +96,5 @@ export {
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
-    formControl
+    formControl, formControlFile
 };
