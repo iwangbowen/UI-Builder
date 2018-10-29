@@ -1,8 +1,8 @@
-import { idProperty, textProperty } from './properties';
+import { forProperty, textProperty } from './properties';
 
 const spanProperties = [
     textProperty,
-    idProperty
+    forProperty
 ];
 
 export {

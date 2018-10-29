@@ -325,8 +325,8 @@ const textProperty = {
     inputtype: new TextInput()
 };
 
-const idProperty = {
-    name: "For id",
+const forProperty = {
+    name: "For",
     key: "for",
     htmlAttr: "for",
     inputtype: new TextInput()
@@ -357,5 +357,5 @@ export {
     linkToProperty,
     buttonTypeProperty,
     textProperty,
-    idProperty
+    forProperty
 };
