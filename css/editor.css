@@ -11830,7 +11830,7 @@ li[data-type] {
   overflow-y: auto; }
   #components-sidepane > div {
     position: absolute;
-    height: 95%; }
+    height: 90%; }
   #components-sidepane ul {
     z-index: 1;
     margin: 0;
