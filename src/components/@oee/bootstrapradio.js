@@ -8,7 +8,7 @@ import radio from './radio';
 
 const bootstrapradio = _.extend({}, radio, {
     html: `<div class="${formCheck} ${cloneableComponent} ${deletableComponent}" ${dataComponentId}="${bootstrapradioid}">
-            <input class="${formCheckInput}" type="radio">
+            <input class="${formCheckInput}" type="radio" ${dataComponentId}="${bootstrapradioid}">
             <label class="${formCheckLabel}">Default radio</label>
            </div>`
 });
