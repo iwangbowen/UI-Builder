@@ -87,6 +87,7 @@ const formGroup = 'form-group';
 const formControl = 'form-control';
 const formControlFile = 'form-control-file';
 const formCheck = 'form-check';
+const formCheckInline = 'form-check-inline';
 const formCheckInput = 'form-check-input';
 const formCheckLabel = 'form-check-label';
 const formText = 'form-text';
@@ -102,5 +103,5 @@ export {
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
-    textMuted
+    textMuted, formCheckInline
 };

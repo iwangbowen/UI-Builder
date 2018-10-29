@@ -1,5 +1,5 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted } from "../common";
+import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -337,11 +337,11 @@ const labelProperty = {
     key: 'label',
     inputtype: new TextInput(),
     init(node) {
-        return $(node).find('label').text();
+        return $(node).children('label').text();
     },
     onChange(node, value) {
-        if ($(node).find('label').length) {
-            $(node).find('label').text(value);
+        if ($(node).children('label').length) {
+            $(node).children('label').text(value);
         } else {
             $(`<label>${value}</label>`).appendTo(node);
         }
@@ -353,14 +353,33 @@ const helpTextProperty = {
     key: 'helpText',
     inputtype: new TextInput(),
     init(node) {
-        return $(node).find('small').text();
+        return $(node).children('small').text();
     },
     onChange(node, value) {
-        if ($(node).find('small').length) {
-            $(node).find('small').text(value);
+        if ($(node).children('small').length) {
+            $(node).children('small').text(value);
         } else {
             $(`<small class="${formText} ${textMuted}">${value}</small>`).appendTo(node);
         }
+    }
+};
+
+const inlineProperty = {
+    name: 'Inline',
+    key: 'inline',
+    validValues: ['inline'],
+    inputtype: new ToggleInput(),
+    init(node) {
+        return $(node).parent().hasClass(formCheckInline) ?
+            this.validValues : [];
+    },
+    onChange(node) {
+        $(node).parent().toggleClass(formCheckInline);
+        return node;
+    },
+    data: {
+        on: 'inline',
+        off: ''
     }
 };
 
@@ -391,5 +410,6 @@ export {
     textProperty,
     forProperty,
     labelProperty,
-    helpTextProperty
+    helpTextProperty,
+    inlineProperty
 };

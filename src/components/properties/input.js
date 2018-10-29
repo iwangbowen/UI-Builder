@@ -2,7 +2,7 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty, labelProperty, helpTextProperty
+    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty
 } from './properties';
 
 const baseProperties = [
@@ -23,13 +23,15 @@ const commonProperties = [
 const radioProperties = [
     ...baseProperties,
     onclickProperty,
-    valueProperty
+    valueProperty,
+    inlineProperty
 ];
 
 const checkboxProperties = [
     ...baseProperties,
     onclickProperty,
-    valueProperty
+    valueProperty,
+    inlineProperty
 ];
 
 const textinputProperties = [
