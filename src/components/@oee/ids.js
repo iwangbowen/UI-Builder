@@ -40,6 +40,8 @@ const divid = 'html/div@oee';
 const bootstraptextinputfieldid = 'html/bootstraptextinputfield@oee';
 const bootstraptextinputid = 'html/bootstraptextinput@oee';
 const labelid = 'html/label@oee';
+const bootstraptextareaid = 'html/bootstraptextarea@oee';
+const bootstraptextareafieldid = 'html/bootstraptextareafield@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -48,5 +50,5 @@ export {
     checkboxcustomid, spanid, labeldivid, fileinputid, popuptextinputid, popupmanualselectinputid, textinputfieldid,
     datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid,
     formid, gridrowid, gridcolumnid, formgridrowid, formbuttonid, divid, bootstraptextinputfieldid,
-    bootstraptextinputid, labelid
+    bootstraptextinputid, labelid, bootstraptextareaid, bootstraptextareafieldid
 };

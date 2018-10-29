@@ -1,15 +1,11 @@
-import { inputTypeNames } from '../inputTypes';
 import { dataComponentId, sortableClass, formGroup } from '../common';
 import { bootstraptextinputfieldid } from './ids';
 import bootstraptextinput from './bootstraptextinput';
 import _ from 'lodash';
-import inputfield from './inputfield';
+import textinputfield from './textinputfield';
 import label from '../@general/label';
 
-const bootstraptextinputfield = _.extend({}, inputfield, {
-    name: "Text Input Field",
-    attributes: { "type": inputTypeNames },
-    image: "icons/text_input.svg",
+const bootstraptextinputfield = _.extend({}, textinputfield, {
     html: `<div class="${formGroup} ${sortableClass}" ${dataComponentId}="${bootstraptextinputfieldid}">
             ${label.html}
             ${bootstraptextinput.html}
