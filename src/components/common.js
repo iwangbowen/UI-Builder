@@ -89,6 +89,8 @@ const formControlFile = 'form-control-file';
 const formCheck = 'form-check';
 const formCheckInput = 'form-check-input';
 const formCheckLabel = 'form-check-label';
+const formText = 'form-text';
+const textMuted = 'text-muted';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 
@@ -99,5 +101,6 @@ export {
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
-    formControl, formControlFile, formCheck, formCheckInput, formCheckLabel
+    formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
+    textMuted
 };

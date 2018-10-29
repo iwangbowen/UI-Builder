@@ -2,7 +2,7 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty
+    showDatetimeProperty, labelProperty, helpTextProperty
 } from './properties';
 
 const baseProperties = [
@@ -45,7 +45,12 @@ const datetimeinputProperties = [
 
 const fileinputProperties = [...baseProperties, dataUrlProperty];
 
+const inputfieldProperties = [
+    labelProperty,
+    helpTextProperty
+];
+
 export {
     commonProperties, textinputProperties, fileinputProperties, datetimeinputProperties,
-    radioProperties, checkboxProperties
+    radioProperties, checkboxProperties, inputfieldProperties
 };

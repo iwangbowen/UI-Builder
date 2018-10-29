@@ -1,5 +1,5 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping } from "../common";
+import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -332,6 +332,38 @@ const forProperty = {
     inputtype: new TextInput()
 };
 
+const labelProperty = {
+    name: 'Label',
+    key: 'label',
+    inputtype: new TextInput(),
+    init(node) {
+        return $(node).find('label').text();
+    },
+    onChange(node, value) {
+        if ($(node).find('label').length) {
+            $(node).find('label').text(value);
+        } else {
+            $(`<label>${value}</label>`).appendTo(node);
+        }
+    }
+};
+
+const helpTextProperty = {
+    name: 'Help Text',
+    key: 'helpText',
+    inputtype: new TextInput(),
+    init(node) {
+        return $(node).find('small').text();
+    },
+    onChange(node, value) {
+        if ($(node).find('small').length) {
+            $(node).find('small').text(value);
+        } else {
+            $(`<small class="${formText} ${textMuted}">${value}</small>`).appendTo(node);
+        }
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -357,5 +389,7 @@ export {
     linkToProperty,
     buttonTypeProperty,
     textProperty,
-    forProperty
+    forProperty,
+    labelProperty,
+    helpTextProperty
 };

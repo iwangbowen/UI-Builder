@@ -1,4 +1,4 @@
-import { dataComponentId, sortableClass, formGroup } from '../common';
+import { dataComponentId, sortableClass, formGroup, formText, textMuted } from '../common';
 import { bootstraptextinputfieldid } from './ids';
 import bootstraptextinput from './bootstraptextinput';
 import _ from 'lodash';
@@ -9,7 +9,7 @@ const bootstraptextinputfield = _.extend({}, textinputfield, {
     html: `<div class="${formGroup} ${sortableClass}" ${dataComponentId}="${bootstraptextinputfieldid}">
             ${label.html}
             ${bootstraptextinput.html}
-            <small class="form-text text-muted">We'll never share your email.</small>
+            <small class="${formText} ${textMuted}">We'll never share your email.</small>
            </div>`
 });
 
