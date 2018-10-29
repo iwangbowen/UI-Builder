@@ -80,6 +80,8 @@ import bootstrapradio from './bootstrapradio';
 import bootstrapradiofield from './bootstrapradiofield';
 import bootstrapcheckbox from './bootstrapcheckbox';
 import bootstrapcheckboxfield from './bootstrapcheckboxfield';
+import bootstrapdatetimeinput from './bootstrapdatetimeinput';
+import bootstrapdatetimeinputfield from './bootstrapdatetimeinputfield';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
@@ -93,5 +95,5 @@ export {
     bootstraptextareainput, bootstraptextareainputfield, bootstrapfileinput, bootstrapfileinputfield,
     bootstrapautoselectinput, bootstrapautoselectinputfield, bootstrapmanualselectinput,
     bootstrapmanualselectinputfield, bootstrapradio, bootstrapradiofield, bootstrapcheckbox,
-    bootstrapcheckboxfield
+    bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield
 };

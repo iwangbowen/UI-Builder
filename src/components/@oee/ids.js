@@ -52,6 +52,8 @@ const bootstrapradioid = 'html/bootstrapradio@oee';
 const bootstrapradiofieldid = 'html/bootstrapradiofield@oee';
 const bootstrapcheckboxid = 'html/bootstrapcheckbox@oee';
 const bootstrapcheckboxfieldid = 'html/bootstrapcheckboxfield@oee';
+const bootstrapdatetimeinputid = 'html/bootstrapdatetimeinput@oee';
+const bootstrapdatetimeinputfieldid = 'html/bootstrapdatetimeinputfield@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -63,5 +65,6 @@ export {
     bootstraptextinputid, labelid, bootstraptextareaid, bootstraptextareafieldid, bootstrapfileinputid,
     bootstrapfileinputfieldid, bootstrapautoselectinputid, bootstrapautoselectinputfieldid,
     bootstrapmanualselectinputid, bootstrapmanualselectinputfieldid, bootstrapradioid,
-    bootstrapradiofieldid, bootstrapcheckboxid, bootstrapcheckboxfieldid
+    bootstrapradiofieldid, bootstrapcheckboxid, bootstrapcheckboxfieldid, bootstrapdatetimeinputid,
+    bootstrapdatetimeinputfieldid
 };
