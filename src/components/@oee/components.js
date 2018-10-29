@@ -66,6 +66,8 @@ import commontable from './commontable';
 import customtable from './customtable';
 import popuptextinput from './popuptextinput';
 import popupmanualselectinput from './popupmanualselectinput';
+import bootstraptextinputfield from './bootstraptextinputfield';
+import bootstraptextinput from './bootstraptextinput';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
@@ -75,5 +77,5 @@ export {
     textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, autoselectinputfield,
     autoselectinputcustom, manualselectinput, commontable, customtable, popuptextinput, popupmanualselectinput, formlabel,
     fileinputfield, manualselectinputfield, manualselectinputcustom, multivalueselectinput, multivalueselectinputfield,
-    multivalueselectinputcustom, formgridrow, formbutton
+    multivalueselectinputcustom, formgridrow, formbutton, bootstraptextinputfield, bootstraptextinput
 };

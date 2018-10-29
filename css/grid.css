@@ -67,8 +67,8 @@ table {
 }
 
 .gridster > div {
-    font-size: 1em;
-    font-weight: bold;
+    /* font-size: 1em; */
+    /* font-weight: bold; */
     /* text-align: center; */
     line-height: 100%;
 }

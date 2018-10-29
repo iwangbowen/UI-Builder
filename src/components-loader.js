@@ -29,7 +29,9 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _oee_ids.commontableid
 ];
 
-Vvveb.ComponentsGroup['通用组件'] = [];
+Vvveb.ComponentsGroup['通用组件'] = [
+    _oee_ids.bootstraptextinputfieldid
+];
 // Vvveb.ComponentsGroup['通用组件'] =
 //     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
 //         'html/buttontoolbar@general', 'html/form@general', 'html/textinput@general', 'html/textareainput@general',
@@ -117,3 +119,6 @@ Vvveb.Components.extend('_base', _oee_ids.fileinputfieldid, _oee.fileinputfield)
 Vvveb.Components.extend('_base', _oee_ids.popuptextinputid, _oee.popuptextinput);
 Vvveb.Components.extend('_base', _oee_ids.popupmanualselectinputid, _oee.popupmanualselectinput);
 Vvveb.Components.extend('_base', _oee_ids.formlabelid, _oee.formlabel);
+Vvveb.Components.extend("_base", _oee_ids.bootstraptextinputid, _oee.bootstraptextinput);
+Vvveb.Components.extend("_base", _oee_ids.bootstraptextinputfieldid, _oee.bootstraptextinputfield);
+Vvveb.Components.extend("_base", _oee_ids.labelid, _oee.label);
