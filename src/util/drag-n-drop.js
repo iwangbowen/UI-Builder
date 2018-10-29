@@ -9,7 +9,8 @@ import {
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
     customtableid, commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
-    bootstrapfileinputfieldid
+    bootstrapfileinputfieldid,
+    bootstrapautoselectinputfieldid
 } from '../components/@oee/ids';
 import {
     popupFormItemsScope, customTablesScope, gridDroppablesScope, combinedSelector
@@ -41,7 +42,8 @@ const gridDroppables = [
     gridrowid,
     bootstraptextinputfieldid,
     bootstraptextareafieldid,
-    bootstrapfileinputfieldid
+    bootstrapfileinputfieldid,
+    bootstrapautoselectinputfieldid
 ];
 
 const componentScopes = _.reduce({

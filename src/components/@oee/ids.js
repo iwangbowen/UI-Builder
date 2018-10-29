@@ -44,6 +44,8 @@ const bootstraptextareaid = 'html/bootstraptextarea@oee';
 const bootstraptextareafieldid = 'html/bootstraptextareafield@oee';
 const bootstrapfileinputid = 'html/bootstrapfileinput@oee';
 const bootstrapfileinputfieldid = 'html/bootstrapfileinputfield@oee';
+const bootstrapautoselectinputid = 'html/bootstrapautoselectinput@oee';
+const bootstrapautoselectinputfieldid = 'html/bootstrapautoselectinputfield@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -53,5 +55,5 @@ export {
     datetimeinputid, datetimeinputfieldid, formlabelid, selectinputid, textid, fileinputfieldid,
     formid, gridrowid, gridcolumnid, formgridrowid, formbuttonid, divid, bootstraptextinputfieldid,
     bootstraptextinputid, labelid, bootstraptextareaid, bootstraptextareafieldid, bootstrapfileinputid,
-    bootstrapfileinputfieldid
+    bootstrapfileinputfieldid, bootstrapautoselectinputid, bootstrapautoselectinputfieldid
 };
