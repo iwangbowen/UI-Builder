@@ -439,6 +439,46 @@ const alertTypeProperty = {
     }
 };
 
+const buttonGroupSizeProperty = {
+    name: "Size",
+    key: "size",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["btn-group-lg", "btn-group-sm"],
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "btn-group-lg",
+            text: "Large"
+        }, {
+            value: "btn-group-sm",
+            text: "Small"
+        }]
+    }
+};
+
+const buttonGroupAlignmentProperty = {
+    name: "Alignment",
+    key: "alignment",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["btn-group", "btn-group-vertical"],
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "btn-group",
+            text: "Horizontal"
+        }, {
+            value: "btn-group-vertical",
+            text: "Vertical"
+        }]
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -469,5 +509,7 @@ export {
     helpTextProperty,
     inlineProperty,
     buttonBlockProperty,
-    alertTypeProperty
+    alertTypeProperty,
+    buttonGroupSizeProperty,
+    buttonGroupAlignmentProperty
 };

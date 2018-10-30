@@ -1,8 +1,9 @@
-import {inputfieldProperties as properties} from '../properties/input';
+import { inputfieldProperties as properties } from '../properties/input';
+import _ from 'lodash';
+import basiccomponent from './basiccomponent';
 
-const inputfield = {
-    sortable: true,
+const inputfield = _.extend({}, basiccomponent, {
     properties
-};
+});
 
 export default inputfield;
