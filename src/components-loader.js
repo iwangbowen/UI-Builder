@@ -41,7 +41,8 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _oee_ids.bootstraptextareafieldid,
     _oee_ids.bootstrapradiofieldid,
     _oee_ids.bootstrapcheckboxfieldid,
-    _oee_ids.bootstraphrid
+    _oee_ids.bootstraphrid,
+    _oee_ids.bootstrapprogressid
 ];
 // Vvveb.ComponentsGroup['通用组件'] =
 //     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
@@ -151,3 +152,4 @@ Vvveb.Components.extend("_base", _oee_ids.bootstrapalertid, _oee.bootstrapalert)
 Vvveb.Components.extend("_base", _oee_ids.bootstrapbuttongroupid, _oee.bootstrapbuttongroup);
 Vvveb.Components.extend("_base", _oee_ids.bootstrapheadingid, _oee.bootstrapheading);
 Vvveb.Components.extend("_base", _oee_ids.bootstraphrid, _oee.bootstraphr);
+Vvveb.Components.extend("_base", _oee_ids.bootstrapprogressid, _oee.bootstrapprogress);

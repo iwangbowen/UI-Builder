@@ -1,5 +1,8 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline, btnBlock, changeNodeName, headingReg } from "../common";
+import {
+    dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions
+} from "../common";
 import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -518,6 +521,82 @@ const headingSizeProperty = {
     },
 };
 
+const backgroundProperty = {
+    name: "Background",
+    key: "background",
+    htmlAttr: "class",
+    validValues: bgcolorClasses,
+    inputtype: new SelectInput(),
+    data: {
+        options: bgcolorSelectOptions
+    }
+};
+
+const progressBarProperty = {
+    name: "Progress",
+    key: "background",
+    child: ".progress-bar",
+    htmlAttr: "class",
+    validValues: ["", "w-25", "w-50", "w-75", "w-100"],
+    inputtype: new SelectInput(),
+    data: {
+        options: [{
+            value: "",
+            text: "None"
+        }, {
+            value: "w-25",
+            text: "25%"
+        }, {
+            value: "w-50",
+            text: "50%"
+        }, {
+            value: "w-75",
+            text: "75%"
+        }, {
+            value: "w-100",
+            text: "100%"
+        }]
+    }
+};
+
+const progressBackgroundProperty = {
+    name: "Progress background",
+    key: "background",
+    child: ".progress-bar",
+    htmlAttr: "class",
+    validValues: bgcolorClasses,
+    inputtype: new SelectInput(),
+    data: {
+        options: bgcolorSelectOptions
+    }
+};
+
+const progressStripedProperty = {
+    name: "Striped",
+    key: "striped",
+    child: ".progress-bar",
+    htmlAttr: "class",
+    validValues: ["", "progress-bar-striped"],
+    inputtype: new ToggleInput(),
+    data: {
+        on: "progress-bar-striped",
+        off: "",
+    }
+};
+
+const progressAnimatedProperty = {
+    name: "Animated",
+    key: "animated",
+    child: ".progress-bar",
+    htmlAttr: "class",
+    validValues: ["", "progress-bar-animated"],
+    inputtype: new ToggleInput(),
+    data: {
+        on: "progress-bar-animated",
+        off: "",
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -551,5 +630,10 @@ export {
     alertTypeProperty,
     buttonGroupSizeProperty,
     buttonGroupAlignmentProperty,
-    headingSizeProperty
+    headingSizeProperty,
+    backgroundProperty,
+    progressBarProperty,
+    progressBackgroundProperty,
+    progressStripedProperty,
+    progressAnimatedProperty
 };
