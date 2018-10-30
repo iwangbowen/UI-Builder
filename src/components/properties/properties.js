@@ -364,16 +364,22 @@ const helpTextProperty = {
     }
 };
 
+function getInput(node) {
+    return $(node).is('input') ? node : $(node).children('input');
+}
+
 const inlineProperty = {
     name: 'Inline',
     key: 'inline',
     validValues: ['inline'],
     inputtype: new ToggleInput(),
     init(node) {
+        node = getInput(node);
         return $(node).parent().hasClass(formCheckInline) ?
             this.validValues : [];
     },
     onChange(node) {
+        node = getInput(node);
         $(node).parent().toggleClass(formCheckInline);
         return node;
     },
