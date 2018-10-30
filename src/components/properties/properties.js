@@ -404,6 +404,41 @@ const inlineProperty = {
     }
 };
 
+const alertTypeProperty = {
+    name: "Type",
+    key: "type",
+    htmlAttr: "class",
+    validValues: ["alert-primary", "alert-secondary", "alert-success", "alert-danger", "alert-warning", "alert-info", "alert-light", "alert-dark"],
+    inputtype: new SelectInput(),
+    data: {
+        options: [{
+            value: "alert-primary",
+            text: "Default"
+        }, {
+            value: "alert-secondary",
+            text: "Secondary"
+        }, {
+            value: "alert-success",
+            text: "Success"
+        }, {
+            value: "alert-danger",
+            text: "Danger"
+        }, {
+            value: "alert-warning",
+            text: "Warning"
+        }, {
+            value: "alert-info",
+            text: "Info"
+        }, {
+            value: "alert-light",
+            text: "Light"
+        }, {
+            value: "alert-dark",
+            text: "Dark"
+        }]
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -433,5 +468,6 @@ export {
     labelProperty,
     helpTextProperty,
     inlineProperty,
-    buttonBlockProperty
+    buttonBlockProperty,
+    alertTypeProperty
 };

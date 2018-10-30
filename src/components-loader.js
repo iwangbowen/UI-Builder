@@ -30,6 +30,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
+    _oee_ids.bootstrapalertid,
     _oee_ids.bootstraptextinputfieldid,
     _oee_ids.bootstrapdatetimeinputfieldid,
     _oee_ids.bootstrapfileinputfieldid,
@@ -143,3 +144,4 @@ Vvveb.Components.extend("_base", _oee_ids.bootstrapcheckboxid, _oee.bootstrapche
 Vvveb.Components.extend("_base", _oee_ids.bootstrapcheckboxfieldid, _oee.bootstrapcheckboxfield);
 Vvveb.Components.extend("_base", _oee_ids.bootstrapdatetimeinputid, _oee.bootstrapdatetimeinput);
 Vvveb.Components.extend("_base", _oee_ids.bootstrapdatetimeinputfieldid, _oee.bootstrapdatetimeinputfield);
+Vvveb.Components.extend("_base", _oee_ids.bootstrapalertid, _oee.bootstrapalert);
