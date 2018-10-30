@@ -1,6 +1,7 @@
 import {
     buttonSizeProperty, targetProperty, onclickProperty, dataUrlProperty,
-    buttonDisabledProperty, buttonTypeProperty, linkToProperty, textProperty
+    buttonDisabledProperty, buttonTypeProperty, linkToProperty, textProperty,
+    buttonBlockProperty
 } from './properties';
 
 const buttonProperties = [
@@ -11,7 +12,8 @@ const buttonProperties = [
     targetProperty,
     onclickProperty,
     dataUrlProperty,
-    buttonDisabledProperty
+    buttonDisabledProperty,
+    buttonBlockProperty
 ];
 
 export {

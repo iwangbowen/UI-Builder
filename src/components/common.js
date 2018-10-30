@@ -77,6 +77,7 @@ const dataResponseDataKey = 'data-response-data-key';
 const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 const dataTitle = 'data-title';
 const dataRowField = 'data-row-field';
+
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
@@ -92,6 +93,7 @@ const formCheckInput = 'form-check-input';
 const formCheckLabel = 'form-check-label';
 const formText = 'form-text';
 const textMuted = 'text-muted';
+const btnBlock = 'btn-block';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 
@@ -103,5 +105,5 @@ export {
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
-    textMuted, formCheckInline
+    textMuted, formCheckInline, btnBlock
 };

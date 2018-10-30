@@ -1,5 +1,5 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline } from "../common";
+import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline, btnBlock } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -259,6 +259,18 @@ const linkToProperty = {
     inputtype: new LinkInput()
 };
 
+const buttonBlockProperty = {
+    name: 'Block',
+    key: 'block',
+    htmlAttr: "class",
+    inputtype: new ToggleInput(),
+    validValues: [btnBlock],
+    data: {
+        on: btnBlock,
+        off: ""
+    }
+}
+
 const buttonTypeProperty = {
     name: "Type",
     key: "type",
@@ -420,5 +432,6 @@ export {
     forProperty,
     labelProperty,
     helpTextProperty,
-    inlineProperty
+    inlineProperty,
+    buttonBlockProperty
 };
