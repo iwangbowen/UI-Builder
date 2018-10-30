@@ -35,17 +35,13 @@ const bgcolorSelectOptions =
     }];
 
 function changeNodeName(node, newNodeName) {
-    var newNode;
-    newNode = document.createElement(newNodeName);
-    attributes = node.get(0).attributes;
-
+    const newNode = document.createElement(newNodeName);
+    const attributes = node.get(0).attributes;
     for (i = 0, len = attributes.length; i < len; i++) {
         newNode.setAttribute(attributes[i].nodeName, attributes[i].nodeValue);
     }
-
     $(newNode).append($(node).contents());
     $(node).replaceWith(newNode);
-
     return newNode;
 }
 
@@ -96,6 +92,7 @@ const textMuted = 'text-muted';
 const btnBlock = 'btn-block';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
+const headingReg = /H(\d)/;
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
@@ -105,5 +102,5 @@ export {
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
-    textMuted, formCheckInline, btnBlock
+    textMuted, formCheckInline, btnBlock, headingReg
 };

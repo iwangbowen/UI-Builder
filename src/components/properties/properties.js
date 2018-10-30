@@ -1,5 +1,5 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
-import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline, btnBlock } from "../common";
+import { dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline, btnBlock, changeNodeName, headingReg } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
     cloneWithoutOnclick, getDateFmt, getParsedConfigInfo,
@@ -479,6 +479,45 @@ const buttonGroupAlignmentProperty = {
     }
 };
 
+const headingSizeProperty = {
+    name: "Size",
+    key: "id",
+    htmlAttr: "id",
+    inputtype: new SelectInput(),
+    onChange: function (node, value) {
+        return changeNodeName(node, "h" + value);
+    },
+    init: function (node) {
+        const result = headingReg.exec(node.nodeName);
+        if (result && result[1]) {
+            return result[1]
+        }
+        return 1;
+    },
+
+    data: {
+        options: [{
+            value: "1",
+            text: "1"
+        }, {
+            value: "2",
+            text: "2"
+        }, {
+            value: "3",
+            text: "3"
+        }, {
+            value: "4",
+            text: "4"
+        }, {
+            value: "5",
+            text: "5"
+        }, {
+            value: "6",
+            text: "6"
+        }]
+    },
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -511,5 +550,6 @@ export {
     buttonBlockProperty,
     alertTypeProperty,
     buttonGroupSizeProperty,
-    buttonGroupAlignmentProperty
+    buttonGroupAlignmentProperty,
+    headingSizeProperty
 };
