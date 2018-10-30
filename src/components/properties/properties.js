@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -361,7 +361,7 @@ const labelProperty = {
         if ($(node).children('label').length) {
             $(node).children('label').text(value);
         } else {
-            $(`<label>${value}</label>`).appendTo(node);
+            $(`<label class="${deletableComponent}">${value}</label>`).prependTo(node);
         }
     }
 };
@@ -377,7 +377,7 @@ const helpTextProperty = {
         if ($(node).children('small').length) {
             $(node).children('small').text(value);
         } else {
-            $(`<small class="${formText} ${textMuted}">${value}</small>`).appendTo(node);
+            $(`<small class="${formText} ${textMuted} ${deletableComponent}">${value}</small>`).appendTo(node);
         }
     }
 };
