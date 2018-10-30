@@ -264,7 +264,7 @@ const buttonTypeProperty = {
     key: "type",
     htmlAttr: "class",
     inputtype: new SelectInput(),
-    validValues: ["btn-default", "btn-primary", "btn-info", "btn-success", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-outline-primary", "btn-outline-info", "btn-outline-success", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-link"],
+    validValues: ["btn-default", "btn-primary", "btn-info", "btn-success", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-outline-primary", 'btn-outline-secondary', "btn-outline-info", "btn-outline-success", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-link"],
     data: {
         options: [{
             value: "btn-default",
@@ -293,6 +293,9 @@ const buttonTypeProperty = {
         }, {
             value: "btn-outline-primary",
             text: "Primary outline"
+        }, {
+            value: 'btn-outline-secondary',
+            text: 'Secondary outline'
         }, {
             value: "btn btn-outline-info",
             text: "Info outline"
