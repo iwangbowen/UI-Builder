@@ -9,7 +9,7 @@ const bootstrapfileinputfield = _.extend({}, fileinputfield, {
     html: `<div class="${formGroup} ${sortableClass}" ${dataComponentId}="${bootstrapfileinputfieldid}">
             ${label.html}
 			${bootstrapfileinput.html}
-           </div>`,
+           </div>`
 });
 
 export default bootstrapfileinputfield;

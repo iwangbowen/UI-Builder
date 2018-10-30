@@ -90,6 +90,13 @@ const formCheckLabel = 'form-check-label';
 const formText = 'form-text';
 const textMuted = 'text-muted';
 const btnBlock = 'btn-block';
+const customControl = 'custom-control';
+const customCheckbox = 'custom-checkbox';
+const customControlInput = 'custom-control-input';
+const customControlLabel = 'custom-control-label';
+const customFile = 'custom-file';
+const customFileInput = 'custom-file-input';
+const customFileLabel = 'custom-file-label';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 const headingReg = /H(\d)/;
@@ -102,5 +109,6 @@ export {
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
-    textMuted, formCheckInline, btnBlock, headingReg
+    textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
+    customControlLabel, customFile, customFileInput, customFileLabel
 };
