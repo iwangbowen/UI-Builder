@@ -1,7 +1,7 @@
 import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
-import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, getHash, decodeHash } from '../util/dom';
+import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, decodeHash } from '../util/dom';
 import _ from 'lodash';
 import { templatePages } from '../constants';
 
