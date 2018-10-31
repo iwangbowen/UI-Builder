@@ -59,6 +59,12 @@ const bootstrapbuttongroupid = 'html/bootstrapbuttongroup@oee';
 const bootstrapheadingid = 'html/bootstrapheading@oee';
 const bootstraphrid = 'html/bootstraphr@oee';
 const bootstrapprogressid = 'html/bootstrapprogres@oee';
+const bootstraptableid = 'html/bootstraptable@oee';
+const bootstraptableheadercellid = 'html/bootstraptableheadercell@oee';
+const bootstraptableheadid = 'html/bootstraptablehead@oee';
+const bootstraptablerowid = 'html/bootstraptablerow@oee';
+const bootstraptablecellid = 'html/bootstraptablecell@oee';
+const bootstraptablebodyid = 'html/bootstraptablebody@oee';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -72,5 +78,6 @@ export {
     bootstrapmanualselectinputid, bootstrapmanualselectinputfieldid, bootstrapradioid,
     bootstrapradiofieldid, bootstrapcheckboxid, bootstrapcheckboxfieldid, bootstrapdatetimeinputid,
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
-    bootstraphrid, bootstrapprogressid
+    bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
+    bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid
 };

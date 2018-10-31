@@ -87,6 +87,12 @@ import bootstrapbuttongroup from './bootstrapbuttongroup';
 import bootstrapheading from './bootstrapheading';
 import bootstraphr from './bootstraphr';
 import bootstrapprogress from './bootstrapprogress';
+import bootstraptable from './bootstraptable';
+import { bootstraptableheadercell } from './bootstraptableheadercell';
+import bootstraptablehead from './bootstraptablehead';
+import { bootstraptablerow } from './bootstraptablerow';
+import { bootstraptablecell } from './bootstraptablecell';
+import bootstraptablebody from './bootstraptablebody';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
@@ -101,5 +107,7 @@ export {
     bootstrapautoselectinput, bootstrapautoselectinputfield, bootstrapmanualselectinput,
     bootstrapmanualselectinputfield, bootstrapradio, bootstrapradiofield, bootstrapcheckbox,
     bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield, bootstrapalert,
-    bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress
+    bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress, bootstraptable,
+    bootstraptableheadercell, bootstraptablehead, bootstraptablerow, bootstraptablecell,
+    bootstraptablebody
 };
