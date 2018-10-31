@@ -54,7 +54,7 @@ Vvveb.FileManager = {
 				}
 			},
 			items: {
-				"delete": {
+				delete: {
 					name: "Delete",
 					icon: "delete"
 				},
