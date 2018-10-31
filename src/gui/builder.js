@@ -13,7 +13,7 @@ import {
 	initIframeFormItemsDrop, initIframePopupDrop, initIframeTableDrop,
 	initIframeGridDrop
 } from '../util/drag-n-drop';
-import { sortableClass, cloneableComponent } from '../components/common';
+import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -225,6 +225,17 @@ Vvveb.Builder = {
 			const node = _this.selectedEl.parent().get(0);
 			_this.selectNode(node);
 			_this.loadNodeComponent(node);
+			event.preventDefault();
+			return false;
+		});
+
+		$('#container-box').on('click', function (event) {
+			const container = _this.selectedEl.parents(`.${containerComponent}`);
+			if (container.length) {
+				const node = container.get(0);
+				_this.selectNode(node);
+				_this.loadNodeComponent(node);
+			}
 			event.preventDefault();
 			return false;
 		});

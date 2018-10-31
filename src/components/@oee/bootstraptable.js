@@ -1,4 +1,4 @@
-import { dataComponentId, configurableComponent } from '../common';
+import { dataComponentId, configurableComponent, containerComponent } from '../common';
 import { bootstraptableid } from './ids';
 import { tableProperties as properties } from '../properties/table';
 import bootstraptablehead from './bootstraptablehead';
@@ -9,7 +9,7 @@ const bootstraptable = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Table",
-    html: `<table class="table ${configurableComponent}" style="width: 200px;" ${dataComponentId}="${bootstraptableid}">
+    html: `<table class="table ${configurableComponent} ${containerComponent}" style="width: 200px;" ${dataComponentId}="${bootstraptableid}">
             ${bootstraptablehead.html}
             ${bootstraptablebody.html}
            </table>`,

@@ -55,6 +55,7 @@ const configurableComponent = 'configurable-component';
 const gridrowComponent = 'gridrow-component';
 const cloneableComponent = 'cloneable-component';
 const deletableComponent = 'deletable-component';
+const containerComponent = 'container-component';
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
 const dataRelatedTable = 'data-related-table';
@@ -110,5 +111,5 @@ export {
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
-    customControlLabel, customFile, customFileInput, customFileLabel
+    customControlLabel, customFile, customFileInput, customFileLabel, containerComponent
 };
