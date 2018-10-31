@@ -10,6 +10,10 @@ Vvveb.FileManager = {
 	pages: {},
 	pageTreeSelector: '#filemanager .tree > ol',
 	init() {
+		this._initClickHandler()
+			._initContextMenu();
+	},
+	_initClickHandler() {
 		this.tree = $(this.pageTreeSelector).html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
 			clearTimer();
@@ -19,6 +23,9 @@ Vvveb.FileManager = {
 			Vvveb.FileManager.loadPage(clickedPageName);
 			return false;
 		});
+		return this;
+	},
+	_initContextMenu() {
 		$.contextMenu({
 			selector: `${this.pageTreeSelector} li`,
 			callback: (key, options) => {
@@ -58,6 +65,7 @@ Vvveb.FileManager = {
 				}
 			}
 		});
+		return this;
 	},
 	getPage(name) {
 		return this.pages[name];
