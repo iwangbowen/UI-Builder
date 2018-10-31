@@ -43,5 +43,5 @@ export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage, isInBuilder
+    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder
 };

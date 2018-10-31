@@ -1,15 +1,16 @@
 import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
-import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements } from '../util/dom';
+import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, getHash, decodeHash } from '../util/dom';
 import _ from 'lodash';
 import { templatePages } from '../constants';
 
 Vvveb.FileManager = {
 	tree: false,
 	pages: {},
+	pageTreeSelector: '#filemanager .tree > ol',
 	init() {
-		this.tree = $("#filemanager .tree > ol").html("");
+		this.tree = $(this.pageTreeSelector).html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
 			clearTimer();
 			hideAuxiliaryElements();
@@ -17,7 +18,46 @@ Vvveb.FileManager = {
 			// window.location.reload();
 			Vvveb.FileManager.loadPage(clickedPageName);
 			return false;
-		})
+		});
+		$.contextMenu({
+			selector: `${this.pageTreeSelector} li`,
+			callback: (key, options) => {
+				if (key == 'delete') {
+					const deletedPage = $(this.pageTreeSelector).find('li.context-menu-active');
+					const deletedPageName = deletedPage.data('page');
+					const activePage = $(this.pageTreeSelector).find('li.active');
+					const activePageName = activePage.data('page');
+
+					if (isTemplatePage(deletedPageName)) {
+						if (activePageName == deletedPageName) {
+							const decodedHash = decodeHash();
+							localStorage.removeItem(decodedHash);
+							deletedPage.find('span').click();
+						}
+					} else {
+						localStorage.removeItem(deletedPageName);
+						// if the deleted page and the active page are the same page,
+						// show next page
+						if (activePageName == deletedPageName) {
+							deletedPage.next().find('span').click();
+						} else {
+							deletedPage.remove();
+						}
+					}
+				}
+			},
+			items: {
+				"delete": {
+					name: "Delete",
+					icon: "delete"
+				},
+				sep1: "---------",
+				quit: {
+					name: 'Quit',
+					icon: () => 'context-menu-icon context-menu-icon-quit'
+				}
+			}
+		});
 	},
 	getPage(name) {
 		return this.pages[name];

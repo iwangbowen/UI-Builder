@@ -71,8 +71,12 @@ function isTemplatePage(pageName) {
     return templatePages.some(({ name }) => name == pageName);
 }
 
+function decodeHash() {
+    return decodeURI(getHash());
+}
+
 function initBuilderPage() {
-    const decodedHash = decodeURI(getHash());
+    const decodedHash = decodeHash();
     const savedItems = Object.keys(localStorage);
     const savedPages = getSavedPages();
     const combinedPages = [...savedPages, ...templatePages];
@@ -506,5 +510,5 @@ export {
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
-    getSavedPages, hideAuxiliaryElements
+    getSavedPages, hideAuxiliaryElements, decodeHash
 };
