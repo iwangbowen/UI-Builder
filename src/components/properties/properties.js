@@ -783,6 +783,31 @@ const tableHeadTypeProperty = {
     }
 };
 
+const inputFieldInlineProperty = {
+    name: 'Inline',
+    key: 'inline',
+    validValues: ['inline'],
+    inputtype: new ToggleInput(),
+    init(node) {
+        return $(node).hasClass('row') ?
+            this.validValues : [];
+    },
+    onChange(node, value) {
+        $(node).toggleClass('row');
+        $(node).children('label').toggleClass('col-sm-2');
+        if (value) {
+            $(node).find('input, select, small').wrapAll('<div class="col-sm-10"></div>');
+        } else {
+            $(node).find('input, select').unwrap();
+        }
+        return node;
+    },
+    data: {
+        on: 'inline',
+        off: ''
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -831,5 +856,6 @@ export {
     tableStripedProperty,
     tableTypeProperty,
     tableRowTypeProperty,
-    tableHeadTypeProperty
+    tableHeadTypeProperty,
+    inputFieldInlineProperty
 };

@@ -2,7 +2,7 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty
+    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty
 } from './properties';
 
 const baseProperties = [
@@ -49,7 +49,8 @@ const fileinputProperties = [...baseProperties, dataUrlProperty];
 
 const inputfieldProperties = [
     labelProperty,
-    helpTextProperty
+    helpTextProperty,
+    inputFieldInlineProperty
 ];
 
 export {
