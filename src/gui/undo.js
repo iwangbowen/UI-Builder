@@ -40,6 +40,10 @@ Vvveb.Undo = {
 	enabled: true,
 	// init: function() {
 	// },
+	clearMutations() {
+		this.mutations = [];
+		this.undoIndex = -1;
+	},
 	addMutation(mutation) {
 		Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);

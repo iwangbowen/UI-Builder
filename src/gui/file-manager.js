@@ -107,6 +107,7 @@ Vvveb.FileManager = {
 		return this;
 	},
 	loadPage(pageName) {
+		Vvveb.Undo.clearMutations();
 		this.addPages([...getSavedPages(), ...templatePages]);
 		if (isTemplatePage(pageName)) {
 			const newPageName = addDatetime(pageName);
