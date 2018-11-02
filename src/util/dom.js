@@ -8,7 +8,7 @@ import {
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage
+    importedPageHref, templatePages, pdsPage, isInIframe
 } from '../constants';
 import _ from 'lodash';
 import {
@@ -24,6 +24,7 @@ import { addDatetime } from './common';
 import 'core-js/es7/array';
 import { enableGridItemDrop, enableSortableAndDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector } from '../common';
+import { sendMessage } from '../message';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -227,7 +228,12 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 }
 
 function autoSave() {
-    localStorage.setItem(decodeURI(getHash()), getBeautifiedHtml(window.FrameDocument));
+    const html = getBeautifiedHtml(window.FrameDocument);
+    if (isInIframe) {
+        sendMessage(html);
+    } else {
+        localStorage.setItem(decodeURI(getHash()), html);
+    }
 }
 
 let timer;

@@ -10,6 +10,8 @@ import {
     initPanelToggle, initBuilderPage, setGlobalVariables
 } from './util/dom';
 import { beBackwardCompatible } from './util/common';
+import { isInIframe } from './constants';
+import { initMessageListener } from './message';
 
 /**
  * TODO:
@@ -20,6 +22,9 @@ $(document).ready(function () {
     beBackwardCompatible();
     initPanelToggle();
     setGlobalVariables();
+    if (isInIframe) {
+        initMessageListener();
+    }
     Vvveb.FileManager.init();
     initBuilderPage();
 });
