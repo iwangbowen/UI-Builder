@@ -39,9 +39,11 @@ const templatePages = [
     pdsPage
 ];
 
+const isInIframe = window !== window.parent;
+
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder
+    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe
 };
