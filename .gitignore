@@ -9,3 +9,5 @@ dist/
 template/oee/html/demo/index*.html
 .svn/
 doc/
+noide.config.*
+*.exe
