@@ -5,8 +5,12 @@ function sendMessage(msg) {
 }
 
 function initMessageListener() {
-    $(window).on('message', function (e) {
-        console.log(e.originalEvent.data);
+    $(window).on('message', ({ originalEvent: { data } }) => {
+        if (data.type == 'edit') {
+            Vvveb.FileManager.loadPageFromMessage(data.html);
+        } else {
+
+        }
     });
 }
 

@@ -1,9 +1,9 @@
 import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
-import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, decodeHash } from '../util/dom';
+import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, decodeHash, generateHtml } from '../util/dom';
 import _ from 'lodash';
-import { templatePages } from '../constants';
+import { templatePages, importedPageName, importedPageHref } from '../constants';
 
 Vvveb.FileManager = {
 	tree: false,
@@ -119,4 +119,8 @@ Vvveb.FileManager = {
 		this.renderPages().showActive(pageName);
 		Vvveb.Builder.loadUrl(this.pages[pageName].url, this.pages[pageName].srcdoc);
 	},
+	loadPageFromMessage(html) {
+		Vvveb.Undo.clearMutations();
+		Vvveb.Builder.loadUrl(addDatetime(importedPageName), generateHtml(html, importedPageHref));
+	}
 };

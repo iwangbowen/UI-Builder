@@ -213,10 +213,14 @@ function getHash() {
     return window.location.hash && window.location.hash.substr(1);
 }
 
-function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
-    return htmlGenerator(localStorage.getItem(itemKey), generateAddNewItemDiv,
+function generateHtml(html, pageHref) {
+    return htmlGenerator(html, generateAddNewItemDiv,
         generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
+}
+
+function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
+    return generateHtml(localStorage.getItem(itemKey), pageHref);
 }
 
 function createPage(pageName, pageTitle, pageHref = importedPageHref) {
@@ -516,5 +520,5 @@ export {
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
-    getSavedPages, hideAuxiliaryElements, decodeHash
+    getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml
 };
