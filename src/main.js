@@ -24,6 +24,10 @@ $(document).ready(function () {
     setGlobalVariables();
     if (isInIframe) {
         initMessageListener();
+        $('#filemanager').hide();
+        $('#components-list').css({
+            height: '100%'
+        });
     }
     Vvveb.FileManager.init();
     initBuilderPage();
