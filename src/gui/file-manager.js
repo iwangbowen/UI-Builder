@@ -120,6 +120,7 @@ Vvveb.FileManager = {
 		Vvveb.Builder.loadUrl(this.pages[pageName].url, this.pages[pageName].srcdoc);
 	},
 	loadPageFromMessage(html) {
+		clearTimer();
 		Vvveb.Undo.clearMutations();
 		Vvveb.Builder.loadUrl(addDatetime(importedPageName), generateHtml(html, importedPageHref));
 	}
