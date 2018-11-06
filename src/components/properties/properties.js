@@ -795,10 +795,24 @@ const inputFieldInlineProperty = {
     onChange(node, value) {
         $(node).toggleClass('row');
         $(node).children('label').toggleClass('col-sm-2');
+        const type = $(node).find('input').attr('type');
+        const isRadioOrCheckbox = type == 'radio' || type == 'checkbox';
         if (value) {
-            $(node).find('input, select, small').wrapAll('<div class="col-sm-10"></div>');
+            let wrappedElements;
+            if (isRadioOrCheckbox) {
+                wrappedElements = $(node).find('input').parent();
+            } else {
+                wrappedElements = $(node).find('input, select, small');
+            }
+            wrappedElements.wrapAll('<div class="col-sm-10"></div>');
         } else {
-            $(node).find('input, select').unwrap();
+            let unwrappedElements;
+            if (isRadioOrCheckbox) {
+                unwrappedElements = $(node).find('input').parent();
+            } else {
+                unwrappedElements = $(node).find('input, select');
+            }
+            unwrappedElements.unwrap();
         }
         return node;
     },
