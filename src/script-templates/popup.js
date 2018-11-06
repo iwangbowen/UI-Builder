@@ -3,6 +3,7 @@ import { dataUrl, dataRelatedButton } from '../components/common';
 
 function template() {
     return `
+        var isInBuilder = false;
         ${popupAdd.toString()}
         ${popupEdit.toString()}
         ${popupDelete.toString()}
