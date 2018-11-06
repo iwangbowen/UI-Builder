@@ -9,7 +9,8 @@ function initMessageListener() {
         if (data.type == 'edit') {
             Vvveb.FileManager.loadPageFromMessage(data.html);
         } else {
-
+            const page = Vvveb.FileManager.getPage(data.template);
+            Vvveb.Builder.loadUrl(page.url);
         }
     });
 }
