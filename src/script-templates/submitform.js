@@ -54,6 +54,7 @@ function template() {
             if (valid) {
                 var formData = new FormData();
                 var data = form.serializeJSON();
+                data.tok = sessionStorage.getItem('FUNDODOO_TOKEN');
                 $.each($('input[type=file]'), function (i, element) {
                     formData.append(element.name, element.files[0]);
                 });
