@@ -8,7 +8,7 @@ const popuptextinput = _.extend({}, textinput, {
     sortable: true,
     html: `<div class="everyInput ${sortableClass}" ${dataComponentId}="${popuptextinputid}">
             <span class="inputText">Label</span>
-            <input class="addInput" type="text" onfocus="this.removeAttribute('readonly')" ${dataComponentId}="${popuptextinputid}" value="" autocomplete="off">
+            <input class="addInput" type="text" ${dataComponentId}="${popuptextinputid}" value="" autocomplete="off">
            </div>`
 });
 
