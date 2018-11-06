@@ -2,7 +2,7 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty
+    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty, dataRowFieldProperty
 } from './properties';
 
 const baseProperties = [
@@ -18,6 +18,7 @@ const commonProperties = [
     onchangeProperty,
     maxlengthProperty,
     placeholderProperty,
+    dataRowFieldProperty
 ];
 
 const radioProperties = [
