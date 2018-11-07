@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -30,6 +30,30 @@ const dataRowClickUrlProperty = {
     key: _.camelCase(dataRowClickUrl),
     htmlAttr: dataRowClickUrl,
     inputtype: new TextInput()
+};
+
+const dataEnableRowClickProperty = {
+    name: 'Enable Row Click',
+    key: _.camelCase(dataEnableRowClick),
+    htmlAttr: dataEnableRowClick,
+    inputtype: new ToggleInput(),
+    validValues: ['true'],
+    init(node) {
+        // Compatible with previous table node which has no data-enable-row-click attribute
+        if (!$(node).attr(dataEnableRowClick)) {
+            $(node).attr(dataEnableRowClick, true);
+        }
+        return $(node).attr(dataEnableRowClick) == 'true' ?
+            this.validValues : [];
+    },
+    onChange(node, value) {
+        $(node).attr(dataEnableRowClick, value);
+        return node;
+    },
+    data: {
+        on: 'true',
+        off: 'false'
+    }
 };
 
 const valueProperty = {
@@ -880,5 +904,6 @@ export {
     tableRowTypeProperty,
     tableHeadTypeProperty,
     inputFieldInlineProperty,
-    dataRowClickUrlProperty
+    dataRowClickUrlProperty,
+    dataEnableRowClickProperty
 };

@@ -1,11 +1,11 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable } from '../common';
+import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick } from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
-import { dataRowClickUrlProperty } from '../properties/properties';
+import { dataRowClickUrlProperty, dataEnableRowClickProperty } from '../properties/properties';
 import { dummyData, gridOptions } from '../../common';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
@@ -137,7 +137,9 @@ const table = {
                     enableFilter: false,
                     suppressRowClickSelection: true,
                     onRowClicked: function(event) {
-                        iframeWindow.popupDetail();
+                        if ($(node).attr(dataEnableRowClick) == 'true') {
+                            iframeWindow.popupDetail();
+                        }
                     }
                 });
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, getGridOptions(node));
@@ -259,6 +261,7 @@ const table = {
             htmlAttr: dataTableId,
             inputtype: new TextInput()
         },
+        dataEnableRowClickProperty,
         dataRowClickUrlProperty,
         {
             name: 'Data key',
