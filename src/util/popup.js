@@ -45,7 +45,8 @@ function popupDetail(url, data) {
                     traditional: true,
                     data: data,
                     fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
-                    success: function () {
+                    success: function (response) {
+                        response.data;
                         openPopup();
                     },
                     error: function () {

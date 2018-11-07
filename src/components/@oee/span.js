@@ -1,4 +1,3 @@
-import { TextInput } from '../../inputs/inputs';
 import { spanProperties as properties} from '../properties/span';
 
 const span = {

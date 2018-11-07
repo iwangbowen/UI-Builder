@@ -1,8 +1,9 @@
-import { forProperty, textProperty } from './properties';
+import { forProperty, textProperty, dataKeyMappingProperty } from './properties';
 
 const spanProperties = [
     textProperty,
-    forProperty
+    forProperty,
+    dataKeyMappingProperty
 ];
 
 export {
