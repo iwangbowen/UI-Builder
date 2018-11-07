@@ -10,6 +10,9 @@ function template(node) {
         enableSorting: true,
         enableFilter: false,
         rowSelection: 'multiple',
+        suppressRowClickSelection: true,
+        onRowClicked: function (event) {
+        },
         onRowSelected: function (event) {
             if (event.node.isSelected() && eGridDiv${key}.attr('${dataRelatedTable}')) {
                 if (window['gridOptions' + eGridDiv${key}.attr('${dataRelatedTable}')]) {
