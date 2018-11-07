@@ -1,6 +1,6 @@
 import {
     tableTypeProperty, tableResponsiveProperty, tableSmallProperty, tableHoverProperty,
-    tableBorderedProperty, tableStripedProperty, tableInverseProperty, tableHeadOptions, tableRowTypeProperty, tableHeadTypeProperty
+    tableBorderedProperty, tableStripedProperty, tableInverseProperty, tableHeadOptions, tableRowTypeProperty, tableHeadTypeProperty, dataRowClickUrlProperty
 } from './properties';
 
 const tableProperties = [
@@ -11,7 +11,8 @@ const tableProperties = [
     tableBorderedProperty,
     tableStripedProperty,
     tableInverseProperty,
-    tableHeadOptions
+    tableHeadOptions,
+    dataRowClickUrlProperty
 ];
 
 const tableRowProperties = [

@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -9,6 +9,7 @@ import {
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
 import { requiredSpanSelector, inputBlockClassSelector } from "../../util/selectors";
+import _ from 'lodash';
 
 const dataRowFieldProperty = {
     name: 'Row Field',
@@ -21,6 +22,13 @@ const dataUrlProperty = {
     name: 'Data Url',
     key: 'dataUrl',
     htmlAttr: 'data-url',
+    inputtype: new TextInput()
+};
+
+const dataRowClickUrlProperty = {
+    name: 'Row Click Url',
+    key: _.camelCase(dataRowClickUrl),
+    htmlAttr: dataRowClickUrl,
     inputtype: new TextInput()
 };
 
@@ -871,5 +879,6 @@ export {
     tableTypeProperty,
     tableRowTypeProperty,
     tableHeadTypeProperty,
-    inputFieldInlineProperty
+    inputFieldInlineProperty,
+    dataRowClickUrlProperty
 };

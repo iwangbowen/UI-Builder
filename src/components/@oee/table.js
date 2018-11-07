@@ -5,6 +5,7 @@ import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
+import { dataRowClickUrlProperty } from '../properties/properties';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -272,6 +273,7 @@ const table = {
             htmlAttr: dataTableId,
             inputtype: new TextInput()
         },
+        dataRowClickUrlProperty,
         {
             name: 'Data key',
             key: 'dataKey',

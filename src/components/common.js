@@ -74,6 +74,7 @@ const dataResponseDataKey = 'data-response-data-key';
 const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 const dataTitle = 'data-title';
 const dataRowField = 'data-row-field';
+const dataRowClickUrl = 'data-row-click-url';
 
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
@@ -111,5 +112,6 @@ export {
     dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
-    customControlLabel, customFile, customFileInput, customFileLabel, containerComponent
+    customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
+    dataRowClickUrl
 };
