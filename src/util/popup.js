@@ -26,7 +26,9 @@ function popupDetail() {
             }
         });
     };
-    openPopup();
+    if ($('div.popup-window#edit form').length) {
+        openPopup();
+    }
 }
 
 function popupEdit() {
