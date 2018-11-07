@@ -1,5 +1,11 @@
 const isInBuilder = true;
 
+function hideToolBoxes() {
+    window.parent
+        && window.parent.hideAuxiliaryElements
+        && window.parent.hideAuxiliaryElements();
+}
+
 function popupAdd() {
     layer.open({
         type: 1,
@@ -19,8 +25,8 @@ function popupDetail(url, data) {
     var openPopup = function () {
         layer.open({
             type: 1,
-            title: '详情',
-            area: ['600px', '350px'],
+            title: '信息',
+            area: ['660px', '330px'],
             skin: 'layui-layer-rim', //加上边框
             content: $('div.popup-window#detail'),
             end: function () {
@@ -33,6 +39,7 @@ function popupDetail(url, data) {
     }
     if ($('div.popup-window#edit form').length) {
         if (isInBuilder) {
+            hideToolBoxes();
             openPopup();
         } else {
             if (url && data) {
@@ -152,5 +159,6 @@ export {
     popupEdit,
     popupDelete,
     popupDetail,
-    exportData
+    exportData,
+    hideToolBoxes
 };

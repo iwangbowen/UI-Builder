@@ -511,6 +511,7 @@ function setGlobalVariables() {
     window.Vvveb = Vvveb;
     window.enableGridItemDrop = enableGridItemDrop;
     window.enableSortableAndDroppable = enableSortableAndDroppable;
+    window.hideAuxiliaryElements = hideAuxiliaryElements;
 }
 
 export {

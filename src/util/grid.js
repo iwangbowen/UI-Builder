@@ -1,7 +1,7 @@
 import {
     combinedSelector
 } from "../common";
-import { auxiliaryElementsSelector } from "../common";
+import { hideToolBoxes } from './popup';
 
 function initGridOutofBuilder() {
     if ($('.gridster').length) {
@@ -19,12 +19,6 @@ function initGridOutofBuilder() {
 }
 
 function initGridInBuilder() {
-    function hideToolBoxes() {
-        if (window.parent) {
-            $(window.parent.document)
-                .find(auxiliaryElementsSelector).hide();
-        }
-    }
     if ($('.gridster').length) {
         var gridster = $(".gridster").gridster({
             widget_selector: 'div.gridster > div',
