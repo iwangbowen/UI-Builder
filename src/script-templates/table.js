@@ -1,4 +1,4 @@
-import { dataTableId, dataRelatedTable, dataEnableRowClick } from '../components/common';
+import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl } from '../components/common';
 import { getGridOptionsIdentifier } from '../components/@oee/table';
 import { gridOptions } from '../common';
 
@@ -15,7 +15,7 @@ function template(node) {
         suppressRowClickSelection: true,
         onRowClicked: function (event) {
             if (eGridDiv${key}.attr('${dataEnableRowClick}') == 'true') {
-                popupDetail();
+                popupDetail(eGridDiv${key}.attr('${dataRowClickUrl}'), event.data);
             }
         },
         onRowSelected: function (event) {

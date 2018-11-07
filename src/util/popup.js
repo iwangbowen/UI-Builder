@@ -13,7 +13,9 @@ function popupAdd() {
     });
 }
 
-function popupDetail() {
+// url and data are only used out of UI Builder,
+// which can be used to query detail and show the result in popup window
+function popupDetail(url, data) {
     var openPopup = function () {
         layer.open({
             type: 1,
@@ -26,8 +28,31 @@ function popupDetail() {
             }
         });
     };
+    function setValues() {
+
+    }
     if ($('div.popup-window#edit form').length) {
-        openPopup();
+        if (isInBuilder) {
+            openPopup();
+        } else {
+            if (url && data) {
+                $.ajax({
+                    url: config.fundodooApiDomainUrl + url,
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded',
+                    method: 'POST',
+                    async: true,
+                    traditional: true,
+                    data: data,
+                    fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                    success: function () {
+                        openPopup();
+                    },
+                    error: function () {
+                    }
+                });
+            }
+        }
     }
 }
 
@@ -81,7 +106,7 @@ function popupDelete() {
                     url: config.fundodooApiDomainUrl + $('button#delete').attr('data-url'),
                     dataType: 'json',
                     contentType: 'application/x-www-form-urlencoded',
-                    method : 'POST',
+                    method: 'POST',
                     async: true,
                     traditional: true,
                     data: grids[0].gridOptions.api.getSelectedRows(),

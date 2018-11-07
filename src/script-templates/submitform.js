@@ -13,7 +13,7 @@ function template() {
                     gridOptions: window['gridOptions' + id],
                     key: key
                 };
-            })
+            });
 
         $('form.form-box').find('input[type=file][${dataUrl}]').on('change', function () {
             var formData = new FormData();
