@@ -13,6 +13,7 @@ function template(node) {
         rowSelection: 'multiple',
         suppressRowClickSelection: true,
         onRowClicked: function (event) {
+            popupDetail();
         },
         onRowSelected: function (event) {
             if (event.node.isSelected() && eGridDiv${key}.attr('${dataRelatedTable}')) {

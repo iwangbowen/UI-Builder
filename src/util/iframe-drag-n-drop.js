@@ -1,6 +1,6 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
-import { popupAdd, popupEdit, popupDelete } from '../util/popup';
+import { popupAdd, popupEdit, popupDelete, popupDetail } from '../util/popup';
 import { tableSelector } from './selectors';
 import { dataTableId } from '../components/common';
 import { dummyData, gridOptions } from '../common';
@@ -312,6 +312,7 @@ function setGlobalVariables() {
     self.popupAdd = popupAdd;
     self.popupEdit = popupEdit;
     self.popupDelete = popupDelete;
+    self.popupDetail = popupDetail;
 }
 
 export {

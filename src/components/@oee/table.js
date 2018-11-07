@@ -134,7 +134,11 @@ const table = {
                     ],
                     rowSelection: 'multiple',
                     enableSorting: true,
-                    enableFilter: false
+                    enableFilter: false,
+                    suppressRowClickSelection: true,
+                    onRowClicked: function(event) {
+                        iframeWindow.popupDetail();
+                    }
                 });
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, getGridOptions(node));
             setRowData(node, dummyData);

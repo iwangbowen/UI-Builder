@@ -13,6 +13,22 @@ function popupAdd() {
     });
 }
 
+function popupDetail() {
+    var openPopup = function () {
+        layer.open({
+            type: 1,
+            title: '详情',
+            area: ['600px', '350px'],
+            skin: 'layui-layer-rim', //加上边框
+            content: $('div.popup-window#detail'),
+            end: function () {
+                $('div.popup-window#edit form').trigger('reset');
+            }
+        });
+    };
+    openPopup();
+}
+
 function popupEdit() {
     var openPopup = function () {
         layer.open({
@@ -107,5 +123,6 @@ export {
     popupAdd,
     popupEdit,
     popupDelete,
+    popupDetail,
     exportData
 };
