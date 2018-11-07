@@ -1,6 +1,9 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
 import { popupAdd, popupEdit, popupDelete } from '../util/popup';
+import { tableSelector } from './selectors';
+import { dataTableId } from '../components/common';
+import { dummyData, gridOptions } from '../common';
 
 function isAlign(targetOffset, currentOffset) {
     return {
@@ -297,6 +300,12 @@ function initDraggable() {
         });
 }
 
+function setTableDummyData() {
+    $(tableSelector).each((_, element) => {
+        window[`${gridOptions}${$(element).attr(dataTableId)}`].api.setRowData(dummyData);
+    });
+}
+
 function setGlobalVariables() {
     self.hideAlignmentLines = hideAlignmentLines;
     self.arrowKeyMove = arrowKeyMove;
@@ -307,5 +316,6 @@ function setGlobalVariables() {
 
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
-    getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables
+    getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
+    setTableDummyData
 };

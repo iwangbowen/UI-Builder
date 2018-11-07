@@ -1,5 +1,6 @@
 import { dataTableId, dataRelatedTable } from '../components/common';
-import { gridOptions, getGridOptionsIdentifier } from '../components/@oee/table';
+import { getGridOptionsIdentifier } from '../components/@oee/table';
+import { gridOptions } from '../common';
 
 function template(node) {
     const id = node.attr('id') || (node.attr('id', `table${node.attr(dataTableId)}`), node.attr('id'));

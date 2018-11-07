@@ -6,10 +6,10 @@ import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
 import { dataRowClickUrlProperty } from '../properties/properties';
+import { dummyData, gridOptions } from '../../common';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
-const gridOptions = 'gridOptions';
 const checkboxSelection = 'checkboxSelection';
 const headerCheckboxSelection = 'headerCheckboxSelection';
 const themeOptions = [
@@ -40,24 +40,6 @@ const themeOptions = [
     {
         value: "ag-theme-material",
         text: "Material"
-    }];
-const dummyData = [
-    {
-        athelete: 'Michael Phelps',
-        age: 23,
-        country: 'United States'
-    }, {
-        athelete: 'Aleksey Nemov',
-        age: 24,
-        country: 'Russia'
-    }, {
-        athelete: 'Alicia Coutts',
-        age: 24,
-        country: 'Australia'
-    }, {
-        athelete: 'Cindy Klassen',
-        age: 26,
-        country: 'Canada'
     }];
 
 function getGridOptionsIdentifier(node) {
@@ -307,6 +289,6 @@ const table = {
 };
 
 export {
-    table, columnDefs, gridOptions, getGridOptionsIdentifier, themeOptions,
+    table, columnDefs, getGridOptionsIdentifier, themeOptions,
     setColumnDefsAndRender, getColumnDefs
 };

@@ -18,6 +18,29 @@ const highlightNameSelector = '#highlight-name';
 const wysiwygEditorSelector = '#wysiwyg-editor'
 const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}, ${highlightNameSelector}, ${wysiwygEditorSelector}`;
 
+const isInBuilder = true;
+
+const dummyData = [
+    {
+        athelete: 'Michael Phelps',
+        age: 23,
+        country: 'United States'
+    }, {
+        athelete: 'Aleksey Nemov',
+        age: 24,
+        country: 'Russia'
+    }, {
+        athelete: 'Alicia Coutts',
+        age: 24,
+        country: 'Australia'
+    }, {
+        athelete: 'Cindy Klassen',
+        age: 26,
+        country: 'Canada'
+    }];
+
+const gridOptions = 'gridOptions';
+
 export {
     gridItemSelector,
     formGridSelector,
@@ -35,5 +58,8 @@ export {
     highlightBoxSelector,
     highlightNameSelector,
     wysiwygEditorSelector,
-    auxiliaryElementsSelector
+    auxiliaryElementsSelector,
+    isInBuilder,
+    dummyData,
+    gridOptions
 };
