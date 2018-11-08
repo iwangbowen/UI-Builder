@@ -18,12 +18,6 @@ import {
 } from '../common';
 import 'core-js/es7/array';
 
-const popupFormItems = [
-    popuptextinputid,
-    popupmanualselectinputid,
-    gridrowid
-];
-
 const customTables = [
     customtableid,
 ];
@@ -64,7 +58,6 @@ const gridDroppables = [
 
 const componentScopes = _.reduce({
     customTables,
-    popupFormItems,
     gridDroppables,
 }, (prev, v, k) => {
     _.extend(prev, ...v.map(v => {
@@ -262,7 +255,7 @@ function initIframePopupAddAndEditDrop() {
 
 function initIframePopupDetailDrop() {
     Vvveb.Builder.frameBody
-        .find('div.popup-window#detail')
+        .find('div.popup-window#detail div.content')
         .droppable({
             greedy: true,
             classes: droppableClasses,
