@@ -67,16 +67,3 @@ form {
     padding-left: 15px;
     padding-right: 15px;
 }
-
-#edit {
-    margin: 0px auto;
-    width: 100%;
-    height: 100%;
-  /*  border: 1px solid blueviolet;*/
-}
-
-.popup-content .row .col-xs-4{
-    min-height: 35px;
-    font-size: 14px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
