@@ -54,10 +54,8 @@ function popupDetail(url, data) {
                     success: function (response) {
                         $('div.popup-window#detail').find('[data-component-id="html/labelfield@oee"]')
                             .each(function (_, element) {
-                                const key = $(element).children('span:first-child').attr('data-key-mapping');
-                                if (key) {
-                                    $(element).children('span:last-child').text(response.data[key]);
-                                }
+                                const key = $(element).children('span:last-child').attr('data-key-mapping');
+                                $(element).children('span:last-child').text(key ? (response.data[key] || '') : '');
                             });
                         var image = $('div.popup-window#detail').find('img');
                         image.attr('src', 'data:image/' + image.attr('data-image-format') + ';base64,' + response.data[image.attr('data-key-mapping')]);
