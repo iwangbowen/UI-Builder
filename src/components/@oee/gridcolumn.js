@@ -1,12 +1,12 @@
 import { GridInput } from '../../inputs/inputs';
-import { configurableComponent, dataComponentId, colReg } from '../common';
+import { configurableComponent, dataComponentId, colReg, cloneableComponent } from '../common';
 import { gridcolumnid } from './ids';
 
 const gridcolumn = {
     name: "Grid Column",
     image: "icons/grid_row.svg",
     classesRegex: ["col-"],
-    html: `<div class="col-sm-4 ${configurableComponent}" ${dataComponentId}="${gridcolumnid}" style="min-height: 50px;"></div>`,
+    html: `<div class="col-sm-4 ${configurableComponent} ${cloneableComponent}" ${dataComponentId}="${gridcolumnid}" style="min-height: 50px;"></div>`,
     properties: [{
         name: "Column",
         key: "column",

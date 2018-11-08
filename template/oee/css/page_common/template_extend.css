@@ -62,3 +62,35 @@ form {
 .input-block input:hover {
     background-color: #c8e5bc;
 }
+
+.layui-layer-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#edit {
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+  /*  border: 1px solid blueviolet;*/
+}
+.picture{
+   width: 100%;
+   height: 200px;
+   float: left;
+   padding-top: 0px;
+}
+.pictureShow{
+   float: left;
+   width: 100%;
+   height: 180px;
+ /*  border-radius: 12%;*/
+   border: 1px solid #1b6d85;
+   border: 1px solid rgba(0,0,0,.3) !important;
+}
+
+.popup-content .row .col-xs-4{
+    min-height: 35px;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

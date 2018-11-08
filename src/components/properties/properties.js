@@ -1,4 +1,4 @@
-import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput } from "../../inputs/inputs";
+import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
     btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping
@@ -861,6 +861,34 @@ const inputFieldInlineProperty = {
     }
 };
 
+const imageSrcProperty = {
+    name: 'Image',
+    key: 'src',
+    htmlAttr: 'src',
+    inputtype: new FileUploadInput()
+};
+
+const widthProperty = {
+    name: 'Width',
+    key: 'width',
+    htmlAttr: 'width',
+    inputtype: new TextInput()
+};
+
+const heightProperty = {
+    name: 'Height',
+    key: 'height',
+    htmlAttr: 'height',
+    inputtype: new TextInput()
+};
+
+const altProperty = {
+    name: 'Alt',
+    key: 'alt',
+    htmlAttr: 'alt',
+    inputtype: new TextInput()
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -913,5 +941,9 @@ export {
     inputFieldInlineProperty,
     dataRowClickUrlProperty,
     dataEnableRowClickProperty,
-    dataKeyMappingProperty
+    dataKeyMappingProperty,
+    imageSrcProperty,
+    widthProperty,
+    heightProperty,
+    altProperty
 };

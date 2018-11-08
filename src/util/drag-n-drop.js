@@ -11,16 +11,17 @@ import {
     customtableid, commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid
 } from '../components/@oee/ids';
 import {
-    popupFormItemsScope, customTablesScope, gridDroppablesScope, combinedSelector
+    customTablesScope, gridDroppablesScope, combinedSelector
 } from '../common';
 import 'core-js/es7/array';
 
 const popupFormItems = [
     popuptextinputid,
-    popupmanualselectinputid
+    popupmanualselectinputid,
+    gridrowid
 ];
 
 const customTables = [
@@ -41,6 +42,7 @@ const gridDroppables = [
     formid,
     commontableid,
     gridrowid,
+    imageid,
     bootstraptextinputfieldid,
     bootstraptextareafieldid,
     bootstrapfileinputfieldid,
@@ -244,12 +246,24 @@ function initIframeFormItemsDrop() {
         });
 }
 
-function initIframePopupDrop() {
+function initIframePopupAddAndEditDrop() {
     Vvveb.Builder.frameBody
         .find('div.popup-window form.popup-form')
         .droppable({
             greedy: true,
-            scope: popupFormItemsScope,
+            classes: droppableClasses,
+            scope: gridDroppablesScope,
+            drop
+        });
+}
+
+function initIframePopupDetailDrop() {
+    Vvveb.Builder.frameBody
+        .find('div.popup-window#detail')
+        .droppable({
+            greedy: true,
+            classes: droppableClasses,
+            scope: gridDroppablesScope,
             drop
         });
 }
@@ -425,7 +439,8 @@ export {
     initIframeTableDrop,
     initIframeGridDrop,
     initIframeFormItemsDrop,
-    initIframePopupDrop,
+    initIframePopupAddAndEditDrop,
+    initIframePopupDetailDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,

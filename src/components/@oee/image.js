@@ -1,10 +1,15 @@
-import Vvveb from '../../gui/components'
-import { FileUploadInput, TextInput } from '../../inputs/inputs';
+import { imageProperties as properties } from '../properties/image';
+import { configurableComponent } from '../common';
+
+const width = '135';
+const height = '150';
 
 const image = {
     nodes: ["img"],
     name: "Image",
-    html: '<img src="' + Vvveb.baseUrl + 'icons/image.svg" height="128" width="128">',
+    html: `<img class="${configurableComponent}" src="../../../../libs/builder/icons/image.svg" height="${height}" width="${width}">`,
+    width: `${width}px`,
+    height: `${height}px`,
     /*
     afterDrop: function (node)
 	{
@@ -12,27 +17,7 @@ const image = {
 		return node;
 	},*/
     image: "icons/image.svg",
-    properties: [{
-        name: "Image",
-        key: "src",
-        htmlAttr: "src",
-        inputtype: new FileUploadInput()
-    }, {
-        name: "Width",
-        key: "width",
-        htmlAttr: "width",
-        inputtype: new TextInput()
-    }, {
-        name: "Height",
-        key: "height",
-        htmlAttr: "height",
-        inputtype: new TextInput()
-    }, {
-        name: "Alt",
-        key: "alt",
-        htmlAttr: "alt",
-        inputtype: new TextInput()
-    }]
+    properties
 };
 
 export default image;
