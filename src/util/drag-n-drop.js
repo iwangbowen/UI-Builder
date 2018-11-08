@@ -44,6 +44,8 @@ const gridDroppables = [
     gridrowid,
     imageid,
     labelfieldid,
+    popuptextinputid,
+    popupmanualselectinputid,
     bootstraptextinputfieldid,
     bootstraptextareafieldid,
     bootstrapfileinputfieldid,
