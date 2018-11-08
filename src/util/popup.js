@@ -57,13 +57,16 @@ function popupDetail(url, data) {
                                 const key = $(element).children('span:last-child').attr('data-key-mapping');
                                 $(element).children('span:last-child').text(key ? (response.data[key] || '') : '');
                             });
-                        var image = $('div.popup-window#detail').find('img');
-                        var data = response.data[image.attr('data-key-mapping')];
-                        if (data) {
-                            image.attr('src', 'data:image/' + image.attr('data-image-format') + ';base64,' + data);
-                        } else {
-                            image.attr('src', image.attr('data-image-placeholder'));
-                        }
+                        $('div.popup-window#detail').find('img')
+                            .each(function (_, image) {
+                                var $image = $(image);
+                                var data = response.data[$image.attr('data-key-mapping')];
+                                if (data) {
+                                    $image.attr('src', 'data:image/' + $image.attr('data-image-format') + ';base64,' + data);
+                                } else {
+                                    $image.attr('src', $image.attr('data-image-placeholder'));
+                                }
+                            });
                         openPopup();
                     },
                     error: function () {
