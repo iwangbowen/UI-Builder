@@ -62,6 +62,7 @@ import tablecell from './tablecell';
 import tablehead from './tablehead';
 import tablerow from './tablerow';
 import labeldiv from './labeldiv';
+import labelfield from './labelfield';
 import commontable from './commontable';
 import customtable from './customtable';
 import popuptextinput from './popuptextinput';
@@ -99,7 +100,7 @@ export {
     buttongroup, buttontoolbar, card, checkbox, checkboxfield, checkboxcustom, fileinput, form, gridcolumn, gridrow, heading,
     hr, image, jumbotron, link, listgroup, listitem, navbar, pageitem, pagination, progress, radio, radiofield, radiocustom,
     selectinput, tableheadercell, table, tablebody, tablecell, tablehead, tablerow, textareainput, textareainputcustom,
-    textareainputfield, labeldiv, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, autoselectinputfield,
+    textareainputfield, labeldiv, labelfield, span, datetimeinput, datetimeinputfield, datetimeinputcustom, text, autoselectinput, autoselectinputfield,
     autoselectinputcustom, manualselectinput, commontable, customtable, popuptextinput, popupmanualselectinput, formlabel,
     fileinputfield, manualselectinputfield, manualselectinputcustom, multivalueselectinput, multivalueselectinputfield,
     multivalueselectinputcustom, formgridrow, formbutton, bootstraptextinputfield, bootstraptextinput,
