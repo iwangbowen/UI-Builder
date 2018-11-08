@@ -122,13 +122,13 @@ const imageFormatProperty = {
     inputtype: new SelectInput(),
     data: {
         options: [{
-            value: 'jpg',
+            value: 'jpeg',
             text: 'JPG'
         }, {
             value: 'png',
             text: 'png'
         }, {
-            value: 'svg',
+            value: 'svg+xml',
             text: 'SVG'
         }]
     }

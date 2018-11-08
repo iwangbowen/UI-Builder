@@ -60,6 +60,8 @@ function popupDetail(url, data) {
                                     $(element).children('span:last-child').text(response.data[key]);
                                 }
                             });
+                        var image = $('div.popup-window#detail').find('img');
+                        image.attr('src', 'data:image/' + image.attr('data-image-format') + ';base64,' + response.data[image.attr('data-key-mapping')]);
                         openPopup();
                     },
                     error: function () {
