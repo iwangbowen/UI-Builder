@@ -37,7 +37,7 @@ function popupDetail(url, data) {
     function setValues() {
 
     }
-    if ($('div.popup-window#edit form').length) {
+    if ($('div.popup-window#detail').length) {
         if (isInBuilder) {
             hideToolBoxes();
             openPopup();
@@ -53,7 +53,13 @@ function popupDetail(url, data) {
                     data: data,
                     fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                     success: function (response) {
-                        response.data;
+                        $('div.popup-window#detail').find('[data-component-id="html/labelfield@oee"]')
+                            .each(function (_, element) {
+                                const key = $(element).children('span:first-child').attr('data-key-mapping');
+                                if (key) {
+                                    $(element).children('span:last-child').text(response.data[key]);
+                                }
+                            });
                         openPopup();
                     },
                     error: function () {
