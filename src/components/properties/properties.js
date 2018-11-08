@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -908,6 +908,13 @@ const altProperty = {
     inputtype: new TextInput()
 };
 
+const dataImagePlacehoderProperty = {
+    name: 'Placeholder',
+    key: _.camelCase(dataImagePlaceholder),
+    htmlAttr: dataImagePlaceholder,
+    inputtype: new TextInput()
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -965,5 +972,6 @@ export {
     widthProperty,
     heightProperty,
     altProperty,
-    imageFormatProperty
+    imageFormatProperty,
+    dataImagePlacehoderProperty
 };

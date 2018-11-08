@@ -78,6 +78,7 @@ const dataRowClickUrl = 'data-row-click-url';
 const dataEnableRowClick = 'data-enable-row-click';
 const dataKeyMapping = 'data-key-mapping';
 const dataImageFormat = 'data-image-format';
+const dataImagePlaceholder = 'data-image-placeholder';
 
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
@@ -116,5 +117,5 @@ export {
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
-    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat
+    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder
 };

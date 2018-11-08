@@ -1,4 +1,4 @@
-import { imageSrcProperty, widthProperty, heightProperty, altProperty, imageFormatProperty, dataKeyMappingProperty } from './properties';
+import { imageSrcProperty, widthProperty, heightProperty, altProperty, imageFormatProperty, dataKeyMappingProperty, dataImagePlacehoderProperty } from './properties';
 
 const imageProperties = [
     imageSrcProperty,
@@ -6,7 +6,8 @@ const imageProperties = [
     heightProperty,
     altProperty,
     imageFormatProperty,
-    dataKeyMappingProperty
+    dataKeyMappingProperty,
+    dataImagePlacehoderProperty
 ];
 
 export {
