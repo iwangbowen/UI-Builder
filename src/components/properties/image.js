@@ -1,10 +1,11 @@
-import { imageSrcProperty, widthProperty, heightProperty, altProperty } from './properties';
+import { imageSrcProperty, widthProperty, heightProperty, altProperty, imageFormatProperty } from './properties';
 
 const imageProperties = [
     imageSrcProperty,
     widthProperty,
     heightProperty,
-    altProperty
+    altProperty,
+    imageFormatProperty
 ];
 
 export {

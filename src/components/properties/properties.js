@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -112,6 +112,25 @@ const typeProperty = {
     inputtype: new SelectInput(),
     data: {
         options: inputTypes
+    }
+};
+
+const imageFormatProperty = {
+    name: 'Format',
+    key: _.camelCase(dataImageFormat),
+    htmlAttr: dataImageFormat,
+    inputtype: new SelectInput(),
+    data: {
+        options: [{
+            value: 'jpg',
+            text: 'JPG'
+        }, {
+            value: 'png',
+            text: 'png'
+        }, {
+            value: 'svg',
+            text: 'SVG'
+        }]
     }
 };
 
@@ -945,5 +964,6 @@ export {
     imageSrcProperty,
     widthProperty,
     heightProperty,
-    altProperty
+    altProperty,
+    imageFormatProperty
 };
