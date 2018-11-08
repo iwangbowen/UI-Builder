@@ -15,8 +15,7 @@ import { initMessageListener } from './message';
 
 /**
  * TODO:
- * 1. Use connect list to drag elements from component group
- * and make them sortable.
+ * 1. Fix droppable error in popup window grid column enableSortableAndDroppable
  */
 $(document).ready(function () {
     beBackwardCompatible();

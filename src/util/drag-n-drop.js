@@ -14,7 +14,7 @@ import {
     bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid
 } from '../components/@oee/ids';
 import {
-    customTablesScope, gridDroppablesScope, combinedSelector
+    customTablesScope, gridDroppablesScope, combinedSelector, popupRowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
 
@@ -264,6 +264,17 @@ function initIframePopupDetailDrop() {
         });
 }
 
+function initIframePopupRowColumnDrop() {
+    Vvveb.Builder.frameBody
+        .find(popupRowColumnSelector)
+        .droppable({
+            greedy: true,
+            classes: droppableClasses,
+            scope: gridDroppablesScope,
+            drop
+        });
+}
+
 function initIframeDrag() {
     Vvveb.Builder.frameBody
         .find('.draggable')
@@ -442,5 +453,6 @@ export {
     initIframeSortable,
     initIframeResizeVetically,
     enableSortableAndDroppable,
-    enableGridItemDrop
+    enableGridItemDrop,
+    initIframePopupRowColumnDrop
 };
