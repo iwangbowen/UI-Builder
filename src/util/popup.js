@@ -30,7 +30,6 @@ function popupDetail(url, data) {
             skin: 'layui-layer-rim', //加上边框
             content: $('div.popup-window#detail'),
             end: function () {
-                $('div.popup-window#edit form').trigger('reset');
             }
         });
     };
