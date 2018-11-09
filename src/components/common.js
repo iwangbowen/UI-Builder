@@ -80,6 +80,8 @@ const dataKeyMapping = 'data-key-mapping';
 const dataImageFormat = 'data-image-format';
 const dataImagePlaceholder = 'data-image-placeholder';
 
+const rowClickedPopupPrefix = 'row_clicked_popup';
+
 const sortableClass = 'sortable';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
@@ -117,5 +119,6 @@ export {
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
-    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder
+    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
+    rowClickedPopupPrefix
 };

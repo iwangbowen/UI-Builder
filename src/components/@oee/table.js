@@ -1,5 +1,5 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick } from '../common';
+import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix } from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
@@ -42,12 +42,24 @@ const themeOptions = [
         text: "Material"
     }];
 
-function cloneRowClickedPopup() {
-
+function cloneRowClickedPopup(tableKey) {
+    return Vvveb.Builder.frameBody
+        .find('div#detail.popup-window')
+        .clone()
+        .attr('id', `${rowClickedPopupPrefix}${tableKey}`)
+        .insertBefore(Vvveb.Builder.frameBody.find('script').first());
 }
 
-function deleteRowClickedPopup() {
+function deleteRowClickedPopup(tableKey) {
+    return Vvveb.Builder.frameBody.remove(getRowClickedPopup(tableKey));
+}
 
+function getRowClickedPopup(tableKey) {
+    return Vvveb.Builder.frameBody.find(`#${rowClickedPopupPrefix}${tableKey}`);
+}
+
+function rowClickedPopupExists(tableKey) {
+    return !!getRowClickedPopup(tableKey).length;
 }
 
 function getGridOptionsIdentifier(node) {
@@ -144,9 +156,16 @@ const table = {
                     enableSorting: true,
                     enableFilter: false,
                     suppressRowClickSelection: true,
-                    onRowClicked: function(event) {
+                    onRowClicked: function (event) {
                         if ($(node).attr(dataEnableRowClick) == 'true') {
-                            iframeWindow.popupDetail();
+                            let popup;
+                            const tableKey = $(node).attr(dataTableId);
+                            if (!rowClickedPopupExists(tableKey)) {
+                                popup = cloneRowClickedPopup(tableKey);
+                            } else {
+                                popup = getRowClickedPopup(tableKey);
+                            }
+                            iframeWindow.popupDetail(null, null, popup);
                         }
                     }
                 });

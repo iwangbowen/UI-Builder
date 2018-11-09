@@ -21,22 +21,21 @@ function popupAdd() {
 
 // url and data are only used out of UI Builder,
 // which can be used to query detail and show the result in popup window
-function popupDetail(url, data) {
+function popupDetail(url, data, popup) {
+    // Compatible with previous only one detail popup window
+    var content = popup && popup.length ? popup : $('div.popup-window#detail');
     var openPopup = function () {
         layer.open({
             type: 1,
             title: '信息',
             area: ['660px', '330px'],
             skin: 'layui-layer-rim', //加上边框
-            content: $('div.popup-window#detail'),
+            content: content,
             end: function () {
             }
         });
     };
-    function setValues() {
-
-    }
-    if ($('div.popup-window#detail').length) {
+    if (content.length) {
         if (isInBuilder) {
             hideToolBoxes();
             openPopup();
@@ -52,12 +51,12 @@ function popupDetail(url, data) {
                     data: data,
                     fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                     success: function (response) {
-                        $('div.popup-window#detail').find('[data-component-id="html/labelfield@oee"]')
+                        content.find('[data-component-id="html/labelfield@oee"]')
                             .each(function (_, element) {
                                 const key = $(element).children('span:last-child').attr('data-key-mapping');
                                 $(element).children('span:last-child').text(key ? (response.data[key] || '') : '');
                             });
-                        $('div.popup-window#detail').find('img')
+                        content.find('img')
                             .each(function (_, image) {
                                 var $image = $(image);
                                 var data = response.data[$image.attr('data-key-mapping')];
