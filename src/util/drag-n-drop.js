@@ -232,20 +232,9 @@ function initIframeFormItemsDrop() {
         });
 }
 
-function initIframePopupAddAndEditDrop() {
+function initIframePopupDrop() {
     Vvveb.Builder.frameBody
-        .find('div.popup-window form.popup-form')
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            scope: gridDroppablesScope,
-            drop
-        });
-}
-
-function initIframePopupDetailDrop() {
-    Vvveb.Builder.frameBody
-        .find('div.popup-window#detail div.content')
+        .find('div.popup-window#detail div.content, div.popup-window form.popup-form')
         .droppable({
             greedy: true,
             classes: droppableClasses,
@@ -435,8 +424,7 @@ export {
     initComponentDrag,
     initIframeTableDrop,
     initIframeFormItemsDrop,
-    initIframePopupAddAndEditDrop,
-    initIframePopupDetailDrop,
+    initIframePopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,
