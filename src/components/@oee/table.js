@@ -7,7 +7,7 @@ import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
 import { dataRowClickUrlProperty, dataEnableRowClickProperty } from '../properties/properties';
 import { dummyData, gridOptions } from '../../common';
-import { enableSortableAndDroppable, enableSortableAndDroppableInIframe } from '../../util/drag-n-drop';
+import { enableSortableAndDroppableInIframe } from '../../util/drag-n-drop';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -136,6 +136,13 @@ function transformToToggleValue(value) {
     return [value];
 }
 
+// Don't remove row clicked detail popup element
+// when table is removed or row click is disabled,
+// so we don't bother to re-create detail popup element
+// when users click redo button
+// (if we do so, the elements you dropped inside the detail popup will be lost)
+// or re-write exported onRowClicked callback
+// when users upload pages to UI Builder
 const table = {
     nodes: ["table"],
     classes: ["table"],
@@ -148,6 +155,13 @@ const table = {
     beforeInit: function (node) {
         if (!$(node).attr(dataTableId)) {
             $(node).attr(dataTableId, `_${getRandomString(2)}`);
+            let popup;
+            const tableKey = $(node).attr(dataTableId);
+            if (!rowClickedPopupExists(tableKey)) {
+                popup = cloneRowClickedPopup(tableKey);
+            } else {
+                popup = getRowClickedPopup(tableKey);
+            }
             setGridOptions(node,
                 {
                     columnDefs: [
@@ -161,13 +175,6 @@ const table = {
                     suppressRowClickSelection: true,
                     onRowClicked: function (event) {
                         if ($(node).attr(dataEnableRowClick) == 'true') {
-                            let popup;
-                            const tableKey = $(node).attr(dataTableId);
-                            if (!rowClickedPopupExists(tableKey)) {
-                                popup = cloneRowClickedPopup(tableKey);
-                            } else {
-                                popup = getRowClickedPopup(tableKey);
-                            }
                             iframeWindow.popupDetail(null, null, popup);
                         }
                     }
