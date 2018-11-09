@@ -7,6 +7,7 @@ import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
 import { dataRowClickUrlProperty, dataEnableRowClickProperty } from '../properties/properties';
 import { dummyData, gridOptions } from '../../common';
+import { enableSortableAndDroppable, enableSortableAndDroppableInIframe } from '../../util/drag-n-drop';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -43,11 +44,13 @@ const themeOptions = [
     }];
 
 function cloneRowClickedPopup(tableKey) {
-    return Vvveb.Builder.frameBody
+    const cloned = Vvveb.Builder.frameBody
         .find('div#detail.popup-window')
         .clone()
         .attr('id', `${rowClickedPopupPrefix}${tableKey}`)
         .insertBefore(Vvveb.Builder.frameBody.find('script').first());
+    enableSortableAndDroppableInIframe(cloned.find('div.content'));
+    return cloned;
 }
 
 function deleteRowClickedPopup(tableKey) {
