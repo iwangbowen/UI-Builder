@@ -15,7 +15,7 @@ function template(node) {
         suppressRowClickSelection: true,
         onRowClicked: function (event) {
             if (eGridDiv${key}.attr('${dataEnableRowClick}') == 'true') {
-                popupDetail(eGridDiv${key}.attr('${dataRowClickUrl}'), event.data, $('${rowClickedPopupPrefix}' + '${key}'));
+                popupDetail(eGridDiv${key}.attr('${dataRowClickUrl}'), event.data, $('#' + '${rowClickedPopupPrefix}' + '${key}'));
             }
         },
         onRowSelected: function (event) {
