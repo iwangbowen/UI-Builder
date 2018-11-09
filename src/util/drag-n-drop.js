@@ -14,7 +14,7 @@ import {
     bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid
 } from '../components/@oee/ids';
 import {
-    customTablesScope, gridDroppablesScope, combinedSelector, popupRowColumnSelector
+    customTablesScope, gridDroppablesScope, combinedSelector, popupRowColumnSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
 
@@ -264,9 +264,9 @@ function initIframePopupDetailDrop() {
         });
 }
 
-function initIframePopupRowColumnDrop() {
+function initRowColumnDrop() {
     Vvveb.Builder.frameBody
-        .find(popupRowColumnSelector)
+        .find(rowColumnSelector)
         .droppable({
             greedy: true,
             classes: droppableClasses,
@@ -454,5 +454,5 @@ export {
     initIframeResizeVetically,
     enableSortableAndDroppable,
     enableGridItemDrop,
-    initIframePopupRowColumnDrop
+    initRowColumnDrop
 };

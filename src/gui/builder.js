@@ -11,7 +11,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
 	initIframeFormItemsDrop, initIframePopupAddAndEditDrop, initIframeTableDrop,
-	initIframeGridDrop, initIframePopupDetailDrop, initIframePopupRowColumnDrop
+	initIframeGridDrop, initIframePopupDetailDrop, initRowColumnDrop
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 
@@ -47,7 +47,7 @@ Vvveb.Builder = {
 			initIframeResizeVetically();
 			initIframePopupAddAndEditDrop();
 			initIframePopupDetailDrop();
-			initIframePopupRowColumnDrop();
+			initRowColumnDrop();
 			initIframeFormItemsDrop();
 			initIframeTableDrop();
 			initIframeSortable();

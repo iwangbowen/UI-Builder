@@ -1,11 +1,13 @@
+import { dataComponentId } from "./components/common";
+import { gridcolumnid } from "./components/@oee/ids";
+
 const gridItemSelector = 'div.gridster > div';
 const formGridSelector = `${gridItemSelector} form`;
 const formGridRowSelector = `${formGridSelector} div.row`;
 const formGridColumnSelector = `${formGridSelector} div.row > div`;
 const gridColumnSelector = `${gridItemSelector} > div.row > div`;
-const rowColumnSelector = 'div.row > div';
-const popupRowColumnSelector = `div.popup-window ${rowColumnSelector}`;
-const combinedSelector = `${formGridSelector}, ${formGridColumnSelector}, ${gridColumnSelector}`;
+const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;
+const combinedSelector = `${formGridSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -64,5 +66,5 @@ export {
     isInBuilder,
     dummyData,
     gridOptions,
-    popupRowColumnSelector
+    rowColumnSelector
 };
