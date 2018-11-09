@@ -42,6 +42,14 @@ const themeOptions = [
         text: "Material"
     }];
 
+function cloneRowClickedPopup() {
+
+}
+
+function deleteRowClickedPopup() {
+
+}
+
 function getGridOptionsIdentifier(node) {
     return `${gridOptions}${$(node).attr(dataTableId)}`;
 }
@@ -259,7 +267,10 @@ const table = {
             name: 'Table Key',
             key: 'tableKey',
             htmlAttr: dataTableId,
-            inputtype: new TextInput()
+            inputtype: new TextInput(),
+            data: {
+                readonly: true
+            }
         },
         dataEnableRowClickProperty,
         dataRowClickUrlProperty,

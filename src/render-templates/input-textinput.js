@@ -1,6 +1,7 @@
 const inputtextinput = `
     <div>
-        <input name="{%=key%}" type="text" class="form-control"/>
+        <input {% if (typeof readonly !== 'undefined' && readonly != false) { %}readonly="{%=readonly%}"{% } %}
+        name="{%=key%}" type="text" class="form-control"/>
     </div>
 `;
 
