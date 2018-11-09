@@ -236,7 +236,7 @@ function initIframeFormItemsDrop() {
 
 function initIframePopupDrop() {
     Vvveb.Builder.frameBody
-        .find('div.popup-window#detail div.content, div.popup-window form.popup-form')
+        .find('div.popup-window div.content, div.popup-window form.popup-form')
         .droppable({
             greedy: true,
             classes: droppableClasses,
