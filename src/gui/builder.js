@@ -11,9 +11,10 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
 	initIframeFormItemsDrop, initIframePopupAddAndEditDrop, initIframeTableDrop,
-	initIframeGridDrop, initIframePopupDetailDrop, initRowColumnDrop
+	initIframePopupDetailDrop, enableSortableAndDroppableInIframe
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
+import { combinedSelector } from '../common';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -43,11 +44,10 @@ Vvveb.Builder = {
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
 
-			initIframeGridDrop();
+			enableSortableAndDroppableInIframe(combinedSelector);
 			initIframeResizeVetically();
 			initIframePopupAddAndEditDrop();
 			initIframePopupDetailDrop();
-			initRowColumnDrop();
 			initIframeFormItemsDrop();
 			initIframeTableDrop();
 			initIframeSortable();

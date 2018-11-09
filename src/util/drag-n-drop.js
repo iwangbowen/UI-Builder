@@ -120,6 +120,10 @@ const droppableClasses = {
     "ui-droppable-hover": "ui-state-hover"
 };
 
+function enableSortableAndDroppableInIframe(elements, scope, connectWith) {
+    enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith);
+}
+
 function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = combinedSelector) {
     $(elements)
         .sortable({
@@ -225,10 +229,6 @@ function enableGridItemDrop(elements) {
             scope: gridDroppablesScope,
             drop
         });
-}
-
-function initIframeGridDrop() {
-    enableGridItemDrop(Vvveb.Builder.frameBody.find('div.gridster > div'));
 }
 
 function initIframeFormItemsDrop() {
@@ -444,7 +444,6 @@ export {
     initTopPanelDrag,
     initComponentDrag,
     initIframeTableDrop,
-    initIframeGridDrop,
     initIframeFormItemsDrop,
     initIframePopupAddAndEditDrop,
     initIframePopupDetailDrop,
@@ -453,6 +452,7 @@ export {
     initIframeSortable,
     initIframeResizeVetically,
     enableSortableAndDroppable,
+    enableSortableAndDroppableInIframe,
     enableGridItemDrop,
     initRowColumnDrop
 };

@@ -3,11 +3,8 @@ import { gridcolumnid } from "./components/@oee/ids";
 
 const gridItemSelector = 'div.gridster > div';
 const formGridSelector = `${gridItemSelector} form`;
-const formGridRowSelector = `${formGridSelector} div.row`;
-const formGridColumnSelector = `${formGridSelector} div.row > div`;
-const gridColumnSelector = `${gridItemSelector} > div.row > div`;
 const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;
-const combinedSelector = `${formGridSelector}`;
+const combinedSelector = `${formGridSelector}, ${rowColumnSelector}, ${gridItemSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -48,9 +45,6 @@ const gridOptions = 'gridOptions';
 export {
     gridItemSelector,
     formGridSelector,
-    formGridRowSelector,
-    formGridColumnSelector,
-    gridColumnSelector,
     combinedSelector,
     formItemsScope,
     gridColumnItemsScope,

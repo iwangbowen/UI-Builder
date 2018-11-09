@@ -1,6 +1,3 @@
-import {
-    combinedSelector
-} from "../common";
 import { hideToolBoxes } from './popup';
 
 function initGridOutofBuilder() {
@@ -38,7 +35,6 @@ function initGridInBuilder() {
                 handle: '*:not(form *, button, div.row *)'
             }
         }).data('gridster');
-        window.parent.enableSortableAndDroppable($(combinedSelector));
         $('div.gridster > div').each(function () {
             if (!$(this).has('span.gs-remove-handle').length) {
                 $('<span class="gs-remove-handle"></span>').appendTo(this);
