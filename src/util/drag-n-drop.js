@@ -221,16 +221,6 @@ function initIframeTableDrop() {
         });
 }
 
-function enableGridItemDrop(elements) {
-    $(elements)
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            scope: gridDroppablesScope,
-            drop
-        });
-}
-
 function initIframeFormItemsDrop() {
     Vvveb.Builder.frameBody
         .find('.allButton.dropzone')
@@ -453,6 +443,5 @@ export {
     initIframeResizeVetically,
     enableSortableAndDroppable,
     enableSortableAndDroppableInIframe,
-    enableGridItemDrop,
     initRowColumnDrop
 };

@@ -46,7 +46,7 @@ function initGridInBuilder() {
     }
     $('.grid-footer button').click(function () {
         var addedWidget = gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
-        addedWidget && window.parent.enableGridItemDrop(addedWidget);
+        addedWidget && window.parent.enableSortableAndDroppable(addedWidget);
     });
 }
 
