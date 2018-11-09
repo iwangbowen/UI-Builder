@@ -7,6 +7,8 @@ const gridcolumn = {
     image: "icons/grid_row.svg",
     classesRegex: ["col-"],
     html: `<div class="col-sm-4 ${configurableComponent} ${cloneableComponent}" ${dataComponentId}="${gridcolumnid}" style="min-height: 50px;"></div>`,
+    sortable: true,
+    droppable: true,
     properties: [{
         name: "Column",
         key: "column",

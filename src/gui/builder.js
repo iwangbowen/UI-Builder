@@ -203,6 +203,7 @@ Vvveb.Builder = {
 
 		$("#clone-box").on("click", function (event) {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
+			const component = Vvveb.Components.matchNode(original);
 			const cloned = original.clone();
 			if (!cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
 				const { left, top } = cloned.offset();
@@ -212,6 +213,9 @@ Vvveb.Builder = {
 				});
 			}
 			original.after(cloned);
+			if (component && component.sortable && component.droppable) {
+				enableSortableAndDroppableInIframe(cloned);
+			}
 			_this.selectedEl = cloned.click();
 			const node = cloned.get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
