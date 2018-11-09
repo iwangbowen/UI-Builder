@@ -131,7 +131,9 @@ function enableSortableAndDroppable(elements, scope = gridDroppablesScope, conne
             cursor: 'move',
             // Prevents sorting if you start on elements matching the selector.
             // Default: "input,textarea,button,select,option"
-            cancel: "option, div.ui-resizable-handle",
+            // Exclude span.gs-resize-handle to fix resize handler position error
+            // after resize
+            cancel: "option, div.ui-resizable-handle, span.gs-resize-handle",
             start: onSortingStarts,
             update: onSortingUpdates
         })
