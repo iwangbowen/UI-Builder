@@ -7,13 +7,11 @@ $.ui.ddmanager.prepareOffsets = function(t, event) {
     nativePrepareOffsets.apply(this, arguments);
 
     var m = $.ui.ddmanager.droppables[t.options.scope] || [];
-
     for (i = 0; i < m.length; i++) {
-
         //Iframe fixes
         if ((doc = m[i].document[0]) !== document) {
             // Fix bugs when replacing the current iframe with another
-            if (doc.defaultView || doc.parentWindow) {
+            if ((doc.defaultView || doc.parentWindow) && m[i].offset) {
                 var iframe = $((doc.defaultView || doc.parentWindow).frameElement);
                 var iframeOffset = iframe.offset();
                 var el = m[i].element;
