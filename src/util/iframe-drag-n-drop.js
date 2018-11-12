@@ -1,9 +1,15 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
-import { popupAdd, popupEdit, popupDelete, popupDetail } from '../util/popup';
+import { popupAdd, popupEdit, popupDelete, popupDetail, exportData } from '../util/popup-in-builder';
 import { tableSelector } from './selectors';
 import { dataTableId } from '../components/common';
 import { dummyData, gridOptions } from '../common';
+
+function hideToolBoxes() {
+    window.parent
+        && window.parent.hideAuxiliaryElements
+        && window.parent.hideAuxiliaryElements();
+}
 
 function isAlign(targetOffset, currentOffset) {
     return {
@@ -313,10 +319,11 @@ function setGlobalVariables() {
     self.popupEdit = popupEdit;
     self.popupDelete = popupDelete;
     self.popupDetail = popupDetail;
+    self.exportData = exportData;
 }
 
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData
+    setTableDummyData, hideToolBoxes
 };

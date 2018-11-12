@@ -1,4 +1,4 @@
-import { hideToolBoxes } from './popup';
+import { hideToolBoxes } from './iframe-drag-n-drop';
 
 function initGridOutofBuilder() {
     if ($('.gridster').length) {
