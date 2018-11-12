@@ -13,10 +13,6 @@ import { beBackwardCompatible } from './util/common';
 import { isInIframe } from './constants';
 import { initMessageListener } from './message';
 
-/**
- * TODO:
- * 1. Fix droppable error in popup window grid column enableSortableAndDroppable
- */
 $(document).ready(function () {
     beBackwardCompatible();
     initPanelToggle();
