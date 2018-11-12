@@ -234,17 +234,6 @@ function initIframeFormItemsDrop() {
         });
 }
 
-function initIframePopupDrop() {
-    Vvveb.Builder.frameBody
-        .find('div.popup-window div.content, div.popup-window form.popup-form')
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            scope: gridDroppablesScope,
-            drop
-        });
-}
-
 function initRowColumnDrop() {
     Vvveb.Builder.frameBody
         .find(rowColumnSelector)
@@ -329,6 +318,21 @@ function initIframeResizeVetically() {
         .resizable({
             handles: 's'
         });
+}
+
+function setDroppable(selector, option) {
+    Vvveb.Builder.frameBody
+        .find(selector)
+        .droppable(option);
+}
+
+
+function disableDroppable(selector) {
+    setDroppable(selector, 'disable');
+}
+
+function enableDroppable(selector) {
+    setDroppable(selector, 'enable');
 }
 
 function initComponentDragWithInteract() {
@@ -426,12 +430,13 @@ export {
     initComponentDrag,
     initIframeTableDrop,
     initIframeFormItemsDrop,
-    initIframePopupDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,
     initIframeResizeVetically,
     enableSortableAndDroppable,
     enableSortableAndDroppableInIframe,
-    initRowColumnDrop
+    initRowColumnDrop,
+    disableDroppable,
+    enableDroppable
 };

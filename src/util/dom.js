@@ -22,7 +22,7 @@ import {
 } from '../components/common';
 import { addDatetime } from './common';
 import 'core-js/es7/array';
-import { enableSortableAndDroppable } from './drag-n-drop';
+import { enableSortableAndDroppable, disableDroppable, enableDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector } from '../common';
 import { sendMessage } from '../message';
 
@@ -511,6 +511,8 @@ function setGlobalVariables() {
     window.Vvveb = Vvveb;
     window.enableSortableAndDroppable = enableSortableAndDroppable;
     window.hideAuxiliaryElements = hideAuxiliaryElements;
+    window.disableDroppable = disableDroppable;
+    window.enableDroppable = enableDroppable;
 }
 
 export {
