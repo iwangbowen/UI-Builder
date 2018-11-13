@@ -42,6 +42,7 @@ const bootstraptextinputfieldid = 'html/bootstraptextinputfield@oee';
 const bootstraptextinputid = 'html/bootstraptextinput@oee';
 const labelid = 'html/label@oee';
 const imageid = 'html/image@oee';
+const chartid = 'html/chart@oee';
 
 const bootstraptextareaid = 'html/bootstraptextarea@oee';
 const bootstraptextareafieldid = 'html/bootstraptextareafield@oee';
@@ -83,5 +84,5 @@ export {
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
     bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
     bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid,
-    imageid
+    imageid, chartid
 };

@@ -21,6 +21,7 @@
     "build:prod": "git pull && grunt build:prod"
   },
   "dependencies": {
+    "chart.js": "^2.7.3",
     "core-js": "^2.5.7",
     "date-fns": "^1.29.0",
     "interactjs": "^1.3.4",
