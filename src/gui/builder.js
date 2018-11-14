@@ -201,7 +201,7 @@ Vvveb.Builder = {
 
 		$("#clone-box").on("click", function (event) {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
-			const component = Vvveb.Components.matchNode(original);
+			const component = Vvveb.Components.matchNode(original.get(0));
 			const cloned = original.clone();
 			if (!cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
 				const { left, top } = cloned.offset();

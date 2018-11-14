@@ -160,8 +160,9 @@ Vvveb.Components = {
 			}
 		}
 		const tagName = node.tagName.toLowerCase();
-		if (tagName in this._nodesLookup) return this._nodesLookup[tagName];
-		//return false;
+		if (tagName in this._nodesLookup) {
+			return this._nodesLookup[tagName];
+		}
 		return this.get(Vvveb.defaultComponent);
 	},
 	render(type) {
