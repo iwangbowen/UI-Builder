@@ -120,6 +120,16 @@ const droppableClasses = {
     "ui-droppable-hover": "ui-state-hover"
 };
 
+function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
+    Vvveb.Builder.frameBody.find(elements)
+        .droppable({
+            classes: droppableClasses,
+            greedy: true,
+            scope,
+            drop
+        });
+}
+
 function enableSortableAndDroppableInIframe(elements, scope, connectWith) {
     enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith);
 }
@@ -438,5 +448,6 @@ export {
     enableSortableAndDroppableInIframe,
     initRowColumnDrop,
     disableDroppable,
-    enableDroppable
+    enableDroppable,
+    enableDroppableInIframe
 };

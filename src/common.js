@@ -7,7 +7,7 @@ const gridFormSelector = `${gridWidgetSelector} form`;
 const gridRowColumnSelector = `${gridWidgetSelector} ${rowColumnSelector}`;
 const popupSelector = 'div.popup-window div.content, div.popup-window form.popup-form';
 const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, div.popup-window form.popup-form ${rowColumnSelector}`;
-const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
+const gridItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}`;
 const combinedSelector = `${gridItemsSelector}, ${popupItemsSelector}`;
 
@@ -48,6 +48,7 @@ const dummyData = [
 const gridOptions = 'gridOptions';
 
 export {
+    gridWidgetSelector,
     combinedSelector,
     gridItemsSelector,
     rowColumnSelector,
