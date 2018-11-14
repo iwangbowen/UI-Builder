@@ -8,5 +8,5 @@
 
 2. 表格行和列翻转
 
-    参考[GitHub Project](https://stackblitz.com/github/LMFinney/ag-grid-partial)实现翻转逻辑。
+    参考[GitHub Project](https://github.com/LMFinney/ag-grid-partial)实现翻转逻辑。
     在UI Builder中表格进行显式的反转，实现复杂且没有必要，显式的翻转不在项目规划中。
