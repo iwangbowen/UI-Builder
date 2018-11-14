@@ -26,7 +26,6 @@ class ImageInput extends Input {
             reader.readAsDataURL(this.files[0]);
             reader.onload = (e) => {
                 const base64 = e.target.result;
-                console.log(event.data.element)
                 event.data.element.trigger('propertyChange', [base64, this]);
             };
         }
