@@ -1,4 +1,4 @@
-import { dataUrl, dataTableId, dataResponseDataKey } from "../components/common";
+import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey } from "../components/common";
 
 const functionName = 'submitForm';
 function template() {
@@ -9,9 +9,11 @@ function template() {
             .map(function (element) {
                 var id = $(element).attr('${dataTableId}');
                 var key = $(element).attr('${dataResponseDataKey}');
+                var transposeKey = $(element).attr('${dataAgGridTransposeKey}');
                 return {
                     gridOptions: window['gridOptions' + id],
-                    key: key
+                    key: key,
+                    transposeKey: transposeKey
                 };
             });
 

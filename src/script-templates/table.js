@@ -13,6 +13,7 @@ function template(node) {
         enableFilter: false,
         rowSelection: 'multiple',
         suppressRowClickSelection: true,
+        suppressFieldDotNotation: true,
         onRowClicked: function (event) {
             if (eGridDiv${key}.attr('${dataEnableRowClick}') == 'true') {
                 popupDetail(eGridDiv${key}.attr('${dataRowClickUrl}'), event.data, $('#' + '${rowClickedPopupPrefix}' + '${key}'));

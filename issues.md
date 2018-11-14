@@ -5,3 +5,8 @@
     2. 考虑在弹出框打开的时候，禁用弹出框外的元素droppable功能，关闭时启用droppable功能。
 
     优先考虑第二种方案
+
+2. 表格行和列翻转
+
+    参考[GitHub Project](https://stackblitz.com/github/LMFinney/ag-grid-partial)实现翻转逻辑。
+    在UI Builder中表格进行显式的反转，实现复杂且没有必要，显式的翻转不在项目规划中。

@@ -1,5 +1,8 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey } from '../common';
+import {
+    dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable,
+    dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey
+} from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
@@ -51,10 +54,6 @@ function cloneRowClickedPopup(tableKey) {
         .insertBefore(Vvveb.Builder.frameBody.find('script').first());
     enableSortableAndDroppableInIframe(cloned.find('div.content'));
     return cloned;
-}
-
-function deleteRowClickedPopup(tableKey) {
-    return Vvveb.Builder.frameBody.remove(getRowClickedPopup(tableKey));
 }
 
 function getRowClickedPopup(tableKey) {
@@ -135,6 +134,48 @@ function checkboxToggled(node, value, property) {
 function transformToToggleValue(value) {
     return [value];
 }
+// Refer to GitHub Repository https://stackblitz.com/github/LMFinney/ag-grid-partial
+// for more information about transposing rows and columns in ag-grid
+// Not necessary to transpose rows and columns in UI Builder
+function transpose(node) {
+    const colDefs = getColumnDefs(node);
+    const transposeKey = $(node).attr(dataAgGridTransposeKey);
+    const transposedData = colDefs
+        .filter(colDef => colDef.field != transposeKey)
+        .map((colDef) => {
+            const key = colDef.field;
+            const transposed = {};
+            transposed[transposeKey] = colDef.headerName;
+            dummyData.forEach(data => {
+                console.log(data, key);
+                transposed[data[transposeKey]] = data[key];
+            });
+            return transposed;
+        });
+
+    const newColDefs = [
+        {
+            headerName: '',
+            field: transposeKey,
+            cellStyle: {
+                'font-size': 'large'
+            },
+            pinned: 'left'
+        },
+        ...dummyData.map(data => ({
+            headerName: data[transposeKey],
+            field: $.isNumeric(data[transposeKey])
+                ? data[transposeKey].toString()
+                : data[transposeKey]
+        }))
+    ];
+    setColumnDefs(node, newColDefs)
+    setRowData(node, transposedData);
+}
+
+function revertTranspose() {
+
+}
 
 // Don't remove row clicked detail popup element
 // when table is removed or row click is disabled,
@@ -173,6 +214,9 @@ const table = {
                     enableSorting: true,
                     enableFilter: false,
                     suppressRowClickSelection: true,
+                    // https://github.com/ag-grid/ag-grid/issues/391
+                    // If field name contains dot, treat it as literal dot instead of deep references
+                    suppressFieldDotNotation: true,
                     onRowClicked: function (event) {
                         if ($(node).attr(dataEnableRowClick) == 'true') {
                             iframeWindow.popupDetail(null, null, popup);
@@ -302,25 +346,6 @@ const table = {
             }
         },
         {
-            name: 'Transpose',
-            key: _.camelCase(dataAgGridTranspose),
-            htmlAttr: dataAgGridTranspose,
-            inputtype: new ToggleInput(),
-            validValues: ['true'],
-            init(node) {
-                return $(node).attr(dataAgGridTranspose) == 'true' ?
-                    this.validValues : [];
-            },
-            onChange(node, value) {
-                $(node).attr(dataAgGridTranspose, value);
-                return node;
-            },
-            data: {
-                on: 'true',
-                off: 'false'
-            }
-        },
-        {
             name: 'Transpose Key',
             key: _.camelCase(dataAgGridTransposeKey),
             htmlAttr: dataAgGridTransposeKey,
@@ -328,12 +353,26 @@ const table = {
             // Call beforeInit to initilize select input
             beforeInit(node) {
                 this.data = {
-                    options: getColumnDefs(node).map(colDef => ({
-                        value: colDef.field,
-                        text: colDef.headerName
-                    }))
+                    options: [
+                        {
+                            value: '',
+                            text: 'No Transpose'
+                        },
+                        ...getColumnDefs(node).map(colDef => ({
+                            value: colDef.field,
+                            text: colDef.headerName
+                        }))]
                 };
-            }
+            },
+            onChange(node, value) {
+                $(node).attr(dataAgGridTransposeKey, value);
+                // if (value) {
+                //     transpose(node);
+                // } else {
+                //     revertTranspose(node);
+                // }
+                return node;
+            },
         },
         dataEnableRowClickProperty,
         dataRowClickUrlProperty,
