@@ -203,7 +203,7 @@ Vvveb.Builder = {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
 			const component = Vvveb.Components.matchNode(original.get(0));
 			const cloned = original.clone();
-			if (!cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
+			if (!component.sortable && !cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
 				const { left, top } = cloned.offset();
 				cloned.offset({
 					left: left + 10,
