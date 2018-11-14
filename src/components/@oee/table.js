@@ -1,5 +1,5 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix } from '../common';
+import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTranspose } from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
@@ -299,6 +299,25 @@ const table = {
             inputtype: new TextInput(),
             data: {
                 readonly: true
+            }
+        },
+        {
+            name: 'Transpose',
+            key: _.camelCase(dataAgGridTranspose),
+            htmlAttr: dataAgGridTranspose,
+            inputtype: new ToggleInput(),
+            validValues: ['true'],
+            init(node) {
+                return $(node).attr(dataAgGridTranspose) == 'true' ?
+                    this.validValues : [];
+            },
+            onChange(node, value) {
+                $(node).attr(dataAgGridTranspose, value);
+                return node;
+            },
+            data: {
+                on: 'true',
+                off: 'false'
             }
         },
         dataEnableRowClickProperty,

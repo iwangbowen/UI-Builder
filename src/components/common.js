@@ -79,6 +79,7 @@ const dataEnableRowClick = 'data-enable-row-click';
 const dataKeyMapping = 'data-key-mapping';
 const dataImageFormat = 'data-image-format';
 const dataImagePlaceholder = 'data-image-placeholder';
+const dataAgGridTranspose = 'data-ag-grid-transpose';
 
 const rowClickedPopupPrefix = 'row_clicked_popup';
 
@@ -120,5 +121,5 @@ export {
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
     dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
-    rowClickedPopupPrefix
+    rowClickedPopupPrefix, dataAgGridTranspose
 };
