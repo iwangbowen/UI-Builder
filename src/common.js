@@ -26,6 +26,8 @@ const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}
 
 const isInBuilder = true;
 
+const imagePlaceholder = '../../../../libs/builder/icons/image.svg';
+
 const dummyData = [
     {
         athelete: 'Michael Phelps',
@@ -65,5 +67,6 @@ export {
     auxiliaryElementsSelector,
     isInBuilder,
     dummyData,
-    gridOptions
+    gridOptions,
+    imagePlaceholder
 };

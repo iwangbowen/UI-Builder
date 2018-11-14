@@ -19,6 +19,7 @@ import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
 import 'core-js/es6/string';
+import { imagePlaceholder } from '../common';
 
 function removeRemoveableScripts(el) {
     $(el).find(`script[class=${removeableScript}]`).remove();
@@ -105,6 +106,18 @@ function removeUnusedTags(el) {
 
 function emptyChildren(el) {
     $(el).find(emptyChildrenSelectors.join(', ')).empty();
+    return el;
+}
+
+// Remove image base64 to prevent localStorage QuotaExceededError
+function removeImageDataURL(el) {
+    $(el).find('img')
+        .each(function () {
+            const $img = $(this);
+            if ($img.attr('src').indexOf('data:image') != -1) {
+                $img.attr('src', imagePlaceholder);
+            }
+        });
     return el;
 }
 
@@ -329,5 +342,5 @@ export {
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
-    generateGridRemoveItemSpan
+    generateGridRemoveItemSpan, removeImageDataURL
 };
