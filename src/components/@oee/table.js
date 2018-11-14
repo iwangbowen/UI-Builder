@@ -134,7 +134,7 @@ function checkboxToggled(node, value, property) {
 function transformToToggleValue(value) {
     return [value];
 }
-// Refer to GitHub Repository https://stackblitz.com/github/LMFinney/ag-grid-partial
+// Refer to GitHub Repository https://github.com/LMFinney/ag-grid-partial
 // for more information about transposing rows and columns in ag-grid
 // Not necessary to transpose rows and columns in UI Builder
 function transpose(node) {
