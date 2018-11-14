@@ -18,6 +18,7 @@ import filemanagercomponent from './filemanagercomponent';
 import property from './property';
 import inputheader from './input-header';
 import inputcheckboxinput from './input-checkoutinput';
+import inputimageinput from './input-imageinput';
 
 const templates = {
     inputnumberinput,
@@ -39,7 +40,8 @@ const templates = {
     inputcheckboxinput,
     filemanagerpage,
     property,
-    filemanagercomponent
+    filemanagercomponent,
+    inputimageinput
 };
 
 export default templates;

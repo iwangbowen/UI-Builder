@@ -1,4 +1,4 @@
-import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput } from "../../inputs/inputs";
+import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput, ImageInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
     btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder
@@ -887,6 +887,13 @@ const imageSrcProperty = {
     inputtype: new FileUploadInput()
 };
 
+const imageUploadProperty = {
+    name: "Image Upload",
+    key: "src",
+    htmlAttr: "src",
+    inputtype: new ImageInput()
+}
+
 const widthProperty = {
     name: 'Width',
     key: 'width',
@@ -973,5 +980,6 @@ export {
     heightProperty,
     altProperty,
     imageFormatProperty,
+    imageUploadProperty,
     dataImagePlacehoderProperty
 };

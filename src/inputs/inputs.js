@@ -20,9 +20,11 @@ import ButtonInput from './ButtonInput';
 import SectionInput from './SectionInput';
 import ListInput from './ListInput';
 import Select2Input from './SelectI2nput';
+import ImageInput from './ImageInput';
 
 export {
 	Input, TextInput, CheckboxInput, SelectInput, LinkInput, RangeInput, NumberInput, CssUnitInput,
 	RadioInput, RadioButtonInput, ToggleInput, ValueTextInput, GridLayoutInput, ProductsInput, GridInput,
-	TextValueInput, ButtonInput, SectionInput, ListInput, ColorInput, FileUploadInput, Select2Input
+	TextValueInput, ButtonInput, SectionInput, ListInput, ColorInput, FileUploadInput, Select2Input,
+	ImageInput
 };
