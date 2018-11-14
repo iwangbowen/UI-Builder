@@ -1,5 +1,5 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
-import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTranspose } from '../common';
+import { dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable, dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey } from '../common';
 import Vvveb from '../../gui/components';
 import _ from 'lodash';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
@@ -318,6 +318,21 @@ const table = {
             data: {
                 on: 'true',
                 off: 'false'
+            }
+        },
+        {
+            name: 'Transpose Key',
+            key: _.camelCase(dataAgGridTransposeKey),
+            htmlAttr: dataAgGridTransposeKey,
+            inputtype: new SelectInput(),
+            // Call beforeInit to initilize select input
+            beforeInit(node) {
+                this.data = {
+                    options: getColumnDefs(node).map(colDef => ({
+                        value: colDef.field,
+                        text: colDef.headerName
+                    }))
+                };
             }
         },
         dataEnableRowClickProperty,
