@@ -24,10 +24,15 @@ GUI Builder is a drag and drop ui builder to help developers create static web p
     npm install
     ```
 
-2. Build project
+2. Build app
 
     ```sh
     npm run build:dev
+    ```
+3. Start app
+
+    ```sh
+    npm run start
     ```
 
 ## Project maintainers
