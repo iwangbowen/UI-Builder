@@ -2,6 +2,10 @@
 
 GUI Builder is a drag and drop ui builder to help developers create static web pages faster
 
+## Preview
+
+![UI Builder Preview](./ui-builder.gif)
+
 ## What it does
 
 - Draggable widgets
@@ -15,8 +19,16 @@ GUI Builder is a drag and drop ui builder to help developers create static web p
 
 ## Getting started
 
-1. npm install
-2. npm run build:prod
+1. Install development dependencies:
+    ```sh
+    npm install
+    ```
+
+2. Build project
+
+    ```sh
+    npm run build:dev
+    ```
 
 ## Project maintainers
 
