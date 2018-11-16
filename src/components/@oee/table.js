@@ -147,7 +147,6 @@ function transpose(node) {
             const transposed = {};
             transposed[transposeKey] = colDef.headerName;
             dummyData.forEach(data => {
-                console.log(data, key);
                 transposed[data[transposeKey]] = data[key];
             });
             return transposed;

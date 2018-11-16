@@ -14,7 +14,7 @@ import {
     bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid
 } from '../components/@oee/ids';
 import {
-    customTablesScope, gridDroppablesScope, combinedSelector, popupRowColumnSelector, rowColumnSelector
+    customTablesScope, gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
 
@@ -134,7 +134,7 @@ function enableSortableAndDroppableInIframe(elements, scope, connectWith) {
     enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith);
 }
 
-function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = combinedSelector) {
+function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = sortableAndDroppableSelector) {
     $(elements)
         .sortable({
             connectWith,

@@ -10,7 +10,8 @@ const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector
 const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}`;
-const combinedSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}`;
+const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}`;
+const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -28,6 +29,10 @@ const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}
 const isInBuilder = true;
 
 const imagePlaceholder = '../../../../libs/builder/icons/image.svg';
+
+function getDetailPopupSelector(popup) {
+    return `#${popup.attr('id')} div.content`
+}
 
 const dummyData = [
     {
@@ -52,9 +57,10 @@ const gridOptions = 'gridOptions';
 
 export {
     gridWidgetSelector,
-    combinedSelector,
+    sortableAndDroppableSelector,
     gridItemsSelector,
     gridSortableItemsSelector,
+    droppableSelector,
     rowColumnSelector,
     formItemsScope,
     gridColumnItemsScope,
@@ -70,5 +76,6 @@ export {
     isInBuilder,
     dummyData,
     gridOptions,
-    imagePlaceholder
+    imagePlaceholder,
+    getDetailPopupSelector
 };

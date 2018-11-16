@@ -1,12 +1,12 @@
 import { hideToolBoxes } from './iframe-drag-n-drop';
-import { gridItemsSelector } from '../common';
+import { droppableSelector, getDetailPopupSelector } from '../common';
 
-function disableDroppable() {
-    window.parent.disableDroppable(gridItemsSelector);
+function disableDroppable(selector) {
+    window.parent.disableDroppable(selector);
 }
 
-function enableDroppable() {
-    window.parent.enableDroppable(gridItemsSelector);
+function enableDroppable(selector) {
+    window.parent.enableDroppable(selector);
 }
 
 function popupAdd() {
@@ -25,14 +25,13 @@ function popupAdd() {
 
 // Fix bugs in nested detail popup windows
 // Disable droppable when all opened popup windows have been closed
-let openedPopups = 0;
+const detailPopups = [];
 // url and data are only used out of UI Builder,
 // which can be used to query detail and show the result in popup window
 function popupDetail(url, data, popup) {
-    if (openedPopups === 0) {
-        disableDroppable();
-    }
-    openedPopups++;
+    disableDroppable(droppableSelector);
+    detailPopups.push(popup);
+    enableDroppable(getDetailPopupSelector(popup));
     // Compatible with previous only one detail popup window
     var content = popup && popup.length ? popup : $('div.popup-window#detail');
     hideToolBoxes();
@@ -43,8 +42,11 @@ function popupDetail(url, data, popup) {
         skin: 'layui-layer-rim', //加上边框
         content: content,
         end: function () {
-            if (--openedPopups === 0) {
-                enableDroppable();
+            detailPopups.pop();
+            if (detailPopups.length) {
+                enableDroppable(getDetailPopupSelector(detailPopups[detailPopups.length - 1]));
+            } else {
+                enableDroppable(droppableSelector);
             }
         }
     });

@@ -14,7 +14,7 @@ import {
 	enableSortableAndDroppableInIframe, enableDroppableInIframe
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
-import { combinedSelector, gridWidgetSelector } from '../common';
+import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -45,7 +45,7 @@ Vvveb.Builder = {
 			this.frameBody = $(window.FrameDocument).find('body');
 
 			enableDroppableInIframe(gridWidgetSelector);
-			enableSortableAndDroppableInIframe(combinedSelector);
+			enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
 			initIframeResizeVetically();
 			initIframeFormItemsDrop();
 			initIframeTableDrop();
