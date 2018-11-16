@@ -7,9 +7,10 @@ const gridFormSelector = `${gridWidgetSelector} form`;
 const gridRowColumnSelector = `${gridWidgetSelector} ${rowColumnSelector}`;
 const popupSelector = 'div.popup-window div.content, div.popup-window form.popup-form';
 const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, div.popup-window form.popup-form ${rowColumnSelector}`;
-const gridItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
+const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
+const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}`;
-const combinedSelector = `${gridItemsSelector}, ${popupItemsSelector}`;
+const combinedSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -53,6 +54,7 @@ export {
     gridWidgetSelector,
     combinedSelector,
     gridItemsSelector,
+    gridSortableItemsSelector,
     rowColumnSelector,
     formItemsScope,
     gridColumnItemsScope,
