@@ -9,7 +9,7 @@ const bootstraptextinputfield = _.extend({}, textinputfield, {
     html: `<div class="${formGroup} ${sortableClass}" ${dataComponentId}="${bootstraptextinputfieldid}">
             ${label.html}
             ${bootstraptextinput.html}
-            <small class="${formText} ${textMuted} ${deletableComponent}">We'll never share your email.</small>
+            <small class="${formText} ${textMuted} ${deletableComponent}">We'll never share your information.</small>
            </div>`
 });
 

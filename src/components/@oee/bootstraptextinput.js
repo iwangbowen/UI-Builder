@@ -4,7 +4,7 @@ import { bootstraptextinputid } from './ids';
 import _ from 'lodash';
 
 const bootstraptextinput = _.extend({}, textinput, {
-    html: `<input ${dataComponentId}="${bootstraptextinputid}" type="email" class="${formControl}">`
+    html: `<input ${dataComponentId}="${bootstraptextinputid}" type="text" class="${formControl}">`
 });
 
 export default bootstraptextinput;
