@@ -23,10 +23,16 @@ function popupAdd() {
     });
 }
 
+// Fix bugs in nested detail popup windows
+// Disable droppable when all opened popup windows have been closed
+let openedPopups = 0;
 // url and data are only used out of UI Builder,
 // which can be used to query detail and show the result in popup window
 function popupDetail(url, data, popup) {
-    disableDroppable();
+    if (openedPopups === 0) {
+        disableDroppable();
+    }
+    openedPopups++;
     // Compatible with previous only one detail popup window
     var content = popup && popup.length ? popup : $('div.popup-window#detail');
     hideToolBoxes();
@@ -37,7 +43,9 @@ function popupDetail(url, data, popup) {
         skin: 'layui-layer-rim', //加上边框
         content: content,
         end: function () {
-            enableDroppable();
+            if (--openedPopups === 0) {
+                enableDroppable();
+            }
         }
     });
 }
