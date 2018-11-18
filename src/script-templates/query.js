@@ -42,9 +42,9 @@ function template() {
                 gridOptions.api.setRowData(data);
             }
         }
-        var queryForm = $('form button#dataSearch').parents('form');
-        var queryUrl = $('form button#dataSearch').attr('${dataUrl}');
         function query() {
+            var queryForm = $(this).parents('form');
+            var queryUrl = $(this).attr('${dataUrl}');
             submitForm(queryForm, queryUrl,
                 function (response) {
                     if (Array.isArray(response.data)) {
@@ -67,6 +67,7 @@ function template() {
                 });
         }
         $('form button#dataSearch').click(query);
+        $('div.gridster div form button').click(query);
     `;
 }
 
