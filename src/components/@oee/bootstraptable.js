@@ -8,7 +8,7 @@ const bootstraptable = {
     nodes: ["table"],
     classes: ["table"],
     image: "icons/table.svg",
-    name: "Table",
+    name: "Static Table",
     html: `<table class="table ${configurableComponent} ${containerComponent}" style="width: 200px;" ${dataComponentId}="${bootstraptableid}">
             ${bootstraptablehead.html}
             ${bootstraptablebody.html}
