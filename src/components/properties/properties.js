@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput, ImageInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_2, col_sm_10
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -847,12 +847,12 @@ const inputFieldInlineProperty = {
     validValues: ['inline'],
     inputtype: new ToggleInput(),
     init(node) {
-        return $(node).hasClass('row') ?
+        return $(node).hasClass(rowClass) ?
             this.validValues : [];
     },
     onChange(node, value) {
         $(node).toggleClass('row');
-        $(node).children('label').toggleClass('col-sm-2');
+        $(node).children('label').toggleClass(col_sm_2);
         const type = $(node).find('input').attr('type');
         const isRadioOrCheckbox = type == 'radio' || type == 'checkbox';
         if (value) {
@@ -860,15 +860,15 @@ const inputFieldInlineProperty = {
             if (isRadioOrCheckbox) {
                 wrappedElements = $(node).find('input').parent();
             } else {
-                wrappedElements = $(node).find('input, select, small');
+                wrappedElements = $(node).find('input, select, textarea, small');
             }
-            wrappedElements.wrapAll('<div class="col-sm-10"></div>');
+            wrappedElements.wrapAll(`<div class="${col_sm_10}"></div>`);
         } else {
             let unwrappedElements;
             if (isRadioOrCheckbox) {
                 unwrappedElements = $(node).find('input').parent();
             } else {
-                unwrappedElements = $(node).find('input, select');
+                unwrappedElements = $(node).find('input, select, textarea');
             }
             unwrappedElements.unwrap();
         }

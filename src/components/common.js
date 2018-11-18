@@ -85,6 +85,9 @@ const dataAgGridTransposeKey = 'data-ag-grid-transpose-key';
 const rowClickedPopupPrefix = 'row_clicked_popup';
 
 const sortableClass = 'sortable';
+const col_sm_2 = 'col-sm-2';
+const col_sm_10 = 'col-sm-10';
+const rowClass = 'row';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
 const radioCheckboxBlockClass = 'radio-checkbox-block';
@@ -122,5 +125,6 @@ export {
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
     dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
-    rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey
+    rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey, rowClass,
+    col_sm_2, col_sm_10
 };
