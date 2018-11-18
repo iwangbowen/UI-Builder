@@ -28,7 +28,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _oee_ids.popupmanualselectinputid,
     _oee_ids.customtableid,
     _oee_ids.commontableid,
-    _oee_ids.chartid,
+    // _oee_ids.chartid,
     _oee_ids.bootstrapheadingid,
     _oee_ids.bootstrapalertid,
     _oee_ids.bootstraphrid,
