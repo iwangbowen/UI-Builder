@@ -293,9 +293,10 @@ Vvveb.Builder = {
 				_this.texteditEl.on('blur', removeSortableDisability);
 			}
 			_this.texteditEl.on("blur keyup paste input", function (event) {
+				const el = $(this);
 				jQuery(selectBox).css({
-					"width": _this.texteditEl.outerWidth(),
-					"height": _this.texteditEl.outerHeight()
+					"width": el.outerWidth(),
+					"height": el.outerHeight()
 				});
 			});
 			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
