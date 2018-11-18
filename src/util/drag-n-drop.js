@@ -330,12 +330,28 @@ function initIframeResizeVetically() {
         });
 }
 
+function removeSortableDisability({ target }) {
+    enableSortable();
+    target.removeEventListener('blur', removeSortableDisability);
+}
+
+function setInteraction(selector, interaction, option) {
+    Vvveb.Builder.frameBody.find(selector)[interaction](option);
+}
+
+function enableSortable() {
+    setInteraction(sortableAndDroppableSelector, 'sortable', 'enable');
+}
+
+function disableSortable() {
+    setInteraction(sortableAndDroppableSelector, 'sortable', 'disable');
+}
+
 function setDroppable(selector, option) {
     Vvveb.Builder.frameBody
         .find(selector)
         .droppable(option);
 }
-
 
 function disableDroppable(selector) {
     setDroppable(selector, 'disable');
@@ -449,5 +465,9 @@ export {
     initRowColumnDrop,
     disableDroppable,
     enableDroppable,
-    enableDroppableInIframe
+    enableDroppableInIframe,
+    setInteraction,
+    enableSortable,
+    disableSortable,
+    removeSortableDisability
 };

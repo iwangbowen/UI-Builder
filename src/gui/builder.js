@@ -11,7 +11,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
 	initIframeFormItemsDrop, initIframeTableDrop,
-	enableSortableAndDroppableInIframe, enableDroppableInIframe
+	enableSortableAndDroppableInIframe, enableDroppableInIframe, disableSortable, removeSortableDisability
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
@@ -284,7 +284,13 @@ Vvveb.Builder = {
 			_this.texteditEl = target = jQuery(event.target);
 			Vvveb.WysiwygEditor.edit(_this.texteditEl);
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
-				_this.texteditEl.attr({ 'contenteditable': true, 'spellcheckker': false });
+				// Disable sortable to allow edit mode text node to be editable
+				disableSortable();
+				_this.texteditEl.attr({
+					contenteditable: true,
+					spellcheckker: false
+				});
+				_this.texteditEl.on('blur', removeSortableDisability);
 			}
 			_this.texteditEl.on("blur keyup paste input", function (event) {
 				jQuery(selectBox).css({
