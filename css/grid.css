@@ -34,9 +34,9 @@ table {
     transition: opacity .6s;
 }
 
-.content {
+/* .content {
     color: white;
-}
+} */
 
 .gridster .gs-w {
     cursor: move;
