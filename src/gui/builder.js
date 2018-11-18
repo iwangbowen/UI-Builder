@@ -329,8 +329,11 @@ Vvveb.Builder = {
 		this.frameBody.keydown(e => {
 			if (_this.selectedEl && _this.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
-					document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, _this.selectedEl);
-					e.preventDefault();
+					// Disable element move using arrow keys in text node edit mode
+					if (!_this.texteditEl) {
+						document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, _this.selectedEl);
+						e.preventDefault();
+					}
 				} else if (e.ctrlKey) {
 					const kc = e.which || e.keyCode;
 					// Delete
