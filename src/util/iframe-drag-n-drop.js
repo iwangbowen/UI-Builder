@@ -4,6 +4,7 @@ import { popupAdd, popupEdit, popupDelete, popupDetail, exportData } from '../ut
 import { tableSelector } from './selectors';
 import { dataTableId } from '../components/common';
 import { dummyData, gridOptions } from '../common';
+import { enableGridster, disableGridster } from './grid';
 
 function hideToolBoxes() {
     window.parent
@@ -320,6 +321,8 @@ function setGlobalVariables() {
     self.popupDelete = popupDelete;
     self.popupDetail = popupDetail;
     self.exportData = exportData;
+    self.enableGridster = enableGridster;
+    self.disableGridster = disableGridster;
 }
 
 export {

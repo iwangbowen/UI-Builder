@@ -11,7 +11,8 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
 	initIframeFormItemsDrop, initIframeTableDrop,
-	enableSortableAndDroppableInIframe, enableDroppableInIframe, disableSortable, removeSortableDisability
+	enableSortableAndDroppableInIframe, enableDroppableInIframe, disableSortable,
+	removeSortableAndGridsterDisability
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
@@ -40,6 +41,7 @@ Vvveb.Builder = {
 			window.FrameDocument = this.iframe.contentWindow.document;
 			Vvveb.WysiwygEditor.init(window.FrameDocument);
 			loadCallback();
+			this.frameWindow = window.FrameWindow;
 			this.frameDoc = $(window.FrameDocument);
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
@@ -286,11 +288,12 @@ Vvveb.Builder = {
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
 				// Disable sortable to allow edit mode text node to be editable
 				disableSortable();
+				window.FrameWindow.disableGridster();
 				_this.texteditEl.attr({
 					contenteditable: true,
 					spellcheckker: false
 				});
-				_this.texteditEl.on('blur', removeSortableDisability);
+				_this.texteditEl.on('blur', removeSortableAndGridsterDisability);
 			}
 			_this.texteditEl.on("blur keyup paste input", function (event) {
 				const el = $(this);

@@ -330,9 +330,10 @@ function initIframeResizeVetically() {
         });
 }
 
-function removeSortableDisability({ target }) {
+function removeSortableAndGridsterDisability({ target }) {
+    Vvveb.Builder.frameWindow.enableGridster();
     enableSortable();
-    target.removeEventListener('blur', removeSortableDisability);
+    target.removeEventListener('blur', removeSortableAndGridsterDisability);
 }
 
 function setInteraction(selector, interaction, option) {
@@ -469,5 +470,5 @@ export {
     setInteraction,
     enableSortable,
     disableSortable,
-    removeSortableDisability
+    removeSortableAndGridsterDisability
 };

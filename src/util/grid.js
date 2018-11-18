@@ -15,9 +15,19 @@ function initGridOutofBuilder() {
     }
 }
 
+let gridster;
+
+function enableGridster() {
+    gridster.enable();
+}
+
+function disableGridster() {
+    gridster.disable();
+}
+
 function initGridInBuilder() {
     if ($('.gridster').length) {
-        var gridster = $(".gridster").gridster({
+        gridster = $(".gridster").gridster({
             widget_selector: 'div.gridster > div',
             widget_margins: [5, 5],
             widget_base_dimensions: ['auto', 50],
@@ -45,12 +55,14 @@ function initGridInBuilder() {
         });
     }
     $('.grid-footer button').click(function () {
-        var addedWidget = gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
+        const addedWidget = gridster.add_widget('<div><span class="gs-remove-handle"></span></div>', 3, 3);
         addedWidget && window.parent.enableSortableAndDroppable(addedWidget);
     });
 }
 
 export {
     initGridInBuilder,
-    initGridOutofBuilder
+    initGridOutofBuilder,
+    enableGridster,
+    disableGridster
 };
