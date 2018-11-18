@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
-	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback
+	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
 import _ from 'lodash';
@@ -246,7 +246,7 @@ Vvveb.Builder = {
 		});
 
 		$("#delete-box").on("click", function (event) {
-			jQuery(selectBox).hide();
+			hideAuxiliaryElements();
 			const node = getElementWithSpecifiedClass(_this.selectedEl).get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
