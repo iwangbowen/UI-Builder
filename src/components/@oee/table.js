@@ -1,4 +1,4 @@
-import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput } from '../../inputs/inputs';
+import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput, NumberInput } from '../../inputs/inputs';
 import {
     dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable,
     dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey
@@ -16,6 +16,9 @@ const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
 const checkboxSelection = 'checkboxSelection';
 const headerCheckboxSelection = 'headerCheckboxSelection';
+const pagination = 'pagination';
+const paginationAutoPageSize = 'paginationAutoPageSize';
+const paginationPageSize = 'paginationPageSize';
 const themeOptions = [
     {
         value: "ag-theme-balham",
@@ -81,16 +84,26 @@ function getColumnDefProperty(colDef, property) {
 }
 
 function getCheckboxProperty(node, property) {
-    const colDefs = getColumnDefs(node);
-    if (colDefs.length) {
-        return getColumnDefProperty(colDefs[0], property);
+    if (property == pagination || property == paginationAutoPageSize) {
+        return getGridOptions(node)[property];
     } else {
-        return false;
+        const colDefs = getColumnDefs(node);
+        if (colDefs.length) {
+            return getColumnDefProperty(colDefs[0], property);
+        } else {
+            return false;
+        }
     }
 }
 
 function setColumnDefProperty(colDef, property, value) {
     colDef[property] = value;
+}
+
+function setGridOptionsProperty(node, property, value) {
+    const gridOptions = getGridOptions(node);
+    gridOptions[property] = value;
+    setGridOptions(node, gridOptions);
 }
 
 function setColumnDefs(node, colDefs = getColumnDefs(node)) {
@@ -123,10 +136,14 @@ function setGridOptions(node, gridOptions) {
 }
 
 function checkboxToggled(node, value, property) {
-    const colDefs = getColumnDefs(node);
-    if (colDefs.length) {
-        setColumnDefProperty(colDefs[0], property, value == 'true');
-        setColumnDefs(node);
+    if (property == pagination || property == paginationAutoPageSize) {
+        setGridOptionsProperty(node, property, value == 'true');
+    } else {
+        const colDefs = getColumnDefs(node);
+        if (colDefs.length) {
+            setColumnDefProperty(colDefs[0], property, value == 'true');
+            setColumnDefs(node);
+        }
     }
 }
 
@@ -213,6 +230,8 @@ const table = {
                     enableSorting: true,
                     enableFilter: false,
                     suppressRowClickSelection: true,
+                    pagination: false,
+                    paginationAutoPageSize: false,
                     // https://github.com/ag-grid/ag-grid/issues/391
                     // If field name contains dot, treat it as literal dot instead of deep references
                     suppressFieldDotNotation: true,
@@ -297,6 +316,39 @@ const table = {
             },
             init: _.flow([_.curry(getCheckboxProperty)(_, headerCheckboxSelection), transformToToggleValue]),
             onChange: _.partial(checkboxToggled, _, _, headerCheckboxSelection)
+        },
+        {
+            name: 'Pagination',
+            key: pagination,
+            inputtype: new ToggleInput(),
+            data: {
+                on: true,
+                off: false
+            },
+            init: _.flow([_.curry(getCheckboxProperty)(_, pagination), transformToToggleValue]),
+            onChange: _.partial(checkboxToggled, _, _, pagination)
+        },
+        {
+            name: 'Auto Page Size',
+            key: paginationAutoPageSize,
+            inputtype: new ToggleInput(),
+            data: {
+                on: true,
+                off: false
+            },
+            init: _.flow([_.curry(getCheckboxProperty)(_, paginationAutoPageSize), transformToToggleValue]),
+            onChange: _.partial(checkboxToggled, _, _, paginationAutoPageSize)
+        },
+        {
+            name: 'Page Size',
+            key: paginationPageSize,
+            inputtype: new NumberInput(),
+            init(node) {
+                return getGridOptions(node)[paginationPageSize];
+            },
+            onChange(node, value) {
+                setGridOptionsProperty(node, paginationPageSize, value);
+            }
         },
         {
             name: "Theme",
@@ -409,5 +461,6 @@ const table = {
 
 export {
     table, columnDefs, getGridOptionsIdentifier, themeOptions,
-    setColumnDefsAndRender, getColumnDefs
+    setColumnDefsAndRender, getColumnDefs, pagination, paginationAutoPageSize,
+    paginationPageSize
 };

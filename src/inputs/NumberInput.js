@@ -5,6 +5,7 @@ class NumberInput extends Input {
 		super();
 		this.events = [
 			["change", "onChange", "input"],
+			['keyup', 'onChange', 'input']
 		];
 	}
 
