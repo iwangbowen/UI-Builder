@@ -2,18 +2,18 @@ import {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
-    generateBaseTag, generateDevDependentTags, removeNameBrackets,
+    generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
     generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType
+    importedPageHref, templatePages, pdsPage, isInIframe
 } from '../constants';
 import _ from 'lodash';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
-    userDefinedScriptSelector, nonTemplateScriptSelector, removeableScriptSelector
+    userDefinedScriptSelector, nonTemplateScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
 import {
@@ -192,8 +192,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateGridScript, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript,
-        generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, removeableScriptSelector, javascriptScriptType),
-        _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
+        generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, beautify_options)) : html_beautify(`
@@ -216,8 +215,7 @@ function getHash() {
 
 function generateHtml(html, pageHref) {
     return htmlGenerator(html, generateAddNewItemDiv,
-        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref),
-        _.curry(changeScriptType)(_, removeableScriptSelector, generatedScriptType),
+        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }
 
