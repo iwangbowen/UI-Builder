@@ -18,6 +18,7 @@ const tableScript = 'tableScript';
 const appendableScript = 'appendableScript';
 const reservedScript = 'reservedScript';
 const nonTemplateScriptType = 'text/non-template';
+const generatedScriptType = 'text/generated-script';
 const javascriptScriptType = 'text/javascript';
 const dataScriptType = 'data-script-type';
 const tooltipScriptType = 'tooltip';
@@ -45,5 +46,6 @@ export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, beautify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe
+    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe,
+    generatedScriptType
 };
