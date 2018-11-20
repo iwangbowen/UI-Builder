@@ -14,6 +14,8 @@ const gridrow = {
            </div>`,
     height: 'auto',
     width: 'auto',
+    childrenSortable: true,
+    childrenDroppable: true,
     beforeInit: function (node) {
         const properties = [];
         let i = 0;

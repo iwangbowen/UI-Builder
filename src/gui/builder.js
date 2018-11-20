@@ -217,6 +217,9 @@ Vvveb.Builder = {
 			if (component && component.sortable && component.droppable) {
 				enableSortableAndDroppableInIframe(cloned);
 			}
+			if (component && component.childrenSortable && component.childrenDroppable) {
+				enableSortableAndDroppableInIframe(cloned.children());
+			}
 			_this.selectedEl = cloned.click();
 			const node = cloned.get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
