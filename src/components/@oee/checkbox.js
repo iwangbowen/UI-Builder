@@ -4,7 +4,7 @@ import {
 } from '../common';
 import { checkboxid, spanid } from './ids';
 import input from './input';
-import { checkboxProperties as properties } from '../properties/input';
+import { customCheckboxProperties as properties } from '../properties/input';
 import _ from 'lodash';
 
 const checkbox = _.extend({}, input, {

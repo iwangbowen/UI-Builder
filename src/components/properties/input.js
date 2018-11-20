@@ -21,17 +21,25 @@ const commonProperties = [
     dataRowFieldProperty
 ];
 
-const radioProperties = [
+const customRadioProperties = [
     ...baseProperties,
     onclickProperty,
-    valueProperty,
+    valueProperty
+];
+
+const radioProperties = [
+    ...customRadioProperties,
     inlineProperty
 ];
 
-const checkboxProperties = [
+const customCheckboxProperties = [
     ...baseProperties,
     onclickProperty,
-    valueProperty,
+    valueProperty
+];
+
+const checkboxProperties = [
+    ...customCheckboxProperties,
     inlineProperty
 ];
 
@@ -56,5 +64,6 @@ const inputfieldProperties = [
 
 export {
     commonProperties, textinputProperties, fileinputProperties, datetimeinputProperties,
-    radioProperties, checkboxProperties, inputfieldProperties
+    radioProperties, checkboxProperties, inputfieldProperties, customRadioProperties,
+    customCheckboxProperties
 };

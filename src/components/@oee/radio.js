@@ -4,7 +4,7 @@ import {
 } from '../common';
 import { radioid } from './ids';
 import input from './input';
-import { radioProperties as properties } from '../properties/input';
+import { customRadioProperties as properties } from '../properties/input';
 import _ from 'lodash';
 
 const radio = _.extend({}, input, {
