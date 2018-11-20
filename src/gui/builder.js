@@ -16,6 +16,7 @@ import {
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
+import MoveMutation from '../models/mutation/move-mutation';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -165,14 +166,14 @@ Vvveb.Builder = {
 			}
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
-			Vvveb.Undo.addMutation({
-				type: 'move',
+
+			Vvveb.Undo.addMutation(new MoveMutation({
 				target: node,
 				oldParent,
 				newParent,
 				oldNextSibling,
 				newNextSibling
-			});
+			}));
 			event.preventDefault();
 			return false;
 		});
@@ -190,14 +191,14 @@ Vvveb.Builder = {
 			}
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
-			Vvveb.Undo.addMutation({
-				type: 'move',
+
+			Vvveb.Undo.addMutation(new MoveMutation({
 				target: node,
 				oldParent,
-				newParent,
 				oldNextSibling,
+				newParent,
 				newNextSibling
-			});
+			}));
 			event.preventDefault();
 			return false;
 		});
