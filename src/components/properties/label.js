@@ -1,8 +1,9 @@
-import { forProperty, textProperty, dataKeyMappingProperty } from './properties';
+import { forProperty, dataKeyMappingProperty, labelIconProperty, labelTextProperty } from './properties';
 
 const labelProperties = [
-    textProperty,
+    labelTextProperty,
     forProperty,
+    labelIconProperty,
     dataKeyMappingProperty
 ];
 

@@ -1,4 +1,4 @@
-import { dataComponentId, sortableClass, formGroup, rowClass, col_sm_10 } from '../common';
+import { dataComponentId, sortableClass, formGroup, rowClass, col_sm_9 } from '../common';
 import { bootstrapmanualselectinputfieldid } from './ids';
 import label from './label';
 import _ from 'lodash';
@@ -10,7 +10,7 @@ const bootstrapmanualselectinputfield = _.extend({}, manualselectinputfield, {
     image: "icons/select_input.svg",
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapmanualselectinputfieldid}">
                ${label.html}
-               <div class="${col_sm_10}">
+               <div class="${col_sm_9}">
                 ${bootstrapmanualselectinput.html}
                </div>
            </div>`

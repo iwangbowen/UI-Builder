@@ -1,7 +1,7 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput, ImageInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_2, col_sm_10
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_3, col_sm_9
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -399,6 +399,29 @@ const textProperty = {
     key: 'text',
     htmlAttr: 'text',
     inputtype: new TextInput()
+};
+
+const labelTextProperty = {
+    name: 'Text',
+    key: 'labelText',
+    inputtype: new TextInput(),
+    init(node) {
+        let text;
+        if ($(node).find('i').length) {
+            text = $(node).find('i')[0].nextSibling.nodeValue;
+        } else {
+            text = $(node).text();
+        }
+        return text;
+    },
+    onChange(node, value) {
+        if ($(node).find('i').length) {
+            $(node).find('i')[0].nextSibling.textContent = value;
+        } else {
+            $(node).text(value);
+        }
+        return node;
+    }
 };
 
 const forProperty = {
@@ -852,7 +875,7 @@ const inputFieldInlineProperty = {
     },
     onChange(node, value) {
         $(node).toggleClass('row');
-        $(node).children('label').toggleClass(col_sm_2);
+        $(node).children('label').toggleClass(col_sm_3);
         const type = $(node).find('input').attr('type');
         const isRadioOrCheckbox = type == 'radio' || type == 'checkbox';
         if (value) {
@@ -862,7 +885,7 @@ const inputFieldInlineProperty = {
             } else {
                 wrappedElements = $(node).find('input, select, textarea, small');
             }
-            wrappedElements.wrapAll(`<div class="${col_sm_10}"></div>`);
+            wrappedElements.wrapAll(`<div class="${col_sm_9}"></div>`);
         } else {
             let unwrappedElements;
             if (isRadioOrCheckbox) {
@@ -920,6 +943,29 @@ const dataImagePlacehoderProperty = {
     key: _.camelCase(dataImagePlaceholder),
     htmlAttr: dataImagePlaceholder,
     inputtype: new TextInput()
+};
+
+const labelIconProperty = {
+    name: "Icon",
+    key: "labelIcon",
+    inputtype: new ToggleInput(),
+    validValues: [true],
+    init(node) {
+        return $(node).find('i').length ?
+            this.validValues : [];
+    },
+    onChange(node, value) {
+        if (value === 'true') {
+            node.prepend(`<i class="fa fa-caret-square-o-right" aria-hidden="true" style="color: #8a6d3b; margin-right: 2px;"></i>`);
+        } else {
+            node.find('i').remove();
+        }
+        return node;
+    },
+    data: {
+        on: true,
+        off: false
+    }
 };
 
 export {
@@ -981,5 +1027,7 @@ export {
     altProperty,
     imageFormatProperty,
     imageUploadProperty,
-    dataImagePlacehoderProperty
+    dataImagePlacehoderProperty,
+    labelIconProperty,
+    labelTextProperty
 };

@@ -85,8 +85,20 @@ const dataAgGridTransposeKey = 'data-ag-grid-transpose-key';
 const rowClickedPopupPrefix = 'row_clicked_popup';
 
 const sortableClass = 'sortable';
+
+const col_sm_1 = 'col-sm-1';
 const col_sm_2 = 'col-sm-2';
+const col_sm_3 = 'col-sm-3';
+const col_sm_4 = 'col-sm-4';
+const col_sm_5 = 'col-sm-5';
+const col_sm_6 = 'col-sm-6';
+const col_sm_7 = 'col-sm-7';
+const col_sm_8 = 'col-sm-8';
+const col_sm_9 = 'col-sm-9';
 const col_sm_10 = 'col-sm-10';
+const col_sm_11 = 'col-sm-11';
+const col_sm_12 = 'col-sm-12';
+
 const rowClass = 'row';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
@@ -125,6 +137,7 @@ export {
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
     dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
-    rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey, rowClass,
-    col_sm_2, col_sm_10
+    rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey, rowClass, col_sm_1,
+    col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
+    col_sm_10, col_sm_11, col_sm_12,
 };
