@@ -4,7 +4,7 @@ import {
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL
+    generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -213,6 +213,10 @@ function getHash() {
     return window.location.hash && window.location.hash.substr(1);
 }
 
+const depScripts = [
+    '../../js/plugins/layer/layer.min.js'
+];
+
 function generateHtml(html, pageHref) {
     // @oee not only in html element attributes but in generated js code,
     // so we cannot just loop over all html elements with attributes whose value contains
@@ -220,7 +224,10 @@ function generateHtml(html, pageHref) {
     // And it's way more faster to just replace string than to deal with specified elements.
     const newHtml = html.replace(/@oee/g, '@common');
 
-    return htmlGenerator(newHtml, generateAddNewItemDiv,
+    // Add missed scripts to previously generated page to be backward compatible.
+    const missedScripts = depScripts.filter(script => !newHtml.includes(script));
+
+    return htmlGenerator(newHtml, generateAddNewItemDiv, _.curry(generatedMissedScripts)(_, missedScripts),
         generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }

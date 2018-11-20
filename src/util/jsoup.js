@@ -272,10 +272,19 @@ const devScripts = [
     '/dist/iframe.js'
 ];
 
+function appendScriptWithSrc(el, src) {
+    $(el).find('body').append(`<script src="${src}"></script>`);
+}
+
+function generatedMissedScripts(el, missedScripts) {
+    missedScripts.forEach(_.curry(appendScriptWithSrc)(el, _));
+    return el;
+}
+
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
-    devScripts.forEach((value) =>
-        $(el).find('body').append(`<script src="${value}"></script>`));
+
+    devScripts.forEach(_.curry(appendScriptWithSrc)(el, _));
     return el;
 }
 
@@ -342,5 +351,5 @@ export {
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
-    generateGridRemoveItemSpan, removeImageDataURL
+    generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts
 };
