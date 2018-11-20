@@ -9,7 +9,7 @@ const radiocustom = _.extend({}, input, {
     attributes: { "type": "radio" },
     image: "icons/radio.svg",
     html: `<div ${dataComponentId}="${radiobuttonid}" class="everyOutbox-right draggable">
-            <div style="display:inline;"><input class="radioInput" type="radio" value="" /><span ${dataComponentId}="html/span@oee">ĺé1</span></div>
+            <div style="display:inline;"><input class="radioInput" type="radio" value="" /><span ${dataComponentId}="html/span@common">ĺé1</span></div>
            </div>`,
     properties: [{
         name: 'Onclick',

@@ -3,7 +3,7 @@ import { buttonid } from './ids';
 import { buttonProperties as properties } from '../properties/button';
 
 const button = {
-    classes: ["btn", "btn-link", 'btn@oee'],
+    classes: ["btn", "btn-link", 'btn@common'],
     nodes: ['button'],
     name: "Button",
     image: "icons/button.svg",

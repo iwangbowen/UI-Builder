@@ -12,7 +12,7 @@ import {
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
     bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid
-} from '../components/@oee/ids';
+} from '../components/@common/ids';
 import {
     customTablesScope, gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';

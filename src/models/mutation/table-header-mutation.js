@@ -1,5 +1,5 @@
 import Mutation from './mutation';
-import { setColumnDefsAndRender, getColumnDefs } from '../../components/@oee/table';
+import { setColumnDefsAndRender, getColumnDefs } from '../../components/@common/table';
 
 export default class TableHeaderMutation extends Mutation {
     constructor({ target, addHeader, colDef, index }) {

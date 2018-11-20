@@ -39,7 +39,7 @@ function popupDetail(url, data, popup) {
                 data: data,
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function (response) {
-                    content.find('[data-component-id="html/labelfield@oee"]')
+                    content.find('[data-component-id="html/labelfield@common"]')
                         .each(function (_, element) {
                             const key = $(element).children('span:last-child').attr('data-key-mapping');
                             $(element).children('span:last-child').text(key ? (response.data[key] || '') : '');

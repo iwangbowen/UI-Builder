@@ -1,7 +1,7 @@
 import Vvveb from './gui/components';
 import * as _general from './components/@general/components';
-import * as _oee from './components/@oee/components';
-import * as _oee_ids from './components/@oee/ids';
+import * as _common from './components/@common/components';
+import * as _common_ids from './components/@common/ids';
 import element from './components/element';
 import border from './components/border';
 import padding from './components/padding';
@@ -11,42 +11,42 @@ import size from './components/size';
 import margin from './components/margin';
 
 Vvveb.ComponentsGroup['定制组件'] = [
-    _oee_ids.textinputfieldid,
-    _oee_ids.datetimeinputfieldid,
-    _oee_ids.fileinputfieldid,
-    _oee_ids.autoselectinputfieldid,
-    _oee_ids.manualselectinputfieldid,
-    _oee_ids.multivalueselectinputfieldid,
-    _oee_ids.textareafieldid,
-    _oee_ids.radiofieldid,
-    _oee_ids.checkboxfieldid,
-    _oee_ids.popuptextinputid,
-    _oee_ids.popupmanualselectinputid,
-    _oee_ids.customtableid
+    _common_ids.textinputfieldid,
+    _common_ids.datetimeinputfieldid,
+    _common_ids.fileinputfieldid,
+    _common_ids.autoselectinputfieldid,
+    _common_ids.manualselectinputfieldid,
+    _common_ids.multivalueselectinputfieldid,
+    _common_ids.textareafieldid,
+    _common_ids.radiofieldid,
+    _common_ids.checkboxfieldid,
+    _common_ids.popuptextinputid,
+    _common_ids.popupmanualselectinputid,
+    _common_ids.customtableid
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
-    _oee_ids.gridrowid,
-    _oee_ids.formid,
-    _oee_ids.buttonid,
-    _oee_ids.bootstrapbuttongroupid,
-    _oee_ids.bootstraptextinputfieldid,
-    _oee_ids.bootstrapdatetimeinputfieldid,
-    _oee_ids.bootstrapfileinputfieldid,
-    _oee_ids.bootstrapautoselectinputfieldid,
-    _oee_ids.bootstrapmanualselectinputfieldid,
-    _oee_ids.bootstraptextareafieldid,
-    _oee_ids.bootstrapradiofieldid,
-    _oee_ids.bootstrapcheckboxfieldid,
-    _oee_ids.commontableid,
-    _oee_ids.bootstraptableid,
-    // _oee_ids.chartid,
-    _oee_ids.bootstrapheadingid,
-    _oee_ids.bootstrapalertid,
-    _oee_ids.bootstraphrid,
-    _oee_ids.imageid,
-    _oee_ids.bootstrapprogressid,
-    _oee_ids.labelfieldid
+    _common_ids.gridrowid,
+    _common_ids.formid,
+    _common_ids.buttonid,
+    _common_ids.bootstrapbuttongroupid,
+    _common_ids.bootstraptextinputfieldid,
+    _common_ids.bootstrapdatetimeinputfieldid,
+    _common_ids.bootstrapfileinputfieldid,
+    _common_ids.bootstrapautoselectinputfieldid,
+    _common_ids.bootstrapmanualselectinputfieldid,
+    _common_ids.bootstraptextareafieldid,
+    _common_ids.bootstrapradiofieldid,
+    _common_ids.bootstrapcheckboxfieldid,
+    _common_ids.commontableid,
+    _common_ids.bootstraptableid,
+    // _common_ids.chartid,
+    _common_ids.bootstrapheadingid,
+    _common_ids.bootstrapalertid,
+    _common_ids.bootstraphrid,
+    _common_ids.imageid,
+    _common_ids.bootstrapprogressid,
+    _common_ids.labelfieldid
 ];
 // Vvveb.ComponentsGroup['通用组件'] =
 //     ['html/label@general', 'html/div@general', 'html/button@general', 'html/buttongroup@general',
@@ -103,67 +103,67 @@ Vvveb.Components.extend("_base", "_base", border);
 // Vvveb.Components.add("html/gridcolumn@general", _general.gridcolumn);
 // Vvveb.Components.add("html/gridrow@general", _general.gridrow);
 
-Vvveb.Components.add('html/labeldiv@oee', _oee.labeldiv);
-Vvveb.Components.extend('_base', _oee_ids.gridrowid, _oee.gridrow);
-Vvveb.Components.extend('_base', _oee_ids.gridcolumnid, _oee.gridcolumn);
-Vvveb.Components.extend('_base', _oee_ids.formid, _oee.form);
-Vvveb.Components.extend('_base', _oee_ids.textinputid, _oee.textinput);
-Vvveb.Components.extend('_base', _oee_ids.datetimeinputid, _oee.datetimeinput);
-Vvveb.Components.extend('_base', _oee_ids.datetimeinputfieldid, _oee.datetimeinputfield);
-Vvveb.Components.extend('_base', _oee_ids.buttonid, _oee.button);
-Vvveb.Components.extend('_base', _oee_ids.textinputfieldid, _oee.textinputfield);
-Vvveb.Components.extend('_base', _oee_ids.radioid, _oee.radio);
-Vvveb.Components.extend('_base', _oee_ids.radiofieldid, _oee.radiofield);
-Vvveb.Components.extend('_base', _oee_ids.spanid, _oee.span);
-Vvveb.Components.extend('_base', _oee_ids.checkboxid, _oee.checkbox);
-Vvveb.Components.extend('_base', _oee_ids.checkboxfieldid, _oee.checkboxfield);
-Vvveb.Components.extend('_base', _oee_ids.selectinputid, _oee.selectinput);
-Vvveb.Components.extend('_base', _oee_ids.textid, _oee.text);
-Vvveb.Components.extend('_base', _oee_ids.autoselectinputid, _oee.autoselectinput);
-Vvveb.Components.extend('_base', _oee_ids.autoselectinputfieldid, _oee.autoselectinputfield);
-Vvveb.Components.extend('_base', _oee_ids.manualselectinputid, _oee.manualselectinput);
-Vvveb.Components.extend('_base', _oee_ids.manualselectinputfieldid, _oee.manualselectinputfield);
-Vvveb.Components.extend('_base', _oee_ids.multivalueselectinputid, _oee.multivalueselectinput);
-Vvveb.Components.extend('_base', _oee_ids.multivalueselectinputfieldid, _oee.multivalueselectinputfield);
-Vvveb.Components.extend('_base', _oee_ids.tableid, _oee.table);
-Vvveb.Components.extend('_base', _oee_ids.customtableid, _oee.customtable);
-Vvveb.Components.extend('_base', _oee_ids.commontableid, _oee.commontable);
-Vvveb.Components.extend('_base', _oee_ids.textareaid, _oee.textareainput);
-Vvveb.Components.extend('_base', _oee_ids.textareafieldid, _oee.textareainputfield);
-Vvveb.Components.extend('_base', _oee_ids.fileinputid, _oee.fileinput);
-Vvveb.Components.extend('_base', _oee_ids.fileinputfieldid, _oee.fileinputfield);
-Vvveb.Components.extend('_base', _oee_ids.popuptextinputid, _oee.popuptextinput);
-Vvveb.Components.extend('_base', _oee_ids.popupmanualselectinputid, _oee.popupmanualselectinput);
-Vvveb.Components.extend('_base', _oee_ids.formlabelid, _oee.formlabel);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptextinputid, _oee.bootstraptextinput);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptextinputfieldid, _oee.bootstraptextinputfield);
-Vvveb.Components.extend("_base", _oee_ids.labelid, _oee.label);
-Vvveb.Components.extend("_base", _oee_ids.imageid, _oee.image);
-Vvveb.Components.extend("_base", _oee_ids.labelfieldid, _oee.labelfield);
-Vvveb.Components.extend("_base", _oee_ids.chartid, _oee.chart);
+Vvveb.Components.add('html/labeldiv@common', _common.labeldiv);
+Vvveb.Components.extend('_base', _common_ids.gridrowid, _common.gridrow);
+Vvveb.Components.extend('_base', _common_ids.gridcolumnid, _common.gridcolumn);
+Vvveb.Components.extend('_base', _common_ids.formid, _common.form);
+Vvveb.Components.extend('_base', _common_ids.textinputid, _common.textinput);
+Vvveb.Components.extend('_base', _common_ids.datetimeinputid, _common.datetimeinput);
+Vvveb.Components.extend('_base', _common_ids.datetimeinputfieldid, _common.datetimeinputfield);
+Vvveb.Components.extend('_base', _common_ids.buttonid, _common.button);
+Vvveb.Components.extend('_base', _common_ids.textinputfieldid, _common.textinputfield);
+Vvveb.Components.extend('_base', _common_ids.radioid, _common.radio);
+Vvveb.Components.extend('_base', _common_ids.radiofieldid, _common.radiofield);
+Vvveb.Components.extend('_base', _common_ids.spanid, _common.span);
+Vvveb.Components.extend('_base', _common_ids.checkboxid, _common.checkbox);
+Vvveb.Components.extend('_base', _common_ids.checkboxfieldid, _common.checkboxfield);
+Vvveb.Components.extend('_base', _common_ids.selectinputid, _common.selectinput);
+Vvveb.Components.extend('_base', _common_ids.textid, _common.text);
+Vvveb.Components.extend('_base', _common_ids.autoselectinputid, _common.autoselectinput);
+Vvveb.Components.extend('_base', _common_ids.autoselectinputfieldid, _common.autoselectinputfield);
+Vvveb.Components.extend('_base', _common_ids.manualselectinputid, _common.manualselectinput);
+Vvveb.Components.extend('_base', _common_ids.manualselectinputfieldid, _common.manualselectinputfield);
+Vvveb.Components.extend('_base', _common_ids.multivalueselectinputid, _common.multivalueselectinput);
+Vvveb.Components.extend('_base', _common_ids.multivalueselectinputfieldid, _common.multivalueselectinputfield);
+Vvveb.Components.extend('_base', _common_ids.tableid, _common.table);
+Vvveb.Components.extend('_base', _common_ids.customtableid, _common.customtable);
+Vvveb.Components.extend('_base', _common_ids.commontableid, _common.commontable);
+Vvveb.Components.extend('_base', _common_ids.textareaid, _common.textareainput);
+Vvveb.Components.extend('_base', _common_ids.textareafieldid, _common.textareainputfield);
+Vvveb.Components.extend('_base', _common_ids.fileinputid, _common.fileinput);
+Vvveb.Components.extend('_base', _common_ids.fileinputfieldid, _common.fileinputfield);
+Vvveb.Components.extend('_base', _common_ids.popuptextinputid, _common.popuptextinput);
+Vvveb.Components.extend('_base', _common_ids.popupmanualselectinputid, _common.popupmanualselectinput);
+Vvveb.Components.extend('_base', _common_ids.formlabelid, _common.formlabel);
+Vvveb.Components.extend("_base", _common_ids.bootstraptextinputid, _common.bootstraptextinput);
+Vvveb.Components.extend("_base", _common_ids.bootstraptextinputfieldid, _common.bootstraptextinputfield);
+Vvveb.Components.extend("_base", _common_ids.labelid, _common.label);
+Vvveb.Components.extend("_base", _common_ids.imageid, _common.image);
+Vvveb.Components.extend("_base", _common_ids.labelfieldid, _common.labelfield);
+Vvveb.Components.extend("_base", _common_ids.chartid, _common.chart);
 
-Vvveb.Components.extend("_base", _oee_ids.bootstraptextareaid, _oee.bootstraptextareainput);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptextareafieldid, _oee.bootstraptextareainputfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapfileinputid, _oee.bootstrapfileinput);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapfileinputfieldid, _oee.bootstrapfileinputfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapautoselectinputid, _oee.bootstrapautoselectinput);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapautoselectinputfieldid, _oee.bootstrapautoselectinputfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapmanualselectinputid, _oee.bootstrapmanualselectinput);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapmanualselectinputfieldid, _oee.bootstrapmanualselectinputfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapradioid, _oee.bootstrapradio);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapradiofieldid, _oee.bootstrapradiofield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapcheckboxid, _oee.bootstrapcheckbox);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapcheckboxfieldid, _oee.bootstrapcheckboxfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapdatetimeinputid, _oee.bootstrapdatetimeinput);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapdatetimeinputfieldid, _oee.bootstrapdatetimeinputfield);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapalertid, _oee.bootstrapalert);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapbuttongroupid, _oee.bootstrapbuttongroup);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapheadingid, _oee.bootstrapheading);
-Vvveb.Components.extend("_base", _oee_ids.bootstraphrid, _oee.bootstraphr);
-Vvveb.Components.extend("_base", _oee_ids.bootstrapprogressid, _oee.bootstrapprogress);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptableid, _oee.bootstraptable);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptableheadercellid, _oee.bootstraptableheadercell);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptableheadid, _oee.bootstraptablehead);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptablerowid, _oee.bootstraptablerow);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptablecellid, _oee.bootstraptablecell);
-Vvveb.Components.extend("_base", _oee_ids.bootstraptablebodyid, _oee.bootstraptablebody);
+Vvveb.Components.extend("_base", _common_ids.bootstraptextareaid, _common.bootstraptextareainput);
+Vvveb.Components.extend("_base", _common_ids.bootstraptextareafieldid, _common.bootstraptextareainputfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapfileinputid, _common.bootstrapfileinput);
+Vvveb.Components.extend("_base", _common_ids.bootstrapfileinputfieldid, _common.bootstrapfileinputfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapautoselectinputid, _common.bootstrapautoselectinput);
+Vvveb.Components.extend("_base", _common_ids.bootstrapautoselectinputfieldid, _common.bootstrapautoselectinputfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapmanualselectinputid, _common.bootstrapmanualselectinput);
+Vvveb.Components.extend("_base", _common_ids.bootstrapmanualselectinputfieldid, _common.bootstrapmanualselectinputfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapradioid, _common.bootstrapradio);
+Vvveb.Components.extend("_base", _common_ids.bootstrapradiofieldid, _common.bootstrapradiofield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapcheckboxid, _common.bootstrapcheckbox);
+Vvveb.Components.extend("_base", _common_ids.bootstrapcheckboxfieldid, _common.bootstrapcheckboxfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapdatetimeinputid, _common.bootstrapdatetimeinput);
+Vvveb.Components.extend("_base", _common_ids.bootstrapdatetimeinputfieldid, _common.bootstrapdatetimeinputfield);
+Vvveb.Components.extend("_base", _common_ids.bootstrapalertid, _common.bootstrapalert);
+Vvveb.Components.extend("_base", _common_ids.bootstrapbuttongroupid, _common.bootstrapbuttongroup);
+Vvveb.Components.extend("_base", _common_ids.bootstrapheadingid, _common.bootstrapheading);
+Vvveb.Components.extend("_base", _common_ids.bootstraphrid, _common.bootstraphr);
+Vvveb.Components.extend("_base", _common_ids.bootstrapprogressid, _common.bootstrapprogress);
+Vvveb.Components.extend("_base", _common_ids.bootstraptableid, _common.bootstraptable);
+Vvveb.Components.extend("_base", _common_ids.bootstraptableheadercellid, _common.bootstraptableheadercell);
+Vvveb.Components.extend("_base", _common_ids.bootstraptableheadid, _common.bootstraptablehead);
+Vvveb.Components.extend("_base", _common_ids.bootstraptablerowid, _common.bootstraptablerow);
+Vvveb.Components.extend("_base", _common_ids.bootstraptablecellid, _common.bootstraptablecell);
+Vvveb.Components.extend("_base", _common_ids.bootstraptablebodyid, _common.bootstraptablebody);

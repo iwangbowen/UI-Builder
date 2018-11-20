@@ -1,5 +1,5 @@
 import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl, rowClickedPopupPrefix } from '../components/common';
-import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@oee/table';
+import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@common/table';
 import { gridOptions } from '../common';
 
 function template(node) {

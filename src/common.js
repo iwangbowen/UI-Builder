@@ -1,5 +1,5 @@
 import { dataComponentId } from "./components/common";
-import { gridcolumnid } from "./components/@oee/ids";
+import { gridcolumnid } from "./components/@common/ids";
 
 const gridWidgetSelector = 'div.gridster > div';
 const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;

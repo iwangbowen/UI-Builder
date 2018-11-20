@@ -29,7 +29,7 @@ const content = `
                     </div>
                     <div style="clear:both;"></div>
                     <div class="bottom-searchButton dropzone">
-                        <button type="button" class="draggable" data-button-id data-component-id="html/button@oee">
+                        <button type="button" class="draggable" data-button-id data-component-id="html/button@common">
                             <span class="glyphicon glyphicon-search">Search</span>
                         </button>
                     </div>

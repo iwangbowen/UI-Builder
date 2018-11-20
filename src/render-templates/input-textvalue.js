@@ -1,6 +1,6 @@
 const inputtextvalue = `
 	<div class="row">
-		{% if (typeof id !== 'undefined' && id == 'tableheader@oee') { %}
+		{% if (typeof id !== 'undefined' && id == 'tableheader@common') { %}
 			<div class="col-6 mb-1">
 				<label>Name</label>
 				<input name="headerName" type="text" value="{%=headerName%}" class="form-control"/>

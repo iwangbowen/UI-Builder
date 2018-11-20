@@ -254,7 +254,7 @@ const table = {
                 optionNode: this,
                 inputtype: new TextValueInput(),
                 data: {
-                    id: 'tableheader@oee',
+                    id: 'tableheader@common',
                     headerName: cur.headerName,
                     field: cur.field,
                     width: cur.width,

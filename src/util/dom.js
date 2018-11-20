@@ -214,7 +214,13 @@ function getHash() {
 }
 
 function generateHtml(html, pageHref) {
-    return htmlGenerator(html, generateAddNewItemDiv,
+    // @oee not only in html element attributes but in generated js code,
+    // so we cannot just loop over all html elements with attributes whose value contains
+    // @oee but to replace all occurrences of @oee with @common using simple String method.
+    // And it's way more faster to just replace string than to deal with specified elements.
+    const newHtml = html.replace(/@oee/g, '@common');
+
+    return htmlGenerator(newHtml, generateAddNewItemDiv,
         generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
         _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }

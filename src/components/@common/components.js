@@ -68,6 +68,7 @@ import customtable from './customtable';
 import popuptextinput from './popuptextinput';
 import popupmanualselectinput from './popupmanualselectinput';
 import chart from './chart';
+import tabs from './tabs';
 
 import bootstraptextinputfield from './bootstraptextinputfield';
 import bootstraptextinput from './bootstraptextinput';
@@ -112,5 +113,5 @@ export {
     bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield, bootstrapalert,
     bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress, bootstraptable,
     bootstraptableheadercell, bootstraptablehead, bootstraptablerow, bootstraptablecell,
-    bootstraptablebody, chart
+    bootstraptablebody, chart, tabs
 };
