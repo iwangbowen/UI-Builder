@@ -30,6 +30,11 @@ const isInBuilder = true;
 
 const imagePlaceholder = '../../../../libs/builder/icons/image.svg';
 
+const detailPopup = `
+    <div id="detail" class="popup-window" style="display: none;">
+        <div class="content" style="width: 100%; height: 100%;"></div>
+    </div>`;
+
 function getDetailPopupSelector(popup) {
     return `#${popup.attr('id')} div.content`
 }
@@ -77,5 +82,6 @@ export {
     dummyData,
     gridOptions,
     imagePlaceholder,
-    getDetailPopupSelector
+    getDetailPopupSelector,
+    detailPopup
 };

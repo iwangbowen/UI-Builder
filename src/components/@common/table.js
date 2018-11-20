@@ -9,7 +9,7 @@ import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
 import { dataRowClickUrlProperty, dataEnableRowClickProperty } from '../properties/properties';
-import { dummyData, gridOptions } from '../../common';
+import { dummyData, gridOptions, detailPopup } from '../../common';
 import { enableSortableAndDroppableInIframe } from '../../util/drag-n-drop';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
@@ -49,14 +49,12 @@ const themeOptions = [
         text: "Material"
     }];
 
-function cloneRowClickedPopup(tableKey) {
-    const cloned = Vvveb.Builder.frameBody
-        .find('div#detail.popup-window')
-        .clone()
+function createRowClickedPopup(tableKey) {
+    const popup = $(detailPopup)
         .attr('id', `${rowClickedPopupPrefix}${tableKey}`)
         .insertBefore(Vvveb.Builder.frameBody.find('script').first());
-    enableSortableAndDroppableInIframe(cloned.find('div.content'));
-    return cloned;
+    enableSortableAndDroppableInIframe(popup.find('div.content'));
+    return popup;
 }
 
 function getRowClickedPopup(tableKey) {
@@ -215,7 +213,7 @@ const table = {
             let popup;
             const tableKey = $(node).attr(dataTableId);
             if (!rowClickedPopupExists(tableKey)) {
-                popup = cloneRowClickedPopup(tableKey);
+                popup = createRowClickedPopup(tableKey);
             } else {
                 popup = getRowClickedPopup(tableKey);
             }
