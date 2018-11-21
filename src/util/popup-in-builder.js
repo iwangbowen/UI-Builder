@@ -1,5 +1,5 @@
 import { hideToolBoxes } from './iframe-drag-n-drop';
-import { droppableSelector, getDetailPopupSelector } from '../common';
+import { droppableSelector, getDetailPopupSelector, rowColumnSelector, formSelector } from '../common';
 
 function disableDroppable(selector) {
     window.parent.disableDroppable(selector);
@@ -7,6 +7,11 @@ function disableDroppable(selector) {
 
 function enableDroppable(selector) {
     window.parent.enableDroppable(selector);
+}
+
+function enableDroppableInPopup(popup) {
+    enableDroppable(getDetailPopupSelector(popup));
+    enableDroppable(popup.find(`${rowColumnSelector}, ${formSelector}`));
 }
 
 function popupAdd() {
@@ -31,7 +36,7 @@ const detailPopups = [];
 function popupDetail(url, data, popup) {
     disableDroppable(droppableSelector);
     detailPopups.push(popup);
-    enableDroppable(getDetailPopupSelector(popup));
+    enableDroppableInPopup(popup);
     // Compatible with previous only one detail popup window
     var content = popup && popup.length ? popup : $('div.popup-window#detail');
     hideToolBoxes();
@@ -44,7 +49,7 @@ function popupDetail(url, data, popup) {
         end: function () {
             detailPopups.pop();
             if (detailPopups.length) {
-                enableDroppable(getDetailPopupSelector(detailPopups[detailPopups.length - 1]));
+                enableDroppableInPopup(detailPopups[detailPopups.length - 1]);
             } else {
                 enableDroppable(droppableSelector);
             }

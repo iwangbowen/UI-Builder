@@ -3,13 +3,15 @@ import { gridcolumnid } from "./components/@common/ids";
 
 const gridWidgetSelector = 'div.gridster > div';
 const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;
+const formSelector = 'form';
 const gridFormSelector = `${gridWidgetSelector} form`;
 const gridRowColumnSelector = `${gridWidgetSelector} ${rowColumnSelector}`;
 const popupSelector = 'div.popup-window div.content, div.popup-window form.popup-form';
 const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, div.popup-window form.popup-form ${rowColumnSelector}`;
+const popupFormSelector = 'div.popup-window div.content form';
 const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
-const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}`;
+const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
 const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}`;
 const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}`;
 
@@ -78,6 +80,7 @@ export {
     highlightNameSelector,
     wysiwygEditorSelector,
     auxiliaryElementsSelector,
+    formSelector,
     isInBuilder,
     dummyData,
     gridOptions,
