@@ -4,7 +4,7 @@ import {
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts
+    generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -22,8 +22,8 @@ import {
 } from '../components/common';
 import { addDatetime } from './common';
 import 'core-js/es7/array';
-import { enableSortableAndDroppable, disableDroppable, enableDroppable } from './drag-n-drop';
-import { auxiliaryElementsSelector } from '../common';
+import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
+import { auxiliaryElementsSelector, detailPopup } from '../common';
 import { sendMessage } from '../message';
 
 function getStyle(el, styleProp) {
@@ -191,7 +191,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     let { doctype, html } = destructDoc(doc);
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateGridScript, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript,
+        generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
         generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
@@ -528,6 +528,22 @@ function setGlobalVariables() {
     window.enableDroppable = enableDroppable;
 }
 
+function getClickedPopup(selector) {
+    return Vvveb.Builder.frameBody.find(selector);
+}
+
+function clickedPopupExists(selector) {
+    return !!getClickedPopup(selector).length;
+}
+
+function createClickedPopup(id) {
+    const popup = $(detailPopup)
+        .attr('id', id)
+        .insertBefore(Vvveb.Builder.frameBody.find('script').first());
+    enableSortableAndDroppableInIframe(popup.find('div.content'));
+    return popup;
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
@@ -535,5 +551,6 @@ export {
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
-    getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml
+    getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
+    createClickedPopup
 };

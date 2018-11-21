@@ -59,6 +59,8 @@ function popupDetail(url, data, popup) {
                 error: function () {
                 }
             });
+        } else {
+            openPopup();
         }
     }
 }

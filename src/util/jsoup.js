@@ -11,6 +11,7 @@ import gridTemplate from '../script-templates/grid';
 import multivalueselectTemplate from '../script-templates/multivalueselect';
 import functionTemplate from '../script-templates/function';
 import tooltipTemplate from '../script-templates/tooltip';
+import buttonClickPopupTemplate from '../script-templates/button-click-popup';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import _ from 'lodash';
@@ -184,6 +185,10 @@ function generateMultivalueSelectScript(el) {
     return appendScript(el, multivalueselectTemplate());
 }
 
+function generateButtonClickPopupScript(el) {
+    return appendScript(el, buttonClickPopupTemplate());
+}
+
 function generateTooltipScript(el) {
     if ($(el).find(`[${dataScriptType}=${tooltipScriptType}]`).length) {
         return el;
@@ -351,5 +356,5 @@ export {
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
-    generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts
+    generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript
 };

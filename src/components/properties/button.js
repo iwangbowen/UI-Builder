@@ -1,7 +1,8 @@
 import {
     buttonSizeProperty, targetProperty, onclickProperty, dataUrlProperty,
     buttonDisabledProperty, buttonTypeProperty, linkToProperty, textProperty,
-    buttonBlockProperty, buttonGroupSizeProperty, buttonGroupAlignmentProperty
+    buttonBlockProperty, buttonGroupSizeProperty, buttonGroupAlignmentProperty,
+    enableButtonClickPopupProperty
 } from './properties';
 
 const buttonProperties = [
@@ -12,6 +13,7 @@ const buttonProperties = [
     targetProperty,
     onclickProperty,
     dataUrlProperty,
+    enableButtonClickPopupProperty,
     buttonDisabledProperty,
     buttonBlockProperty
 ];

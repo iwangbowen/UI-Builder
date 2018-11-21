@@ -1,7 +1,9 @@
 import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput, ImageInput } from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
-    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent, dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_3, col_sm_9
+    btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent,
+    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_3, col_sm_9,
+    dataEnableButtonClickPopup, dataButtonKey, buttonClickedPopupPrefix
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -9,6 +11,8 @@ import {
     setDataConfigInfo, setOnclickAttr
 } from '../../util/dataAttr';
 import { requiredSpanSelector, inputBlockClassSelector } from "../../util/selectors";
+import { getRandomString } from "../../util/common";
+import { clickedPopupExists, createClickedPopup } from "../../util/dom";
 import _ from 'lodash';
 
 const dataRowFieldProperty = {
@@ -55,6 +59,33 @@ const dataEnableRowClickProperty = {
     },
     onChange(node, value) {
         $(node).attr(dataEnableRowClick, value);
+        return node;
+    },
+    data: {
+        on: 'true',
+        off: 'false'
+    }
+};
+
+const enableButtonClickPopupProperty = {
+    name: 'Enable Popup',
+    key: _.camelCase(dataEnableButtonClickPopup),
+    htmlAttr: dataEnableButtonClickPopup,
+    inputtype: new ToggleInput(),
+    validValues: ['true'],
+    init(node) {
+        if (!$(node).attr(dataButtonKey)) {
+            $(node).attr(dataButtonKey, `_${getRandomString(2)}`);
+        }
+        return $(node).attr(dataEnableButtonClickPopup) == 'true' ?
+            this.validValues : [];
+    },
+    onChange(node, value) {
+        const popupId = `${buttonClickedPopupPrefix}${$(node).attr(dataButtonKey)}`;
+        if (!clickedPopupExists(`#${popupId}`)) {
+            createClickedPopup(popupId);
+        }
+        $(node).attr(dataEnableButtonClickPopup, value);
         return node;
     },
     data: {
@@ -1029,5 +1060,6 @@ export {
     imageUploadProperty,
     dataImagePlacehoderProperty,
     labelIconProperty,
-    labelTextProperty
+    labelTextProperty,
+    enableButtonClickPopupProperty
 };
