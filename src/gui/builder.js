@@ -205,29 +205,31 @@ Vvveb.Builder = {
 
 		$("#clone-box").on("click", function (event) {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
-			const component = Vvveb.Components.matchNode(original.get(0));
-			const cloned = original.clone();
-			if (!component.sortable && !cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
-				const { left, top } = cloned.offset();
-				cloned.offset({
-					left: left + 10,
-					top: top + 10
-				});
+			if (original.length) {
+				const component = Vvveb.Components.matchNode(original.get(0));
+				const cloned = original.clone();
+				if (!component.sortable && !cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
+					const { left, top } = cloned.offset();
+					cloned.offset({
+						left: left + 10,
+						top: top + 10
+					});
+				}
+				original.after(cloned);
+				if (component && component.sortable && component.droppable) {
+					enableSortableAndDroppableInIframe(cloned);
+				}
+				if (component && component.childrenSortable && component.childrenDroppable) {
+					enableSortableAndDroppableInIframe(cloned.children());
+				}
+				_this.selectedEl = cloned.click();
+				const node = cloned.get(0);
+				Vvveb.Undo.addMutation(new ChildListMutation({
+					target: node.parentNode,
+					addedNodes: [node],
+					nextSibling: node.nextSibling
+				}));
 			}
-			original.after(cloned);
-			if (component && component.sortable && component.droppable) {
-				enableSortableAndDroppableInIframe(cloned);
-			}
-			if (component && component.childrenSortable && component.childrenDroppable) {
-				enableSortableAndDroppableInIframe(cloned.children());
-			}
-			_this.selectedEl = cloned.click();
-			const node = cloned.get(0);
-			Vvveb.Undo.addMutation(new ChildListMutation({
-				target: node.parentNode,
-				addedNodes: [node],
-				nextSibling: node.nextSibling
-			}));
 			event.preventDefault();
 			return false;
 		});
