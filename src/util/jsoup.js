@@ -61,13 +61,6 @@ const unusedTags = [
     },
     {
         name: 'link',
-        init(el) {
-            const getTableThemes = flow([
-                curry(flatMap)(curry.placeholder, table => $(table).attr('class').split(' ')),
-                uniq,
-                curry(filter)(curry.placeholder, v => v.startsWith('ag-theme-'))]);
-            return getTableThemes([...$(el).find(tableSelector)]);
-        },
         // this refers to init function return value
         filter(tag) {
             return tag.getAttribute('rel') == 'stylesheet'

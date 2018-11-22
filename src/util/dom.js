@@ -184,7 +184,7 @@ function getHtml(doc) {
 function destructDoc(doc) {
     return {
         doctype: getDoctype(doc),
-        html: `<html>${doc.documentElement.innerHTML}</html>`
+        html: doc.documentElement.outerHTML
     }
 }
 
@@ -251,7 +251,9 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 }
 
 function autoSave() {
+    console.time('timeTaken to process html');
     const html = getBeautifiedHtml(window.FrameDocument);
+    console.timeEnd('timeTaken to process html');
     if (isInIframe) {
         sendMessage(html);
     } else {
@@ -262,8 +264,8 @@ function autoSave() {
 let timer;
 
 function loadCallback() {
-    // Save automatically every 2 seconds
-    timer = setInterval(autoSave, 2000);
+    // Save automatically every 3 seconds
+    timer = setInterval(autoSave, 3000);
 }
 
 function clearTimer() {
