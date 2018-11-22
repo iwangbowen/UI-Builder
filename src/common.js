@@ -6,14 +6,16 @@ const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;
 const formSelector = 'form';
 const gridFormSelector = `${gridWidgetSelector} form`;
 const gridRowColumnSelector = `${gridWidgetSelector} ${rowColumnSelector}`;
-const popupSelector = 'div.popup-window div.content, div.popup-window form.popup-form';
-const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, div.popup-window form.popup-form ${rowColumnSelector}`;
+const addOrEditPopupFormSelector = 'div.popup-window form.popup-form';
+const popupSelector = `div.popup-window div.content, ${addOrEditPopupFormSelector}`;
+const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, ${addOrEditPopupFormSelector} ${rowColumnSelector}`;
 const popupFormSelector = 'div.popup-window div.content form';
 const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
-const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}`;
-const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}`;
+const pdsDroppableSelector = '.allButton.dropzone';
+const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}`;
+const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';
@@ -69,6 +71,7 @@ export {
     gridSortableItemsSelector,
     droppableSelector,
     rowColumnSelector,
+    addOrEditPopupFormSelector,
     formItemsScope,
     gridColumnItemsScope,
     formGridColumnItemsScope,

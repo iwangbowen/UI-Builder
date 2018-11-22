@@ -10,9 +10,8 @@ import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
-	initIframeFormItemsDrop, initIframeTableDrop,
-	enableSortableAndDroppableInIframe, enableDroppableInIframe, disableSortable,
-	removeSortableAndGridsterDisability
+	initIframeTableDrop, enableSortableAndDroppableInIframe, enableDroppableInIframe,
+	disableSortable, removeSortableAndGridsterDisability
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
@@ -50,7 +49,6 @@ Vvveb.Builder = {
 			enableDroppableInIframe(gridWidgetSelector);
 			enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
 			initIframeResizeVetically();
-			initIframeFormItemsDrop();
 			initIframeTableDrop();
 			initIframeSortable();
 			return this._initHightlight();

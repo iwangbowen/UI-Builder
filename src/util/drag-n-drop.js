@@ -233,17 +233,6 @@ function initIframeTableDrop() {
         });
 }
 
-function initIframeFormItemsDrop() {
-    Vvveb.Builder.frameBody
-        .find('.allButton.dropzone')
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            scope: gridDroppablesScope,
-            drop
-        });
-}
-
 function initRowColumnDrop() {
     Vvveb.Builder.frameBody
         .find(rowColumnSelector)
@@ -456,7 +445,6 @@ export {
     initTopPanelDrag,
     initComponentDrag,
     initIframeTableDrop,
-    initIframeFormItemsDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,
