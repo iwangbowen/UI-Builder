@@ -12,10 +12,10 @@ import {
 import { beBackwardCompatible } from './util/common';
 import { isInIframe } from './constants';
 import { initMessageListener } from './message';
+import { initTopPanelDrag } from './util/drag-n-drop';
 
 $(document).ready(function () {
     beBackwardCompatible();
-    initPanelToggle();
     setGlobalVariables();
     if (isInIframe) {
         initMessageListener();
@@ -26,4 +26,6 @@ $(document).ready(function () {
     }
     Vvveb.FileManager.init();
     initBuilderPage();
+    initPanelToggle();
+    initTopPanelDrag();
 });

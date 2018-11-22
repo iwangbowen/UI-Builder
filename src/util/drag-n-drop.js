@@ -113,7 +113,8 @@ function initTopPanelDrag() {
     $('#top-panel').draggable({
         iframeFix: true,
         axis: 'x',
-        cursor: 'e-resize'
+        cursor: 'e-resize',
+        containment: "parent"
     });
 }
 
