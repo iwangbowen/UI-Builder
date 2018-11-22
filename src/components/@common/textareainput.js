@@ -2,9 +2,9 @@ import { dataComponentId, inputBlockClass } from '../common';
 import { textareaid } from './ids';
 import input from './input';
 import { commonProperties as properties } from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const textareainput = _.extend({}, input, {
+const textareainput = extend({}, input, {
     nodes: [`textarea`],
     name: "Textarea",
     image: "icons/text_area.svg",

@@ -1,11 +1,11 @@
 import { dataComponentId, sortableClass, formGroup, formText, textMuted, deletableComponent, rowClass, col_sm_9 } from '../common';
 import { bootstraptextinputfieldid } from './ids';
 import bootstraptextinput from './bootstraptextinput';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import textinputfield from './textinputfield';
 import label from './label';
 
-const bootstraptextinputfield = _.extend({}, textinputfield, {
+const bootstraptextinputfield = extend({}, textinputfield, {
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstraptextinputfieldid}">
             ${label.html}
             <div class="${col_sm_9}">

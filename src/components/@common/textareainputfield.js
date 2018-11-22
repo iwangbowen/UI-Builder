@@ -1,11 +1,11 @@
 import { dataComponentId, formItemClass, sortableClass } from '../common';
 import { textareafieldid } from './ids';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 import formlabel from './formlabel';
 import textareainput from './textareainput';
 
-const textareainputfield = _.extend({}, inputfield, {
+const textareainputfield = extend({}, inputfield, {
     nodes: [`textarea`],
     name: "Textarea Field",
     image: "icons/text_area.svg",

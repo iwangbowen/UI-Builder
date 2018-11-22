@@ -2,10 +2,10 @@ import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { autoselectinputfieldid } from './ids';
 import formlabel from './formlabel';
 import autoselectinput from './autoselectinput';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 
-const autoselectinputfield = _.extend({}, inputfield, {
+const autoselectinputfield = extend({}, inputfield, {
     name: "Auto Select Field",
     image: 'icons/select_input.svg',
     html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${autoselectinputfieldid}">

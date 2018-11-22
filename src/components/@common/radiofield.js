@@ -1,11 +1,11 @@
 import { dataComponentId, formItemClass, sortableClass } from '../common';
 import { radiofieldid } from './ids';
-import _ from 'lodash';
 import inputfield from './inputfield';
 import formlabel from './formlabel';
 import radio from './radio';
+import extend from 'lodash/extend';
 
-const radiofield = _.extend({}, inputfield, {
+const radiofield = extend({}, inputfield, {
     name: "Radio Field",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",

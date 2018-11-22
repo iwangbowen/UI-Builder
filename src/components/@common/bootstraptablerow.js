@@ -1,6 +1,6 @@
 import { configurableComponent } from '../common';
 import { tableRowProperties as properties } from '../properties/table';
-import _ from 'lodash';
+import template from 'lodash/template';
 
 const bootstraptablerow = {
     nodes: ["tr"],
@@ -9,7 +9,7 @@ const bootstraptablerow = {
     properties
 };
 
-const compiledTr = _.template(bootstraptablerow.html);
+const compiledTr = template(bootstraptablerow.html);
 
 export {
     bootstraptablerow,

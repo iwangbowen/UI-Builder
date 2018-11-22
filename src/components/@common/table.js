@@ -4,7 +4,10 @@ import {
     dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey
 } from '../common';
 import Vvveb from '../../gui/components';
-import _ from 'lodash';
+import flow from 'lodash/flow';
+import curry from 'lodash/curry';
+import partial from 'lodash/partial';
+import camelCase from 'lodash/camelCase';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
@@ -287,8 +290,16 @@ const table = {
                 on: true,
                 off: false
             },
-            init: _.flow([_.curry(getCheckboxProperty)(_, checkboxSelection), transformToToggleValue]),
-            onChange: _.partial(checkboxToggled, _, _, checkboxSelection)
+            // The _.curry.placeholder value,
+            // which defaults to _ in monolithic builds,
+            // may be used as a placeholder for provided arguments.
+            // https://lodash.com/docs/4.17.11#curry
+            init: flow([curry(getCheckboxProperty)(curry.placeholder, checkboxSelection), transformToToggleValue]),
+            // The _.partial.placeholder value,
+            // which defaults to _ in monolithic builds,
+            // may be used as a placeholder for partially applied arguments.
+            // https://lodash.com/docs/4.17.11#partial
+            onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, checkboxSelection)
         },
         {
             name: "Header Checkbox Selection",
@@ -298,8 +309,8 @@ const table = {
                 on: true,
                 off: false
             },
-            init: _.flow([_.curry(getCheckboxProperty)(_, headerCheckboxSelection), transformToToggleValue]),
-            onChange: _.partial(checkboxToggled, _, _, headerCheckboxSelection)
+            init: flow([curry(getCheckboxProperty)(curry.placeholder, headerCheckboxSelection), transformToToggleValue]),
+            onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, headerCheckboxSelection)
         },
         {
             name: 'Pagination',
@@ -309,8 +320,8 @@ const table = {
                 on: true,
                 off: false
             },
-            init: _.flow([_.curry(getCheckboxProperty)(_, pagination), transformToToggleValue]),
-            onChange: _.partial(checkboxToggled, _, _, pagination)
+            init: flow([curry(getCheckboxProperty)(curry.placeholder, pagination), transformToToggleValue]),
+            onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, pagination)
         },
         {
             name: 'Auto Page Size',
@@ -320,8 +331,8 @@ const table = {
                 on: true,
                 off: false
             },
-            init: _.flow([_.curry(getCheckboxProperty)(_, paginationAutoPageSize), transformToToggleValue]),
-            onChange: _.partial(checkboxToggled, _, _, paginationAutoPageSize)
+            init: flow([curry(getCheckboxProperty)(curry.placeholder, paginationAutoPageSize), transformToToggleValue]),
+            onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, paginationAutoPageSize)
         },
         {
             name: 'Page Size',
@@ -382,7 +393,7 @@ const table = {
         },
         {
             name: 'Transpose Key',
-            key: _.camelCase(dataAgGridTransposeKey),
+            key: camelCase(dataAgGridTransposeKey),
             htmlAttr: dataAgGridTransposeKey,
             inputtype: new SelectInput(),
             // Call beforeInit to initilize select input

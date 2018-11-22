@@ -1,9 +1,9 @@
 import { dataComponentId } from '../common';
 import { spanid, labelfieldid } from './ids';
 import basiccomponent from './basiccomponent';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const labelfield = _.extend({}, basiccomponent, {
+const labelfield = extend({}, basiccomponent, {
     name: 'Label Field',
     image: 'icons/label.svg',
     html: `<div ${dataComponentId}="${labelfieldid}">

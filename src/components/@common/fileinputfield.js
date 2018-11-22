@@ -2,10 +2,10 @@ import { dataComponentId, sortableClass, formItemClass } from '../common';
 import fileinput from './fileinput';
 import formlabel from './formlabel';
 import { fileinputfieldid } from './ids';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 
-const fileinputfield = _.extend({}, inputfield, {
+const fileinputfield = extend({}, inputfield, {
     name: 'File Input Field',
     attributes: { 'type': 'file' },
     image: 'icons/upload.svg',

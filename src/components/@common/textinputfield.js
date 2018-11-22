@@ -3,10 +3,10 @@ import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { textinputfieldid } from './ids';
 import textinput from './textinput';
 import formlabel from './formlabel';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 
-const textinputfield = _.extend({}, inputfield, {
+const textinputfield = extend({}, inputfield, {
     name: "Text Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",

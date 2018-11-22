@@ -5,9 +5,9 @@ import {
 import { checkboxid, spanid } from './ids';
 import input from './input';
 import { customCheckboxProperties as properties } from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const checkbox = _.extend({}, input, {
+const checkbox = extend({}, input, {
     name: "Checkbox",
     attributes: { "type": "checkbox" },
     image: "icons/checkbox.svg",

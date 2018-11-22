@@ -1,8 +1,8 @@
 import { inputfieldProperties as properties } from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import basiccomponent from './basiccomponent';
 
-const inputfield = _.extend({}, basiccomponent, {
+const inputfield = extend({}, basiccomponent, {
     properties
 });
 

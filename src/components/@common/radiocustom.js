@@ -2,9 +2,9 @@ import { TextInput, ToggleInput } from '../../inputs/inputs';
 import { dataComponentId } from '../common';
 import { radiobuttonid } from './ids';
 import input from './input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const radiocustom = _.extend({}, input, {
+const radiocustom = extend({}, input, {
     name: "Radio Button",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",

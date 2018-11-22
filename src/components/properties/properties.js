@@ -13,7 +13,7 @@ import {
 import { requiredSpanSelector, inputBlockClassSelector } from "../../util/selectors";
 import { getRandomString } from "../../util/common";
 import { clickedPopupExists, createClickedPopup } from "../../util/dom";
-import _ from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 const dataRowFieldProperty = {
     name: 'Row Field',
@@ -31,21 +31,21 @@ const dataUrlProperty = {
 
 const dataRowClickUrlProperty = {
     name: 'Row Click Url',
-    key: _.camelCase(dataRowClickUrl),
+    key: camelCase(dataRowClickUrl),
     htmlAttr: dataRowClickUrl,
     inputtype: new TextInput()
 };
 
 const dataKeyMappingProperty = {
     name: 'Key Mapping',
-    key: _.camelCase(dataKeyMapping),
+    key: camelCase(dataKeyMapping),
     htmlAttr: dataKeyMapping,
     inputtype: new TextInput()
 };
 
 const dataEnableRowClickProperty = {
     name: 'Enable Row Click',
-    key: _.camelCase(dataEnableRowClick),
+    key: camelCase(dataEnableRowClick),
     htmlAttr: dataEnableRowClick,
     inputtype: new ToggleInput(),
     validValues: ['true'],
@@ -69,7 +69,7 @@ const dataEnableRowClickProperty = {
 
 const enableButtonClickPopupProperty = {
     name: 'Enable Popup',
-    key: _.camelCase(dataEnableButtonClickPopup),
+    key: camelCase(dataEnableButtonClickPopup),
     htmlAttr: dataEnableButtonClickPopup,
     inputtype: new ToggleInput(),
     validValues: ['true'],
@@ -148,7 +148,7 @@ const typeProperty = {
 
 const imageFormatProperty = {
     name: 'Format',
-    key: _.camelCase(dataImageFormat),
+    key: camelCase(dataImageFormat),
     htmlAttr: dataImageFormat,
     inputtype: new SelectInput(),
     data: {
@@ -971,7 +971,7 @@ const altProperty = {
 
 const dataImagePlacehoderProperty = {
     name: 'Placeholder',
-    key: _.camelCase(dataImagePlaceholder),
+    key: camelCase(dataImagePlaceholder),
     htmlAttr: dataImagePlaceholder,
     inputtype: new TextInput()
 };

@@ -1,8 +1,8 @@
 import basiccomponent from './basiccomponent';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import { cloneableComponent } from '../common';
 
-const bootstraphr = _.extend({}, basiccomponent, {
+const bootstraphr = extend({}, basiccomponent, {
     image: "icons/hr.svg",
     nodes: ["hr"],
     name: "Horizontal Rule",

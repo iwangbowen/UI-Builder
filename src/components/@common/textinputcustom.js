@@ -3,9 +3,9 @@ import { dataComponentId } from '../common';
 import input from './input';
 import { textinputid } from './ids';
 import { textinputProperties as properties } from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const textinputcustom = _.extend({}, input, {
+const textinputcustom = extend({}, input, {
     name: "Text Input",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",

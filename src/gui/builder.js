@@ -6,7 +6,6 @@ import {
 	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
 } from '../util/dom';
 import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
-import _ from 'lodash';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,

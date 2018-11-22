@@ -1,6 +1,6 @@
 import { configurableComponent } from "../common";
 import { textProperty } from "../properties/properties";
-import _ from 'lodash';
+import template from 'lodash/template';
 
 const bootstraptableheadercell = {
     nodes: ["th"],
@@ -11,7 +11,7 @@ const bootstraptableheadercell = {
     ]
 };
 
-const compiledThc = _.template(bootstraptableheadercell.html);
+const compiledThc = template(bootstraptableheadercell.html);
 
 export {
     bootstraptableheadercell,

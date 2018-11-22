@@ -1,9 +1,9 @@
 import basiccomponent from './basiccomponent';
 import Vvveb from '../../gui/components';
 import { SelectInput } from '../../inputs/inputs';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const chart = _.extend({}, basiccomponent, {
+const chart = extend({}, basiccomponent, {
     name: "Chart.js",
     attributes: ["data-component-chartjs"],
     image: "icons/chart.svg",

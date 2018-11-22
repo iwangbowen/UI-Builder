@@ -2,9 +2,9 @@ import { dataComponentId, draggableComponent, dataEnableRowClick } from '../comm
 import { table } from './table';
 import Vvveb from '../../gui/components';
 import { customtableid } from './ids';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const customtable = _.extend({}, table, {
+const customtable = extend({}, table, {
     name: "Custom ag-Grid",
     html: `<div ${dataComponentId}="${customtableid}" ${dataEnableRowClick}="true" style="width: 500px; height: 200px;" class="${draggableComponent} draggable ag-theme-blue horizontal-stripes"></div>`,
     onDrop(node) {

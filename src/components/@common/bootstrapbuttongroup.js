@@ -1,9 +1,9 @@
 import { buttonGroupProperties as properties } from '../properties/button';
 import button from './button';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import basiccomponent from './basiccomponent';
 
-const bootstrapbuttongroup = _.extend({}, basiccomponent, {
+const bootstrapbuttongroup = extend({}, basiccomponent, {
     classes: ["btn-group"],
     name: "Button Group",
     image: "icons/button_group.svg",

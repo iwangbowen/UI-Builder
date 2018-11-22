@@ -3,9 +3,9 @@ import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
 import input from './input';
 import { datetimeinputid } from './ids';
 import {datetimeinputProperties as properties} from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const datetimeinput = _.extend({}, input, {
+const datetimeinput = extend({}, input, {
     name: "Datetime Input",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",

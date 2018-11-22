@@ -1,9 +1,9 @@
 import basiccomponent from './basiccomponent';
 import { headingProperties as properties } from '../properties/heading';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import { cloneableComponent } from '../common';
 
-const bootstrapheading = _.extend({}, basiccomponent, {
+const bootstrapheading = extend({}, basiccomponent, {
     image: "icons/heading.svg",
     name: "Heading",
     nodes: ["h1", "h2", "h3", "h4", "h5", "h6"],

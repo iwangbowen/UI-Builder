@@ -2,7 +2,7 @@ import Vvveb from './builder';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
 import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, decodeHash, generateHtml } from '../util/dom';
-import _ from 'lodash';
+import each from 'lodash/each';
 import { templatePages, importedPageName, importedPageHref } from '../constants';
 
 Vvveb.FileManager = {
@@ -72,7 +72,7 @@ Vvveb.FileManager = {
 	},
 	renderPages() {
 		this.tree.html('');
-		_.each(this.pages, ({ name, title, url }) => {
+		each(this.pages, ({ name, title, url }) => {
 			this.tree.append(
 				tmpl("filemanagerpage", {
 					name,
@@ -94,7 +94,7 @@ Vvveb.FileManager = {
 	},
 	addPages(pages) {
 		this.pages = {};
-		_.each(pages, page => this.addPage(page));
+		each(pages, page => this.addPage(page));
 		return this;
 	},
 	addComponent(name, url, title, page) {

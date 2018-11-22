@@ -5,9 +5,9 @@ import {
 import { radioid } from './ids';
 import input from './input';
 import { customRadioProperties as properties } from '../properties/input';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const radio = _.extend({}, input, {
+const radio = extend({}, input, {
     name: "Radio",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",

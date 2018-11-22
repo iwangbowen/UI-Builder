@@ -1,9 +1,9 @@
 import { bootstrapautoselectinputid } from './ids';
 import { dataComponentId, dataAutoSelectId, formControl } from '../common';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import autoselectinput from './autoselectinput';
 
-const bootstrapautoselectinput = _.extend({}, autoselectinput, {
+const bootstrapautoselectinput = extend({}, autoselectinput, {
     html: `<select ${dataAutoSelectId} ${dataComponentId}="${bootstrapautoselectinputid}" class="${formControl}">
            </select>`
 });

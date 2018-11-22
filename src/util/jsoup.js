@@ -14,7 +14,14 @@ import tooltipTemplate from '../script-templates/tooltip';
 import buttonClickPopupTemplate from '../script-templates/button-click-popup';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
-import _ from 'lodash';
+import findIndex from 'lodash/findIndex';
+import endsWith from 'lodash/endsWith';
+import curry from 'lodash/curry';
+import startsWith from 'lodash/startsWith';
+import flow from 'lodash/flow';
+import flatMap from 'lodash/flatMap';
+import uniq from 'lodash/uniq';
+import filter from 'lodash/filter';
 import { removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
@@ -55,11 +62,11 @@ const unusedTags = [
     {
         name: 'link',
         init(el) {
-            return _.chain([...$(el).find(tableSelector)])
-                .flatMap(table => $(table).attr('class').split(' '))
-                .uniq()
-                .filter(v => v.startsWith('ag-theme-'))
-                .value();
+            const getTableThemes = flow([
+                curry(flatMap)(curry.placeholder, table => $(table).attr('class').split(' ')),
+                uniq,
+                curry(filter)(curry.placeholder, v => v.startsWith('ag-theme-'))]);
+            return getTableThemes([...$(el).find(tableSelector)]);
         },
         // this refers to init function return value
         filter(tag) {
@@ -68,7 +75,7 @@ const unusedTags = [
                     || tag.getAttribute('href').includes('/datepicker/skin/WdatePicker.css')
                     || tag.getAttribute('href').includes('/layer/skin/layer.css'))
                 || (tag.getAttribute('href').includes('ag-theme-')
-                    && _.findIndex(this, v => tag.getAttribute('href').includes(`${v}.css`)) == -1)
+                    && findIndex(this, v => tag.getAttribute('href').includes(`${v}.css`)) == -1)
         }
     },
     {
@@ -153,7 +160,7 @@ function generateButtonOnclickScript(el) {
             setButtonOnclickAttr(this);
         } else if (!onclick.includes(`${functionName}(this)`)
             && !$(this).attr(dataOnclickFunctionGenerated)) {
-            _.endsWith(onclick, ';') && (onclick = onclick.substr(0, onclick.length - 1));
+            endsWith(onclick, ';') && (onclick = onclick.substr(0, onclick.length - 1));
             const appendableScriptElement = $(el).find(`script[class=${appendableScript}]`);
             if (appendableScriptElement.length) {
                 appendableScriptElement.html(`
@@ -282,14 +289,14 @@ function appendScriptWithSrc(el, src) {
 }
 
 function generatedMissedScripts(el, missedScripts) {
-    missedScripts.forEach(_.curry(appendScriptWithSrc)(el, _));
+    missedScripts.forEach(curry(appendScriptWithSrc)(el, curry.placeholder));
     return el;
 }
 
 function generateDevDependentTags(el) {
     $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
 
-    devScripts.forEach(_.curry(appendScriptWithSrc)(el, _));
+    devScripts.forEach(curry(appendScriptWithSrc)(el, curry.placeholder));
     return el;
 }
 
@@ -330,7 +337,7 @@ function removeNameBrackets(el) {
 }
 
 function htmlGenerator(html, ...fns) {
-    _.startsWith(html, '<!DOCTYPE') && (html = `<!DOCTYPE html>${html}`);
+    startsWith(html, '<!DOCTYPE') && (html = `<!DOCTYPE html>${html}`);
     const el = document.createElement('html');
     el.innerHTML = html;
     return $(fns.reduce((el, fn) => fn(el), el)).prop('outerHTML');

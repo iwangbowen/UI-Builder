@@ -1,9 +1,9 @@
 import { progressProperties as properties } from '../properties/progress';
 import basiccomponent from './basiccomponent';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import { cloneableComponent } from '../common';
 
-const bootstrapprogress = _.extend({}, basiccomponent, {
+const bootstrapprogress = extend({}, basiccomponent, {
     classes: ["progress"],
     name: "Progress Bar",
     image: "icons/progressbar.svg",

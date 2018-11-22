@@ -2,9 +2,9 @@ import { alertProperties as properties } from '../properties/alert';
 import { dataComponentId, configurableComponent } from '../common';
 import { bootstrapalertid } from './ids';
 import basiccomponent from './basiccomponent';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 
-const bootstrapalert = _.extend({}, basiccomponent, {
+const bootstrapalert = extend({}, basiccomponent, {
   classes: ["alert"],
   name: "Alert",
   image: "icons/alert.svg",

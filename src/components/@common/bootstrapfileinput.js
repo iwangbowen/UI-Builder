@@ -1,9 +1,9 @@
 import fileinput from './fileinput';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import { dataComponentId, formControlFile } from '../common';
 import { bootstrapfileinputid } from './ids';
 
-const bootstrapfileinput = _.extend({}, fileinput, {
+const bootstrapfileinput = extend({}, fileinput, {
     html: `<input type="file" ${dataComponentId}="${bootstrapfileinputid}" class="${formControlFile}">`
 });
 

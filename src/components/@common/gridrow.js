@@ -3,14 +3,14 @@ import { gridrowid } from './ids';
 import gridcolumn from './gridcolumn';
 import { configurableComponent, gridrowComponent, dataComponentId, colReg } from '../common';
 import { enableSortableAndDroppable } from '../../util/drag-n-drop';
-import _ from 'lodash';
+import repeat from 'lodash/repeat';
 
 const gridrow = {
     name: "Grid Row",
     image: "icons/grid_row.svg",
     classes: ["row"],
     html: `<div class="row ${configurableComponent} ${gridrowComponent}" ${dataComponentId}="${gridrowid}">
-            ${_.repeat(gridcolumn.html, 3)}
+            ${repeat(gridcolumn.html, 3)}
            </div>`,
     height: 'auto',
     width: 'auto',

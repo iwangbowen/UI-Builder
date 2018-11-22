@@ -2,10 +2,10 @@ import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { checkboxfieldid } from './ids';
 import formlabel from './formlabel';
 import checkbox from './checkbox';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 
-const checkboxfield = _.extend({}, inputfield, {
+const checkboxfield = extend({}, inputfield, {
     name: "Checkbox Field",
     attributes: { "type": "checkbox" },
     image: "icons/checkbox.svg",

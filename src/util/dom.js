@@ -10,7 +10,13 @@ import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
     importedPageHref, templatePages, pdsPage, isInIframe
 } from '../constants';
-import _ from 'lodash';
+import curry from 'lodash/curry';
+import includes from 'lodash/includes';
+import remove from 'lodash/remove';
+import each from 'lodash/each';
+import mean from 'lodash/mean';
+import min from 'lodash/min';
+import max from 'lodash/max';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
     userDefinedScriptSelector, nonTemplateScriptSelector
@@ -192,7 +198,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateGridScript, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
-        generateTooltipScript, addNameBrackets, _.curry(changeScriptType)(_, nonTemplateScriptSelector, javascriptScriptType));
+        generateTooltipScript, addNameBrackets, curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, beautify_options)) : html_beautify(`
@@ -227,9 +233,9 @@ function generateHtml(html, pageHref) {
     // Add missed scripts to previously generated page to be backward compatible.
     const missedScripts = depScripts.filter(script => !newHtml.includes(script));
 
-    return htmlGenerator(newHtml, generateAddNewItemDiv, _.curry(generatedMissedScripts)(_, missedScripts),
-        generateDevDependentTags, _.curry(generateBaseTag)(_, pageHref), removeRemoveableScripts,
-        _.curry(changeScriptType)(_, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
+    return htmlGenerator(newHtml, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
+        generateDevDependentTags, curry(generateBaseTag)(curry.placeholder, pageHref), removeRemoveableScripts,
+        curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }
 
 function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {
@@ -284,8 +290,8 @@ function getSelectedElements() {
 
 function addOrRemoveElement(element) {
     const draggableElement = getElementWithSpecifiedClass($(element)).get(0);
-    if (_.includes(selectedElements, draggableElement)) {
-        _.remove(selectedElements, v => v == draggableElement)
+    if (includes(selectedElements, draggableElement)) {
+        remove(selectedElements, v => v == draggableElement)
     } else {
         selectedElements.push(draggableElement);
     }
@@ -305,7 +311,7 @@ function removeStyleForSelectedElements(el) {
 function addStyleForSelectedElements() {
     $(selectBox).hide();
     removeStyleForSelectedElements(Vvveb.Builder.frameDoc.get(0));
-    _.each(selectedElements, element => $(element).addClass(multiSelectedClass));
+    each(selectedElements, element => $(element).addClass(multiSelectedClass));
 }
 
 function highlightWhenHovering(target) {
@@ -344,43 +350,38 @@ function highlightwhenSelected(target, ctrlKeyPressed) {
 }
 
 function getLeftestOrTopest(direction) {
-    return _.chain(selectedElements)
-        .map($)
-        .map(v => v.offset()[direction])
-        .min()
-        .value();
+    return min(
+        selectedElements
+            .map($)
+            .map(v => v.offset()[direction]));
 }
 
 function getRightest() {
-    return _.chain(selectedElements)
-        .map($)
-        .map(v => v.offset().left + v.outerWidth())
-        .max()
-        .value();
+    return max(
+        selectedElements
+            .map($)
+            .map(v => v.offset().left + v.outerWidth()));
 }
 
 function getBottomest() {
-    return _.chain(selectedElements)
-        .map($)
-        .map(v => v.offset().top + v.outerHeight())
-        .max()
-        .value();
+    return max(
+        selectedElements
+            .map($)
+            .map(v => v.offset().top + v.outerHeight()));
 }
 
 function getCenterest() {
-    return _.chain(selectedElements)
-        .map($)
-        .map(v => v.offset().left + v.outerWidth() / 2)
-        .mean()
-        .value();
+    return mean(
+        selectedElements
+            .map($)
+            .map(v => v.offset().left + v.outerWidth() / 2));
 }
 
 function getMiddlest() {
-    return _.chain(selectedElements)
-        .map($)
-        .map(v => v.offset().top + v.outerHeight() / 2)
-        .mean()
-        .value();
+    return mean(
+        selectedElements
+            .map($)
+            .map(v => v.offset().top + v.outerHeight() / 2));
 }
 
 function preventDefault(event) {
@@ -389,7 +390,7 @@ function preventDefault(event) {
 }
 
 function moveToLeft(leftest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { top } = $element.offset();
         $element.offset({
@@ -400,7 +401,7 @@ function moveToLeft(leftest) {
 }
 
 function moveToTop(topest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { left } = $element.offset();
         $element.offset({
@@ -411,7 +412,7 @@ function moveToTop(topest) {
 }
 
 function moveToRight(rightest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { top } = $element.offset();
         $element.offset({
@@ -422,7 +423,7 @@ function moveToRight(rightest) {
 }
 
 function moveToBottom(bottomest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { left } = $element.offset();
         $element.offset({
@@ -433,7 +434,7 @@ function moveToBottom(bottomest) {
 }
 
 function moveToCenter(centerest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { top } = $element.offset();
         $element.offset({
@@ -444,7 +445,7 @@ function moveToCenter(centerest) {
 }
 
 function moveToMiddle(middlest) {
-    _.each(selectedElements, function (element) {
+    each(selectedElements, function (element) {
         const $element = $(element);
         const { left } = $element.offset();
         $element.offset({

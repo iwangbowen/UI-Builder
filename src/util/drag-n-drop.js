@@ -3,7 +3,8 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
 import { componentSelector, sortableDivSelector } from './selectors';
 import MoveMutation from '../models/mutation/move-mutation';
-import _ from 'lodash';
+import reduce from 'lodash/reduce';
+import extend from 'lodash/extend';
 import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
@@ -56,11 +57,11 @@ const gridDroppables = [
     bootstraptableid
 ];
 
-const componentScopes = _.reduce({
+const componentScopes = reduce({
     customTables,
     gridDroppables,
 }, (prev, v, k) => {
-    _.extend(prev, ...v.map(v => {
+    extend(prev, ...v.map(v => {
         const obj = {};
         obj[v] = k;
         return obj

@@ -3,10 +3,10 @@ import { dataComponentId, sortableClass, formItemClass } from '../common';
 import { datetimeinputfieldid } from './ids';
 import formlabel from './formlabel';
 import datetimeinput from './datetimeinput';
-import _ from 'lodash';
+import extend from 'lodash/extend';
 import inputfield from './inputfield';
 
-const datetimeinputfield = _.extend({}, inputfield, {
+const datetimeinputfield = extend({}, inputfield, {
     name: "Datetime Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
