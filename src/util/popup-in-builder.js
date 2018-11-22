@@ -82,14 +82,11 @@ function _popupEdit() {
     });
 }
 
-function popupDelete() {
-    disableDroppable();
-    layer.confirm('您确定需要删除吗？', {
+// Element refers to the element which triggers the popup window
+function popupDelete(element, msg, confirmCb, cancelCb) {
+    layer.confirm(msg || '您确定需要删除吗？', {
         btn: ['确定', '取消']
-    }, function () {
-    }, function () {
-        enableDroppable();
-    });
+    }, confirmCb, cancelCb);
 }
 
 function exportData() {

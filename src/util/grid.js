@@ -1,4 +1,5 @@
 import { hideToolBoxes } from './iframe-drag-n-drop';
+import { popupDelete } from './popup-in-builder';
 
 function initGridOutofBuilder() {
     if ($('.gridster').length) {
@@ -51,7 +52,11 @@ function initGridInBuilder() {
             }
         });
         $('div.gridster').on('click', 'div > span.gs-remove-handle', function () {
-            gridster.remove_widget($(this).parent());
+            popupDelete(this, '确定删除吗？该操作不可撤销！！！',
+                () => {
+                    layer.closeAll('dialog');
+                    gridster.remove_widget($(this).parent());
+                });
         });
     }
     $('.grid-footer button').click(function () {
