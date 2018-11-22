@@ -251,9 +251,7 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 }
 
 function autoSave() {
-    console.time('timeTaken to process html');
     const html = getBeautifiedHtml(window.FrameDocument);
-    console.timeEnd('timeTaken to process html');
     if (isInIframe) {
         sendMessage(html);
     } else {
