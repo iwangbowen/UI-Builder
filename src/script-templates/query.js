@@ -1,4 +1,4 @@
-import { dataUrl } from '../components/common';
+import { dataUrl, dataEnableButtonClickPopup } from '../components/common';
 
 function template() {
     return `
@@ -67,7 +67,7 @@ function template() {
                 });
         }
         $('form button#dataSearch').click(query);
-        $('div.gridster div form button').click(query);
+        $('div.gridster div form button[${dataEnableButtonClickPopup}!=true]').click(query);
     `;
 }
 
