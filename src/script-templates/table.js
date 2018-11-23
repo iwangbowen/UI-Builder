@@ -20,10 +20,9 @@ function template(node) {
         ${paginationPageSize}: ${gridOptionsIdentifier[paginationPageSize]},
         onCellClicked: function (event) {
             if (eGridDiv${key}.attr('${dataEnableCellClick}') == 'true') {
-                if (popupCommon && typeof popupCommon == 'function') {
-                    var url = eGridDiv${key}.attr('${dataCellClickUrl}');
+                if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
                     var popup = $('#' + '${cellClickedPopupPrefix}' + '${key}');
-                    popupCommon(popup);
+                    popupCommon(event, popup, eGridDiv${key});
                 }
             }
         },
