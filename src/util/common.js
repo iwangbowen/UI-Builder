@@ -18,8 +18,11 @@ function beBackwardCompatible() {
     ['pds', 'savedHtml', 'importedPage'].forEach(key => localStorage.removeItem(key));
 }
 
+const gridsterStylesheet = 'gridster-stylesheet';
+
 export {
     getRandomString,
     addDatetime,
-    beBackwardCompatible
+    beBackwardCompatible,
+    gridsterStylesheet
 };

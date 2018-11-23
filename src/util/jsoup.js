@@ -18,16 +18,13 @@ import findIndex from 'lodash/findIndex';
 import endsWith from 'lodash/endsWith';
 import curry from 'lodash/curry';
 import startsWith from 'lodash/startsWith';
-import flow from 'lodash/flow';
-import flatMap from 'lodash/flatMap';
-import uniq from 'lodash/uniq';
-import filter from 'lodash/filter';
 import { removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
 import 'core-js/es6/string';
 import { imagePlaceholder } from '../common';
+import { gridsterStylesheet } from './common';
 
 function removeRemoveableScripts(el) {
     $(el).find(`script[class=${removeableScript}]`).remove();
@@ -57,7 +54,8 @@ const unusedTags = [
     },
     {
         name: 'style',
-        filter: tag => tag.getAttribute('type') == 'text/css'
+        // reserve stylesheet created by gridster to speed up page loading
+        filter: tag => (tag.getAttribute('type') == 'text/css' && tag.id !== gridsterStylesheet)
     },
     {
         name: 'link',
@@ -293,6 +291,11 @@ function generateDevDependentTags(el) {
     return el;
 }
 
+function removeGridsterStylesheet(el) {
+    $(el).find(`style#${gridsterStylesheet}`).remove();
+    return el;
+}
+
 function generateAddNewItemDiv(el) {
     $(el).find('div.gridster').after(`
     <div class="grid-footer">
@@ -356,5 +359,6 @@ export {
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
-    generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript
+    generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
+    removeGridsterStylesheet
 };

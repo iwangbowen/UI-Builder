@@ -4,7 +4,7 @@ import {
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateGridScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript
+    generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript, removeGridsterStylesheet
 } from './jsoup';
 import {
     beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -195,7 +195,15 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
                                        use empty array to denote that no tags should not be reformatted
      */
     let { doctype, html } = destructDoc(doc);
-    html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateGridScript, generateTableScript,
+    // Converse gridster absolute values to relative ones
+    // It's easy to just replace by RegExp
+    const width = $(doc).find('body div.gridster').width()
+    const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d*)px;[\s\t\n]*\}/g;
+    html = html.replace(reg, (match, p1, p2, p3, p4) => {
+        return `${p1} { ${p3}:${parseInt(p4, 10) / width * 100}%; }`;
+    });
+
+    html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
         generateTooltipScript, addNameBrackets, curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType));
@@ -229,11 +237,10 @@ function generateHtml(html, pageHref) {
     // @oee but to replace all occurrences of @oee with @common using simple String method.
     // And it's way more faster to just replace string than to deal with specified elements.
     const newHtml = html.replace(/@oee/g, '@common');
-
     // Add missed scripts to previously generated page to be backward compatible.
     const missedScripts = depScripts.filter(script => !newHtml.includes(script));
 
-    return htmlGenerator(newHtml, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
+    return htmlGenerator(newHtml, removeGridsterStylesheet, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
         generateDevDependentTags, curry(generateBaseTag)(curry.placeholder, pageHref), removeRemoveableScripts,
         curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
 }
