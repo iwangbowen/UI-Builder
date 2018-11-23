@@ -451,7 +451,9 @@ const table = {
                 }
 
                 $(node).attr(dataEnableRowClick, value);
-                $(node).attr(dataEnableCellClick, value === 'true' ? 'false' : 'true');
+                if (value === 'true') {
+                    $(node).attr(dataEnableCellClick, 'false');
+                }
 
                 Vvveb.Components.render($(node).attr(dataComponentId));
                 return node;
@@ -478,7 +480,9 @@ const table = {
                     createClickedPopup(popupId);
                 }
                 $(node).attr(dataEnableCellClick, value);
-                $(node).attr(dataEnableRowClick, value === 'true' ? 'false' : 'true');
+                if (value === 'true') {
+                    $(node).attr(dataEnableRowClick, 'false');
+                }
 
                 Vvveb.Components.render($(node).attr(dataComponentId));
                 return node;
