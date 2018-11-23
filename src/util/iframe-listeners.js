@@ -4,7 +4,7 @@ import { popupDetail } from "./popup-in-builder";
 function addButtonListener() {
     $('body').on('click', 'button', function () {
         if ($(this).attr(dataEnableButtonClickPopup) === 'true') {
-            popupDetail(null, null, $(`#${buttonClickedPopupPrefix}${$(this).attr(dataButtonKey)}`));
+            popupDetail($(`#${buttonClickedPopupPrefix}${$(this).attr(dataButtonKey)}`));
         }
     });
 }
