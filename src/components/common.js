@@ -75,7 +75,9 @@ const dataOnclickFunctionGenerated = 'data-onclick-functioin-generated';
 const dataTitle = 'data-title';
 const dataRowField = 'data-row-field';
 const dataRowClickUrl = 'data-row-click-url';
+const dataCellClickUrl = 'data-cell-click-url';
 const dataEnableRowClick = 'data-enable-row-click';
+const dataEnableCellClick = 'data-enable-cell-click';
 const dataKeyMapping = 'data-key-mapping';
 const dataImageFormat = 'data-image-format';
 const dataImagePlaceholder = 'data-image-placeholder';
@@ -86,6 +88,7 @@ const dataButtonKey = 'data-button-key';
 
 const rowClickedPopupPrefix = 'row_clicked_popup';
 const buttonClickedPopupPrefix = 'button_clicked_popup';
+const cellClickedPopupPrefix = 'cell_clicked_popup';
 
 const sortableClass = 'sortable';
 
@@ -139,9 +142,9 @@ export {
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
-    dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
+    dataRowClickUrl, dataCellClickUrl, dataEnableRowClick, dataEnableCellClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder,
     rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey, rowClass, col_sm_1,
     col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
-    dataButtonKey
+    dataButtonKey, cellClickedPopupPrefix
 };

@@ -24,11 +24,12 @@ function enableDroppableInPopup(popup) {
 // Disable droppable when all opened popup windows have been closed
 const detailPopups = [];
 
-function wrapper(func, url, data, popup = $(`${addOrEditPopupFormSelector}`)) {
+function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
+    hideToolBoxes();
     disableDroppable(droppableSelector);
     detailPopups.push(popup);
     enableDroppableInPopup(popup);
-    return func(url, data, popup);
+    return func(popup, url, data);
 }
 
 function end() {
@@ -56,10 +57,9 @@ function _popupAdd() {
 
 // url and data are only used out of UI Builder,
 // which can be used to query detail and show the result in popup window
-function _popupDetail(url, data, popup) {
+function _popupDetail(popup, url, data) {
     // Compatible with previous only one detail popup window
     var content = popup && popup.length ? popup : $('div.popup-window#detail');
-    hideToolBoxes();
     layer.open({
         type: 1,
         title: '信息',
@@ -82,6 +82,17 @@ function _popupEdit() {
     });
 }
 
+function _popupCommon(popup) {
+    layer.open({
+        type: 1,
+        title: '信息',
+        area: ['660px', '330px'],
+        skin: 'layui-layer-rim', //加上边框
+        content: popup,
+        end
+    });
+}
+
 // Element refers to the element which triggers the popup window
 function popupDelete(element, msg, confirmCb, cancelCb) {
     layer.confirm(msg || '您确定需要删除吗？', {
@@ -92,8 +103,8 @@ function popupDelete(element, msg, confirmCb, cancelCb) {
 function exportData() {
 }
 
-const [popupAdd, popupEdit, popupDetail] =
-    [_popupAdd, _popupEdit, _popupDetail]
+const [popupAdd, popupEdit, popupDetail, popupCommon] =
+    [_popupAdd, _popupEdit, _popupDetail, _popupCommon]
         .map(func => wrap(func, wrapper));
 
 export {
@@ -101,5 +112,6 @@ export {
     popupEdit,
     popupDelete,
     popupDetail,
-    exportData
+    exportData,
+    popupCommon
 };

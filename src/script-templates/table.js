@@ -1,4 +1,4 @@
-import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl, rowClickedPopupPrefix } from '../components/common';
+import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl, rowClickedPopupPrefix, dataEnableCellClick, dataCellClickUrl, cellClickedPopupPrefix } from '../components/common';
 import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@common/table';
 import { gridOptions } from '../common';
 
@@ -18,6 +18,15 @@ function template(node) {
         ${pagination}: ${gridOptionsIdentifier[pagination]},
         ${paginationAutoPageSize}: ${gridOptionsIdentifier[paginationAutoPageSize]},
         ${paginationPageSize}: ${gridOptionsIdentifier[paginationPageSize]},
+        onCellClicked: function (event) {
+            if (eGridDiv${key}.attr('${dataEnableCellClick}') == 'true') {
+                if (popupCommon && typeof popupCommon == 'function') {
+                    var url = eGridDiv${key}.attr('${dataCellClickUrl}');
+                    var popup = $('#' + '${cellClickedPopupPrefix}' + '${key}');
+                    popupCommon(popup);
+                }
+            }
+        },
         onRowClicked: function (event) {
             if (eGridDiv${key}.attr('${dataEnableRowClick}') == 'true') {
                 popupDetail(eGridDiv${key}.attr('${dataRowClickUrl}'), event.data, $('#' + '${rowClickedPopupPrefix}' + '${key}'));

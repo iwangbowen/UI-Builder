@@ -3,7 +3,7 @@ import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
     btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent,
     dataRowClickUrl, dataEnableRowClick, dataKeyMapping, dataImageFormat, dataImagePlaceholder, rowClass, col_sm_3, col_sm_9,
-    dataEnableButtonClickPopup, dataButtonKey, buttonClickedPopupPrefix
+    dataEnableButtonClickPopup, dataButtonKey, buttonClickedPopupPrefix, dataCellClickUrl
 } from "../common";
 import { inputTypes } from '../inputTypes';
 import {
@@ -35,6 +35,13 @@ const dataRowClickUrlProperty = {
     htmlAttr: dataRowClickUrl,
     inputtype: new TextInput()
 };
+
+const dataCellClickUrlProperty = {
+    name: 'Cell Click Url',
+    key: camelCase(dataCellClickUrl),
+    htmlAttr: dataCellClickUrl,
+    inputtype: new TextInput()
+}
 
 const dataKeyMappingProperty = {
     name: 'Key Mapping',
@@ -1061,5 +1068,6 @@ export {
     dataImagePlacehoderProperty,
     labelIconProperty,
     labelTextProperty,
-    enableButtonClickPopupProperty
+    enableButtonClickPopupProperty,
+    dataCellClickUrlProperty
 };

@@ -1,7 +1,8 @@
 import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput, NumberInput } from '../../inputs/inputs';
 import {
     dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable,
-    dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey
+    dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey, dataEnableCellClick,
+    cellClickedPopupPrefix
 } from '../common';
 import Vvveb from '../../gui/components';
 import flow from 'lodash/flow';
@@ -11,9 +12,9 @@ import camelCase from 'lodash/camelCase';
 import TableHeaderMutation from '../../models/mutation/table-header-mutation';
 import { tableSelector } from '../../util/selectors';
 import { getRandomString } from '../../util/common';
-import { dataRowClickUrlProperty, dataEnableRowClickProperty } from '../properties/properties';
+import { dataRowClickUrlProperty, dataCellClickUrlProperty } from '../properties/properties';
 import { dummyData, gridOptions } from '../../common';
-import { createClickedPopup, clickedPopupExists } from '../../util/dom';
+import { createClickedPopup, clickedPopupExists, getClickedPopup } from '../../util/dom';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -22,6 +23,9 @@ const headerCheckboxSelection = 'headerCheckboxSelection';
 const pagination = 'pagination';
 const paginationAutoPageSize = 'paginationAutoPageSize';
 const paginationPageSize = 'paginationPageSize';
+const onCellClicked = 'onCellClicked';
+const onRowClicked = 'onRowClicked';
+
 const themeOptions = [
     {
         value: "ag-theme-balham",
@@ -195,17 +199,26 @@ const table = {
         $(node).removeClass('horizontal-stripes');
     },
     beforeInit: function (node) {
-        if (!$(node).attr(dataTableId)) {
-            $(node).attr(dataTableId, `_${getRandomString(2)}`);
-            let popup;
-            const tableKey = $(node).attr(dataTableId);
-            const popupId = `${rowClickedPopupPrefix}${tableKey}`;
+        let tableKey = $(node).attr(dataTableId);
 
-            if (!clickedPopupExists(`#${popupId}`)) {
-                popup = createClickedPopup(popupId);
-            } else {
-                popup = getRowClickedPopup(tableKey);
+        function cellClickedCb(event) {
+            if ($(node).attr(dataEnableCellClick) === 'true') {
+                const popupId = `${cellClickedPopupPrefix}${$(node).attr(dataTableId)}`;
+                iframeWindow.popupCommon(getClickedPopup(`#${popupId}`));
             }
+        }
+
+        function rowClickedCb(event) {
+            if ($(node).attr(dataEnableRowClick) === 'true') {
+                const popupId = `${rowClickedPopupPrefix}${$(node).attr(dataTableId)}`;
+                iframeWindow.popupCommon(getClickedPopup(`#${popupId}`));
+            }
+        }
+
+        if (!tableKey) {
+            $(node).attr(dataTableId, `_${getRandomString(2)}`);
+            tableKey = $(node).attr(dataTableId);
+
             setGridOptions(node,
                 {
                     columnDefs: [
@@ -222,15 +235,16 @@ const table = {
                     // https://github.com/ag-grid/ag-grid/issues/391
                     // If field name contains dot, treat it as literal dot instead of deep references
                     suppressFieldDotNotation: true,
-                    onRowClicked: function (event) {
-                        if ($(node).attr(dataEnableRowClick) == 'true') {
-                            iframeWindow.popupDetail(null, null, popup);
-                        }
-                    }
+                    onCellClicked: cellClickedCb,
+                    onRowClicked: rowClickedCb
                 });
             new (document.getElementById('iframeId').contentWindow.agGrid).Grid(node, getGridOptions(node));
             setRowData(node, dummyData);
         }
+        // Replace user defined callback with the one defined in UI Builder
+        setGridOptionsProperty(node, onCellClicked, cellClickedCb);
+        setGridOptionsProperty(node, onRowClicked, rowClickedCb);
+
         let i = 0;
         const properties = getColumnDefs(node).reduce((prev, cur) => {
             i++;
@@ -420,8 +434,61 @@ const table = {
                 return node;
             },
         },
-        dataEnableRowClickProperty,
+        {
+            name: 'Enable Row Click',
+            key: camelCase(dataEnableRowClick),
+            htmlAttr: dataEnableRowClick,
+            inputtype: new ToggleInput(),
+            validValues: ['true'],
+            init(node) {
+                return $(node).attr(dataEnableRowClick) == 'true' ?
+                    this.validValues : [];
+            },
+            onChange(node, value) {
+                const popupId = `${rowClickedPopupPrefix}${$(node).attr(dataTableId)}`;
+                if (!clickedPopupExists(`#${popupId}`)) {
+                    createClickedPopup(popupId);
+                }
+
+                $(node).attr(dataEnableRowClick, value);
+                $(node).attr(dataEnableCellClick, value === 'true' ? 'false' : 'true');
+
+                Vvveb.Components.render($(node).attr(dataComponentId));
+                return node;
+            },
+            data: {
+                on: 'true',
+                off: 'false'
+            }
+        },
         dataRowClickUrlProperty,
+        {
+            name: 'Enable Cell Click',
+            key: camelCase(dataEnableCellClick),
+            htmlAttr: dataEnableCellClick,
+            inputtype: new ToggleInput(),
+            validValues: ['true'],
+            init(node) {
+                return $(node).attr(dataEnableCellClick) == 'true' ?
+                    this.validValues : [];
+            },
+            onChange(node, value) {
+                const popupId = `${cellClickedPopupPrefix}${$(node).attr(dataTableId)}`;
+                if (!clickedPopupExists(`#${popupId}`)) {
+                    createClickedPopup(popupId);
+                }
+                $(node).attr(dataEnableCellClick, value);
+                $(node).attr(dataEnableRowClick, value === 'true' ? 'false' : 'true');
+
+                Vvveb.Components.render($(node).attr(dataComponentId));
+                return node;
+            },
+            data: {
+                on: 'true',
+                off: 'false'
+            }
+        },
+        dataCellClickUrlProperty,
         {
             name: 'Data key',
             key: 'dataKey',
@@ -457,5 +524,5 @@ const table = {
 export {
     table, columnDefs, getGridOptionsIdentifier, themeOptions,
     setColumnDefsAndRender, getColumnDefs, pagination, paginationAutoPageSize,
-    paginationPageSize
+    paginationPageSize, onCellClicked, onRowClicked
 };
