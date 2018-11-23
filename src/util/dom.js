@@ -7,7 +7,7 @@ import {
     generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript, removeGridsterStylesheet
 } from './jsoup';
 import {
-    beautify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
+    html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
     importedPageHref, templatePages, pdsPage, isInIframe
 } from '../constants';
 import curry from 'lodash/curry';
@@ -209,10 +209,10 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
         generateTooltipScript, addNameBrackets, curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
-    `, beautify_options)) : html_beautify(`
+    `, html_beaufify_options)) : html_beautify(`
         ${doctype}
         ${html}
-    `, beautify_options);
+    `, html_beaufify_options);
 }
 
 const delay = (function () {

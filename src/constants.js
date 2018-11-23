@@ -3,10 +3,14 @@ const defaultFilename = 'index.html';
 
 const isInBuilder = true;
 
-const beautify_options = {
+const html_beaufify_options = {
     preserve_newlines: false,
     indent_inner_html: true,
-    unformatted: []
+    unformatted: ['style']
+};
+
+const css_beautify_options = {
+    newline_between_rules: false
 };
 
 const importedPageName = 'importedPage';
@@ -43,7 +47,8 @@ const isInIframe = window !== window.parent;
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
-    templatePages, beautify_options, removeableScript, tableScript, reservedScript,
+    templatePages, html_beaufify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe
+    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe,
+    css_beautify_options
 };
