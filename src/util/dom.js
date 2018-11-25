@@ -198,9 +198,9 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     // Converse gridster absolute values to relative ones
     // It's easy to just replace by RegExp
     const width = $(doc).find('body div.gridster').width()
-    const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d*)px;[\s\t\n]*\}/g;
+    const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
     html = html.replace(reg, (match, p1, p2, p3, p4) => {
-        return `${p1} { ${p3}:${parseInt(p4, 10) / width * 100}%; }`;
+        return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
     });
 
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
