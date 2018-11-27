@@ -187,11 +187,7 @@ function generateButtonClickPopupScript(el) {
 }
 
 function generateTooltipScript(el) {
-    if ($(el).find(`[${dataScriptType}=${tooltipScriptType}]`).length) {
-        return el;
-    } else {
-        return appendScript(el, tooltipTemplate(), reservedScript, tooltipScriptType);
-    }
+    return appendScript(el, tooltipTemplate(), generatedExecuteScriptClass, tooltipScriptType);
 }
 
 function concatContent(prev, cur) {
