@@ -2,23 +2,23 @@ import {
     emptyChildrenSelectors, tableSelector, submitButtonSelector, calendarSelector,
     multivalueSelectSelector
 } from './selectors';
-import tableTemplate from '../script-templates/table';
-import autoselectinputTemplate from '../script-templates/autoselectinput';
-import { template as submitFormTemplate, functionName } from '../script-templates/submitform';
-import popupTemplate from '../script-templates/popup';
-import queryTempate from '../script-templates/query';
-import gridTemplate from '../script-templates/grid';
-import multivalueselectTemplate from '../script-templates/multivalueselect';
-import functionTemplate from '../script-templates/function';
-import tooltipTemplate from '../script-templates/tooltip';
-import buttonClickPopupTemplate from '../script-templates/button-click-popup';
+import { template as tableTemplate, tableScriptType } from '../script-templates/table';
+import { template as autoselectinputTemplate, autoSelectInputScriptType } from '../script-templates/autoselectinput';
+import { template as submitFormTemplate, functionName, submitFormScriptType } from '../script-templates/submitform';
+import { template as popupTemplate, popupScriptType } from '../script-templates/popup';
+import { template as queryTempate, queryScriptType } from '../script-templates/query';
+import { template as gridTemplate } from '../script-templates/grid';
+import { template as multivalueselectTemplate, multiValueSelectScriptType } from '../script-templates/multivalueselect';
+import { template as functionTemplate, functionScriptType } from '../script-templates/function';
+import { template as tooltipTemplate, tooltipScriptType } from '../script-templates/tooltip';
+import { template as buttonClickPopupTemplate, buttonClickPopupScriptType } from '../script-templates/button-click-popup';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import findIndex from 'lodash/findIndex';
 import endsWith from 'lodash/endsWith';
 import curry from 'lodash/curry';
 import startsWith from 'lodash/startsWith';
-import { removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, tooltipScriptType } from '../constants';
+import { removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, generatedNonExecuteScriptClass } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
@@ -121,12 +121,11 @@ function removeImageDataURL(el) {
 }
 
 function generateTableScript(el) {
-    $(el).find(`script[class=${tableScript}]`).remove();
     const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
                 ${tableTemplate($(element))}`;
     }, '');
-    return appendScript(el, jsStr, tableScript);
+    return appendScript(el, jsStr, tableScript, tableScriptType);
 }
 
 function generateCalendarOnclickAttr(el) {
@@ -137,11 +136,11 @@ function generateCalendarOnclickAttr(el) {
 }
 
 function generateSelectOptionsScript(el) {
-    return appendScript(el, autoselectinputTemplate());
+    return appendScript(el, autoselectinputTemplate(), generatedNonExecuteScriptClass, autoSelectInputScriptType);
 }
 
 function generateSubmitFormScript(el) {
-    return appendScript(el, submitFormTemplate());
+    return appendScript(el, submitFormTemplate(), generatedNonExecuteScriptClass, submitFormScriptType);
 }
 
 function generateButtonOnclickScript(el) {
@@ -168,7 +167,7 @@ function generateButtonOnclickScript(el) {
 }
 
 function generatePopupScript(el) {
-    return appendScript(el, popupTemplate());
+    return appendScript(el, popupTemplate(), generatedNonExecuteScriptClass, popupScriptType);
 }
 
 function generateGridScript(el) {
@@ -176,15 +175,15 @@ function generateGridScript(el) {
 }
 
 function generateQueryScript(el) {
-    return appendScript(el, queryTempate());
+    return appendScript(el, queryTempate(), generatedNonExecuteScriptClass, queryScriptType);
 }
 
 function generateMultivalueSelectScript(el) {
-    return appendScript(el, multivalueselectTemplate());
+    return appendScript(el, multivalueselectTemplate(), generatedNonExecuteScriptClass, multiValueSelectScriptType);
 }
 
 function generateButtonClickPopupScript(el) {
-    return appendScript(el, buttonClickPopupTemplate());
+    return appendScript(el, buttonClickPopupTemplate(), generatedNonExecuteScriptClass, buttonClickPopupScriptType);
 }
 
 function generateTooltipScript(el) {
@@ -205,8 +204,20 @@ function concatContent(prev, cur) {
 }
 
 function appendScript(el, jsStr, scriptClass = removeableScript, type) {
-    jsStr && $(`<script class="${scriptClass}"${type ? ` ${dataScriptType}="${type}"` : ''}></script>`)
-        .text(jsStr).appendTo($(el).find('body'));
+    // Compatible with previous code
+    if (scriptClass === tableScript) {
+        const tableScript = $(el).find(`script[class=${tableScript}]`);
+        tableScript.attr(dataScriptType, type);
+        tableScript.text(jsStr);
+    } else {
+        const script = $(el).find(`script[${dataScriptType}=${type}]`);
+        if (script.length) {
+            script.text(jsStr);
+        } else {
+            jsStr && $(`<script class="${scriptClass}"${type ? ` ${dataScriptType}="${type}"` : ''}></script>`)
+                .text(jsStr).appendTo($(el).find('body'));
+        }
+    }
     return el;
 }
 
@@ -267,7 +278,7 @@ function generateBaseTag(el, pageHref) {
 }
 
 function changeScriptType(el, selector, type) {
-    $(el).find(selector).attr('type', type);
+        $(el).find(selector).attr('type', type);
     return el;
 }
 

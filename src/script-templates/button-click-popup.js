@@ -1,6 +1,6 @@
 import { buttonClickedPopupPrefix, dataButtonKey, dataEnableButtonClickPopup } from "../components/common";
 
-function template() {
+export function template() {
     return `
     $('body').on('click', 'button', function () {
         if ($(this).attr('${dataEnableButtonClickPopup}') === 'true') {
@@ -10,4 +10,4 @@ function template() {
     `;
 }
 
-export default template;
+export const buttonClickPopupScriptType = 'button-click-popup-script';

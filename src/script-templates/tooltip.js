@@ -1,6 +1,6 @@
 import { options } from '../components/tooltip';
 
-function template() {
+export function template() {
     return `
     $(function () {
         $('input, select, textarea').tooltip(${JSON.stringify(options)});
@@ -8,4 +8,4 @@ function template() {
     `;
 }
 
-export default template;
+export const tooltipScriptType = 'tooltip-script';

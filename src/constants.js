@@ -19,10 +19,12 @@ const importedPageHref = `template/oee/html/demo/${importedPageName}.html`;
 
 const removeableScript = 'removeableScript';
 const tableScript = 'tableScript';
+const generatedNonExecuteScriptClass = 'generated-non-execute-script';
 const appendableScript = 'appendableScript';
 const reservedScript = 'reservedScript';
 const nonTemplateScriptType = 'text/non-template';
 const javascriptScriptType = 'text/javascript';
+const generatedScriptType = 'text/generated-script';
 const dataScriptType = 'data-script-type';
 const tooltipScriptType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
@@ -50,5 +52,5 @@ export {
     templatePages, html_beaufify_options, removeableScript, tableScript, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe,
-    css_beautify_options
+    css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType
 };

@@ -1,6 +1,6 @@
 import { initGridOutofBuilder } from '../util/grid';
 
-function template() {
+export function template() {
     return `
     ${initGridOutofBuilder.toString()}
     $(function () {
@@ -8,4 +8,4 @@ function template() {
     })`;
 }
 
-export default template;
+export const gridScriptType = 'grid-script';

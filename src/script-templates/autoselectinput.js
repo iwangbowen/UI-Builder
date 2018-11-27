@@ -1,7 +1,7 @@
 import { dataUrl, dataValueMapping, dataTextMapping } from "../components/common";
 import { autoselectinputSelector } from '../util/selectors';
 
-function template() {
+export function template() {
     return `
         function generateOptions(el, response) {
             var value = $(el).attr('${dataValueMapping}') || 'value';
@@ -37,4 +37,4 @@ function template() {
     `;
 }
 
-export default template;
+export const autoSelectInputScriptType = 'auto-select-input-script';

@@ -1,6 +1,6 @@
 import { dataUrl, dataEnableButtonClickPopup } from '../components/common';
 
-function template() {
+export function template() {
     return `
         function setAgGridData(grid, data) {
             var gridOptions = grid.gridOptions;
@@ -71,4 +71,4 @@ function template() {
     `;
 }
 
-export default template;
+export const queryScriptType = 'query-script';

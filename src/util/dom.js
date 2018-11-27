@@ -4,11 +4,12 @@ import {
     replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript, removeGridsterStylesheet
+    generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
+    removeGridsterStylesheet
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe
+    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType
 } from '../constants';
 import curry from 'lodash/curry';
 import includes from 'lodash/includes';
@@ -19,7 +20,7 @@ import min from 'lodash/min';
 import max from 'lodash/max';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
-    userDefinedScriptSelector, nonTemplateScriptSelector
+    userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
 import {
@@ -206,7 +207,9 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
-        generateTooltipScript, addNameBrackets, curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType));
+        generateTooltipScript, addNameBrackets,
+        curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
+        curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}
     `, html_beaufify_options)) : html_beautify(`
@@ -242,7 +245,9 @@ function generateHtml(html, pageHref) {
 
     return htmlGenerator(newHtml, removeGridsterStylesheet, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
         generateDevDependentTags, curry(generateBaseTag)(curry.placeholder, pageHref), removeRemoveableScripts,
-        curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType), removeNameBrackets);
+        curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, generatedScriptType),
+        curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType),
+        removeNameBrackets);
 }
 
 function generateHtmlFromLocalStorageItemKey(pageHref, itemKey) {

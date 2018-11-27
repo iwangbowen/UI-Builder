@@ -1,7 +1,7 @@
 import { popupAdd, popupEdit, popupDelete, exportData, popupDetail } from '../util/popup-out-of-builder';
 import { dataUrl, dataRelatedButton } from '../components/common';
 
-function template() {
+export function template() {
     return `
         ${popupAdd.toString()}
         ${popupEdit.toString()}
@@ -21,4 +21,4 @@ function template() {
     `;
 }
 
-export default template;
+export const popupScriptType = 'popup-script';

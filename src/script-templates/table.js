@@ -2,7 +2,7 @@ import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl, row
 import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@common/table';
 import { gridOptions } from '../common';
 
-function template(node) {
+export function template(node) {
     const id = node.attr('id') || (node.attr('id', `table${node.attr(dataTableId)}`), node.attr('id'));
     const key = node.attr(dataTableId);
     const gridOptionsIdentifier = document.getElementById('iframeId').contentWindow[getGridOptionsIdentifier(node)];
@@ -45,4 +45,4 @@ function template(node) {
     `;
 }
 
-export default template;
+export const tableScriptType = 'table-script';

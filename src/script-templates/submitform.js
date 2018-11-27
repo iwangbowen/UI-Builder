@@ -1,7 +1,7 @@
 import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey } from "../components/common";
 
-const functionName = 'submitForm';
-function template() {
+export const functionName = 'submitForm';
+export function template() {
     return `
         // 右侧内容查询开始
         var grids = $('[${dataTableId}]')
@@ -82,4 +82,4 @@ function template() {
     `;
 }
 
-export { template, functionName };
+export const submitFormScriptType = 'submit-form-script';

@@ -1,6 +1,6 @@
 import { dataUrl, dataValueMapping, dataTextMapping } from "../components/common";
 
-function template() {
+export function template() {
     return `
     function processResults (res, el) {
         var value = $(el).attr('${dataValueMapping}') || 'value';
@@ -33,4 +33,4 @@ function template() {
     `;
 }
 
-export default template;
+export const multiValueSelectScriptType = 'multi-value-select-script';
