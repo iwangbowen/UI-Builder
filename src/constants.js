@@ -18,8 +18,9 @@ const importedPageTitle = 'Imported Page';
 const importedPageHref = `template/oee/html/demo/${importedPageName}.html`;
 
 const removeableScript = 'removeableScript';
-const tableScript = 'tableScript';
+const tableScriptClass = 'tableScript';
 const generatedNonExecuteScriptClass = 'generated-non-execute-script';
+const generatedExecuteScriptClass = 'generated-execute-script';
 const appendableScript = 'appendableScript';
 const reservedScript = 'reservedScript';
 const nonTemplateScriptType = 'text/non-template';
@@ -49,8 +50,9 @@ const isInIframe = window !== window.parent;
 
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
-    templatePages, html_beaufify_options, removeableScript, tableScript, reservedScript,
+    templatePages, html_beaufify_options, removeableScript, tableScriptClass, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe,
-    css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType
+    css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
+    generatedExecuteScriptClass
 };

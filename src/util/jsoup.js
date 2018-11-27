@@ -18,7 +18,7 @@ import findIndex from 'lodash/findIndex';
 import endsWith from 'lodash/endsWith';
 import curry from 'lodash/curry';
 import startsWith from 'lodash/startsWith';
-import { removeableScript, tableScript, appendableScript, reservedScript, dataScriptType, generatedNonExecuteScriptClass } from '../constants';
+import { removeableScript, tableScriptClass, appendableScript, reservedScript, dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
@@ -125,7 +125,7 @@ function generateTableScript(el) {
         return `${prev}
                 ${tableTemplate($(element))}`;
     }, '');
-    return appendScript(el, jsStr, tableScript, tableScriptType);
+    return appendScript(el, jsStr, generatedExecuteScriptClass, tableScriptType);
 }
 
 function generateCalendarOnclickAttr(el) {
@@ -204,19 +204,23 @@ function concatContent(prev, cur) {
 }
 
 function appendScript(el, jsStr, scriptClass = removeableScript, type) {
-    // Compatible with previous code
-    if (scriptClass === tableScript) {
-        const tableScript = $(el).find(`script[class=${tableScript}]`);
-        tableScript.attr(dataScriptType, type);
-        tableScript.text(jsStr);
-    } else {
-        const script = $(el).find(`script[${dataScriptType}=${type}]`);
-        if (script.length) {
-            script.text(jsStr);
-        } else {
-            jsStr && $(`<script class="${scriptClass}"${type ? ` ${dataScriptType}="${type}"` : ''}></script>`)
-                .text(jsStr).appendTo($(el).find('body'));
+    if (type === tableScriptType) {
+        // Compatible with previous code
+        const tableScript = $(el).find(`script[class=${tableScriptClass}]`);
+        if (tableScript.length) {
+            tableScript.attr(dataScriptType, type);
+            tableScript.attr('class', generatedExecuteScriptClass);
+            tableScript.text(jsStr);
+            return el;
         }
+    }
+
+    const script = $(el).find(`script[${dataScriptType}=${type}]`);
+    if (script.length) {
+        script.text(jsStr);
+    } else {
+        jsStr && $(`<script class="${scriptClass}"${type ? ` ${dataScriptType}="${type}"` : ''}></script>`)
+            .text(jsStr).appendTo($(el).find('body'));
     }
     return el;
 }
@@ -278,7 +282,7 @@ function generateBaseTag(el, pageHref) {
 }
 
 function changeScriptType(el, selector, type) {
-        $(el).find(selector).attr('type', type);
+    $(el).find(selector).attr('type', type);
     return el;
 }
 

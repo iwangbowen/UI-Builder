@@ -9,7 +9,7 @@ import {
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType
+    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass
 } from '../constants';
 import curry from 'lodash/curry';
 import includes from 'lodash/includes';
@@ -20,7 +20,7 @@ import min from 'lodash/min';
 import max from 'lodash/max';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
-    userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector
+    userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector, generatedExecuteScriptSelector
 } from './selectors';
 import Vvveb from '../gui/components';
 import {
@@ -209,6 +209,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
         generateTooltipScript, addNameBrackets,
         curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
+        curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
         curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
     return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
         ${html}

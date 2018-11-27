@@ -1,5 +1,5 @@
 import { dataTableId, dataAutoSelectId, dataButtonId, dataRequiredSpan, dataCalendarId, dataMultivalueSelectId, inputBlockClass, sortableClass } from '../components/common';
-import { multiSelectedClass, nonTemplateScriptType, generatedNonExecuteScriptClass } from '../constants';
+import { multiSelectedClass, nonTemplateScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass } from '../constants';
 
 const tableSelector = `[${dataTableId}]`;
 const requiredSpanSelector = `[${dataRequiredSpan}]`;
@@ -23,6 +23,7 @@ const selectBox = '#select-box';
 
 const userDefinedScriptSelector = 'script:not([class]):not([src])';
 const generatedNonExecuteScriptSelector = `script.${generatedNonExecuteScriptClass}`;
+const generatedExecuteScriptSelector = `script.${generatedExecuteScriptClass}`;
 const nonTemplateScriptSelector = `script[type='${nonTemplateScriptType}']`;
 
 const componentSelector = '#components-list li ol li';
@@ -40,5 +41,5 @@ export {
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
     nonTemplateScriptSelector, componentSelector, inputBlockClassSelector, sortableDivSelector,
-    generatedNonExecuteScriptSelector
+    generatedNonExecuteScriptSelector, generatedExecuteScriptSelector
 };
