@@ -1,6 +1,7 @@
 import { hideToolBoxes } from './iframe-drag-n-drop';
 import { droppableSelector, getDetailPopupSelector, rowColumnSelector, formSelector, addOrEditPopupFormSelector } from '../common';
 import wrap from 'lodash/wrap';
+import isElement from 'lodash/isElement';
 
 function disableDroppable(selector) {
     window.parent.disableDroppable(selector);
@@ -25,6 +26,11 @@ function enableDroppableInPopup(popup) {
 const detailPopups = [];
 
 function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
+    // Compatible with add or edit button triggered popup
+    // Function call popupAdd(this) or popupEdit(this);
+    if (isElement(popup)) {
+        popup = $(`${addOrEditPopupFormSelector}`);
+    }
     hideToolBoxes();
     disableDroppable(droppableSelector);
     detailPopups.push(popup);
