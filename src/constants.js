@@ -27,7 +27,7 @@ const nonTemplateScriptType = 'text/non-template';
 const javascriptScriptType = 'text/javascript';
 const generatedScriptType = 'text/generated-script';
 const dataScriptType = 'data-script-type';
-const tooltipScriptType = 'tooltip';
+const tooltipType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
 
 const pdsPage = {
@@ -52,7 +52,7 @@ export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, html_beaufify_options, removeableScript, tableScriptClass, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipScriptType, pdsPage, gridPage, isInBuilder, isInIframe,
+    dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
     generatedExecuteScriptClass
 };

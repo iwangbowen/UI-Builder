@@ -18,7 +18,11 @@ import findIndex from 'lodash/findIndex';
 import endsWith from 'lodash/endsWith';
 import curry from 'lodash/curry';
 import startsWith from 'lodash/startsWith';
-import { removeableScript, tableScriptClass, appendableScript, reservedScript, dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass } from '../constants';
+import {
+    removeableScript, tableScriptClass, appendableScript,
+    dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass,
+    tooltipType
+} from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
@@ -200,13 +204,21 @@ function concatContent(prev, cur) {
 }
 
 function appendScript(el, jsStr, scriptClass = removeableScript, type) {
+    // Compatible with previous code
     if (type === tableScriptType) {
-        // Compatible with previous code
         const tableScript = $(el).find(`script[class=${tableScriptClass}]`);
         if (tableScript.length) {
             tableScript.attr(dataScriptType, type);
-            tableScript.attr('class', generatedExecuteScriptClass);
+            tableScript.attr('class', scriptClass);
             tableScript.text(jsStr);
+            return el;
+        }
+    } else if (type === tooltipScriptType) {
+        const tooltipscript = $(el).find(`script[${dataScriptType}=${tooltipType}]`);
+        if (tooltipscript.length) {
+            tooltipscript.attr(dataScriptType, type);
+            tooltipscript.attr('class', scriptClass);
+            tooltipscript.text(jsStr);
             return el;
         }
     }
