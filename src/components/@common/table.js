@@ -222,9 +222,28 @@ const table = {
             setGridOptions(node,
                 {
                     columnDefs: [
-                        { headerName: "Athelete", field: "athelete", width: '', checkboxSelection: true, headerCheckboxSelection: false, suppressMovable: true },
-                        { headerName: "Age", field: "age", width: '', checkboxSelection: false, headerCheckboxSelection: false },
-                        { headerName: "Country", field: "country", width: '', checkboxSelection: false, headerCheckboxSelection: false }
+                        {
+                            headerName: "Athelete",
+                            field: "athelete", width: '',
+                            checkboxSelection: true,
+                            headerCheckboxSelection: false,
+                            suppressMovable: true,
+                            hide: false
+                        },
+                        {
+                            headerName: "Age",
+                            field: "age", width: '',
+                            checkboxSelection: false,
+                            headerCheckboxSelection: false,
+                            hide: false
+                        },
+                        {
+                            headerName: "Country",
+                            field: "country", width: '',
+                            checkboxSelection: false,
+                            headerCheckboxSelection: false,
+                            hide: false
+                        }
                     ],
                     rowSelection: 'multiple',
                     enableSorting: true,
@@ -259,6 +278,7 @@ const table = {
                     headerName: cur.headerName,
                     field: cur.field,
                     width: cur.width,
+                    hide: cur.hide === true ? ' checked' : '',
                     checkboxSelection: cur.checkboxSelection,
                     headerCheckboxSelection: cur.headerCheckboxSelection
                 },
@@ -278,6 +298,8 @@ const table = {
                     } else {
                         if (input.name == 'width') {
                             colDefs[keyIndex][input.name] = value && parseInt(value);
+                        } else if (input.name == 'hide') {
+                            colDefs[keyIndex][input.name] = input.checked;
                         } else {
                             colDefs[keyIndex][input.name] = value;
                         }

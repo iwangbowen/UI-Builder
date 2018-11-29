@@ -5,6 +5,7 @@ class TextValueInput extends Input {
 		super();
 		this.events = [
 			["keyup", "onChange", "input"],
+			['change', 'onChange', 'input[type=checkbox]'],
 			["click", "onChange", "button" /*'select'*/],
 		];
 	}

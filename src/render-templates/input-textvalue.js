@@ -13,6 +13,13 @@ const inputtextvalue = `
 				<label>Width</label>
 				<input name="width" type="number" value="{%=width%}" class="form-control"/>
 			</div>
+			<div class="col-6 mb-1">
+				<label>Hide Header</label>
+				<div class="custom-control custom-checkbox">
+					<input name="hide" class="custom-control-input" type="checkbox" id="{%=key%}_check"{%=hide%}>
+					<label class="custom-control-label" for="{%=key%}_check">{% if (typeof text !== 'undefined') { %} {%=text%} {% } %}</label>
+				</div>
+			</div>
 		{% } else { %}
 			<div class="col-6 mb-1">
 				<label>Value</label>
