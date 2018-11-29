@@ -5,41 +5,55 @@ export function template() {
         function setAgGridData(grid, data) {
             var gridOptions = grid.gridOptions;
             var transposeKey = grid.transposeKey;
-            if (transposeKey) {
-                var transposedData = gridOptions.columnDefs
-                    .filter(function (colDef) {
-                        return colDef.field !== transposeKey;
-                    })
-                    .map(function (colDef) {
-                        var key = colDef.field;
-                        var transposed = {};
-                        transposed[transposeKey] = colDef.headerName;
-                        data.forEach(function (item) {
-                            transposed[item[transposeKey]] = item[key];
-                        });
-                        return transposed;
+            var populateHeaders = grid.populateHeaders;
+            if (populateHeaders) {
+                if (data.length) {
+                    var colDefs = Object.keys(data[0]).map(function (key) {
+                        return {
+                            headerName: key,
+                            field: key
+                        };
                     });
-                var newColDefs = [
-                    {
-                        headerName: '',
-                        field: transposeKey,
-                        cellStyle: {
-                            'font-size': 'large'
-                        },
-                        pinned: 'left'
-                    }
-                ].concat(data.map(function (item) {
-                    return {
-                        headerName: item[transposeKey],
-                        field: $.isNumeric(item[transposeKey])
-                            ? item[transposeKey].toString()
-                            : item[transposeKey]
-                    };
-                }));
-                gridOptions.api.setColumnDefs(newColDefs);
-                gridOptions.api.setRowData(transposedData);
+                    gridOptions.api.setColumnDefs(colDefs);
+                    gridOptions.api.setRowData(data);
+                }
             } else {
-                gridOptions.api.setRowData(data);
+                if (transposeKey) {
+                    var transposedData = gridOptions.columnDefs
+                        .filter(function (colDef) {
+                            return colDef.field !== transposeKey;
+                        })
+                        .map(function (colDef) {
+                            var key = colDef.field;
+                            var transposed = {};
+                            transposed[transposeKey] = colDef.headerName;
+                            data.forEach(function (item) {
+                                transposed[item[transposeKey]] = item[key];
+                            });
+                            return transposed;
+                        });
+                    var newColDefs = [
+                        {
+                            headerName: '',
+                            field: transposeKey,
+                            cellStyle: {
+                                'font-size': 'large'
+                            },
+                            pinned: 'left'
+                        }
+                    ].concat(data.map(function (item) {
+                        return {
+                            headerName: item[transposeKey],
+                            field: $.isNumeric(item[transposeKey])
+                                ? item[transposeKey].toString()
+                                : item[transposeKey]
+                        };
+                    }));
+                    gridOptions.api.setColumnDefs(newColDefs);
+                    gridOptions.api.setRowData(transposedData);
+                } else {
+                    gridOptions.api.setRowData(data);
+                }
             }
         }
         function query() {

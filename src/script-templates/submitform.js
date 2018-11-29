@@ -1,4 +1,4 @@
-import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey } from "../components/common";
+import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey, dataPopulateHeaders } from "../components/common";
 
 export const functionName = 'submitForm';
 export function template() {
@@ -10,10 +10,12 @@ export function template() {
                 var id = $(element).attr('${dataTableId}');
                 var key = $(element).attr('${dataResponseDataKey}');
                 var transposeKey = $(element).attr('${dataAgGridTransposeKey}');
+                var populateHeaders = $(element).attr('${dataPopulateHeaders}') === 'true';
                 return {
                     gridOptions: window['gridOptions' + id],
                     key: key,
-                    transposeKey: transposeKey
+                    transposeKey: transposeKey,
+                    populateHeaders: populateHeaders
                 };
             });
 

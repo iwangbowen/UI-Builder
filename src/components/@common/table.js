@@ -2,7 +2,7 @@ import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput, Numbe
 import {
     dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable,
     dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey, dataEnableCellClick,
-    cellClickedPopupPrefix
+    cellClickedPopupPrefix, dataPopulateHeaders
 } from '../common';
 import Vvveb from '../../gui/components';
 import flow from 'lodash/flow';
@@ -325,6 +325,25 @@ const table = {
             },
             init: flow([curry(getCheckboxProperty)(curry.placeholder, headerCheckboxSelection), transformToToggleValue]),
             onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, headerCheckboxSelection)
+        },
+        {
+            name: 'Populate Headers',
+            key: camelCase(dataPopulateHeaders),
+            htmlAttr: dataPopulateHeaders,
+            inputtype: new ToggleInput(),
+            validValues: ['true'],
+            init(node) {
+                return $(node).attr(dataPopulateHeaders) === 'true' ?
+                    this.validValues : [];
+            },
+            onChange(node, value) {
+                $(node).attr(dataPopulateHeaders, value);
+                return node;
+            },
+            data: {
+                on: 'true',
+                off: 'false'
+            }
         },
         {
             name: 'Pagination',
