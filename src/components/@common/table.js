@@ -195,6 +195,10 @@ const table = {
     image: "icons/table.svg",
     name: "Base ag-Grid",
     html: `<div style="width: 100px; height: 50px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
+    getRenderElement(node) {
+        const parents = $(node).parents(`[${dataTableId}]`);
+        return parents.length ? parents[0] : node;
+    },
     afterDrop(node) {
         $(node).removeClass('horizontal-stripes');
     },

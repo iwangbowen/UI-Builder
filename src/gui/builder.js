@@ -5,7 +5,7 @@ import {
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
 	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
 } from '../util/dom';
-import { noneditableSelector, getParentOrSelf, selectBox } from '../util/selectors';
+import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable, initIframeResizeVetically,
@@ -310,8 +310,9 @@ Vvveb.Builder = {
 
 		this.frameBody.on("click", function (event) {
 			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
+			const element = getElementWithSpecifiedClass($(event.target));
 
-			if (getElementWithSpecifiedClass($(event.target)).length) {
+			if (element.length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 					if (event.target) {
@@ -320,7 +321,11 @@ Vvveb.Builder = {
 						} else {
 							clearSelectedElements();
 						}
-						const node = getParentOrSelf(event.target);
+						const component = Vvveb.Components.matchNode(element);
+						let node = event.target;
+						if (component.getRenderElement) {
+							node = component.getRenderElement(node);
+						}
 						if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
 							$('#attribute-settings')
 								.addClass('active')

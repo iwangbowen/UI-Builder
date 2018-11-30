@@ -30,14 +30,9 @@ const componentSelector = '#components-list li ol li';
 
 const sortableDivSelector = `div:not(.ui-sortable-placeholder).${sortableClass}`;
 
-function getParentOrSelf(node) {
-    const parents = $(node).parents(parentSelector);
-    return parents.length ? parents[0] : node;
-}
-
 export {
     emptyChildrenSelectors, tableSelector, autoselectinputSelector, submitButtonSelector,
-    parentSelector, getParentOrSelf, requiredSpanSelector, noneditableSelector, calendarSelector,
+    parentSelector, requiredSpanSelector, noneditableSelector, calendarSelector,
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
     nonTemplateScriptSelector, componentSelector, inputBlockClassSelector, sortableDivSelector,
