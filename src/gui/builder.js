@@ -321,7 +321,7 @@ Vvveb.Builder = {
 						} else {
 							clearSelectedElements();
 						}
-						const component = Vvveb.Components.matchNode(element);
+						const component = Vvveb.Components.matchNode(element.get(0));
 						let node = event.target;
 						if (component.getRenderElement) {
 							node = component.getRenderElement(node);
