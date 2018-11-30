@@ -54,7 +54,7 @@ const tabs = {
     beforeInit(node) {
         const tabs = iframeWindow.$(node);
         const properties = [];
-        $(node).find('ul li').each((i, li) => {
+        $(node).children('ul').children('li').each((i, li) => {
             const $li = $(li);
             const $a = $li.find('a');
             properties.push({
