@@ -4,7 +4,7 @@ import { TabValueInput, ButtonInput } from "../../inputs/inputs";
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 
-function getLastTabId(tabsNav) {
+function getLastTabIdSuffix(tabsNav) {
     const href = tabsNav.children().last().children('a').attr('href');
     if (href) {
         return parseInt(href.split('-')[1]);
@@ -88,11 +88,11 @@ const tabs = {
             onChange: function (node) {
                 const tabs = iframeWindow.$(node);
                 const tabsNav = tabs.find('.ui-tabs-nav');
-                const newTabId = getLastTabId(tabsNav) + 1;
+                const newTabId = `tabs-${getLastTabIdSuffix(tabsNav) + 1}`;
 
-                const li = `<li><a href="#tabs-${newTabId}">New Tab</a></li>`;
+                const li = `<li><a href="#${newTabId}">New Tab</a></li>`;
                 tabs.find('.ui-tabs-nav').append(li);
-                tabs.append(`<div id="#tabs-${newTabId}"></div>`);
+                tabs.append(`<div id="${newTabId}"></div>`);
                 tabs.tabs('refresh');
 
                 Vvveb.Components.render(tabsid);
