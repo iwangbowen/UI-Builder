@@ -97,7 +97,7 @@ const tabs = {
                 const height = tabs.children('ul').height();
 
                 const li = `<li><a href="#${newTabId}">New Tab</a></li>`;
-                tabs.find('.ui-tabs-nav').append(li);
+                tabs.children('ul.ui-tabs-nav').append(li);
                 tabs.append(`<div id="${newTabId}" style="height: calc(100% - ${height}px);"></div>`);
                 tabs.tabs('refresh');
 
