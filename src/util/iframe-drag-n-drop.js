@@ -2,9 +2,10 @@ import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
 import { popupAdd, popupEdit, popupDelete, popupDetail, exportData, popupCommon } from '../util/popup-in-builder';
 import { tableSelector } from './selectors';
-import { dataTableId } from '../components/common';
+import { dataTableId, dataComponentId } from '../components/common';
 import { dummyData, gridOptions } from '../common';
 import { enableGridster, disableGridster } from './grid';
+import { tabsid } from '../components/@common/ids';
 
 function hideToolBoxes() {
     window.parent
@@ -331,8 +332,12 @@ function removeBaseTag() {
     $('head base').remove();
 }
 
+function initTabs() {
+    $(`[${dataComponentId}="${tabsid}"]`).tabs();
+}
+
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData, hideToolBoxes, removeBaseTag
+    setTableDummyData, hideToolBoxes, removeBaseTag, initTabs
 };
