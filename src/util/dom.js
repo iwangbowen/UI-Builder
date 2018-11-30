@@ -203,7 +203,8 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     html = html.replace(reg, (match, p1, p2, p3, p4) => {
         return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
     });
-
+    // Remove current active tab class with empty string
+    html = html.replace(/ ui-tabs-active ui-state-active/g, '');
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
