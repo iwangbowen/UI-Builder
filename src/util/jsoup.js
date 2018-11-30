@@ -12,6 +12,7 @@ import { template as multivalueselectTemplate, multiValueSelectScriptType } from
 import { template as functionTemplate, functionScriptType } from '../script-templates/function';
 import { template as tooltipTemplate, tooltipScriptType } from '../script-templates/tooltip';
 import { template as buttonClickPopupTemplate, buttonClickPopupScriptType } from '../script-templates/button-click-popup';
+import { template as tabsTemplate, tabsScriptType } from '../script-templates/tabs';
 import { setOnclickAttr as setCalendarOnclickAttr } from './dataAttr';
 import { setOnclickAttr as setButtonOnclickAttr } from './submitbutton';
 import findIndex from 'lodash/findIndex';
@@ -193,6 +194,10 @@ function generateButtonClickPopupScript(el) {
 
 function generateTooltipScript(el) {
     return appendScript(el, tooltipTemplate(), generatedExecuteScriptClass, tooltipScriptType);
+}
+
+function generateTabsScript(el) {
+    return appendScript(el, tabsTemplate(), generatedNonExecuteScriptClass, tabsScriptType);
 }
 
 function concatContent(prev, cur) {
@@ -384,5 +389,5 @@ export {
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet
+    removeGridsterStylesheet, generateTabsScript
 };

@@ -5,7 +5,7 @@ import {
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
     generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet
+    removeGridsterStylesheet, generateTabsScript
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -207,7 +207,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
     html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
         removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
         generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
-        generateTooltipScript, addNameBrackets,
+        generateTabsScript, generateTooltipScript, addNameBrackets,
         curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
         curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
         curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
