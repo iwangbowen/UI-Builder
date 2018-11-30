@@ -18,7 +18,7 @@ const baseProperties = [
 const manualselectProperties = [
     ...baseProperties,
     {
-        name: "Add option",
+        name: "Add Option",
         key: "addChild",
         inputtype: new ButtonInput(),
         data: { text: "Add option" },

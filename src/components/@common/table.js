@@ -202,7 +202,7 @@ const table = {
     afterDrop(node) {
         $(node).removeClass('horizontal-stripes');
     },
-    beforeInit: function (node) {
+    beforeInit(node) {
         let tableKey = $(node).attr(dataTableId);
 
         function cellClickedCb(event) {
