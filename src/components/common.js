@@ -86,6 +86,7 @@ const dataAgGridTransposeKey = 'data-ag-grid-transpose-key';
 const dataEnableButtonClickPopup = 'data-enable-button-click-popup';
 const dataButtonKey = 'data-button-key';
 const dataPopulateHeaders = 'data-populate-headers';
+const dataTabsKey = 'data-tabs-key';
 
 const rowClickedPopupPrefix = 'row_clicked_popup';
 const buttonClickedPopupPrefix = 'button_clicked_popup';
@@ -147,5 +148,5 @@ export {
     rowClickedPopupPrefix, dataAgGridTranspose, dataAgGridTransposeKey, rowClass, col_sm_1,
     col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
-    dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders
+    dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey
 };

@@ -1,7 +1,8 @@
-import { dataComponentId, configurableComponent } from "../common";
+import { dataComponentId, configurableComponent, dataTabsKey } from "../common";
 import { tabsid } from "./ids";
 import { TabValueInput, ButtonInput } from "../../inputs/inputs";
 import { enableSortableAndDroppable } from "../../util/drag-n-drop";
+import { getRandomString } from "../../util/common";
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 
@@ -28,17 +29,19 @@ const tabs = {
     },
     afterDrop(node) {
         const $node = iframeWindow.$(node);
+        const key = `_${getRandomString(2)}`;
+        $node.attr(dataTabsKey, key);
         $node.html(`
         <ul>
-            <li><a href="#tabs-1">Nunc tincidunt</a></li>
-            <li><a href="#tabs-2">Proin dolor</a></li>
-            <li><a href="#tabs-3">Aenean lacinia</a></li>
+            <li><a href="#tabs${key}-1">Nunc tincidunt</a></li>
+            <li><a href="#tabs${key}-2">Proin dolor</a></li>
+            <li><a href="#tabs${key}-3">Aenean lacinia</a></li>
         </ul>
-        <div id="tabs-1">
+        <div id="tabs${key}-1">
         </div>
-        <div id="tabs-2">
+        <div id="tabs${key}-2">
         </div>
-        <div id="tabs-3">
+        <div id="tabs${key}-3">
         </div>
         `);
         $node.removeClass('vertical-stripes');
@@ -88,8 +91,9 @@ const tabs = {
             data: { text: "Add Tab" },
             onChange: function (node) {
                 const tabs = iframeWindow.$(node);
+                const key = tabs.attr(dataTabsKey);
                 const tabsNav = tabs.find('.ui-tabs-nav');
-                const newTabId = `tabs-${getLastTabIdSuffix(tabsNav) + 1}`;
+                const newTabId = `tabs${key}-${getLastTabIdSuffix(tabsNav) + 1}`;
                 const height = tabs.children('ul').height();
 
                 const li = `<li><a href="#${newTabId}">New Tab</a></li>`;
