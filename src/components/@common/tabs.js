@@ -1,6 +1,7 @@
 import { dataComponentId, configurableComponent } from "../common";
 import { tabsid } from "./ids";
 import { TabValueInput, ButtonInput } from "../../inputs/inputs";
+import { enableSortableAndDroppable } from "../../util/drag-n-drop";
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 
@@ -89,11 +90,14 @@ const tabs = {
                 const tabs = iframeWindow.$(node);
                 const tabsNav = tabs.find('.ui-tabs-nav');
                 const newTabId = `tabs-${getLastTabIdSuffix(tabsNav) + 1}`;
+                const height = tabs.children('ul').height();
 
                 const li = `<li><a href="#${newTabId}">New Tab</a></li>`;
                 tabs.find('.ui-tabs-nav').append(li);
-                tabs.append(`<div id="${newTabId}"></div>`);
+                tabs.append(`<div id="${newTabId}" style="height: calc(100% - ${height}px);"></div>`);
                 tabs.tabs('refresh');
+
+                enableSortableAndDroppable(tabs.children().last());
 
                 Vvveb.Components.render(tabsid);
                 return node;
