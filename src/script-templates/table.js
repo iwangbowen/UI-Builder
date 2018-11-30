@@ -1,4 +1,8 @@
-import { dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl, rowClickedPopupPrefix, dataEnableCellClick, dataCellClickUrl, cellClickedPopupPrefix, dataPopulateHeaders } from '../components/common';
+import {
+    dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl,
+    rowClickedPopupPrefix, dataEnableCellClick, cellClickedPopupPrefix,
+    dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey
+} from '../components/common';
 import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@common/table';
 import { gridOptions } from '../common';
 
@@ -46,5 +50,22 @@ export function template(node) {
     ${gridOptions}${key}.api.setRowData([]);
     `;
 }
+
+export const girds = `
+        var grids = $('[${dataTableId}]')
+            .toArray()
+            .map(function (element) {
+                var id = $(element).attr('${dataTableId}');
+                var key = $(element).attr('${dataResponseDataKey}');
+                var transposeKey = $(element).attr('${dataAgGridTransposeKey}');
+                var populateHeaders = $(element).attr('${dataPopulateHeaders}') === 'true';
+                return {
+                    gridOptions: window['gridOptions' + id],
+                    key: key,
+                    transposeKey: transposeKey,
+                    populateHeaders: populateHeaders
+                };
+            });
+`;
 
 export const tableScriptType = 'table-script';

@@ -2,7 +2,7 @@ import {
     emptyChildrenSelectors, tableSelector, submitButtonSelector, calendarSelector,
     multivalueSelectSelector
 } from './selectors';
-import { template as tableTemplate, tableScriptType } from '../script-templates/table';
+import { template as tableTemplate, tableScriptType, girds } from '../script-templates/table';
 import { template as autoselectinputTemplate, autoSelectInputScriptType } from '../script-templates/autoselectinput';
 import { template as submitFormTemplate, functionName, submitFormScriptType } from '../script-templates/submitform';
 import { template as popupTemplate, popupScriptType } from '../script-templates/popup';
@@ -125,10 +125,11 @@ function removeImageDataURL(el) {
 }
 
 function generateTableScript(el) {
-    const jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
+    let jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
                 ${tableTemplate($(element))}`;
     }, '');
+    jsStr && (jsStr += girds);
     return appendScript(el, jsStr, generatedExecuteScriptClass, tableScriptType);
 }
 

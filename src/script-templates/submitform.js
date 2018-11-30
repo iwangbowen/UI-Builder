@@ -3,22 +3,6 @@ import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey, data
 export const functionName = 'submitForm';
 export function template() {
     return `
-        // 右侧内容查询开始
-        var grids = $('[${dataTableId}]')
-            .toArray()
-            .map(function (element) {
-                var id = $(element).attr('${dataTableId}');
-                var key = $(element).attr('${dataResponseDataKey}');
-                var transposeKey = $(element).attr('${dataAgGridTransposeKey}');
-                var populateHeaders = $(element).attr('${dataPopulateHeaders}') === 'true';
-                return {
-                    gridOptions: window['gridOptions' + id],
-                    key: key,
-                    transposeKey: transposeKey,
-                    populateHeaders: populateHeaders
-                };
-            });
-
         $('form.form-box').find('input[type=file][${dataUrl}]').on('change', function () {
             var formData = new FormData();
             formData.append(this.name, this.files[0]);
