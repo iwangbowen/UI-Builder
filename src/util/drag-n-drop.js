@@ -12,7 +12,7 @@ import {
     customtableid, commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid
 } from '../components/@common/ids';
 import {
     customTablesScope, gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
@@ -41,6 +41,7 @@ const gridDroppables = [
     labelfieldid,
     popuptextinputid,
     popupmanualselectinputid,
+    tabsid,
     bootstraptextinputfieldid,
     bootstraptextareafieldid,
     bootstrapfileinputfieldid,

@@ -326,8 +326,13 @@ function setGlobalVariables() {
     self.disableGridster = disableGridster;
 }
 
+// Remove base tag after document loaded to work around jQuery UI Tab
+function removeBaseTag() {
+    $('head base').remove();
+}
+
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData, hideToolBoxes
+    setTableDummyData, hideToolBoxes, removeBaseTag
 };

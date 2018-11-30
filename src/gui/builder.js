@@ -94,13 +94,12 @@ Vvveb.Builder = {
 	/* iframe */
 	_loadIframe(url, srcdoc) {
 		this.iframe = this.documentFrame.get(0);
+		this.iframe.src = `${window.location.origin}/${url}`;
 		if (srcdoc) {
 			const iframeDocument = this.iframe.contentWindow.document;
 			iframeDocument.open('text/html', 'replace');
 			iframeDocument.write(srcdoc);
 			iframeDocument.close();
-		} else {
-			this.iframe.src = `${window.location.origin}/${url}`;
 		}
 	},
 	_getElementType(el) {

@@ -46,3 +46,9 @@
 9. Gridster网格加载速度
 
     Gridster自动生成内联样式，css规则中的单位为绝对值，只适配UI Builder中的视图。如果在导出的页面中，利用Gridster动态进行初始化，加载速度会很慢。在导出页面的同时，直接利用正则表达式将Gridster内联样式中的绝对值替换成相对值，加快页面的加载速度。
+
+10. jQuery UI Tabs
+
+    参考[Using jQuery UI Tabs with the `base` Tag](https://www.tjvantoll.com/2013/02/17/using-jquery-ui-tabs-with-the-base-tag/)
+    保存在localStorage中的页面或通过上传操作导入的页面，是通过将页面内容写入iframe中完成的。虽然可以显式设置iframe的src，但在iframe中获得的location.href仍然是父页面的location.href。因为iframe中外部依赖路径是相对于模板文件的路径，不是父页面的路径，所以设置了base标签来正确解析外部依赖。但在使用jQuery UI Tabs中，标签页的路径是相对于base来解析的，造成和location.href不同，jQuery UI在解析时如果发现不同，处理方式是通过ajax请求将返回的内容动态添加到标签页对应的内容区域，所以标签页解析错误。jQuery UI的处理方式虽然不是一个bug，但是违背直觉，同时没有提供选项来设置解析方式。临时解决办法是
+    iframe依赖文件加载完毕后，移除base标签。
