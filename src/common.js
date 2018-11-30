@@ -1,5 +1,5 @@
 import { dataComponentId } from "./components/common";
-import { gridcolumnid } from "./components/@common/ids";
+import { gridcolumnid, tabsid } from "./components/@common/ids";
 
 const gridWidgetSelector = 'div.gridster > div';
 const rowColumnSelector = `[${dataComponentId}="${gridcolumnid}"]`;
@@ -14,8 +14,9 @@ const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
 const pdsDroppableSelector = '.allButton.dropzone';
-const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}`;
-const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}`;
+const tabSelector = `[${dataComponentId}="${tabsid}"] > div`;
+const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
+const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
 
 const formItemsScope = 'formItems';
 const gridColumnItemsScope = 'gridColumnItems';

@@ -219,6 +219,9 @@ function drop(event, { draggable, helper, offset }) {
         if (component.beforeInit) {
             component.beforeInit(appendedElement.get(0));
         }
+        if (component.isChildrenSortableAndDroppable) {
+            enableSortableAndDroppable(appendedElement.children(component.sortableAndDroppableSelector));
+        }
         Vvveb.Undo.addMutation(new ChildListMutation({
             target: appendedElement.get(0).parentNode,
             addedNodes: [...appendedElement],
