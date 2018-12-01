@@ -13,4 +13,4 @@ fs.readFile('./template.html', (error, buffer) => {
             console.error(error);
         }
     });
-})
+});
