@@ -19,7 +19,8 @@
     "clean:built": "grunt clean:built",
     "concat": "grunt concat",
     "build:dev": "grunt build:dev",
-    "build:prod": "git pull && grunt build:prod"
+    "build:prod": "git pull && grunt build:prod",
+    "count": "find ./src -name '*.js' | xargs wc -l"
   },
   "dependencies": {
     "chart.js": "^2.7.3",
