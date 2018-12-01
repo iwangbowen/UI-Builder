@@ -1,7 +1,7 @@
 import saveAs from 'file-saver';
 import JSZip from 'jszip';
-import { defaultHtmlFilename, defaultZipFilename } from '../constants';
 import { getBeautifiedHtml } from './dom';
+import { defaultHtmlFilename, defaultZipFilename } from '../shared';
 
 $('#dialog-form').find('input[type=radio]').checkboxradio();
 const form = $('#dialog-form').find('form');

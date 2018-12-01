@@ -13,3 +13,4 @@ template/**/*.vbs
 doc/
 noide.config.*
 *.exe
+editor.html

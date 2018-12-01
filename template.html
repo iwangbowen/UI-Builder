@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="GUI Builder is a drag and drop ui builder to help developers create static web pages faster">
+    <meta name="description" content="{{description}}">
     <meta name="author" content="">
     <link rel="icon" href="./img/favicon.png">
-    <title>UI Builder 2.0.1</title>
+    <title>{{appName}} {{version}}</title>
     <link href="css/editor.css" rel="stylesheet">
     <link href="css/drag-n-drop.css" rel="stylesheet">
     <link href="css/line-awesome.css" rel="stylesheet">
@@ -148,7 +148,7 @@
         </div>
         <div id="menu-panel">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#" style="font-size: 18px;">UI Builder</a>
+                <a class="navbar-brand" href="#" style="font-size: 18px;">{{appName}}</a>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="javascript:void(0);">组件库
@@ -231,12 +231,12 @@
         <form style="margin-top: 50px;">
             <fieldset>
                 <legend>Select exported file type: </legend>
-                <label for="radio-1">index.html</label>
-                <input type="radio" name="file" id="radio-1" value="index.html">
-                <label for="radio-2">index.js</label>
-                <input type="radio" name="file" id="radio-2" value="index.js" disabled>
-                <label for="radio-3">index.zip</label>
-                <input type="radio" name="file" id="radio-3" value="index.zip">
+                <label for="radio-1">{{defaultHtmlFilename}}</label>
+                <input type="radio" name="file" id="radio-1" value="{{defaultHtmlFilename}}">
+                <label for="radio-2">{{defaultJavaScriptFilename}}</label>
+                <input type="radio" name="file" id="radio-2" value="{{defaultJavaScriptFilename}}" disabled>
+                <label for="radio-3">{{defaultZipFilename}}</label>
+                <input type="radio" name="file" id="radio-3" value="{{defaultZipFilename}}">
             </fieldset>
         </form>
     </div>

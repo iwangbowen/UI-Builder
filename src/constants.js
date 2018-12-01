@@ -1,8 +1,5 @@
 const baseHref = 'baseHref';
 const defaultFilename = 'index.html';
-const defaultHtmlFilename = 'index.html';
-const defaultJavaScriptFilename = 'index.js';
-const defaultZipFilename = 'index.zip';
 
 const isInBuilder = true;
 
@@ -57,5 +54,5 @@ export {
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
-    generatedExecuteScriptClass, defaultHtmlFilename, defaultJavaScriptFilename, defaultZipFilename
+    generatedExecuteScriptClass
 };
