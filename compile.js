@@ -1,7 +1,7 @@
 const fs = require('fs');
 const values = require('./src/shared');
 
-fs.readFile('./template.html', (error, buffer) => {
+fs.readFile('./template.hbs', (error, buffer) => {
     if (error) {
         console.error(error);
         return;
