@@ -25,9 +25,7 @@ import {
     tooltipType
 } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
-import 'core-js/es6/array';
-import 'core-js/es7/array';
-import 'core-js/es6/string';
+import 'babel-polyfill';
 import { imagePlaceholder } from '../common';
 import { gridsterStylesheet } from './common';
 

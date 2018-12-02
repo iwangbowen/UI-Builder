@@ -28,7 +28,7 @@ import {
     deletableComponent
 } from '../components/common';
 import { addDatetime } from './common';
-import 'core-js/es7/array';
+import 'babel-polyfill';
 import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup } from '../common';
 import { sendMessage } from '../message';
