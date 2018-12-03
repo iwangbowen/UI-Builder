@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
 import { popupAdd, popupEdit, popupDelete, popupDetail, exportData, popupCommon } from '../util/popup-in-builder';
 import { tableSelector } from './selectors';

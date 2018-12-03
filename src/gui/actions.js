@@ -1,6 +1,6 @@
 import Vvveb from './builder';
 import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util/dom';
-import 'babel-polyfill';
+import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
 import { dialog } from '../util/dialog';

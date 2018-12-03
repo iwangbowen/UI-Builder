@@ -17,7 +17,7 @@ import {
 import {
     customTablesScope, gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
-import 'babel-polyfill';
+import 'core-js/es7/array';
 
 const customTables = [
     customtableid,
