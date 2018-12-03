@@ -18,13 +18,13 @@ const dialog = $("#dialog-form").dialog({
                 if (value === 'index.html') {
                     const blob = new Blob([text], { type: "text/html;charset=utf-8" });
                     saveAs(blob, defaultHtmlFilename);
-                    dialog.dialog('close');
+                    setTimeout(() => dialog.dialog('close'), 1000);
                 } else {
                     const zip = new JSZip();
                     zip.file(defaultHtmlFilename, text);
                     zip.generateAsync({ type: 'blob' }).then(blob => {
                         saveAs(blob, defaultZipFilename);
-                        dialog.dialog('close');
+                        setTimeout(() => dialog.dialog('close'), 1000);
                     });
                 }
             }
