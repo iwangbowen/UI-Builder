@@ -189,6 +189,8 @@ function destructDoc(doc) {
     }
 }
 
+const cache = {};
+
 function getBeautifiedHtml(doc, withExternalFiles = false) {
     /*
     -I, --indent-inner-html            Indent <head> and <body> sections. Default is false.
@@ -196,28 +198,43 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
                                        use empty array to denote that no tags should not be reformatted
      */
     let { doctype, html } = destructDoc(doc);
-    // Converse gridster absolute values to relative ones
-    // It's easy to just replace by RegExp
-    const width = $(doc).find('body div.gridster').width()
-    const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
-    html = html.replace(reg, (match, p1, p2, p3, p4) => {
-        return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
-    });
-    // Remove current active tab class with empty string
-    html = html.replace(/ ui-tabs-active ui-state-active/g, '');
-    html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
-        removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-        generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
-        generateTabsScript, generateTooltipScript, addNameBrackets,
-        curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
-        curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
-        curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
-    return withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
-        ${html}
-    `, html_beaufify_options)) : html_beautify(`
-        ${doctype}
-        ${html}
-    `, html_beaufify_options);
+    const key = decodeURI(getHash());
+
+    if (cache[key] && cache[key].html === html) {
+        return cache[key].beautifiedHtml;
+    } else {
+        cache[key] || (cache[key] = {});
+        cache[key].html = html;
+        // Regexp
+        // Converse gridster absolute values to relative ones
+        // It's easy to just replace by RegExp
+        const width = $(doc).find('body div.gridster').width()
+        const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
+        html = html.replace(reg, (match, p1, p2, p3, p4) => {
+            return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
+        });
+        // Remove current active tab class with empty string
+        html = html.replace(/ ui-tabs-active ui-state-active/g, '');
+
+        // Dom manipulation
+        html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
+            removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
+            generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
+            generateTabsScript, generateTooltipScript, addNameBrackets,
+            curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
+            curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
+            curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
+
+        // Beautify
+        const beautifiedHtml = withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
+            ${html}
+        `, html_beaufify_options)) : html_beautify(`
+            ${doctype}
+            ${html}
+        `, html_beaufify_options);
+        cache[key].beautifiedHtml = beautifiedHtml;
+        return beautifiedHtml;
+    }
 }
 
 const delay = (function () {
