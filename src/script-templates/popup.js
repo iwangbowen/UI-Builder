@@ -8,7 +8,7 @@ export function template() {
         ${popupDelete.toString()}
         ${popupDetail.toString()}
         ${exportData.toString()}
-        $('form.popup-form input[type=submit]').click(function () {
+        function popupFormSubmitCallback() {
             submitForm($(this).parents('form'),
                 $('button#' + $(this).parents('form').attr('${dataRelatedButton}')).attr('${dataUrl}'),
                 function (response) {
@@ -17,7 +17,8 @@ export function template() {
                 },
                 function () {
                 });
-        });
+        }
+        $('form.popup-form input[type=submit]').on('click', popupFormSubmitCallback);
     `;
 }
 
