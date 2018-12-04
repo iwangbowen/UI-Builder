@@ -80,8 +80,8 @@ export function template() {
                 function () {
                 });
         }
-        $('form button#dataSearch').click(query);
-        $('div.gridster div form button[${dataEnableButtonClickPopup}!=true]').click(query);
+        $('form button#dataSearch').on('click', query);
+        $('div.gridster div form button[${dataEnableButtonClickPopup}!=true]').on('click', query);
     `;
 }
 
