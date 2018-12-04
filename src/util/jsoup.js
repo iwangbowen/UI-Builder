@@ -7,7 +7,6 @@ import { template as autoselectinputTemplate, autoSelectInputScriptType } from '
 import { template as submitFormTemplate, functionName, submitFormScriptType } from '../script-templates/submitform';
 import { template as popupTemplate, popupScriptType } from '../script-templates/popup';
 import { template as queryTempate, queryScriptType } from '../script-templates/query';
-import { template as gridTemplate } from '../script-templates/grid';
 import { template as multivalueselectTemplate, multiValueSelectScriptType } from '../script-templates/multivalueselect';
 import { template as functionTemplate, functionScriptType } from '../script-templates/function';
 import { template as tooltipTemplate, tooltipScriptType } from '../script-templates/tooltip';
@@ -174,10 +173,6 @@ function generateButtonOnclickScript(el) {
 
 function generatePopupScript(el) {
     return appendScript(el, popupTemplate(), generatedNonExecuteScriptClass, popupScriptType);
-}
-
-function generateGridScript(el) {
-    return appendScript(el, gridTemplate());
 }
 
 function generateQueryScript(el) {
@@ -387,7 +382,7 @@ export {
     replaceWithExternalFiles, generateBaseTag, generateDevDependentTags,
     generatePopupScript, generateMultivalueSelectScript, generateTooltipScript,
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
-    replacePopupWithForm, generateQueryScript, generateGridScript, generateAddNewItemDiv,
+    replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript
 };
