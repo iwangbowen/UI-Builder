@@ -141,6 +141,22 @@ function generateSharedJSCode() {
         .join('\r\n');
 }
 
+function generateScripts(el, containsShard) {
+    generateTableScript(el);
+    if (containsShard) {
+        generateSelectOptionsScript(el);
+        generateSubmitFormScript(el);
+        generateButtonOnclickScript(el);
+        generatePopupScript(el);
+        generateQueryScript(el);
+        generateMultivalueSelectScript(el);
+        generateButtonClickPopupScript(el);
+        generateTabsScript(el);
+        generateTooltipScript(el);
+    }
+    return el;
+}
+
 function generateTableScript(el) {
     let jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
@@ -401,5 +417,5 @@ export {
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet, generateTabsScript, generateSharedJSCode
+    removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts
 };

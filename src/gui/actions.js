@@ -60,7 +60,7 @@ Vvveb.Actions = {
         Vvveb.Builder.selectNode();
     },
     check() {
-        $('#textarea-modal textarea').val(getBeautifiedHtml(window.FrameDocument));
+        $('#textarea-modal textarea').val(getBeautifiedHtml(window.FrameDocument, false, false));
         $('#textarea-modal').modal();
     },
     viewport() {

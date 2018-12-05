@@ -1,11 +1,10 @@
 import {
-    removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
-    generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
-    replaceWithExternalFiles, generateMultivalueSelectScript, addNameBrackets,
+    removeUnusedTags, emptyChildren, generateCalendarOnclickAttr,
+    replaceWithExternalFiles, addNameBrackets,
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
-    htmlGenerator, changeScriptType, generateTooltipScript, generatePopupScript, replacePopupWithForm,
-    generateQueryScript, generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet, generateTabsScript
+    htmlGenerator, changeScriptType, replacePopupWithForm,
+    generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
+    removeGridsterStylesheet, generateScripts
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -191,36 +190,33 @@ function destructDoc(doc) {
 
 const cache = {};
 
-function getBeautifiedHtml(doc, withExternalFiles = false) {
+function getBeautifiedHtml(doc, withExternalFiles = false, containsShared = true) {
     /*
     -I, --indent-inner-html            Indent <head> and <body> sections. Default is false.
     -U, --unformatted                  List of tags (defaults to inline) that should not be reformatted
                                        use empty array to denote that no tags should not be reformatted
      */
-    let { doctype, html } = destructDoc(doc);
+    let { doctype, html: origHtml } = destructDoc(doc);
     const key = decodeURI(getHash());
 
-    if (cache[key] && cache[key].html === html) {
+    if (!containsShared && cache[key] && cache[key].html === origHtml) {
         return cache[key].beautifiedHtml;
     } else {
-        cache[key] || (cache[key] = {});
-        cache[key].html = html;
         // Regexp
         // Converse gridster absolute values to relative ones
         // It's easy to just replace by RegExp
         const width = $(doc).find('body div.gridster').width()
         const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
-        html = html.replace(reg, (match, p1, p2, p3, p4) => {
+        let html = origHtml.replace(reg, (match, p1, p2, p3, p4) => {
             return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
         });
         // Remove current active tab class with empty string
         html = html.replace(/ ui-tabs-active ui-state-active/g, '');
 
         // Dom manipulation
-        html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren, generateTableScript,
-            removeStyleForSelectedElements, generateCalendarOnclickAttr, generateSelectOptionsScript, generateSubmitFormScript,
-            generateButtonOnclickScript, generatePopupScript, generateQueryScript, generateMultivalueSelectScript, generateButtonClickPopupScript,
-            generateTabsScript, generateTooltipScript, addNameBrackets,
+        html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren,
+            removeStyleForSelectedElements, generateCalendarOnclickAttr,
+            curry(generateScripts)(curry.placeholder, containsShared), addNameBrackets,
             curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
             curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
             curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
@@ -232,7 +228,11 @@ function getBeautifiedHtml(doc, withExternalFiles = false) {
             ${doctype}
             ${html}
         `, html_beaufify_options);
-        cache[key].beautifiedHtml = beautifiedHtml;
+        if (!containsShared) {
+            cache[key] || (cache[key] = {});
+            cache[key].html = origHtml;
+            cache[key].beautifiedHtml = beautifiedHtml;
+        }
         return beautifiedHtml;
     }
 }
@@ -282,10 +282,11 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 }
 
 function autoSave() {
-    const html = getBeautifiedHtml(window.FrameDocument);
     if (isInIframe) {
+        const html = getBeautifiedHtml(window.FrameDocument);
         sendMessage(html);
     } else {
+        const html = getBeautifiedHtml(window.FrameDocument, false, false);
         localStorage.setItem(decodeURI(getHash()), html);
     }
 }
