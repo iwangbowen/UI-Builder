@@ -1,7 +1,10 @@
 import saveAs from 'file-saver';
 import JSZip from 'jszip';
 import { getBeautifiedHtml } from './dom';
-import { defaultHtmlFilename, defaultZipFilename, defaultJavaScriptFilename } from '../shared';
+import {
+    defaultHtmlFilename, defaultZipFilename, defaultJavaScriptFilename,
+    defaultBundledHtmlFilename
+} from '../shared';
 import { generateSharedJSCode } from './jsoup';
 
 $('#dialog-form').find('input[type=radio]').checkboxradio();
@@ -15,11 +18,11 @@ const dialog = $("#dialog-form").dialog({
     buttons: {
         Export() {
             const value = $('input[name=file]:checked', form).val();
-            if (value === 'index.html' || value === 'index.zip') {
+            if (value === defaultBundledHtmlFilename || value === defaultZipFilename) {
                 const text = getBeautifiedHtml(window.FrameDocument);
-                if (value === 'index.html') {
+                if (value === defaultBundledHtmlFilename) {
                     const blob = new Blob([text], { type: "text/html;charset=utf-8" });
-                    saveAs(blob, defaultHtmlFilename);
+                    saveAs(blob, defaultBundledHtmlFilename);
                     closeDialog();
                 } else {
                     const zip = new JSZip();
