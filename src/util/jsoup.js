@@ -135,6 +135,21 @@ const shardScriptTemplates = [
     tabsTemplate
 ];
 
+const sharedScriptTypes = [
+    autoSelectInputScriptType,
+    submitFormScriptType,
+    popupScriptType,
+    queryScriptType,
+    multiValueSelectScriptType,
+    buttonClickPopupScriptType,
+    tooltipScriptType,
+    tabsScriptType
+];
+
+const sharedScriptSelector = sharedScriptTypes.
+    map(type => `script[${dataScriptType}="${type}"]`)
+    .join(', ');
+
 function generateSharedJSCode() {
     return shardScriptTemplates
         .map(template => template())
@@ -155,6 +170,7 @@ function generateScripts(el, containsShard) {
         generateTooltipScript(el);
     } else {
         $(el).find('script[src]').last().after(`<script src="../../js/${sharedScript}"></script>`);
+        $(el).find(sharedScriptSelector).remove();
     }
     return el;
 }
