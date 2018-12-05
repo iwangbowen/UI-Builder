@@ -9,19 +9,15 @@ import {
     textinputfieldid, datetimeinputfieldid, fileinputfieldid,
     autoselectinputfieldid, manualselectinputfieldid, multivalueselectinputfieldid,
     textareafieldid, radiofieldid, checkboxfieldid, popuptextinputid, popupmanualselectinputid,
-    customtableid, commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
+    commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
     bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid
 } from '../components/@common/ids';
 import {
-    customTablesScope, gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
+    gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
-
-const customTables = [
-    customtableid,
-];
 
 const gridDroppables = [
     buttonid,
@@ -59,7 +55,6 @@ const gridDroppables = [
 ];
 
 const componentScopes = reduce({
-    customTables,
     gridDroppables,
 }, (prev, v, k) => {
     extend(prev, ...v.map(v => {
@@ -228,15 +223,6 @@ function drop(event, { draggable, helper, offset }) {
             nextSibing: appendedElement[0].nextSibing
         }));
     }
-}
-
-function initIframeTableDrop() {
-    Vvveb.Builder.frameBody
-        .find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid')
-        .droppable({
-            scope: customTablesScope,
-            drop
-        });
 }
 
 function initRowColumnDrop() {
@@ -450,7 +436,6 @@ function initComponentDragWithInteract() {
 export {
     initTopPanelDrag,
     initComponentDrag,
-    initIframeTableDrop,
     initIframeDrag,
     initComponentDragWithInteract,
     initIframeSortable,

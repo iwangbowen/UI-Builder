@@ -21,8 +21,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _common_ids.radiofieldid,
     _common_ids.checkboxfieldid,
     _common_ids.popuptextinputid,
-    _common_ids.popupmanualselectinputid,
-    _common_ids.customtableid
+    _common_ids.popupmanualselectinputid
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [

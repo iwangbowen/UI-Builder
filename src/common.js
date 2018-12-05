@@ -13,7 +13,7 @@ const popupFormSelector = 'div.popup-window div.content form';
 const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
-const pdsDroppableSelector = '.allButton.dropzone';
+const pdsDroppableSelector = '.allButton.dropzone, .userList #myGrid';
 const tabSelector = `[${dataComponentId}="${tabsid}"] > div`;
 const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
 const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
