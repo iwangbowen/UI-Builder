@@ -2,8 +2,7 @@ import { dataUrl, dataValueMapping, dataTextMapping } from "../components/common
 import { autoselectinputSelector } from '../util/selectors';
 
 export function template() {
-    return `
-function generateOptions(el, response) {
+    return `function generateOptions(el, response) {
     var value = $(el).attr('${dataValueMapping}') || 'value';
     var text = $(el).attr('${dataTextMapping}') || 'text';
     response.forEach(function (option) {

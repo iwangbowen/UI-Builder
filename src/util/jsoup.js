@@ -153,6 +153,8 @@ function generateScripts(el, containsShard) {
         generateButtonClickPopupScript(el);
         generateTabsScript(el);
         generateTooltipScript(el);
+    } else {
+        $(el).find('script[src]').last().after(`<script src="../../js/${sharedScript}"></script>`);
     }
     return el;
 }
@@ -336,6 +338,13 @@ function appendScriptWithSrc(el, src) {
     $(el).find('body').append(`<script src="${src}"></script>`);
 }
 
+const sharedScript = 'shared.js';
+
+function removeSharedScriptTag(el) {
+    $(el).find(`script[src$="${sharedScript}"]`).remove();
+    return el;
+}
+
 function generatedMissedScripts(el, missedScripts) {
     missedScripts.forEach(curry(appendScriptWithSrc)(el, curry.placeholder));
     return el;
@@ -417,5 +426,6 @@ export {
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts
+    removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
+    removeSharedScriptTag
 };

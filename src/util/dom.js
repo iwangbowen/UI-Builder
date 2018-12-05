@@ -4,7 +4,7 @@ import {
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, replacePopupWithForm,
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
-    removeGridsterStylesheet, generateScripts
+    removeGridsterStylesheet, generateScripts, removeSharedScriptTag
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -262,7 +262,7 @@ function generateHtml(html, pageHref) {
     // Add missed scripts to previously generated page to be backward compatible.
     const missedScripts = depScripts.filter(script => !newHtml.includes(script));
 
-    return htmlGenerator(newHtml, removeGridsterStylesheet, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
+    return htmlGenerator(newHtml, removeSharedScriptTag, removeGridsterStylesheet, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
         generateDevDependentTags, curry(generateBaseTag)(curry.placeholder, pageHref), removeRemoveableScripts,
         curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, generatedScriptType),
         curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType),
