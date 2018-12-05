@@ -6,6 +6,7 @@ import { generateSharedJSCode } from './jsoup';
 
 $('#dialog-form').find('input[type=radio]').checkboxradio();
 const form = $('#dialog-form').find('form');
+form.find('label').tooltip();
 const dialog = $("#dialog-form").dialog({
     autoOpen: false,
     height: 350,
