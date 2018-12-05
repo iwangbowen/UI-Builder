@@ -9,6 +9,8 @@ const defaultHtmlFilenameTitle = 'Separate html page without shared JavaScript';
 const defaultJavaScriptFilenameTitle = 'Shared JavaScript';
 const defaultZipFilenameTitle = 'Zip file with separate html and JavaScript pages';
 const description = 'GUI Builder is a drag and drop ui builder to help developers create static web pages faster';
+const emptyPagesTitle = 'Empty all pages?';
+const emptyPagesContent = 'These pages will be permanently deleted and cannot be recovered. Are you sure?';
 
 module.exports = {
     appName,
@@ -21,5 +23,7 @@ module.exports = {
     defaultBundledHtmlFilenameTitle,
     defaultHtmlFilenameTitle,
     defaultJavaScriptFilenameTitle,
-    defaultZipFilenameTitle
+    defaultZipFilenameTitle,
+    emptyPagesTitle,
+    emptyPagesContent
 };

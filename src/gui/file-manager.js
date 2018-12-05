@@ -29,12 +29,11 @@ Vvveb.FileManager = {
 		$.contextMenu({
 			selector: `${this.pageTreeSelector} li`,
 			callback: (key, options) => {
+				const deletedPage = $(this.pageTreeSelector).find('li.context-menu-active');
+				const deletedPageName = deletedPage.data('page');
+				const activePage = $(this.pageTreeSelector).find('li.active');
+				const activePageName = activePage.data('page');
 				if (key == 'delete') {
-					const deletedPage = $(this.pageTreeSelector).find('li.context-menu-active');
-					const deletedPageName = deletedPage.data('page');
-					const activePage = $(this.pageTreeSelector).find('li.active');
-					const activePageName = activePage.data('page');
-
 					if (isTemplatePage(deletedPageName)) {
 						if (activePageName == deletedPageName) {
 							const decodedHash = decodeHash();
@@ -51,12 +50,50 @@ Vvveb.FileManager = {
 							deletedPage.remove();
 						}
 					}
+				} else if (key === 'deleteAll') {
+					const self = this;
+					$("#dialog-confirm").dialog({
+						resizable: false,
+						height: "auto",
+						width: 400,
+						modal: true,
+						buttons: {
+							"Delete all pages":  function () {
+								$(self.pageTreeSelector).find('li').each((_, li) => {
+									const $li = $(li);
+									const pageName = $li.data('page');
+									if (!isTemplatePage(pageName)) {
+										$li.remove();
+									}
+								});
+								if (isTemplatePage(activePageName)) {
+									const decodedHash = decodeHash();
+									Object.keys(localStorage)
+										.filter(key => key != decodedHash)
+										.forEach(key => localStorage.removeItem(key));
+								} else {
+									Object.keys(localStorage)
+										.forEach(key => localStorage.removeItem(key));
+									$(self.pageTreeSelector).find('li').find('span').click();
+								}
+
+								$(this).dialog("close");
+							},
+							Cancel: function () {
+								$(this).dialog("close");
+							}
+						}
+					});
 				}
 			},
 			items: {
 				delete: {
 					name: "Delete",
 					icon: "delete"
+				},
+				deleteAll: {
+					name: 'Delete All',
+					icon: 'delete'
 				},
 				sep1: "---------",
 				quit: {
