@@ -1,8 +1,7 @@
 export function template(functionWithParentheses) {
     return `
-    function ${functionWithParentheses} {
-    }
-    `;
+function ${functionWithParentheses} {
+}`;
 }
 
 export const functionScriptType = 'function-script';

@@ -1,4 +1,6 @@
-import { dataEnableButtonClickPopup, buttonClickedPopupPrefix, dataButtonKey } from "../components/common";
+import {
+    dataEnableButtonClickPopup, buttonClickedPopupPrefix, dataButtonKey
+} from "../components/common";
 import { popupDetail } from "./popup-in-builder";
 
 function addButtonListener() {

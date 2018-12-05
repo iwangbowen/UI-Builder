@@ -1,5 +1,6 @@
 const appName = 'UI Builder';
 const version = '2.0.1';
+const defaultBundledHtmlFilename = 'bundled.html';
 const defaultHtmlFilename = 'index.html';
 const defaultJavaScriptFilename = 'index.js';
 const defaultZipFilename = 'index.zip';
@@ -11,5 +12,6 @@ module.exports = {
     defaultHtmlFilename,
     defaultJavaScriptFilename,
     defaultZipFilename,
-    description
+    description,
+    defaultBundledHtmlFilename
 };

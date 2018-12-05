@@ -44,6 +44,14 @@ function getDetailPopupSelector(popup) {
     return `#${popup.attr('id')} div.content`
 }
 
+const tooltipOptions = {
+    position: {
+        my: "left top",
+        at: "right+5 top-5",
+        collision: "none"
+    }
+};
+
 const dummyData = [
     {
         athelete: 'Michael Phelps',
@@ -90,5 +98,6 @@ export {
     gridOptions,
     imagePlaceholder,
     getDetailPopupSelector,
-    detailPopup
+    detailPopup,
+    tooltipOptions
 };

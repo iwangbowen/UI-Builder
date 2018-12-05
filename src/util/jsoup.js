@@ -124,6 +124,23 @@ function removeImageDataURL(el) {
     return el;
 }
 
+const shardScriptTemplates = [
+    autoselectinputTemplate,
+    submitFormTemplate,
+    popupTemplate,
+    queryTempate,
+    multivalueselectTemplate,
+    buttonClickPopupTemplate,
+    tooltipTemplate,
+    tabsTemplate
+];
+
+function generateSharedJSCode() {
+    return shardScriptTemplates
+        .map(template => template())
+        .join('\r\n');
+}
+
 function generateTableScript(el) {
     let jsStr = Array.from($(el).find(tableSelector)).reduce((prev, element) => {
         return `${prev}
@@ -188,7 +205,7 @@ function generateButtonClickPopupScript(el) {
 }
 
 function generateTooltipScript(el) {
-    return appendScript(el, tooltipTemplate(), generatedExecuteScriptClass, tooltipScriptType);
+    return appendScript(el, tooltipTemplate(), generatedNonExecuteScriptClass, tooltipScriptType);
 }
 
 function generateTabsScript(el) {
@@ -384,5 +401,5 @@ export {
     removeRemoveableScripts, addNameBrackets, removeNameBrackets, htmlGenerator, changeScriptType,
     replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
-    removeGridsterStylesheet, generateTabsScript
+    removeGridsterStylesheet, generateTabsScript, generateSharedJSCode
 };

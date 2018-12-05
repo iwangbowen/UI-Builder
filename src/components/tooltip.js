@@ -1,13 +1,6 @@
 import { dataTitle } from './common';
 import { TextInput } from '../inputs/inputs';
-
-const options = {
-    position: {
-        my: "left top",
-        at: "right+5 top-5",
-        collision: "none"
-    }
-};
+import { tooltipOptions } from '../common';
 
 function init(element) {
     return document.getElementById('iframeId').contentWindow.$(element).attr(dataTitle);
@@ -16,7 +9,7 @@ function init(element) {
 function afterChange(element, value, input, component) {
     document.getElementById('iframeId').contentWindow.$(element)
         .attr(dataTitle, value)
-        .tooltip(options);
+        .tooltip(tooltipOptions);
 }
 
 const property = {
@@ -30,5 +23,5 @@ const property = {
 
 export {
     property,
-    options
+    tooltipOptions
 };

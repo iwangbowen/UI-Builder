@@ -1,5 +1,5 @@
 import {
-    setGlobalVariables, setTableDummyData, removeBaseTag, initTabs
+    setGlobalVariables, setTableDummyData, removeBaseTag, initTabs, initTooltip
 } from './util/iframe-drag-n-drop';
 import {
     initGridInBuilder
@@ -11,6 +11,7 @@ import {
 $(document).ready(() => {
     removeBaseTag();
     initTabs();
+    initTooltip();
     setGlobalVariables();
     initGridInBuilder();
     setTableDummyData();

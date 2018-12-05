@@ -3,7 +3,7 @@ import MoveMutation from '../models/mutation/move-mutation';
 import { popupAdd, popupEdit, popupDelete, popupDetail, exportData, popupCommon } from '../util/popup-in-builder';
 import { tableSelector } from './selectors';
 import { dataTableId, dataComponentId } from '../components/common';
-import { dummyData, gridOptions } from '../common';
+import { dummyData, gridOptions, tooltipOptions } from '../common';
 import { enableGridster, disableGridster } from './grid';
 import { tabsid } from '../components/@common/ids';
 
@@ -336,8 +336,12 @@ function initTabs() {
     $(`[${dataComponentId}="${tabsid}"]`).tabs();
 }
 
+function initTooltip() {
+    $('input, select, textarea').tooltip(tooltipOptions);
+}
+
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData, hideToolBoxes, removeBaseTag, initTabs
+    setTableDummyData, hideToolBoxes, removeBaseTag, initTabs, initTooltip
 };
