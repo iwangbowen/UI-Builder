@@ -282,31 +282,31 @@ Vvveb.Builder = {
 			}
 		});
 
-		this.frameBody.on("dblclick", function (event) {
-			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+		// this.frameBody.on("dblclick", function (event) {
+		// 	replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 
-			_this.texteditEl = target = jQuery(event.target);
-			Vvveb.WysiwygEditor.edit(_this.texteditEl);
-			if (!_this.texteditEl.parents(noneditableSelector).length) {
-				// Disable sortable to allow edit mode text node to be editable
-				disableSortable();
-				window.FrameWindow.disableGridster();
-				_this.texteditEl.attr({
-					contenteditable: true,
-					spellcheckker: false
-				});
-				_this.texteditEl.on('blur', removeSortableAndGridsterDisability);
-			}
-			_this.texteditEl.on("blur keyup paste input", function (event) {
-				const el = $(this);
-				jQuery(selectBox).css({
-					"width": el.outerWidth(),
-					"height": el.outerHeight()
-				});
-			});
-			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
-			jQuery("#highlight-box").hide();
-		});
+		// 	_this.texteditEl = target = jQuery(event.target);
+		// 	Vvveb.WysiwygEditor.edit(_this.texteditEl);
+		// 	if (!_this.texteditEl.parents(noneditableSelector).length) {
+		// 		// Disable sortable to allow edit mode text node to be editable
+		// 		disableSortable();
+		// 		window.FrameWindow.disableGridster();
+		// 		_this.texteditEl.attr({
+		// 			contenteditable: true,
+		// 			spellcheckker: false
+		// 		});
+		// 		_this.texteditEl.on('blur', removeSortableAndGridsterDisability);
+		// 	}
+		// 	_this.texteditEl.on("blur keyup paste input", function (event) {
+		// 		const el = $(this);
+		// 		jQuery(selectBox).css({
+		// 			"width": el.outerWidth(),
+		// 			"height": el.outerHeight()
+		// 		});
+		// 	});
+		// 	jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
+		// 	jQuery("#highlight-box").hide();
+		// });
 
 		this.frameBody.on("click", function (event) {
 			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
