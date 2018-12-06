@@ -30,7 +30,7 @@ import { addDatetime } from './common';
 import 'core-js/es7/array';
 import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup } from '../common';
-import { sendMessage } from '../message';
+import { sendMessage, getMessageData } from '../message';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -283,8 +283,9 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 
 function autoSave() {
     if (isInIframe) {
-        const html = getBeautifiedHtml(window.FrameDocument, false, false);
-        sendMessage(html);
+        const messageData = getMessageData();
+        messageData.html = getBeautifiedHtml(window.FrameDocument, false, false);
+        sendMessage(messageData);
     } else {
         const html = getBeautifiedHtml(window.FrameDocument, false, false);
         localStorage.setItem(decodeURI(getHash()), html);
