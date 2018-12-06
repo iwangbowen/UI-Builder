@@ -30,7 +30,7 @@ function initGridInBuilder() {
     if ($('.gridster').length) {
         gridster = $(".gridster").gridster({
             widget_selector: 'div.gridster > div',
-            widget_margins: [5, 5],
+            widget_margins: [0, 0],
             widget_base_dimensions: ['auto', 50],
             shift_widgets_up: false,
             shift_larger_widgets_down: false,
