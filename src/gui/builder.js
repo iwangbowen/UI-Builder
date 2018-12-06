@@ -8,9 +8,9 @@ import {
 import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
-	initComponentDrag, initIframeSortable, initIframeResizeVetically,
+	initComponentDrag, initIframeSortable,
 	enableSortableAndDroppableInIframe, enableDroppableInIframe,
-	disableSortable, removeSortableAndGridsterDisability
+	disableSortable, removeSortableAndGridsterDisability, initResize
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
@@ -47,7 +47,7 @@ Vvveb.Builder = {
 
 			enableDroppableInIframe(gridWidgetSelector);
 			enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
-			initIframeResizeVetically();
+			initResize();
 			initIframeSortable();
 			return this._initHightlight();
 		});

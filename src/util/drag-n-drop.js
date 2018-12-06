@@ -12,12 +12,13 @@ import {
     commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid
 } from '../components/@common/ids';
 import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
+import { dataComponentId } from '../components/common';
 
 const gridDroppables = [
     buttonid,
@@ -214,6 +215,11 @@ function drop(event, { draggable, helper, offset }) {
         if (component.beforeInit) {
             component.beforeInit(appendedElement.get(0));
         }
+        if (component.resizable) {
+            appendedElement.resizable({
+                handles: 'all'
+            });
+        }
         if (component.isChildrenSortableAndDroppable) {
             enableSortableAndDroppable(appendedElement.children(component.sortableAndDroppableSelector));
         }
@@ -309,6 +315,19 @@ function initIframeResizeVetically() {
         .resizable({
             handles: 's'
         });
+}
+
+function initAgGridResize() {
+    Vvveb.Builder.frameBody
+        .find(`[${dataComponentId}="${commontableid}"], [${dataComponentId}="${customtableid}"]`)
+        .resizable({
+            handles: 'all'
+        });
+}
+
+function initResize() {
+    initIframeResizeVetically();
+    initAgGridResize();
 }
 
 function removeSortableAndGridsterDisability({ target }) {
@@ -449,5 +468,6 @@ export {
     setInteraction,
     enableSortable,
     disableSortable,
-    removeSortableAndGridsterDisability
+    removeSortableAndGridsterDisability,
+    initResize
 };
