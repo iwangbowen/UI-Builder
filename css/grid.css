@@ -163,3 +163,7 @@ table {
 .grid-footer .btn.active:active {
     background: #309818;
   }
+
+body::-webkit-scrollbar {
+    display: none;
+}
