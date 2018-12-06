@@ -99,6 +99,7 @@ div.row.gridrow-component > div, .form-border, .dashed-border {
 .gridster .gs-w.ui-state-hover,
 .gridster .gs-w form.ui-state-hover,
 div.row > div.ui-state-hover,
-.allButton.dropzone.ui-state-hover {
-  background: #00c853;
+.allButton.dropzone.ui-state-hover,
+.userList #myGrid.ui-state-hover {
+  background: #ccc
 }
