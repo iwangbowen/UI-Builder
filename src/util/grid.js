@@ -56,6 +56,7 @@ function initGridInBuilder() {
                 () => {
                     layer.closeAll('dialog');
                     gridster.remove_widget($(this).parent());
+                    hideToolBoxes();
                 });
         });
     }
