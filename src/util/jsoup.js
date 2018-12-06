@@ -67,6 +67,7 @@ const unusedTags = [
         filter(tag) {
             return tag.getAttribute('rel') == 'stylesheet'
                 && (tag.getAttribute('href').includes('drag-n-drop.css')
+                    || tag.getAttribute('href').includes('css/grid.css')
                     || tag.getAttribute('href').includes('/datepicker/skin/WdatePicker.css')
                     || tag.getAttribute('href').includes('/layer/skin/layer.css'))
                 || (tag.getAttribute('href').includes('ag-theme-')
@@ -350,6 +351,11 @@ const devScripts = [
     '/dist/iframe.js'
 ];
 
+const devStyles = [
+    '../../../../css/drag-n-drop.css',
+    '../../../../css/grid.css'
+];
+
 function appendScriptWithSrc(el, src) {
     $(el).find('body').append(`<script src="${src}"></script>`);
 }
@@ -367,8 +373,7 @@ function generatedMissedScripts(el, missedScripts) {
 }
 
 function generateDevDependentTags(el) {
-    $(el).find('head').append('<link rel="stylesheet" href="../../../../css/drag-n-drop.css">');
-
+    devStyles.forEach(style => $(el).find('head').append(`<link rel="stylesheet" href="${style}">`));
     devScripts.forEach(curry(appendScriptWithSrc)(el, curry.placeholder));
     return el;
 }
