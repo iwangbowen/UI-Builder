@@ -25,10 +25,11 @@ Vvveb.ComponentsGroup['定制组件'] = [
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
-    _common_ids.gridrowid,
     _common_ids.formid,
-    _common_ids.buttonid,
+    _common_ids.gridrowid,
     _common_ids.tabsid,
+    _common_ids.commontableid,
+    _common_ids.buttonid,
     _common_ids.bootstrapbuttongroupid,
     _common_ids.bootstraptextinputfieldid,
     _common_ids.bootstrapdatetimeinputfieldid,
@@ -38,7 +39,6 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _common_ids.bootstraptextareafieldid,
     _common_ids.bootstrapradiofieldid,
     _common_ids.bootstrapcheckboxfieldid,
-    _common_ids.commontableid,
     _common_ids.bootstraptableid,
     // _common_ids.chartid,
     _common_ids.bootstrapheadingid,
