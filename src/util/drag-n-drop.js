@@ -55,6 +55,12 @@ const gridDroppables = [
     bootstraptableid
 ];
 
+// String: A comma delimited list of any of the following: n, e, s, w, ne, se, sw, nw, all.
+// Remove ne and se to avoid potential intervention with gridster widget delete and resize operations
+const agGridResizableOptions = {
+    handles: 'n, e, s, w, sw, nw'
+};
+
 const componentScopes = reduce({
     gridDroppables,
 }, (prev, v, k) => {
@@ -216,9 +222,7 @@ function drop(event, { draggable, helper, offset }) {
             component.beforeInit(appendedElement.get(0));
         }
         if (component.resizable) {
-            appendedElement.resizable({
-                handles: 'all'
-            });
+            appendedElement.resizable(agGridResizableOptions);
         }
         if (component.isChildrenSortableAndDroppable) {
             enableSortableAndDroppable(appendedElement.children(component.sortableAndDroppableSelector));
@@ -320,9 +324,7 @@ function initIframeResizeVetically() {
 function initAgGridResize() {
     Vvveb.Builder.frameBody
         .find(`[${dataComponentId}="${commontableid}"], [${dataComponentId}="${customtableid}"]`)
-        .resizable({
-            handles: 'all'
-        });
+        .resizable(agGridResizableOptions);
 }
 
 function initResize() {
