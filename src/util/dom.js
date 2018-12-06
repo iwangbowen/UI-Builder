@@ -283,7 +283,7 @@ function createPage(pageName, pageTitle, pageHref = importedPageHref) {
 
 function autoSave() {
     if (isInIframe) {
-        const html = getBeautifiedHtml(window.FrameDocument);
+        const html = getBeautifiedHtml(window.FrameDocument, false, false);
         sendMessage(html);
     } else {
         const html = getBeautifiedHtml(window.FrameDocument, false, false);
