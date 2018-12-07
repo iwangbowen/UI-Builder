@@ -11638,10 +11638,8 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   z-index: 50;
-  top: 0px;
   left: 40%;
   /* transform: translateX(-50%); */
-  height: 35px;
   border-bottom: 1px solid #eee;
   text-align: center;
   background-color: #fafafa; }
