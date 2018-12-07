@@ -33,12 +33,14 @@ const multiSelectedClass = 'selected-with-ctrl-key';
 const pdsPage = {
     name: `pds`,
     title: `pds`,
-    url: 'template/oee/html/demo/demo.html'
+    url: 'template/oee/html/demo/demo.html',
+    templateUrl: 'template/oee/html/demo/demo_template.html'
 };
 const gridPage = {
     name: 'layout',
     title: 'layout',
-    url: 'template/oee/html/demo/grid.html'
+    url: 'template/oee/html/demo/grid.html',
+    templateUrl: 'template/oee/html/demo/grid_template.html'
 };
 
 const templatePages = [

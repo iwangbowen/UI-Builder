@@ -121,12 +121,13 @@ Vvveb.FileManager = {
 		});
 		return this;
 	},
-	addPage({ name, title, url, srcdoc }) {
+	addPage({ name, title, url, srcdoc, templateUrl }) {
 		this.pages[name] = {
 			name,
 			title,
 			url,
-			srcdoc
+			srcdoc,
+			templateUrl
 		};
 	},
 	addPages(pages) {

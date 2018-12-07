@@ -1,4 +1,4 @@
-import { generateSharedJSCode } from "./util/jsoup";
+import { generateSharedJSCode, getTemplatePage } from "./util/jsoup";
 
 const parent = window.parent;
 
@@ -12,19 +12,28 @@ function getMessageData() {
     return messageData;
 }
 
+const cache = {};
+
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data } }) => {
         if (data.type == 'updateSharedJS') {
             data.js = generateSharedJSCode();
             sendMessage(data);
-        } else if (data.type == 'add' || data.type == 'edit') {
-            messageData = data;
-            if (data.type == 'add') {
-                const page = Vvveb.FileManager.getPage(data.template);
-                Vvveb.Builder.loadUrl(page.url);
+        } else if (data.type == 'add') {
+            const page = Vvveb.FileManager.getPage(data.template);
+            if (cache[page.templateUrl]) {
+                data.html = cache[page.templateUrl];
+                sendMessage(data);
             } else {
-                Vvveb.FileManager.loadPageFromMessage(data.html);
+                getTemplatePage(page.templateUrl).then(html => {
+                    data.html = html;
+                    cache[page.templateUrl] = html;
+                    sendMessage(data);
+                });
             }
+        } else {
+            messageData = data;
+            Vvveb.FileManager.loadPageFromMessage(data.html);
         }
     });
 }

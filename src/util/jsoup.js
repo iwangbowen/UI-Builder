@@ -302,6 +302,12 @@ function getExternalContent(tag) {
     });
 }
 
+function getTemplatePage(url) {
+    return $.ajax({
+        url
+    });
+}
+
 function getScriptContent(script) {
     if ($(script).attr('src')) {
         return getExternalContent(script);
@@ -448,5 +454,5 @@ export {
     replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
-    removeSharedScriptTag
+    removeSharedScriptTag, getTemplatePage
 };
