@@ -27,10 +27,6 @@
     background: red !important;
 }
 
-.gridster {
-    background-color: #EFEFEF;
-}
-
 .gridster > div {
     /* font-size: 1em; */
     /* font-weight: bold; */
