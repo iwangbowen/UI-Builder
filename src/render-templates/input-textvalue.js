@@ -16,8 +16,15 @@ const inputtextvalue = `
 			<div class="col-6 mb-1">
 				<label>Hide Header</label>
 				<div class="custom-control custom-checkbox">
-					<input name="hide" class="custom-control-input" type="checkbox" id="{%=key%}_check"{%=hide%}>
-					<label class="custom-control-label" for="{%=key%}_check">{% if (typeof text !== 'undefined') { %} {%=text%} {% } %}</label>
+					<input name="hide" class="custom-control-input" type="checkbox" id="{%=key%}_hide"{%=hide%}>
+					<label class="custom-control-label" for="{%=key%}_hide">{% if (typeof text !== 'undefined') { %} {%=text%} {% } %}</label>
+				</div>
+			</div>
+			<div class="col-6 mb-1">
+				<label>Suppress Resize</label>
+				<div class="custom-control custom-checkbox">
+					<input name="suppressResize" class="custom-control-input" type="checkbox" id="{%=key%}_suppressResize"{%=suppressResize%}>
+					<label class="custom-control-label" for="{%=key%}_suppressResize">{% if (typeof text !== 'undefined') { %} {%=text%} {% } %}</label>
 				</div>
 			</div>
 		{% } else { %}

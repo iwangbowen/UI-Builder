@@ -234,6 +234,7 @@ const table = {
                             checkboxSelection: true,
                             headerCheckboxSelection: false,
                             suppressMovable: true,
+                            suppressResize: true,
                             hide: false
                         },
                         {
@@ -241,6 +242,7 @@ const table = {
                             field: "age", width: '',
                             checkboxSelection: false,
                             headerCheckboxSelection: false,
+                            suppressResize: true,
                             hide: false
                         },
                         {
@@ -248,6 +250,7 @@ const table = {
                             field: "country", width: '',
                             checkboxSelection: false,
                             headerCheckboxSelection: false,
+                            suppressResize: true,
                             hide: false
                         }
                     ],
@@ -286,6 +289,7 @@ const table = {
                     field: cur.field,
                     width: cur.width,
                     hide: cur.hide === true ? ' checked' : '',
+                    suppressResize: cur.suppressResize === true ? ' checked' : '',
                     checkboxSelection: cur.checkboxSelection,
                     headerCheckboxSelection: cur.headerCheckboxSelection
                 },
@@ -305,7 +309,7 @@ const table = {
                     } else {
                         if (input.name == 'width') {
                             colDefs[keyIndex][input.name] = value && parseInt(value);
-                        } else if (input.name == 'hide') {
+                        } else if (input.name == 'hide' || input.name == 'suppressResize') {
                             colDefs[keyIndex][input.name] = input.checked;
                         } else {
                             colDefs[keyIndex][input.name] = value;
