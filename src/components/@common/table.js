@@ -25,6 +25,7 @@ const paginationAutoPageSize = 'paginationAutoPageSize';
 const paginationPageSize = 'paginationPageSize';
 const onCellClicked = 'onCellClicked';
 const onRowClicked = 'onRowClicked';
+const enableColResize = 'enableColResize';
 
 const themeOptions = [
     {
@@ -73,7 +74,7 @@ function getColumnDefProperty(colDef, property) {
 }
 
 function getCheckboxProperty(node, property) {
-    if (property == pagination || property == paginationAutoPageSize) {
+    if (property == pagination || property == paginationAutoPageSize || property == enableColResize) {
         return getGridOptions(node)[property];
     } else {
         const colDefs = getColumnDefs(node);
@@ -125,7 +126,7 @@ function setGridOptions(node, gridOptions) {
 }
 
 function checkboxToggled(node, value, property) {
-    if (property == pagination || property == paginationAutoPageSize) {
+    if (property == pagination || property == paginationAutoPageSize || property == enableColResize) {
         setGridOptionsProperty(node, property, value == 'true');
     } else {
         const colDefs = getColumnDefs(node);
@@ -251,6 +252,7 @@ const table = {
                         }
                     ],
                     rowSelection: 'multiple',
+                    enableColResize: false,
                     enableSorting: true,
                     enableFilter: false,
                     suppressRowClickSelection: true,
@@ -352,6 +354,17 @@ const table = {
             },
             init: flow([curry(getCheckboxProperty)(curry.placeholder, headerCheckboxSelection), transformToToggleValue]),
             onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, headerCheckboxSelection)
+        },
+        {
+            name: 'Enable Resize',
+            key: enableColResize,
+            inputtype: new ToggleInput(),
+            data: {
+                on: true,
+                off: false
+            },
+            init: flow([curry(getCheckboxProperty)(curry.placeholder, enableColResize), transformToToggleValue]),
+            onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, enableColResize)
         },
         {
             name: 'Populate Headers',
@@ -574,5 +587,5 @@ const table = {
 export {
     table, columnDefs, getGridOptionsIdentifier, themeOptions,
     setColumnDefsAndRender, getColumnDefs, pagination, paginationAutoPageSize,
-    paginationPageSize, onCellClicked, onRowClicked
+    paginationPageSize, onCellClicked, onRowClicked, enableColResize
 };

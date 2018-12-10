@@ -3,7 +3,7 @@ import {
     rowClickedPopupPrefix, dataEnableCellClick, cellClickedPopupPrefix,
     dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey
 } from '../components/common';
-import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize } from '../components/@common/table';
+import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize, enableColResize } from '../components/@common/table';
 import { gridOptions } from '../common';
 
 export function template(node) {
@@ -17,6 +17,7 @@ var eGridDiv${key} = $('#${id}');
 var ${gridOptions}${key} = {
     columnDefs: ${columnDefs},
     enableSorting: true,
+    ${enableColResize}: ${gridOptionsIdentifier[enableColResize]},
     enableFilter: false,
     rowSelection: 'multiple',
     suppressRowClickSelection: true,
