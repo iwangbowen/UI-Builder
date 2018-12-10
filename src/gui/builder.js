@@ -15,6 +15,7 @@ import {
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
 import MoveMutation from '../models/mutation/move-mutation';
+import { isInIframe } from '../constants';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -33,7 +34,9 @@ Vvveb.Builder = {
 
 		Vvveb.Actions.init();
 
-		this._loadIframe(url, srcdoc);
+		if (!isInIframe) {
+			this._loadIframe(url, srcdoc);
+		}
 		this._initSelectBox();
 		this.documentFrame.on('load', () => {
 			window.FrameWindow = this.iframe.contentWindow;
