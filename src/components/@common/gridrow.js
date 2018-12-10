@@ -19,7 +19,7 @@ const gridrow = {
     beforeInit: function (node) {
         const properties = [];
         let i = 0;
-        $(node).find('[class*="col-"]').each(function () {
+        $(node).children('[class*="col-"]').each(function () {
             let _class = $(this).attr("class");
             let match;
             const data = {};
