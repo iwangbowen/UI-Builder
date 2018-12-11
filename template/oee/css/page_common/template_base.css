@@ -614,31 +614,31 @@ body {
   height: 100%;
 }
 
-.containerRight .allContent .topContent .container {
+.containerRight .allContent .topContent .custom-container {
   width: 100%;
   height: 100%;
   padding-left: 0;
   padding-right: 0;
 }
 
-.containerRight .allContent .topContent .container > .row {
+.containerRight .allContent .topContent .custom-container > .row {
   width: 100%;
   height: 100%;
   margin-right: -15px;
   margin-left: -15px;
 }
 
-.containerRight .allContent .topContent .container .row::-webkit-scrollbar {
+.containerRight .allContent .topContent .custom-container .row::-webkit-scrollbar {
   display: none;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox {
+.containerRight .allContent .topContent .custom-container .row .everyBox {
   height: 100%;
   padding-right: 0;
   margin-bottom: 10px;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea {
   border: 1px solid black;
   border-radius: 5px;
   height: 100%;
@@ -646,18 +646,18 @@ body {
   overflow: hidden;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .tittle {
   width: 100%;
   height: 25px;
   background-color: #81cdee;
   line-height: 25px;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .fa {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .tittle .fa {
   margin-left: 5px;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .tittle .icon {
   float: right;
   padding: 0.2rem;
   position: relative;
@@ -674,15 +674,15 @@ body {
   transition: all 0.3s;
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:hover {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .tittle .icon:hover {
   transform: scale(1.2);
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .tittle .icon:before {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .tittle .icon:before {
   content: "\e140";
 }
 
-.containerRight .allContent .topContent .container .row .everyBox .boxarea .echarts-Area {
+.containerRight .allContent .topContent .custom-container .row .everyBox .boxarea .echarts-Area {
   width: 100%;
   height: calc(100% - 25px);
 }
@@ -692,33 +692,33 @@ body {
   height: 32%;
 }
 
-.containerRight .allContent .bottomContent .container {
+.containerRight .allContent .bottomContent .custom-container {
   width: 100%;
   height: 100%;
   padding-left: 0;
   padding-right: 0;
 }
 
-.containerRight .allContent .bottomContent .container .row {
+.containerRight .allContent .bottomContent .custom-container .row {
   width: 100%;
   height: 100%;
   margin-right: -15px;
   margin-left: -15px;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel {
+.containerRight .allContent .bottomContent .custom-container .row .excel {
   height: 100%;
   padding-right: 0;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea {
   border: 1px solid black;
   border-radius: 6px;
   height: 100%;
   overflow: hidden;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle {
   width: 100%;
   height: 25px;
   line-height: 25px;
@@ -726,11 +726,11 @@ body {
   position: relative;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .fa-lg {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .fa-lg {
   padding-left: 5px;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .excel-icon-outbox {
   height: 100%;
   width: 50px;
   float: right;
@@ -740,7 +740,7 @@ body {
   right: 10px;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .fa-file-excel-o {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .excel-icon-outbox .fa-file-excel-o {
   position: relative;
   color: green;
   top: 1px;
@@ -751,7 +751,7 @@ body {
   margin: 0 auto;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .excel-icon-outbox .icon {
   float: right;
   padding: 0.2rem;
   position: relative;
@@ -768,32 +768,32 @@ body {
   transition: all 0.3s;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:hover {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .excel-icon-outbox .icon:hover {
   transform: scale(1.2);
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .tittle .excel-icon-outbox .icon:before {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .tittle .excel-icon-outbox .icon:before {
   content: "\e140";
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .table-Area {
   width: 100%;
   height: calc(100% - 26px);
   overflow-y: scroll;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .table-Area::-webkit-scrollbar {
   width: 14px;
   height: 5px;
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-thumb {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .table-Area::-webkit-scrollbar-thumb {
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 5px rgba(0.5, 0.5, 0.5, 0.2);
   background: rgba(0, 0, 0, 0.2);
 }
 
-.containerRight .allContent .bottomContent .container .row .excel .excelarea .table-Area::-webkit-scrollbar-track {
+.containerRight .allContent .bottomContent .custom-container .row .excel .excelarea .table-Area::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 0;
   background: rgba(0, 0, 0, 0.1);
@@ -1128,7 +1128,7 @@ body {
   background-color: snow !important;
 }
 
-.bottomContent .container .row .excel .ag-theme-blue {
+.bottomContent .custom-container .row .excel .ag-theme-blue {
   background-color: #F6F6F6 !important;
 }
 
