@@ -50,8 +50,7 @@ const textinputProperties = [
 
 const datetimeinputProperties = [
     ...commonProperties,
-    datetimeFormatProperty,
-    showDatetimeProperty
+    datetimeFormatProperty
 ];
 
 const fileinputProperties = [...baseProperties, dataUrlProperty];
