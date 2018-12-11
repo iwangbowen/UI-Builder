@@ -1,7 +1,7 @@
 import {
     dataTableId, dataRelatedTable, dataEnableRowClick, dataRowClickUrl,
     rowClickedPopupPrefix, dataEnableCellClick, cellClickedPopupPrefix,
-    dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey
+    dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey, dataAutoSizeColumns
 } from '../components/common';
 import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize, enableColResize } from '../components/@common/table';
 import { gridOptions } from '../common';
@@ -59,11 +59,13 @@ export const girds = `
                 var key = $(element).attr('${dataResponseDataKey}');
                 var transposeKey = $(element).attr('${dataAgGridTransposeKey}');
                 var populateHeaders = $(element).attr('${dataPopulateHeaders}') === 'true';
+                var autoSizeColumns = $(element).attr('${dataAutoSizeColumns}') === 'true';
                 return {
                     gridOptions: window['gridOptions' + id],
                     key: key,
                     transposeKey: transposeKey,
-                    populateHeaders: populateHeaders
+                    populateHeaders: populateHeaders,
+                    autoSizeColumns: autoSizeColumns
                 };
             });
 `;

@@ -6,6 +6,7 @@ function setAgGridData(grid, data) {
     var gridOptions = grid.gridOptions;
     var transposeKey = grid.transposeKey;
     var populateHeaders = grid.populateHeaders;
+    var autoSizeColumns = grid.autoSizeColumns;
     if (populateHeaders) {
         if (data.length) {
             var colDefs = Object.keys(data[0]).map(function (key) {
@@ -54,6 +55,13 @@ function setAgGridData(grid, data) {
         } else {
             gridOptions.api.setRowData(data);
         }
+    }
+    if (autoSizeColumns) {
+        var allColumnIds = [];
+        gridOptions.columnApi.getAllColumns().forEach(function(column) {
+            allColumnIds.push(column.colId);
+        });
+        gridOptions.columnApi.autoSizeColumns(allColumnIds);
     }
 }
 function query() {

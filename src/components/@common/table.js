@@ -2,7 +2,7 @@ import { ButtonInput, TextValueInput, SelectInput, TextInput, ToggleInput, Numbe
 import {
     dataTableId, dataComponentId, dataResponseDataKey, dataRelatedTable,
     dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey, dataEnableCellClick,
-    cellClickedPopupPrefix, dataPopulateHeaders
+    cellClickedPopupPrefix, dataPopulateHeaders, dataAutoSizeColumns
 } from '../common';
 import Vvveb from '../../gui/components';
 import flow from 'lodash/flow';
@@ -374,6 +374,25 @@ const table = {
             },
             init: flow([curry(getCheckboxProperty)(curry.placeholder, enableColResize), transformToToggleValue]),
             onChange: partial(checkboxToggled, partial.placeholder, partial.placeholder, enableColResize)
+        },
+        {
+            name: 'Auto Size Columns',
+            key: camelCase(dataAutoSizeColumns),
+            htmlAttr: dataAutoSizeColumns,
+            inputtype: new ToggleInput(),
+            validValues: ['true'],
+            init(node) {
+                return $(node).attr(dataAutoSizeColumns) === 'true' ?
+                    this.validValues : [];
+            },
+            onChange(node, value) {
+                $(node).attr(dataAutoSizeColumns, value);
+                return node;
+            },
+            data: {
+                on: 'true',
+                off: 'false'
+            }
         },
         {
             name: 'Populate Headers',
