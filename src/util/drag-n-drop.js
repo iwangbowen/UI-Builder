@@ -215,7 +215,9 @@ function drop(event, { draggable, helper, offset }) {
         } else {
             appendedElement = (component.getDropHtml
                 ? appendTo : cloneAndAppendTo)(helper, this, {
-                    ...resetCss,
+                    position: '',
+                    left: 0,
+                    top: 0,
                     width: component.width || '100%',
                     height: component.height || '100%',
                 });

@@ -18,8 +18,12 @@ function getLastTabIdSuffix(tabsNav) {
 const tabs = {
     name: 'Tabs',
     image: "icons/tabs.svg",
-    html: `<div ${dataComponentId}="${tabsid}" style="width: 250px; height: 100px;" class="vertical-stripes ${configurableComponent}">
+    dragHtml: `<img ${dataComponentId}="${tabsid}" src="libs/builder/icons/tabs.svg" style="width: 100px; height: auto;">`,
+    html: `<div ${dataComponentId}="${tabsid}" class="${configurableComponent}">
            </div>`,
+    getDropHtml() {
+        return this.html;
+    },
     isChildrenSortableAndDroppable: true,
     isDescendantsSortableAndDroppable: false,
     sortableAndDroppableSelector: 'div',
@@ -44,7 +48,6 @@ const tabs = {
         <div id="tabs${key}-3">
         </div>
         `);
-        $node.removeClass('vertical-stripes');
         $node.tabs();
         const height = $node.children('ul').height();
         $node.children('div').css({
