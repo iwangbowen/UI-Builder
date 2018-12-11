@@ -15,6 +15,7 @@ import { getRandomString } from '../../util/common';
 import { dataRowClickUrlProperty, dataCellClickUrlProperty } from '../properties/properties';
 import { dummyData, gridOptions } from '../../common';
 import { createClickedPopup, clickedPopupExists, getClickedPopup } from '../../util/dom';
+import { commontableid } from './ids';
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 const columnDefs = 'columnDefs';
@@ -195,7 +196,11 @@ const table = {
     classes: ["table"],
     image: "icons/table.svg",
     name: "Base ag-Grid",
+    dragHtml: `<img ${dataComponentId}="${commontableid}" src="libs/builder/icons/table.svg" style="width: 100px; height: auto;">`,
     html: `<div style="width: 100px; height: 50px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
+    getDropHtml() {
+        return this.html;
+    },
     resizable: true,
     getRenderElement(node) {
         const parents = $(node).parents(`[${dataTableId}]`);

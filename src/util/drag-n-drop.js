@@ -180,8 +180,8 @@ function cloneAndAppendTo(helper, element, css = resetCss) {
         .removeClass(uiDraggableDraggingClass);
 }
 
-function appendTo(helper, element) {
-    return helper.appendTo(element);
+function appendTo(helper, element, css = resetCss) {
+    return helper.appendTo(element).css(css);
 }
 
 function cloneAndInsertBefore(helper, element, css = resetCss) {
@@ -213,13 +213,14 @@ function drop(event, { draggable, helper, offset }) {
                 appendedElement = cloneAndAppendTo(helper, this);
             }
         } else {
-            appendedElement = cloneAndAppendTo(helper, this, {
-                position: '',
-                left: 0,
-                top: 0,
-                width: component.width || '100%',
-                height: component.height || '100%',
-            });
+            appendedElement = (component.getDropHtml
+                ? appendTo : cloneAndAppendTo)(helper, this, {
+                    position: '',
+                    left: 0,
+                    top: 0,
+                    width: component.width || '100%',
+                    height: component.height || '100%',
+                });
             if (appendedElement.is('form')) {
                 enableSortableAndDroppable(appendedElement);
             } else if (appendedElement.is('div.row')) {
