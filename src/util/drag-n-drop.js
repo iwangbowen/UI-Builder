@@ -12,7 +12,7 @@ import {
     commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid, chartid
 } from '../components/@common/ids';
 import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
@@ -33,6 +33,7 @@ const gridDroppables = [
     checkboxfieldid,
     formid,
     commontableid,
+    chartid,
     gridrowid,
     imageid,
     labelfieldid,
@@ -179,6 +180,10 @@ function cloneAndAppendTo(helper, element, css = resetCss) {
         .removeClass(uiDraggableDraggingClass);
 }
 
+function appendTo(helper, element) {
+    return helper.appendTo(element);
+}
+
 function cloneAndInsertBefore(helper, element, css = resetCss) {
     return helper.clone(false).insertBefore(element)
         .css(css)
@@ -192,12 +197,18 @@ function drop(event, { draggable, helper, offset }) {
     } else {
         const component = Vvveb.Components.matchNode(helper.get(0));
         let appendedElement;
+        if (component.getDropHtml) {
+            helper = $(component.getDropHtml()).replaceAll(helper);
+        }
         if (component.onDrop) {
             appendedElement = component.onDrop(helper);
-        } else if (component.sortable) {
+        }
+        if (component.sortable) {
             // Check if the drop zone is popup form
             if ($(this).is('form.popup-form')) {
                 appendedElement = cloneAndInsertBefore(helper, $(this).find('.saveArea'));
+            } else if (component.getDropHtml) {
+                appendedElement = appendTo(helper, this);
             } else {
                 appendedElement = cloneAndAppendTo(helper, this);
             }

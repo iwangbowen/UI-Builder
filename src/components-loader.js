@@ -40,7 +40,7 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _common_ids.bootstrapradiofieldid,
     _common_ids.bootstrapcheckboxfieldid,
     _common_ids.bootstraptableid,
-    // _common_ids.chartid,
+    _common_ids.chartid,
     _common_ids.bootstrapheadingid,
     _common_ids.bootstrapalertid,
     _common_ids.bootstraphrid,
