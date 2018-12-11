@@ -265,7 +265,7 @@ function generateHtml(html, pageHref) {
     // Add missed scripts to previously generated page to be backward compatible.
     const missedScripts = depScripts.filter(script => !newHtml.includes(script));
 
-    return htmlGenerator(newHtml, removeSharedScriptTag, removeGridsterStylesheet, generateAddNewItemDiv,
+    return htmlGenerator(newHtml, removeGridsterStylesheet, generateAddNewItemDiv,
         changeLinkTypeToNonEvaluable,
         changeScriptTypeToNonEvaluable,
         curry(generatedMissedScripts)(curry.placeholder, missedScripts),

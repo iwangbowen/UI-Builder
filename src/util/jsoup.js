@@ -170,7 +170,8 @@ function generateScripts(el, containsShard) {
         generateTabsScript(el);
         generateTooltipScript(el);
     } else {
-        $(el).find('script[src]').last().after(`<script src="../../js/${sharedScript}"></script>`);
+        // Do not generate shared.js script tag automatically
+        // $(el).find('script[src]').last().after(`<script src="../../js/${sharedScript}"></script>`);
         $(el).find(sharedScriptSelector).remove();
     }
     return el;
