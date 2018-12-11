@@ -443,8 +443,18 @@ function generatedMissedScripts(el, missedScripts) {
 function generateDevDependentTags(el) {
     const links = devStyles.reduce((prev, cur) => `${prev}<link class="${devDep}" rel="stylesheet" href="${cur}">`, '');
     const scripts = devScripts.reduce((prev, cur) => `${prev}<script class="${devDep}" src="${cur}"></script>`, '');
-    $(el).find('head link:first').before(links);
-    $(el).find('body script:first').before(scripts);
+    const firstLink = $(el).find('head link:first');
+    const firstScript = $(el).find('body script:first');
+    if (firstLink.length) {
+        firstLink.before(links);
+    } else {
+        $(el).find('head').append(links);
+    }
+    if (firstScript.length) {
+        firstScript.before(scripts);
+    } else {
+        $(el).fidn('body').append(scripts);
+    }
     return el;
 }
 
