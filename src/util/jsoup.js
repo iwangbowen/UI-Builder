@@ -404,6 +404,7 @@ const devScripts = [
     '/libs/jquery-ui-1.12.1/jquery-ui.min.js',
     '../../js/plugins/datepicker/WdatePicker.js',
     '../../js/plugins/ag-grid/ag-grid.min-17.1.1.fix.js',
+    '../../js/plugins/layer/layer.min.js',
     '../../js/page_common/fundodooPageTemplate.js',
     '/dist/iframe.js'
 ];
