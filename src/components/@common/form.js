@@ -6,10 +6,11 @@ const form = {
     nodes: ["form"],
     image: "icons/form.svg",
     name: "Form",
-    html: `<form class="${configurableComponent} ${dashBorderClass}" style="height: 50px; width: 100px;" ${dataComponentId}="${formid}">
+    dragHtml: `<img ${dataComponentId}="${formid}" src="libs/builder/icons/form.svg" style="width: 100px; height: auto;">`,
+    html: `<form class="${configurableComponent}" ${dataComponentId}="${formid}">
            </form>`,
-    afterDrop(node) {
-        $(node).removeClass(dashBorderClass);
+    getDropHtml() {
+        return this.html;
     },
     properties
 };
