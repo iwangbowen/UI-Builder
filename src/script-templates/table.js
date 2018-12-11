@@ -3,7 +3,7 @@ import {
     rowClickedPopupPrefix, dataEnableCellClick, cellClickedPopupPrefix,
     dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey, dataAutoSizeColumns
 } from '../components/common';
-import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize, enableColResize } from '../components/@common/table';
+import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize, enableColResize, suppressColumnVirtualisation } from '../components/@common/table';
 import { gridOptions } from '../common';
 
 export function template(node) {
@@ -22,6 +22,7 @@ var ${gridOptions}${key} = {
     rowSelection: 'multiple',
     suppressRowClickSelection: true,
     suppressFieldDotNotation: true,
+    ${suppressColumnVirtualisation}: ${gridOptionsIdentifier[suppressColumnVirtualisation] === undefined ? true : gridOptionsIdentifier[suppressColumnVirtualisation]},
     ${pagination}: ${gridOptionsIdentifier[pagination]},
     ${paginationAutoPageSize}: ${gridOptionsIdentifier[paginationAutoPageSize]},
     ${paginationPageSize}: ${gridOptionsIdentifier[paginationPageSize]},

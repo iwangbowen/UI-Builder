@@ -24,6 +24,7 @@ const headerCheckboxSelection = 'headerCheckboxSelection';
 const pagination = 'pagination';
 const paginationAutoPageSize = 'paginationAutoPageSize';
 const paginationPageSize = 'paginationPageSize';
+const suppressColumnVirtualisation = 'suppressColumnVirtualisation';
 const onCellClicked = 'onCellClicked';
 const onRowClicked = 'onRowClicked';
 const enableColResize = 'enableColResize';
@@ -615,5 +616,6 @@ const table = {
 export {
     table, columnDefs, getGridOptionsIdentifier, themeOptions,
     setColumnDefsAndRender, getColumnDefs, pagination, paginationAutoPageSize,
-    paginationPageSize, onCellClicked, onRowClicked, enableColResize
+    paginationPageSize, onCellClicked, onRowClicked, enableColResize,
+    suppressColumnVirtualisation
 };
