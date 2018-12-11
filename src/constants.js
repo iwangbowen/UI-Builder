@@ -27,8 +27,11 @@ const nonTemplateScriptType = 'text/non-template';
 const javascriptScriptType = 'text/javascript';
 const generatedScriptType = 'text/generated-script';
 const dataScriptType = 'data-script-type';
+const dataType = 'data-tag-type';
+const nonEvaluable = 'text/non-evaluable';
 const tooltipType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
+const devDep = 'dev-dep';
 
 const pdsPage = {
     name: `pds`,
@@ -56,5 +59,5 @@ export {
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
-    generatedExecuteScriptClass
+    generatedExecuteScriptClass, dataType, nonEvaluable, devDep
 };

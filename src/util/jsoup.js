@@ -21,7 +21,7 @@ import startsWith from 'lodash/startsWith';
 import {
     removeableScript, tableScriptClass, appendableScript,
     dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass,
-    tooltipType
+    tooltipType, nonEvaluable, dataType, devDep
 } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
@@ -52,8 +52,7 @@ const unusedTags = [
     {
         name: 'script',
         filter: tag => tag.getAttribute('src')
-            ? (tag.getAttribute('src').includes('iframe')
-                || tag.getAttribute('src').includes('interact'))
+            ? ($(tag).hasClass(devDep))
             : $(tag).hasClass(removeableScript)
     },
     {
@@ -70,6 +69,7 @@ const unusedTags = [
                     || tag.getAttribute('href').includes('css/grid.css')
                     || tag.getAttribute('href').includes('/datepicker/skin/WdatePicker.css')
                     || tag.getAttribute('href').includes('/layer/skin/layer.css'))
+                || $(tag).hasClass(devDep)
                 || (tag.getAttribute('href').includes('ag-theme-')
                     && findIndex(this, v => tag.getAttribute('href').includes(`${v}.css`)) == -1)
         }
@@ -348,16 +348,73 @@ function generateBaseTag(el, pageHref) {
     return el;
 }
 
-function changeScriptType(el, selector, type) {
+function changeTagsType(el, selector, type) {
     $(el).find(selector).attr('type', type);
     return el;
 }
 
+function changeScriptType(el, selector, type) {
+    return changeTagsType(el, selector, type);
+}
+
+function changeTagsTypeToNonEvaluable(el, selector) {
+    $(el).find(selector).each(function () {
+        const $this = $(this);
+        if ($this.attr('type')) {
+            $this.attr(dataType, $this.attr('type'));
+        }
+        $this.attr('type', nonEvaluable);
+    });
+    return el;
+}
+
+function changeLinkTypeToNonEvaluable(el) {
+    return changeTagsTypeToNonEvaluable(el, 'link[href]');
+}
+
+function changeScriptTypeToNonEvaluable(el) {
+    return changeTagsTypeToNonEvaluable(el, 'script[src]');
+}
+
+function restoreNonEvaluateTagsType(el, selector) {
+    $(el).find(selector).each(function () {
+        const $this = $(this);
+        if ($this.attr(dataType)) {
+            $this.attr('type', $this.attr(dataType));
+        } else {
+            $this.removeAttr('type');
+        }
+        $this.removeAttr(dataType);
+    });
+    return el;
+}
+
+function restoreNonEvaluateScriptType(el) {
+    return restoreNonEvaluateTagsType(el, `script[src][type="${nonEvaluable}"]`);
+}
+
+function restoreNonEvaluateLinkType(el) {
+    return restoreNonEvaluateTagsType(el, `link[href][type="${nonEvaluable}"]`);
+}
+
 const devScripts = [
+    '/js/jquery.min.js',
+    '/libs/gridster/jquery.gridster.js',
+    '/libs/jquery-ui-1.12.1/jquery-ui.min.js',
+    '../../js/plugins/ag-grid/ag-grid.min-17.1.1.fix.js',
+    '../../js/page_common/fundodooPageTemplate.js',
     '/dist/iframe.js'
 ];
 
 const devStyles = [
+    '../../css/minireset.min.css',
+    '../../js/gridster/jquery.gridster.css',
+    '../../css/font-awesome.min.css',
+    '../../js/plugins/layer/skin/moon/style.css',
+    '../../css/page_common/template_base.css',
+    '../../css/page_common/template_extend.css',
+    '../../css/bootstrap.min-4.1.3.css',
+    '../../js/plugins/jquery-ui/jquery-ui.min.css',
     '../../../../css/drag-n-drop.css',
     '../../../../css/grid.css'
 ];
@@ -379,8 +436,10 @@ function generatedMissedScripts(el, missedScripts) {
 }
 
 function generateDevDependentTags(el) {
-    devStyles.forEach(style => $(el).find('head').append(`<link rel="stylesheet" href="${style}">`));
-    devScripts.forEach(curry(appendScriptWithSrc)(el, curry.placeholder));
+    const links = devStyles.reduce((prev, cur) => `${prev}<link class="${devDep}" rel="stylesheet" href="${cur}">`, '');
+    const scripts = devScripts.reduce((prev, cur) => `${prev}<script class="${devDep}" src="${cur}"></script>`, '');
+    $(el).find('head link:first').before(links);
+    $(el).find('body script:first').before(scripts);
     return el;
 }
 
@@ -454,5 +513,6 @@ export {
     replacePopupWithForm, generateQueryScript, generateAddNewItemDiv,
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
-    removeSharedScriptTag, getTemplatePage
+    removeSharedScriptTag, getTemplatePage, changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
+    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType
 };

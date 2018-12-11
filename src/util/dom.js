@@ -4,7 +4,8 @@ import {
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, replacePopupWithForm,
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
-    removeGridsterStylesheet, generateScripts, removeSharedScriptTag
+    removeGridsterStylesheet, generateScripts, removeSharedScriptTag,
+    changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable, restoreNonEvaluateLinkType, restoreNonEvaluateScriptType
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -219,7 +220,9 @@ function getBeautifiedHtml(doc, withExternalFiles = false, containsShared = true
             curry(generateScripts)(curry.placeholder, containsShared), addNameBrackets,
             curry(changeScriptType)(curry.placeholder, nonTemplateScriptSelector, javascriptScriptType),
             curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
-            curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType));
+            curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType),
+            restoreNonEvaluateLinkType,
+            restoreNonEvaluateScriptType);
 
         // Beautify
         const beautifiedHtml = withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
@@ -262,7 +265,10 @@ function generateHtml(html, pageHref) {
     // Add missed scripts to previously generated page to be backward compatible.
     const missedScripts = depScripts.filter(script => !newHtml.includes(script));
 
-    return htmlGenerator(newHtml, removeSharedScriptTag, removeGridsterStylesheet, generateAddNewItemDiv, curry(generatedMissedScripts)(curry.placeholder, missedScripts),
+    return htmlGenerator(newHtml, removeSharedScriptTag, removeGridsterStylesheet, generateAddNewItemDiv,
+        changeLinkTypeToNonEvaluable,
+        changeScriptTypeToNonEvaluable,
+        curry(generatedMissedScripts)(curry.placeholder, missedScripts),
         generateDevDependentTags, curry(generateBaseTag)(curry.placeholder, pageHref), removeRemoveableScripts,
         curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, generatedScriptType),
         curry(changeScriptType)(curry.placeholder, userDefinedScriptSelector, nonTemplateScriptType),
