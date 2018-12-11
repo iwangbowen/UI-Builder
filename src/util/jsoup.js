@@ -52,7 +52,9 @@ const unusedTags = [
     {
         name: 'script',
         filter: tag => tag.getAttribute('src')
-            ? ($(tag).hasClass(devDep))
+            ? ($(tag).hasClass(devDep)
+                || tag.getAttribute('src').includes('../../../../dist/iframe.js')
+                || tag.getAttribute('src').includes('interact'))
             : $(tag).hasClass(removeableScript)
     },
     {
