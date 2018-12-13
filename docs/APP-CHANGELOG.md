@@ -42,7 +42,7 @@ translation authors keep things up-to-date.
   scenario.
 - Improve "Commit log diffs" sub-section to further argument against
   them.
-- Merge "Why can’t people just use a git log diff?" with "Commit log
+- Merge "Why canâ€™t people just use a git log diff?" with "Commit log
   diffs"
 - Fix typos in Simplified Chinese and Traditional Chinese translations.
 - Fix typos in Brazilian Portuguese translation.
@@ -111,7 +111,7 @@ and its function "the change log".
 
 ### Changed
 - Refer to a "change log" instead of a "CHANGELOG" throughout the site
-to differentiate between the file and the purpose of the file — the
+to differentiate between the file and the purpose of the file â€” the
 logging of changes.
 
 ### Removed
