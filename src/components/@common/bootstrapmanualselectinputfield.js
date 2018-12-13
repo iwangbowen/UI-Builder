@@ -6,7 +6,7 @@ import bootstrapmanualselectinput from './bootstrapmanualselectinput';
 import manualselectinputfield from './manualselectinputfield';
 
 const bootstrapmanualselectinputfield = extend({}, manualselectinputfield, {
-    name: "Munual Select Field",
+    name: "Manual Select Field",
     image: "icons/select_input.svg",
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapmanualselectinputfieldid}">
                ${label.html}
