@@ -12,6 +12,7 @@ theme:
 markdown_extensions:
   - codehilite:
       linenums: true
+  - pymdownx.superfences
   - admonition
   - toc:
       permalink: true
