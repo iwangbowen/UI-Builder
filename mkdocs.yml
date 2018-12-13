@@ -1,0 +1,13 @@
+site_name: UI Tools文档
+nav:
+    - 主页: index.md
+    - CHANGELOG: CHANGELOG.md
+    - 使用说明 1.0: user-guide-1.0.md
+dev_addr: 127.0.0.1:8888
+use_directory_urls: false
+theme:
+  name: 'material'
+  language: 'zh'
+markdown_extensions:
+  - codehilite:
+      linenums: true

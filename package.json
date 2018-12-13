@@ -20,7 +20,9 @@
     "concat": "grunt concat",
     "build:dev": "node compile.js && grunt build:dev",
     "build:prod": "node compile.js && git pull && grunt build:prod",
-    "count": "find ./src -name '*.js' | xargs wc -l"
+    "count": "find ./src -name '*.js' | xargs wc -l",
+    "doc:dev": "mkdocs serve",
+    "doc:build": "mkdocs clean && mkdocs build"
   },
   "dependencies": {
     "chart.js": "^2.7.3",
