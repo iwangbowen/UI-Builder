@@ -103,3 +103,9 @@ div.row > div.ui-state-hover,
 .userList #myGrid.ui-state-hover {
   background: #EFEFEF
 }
+
+.placeholder-component-highlight {
+  border-style: dashed;
+  border-width: 2px;
+  margin: 1px;
+}
