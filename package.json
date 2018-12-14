@@ -21,8 +21,8 @@
     "build:dev": "node compile.js && grunt build:dev",
     "build:prod": "node compile.js && git pull && grunt build:prod",
     "count": "find ./src -name '*.js' | xargs wc -l",
-    "doc:dev": "mkdocs serve",
-    "doc:build": "mkdocs clean && mkdocs build"
+    "docs:dev": "mkdocs serve",
+    "docs:build": "mkdocs build --clean"
   },
   "dependencies": {
     "chart.js": "^2.7.3",
