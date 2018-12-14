@@ -16,7 +16,7 @@ UI Tools程序版是依赖网页版，支持用户在浏览器中使用网页版
     │   └───js
     │
     └───noide.bin.zip             # 程序文件和配置文件
-        │   noide.config.json     # 配置文件，配置说明参加noide.config.md
+        │   noide.config.json     # 配置文件，配置说明参见noide.config.md
         │   noide.config.md       # 配置说明文件
         │   noide.exe             # 程序文件
         │   RunHide.vbs           # 支持程序后台运行的脚本文件，可忽略

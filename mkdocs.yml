@@ -9,6 +9,9 @@ use_directory_urls: false
 theme:
   name: 'material'
   language: 'zh'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
 markdown_extensions:
   - codehilite:
       linenums: true
