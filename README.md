@@ -2,6 +2,10 @@
 
 GUI Builder is a drag and drop ui builder to help developers create static web pages faster
 
+---
+
+Check out [Chinese Docs](https://iwangbowen.github.io/UI-Builder/) for more information
+
 ## Preview
 
 ![UI Builder Preview](./ui-builder.gif)
