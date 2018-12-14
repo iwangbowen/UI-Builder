@@ -13,6 +13,9 @@ markdown_extensions:
   - codehilite:
       linenums: true
   - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.tasklist:
+     custom_checkbox: true
   - admonition
   - toc:
       permalink: true
