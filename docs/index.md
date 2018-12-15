@@ -20,3 +20,16 @@ UI Tools是一套借助GUI界面帮助开发人员快速创建HTML页面的程�
 
 - [稳定版地址](http://10.108.7.58/editor.html)
 - [测试版地址](http://10.108.7.58:8080/editor.html)
+
+## Credits
+
+---
+
+- [VvvebJs](https://github.com/givanz/VvvebJs) - 网页版UI界面和组件属性设置
+- [jQuery UI](https://jqueryui.com/) - 拖拽和部分组件依赖
+- [ag-Grid](https://www.ag-grid.com/) - 表格组件
+- [Bootstrap](https://getbootstrap.com/) - 组件样式库
+- [noide](https://github.com/davidjamesstone/noide) - 程序版前端界面和后台实现
+- [Pkg](https://github.com/zeit/pkg) - node项目打包工具
+- [MkDocs](https://www.mkdocs.org/) - 文档生成工具
+- [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - 文档主题
