@@ -22,3 +22,6 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: true
+repo_name: 'UI-Builder'
+repo_url: 'https://github.com/iwangbowen/UI-Builder'
+edit_uri: ''
