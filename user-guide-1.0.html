@@ -1085,8 +1085,8 @@
                 <h1 id="ui-tools">UI Tools<a class="headerlink" href="#ui-tools" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="ui-tools_1">UI Tools程序版说明、本地安装和配置<a class="headerlink" href="#ui-tools_1" title="Permanent link">&para;</a></h2>
-<hr />
 <p>UI Tools程序版是依赖网页版，支持用户在浏览器中使用网页版的功能并实现浏览器和本地文件系统双向同步的程序。程序版定期发布压缩包，包含程序、程序配置文件和项目依赖文件夹。</p>
+<hr />
 <h3 id="_1">压缩文件说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -1172,8 +1172,60 @@
 </tbody>
 </table>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<p>组件是布局的最小单位。用户可以拖拽组件到对应的区域、调整它们的属性并预览效果。</p>
 <hr />
 <h3 id="_4">定制组件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>定制组件是为pds模板设计的一套具有固定宽度和高度的输入组件。</p>
+<table>
+<thead>
+<tr>
+<th>定制组件</th>
+<th>组件说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#custom-text-input-field">Custom Text Input Field</a></td>
+<td>定制文本输入</td>
+</tr>
+<tr>
+<td><a href="#custom-datetime-input-field">Custom Datetime Input Field</a></td>
+<td>定制日期时间输入</td>
+</tr>
+<tr>
+<td><a href="#custom-auto-select-field">Custom Auto Select Field</a></td>
+<td>定制自动填充下拉框选项输入</td>
+</tr>
+<tr>
+<td><a href="#custom-manual-select-field">Custom Manual Select Field</a></td>
+<td>定制手动输入下拉框选项输入</td>
+</tr>
+<tr>
+<td><a href="#custom-multi-value-select-field">Custom Multi-value Select Field</a></td>
+<td>定制多选下拉</td>
+</tr>
+<tr>
+<td><a href="#custom-textarea-field">Custom Textarea Field</a></td>
+<td>定制文本域输入</td>
+</tr>
+<tr>
+<td><a href="#custom-radio-field">Custom Radio Field</a></td>
+<td>定制radio输入</td>
+</tr>
+<tr>
+<td><a href="#custom-checkbox-field">Custom Checkbox Field</a></td>
+<td>定制checkbox输入</td>
+</tr>
+<tr>
+<td><a href="#custom-popup-text-input">Custom Popup Text Input</a></td>
+<td>定制弹出框文本输入</td>
+</tr>
+<tr>
+<td><a href="#custom-popup-manual-select">Custom Popup Manual Select</a></td>
+<td>定制弹出框手动输入下拉框选项输入</td>
+</tr>
+</tbody>
+</table>
 <h4 id="custom-text-input-field">Custom Text Input Field<a class="headerlink" href="#custom-text-input-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-datetime-input-field">Custom Datetime Input Field<a class="headerlink" href="#custom-datetime-input-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-file-input-field">Custom File Input Field<a class="headerlink" href="#custom-file-input-field" title="Permanent link">&para;</a></h4>
@@ -1186,6 +1238,100 @@
 <h4 id="custom-popup-text-input">Custom Popup Text Input<a class="headerlink" href="#custom-popup-text-input" title="Permanent link">&para;</a></h4>
 <h4 id="custom-popup-manual-select">Custom Popup Manual Select<a class="headerlink" href="#custom-popup-manual-select" title="Permanent link">&para;</a></h4>
 <h3 id="_5">通用组件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>定制组件</th>
+<th>组件说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#form">Form</a></td>
+<td>表单</td>
+</tr>
+<tr>
+<td><a href="#grid-row">Grid Row</a></td>
+<td>栅格</td>
+</tr>
+<tr>
+<td><a href="#tabs">Tabs</a></td>
+<td>标签页</td>
+</tr>
+<tr>
+<td><a href="#common-ag-grid">Common ag-Grid</a></td>
+<td>集成表格组件<a href="https://www.ag-grid.com/">ag-Grid</a></td>
+</tr>
+<tr>
+<td><a href="#button">Button</a></td>
+<td>定制多选下拉</td>
+</tr>
+<tr>
+<td><a href="#button-group">Button Group</a></td>
+<td>按钮组</td>
+</tr>
+<tr>
+<td><a href="#text-input-field">Text Input Field</a></td>
+<td>文本输入</td>
+</tr>
+<tr>
+<td><a href="#datetime-input-field">Datetime Input Field</a></td>
+<td>日期时间输入</td>
+</tr>
+<tr>
+<td><a href="#file-input-field">File Input Field</a></td>
+<td>文件输入</td>
+</tr>
+<tr>
+<td><a href="#auto-select-field">Auto Select Field</a></td>
+<td>自动填充下拉框选项输入</td>
+</tr>
+<tr>
+<td><a href="#manual-select-field">Manual Select Field</a></td>
+<td>手动输入下拉框选项输入</td>
+</tr>
+<tr>
+<td><a href="#textarea-field">Textarea Field</a></td>
+<td>文本域输入</td>
+</tr>
+<tr>
+<td><a href="#radio-field">Radio Field</a></td>
+<td>radio输入</td>
+</tr>
+<tr>
+<td><a href="#checkbox-field">Checkbox Field</a></td>
+<td>checkbox输入</td>
+</tr>
+<tr>
+<td><a href="#static-table">Static Table</a></td>
+<td>静态表格</td>
+</tr>
+<tr>
+<td><a href="#chart">Chart</a></td>
+<td>图表占位符</td>
+</tr>
+<tr>
+<td><a href="#heading">Heading</a></td>
+<td>Heading元素</td>
+</tr>
+<tr>
+<td><a href="#alert">Alert</a></td>
+<td>告警框</td>
+</tr>
+<tr>
+<td><a href="#horizontal-rule">Horizontal Rule</a></td>
+<td>水平分割线</td>
+</tr>
+<tr>
+<td><a href="#image">Image</a></td>
+<td>图片组件</td>
+</tr>
+<tr>
+<td><a href="#progress-bar">Progress Bar</a></td>
+<td>进度条</td>
+</tr>
+</tbody>
+</table>
 <h4 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h4>
 <h4 id="grid-row">Grid Row<a class="headerlink" href="#grid-row" title="Permanent link">&para;</a></h4>
 <h4 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">&para;</a></h4>
