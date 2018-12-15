@@ -1083,7 +1083,9 @@
                 
                 
                 <h1 id="ui-tools">UI Tools<a class="headerlink" href="#ui-tools" title="Permanent link">&para;</a></h1>
+<hr />
 <h2 id="ui-tools_1">UI Tools程序版说明、本地安装和配置<a class="headerlink" href="#ui-tools_1" title="Permanent link">&para;</a></h2>
+<hr />
 <p>UI Tools程序版是依赖网页版，支持用户在浏览器中使用网页版的功能并实现浏览器和本地文件系统双向同步的程序。程序版定期发布压缩包，包含程序、程序配置文件和项目依赖文件夹。</p>
 <h3 id="_1">压缩文件说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1136,6 +1138,7 @@
 </div>
 <p>工作区域以Builder模式打开后，界面和操作方式与网页版类似，将在<a href="#components"><strong>Components</strong></a>组件介绍中详细介绍具体使用方式。</p>
 <h2 id="ui-tools_2">UI Tools网页版说明和使用<a class="headerlink" href="#ui-tools_2" title="Permanent link">&para;</a></h2>
+<hr />
 <h3 id="ui-tools_3">UI Tools网页版说明<a class="headerlink" href="#ui-tools_3" title="Permanent link">&para;</a></h3>
 <p>UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用Builder模式打开工作空间类似。</p>
 <p>由于浏览器不支持直接的文件访问，UI Tools需要用户显式地进行文件的导入和导出操作。UI Tools网页版在组件列表上方会显式页面文件树。页面文件树中，显示的页面包含通用和定制的模板文件、用户基于模板文件创建的新页面和导入的页面。用户创建的页面通过<code>localStorage</code>保存到浏览器本地，支持在文件树列表删除已创建的页面。</p>
@@ -1169,6 +1172,7 @@
 </tbody>
 </table>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<hr />
 <h3 id="_4">定制组件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="custom-text-input-field">Custom Text Input Field<a class="headerlink" href="#custom-text-input-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-datetime-input-field">Custom Datetime Input Field<a class="headerlink" href="#custom-datetime-input-field" title="Permanent link">&para;</a></h4>
@@ -1205,10 +1209,10 @@
 <h4 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">&para;</a></h4>
 <h4 id="label-field">Label Field<a class="headerlink" href="#label-field" title="Permanent link">&para;</a></h4>
 <h2 id="javascript">JavaScript代码生成<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h2>
+<hr />
 <p>UI Tools生成页面时，支持生成通用的和适用于单独页面的脚本。</p>
 <h3 id="_6">通用代码<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>UI Tools为简化用户的开发流程，会为一些通用的业务逻辑自动生成代码。如果用户使用网页版导出功能时，选择bundled.html导出，通用代码会包含在导出文件中。由于通用代码内容相同，为便于统一更新，不建议以bundled.html导出。网页版中，用户可以选择shared.js导出最新的通用代码。程序版<code>www/js/shared.js</code>已包含<code>shared.js</code>文件，用户可以右键更新到最新的通用代码。</p>
-<hr />
 <p>通用代码功能</p>
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
