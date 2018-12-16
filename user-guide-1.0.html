@@ -550,13 +550,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#button-group" title="Button Group" class="md-nav__link">
-    Button Group
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#text-input-field" title="Text Input Field" class="md-nav__link">
     Text Input Field
   </a>
@@ -641,6 +634,13 @@
           <li class="md-nav__item">
   <a href="#button" title="Button" class="md-nav__link">
     Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-group" title="Button Group" class="md-nav__link">
+    Button Group
   </a>
   
 </li>
@@ -1083,13 +1083,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#button-group" title="Button Group" class="md-nav__link">
-    Button Group
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#text-input-field" title="Text Input Field" class="md-nav__link">
     Text Input Field
   </a>
@@ -1174,6 +1167,13 @@
           <li class="md-nav__item">
   <a href="#button" title="Button" class="md-nav__link">
     Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-group" title="Button Group" class="md-nav__link">
+    Button Group
   </a>
   
 </li>
@@ -1854,6 +1854,7 @@
 <p>定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。</p>
 <p><img alt="定制模板" src="img/custom-template.png" /></p>
 <h4 id="_7">通用模板<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><img alt="Gridster" src="img/gridster.gif" /></p>
 <p>通用模板以布局块为基本单位，允许用户新增、删除布局块、调整布局块的大小、拖拽改变布局块在页面的位置并拖拽组件到布局块中定位。</p>
 <p><img alt="通用模板" src="img/general-template.png" /></p>
 <h3 id="ui-tools_6">UI Tools网页版设置<a class="headerlink" href="#ui-tools_6" title="Permanent link">&para;</a></h3>
@@ -2053,7 +2054,70 @@
 </tbody>
 </table>
 <h4 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h4>
-<h5 id="button-group">Button Group<a class="headerlink" href="#button-group" title="Permanent link">&para;</a></h5>
+<p>Form是基于<a href="https://getbootstrap.com">Bootstrap</a>中的<a href="https://getbootstrap.com/docs/4.1/components/forms/"><code>Form</code></a>实现的表单组件。表单组件中可以放入不同的输入控件并设置它们的样式。参考定制组件中类型相同的输入控件的属性设置。</p>
+<p>示例Form表单HTML代码</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;exampleFormControlInput1&quot;</span><span class="p">&gt;</span>Email address<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;exampleFormControlInput1&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;name@example.com&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;exampleFormControlSelect1&quot;</span><span class="p">&gt;</span>Example select<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">select</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;exampleFormControlSelect1&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;exampleFormControlSelect2&quot;</span><span class="p">&gt;</span>Example multiple select<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">select</span> <span class="na">multiple</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;exampleFormControlSelect2&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;exampleFormControlTextarea1&quot;</span><span class="p">&gt;</span>Example textarea<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;exampleFormControlTextarea1&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table>
+
 <h5 id="text-input-field">Text Input Field<a class="headerlink" href="#text-input-field" title="Permanent link">&para;</a></h5>
 <h5 id="datetime-input-field">Datetime Input Field<a class="headerlink" href="#datetime-input-field" title="Permanent link">&para;</a></h5>
 <h5 id="file-input-field">File Input Field<a class="headerlink" href="#file-input-field" title="Permanent link">&para;</a></h5>
@@ -2171,6 +2235,8 @@
 <h4 id="button">Button<a class="headerlink" href="#button" title="Permanent link">&para;</a></h4>
 <p><img alt="Button" src="img/button.gif" /></p>
 <p>Button是基于<a href="https://getbootstrap.com">Bootstrap</a>中的<a href="https://getbootstrap.com/docs/4.1/components/buttons/"><code>Button</code></a>实现的按钮组件。支持常用样式属性的设置。支持点击弹出框操作，用户可以拖拽其他组件到弹出框。</p>
+<h4 id="button-group">Button Group<a class="headerlink" href="#button-group" title="Permanent link">&para;</a></h4>
+<p>Button Group是基于<a href="https://getbootstrap.com">Bootstrap</a>中的<a href="https://getbootstrap.com/docs/4.1/components/button-group/"><code>Button Group</code></a>实现的按钮组件。支持常用样式属性的设置。</p>
 <h4 id="static-table">Static Table<a class="headerlink" href="#static-table" title="Permanent link">&para;</a></h4>
 <p><img alt="Static Table" src="img/static-table.gif" /></p>
 <p>静态表格是基于<a href="https://getbootstrap.com">Bootstrap</a>中的<a href="https://getbootstrap.com/docs/4.1/content/tables/"><code>Table</code></a>实现的静态表格。设置菜单里可以设置表格的多种不同样式。用户可以利用元素复制和删除功能，新增或删除表头和数据列。表格的表头和数据是静态数据。</p>
