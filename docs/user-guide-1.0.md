@@ -293,7 +293,7 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 |Populate Headers|是否根据返回数据自动填充表头，启用后现有的Header设置失效|
 |Pagination|是否分页显示数据|
 |Page Size|分页后每页显示的数据数目|
-|Theme|集成全部官方颜色主题|![ag-Grid-themes](img/ag-grid-themes.gif)|
+|Theme|集成全部官方颜色主题|![ag-Grid-themes](img/ag-Grid-themes.gif)|
 |Related Table|关联的其他表格，用于表格联动逻辑|
 |Transpose Key|表格行列翻转的基准|
 |Table Key|表格唯一标识，只读|
