@@ -279,6 +279,24 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Form
 
+##### Button Group
+
+##### Text Input Field
+
+##### Datetime Input Field
+
+##### File Input Field
+
+##### Auto Select Field
+
+##### Manual Select Field
+
+##### Textarea Field
+
+##### Radio Field
+
+##### Checkbox Field
+
 #### Grid Row
 
 ![Grid Row](img/grid-row.gif)
@@ -289,7 +307,7 @@ UI Tools网页版支持导出不同类型的文件
 
 ![Tabs](img/tabs.gif)
 
-Tabs组件允许用户新增、删除标签页和修改标签页的标题，支持拖拽其他组件到标签页中，支持标签页的嵌套。
+Tabs组件基于[jQuery UI Tabs](https://jqueryui.com/tabs/)实现。允许用户新增、删除标签页和修改标签页的标题，支持拖拽其他组件到标签页中，支持标签页的嵌套。
 
 #### Common ag-Grid
 
@@ -321,23 +339,9 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 
 #### Button
 
-#### Button Group
+![Button](img/button.gif)
 
-#### Text Input Field
-
-#### Datetime Input Field
-
-#### File Input Field
-
-#### Auto Select Field
-
-#### Manual Select Field
-
-#### Textarea Field
-
-#### Radio Field
-
-#### Checkbox Field
+Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的按钮组件。支持常用样式属性的设置。支持点击弹出框操作，用户可以拖拽其他组件到弹出框。
 
 #### Static Table
 
@@ -347,11 +351,19 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 
 #### Chart
 
+Chart组件是图表占位组件。由于图表图例和数据一般是后台数据经代码渲染生成，UI Tools暂时不提供统一可视化设置功能。
+
 #### Heading
+
+Heading组件支持`heading`元素。
 
 #### Alert
 
+静态表格是基于[Bootstrap](https://getbootstrap.com)中的[`Alert`](https://getbootstrap.com/docs/4.1/components/alerts/)实现的告警组件。支持改变告警样式。
+
 #### Horizontal Rule
+
+Horizontal Rule组件支持`hr`元素。
 
 #### Image
 
@@ -360,6 +372,8 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 图片组件是img元素的占位组件。用户可以利用设置中的上传功能预览图片效果，图片以`base64`编码在页面中呈现。图片不会保存到导出页面或上传到服务器。
 
 #### Progress Bar
+
+Progress Bar是基于[Bootstrap](https://getbootstrap.com)中的[`Progress`](https://getbootstrap.com/docs/4.1/components/progress/)实现的进度条组件。支持改变进度条样式。
 
 #### Label Field
 
