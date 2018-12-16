@@ -1851,12 +1851,11 @@
 </table>
 <h3 id="ui-tools_5">UI Tools网页版模板<a class="headerlink" href="#ui-tools_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">定制模板<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。</p>
 <p><img alt="定制模板" src="img/custom-template.png" /></p>
+<p>定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。</p>
 <h4 id="_7">通用模板<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="Gridster" src="img/gridster.gif" /></p>
 <p>通用模板以布局块为基本单位，允许用户新增、删除布局块、调整布局块的大小、拖拽改变布局块在页面的位置并拖拽组件到布局块中定位。</p>
-<p><img alt="通用模板" src="img/general-template.png" /></p>
 <h3 id="ui-tools_6">UI Tools网页版设置<a class="headerlink" href="#ui-tools_6" title="Permanent link">&para;</a></h3>
 <p><img alt="设置" src="img/property-settings.gif" /></p>
 <h4 id="_8">定制设置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -1914,6 +1913,10 @@
 <td>定制日期时间输入</td>
 </tr>
 <tr>
+<td><a href="#custom-file-input-field">Custom File Input field</a></td>
+<td>定制文件输入</td>
+</tr>
+<tr>
 <td><a href="#custom-auto-select-field">Custom Auto Select Field</a></td>
 <td>定制自动填充下拉框选项输入</td>
 </tr>
@@ -1950,14 +1953,92 @@
 <h4 id="custom-text-input-field">Custom Text Input Field<a class="headerlink" href="#custom-text-input-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-datetime-input-field">Custom Datetime Input Field<a class="headerlink" href="#custom-datetime-input-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-file-input-field">Custom File Input Field<a class="headerlink" href="#custom-file-input-field" title="Permanent link">&para;</a></h4>
+<p>定制文件输入。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。</p>
+</div>
 <h4 id="custom-auto-select-field">Custom Auto Select Field<a class="headerlink" href="#custom-auto-select-field" title="Permanent link">&para;</a></h4>
+<p>定制自动填充下拉框选项输入，可以通过指定url地址，设置value和text映射，在页面加载后自动填充下拉框选项。</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">自动生成下拉框选项</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">function</span> <span class="nx">generateOptions</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-value-mapping&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;value&#39;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-text-mapping&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;text&#39;</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;option&gt;&lt;/option&gt;&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">option</span><span class="p">[</span><span class="nx">value</span><span class="p">])</span>
+            <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">option</span><span class="p">[</span><span class="nx">text</span><span class="p">])</span>
+            <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;[data-auto-select-id]&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-url&#39;</span><span class="p">);</span>
+    <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">fundodooApiDomainUrl</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-url&#39;</span><span class="p">),</span>
+            <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+            <span class="nx">async</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">generateOptions</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 <h4 id="custom-manual-select-field">Custom Manual Select Field<a class="headerlink" href="#custom-manual-select-field" title="Permanent link">&para;</a></h4>
+<p>定制手动输入下拉框选项输入，允许用户在设置菜单手动添加或删除下拉框选项。</p>
 <h4 id="custom-multi-value-select-field">Custom Multi-value Select Field<a class="headerlink" href="#custom-multi-value-select-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-textarea-field">Custom Textarea Field<a class="headerlink" href="#custom-textarea-field" title="Permanent link">&para;</a></h4>
 <h4 id="custom-radio-field">Custom Radio Field<a class="headerlink" href="#custom-radio-field" title="Permanent link">&para;</a></h4>
+<p>定制radio输入。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>通过选中radio元素后弹出的快捷菜单，点击复制按钮实现快速复制radio元素。</p>
+</div>
 <h4 id="custom-checkbox-field">Custom Checkbox Field<a class="headerlink" href="#custom-checkbox-field" title="Permanent link">&para;</a></h4>
+<p>定制checkbox输入。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>通过选中checkbox元素后弹出的快捷菜单，点击复制按钮实现快速复制checkbox元素。</p>
+</div>
 <h4 id="custom-popup-text-input">Custom Popup Text Input<a class="headerlink" href="#custom-popup-text-input" title="Permanent link">&para;</a></h4>
+<p>定制弹出框文本输入适用于定制模板弹出框。</p>
 <h4 id="custom-popup-manual-select">Custom Popup Manual Select<a class="headerlink" href="#custom-popup-manual-select" title="Permanent link">&para;</a></h4>
+<p>定制弹出框手动输入下拉框选项输入适用于定制模板弹出框。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>设置输入组件title属性，当鼠标在输入组件悬浮时，在组件右侧显示title的内容。</p>
+</div>
 <h3 id="_11">通用组件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2118,6 +2199,10 @@
 </pre></div>
 </td></tr></table>
 
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>UI Tools没有限制输入组件一定要拖入<code>form</code>元素内。实际上，用户可以选择将输入组件放入页面内的任何可拖拽区域，并能正确呈现样式。但为了HTML的语义化，将输入组件放入<code>form</code>元素内是更合理的做法。</p>
+</div>
 <h5 id="text-input-field">Text Input Field<a class="headerlink" href="#text-input-field" title="Permanent link">&para;</a></h5>
 <h5 id="datetime-input-field">Datetime Input Field<a class="headerlink" href="#datetime-input-field" title="Permanent link">&para;</a></h5>
 <h5 id="file-input-field">File Input Field<a class="headerlink" href="#file-input-field" title="Permanent link">&para;</a></h5>
@@ -2126,6 +2211,10 @@
 <h5 id="textarea-field">Textarea Field<a class="headerlink" href="#textarea-field" title="Permanent link">&para;</a></h5>
 <h5 id="radio-field">Radio Field<a class="headerlink" href="#radio-field" title="Permanent link">&para;</a></h5>
 <h5 id="checkbox-field">Checkbox Field<a class="headerlink" href="#checkbox-field" title="Permanent link">&para;</a></h5>
+<div class="admonition question">
+<p class="admonition-title">设置输入组件的Required属性有什么作用？</p>
+<p>设置输入组件的Required属性，当表单提交时，如果表单中存在设置了Required的输入组件且该组件值为空，将弹窗提示用户输入不能为空。</p>
+</div>
 <h4 id="grid-row">Grid Row<a class="headerlink" href="#grid-row" title="Permanent link">&para;</a></h4>
 <p><img alt="Grid Row" src="img/grid-row.gif" /></p>
 <p>栅格是基于<a href="https://getbootstrap.com">Bootstrap</a>中的<a href="https://getbootstrap.com/docs/4.1/layout/grid/"><code>Grid</code></a>实现的可视化、可配置的布局组件。支持栅格的新增和删除操作，支持改变栅格中列在不同分辨率下的大小。支持拖拽其他组件到栅格中的对应位置。</p>
@@ -2261,8 +2350,8 @@
 <p>UI Tools为简化用户的开发流程，会为一些通用的业务逻辑自动生成代码。如果用户使用网页版导出功能时，选择bundled.html导出，通用代码会包含在导出文件中。由于通用代码内容相同，为便于统一更新，不建议以bundled.html导出。网页版中，用户可以选择shared.js导出最新的通用代码。程序版<code>www/js/shared.js</code>已包含<code>shared.js</code>文件，用户可以右键更新到最新的通用代码。</p>
 <p>通用代码功能</p>
 <div class="superfences-tabs">
-<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
-<label for="__tab_1_0">表单文件输入框自动上传</label>
+<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
+<label for="__tab_2_0">表单文件输入框自动上传</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2308,8 +2397,8 @@
 <span class="p">});</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_1" />
-<label for="__tab_1_1">下拉框自动数据填充</label>
+<input name="__tabs_2" type="radio" id="__tab_2_1" />
+<label for="__tab_2_1">下拉框自动数据填充</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2373,8 +2462,8 @@
     <span class="p">});</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_2" />
-<label for="__tab_1_2">表单提交</label>
+<input name="__tabs_2" type="radio" id="__tab_2_2" />
+<label for="__tab_2_2">表单提交</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2456,8 +2545,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_3" />
-<label for="__tab_1_3">新增弹出框</label>
+<input name="__tabs_2" type="radio" id="__tab_2_3" />
+<label for="__tab_2_3">新增弹出框</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2485,8 +2574,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_4" />
-<label for="__tab_1_4">编辑弹出框</label>
+<input name="__tabs_2" type="radio" id="__tab_2_4" />
+<label for="__tab_2_4">编辑弹出框</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2556,8 +2645,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_5" />
-<label for="__tab_1_5">删除弹出框</label>
+<input name="__tabs_2" type="radio" id="__tab_2_5" />
+<label for="__tab_2_5">删除弹出框</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2627,8 +2716,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_6" />
-<label for="__tab_1_6">详情弹出框</label>
+<input name="__tabs_2" type="radio" id="__tab_2_6" />
+<label for="__tab_2_6">详情弹出框</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2726,8 +2815,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_7" />
-<label for="__tab_1_7">表格数据以csv格式导出</label>
+<input name="__tabs_2" type="radio" id="__tab_2_7" />
+<label for="__tab_2_7">表格数据以csv格式导出</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2739,8 +2828,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_8" />
-<label for="__tab_1_8">弹出框表单提交函数</label>
+<input name="__tabs_2" type="radio" id="__tab_2_8" />
+<label for="__tab_2_8">弹出框表单提交函数</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2764,8 +2853,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_9" />
-<label for="__tab_1_9">表格数据填充函数</label>
+<input name="__tabs_2" type="radio" id="__tab_2_9" />
+<label for="__tab_2_9">表格数据填充函数</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2895,8 +2984,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_10" />
-<label for="__tab_1_10">表格按钮点击回调函数</label>
+<input name="__tabs_2" type="radio" id="__tab_2_10" />
+<label for="__tab_2_10">表格按钮点击回调函数</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2944,8 +3033,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_11" />
-<label for="__tab_1_11">事件注册</label>
+<input name="__tabs_2" type="radio" id="__tab_2_11" />
+<label for="__tab_2_11">事件注册</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2979,8 +3068,8 @@
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;button&#39;</span><span class="p">,</span> <span class="nx">buttonClickedPopupCallback</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_12" />
-<label for="__tab_1_12">组件初始化</label>
+<input name="__tabs_2" type="radio" id="__tab_2_12" />
+<label for="__tab_2_12">组件初始化</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3051,8 +3140,8 @@
 <p>如果使用了ag-Grid组件，请不要修改导出的表格初始化代码。UI Tools在实现页面导入功能时，需要依赖这部分代码实现表格的初始化工作。同时，UI Tools为表格增加新功能时，需要覆盖这部分代码。与此同时，UI Tools没有限制用户覆盖原有代码逻辑的能力。下面会通过例子说明如何重写表格代码，实现自定义逻辑。</p>
 </div>
 <div class="superfences-tabs">
-<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
-<label for="__tab_2_0">HTML</label>
+<input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
+<label for="__tab_3_0">HTML</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3068,8 +3157,8 @@
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table></div>
-<input name="__tabs_2" type="radio" id="__tab_2_1" />
-<label for="__tab_2_1">JavaScript</label>
+<input name="__tabs_3" type="radio" id="__tab_3_1" />
+<label for="__tab_3_1">JavaScript</label>
 <div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
