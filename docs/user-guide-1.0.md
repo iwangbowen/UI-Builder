@@ -181,6 +181,18 @@ UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用
 
 ![通用模板](img/general-template.png)
 
+### UI Tools网页版设置
+
+![设置](img/property-settings.gif)
+
+#### 定制设置
+
+定制设置是对应不同组件的设置。
+
+#### 通用设置
+
+通用设置是所有元素通用属性的设置。按其功能分成了*General*、*Border*、*Padding*、*Display*、*Typography*、*Size*、*Margin*等设置。方便用户对元素`id`、`class`和`style`属性进行可视化的修改。
+
 ### UI Tools网页版导出文件说明
 
 UI Tools网页版支持导出不同类型的文件
