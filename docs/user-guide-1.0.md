@@ -279,7 +279,42 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Form
 
-##### Button Group
+Form是基于[Bootstrap](https://getbootstrap.com)中的[`Form`](https://getbootstrap.com/docs/4.1/components/forms/)实现的表单组件。表单组件中可以放入不同的输入控件并设置它们的样式。参考定制组件中类型相同的输入控件的属性设置。
+
+示例Form表单HTML代码
+
+```html
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
+```
 
 ##### Text Input Field
 
@@ -342,6 +377,10 @@ Tabs组件基于[jQuery UI Tabs](https://jqueryui.com/tabs/)实现。允许用�
 ![Button](img/button.gif)
 
 Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的按钮组件。支持常用样式属性的设置。支持点击弹出框操作，用户可以拖拽其他组件到弹出框。
+
+#### Button Group
+
+Button Group是基于[Bootstrap](https://getbootstrap.com)中的[`Button Group`](https://getbootstrap.com/docs/4.1/components/button-group/)实现的按钮组件。支持常用样式属性的设置。
 
 #### Static Table
 
