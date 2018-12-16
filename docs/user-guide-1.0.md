@@ -154,18 +154,18 @@ UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用
 
 ### UI Tools网页版快捷菜单
 
-|菜单                   |      功能说明                                             |   快捷键       |
-|----------------------|-----------------------------------------------------------|---------------|
-| Undo                 | 撤销上一步操作                                             | ++ctrl+z++    |
-| Redo                 | 重做上一步                                                 | ++ctrl+y++    |
-| Fullscreen           | 全屏显示，进入全屏模式后，按++f1++推出全屏                   |               |
-| Preview              | 隐藏右侧功能区，全屏预览效果，此时左侧工作空间处于不可操作状态  |               |
-| Check generated file | 模态框预览导出文件内容                                      |               |
-| Upload               | 上传页面到UI Tools中打开                                    |               |
-| Download             | 下载当前工作空间的页面到本地                                 |               |
-| Mobile View          | 预览当前页面在手机视图中的效果                               |               |
-| Tablet View          | 预览当前页面在平板视图中的效果                               |               |
-| Desktop View         | 预览当前页面在桌面视图中的效果                               |               |
+|菜单|功能说明|快捷键|
+|---|---|---|
+|Undo|撤销上一步操作|++ctrl+z++|
+| Redo|重做上一步操作|++ctrl+y++|
+| Fullscreen|全屏显示，进入全屏模式后，按++f1++推出全屏||
+| Preview|隐藏右侧功能区，全屏预览效果，此时左侧工作空间处于不可操作状态||
+| Check generated file|模态框预览导出文件内容||
+| Upload|上传页面到UI Tools中打开||
+| Download|下载当前工作空间的页面到本地||
+| Mobile View|预览当前页面在手机视图中的效果||
+| Tablet View|预览当前页面在平板视图中的效果||
+| Desktop View|预览当前页面在桌面视图中的效果||
 
 ### UI Tools网页版导出文件说明
 
@@ -173,12 +173,12 @@ UI Tools网页版支持导出不同类型的文件
 
 ![Noide Screenshot](img/ui-builder-export.png)
 
-|导出文件       |      文件说明                                                                  |
-|--------------|-------------------------------------------------------------------------------|
-| bundled.html | 包含公共脚本文件的html                                                          |
-| index.html   | 移除公共脚本文件的html，只包含必要的表格初始化文件，如需后期引入，可加入shared.js    |
-| shared.js    | 公共脚本文件                                                                    |
-| index.zip    | 包含index.html和shared.js的压缩文件                                              |
+|导出文件|文件说明|
+|---|---|
+|bundled.html|包含公共脚本文件的html|
+|index.html|移除公共脚本文件的html，只包含必要的表格初始化文件，如需后期引入，可加入shared.js|
+|shared.js|公共脚本文件|
+|index.zip|包含index.html和shared.js的压缩文件|
 
 ## Components
 
@@ -190,18 +190,18 @@ UI Tools网页版支持导出不同类型的文件
 
 定制组件是为pds模板设计的一套具有固定宽度和高度的输入组件。
 
-|定制组件                                                              | 组件说明                          |
-|---------------------------------------------------------------------|----------------------------------|
-| [Custom Text Input Field](#custom-text-input-field)                 | 定制文本输入                      |
-| [Custom Datetime Input Field](#custom-datetime-input-field)         | 定制日期时间输入                   |
-| [Custom Auto Select Field](#custom-auto-select-field)               | 定制自动填充下拉框选项输入          |
-| [Custom Manual Select Field](#custom-manual-select-field)           | 定制手动输入下拉框选项输入          |
-| [Custom Multi-value Select Field](#custom-multi-value-select-field) | 定制多选下拉                       |
-| [Custom Textarea Field](#custom-textarea-field)                     | 定制文本域输入                     |
-| [Custom Radio Field](#custom-radio-field)                           | 定制radio输入                     |
-| [Custom Checkbox Field](#custom-checkbox-field)                     | 定制checkbox输入                  |
-| [Custom Popup Text Input](#custom-popup-text-input)                 | 定制弹出框文本输入                 |
-| [Custom Popup Manual Select](#custom-popup-manual-select)           | 定制弹出框手动输入下拉框选项输入    |
+|定制组件|组件说明|
+|---|--|
+|[Custom Text Input Field](#custom-text-input-field)|定制文本输入|
+|[Custom Datetime Input Field](#custom-datetime-input-field)|定制日期时间输入|
+|[Custom Auto Select Field](#custom-auto-select-field)|定制自动填充下拉框选项输入|
+|[Custom Manual Select Field](#custom-manual-select-field)|定制手动输入下拉框选项输入|
+|[Custom Multi-value Select Field](#custom-multi-value-select-field)|定制多选下拉|
+|[Custom Textarea Field](#custom-textarea-field)|定制文本域输入|
+|[Custom Radio Field](#custom-radio-field)|定制radio输入|
+|[Custom Checkbox Field](#custom-checkbox-field)|定制checkbox输入|
+|[Custom Popup Text Input](#custom-popup-text-input)|定制弹出框文本输入|
+|[Custom Popup Manual Select](#custom-popup-manual-select)|定制弹出框手动输入下拉框选项输入|
 
 #### Custom Text Input Field
 
@@ -227,29 +227,29 @@ UI Tools网页版支持导出不同类型的文件
 
 ### 通用组件
 
-|定制组件                                        | 组件说明                                         |
-|-----------------------------------------------|-------------------------------------------------|
-| [Form](#form)                                 | 表单                                            |
-| [Grid Row](#grid-row)                         | 栅格                                            |
-| [Tabs](#tabs)                                 | 标签页                                          |
-| [Common ag-Grid](#common-ag-grid)             | 集成表格组件[ag-Grid](https://www.ag-grid.com/)  |
-| [Button](#button) | 定制多选下拉               | 按钮                                             |
-| [Button Group](#button-group)                 | 按钮组                                           |
-| [Text Input Field](#text-input-field)         | 文本输入                                         |
-| [Datetime Input Field](#datetime-input-field) | 日期时间输入                                     |
-| [File Input Field](#file-input-field)         | 文件输入                                         |
-| [Auto Select Field](#auto-select-field)       | 自动填充下拉框选项输入                            |
-| [Manual Select Field](#manual-select-field)   | 手动输入下拉框选项输入                            |
-| [Textarea Field](#textarea-field)             | 文本域输入                                       |
-| [Radio Field](#radio-field)                   | radio输入                                       |
-| [Checkbox Field](#checkbox-field)             | checkbox输入                                    |
-| [Static Table](#static-table)                 | 静态表格                                         |
-| [Chart](#chart)                               | 图表占位符                                       |
-| [Heading](#heading)                           | Heading元素                                     |
-| [Alert](#alert)                               | 告警框                                           |
-| [Horizontal Rule](#horizontal-rule)           | 水平分割线                                       |
-| [Image](#image)                               | 图片组件                                         |
-| [Progress Bar](#progress-bar)                 | 进度条                                           |
+|定制组件|组件说明|
+|---|---|
+|[Form](#form)|表单|
+|[Grid Row](#grid-row)|栅格|
+|[Tabs](#tabs)|标签页|
+|[Common ag-Grid](#common-ag-grid)|集成表格组件[ag-Grid](https://www.ag-grid.com/)|
+|[Button](#button)|定制多选下拉|按钮|
+|[Button Group](#button-group)|按钮组|
+|[Text Input Field](#text-input-field)|文本输入|
+|[Datetime Input Field](#datetime-input-field)|日期时间输入|
+|[File Input Field](#file-input-field)|文件输入|
+|[Auto Select Field](#auto-select-field)|自动填充下拉框选项输入|
+|[Manual Select Field](#manual-select-field)|手动输入下拉框选项输入|
+|[Textarea Field](#textarea-field)|文本域输入|
+|[Radio Field](#radio-field)|radio输入|
+|[Checkbox Field](#checkbox-field)|checkbox输入|
+|[Static Table](#static-table)|静态表格|
+|[Chart](#chart)|图表占位符|
+|[Heading](#heading)|Heading元素|
+|[Alert](#alert)| 告警框|
+|[Horizontal Rule](#horizontal-rule)|水平分割线|
+|[Image](#image)|图片组件|
+|[Progress Bar](#progress-bar)|进度条|
 
 #### Form
 
