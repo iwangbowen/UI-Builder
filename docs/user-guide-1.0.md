@@ -167,6 +167,20 @@ UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用
 | Tablet View|预览当前页面在平板视图中的效果||
 | Desktop View|预览当前页面在桌面视图中的效果||
 
+### UI Tools网页版模板
+
+#### 定制模板
+
+定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。
+
+![定制模板](img/custom-template.png)
+
+#### 通用模板
+
+通用模板以布局块为基本单位，允许用户新增、删除布局块、调整布局块的大小、拖拽改变布局块在页面的位置并拖拽组件到布局块中定位。
+
+![通用模板](img/general-template.png)
+
 ### UI Tools网页版导出文件说明
 
 UI Tools网页版支持导出不同类型的文件
@@ -257,7 +271,37 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Tabs
 
+![Tabs](img/tabs.gif)
+
+Tabs组件允许用户新增、删除标签页和修改标签页的标题，支持拖拽其他组件到标签页中，支持标签页的嵌套。
+
 #### Common ag-Grid
+
+![ag-Grid](img/ag-Grid.gif)
+
+表格组件基于[ag-Grid](https://www.ag-grid.com/)实现。用户可以通过属性设置，新增、删除、修改表头，修改表格颜色主题。支持ag-Grid常用属性设置。
+
+常用属性设置说明[^1]
+
+|属性|说明|示例|
+|---|---|---|
+|Header|表头名称、字段映射、宽度、是否隐藏、禁用改变大小、删除表头|
+|Checkbox Selection|第一列数据是否显示checkbox|
+|Header Checkbox Selection|第一列表头是否显示checkbox，可以快速进行全选|
+|Enable Resize|是否启用使用鼠标改变表头宽度|
+|Auto Size Columns|表格是否根据数据列自适应改变宽度|
+|Populate Headers|是否根据返回数据自动填充表头，启用后现有的Header设置失效|
+|Pagination|是否分页显示数据|
+|Page Size|分页后每页显示的数据数目|
+|Theme|集成全部官方颜色主题|![ag-Grid-themes](img/ag-grid-themes.gif)|
+|Related Table|关联的其他表格，用于表格联动逻辑|
+|Transpose Key|表格行列翻转的基准|
+|Table Key|表格唯一标识，只读|
+|Enable Row Click|是否响应行点击事件，默认行为是弹框，可覆盖默认行为。[查看如何覆盖默认行为](#ag-grid-code)|
+|Row Click Url|行点击弹框中有新的表格时，数据请求的地址|
+|Enable Cell Click|是否响应单元格点击事件，默认行为是弹框，可覆盖默认行为。[查看如何覆盖默认行为](#ag-grid-code)|
+|Cell Click Url|单元格点击弹框中有新的表格时，数据请求的地址|
+|Data Key|查询返回多个表格数据时，数据和表格的映射关系|
 
 #### Button
 
@@ -725,6 +769,8 @@ $('body').on('click', 'button', function () {});
 
 ### 定制代码
 
+#### ag-Grid Code
+
 UI Tools功能中，只有使用[ag-Grid](https://www.ag-grid.com/)组件初始化的表格是必须包含在生成的页面里的。
 
 !!! note "备注"
@@ -798,3 +844,5 @@ gridOptions_fl.onRowSelected = function () {
 用户可以重新设置onCellClicked和onRowSelected属性，实现用户自定义逻辑。
 
 参考[ag-Grid文档](https://www.ag-grid.com/documentation-main/documentation.php)了解更多使用方式。
+
+[^1]: 更多属性设置[ag-Grid文档](https://www.ag-grid.com/documentation-main/documentation.php)。
