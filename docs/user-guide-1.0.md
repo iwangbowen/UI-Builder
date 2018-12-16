@@ -50,7 +50,97 @@ UI Tools程序版是依赖网页版，支持用户在浏览器中使用网页版
 !!! warning "警告"
     更新脚本文件时，请确保更新的是公共脚本文件。请不要将定制的逻辑代码写入公共的脚本文件，更新操作会覆盖原有的文件。
 
+#### Builder模式
+
 工作区域以Builder模式打开后，界面和操作方式与网页版类似，将在[**Components**](#components)组件介绍中详细介绍具体使用方式。
+
+#### 编辑器模式
+
+##### 编辑器模式快捷键支持
+
+|PC (Windows/Linux)|Mac|action|
+|--- |--- |--- |
+|++ctrl+s++|++command+s++|Save the current file|
+|++ctrl+shift+s++,|++command+option+s++,|Save all files|
+|++ctrl+b++|++command+b++|Beautify (js, css, html files only)|
+|++ctrl++|++command++|Show the settings menu|
+|++ctrl+alt+up++|++ctrl+option+up++|add multi+cursor above|
+|++ctrl+alt+down++|++ctrl+option+down++|add multi+cursor below|
+|++ctrl+alt+right++|++ctrl+option+right++|add next occurrence to multi+selection|
+|++ctrl+alt+left++|++ctrl+option+left++|add previous occurrence to multi+selection|
+||++ctrl+l++|center selection|
+|++ctrl+shift+u++|++ctrl+shift+u++|change to lower case|
+|++ctrl+u++|++ctrl+u++|change to upper case|
+|++alt+shift+down++|++command+option+down++|copy lines down|
+|++alt+shift+up++|++command+option+up++|copy lines up|
+|++delete++||delete|
+|++ctrl+shift+d++|++command+shift++|duplicate selection|
+|++ctrl+f++|++command++|find|
+|++ctrl+k++|++command+g++|find next|
+|++ctrl+shift+k++|++command+shift+g++|find previous|
+|++alt+0++|++command+option+0++|fold all|
+|++alt+l++, ++ctrl+f1++|++command+option+l++, ++command+f1++|fold selection|
+|++down++|++down++, ++ctrl+n++|go line down|
+|++up++|++up++, ++ctrl+p++|go line up|
+|++ctrl+end++|++command+end++, ++command+down++|go to end|
+|++left++|++left++, ++ctrl+b++|go to left|
+|++ctrl+l++|++command+l++|go to line|
+|++alt+right++, ++end++|++command+right++, ++end++, ++ctrl+e++|go to line end|
+|++alt+left++, ++home++|++command+left++, ++home++, ++ctrl+a++|go to line start|
+|++ctrl+p++||go to matching bracket|
+|++page-down++|++option+page-down++, ++ctrl+v++|go to page down|
+|++page-up++|++option+page-up++|go to page up|
+|++right++|++right++, ++ctrl+f++|go to right|
+|++ctrl+home++|++command+home++, ++command+up++|go to start|
+|++ctrl+left++|++option+left++|go to word left|
+|++ctrl+right++|++option+right++|go to word right|
+|++tab++|++tab++|indent|
+|++ctrl+alt+e++||macros recording|
+|++ctrl+shift+e++|++command+shift+e++|macros replay|
+|++alt+down++|++option+down++|move lines down|
+|++alt+up++|++option+up++|move lines up|
+|++ctrl+alt+shift+up++|++ctrl+option+shift+up++|move multicursor from current line to the line above|
+|++ctrl+alt+shift+down++|++ctrl+option+shift+down++|move multicursor from current line to the line below|
+|++shift+tab++|++shift+tab++|outdent|
+|++insert++|++insert++|overwrite|
+|++ctrl+shift+z++, ++ctrl+y++|++command+shift+z++, ++command+y++|redo|
+|++ctrl+alt+shift+right++|++ctrl+option+shift+right++|remove current occurrence from multi+selection and move to next|
+|++ctrl+alt+shift+left++|++ctrl+option+shift+left++|remove current occurrence from multi+selection and move to previous|
+|++ctrl+d++|++command+d++|remove line|
+|++alt+delete++|++ctrl+k++|remove to line end|
+|++alt+backspace++|++command+backspace++|remove to linestart|
+|++ctrl+backspace++|++option+backspace++, ++ctrl+option+backspace++|remove word left|
+|++ctrl+delete++|++option+delete++|remove word right|
+|++ctrl+r++|++command+option+f++|replace|
+|++ctrl+shift+r++|++command+shift+option+f++|replace all|
+|++ctrl+down++|++command+down++|scroll line down|
+|++ctrl+up++||scroll line up|
+||++option+page-down++|scroll page down|
+||++option+page-up++|scroll page up|
+|++ctrl+a++|++command+a++|select all|
+|++ctrl+shift+l++|++ctrl+shift+l++|select all from multi+selection|
+|++shift+down++|++shift+down++|select down|
+|++shift+left++|++shift+left++|select left|
+|++shift+end++|++shift+end++|select line end|
+|++shift+home++|++shift+home++|select line start|
+|++shift+page-down++|++shift+page-down++|select page down|
+|++shift+page-up++|++shift+page-up++|select page up|
+|++shift+right++|++shift+right++|select right|
+|++ctrl+shift+end++|++command+shift+down++|select to end|
+|++alt+shift+right++|++command+shift+right++|select to line end|
+|++alt+shift+left++|++command+shift+left++|select to line start|
+|++ctrl+shift+p++||select to matching bracket|
+|++ctrl+shift+home++|++command+shift+up++|select to start|
+|++shift+up++|++shift+up++|select up|
+|++ctrl+shift+left++|++option+shift+left++|select word left|
+|++ctrl+shift+right++|++option+shift+right++|select word right|
+||++ctrl+o++|split line|
+|++ctrl+slash++|++command+slash++|toggle comment|
+|++ctrl+t++|++ctrl+t++|transpose letters|
+|++ctrl+z++|++command+z++|undo|
+|++alt+shift+l++, ++ctrl+shift+f1++|++command+option+shift+l++, ++command+shift+f1++|unfold|
+|++alt+shift+0++|++command+option+shift+0++|unfold all|
+|++ctrl+enter++|++command+enter++|enter full screen|
 
 ## UI Tools网页版说明和使用
 
@@ -61,6 +151,21 @@ UI Tools程序版是依赖网页版，支持用户在浏览器中使用网页版
 UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用Builder模式打开工作空间类似。
 
 由于浏览器不支持直接的文件访问，UI Tools需要用户显式地进行文件的导入和导出操作。UI Tools网页版在组件列表上方会显式页面文件树。页面文件树中，显示的页面包含通用和定制的模板文件、用户基于模板文件创建的新页面和导入的页面。用户创建的页面通过`localStorage`保存到浏览器本地，支持在文件树列表删除已创建的页面。
+
+### UI Tools网页版快捷菜单
+
+|菜单                   |      功能说明                                             |   快捷键       |
+|----------------------|-----------------------------------------------------------|---------------|
+| Undo                 | 撤销上一步操作                                             | ++ctrl+z++    |
+| Redo                 | 重做上一步                                                 | ++ctrl+y++    |
+| Fullscreen           | 全屏显示，进入全屏模式后，按++f1++推出全屏                   |               |
+| Preview              | 隐藏右侧功能区，全屏预览效果，此时左侧工作空间处于不可操作状态  |               |
+| Check generated file | 模态框预览导出文件内容                                      |               |
+| Upload               | 上传页面到UI Tools中打开                                    |               |
+| Download             | 下载当前工作空间的页面到本地                                 |               |
+| Mobile View          | 预览当前页面在手机视图中的效果                               |               |
+| Tablet View          | 预览当前页面在平板视图中的效果                               |               |
+| Desktop View         | 预览当前页面在桌面视图中的效果                               |               |
 
 ### UI Tools网页版导出文件说明
 
