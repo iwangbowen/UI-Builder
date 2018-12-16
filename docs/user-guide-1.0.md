@@ -171,17 +171,15 @@ UI Tools网页版是程序版依赖的服务，界面和功能和程序版使用
 
 #### 定制模板
 
-定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。
-
 ![定制模板](img/custom-template.png)
+
+定制模板是具有固定页面布局的预置模板。左侧是表单，右侧是表格或图表。
 
 #### 通用模板
 
 ![Gridster](img/gridster.gif)
 
 通用模板以布局块为基本单位，允许用户新增、删除布局块、调整布局块的大小、拖拽改变布局块在页面的位置并拖拽组件到布局块中定位。
-
-![通用模板](img/general-template.png)
 
 ### UI Tools网页版设置
 
@@ -222,6 +220,7 @@ UI Tools网页版支持导出不同类型的文件
 |---|--|
 |[Custom Text Input Field](#custom-text-input-field)|定制文本输入|
 |[Custom Datetime Input Field](#custom-datetime-input-field)|定制日期时间输入|
+|[Custom File Input field](#custom-file-input-field)|定制文件输入|
 |[Custom Auto Select Field](#custom-auto-select-field)|定制自动填充下拉框选项输入|
 |[Custom Manual Select Field](#custom-manual-select-field)|定制手动输入下拉框选项输入|
 |[Custom Multi-value Select Field](#custom-multi-value-select-field)|定制多选下拉|
@@ -237,9 +236,46 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Custom File Input Field
 
+定制文件输入。
+
+!!! tip "提示"
+    文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。
+
 #### Custom Auto Select Field
 
+定制自动填充下拉框选项输入，可以通过指定url地址，设置value和text映射，在页面加载后自动填充下拉框选项。
+
+```js tab="自动生成下拉框选项"
+function generateOptions(el, response) {
+    var value = $(el).attr('data-value-mapping') || 'value';
+    var text = $(el).attr('data-text-mapping') || 'text';
+    response.forEach(function (option) {
+        $('<option></option>')
+            .val(option[value])
+            .text(option[text])
+            .appendTo($(el));
+    });
+}
+
+[].slice.call($('body').find('[data-auto-select-id]'))
+    .filter(function (el) {
+        return $(el).attr('data-url');
+    }).forEach(function (el) {
+        $.ajax({
+            url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
+            dataType: 'json',
+            method: 'POST',
+            async: true,
+            success: function (response) {
+                generateOptions(el, response.data);
+            }
+        });
+    });
+```
+
 #### Custom Manual Select Field
+
+定制手动输入下拉框选项输入，允许用户在设置菜单手动添加或删除下拉框选项。
 
 #### Custom Multi-value Select Field
 
@@ -247,11 +283,28 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Custom Radio Field
 
+定制radio输入。
+
+!!! tip "提示"
+    通过选中radio元素后弹出的快捷菜单，点击复制按钮实现快速复制radio元素。
+
 #### Custom Checkbox Field
+
+定制checkbox输入。
+
+!!! tip "提示"
+    通过选中checkbox元素后弹出的快捷菜单，点击复制按钮实现快速复制checkbox元素。
 
 #### Custom Popup Text Input
 
+定制弹出框文本输入适用于定制模板弹出框。
+
 #### Custom Popup Manual Select
+
+定制弹出框手动输入下拉框选项输入适用于定制模板弹出框。
+
+!!! tip "提示"
+    设置输入组件title属性，当鼠标在输入组件悬浮时，在组件右侧显示title的内容。
 
 ### 通用组件
 
@@ -318,6 +371,9 @@ Form是基于[Bootstrap](https://getbootstrap.com)中的[`Form`](https://getboot
 </form>
 ```
 
+!!! warning "警告"
+    UI Tools没有限制输入组件一定要拖入`form`元素内。实际上，用户可以选择将输入组件放入页面内的任何可拖拽区域，并能正确呈现样式。但为了HTML的语义化，将输入组件放入`form`元素内是更合理的做法。
+
 ##### Text Input Field
 
 ##### Datetime Input Field
@@ -333,6 +389,9 @@ Form是基于[Bootstrap](https://getbootstrap.com)中的[`Form`](https://getboot
 ##### Radio Field
 
 ##### Checkbox Field
+
+!!! question "设置输入组件的Required属性有什么作用？"
+    设置输入组件的Required属性，当表单提交时，如果表单中存在设置了Required的输入组件且该组件值为空，将弹窗提示用户输入不能为空。
 
 #### Grid Row
 
