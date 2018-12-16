@@ -269,6 +269,10 @@ UI Tools网页版支持导出不同类型的文件
 
 #### Grid Row
 
+![Grid Row](img/grid-row.gif)
+
+栅格是基于[Bootstrap](https://getbootstrap.com)中的[`Grid`](https://getbootstrap.com/docs/4.1/layout/grid/)实现的可视化、可配置的布局组件。支持栅格的新增和删除操作，支持改变栅格中列在不同分辨率下的大小。支持拖拽其他组件到栅格中的对应位置。
+
 #### Tabs
 
 ![Tabs](img/tabs.gif)
@@ -279,7 +283,7 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 
 ![ag-Grid](img/ag-Grid.gif)
 
-表格组件基于[ag-Grid](https://www.ag-grid.com/)实现。用户可以通过属性设置，新增、删除、修改表头，修改表格颜色主题。支持ag-Grid常用属性设置。
+表格组件基于[ag-Grid](https://www.ag-grid.com/)实现。用户可以通过元素快捷菜单，新增、删除、修改表头，属性设置菜单修改表格颜色主题。支持ag-Grid常用属性设置。
 
 常用属性设置说明[^1]
 
@@ -325,6 +329,10 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 
 #### Static Table
 
+![Static Table](img/static-table.gif)
+
+静态表格是基于[Bootstrap](https://getbootstrap.com)中的[`Table`](https://getbootstrap.com/docs/4.1/content/tables/)实现的静态表格。设置菜单里可以设置表格的多种不同样式。用户可以利用元素复制和删除功能，新增或删除表头和数据列。表格的表头和数据是静态数据。
+
 #### Chart
 
 #### Heading
@@ -334,6 +342,10 @@ Tabs组件允许用户新增、删除标签页和修改标签页的标题，支�
 #### Horizontal Rule
 
 #### Image
+
+![Image](img/image-upload.gif)
+
+图片组件是img元素的占位组件。用户可以利用设置中的上传功能预览图片效果，图片以`base64`编码在页面中呈现。图片不会保存到导出页面或上传到服务器。
 
 #### Progress Bar
 
