@@ -491,7 +491,7 @@ UI Tools为简化用户的开发流程，会为一些通用的业务逻辑自动
 通用代码功能
 
 ```js tab="表单文件输入框自动上传"
-$('form.form-box').find('input[type=file][data-url]').on('change', function () {
+function onFileInputChange() {
     var formData = new FormData();
     formData.append(this.name, this.files[0]);
     $.ajax({
@@ -512,7 +512,9 @@ $('form.form-box').find('input[type=file][data-url]').on('change', function () {
             });
         }
     });
-});
+}
+
+$('form.form-box').find('input[type=file][data-url]').on('change', onFileInputChange);
 ```
 
 ```js tab="下拉框自动数据填充"
