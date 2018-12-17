@@ -3,7 +3,7 @@ import { dataUrl, dataTableId, dataResponseDataKey, dataAgGridTransposeKey, data
 export const functionName = 'submitForm';
 export function template() {
     return `
-$('form.form-box').find('input[type=file][${dataUrl}]').on('change', function () {
+function onFileInputChange() {
     var formData = new FormData();
     formData.append(this.name, this.files[0]);
     $.ajax({
@@ -24,7 +24,9 @@ $('form.form-box').find('input[type=file][${dataUrl}]').on('change', function ()
             });
         }
     });
-});
+}
+
+$('form.form-box').find('input[type=file][${dataUrl}]').on('change', onFileInputChange);
 function ${functionName}(form, url, successCb, errorCb) {
     var valid = true;
     form.find('input[required], select[required], textarea[required]')
