@@ -239,7 +239,7 @@ UI Tools网页版支持导出不同类型的文件
 定制文件输入。
 
 !!! tip "提示"
-    文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。
+    文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。查看**_如何覆盖通用代码_**一节了解如何实现自定义文件上传逻辑。
 
 #### Custom Auto Select Field
 
@@ -855,6 +855,9 @@ $('form.popup-form input[type=submit]').on('click', popupFormSubmitCallback);
 // 注册定制模板左侧表单提交回调函数，只适用于定制模板
 $('form button#dataSearch').on('click', query);
 
+// 注册文件输入框选择本地文件回调函数，文件自动上传到通过`data-url`指定的路径
+$('form.form-box').find('input[type=file][data-url]').on('change', onFileInputChange);
+
 // 注册通用模板表单中按钮元素点击回调函数
 $('div.gridster div form button[data-enable-button-click-popup!=true]').on('click', query);
 
@@ -886,6 +889,11 @@ $('[data-component-id="html/tabs@common"]').tabs();
 $('form.popup-form input[type=submit]').off('click', popupFormSubmitCallback);
 // 注册自定义事件回调
 $('form.popup-form input[type=submit]').on('click', function () {});
+
+// 移除原有绑定的事件回调
+$('form.form-box').find('input[type=file][data-url]').off('change', onFileInputChange);
+// 注册自定义事件回调
+$('form.form-box').find('input[type=file][data-url]').on('change', function () {});
 
 // 移除原有绑定的事件回调
 $('form button#dataSearch').off('click', query);
