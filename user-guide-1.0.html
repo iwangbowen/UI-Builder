@@ -1968,7 +1968,7 @@
 <p>定制文件输入。</p>
 <div class="admonition tip">
 <p class="admonition-title">提示</p>
-<p>文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。</p>
+<p>文件输入在用户选择上传文件后，自动执行文件上传，成功后弹窗提示。查看<strong><em>如何覆盖通用代码</em></strong>一节了解如何实现自定义文件上传逻辑。</p>
 </div>
 <h4 id="custom-auto-select-field">Custom Auto Select Field<a class="headerlink" href="#custom-auto-select-field" title="Permanent link">&para;</a></h4>
 <p>定制自动填充下拉框选项输入，可以通过指定url地址，设置value和text映射，在页面加载后自动填充下拉框选项。</p>
@@ -3065,11 +3065,17 @@
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 注册弹出框表单提交回调函数，只适用于定制模板</span>
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 注册弹出框表单提交回调函数，只适用于定制模板</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.popup-form input[type=submit]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">popupFormSubmitCallback</span><span class="p">);</span>
 
 <span class="c1">// 注册定制模板左侧表单提交回调函数，只适用于定制模板</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form button#dataSearch&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">);</span>
+
+<span class="c1">// 注册文件输入框选择本地文件回调函数，文件自动上传到通过`data-url`指定的路径</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.form-box&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input[type=file][data-url]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="nx">onFileInputChange</span><span class="p">);</span>
 
 <span class="c1">// 注册通用模板表单中按钮元素点击回调函数</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.gridster div form button[data-enable-button-click-popup!=true]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">);</span>
@@ -3121,10 +3127,20 @@
 16
 17
 18
-19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 移除原有绑定的事件回调</span>
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 移除原有绑定的事件回调</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.popup-form input[type=submit]&#39;</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">popupFormSubmitCallback</span><span class="p">);</span>
 <span class="c1">// 注册自定义事件回调</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.popup-form input[type=submit]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{});</span>
+
+<span class="c1">// 移除原有绑定的事件回调</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.form-box&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input[type=file][data-url]&#39;</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="nx">onFileInputChange</span><span class="p">);</span>
+<span class="c1">// 注册自定义事件回调</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form.form-box&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input[type=file][data-url]&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{});</span>
 
 <span class="c1">// 移除原有绑定的事件回调</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form button#dataSearch&#39;</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">);</span>
