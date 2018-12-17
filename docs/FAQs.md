@@ -1,16 +1,4 @@
 # FAQs
 
-??? question "Phasellus posuere in sem ut cursus"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
-??? question "Phasellus posuere in sem ut cursus"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
-??? question "Phasellus posuere in sem ut cursus"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+??? question "UI Tools网页版和程序版是什么关系？"
+    UI Tools程序版依赖网页版，用户可以在配置文件中指定网页版的路径。如果网页版服务异常，程序版只能以编辑器模式工作，允许用户编辑本地文件系统的文件，但不能以Builder模式工作。
