@@ -341,7 +341,6 @@ function initAgGridResize() {
 
 function initResize() {
     initIframeResizeVetically();
-    initAgGridResize();
 }
 
 function removeSortableAndGridsterDisability({ target }) {

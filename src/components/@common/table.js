@@ -202,7 +202,7 @@ const table = {
     getDropHtml() {
         return this.html;
     },
-    resizable: true,
+    resizable: false,
     getRenderElement(node) {
         const parents = $(node).parents(`[${dataTableId}]`);
         return parents.length ? parents[0] : node;
