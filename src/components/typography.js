@@ -18,6 +18,14 @@ const typography = {
             inline: true,
             inputtype: new CssUnitInput()
         }, {
+            name: 'Color',
+            key: "color",
+            sort: inc_base_sort(),
+            col: 6,
+            inline: true,
+            htmlAttr: 'style',
+            inputtype: new ColorInput(),
+        }, {
             name: "Font family",
             key: "font-family",
             htmlAttr: "style",
