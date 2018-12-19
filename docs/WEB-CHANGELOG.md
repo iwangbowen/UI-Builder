@@ -8,9 +8,11 @@ All notable changes to this project will be documented in this file.
 
 - Typography增加`font-size`和`color`属性设置
 
+- 通用输入组件增加`Size`下拉框选择，默认为`Small`
+
 ### Removed
 
-- 删除表格改变大小功能
+- 删除表格直接拖拽改变大小功能
 
 ## [2.10.0] - 2018-12-18
 
