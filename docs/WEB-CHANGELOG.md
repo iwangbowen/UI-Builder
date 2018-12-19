@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.10.1] - 2018-12-20
+
+### Added
+
+- Typography增加`font-size`属性设置
+
+### Removed
+
+- 删除表格改变大小功能
+
 ## [2.10.0] - 2018-12-18
 
 ### Added
