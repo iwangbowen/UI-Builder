@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Typography增加`font-size`属性设置
+- Typography增加`font-size`和`color`属性设置
 
 ### Removed
 
