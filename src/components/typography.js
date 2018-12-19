@@ -10,6 +10,14 @@ const typography = {
             sort: inc_base_sort(),
             data: { header: "Typography", expanded: false },
         }, {
+            name: 'Font size',
+            key: 'font-size',
+            htmlAttr: 'style',
+            sort: inc_base_sort(),
+            col: 6,
+            inline: true,
+            inputtype: new CssUnitInput()
+        }, {
             name: "Font family",
             key: "font-family",
             htmlAttr: "style",
