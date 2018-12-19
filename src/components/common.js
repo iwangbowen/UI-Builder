@@ -117,6 +117,7 @@ const formBorderClass = 'form-border';
 const dashBorderClass = 'dashed-border';
 const formGroup = 'form-group';
 const formControl = 'form-control';
+const formControlSm = 'form-control-sm'
 const formControlFile = 'form-control-file';
 const formCheck = 'form-check';
 const formCheckInline = 'form-check-inline';
@@ -151,5 +152,5 @@ export {
     col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
-    placeholderComponentHighlight
+    placeholderComponentHighlight, formControlSm
 };

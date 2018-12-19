@@ -2,7 +2,7 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty, dataRowFieldProperty
+    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty, dataRowFieldProperty, inputSizeProperty
 } from './properties';
 
 const baseProperties = [
@@ -18,7 +18,8 @@ const commonProperties = [
     onchangeProperty,
     maxlengthProperty,
     placeholderProperty,
-    dataRowFieldProperty
+    dataRowFieldProperty,
+    inputSizeProperty
 ];
 
 const customRadioProperties = [
@@ -53,7 +54,7 @@ const datetimeinputProperties = [
     datetimeFormatProperty
 ];
 
-const fileinputProperties = [...baseProperties, dataUrlProperty];
+const fileinputProperties = [...baseProperties, inputSizeProperty, dataUrlProperty];
 
 const inputfieldProperties = [
     labelProperty,

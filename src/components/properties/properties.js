@@ -15,6 +15,26 @@ import { getRandomString } from "../../util/common";
 import { clickedPopupExists, createClickedPopup } from "../../util/dom";
 import camelCase from 'lodash/camelCase';
 
+const inputSizeProperty = {
+    name: "Size",
+    key: "inputSize",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ['form-control-sm', 'form-control-lg'],
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "form-control-lg",
+            text: "Large"
+        }, {
+            value: "form-control-sm",
+            text: "Small"
+        }]
+    }
+};
+
 const dataRowFieldProperty = {
     name: 'Row Field',
     key: 'dataRowField',
@@ -1069,5 +1089,6 @@ export {
     labelIconProperty,
     labelTextProperty,
     enableButtonClickPopupProperty,
-    dataCellClickUrlProperty
+    dataCellClickUrlProperty,
+    inputSizeProperty
 };
