@@ -4,12 +4,13 @@ import { manualselectinputid } from '../@common/ids';
 import Vvveb from '../../gui/components';
 import {
     dataRowFieldProperty, dataUrlProperty, onchangeProperty, nameProperty,
-    requiredProperty, valueMappingProperty, textMappingProperty, inputSizeProperty
+    requiredProperty, valueMappingProperty, textMappingProperty, inputSizeProperty, disabledProperty
 } from './properties';
 
 const baseProperties = [
     nameProperty,
     requiredProperty,
+    disabledProperty,
     tooltipProperty,
     dataRowFieldProperty,
     onchangeProperty,

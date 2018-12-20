@@ -2,14 +2,15 @@ import { property as tooltipProperty } from '../tooltip';
 import {
     dataUrlProperty, nameProperty, valueProperty, onchangeProperty, onclickProperty, maxlengthProperty,
     placeholderProperty, typeProperty, readonlyProperty, requiredProperty, datetimeFormatProperty,
-    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty, dataRowFieldProperty, inputSizeProperty
+    showDatetimeProperty, labelProperty, helpTextProperty, inlineProperty, inputFieldInlineProperty, dataRowFieldProperty, inputSizeProperty, disabledProperty
 } from './properties';
 
 const baseProperties = [
     nameProperty,
     tooltipProperty,
     readonlyProperty,
-    requiredProperty
+    requiredProperty,
+    disabledProperty
 ];
 
 const commonProperties = [

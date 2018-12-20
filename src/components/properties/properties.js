@@ -205,6 +205,19 @@ const readonlyProperty = {
     }
 };
 
+const disabledProperty = {
+    name: "Disabled",
+    key: "disabled",
+    htmlAttr: 'disabled',
+    validValues: ["disabled"],
+    noValueAttr: true,
+    inputtype: new ToggleInput(),
+    data: {
+        on: 'disabled',
+        off: ''
+    }
+};
+
 const requiredProperty = {
     name: "Required",
     key: "required",
@@ -1090,5 +1103,6 @@ export {
     labelTextProperty,
     enableButtonClickPopupProperty,
     dataCellClickUrlProperty,
-    inputSizeProperty
+    inputSizeProperty,
+    disabledProperty
 };
