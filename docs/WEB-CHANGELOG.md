@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 
 - 修复`padding-left`属性设置
 
+- 修复定制输入组件`label`文本内容过长导致的位置错乱
+
 ### Removed
 
 - 删除新增和修改弹出框默认的提交按钮
