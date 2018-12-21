@@ -8,7 +8,7 @@ import manualselectinput from './manualselectinput';
 const manualselectinputfield = extend({}, inputfield, {
     name: "Munual Select Field",
     image: "icons/select_input.svg",
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${manualselectinputfieldid}">
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${manualselectinputfieldid}">
                ${formlabel.html}
                ${manualselectinput.html}
            </div>`

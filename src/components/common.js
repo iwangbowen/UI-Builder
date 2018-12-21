@@ -137,6 +137,9 @@ const customFileLabel = 'custom-file-label';
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 const headingReg = /H(\d)/;
 
+const labelAlignStyle = 'flex: 0 0 30%; min-height: 28px;';
+const inputAlignStyle = 'flex: 0 0 55%; margin-right: 20px; margin-left: 0px;';
+
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
     dataConfigInfo, dataCalendarId, dataUrl, dataAutoSelectId, dataButtonId, dataValueMapping, dataTextMapping,
@@ -152,5 +155,5 @@ export {
     col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
-    placeholderComponentHighlight, formControlSm
+    placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle
 };

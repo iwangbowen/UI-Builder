@@ -9,9 +9,9 @@ const checkboxfield = extend({}, inputfield, {
     name: "Checkbox Field",
     attributes: { "type": "checkbox" },
     image: "icons/checkbox.svg",
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${checkboxfieldid}">
-               ${formlabel.html}
-               ${checkbox.html}
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${checkboxfieldid}">
+            ${formlabel.html}
+            ${checkbox.html}
            </div>`
 });
 

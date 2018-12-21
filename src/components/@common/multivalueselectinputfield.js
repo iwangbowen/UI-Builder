@@ -8,7 +8,7 @@ import { multivalueselectinputfieldid } from './ids';
 const multiselectinputfield = extend({}, inputfield, {
     name: "Multi-value Select Field",
     image: 'icons/select_input.svg',
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${multivalueselectinputfieldid}">
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${multivalueselectinputfieldid}">
                ${formlabel.html}
                ${multiselectinput.html}
            </div>`

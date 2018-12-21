@@ -9,7 +9,7 @@ const radiofield = extend({}, inputfield, {
     name: "Radio Field",
     attributes: { "type": "radio" },
     image: "icons/radio.svg",
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${radiofieldid}">
+    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${radiofieldid}" style="display: flex;">
             ${formlabel.html}
             ${radio.html}
            </div>`

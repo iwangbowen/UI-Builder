@@ -9,9 +9,9 @@ const fileinputfield = extend({}, inputfield, {
     name: 'File Input Field',
     attributes: { 'type': 'file' },
     image: 'icons/upload.svg',
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${fileinputfieldid}">
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${fileinputfieldid}">
             ${formlabel.html}
-			${fileinput.html}
+            ${fileinput.html}
            </div>`,
 });
 

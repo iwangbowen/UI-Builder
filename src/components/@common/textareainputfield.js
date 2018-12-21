@@ -9,7 +9,7 @@ const textareainputfield = extend({}, inputfield, {
     nodes: [`textarea`],
     name: "Textarea Field",
     image: "icons/text_area.svg",
-    html: `<div ${dataComponentId}="${textareafieldid}" class="${formItemClass} ${sortableClass} form-group">
+    html: `<div style="display: flex;" ${dataComponentId}="${textareafieldid}" class="${formItemClass} ${sortableClass} form-group">
             ${formlabel.html}
             ${textareainput.html}
            </div>`

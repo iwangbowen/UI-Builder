@@ -231,7 +231,12 @@ const requiredProperty = {
         } else {
             node.removeAttr(this.htmlAttr);
         }
-        node.parents(inputBlockClassSelector).prev().find(requiredSpanSelector).toggle();
+        // Compatible with two code snippets where input and lable positions are swapped
+        if (node.parents(inputBlockClassSelector).prev().length) {
+            node.parents(inputBlockClassSelector).prev().find(requiredSpanSelector).toggle();
+        } else {
+            node.parents(inputBlockClassSelector).next().find(requiredSpanSelector).toggle();
+        }
         return node;
     },
     data: {

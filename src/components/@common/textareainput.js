@@ -1,4 +1,4 @@
-import { dataComponentId, inputBlockClass } from '../common';
+import { dataComponentId, inputBlockClass, inputAlignStyle } from '../common';
 import { textareaid } from './ids';
 import input from './input';
 import { commonProperties as properties } from '../properties/input';
@@ -8,7 +8,7 @@ const textareainput = extend({}, input, {
     nodes: [`textarea`],
     name: "Textarea",
     image: "icons/text_area.svg",
-    html: `<div class="${inputBlockClass}">
+    html: `<div class="${inputBlockClass}" style="${inputAlignStyle}">
             <textarea class="form-control" ${dataComponentId}="${textareaid}"></textarea>
            </div>`,
     properties

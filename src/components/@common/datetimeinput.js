@@ -1,5 +1,5 @@
 import { inputTypeNames } from '../inputTypes';
-import { dataComponentId, dataConfigInfo, dataCalendarId } from '../common';
+import { dataComponentId, dataConfigInfo, dataCalendarId, inputAlignStyle } from '../common';
 import input from './input';
 import { datetimeinputid } from './ids';
 import {datetimeinputProperties as properties} from '../properties/input';
@@ -10,7 +10,7 @@ const datetimeinput = extend({}, input, {
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
     sortable: true,
-    html: `<div class="input-block">
+    html: `<div class="input-block" style="${inputAlignStyle}">
             <input ${dataCalendarId} ${dataConfigInfo}="{'dateFmt': 'yyyy-MM-dd HH:mm'}" ${dataComponentId}="${datetimeinputid}" type="text" class="form-control Wdate">
            </div>`,
     properties

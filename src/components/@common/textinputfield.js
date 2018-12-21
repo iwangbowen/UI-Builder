@@ -10,7 +10,7 @@ const textinputfield = extend({}, inputfield, {
     name: "Text Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/text_input.svg",
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${textinputfieldid}">
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${textinputfieldid}">
                ${formlabel.html}
                ${textinput.html}
            </div>`

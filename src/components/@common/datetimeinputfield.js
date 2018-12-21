@@ -10,9 +10,9 @@ const datetimeinputfield = extend({}, inputfield, {
     name: "Datetime Input Field",
     attributes: { "type": inputTypeNames },
     image: "icons/calendar.svg",
-    html: `<div class="${formItemClass} ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
-               ${formlabel.html}
-               ${datetimeinput.html}
+    html: `<div style="display: flex;" class="${formItemClass} ${sortableClass}" ${dataComponentId}="${datetimeinputfieldid}">
+            ${formlabel.html}
+            ${datetimeinput.html}
            </div>`
 });
 
