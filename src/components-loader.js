@@ -21,7 +21,8 @@ Vvveb.ComponentsGroup['定制组件'] = [
     _common_ids.radiofieldid,
     _common_ids.checkboxfieldid,
     _common_ids.popuptextinputid,
-    _common_ids.popupmanualselectinputid
+    _common_ids.popupmanualselectinputid,
+    _common_ids.popuptextareaid
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
@@ -134,6 +135,7 @@ Vvveb.Components.extend('_base', _common_ids.fileinputid, _common.fileinput);
 Vvveb.Components.extend('_base', _common_ids.fileinputfieldid, _common.fileinputfield);
 Vvveb.Components.extend('_base', _common_ids.popuptextinputid, _common.popuptextinput);
 Vvveb.Components.extend('_base', _common_ids.popupmanualselectinputid, _common.popupmanualselectinput);
+Vvveb.Components.extend('_base', _common_ids.popuptextareaid, _common.popuptextarea);
 Vvveb.Components.extend('_base', _common_ids.formlabelid, _common.formlabel);
 Vvveb.Components.extend("_base", _common_ids.bootstraptextinputid, _common.bootstraptextinput);
 Vvveb.Components.extend("_base", _common_ids.bootstraptextinputfieldid, _common.bootstraptextinputfield);

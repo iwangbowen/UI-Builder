@@ -26,6 +26,7 @@ const labelfieldid = 'html/labelfield@common';
 const fileinputid = 'html/fileinput@common'
 const popuptextinputid = 'html/popuptextinput@common';
 const popupmanualselectinputid = 'html/popupmanualselectinput@common';
+const popuptextareaid = 'html/popuptextarea@common';
 const textinputfieldid = 'html/textinputfield@common';
 const datetimeinputid = 'html/datetimeinput@common';
 const datetimeinputfieldid = 'html/datetimeinputfield@common';
@@ -85,5 +86,5 @@ export {
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
     bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
     bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid,
-    imageid, chartid, tabsid
+    imageid, chartid, tabsid, popuptextareaid
 };

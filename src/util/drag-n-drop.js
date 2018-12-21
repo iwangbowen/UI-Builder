@@ -12,7 +12,7 @@ import {
     commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid, chartid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid, chartid, popuptextareaid
 } from '../components/@common/ids';
 import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
@@ -39,6 +39,7 @@ const gridDroppables = [
     labelfieldid,
     popuptextinputid,
     popupmanualselectinputid,
+    popuptextareaid,
     tabsid,
     bootstraptextinputfieldid,
     bootstraptextareafieldid,
@@ -205,7 +206,8 @@ function drop(event, { draggable, helper, offset }) {
         }
         if (component.sortable) {
             // Check if the drop zone is popup form
-            if ($(this).is('form.popup-form')) {
+            // Remove div.saveArea and be compatible
+            if ($(this).is('form.popup-form') && $(this).find('.saveArea').length) {
                 appendedElement = cloneAndInsertBefore(helper, $(this).find('.saveArea'));
             } else if (component.getDropHtml) {
                 appendedElement = appendTo(helper, this);
