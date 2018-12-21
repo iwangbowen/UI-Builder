@@ -34,7 +34,7 @@ const padding = {
         inputtype: new CssUnitInput()
     }, {
         name: "Left",
-        key: "padding-Left",
+        key: "padding-left",
         htmlAttr: "style",
         sort: inc_base_sort(),
         col: 6,
