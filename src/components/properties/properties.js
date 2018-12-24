@@ -370,6 +370,26 @@ const buttonSizeProperty = {
     }
 };
 
+const buttonIconProperty = {
+    name: "Icon",
+    key: "icon",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["btn-lg", "btn-sm"],
+    data: {
+        options: [{
+            value: "",
+            text: "Default"
+        }, {
+            value: "btn-lg",
+            text: "Large"
+        }, {
+            value: "btn-sm",
+            text: "Small"
+        }]
+    }
+};
+
 const targetProperty = {
     name: "Target",
     key: "target",

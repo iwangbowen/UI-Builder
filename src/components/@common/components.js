@@ -29,6 +29,7 @@ import textareainput from './textareainput';
 import textareainputcustom from './textareainputcustom';
 import textareainputfield from './textareainputfield';
 import button from './button';
+import roundedbutton from './roundedbutton';
 import formbutton from './formbutton';
 import div from './div';
 import container from './container';
@@ -114,5 +115,5 @@ export {
     bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield, bootstrapalert,
     bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress, bootstraptable,
     bootstraptableheadercell, bootstraptablehead, bootstraptablerow, bootstraptablecell,
-    bootstraptablebody, chart, tabs, popuptextarea
+    bootstraptablebody, chart, tabs, popuptextarea, roundedbutton
 };

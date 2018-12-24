@@ -31,6 +31,7 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _common_ids.tabsid,
     _common_ids.commontableid,
     _common_ids.buttonid,
+    _common_ids.roundedbuttonid,
     _common_ids.bootstrapbuttongroupid,
     _common_ids.bootstraptextinputfieldid,
     _common_ids.bootstrapdatetimeinputfieldid,
@@ -112,6 +113,7 @@ Vvveb.Components.extend('_base', _common_ids.textinputid, _common.textinput);
 Vvveb.Components.extend('_base', _common_ids.datetimeinputid, _common.datetimeinput);
 Vvveb.Components.extend('_base', _common_ids.datetimeinputfieldid, _common.datetimeinputfield);
 Vvveb.Components.extend('_base', _common_ids.buttonid, _common.button);
+Vvveb.Components.extend('_base', _common_ids.roundedbuttonid, _common.roundedbutton);
 Vvveb.Components.extend('_base', _common_ids.textinputfieldid, _common.textinputfield);
 Vvveb.Components.extend('_base', _common_ids.radioid, _common.radio);
 Vvveb.Components.extend('_base', _common_ids.radiofieldid, _common.radiofield);

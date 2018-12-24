@@ -23,7 +23,20 @@ const buttonGroupProperties = [
     buttonGroupAlignmentProperty
 ];
 
+const roundedButtonProperty = [
+    linkToProperty,
+    buttonTypeProperty,
+    buttonSizeProperty,
+    targetProperty,
+    onclickProperty,
+    dataUrlProperty,
+    enableButtonClickPopupProperty,
+    buttonDisabledProperty,
+    buttonBlockProperty
+];
+
 export {
     buttonProperties,
+    roundedButtonProperty,
     buttonGroupProperties
 };

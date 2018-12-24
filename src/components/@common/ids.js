@@ -7,6 +7,7 @@ const multivalueselectinputid = 'html/multivalueselectinput@common';
 const multivalueselectinputcustomid = 'html/multivalueselectinputcustom@common';
 const multivalueselectinputfieldid = 'html/multivalueselectinputfield@common';
 const buttonid = 'html/button@common';
+const roundedbuttonid = 'html/roundedbutton@common';
 const formbuttonid = 'html/formbutton@common';
 const tableid = 'html/table@common';
 const commontableid = 'html/commontable@common';
@@ -86,5 +87,5 @@ export {
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
     bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
     bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid,
-    imageid, chartid, tabsid, popuptextareaid
+    imageid, chartid, tabsid, popuptextareaid, roundedbuttonid
 };
