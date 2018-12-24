@@ -15,7 +15,7 @@ const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRow
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
 const pdsDroppableSelector = '.allButton.dropzone, .userList #myGrid';
 const tabSelector = `[${dataComponentId}="${tabsid}"] > div`;
-const sortableAndDroppableSelector = `${gridSortableItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
+const sortableAndDroppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
 const droppableSelector = `${gridItemsSelector}, ${popupItemsSelector}, ${pdsDroppableSelector}, ${tabSelector}`;
 
 const formItemsScope = 'formItems';

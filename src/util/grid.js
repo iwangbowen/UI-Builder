@@ -43,7 +43,7 @@ function initGridInBuilder() {
             draggable: {
                 start: hideToolBoxes,
                 // exclude form children elements to prevent intervention with jquery-ui sortable
-                handle: '*:not(form *, button, div.row *)'
+                handle: '*:not(div.form-item, div.form-item *, form *, button, div.row, div.row *)'
             }
         }).data('gridster');
         $('div.gridster > div').each(function () {
