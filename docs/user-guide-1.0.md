@@ -444,7 +444,7 @@ Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://get
 
 ![Rounded Button](img/rounded-buttons.png)
 
-Rounded Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的圆形按钮组件。除了支持`Button`组件属性设置外，支持一组常用的图标设置。图标基于[Font Awesome](https://fontawesome.com/)，用户如果需要设置其他图标，可以点击`Rounded Button`中的`i`元素，在属性设置中的`General -> Class`中修改为[Font Awesome](https://fontawesome.com/)支持的图标。
+Rounded Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的圆形按钮组件。图标基于[Font Awesome](https://fontawesome.com/)。用户如果需要设置其他图标，可以点击`Rounded Button`中的`i`元素，在属性设置中的`Text -> Icon`下拉框中选择常用的图标。如果需要设置其他图标，可以在`General -> Class`中修改为[Font Awesome](https://fontawesome.com/)支持的图标。
 
 #### Button Group
 
