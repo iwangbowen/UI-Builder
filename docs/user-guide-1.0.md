@@ -314,7 +314,8 @@ function generateOptions(el, response) {
 |[Grid Row](#grid-row)|栅格|
 |[Tabs](#tabs)|标签页|
 |[Common ag-Grid](#common-ag-grid)|集成表格组件[ag-Grid](https://www.ag-grid.com/)|
-|[Button](#button)|定制多选下拉|按钮|
+|[Button](#button)|按钮|
+|[Rounded Button](#rounded-button)|圆形按钮|
 |[Button Group](#button-group)|按钮组|
 |[Text Input Field](#text-input-field)|文本输入|
 |[Datetime Input Field](#datetime-input-field)|日期时间输入|
@@ -438,6 +439,12 @@ Tabs组件基于[jQuery UI Tabs](https://jqueryui.com/tabs/)实现。允许用�
 ![Button](img/button.gif)
 
 Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的按钮组件。支持常用样式属性的设置。支持点击弹出框操作，用户可以拖拽其他组件到弹出框。
+
+#### Rounded Button
+
+![Rounded Button](img/rounded-buttons.png)
+
+Rounded Button是基于[Bootstrap](https://getbootstrap.com)中的[`Button`](https://getbootstrap.com/docs/4.1/components/buttons/)实现的圆形按钮组件。除了支持`Button`组件属性设置外，支持一组常用的图标设置。图标基于[Font Awesome](https://fontawesome.com/)，用户如果需要设置其他图标，可以点击`Rounded Button`中的`i`元素，在属性设置中的`General -> Class`中修改为[Font Awesome](https://fontawesome.com/)支持的图标。
 
 #### Button Group
 

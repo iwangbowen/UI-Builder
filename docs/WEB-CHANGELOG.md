@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.10.5] - 2018-12-25
+## [2.10.5] - 2018-12-25
+
+### Added
+
+- 新增`Rounded Button`圆形按钮组件
 
 ### Changed
 
