@@ -1,4 +1,5 @@
 import { TextInput } from '../../inputs/inputs';
+import { fontAwesomeIconProperty } from '../properties/properties';
 
 const text = {
     name: "Text",
@@ -11,7 +12,7 @@ const text = {
         key: 'text',
         htmlAttr: 'text',
         inputtype: new TextInput()
-    }]
+    }, fontAwesomeIconProperty]
 };
 
 export default text;

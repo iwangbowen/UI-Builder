@@ -370,22 +370,46 @@ const buttonSizeProperty = {
     }
 };
 
-const buttonIconProperty = {
+const fontAwesomeIconProperty = {
     name: "Icon",
     key: "icon",
     htmlAttr: "class",
     inputtype: new SelectInput(),
-    validValues: ["btn-lg", "btn-sm"],
+    validValues: ['fa-check', 'fa-list', 'fa-plus', 'fa-minus', 'fa-link', 'fa-times', 'fa-heart', 'fa-edit', 'fa-download', 'fa-upload', 'fa-trash'],
     data: {
         options: [{
-            value: "",
-            text: "Default"
+            value: 'fa-check',
+            text: 'Check'
         }, {
-            value: "btn-lg",
-            text: "Large"
+            value: 'fa-list',
+            text: 'List'
         }, {
-            value: "btn-sm",
-            text: "Small"
+            value: 'fa-plus',
+            text: 'Plus'
+        }, {
+            value: 'fa-minus',
+            text: 'Minus'
+        }, {
+            value: 'fa-link',
+            text: 'Link'
+        }, {
+            value: 'fa-times',
+            text: 'Times'
+        }, {
+            value: 'fa-heart',
+            text: 'Heart'
+        }, {
+            value: 'fa-edit',
+            text: 'Edit'
+        }, {
+            value: 'fa-download',
+            text: 'Download'
+        }, {
+            value: 'fa-upload',
+            text: 'Upload'
+        }, {
+            value: 'fa-trash',
+            text: 'Trash'
         }]
     }
 };
@@ -1129,5 +1153,6 @@ export {
     enableButtonClickPopupProperty,
     dataCellClickUrlProperty,
     inputSizeProperty,
-    disabledProperty
+    disabledProperty,
+    fontAwesomeIconProperty
 };

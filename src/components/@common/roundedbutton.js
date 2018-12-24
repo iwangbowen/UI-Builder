@@ -1,6 +1,6 @@
 import { dataComponentId, cloneableComponent } from "../common";
 import { roundedbuttonid } from './ids';
-import { buttonProperties as properties } from '../properties/button';
+import { roundedButtonProperty as properties } from '../properties/button';
 
 const roundedbutton = {
     classes: ["btn", "btn-link", 'btn@common'],
