@@ -99,6 +99,7 @@ import bootstraptablehead from './bootstraptablehead';
 import { bootstraptablerow } from './bootstraptablerow';
 import { bootstraptablecell } from './bootstraptablecell';
 import bootstraptablebody from './bootstraptablebody';
+import bootstrapcontainer from './bootstrapcontainer';
 
 export {
     label, textinput, textinputfield, textinputcustom, button, div, container, alert, badge, breadcrumbitem, breadcrumbs,
@@ -115,5 +116,5 @@ export {
     bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield, bootstrapalert,
     bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress, bootstraptable,
     bootstraptableheadercell, bootstraptablehead, bootstraptablerow, bootstraptablecell,
-    bootstraptablebody, chart, tabs, popuptextarea, roundedbutton
+    bootstraptablebody, chart, tabs, popuptextarea, roundedbutton, bootstrapcontainer
 };

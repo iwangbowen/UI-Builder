@@ -72,6 +72,7 @@ const bootstraptableheadid = 'html/bootstraptablehead@common';
 const bootstraptablerowid = 'html/bootstraptablerow@common';
 const bootstraptablecellid = 'html/bootstraptablecell@common';
 const bootstraptablebodyid = 'html/bootstraptablebody@common';
+const bootstrapcontainerid = 'html/bootstrapcontainer@common';
 
 export {
     manualselectinputid, manualselectinputfieldid, manualselectinputcustomid, autoselectinputid, autoselectinputfieldid,
@@ -87,5 +88,5 @@ export {
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
     bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
     bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid,
-    imageid, chartid, tabsid, popuptextareaid, roundedbuttonid
+    imageid, chartid, tabsid, popuptextareaid, roundedbuttonid, bootstrapcontainerid
 };

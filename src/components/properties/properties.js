@@ -1,4 +1,7 @@
-import { TextInput, SelectInput, ToggleInput, NumberInput, LinkInput, FileUploadInput, ImageInput } from "../../inputs/inputs";
+import {
+    TextInput, SelectInput, ToggleInput, NumberInput, LinkInput,
+    FileUploadInput, ImageInput, ColorInput
+} from "../../inputs/inputs";
 import {
     dataRowField, dataValueMapping, dataTextMapping, formText, textMuted, formCheckInline,
     btnBlock, changeNodeName, headingReg, bgcolorClasses, bgcolorSelectOptions, deletableComponent,
@@ -1094,6 +1097,48 @@ const labelIconProperty = {
     }
 };
 
+const backgroundColorProperty = {
+    name: "Background Color",
+    key: "background-color",
+    htmlAttr: "style",
+    inputtype: new ColorInput(),
+};
+
+const textColorProperty = {
+    name: "Text Color",
+    key: "color",
+    htmlAttr: "style",
+    inputtype: new ColorInput(),
+};
+
+const containerTypeProperty = {
+    name: "Type",
+    key: "type",
+    htmlAttr: "class",
+    inputtype: new SelectInput(),
+    validValues: ["container", "container-fluid"],
+    data: {
+        options: [{
+            value: "container",
+            text: "Default"
+        }, {
+            value: "container-fluid",
+            text: "Fluid"
+        }]
+    }
+};
+
+const containerBackgroundProperty = {
+    name: "Background",
+    key: "background",
+    htmlAttr: "class",
+    validValues: bgcolorClasses,
+    inputtype: new SelectInput(),
+    data: {
+        options: bgcolorSelectOptions
+    }
+};
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -1160,5 +1205,9 @@ export {
     dataCellClickUrlProperty,
     inputSizeProperty,
     disabledProperty,
-    fontAwesomeIconProperty
+    fontAwesomeIconProperty,
+    containerTypeProperty,
+    containerBackgroundProperty,
+    backgroundColorProperty,
+    textColorProperty
 };

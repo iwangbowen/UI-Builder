@@ -26,6 +26,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
+    _common_ids.bootstrapcontainerid,
     _common_ids.formid,
     _common_ids.gridrowid,
     _common_ids.tabsid,
@@ -172,3 +173,4 @@ Vvveb.Components.extend("_base", _common_ids.bootstraptableheadid, _common.boots
 Vvveb.Components.extend("_base", _common_ids.bootstraptablerowid, _common.bootstraptablerow);
 Vvveb.Components.extend("_base", _common_ids.bootstraptablecellid, _common.bootstraptablecell);
 Vvveb.Components.extend("_base", _common_ids.bootstraptablebodyid, _common.bootstraptablebody);
+Vvveb.Components.extend("_base", _common_ids.bootstrapcontainerid, _common.bootstrapcontainer);

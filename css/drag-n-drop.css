@@ -105,9 +105,10 @@ div.row > div.ui-state-hover,
 }
 
 .placeholder-component-highlight {
-  border-style: dashed;
-  border-width: 2px;
   margin: 1px;
+  border: dashed 2px transparent;
+  border-color: #aaa;
+  transition: background-color 0.3s;
 }
 
 .btn-circle {

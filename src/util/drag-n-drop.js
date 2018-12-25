@@ -12,7 +12,7 @@ import {
     commontableid, formid, gridrowid, buttonid, bootstraptextinputfieldid, bootstraptextareafieldid,
     bootstrapfileinputfieldid, bootstrapautoselectinputfieldid, bootstrapmanualselectinputfieldid,
     bootstrapradiofieldid, bootstrapcheckboxfieldid, bootstrapdatetimeinputfieldid, bootstrapalertid,
-    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid, chartid, popuptextareaid, roundedbuttonid
+    bootstrapbuttongroupid, bootstrapheadingid, bootstraphrid, bootstrapprogressid, bootstraptableid, imageid, labelfieldid, tabsid, customtableid, chartid, popuptextareaid, roundedbuttonid, bootstrapcontainerid
 } from '../components/@common/ids';
 import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
@@ -55,7 +55,8 @@ const gridDroppables = [
     bootstrapheadingid,
     bootstraphrid,
     bootstrapprogressid,
-    bootstraptableid
+    bootstraptableid,
+    bootstrapcontainerid
 ];
 
 // String: A comma delimited list of any of the following: n, e, s, w, ne, se, sw, nw, all.
