@@ -47,6 +47,14 @@ const border = {
         inline: true,
         htmlAttr: "style",
         inputtype: new ColorInput()
+    }, {
+        name: "Radius",
+        key: "border-radius",
+        htmlAttr: "style",
+        sort: inc_base_sort(),
+        col: 6,
+        inline: true,
+        inputtype: new CssUnitInput()
     }]
 };
 
