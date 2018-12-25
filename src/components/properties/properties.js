@@ -17,8 +17,6 @@ import { requiredSpanSelector, inputBlockClassSelector } from "../../util/select
 import { getRandomString } from "../../util/common";
 import { clickedPopupExists, createClickedPopup } from "../../util/dom";
 import camelCase from 'lodash/camelCase';
-import { inc_base_sort } from '../common';
-import extend from 'lodash/extend';
 
 const inputSizeProperty = {
     name: "Size",
@@ -1145,7 +1143,6 @@ const overflowProperty = {
     name: 'Overflow',
     key: "overflow",
     htmlAttr: "style",
-    sort: inc_base_sort(),
     col: 6,
     inline: true,
     inputtype: new SelectInput(),
@@ -1178,16 +1175,6 @@ const overflowProperty = {
         }]
     }
 };
-
-const overflowXProperty = extend({}, overflowProperty, {
-    name: 'Overflow X',
-    key: "overflow-x"
-});
-
-const overflowYProperty = extend({}, overflowProperty, {
-    name: 'Overflow Y',
-    key: "overflow-y"
-});
 
 export {
     dataRowFieldProperty,
@@ -1260,7 +1247,5 @@ export {
     containerBackgroundProperty,
     backgroundColorProperty,
     textColorProperty,
-    overflowProperty,
-    overflowXProperty,
-    overflowYProperty
+    overflowProperty
 };

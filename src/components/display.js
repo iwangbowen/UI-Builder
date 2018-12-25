@@ -1,6 +1,7 @@
 import { inc_base_sort } from './common';
 import { SectionInput, SelectInput, RadioButtonInput, CssUnitInput, ColorInput, RangeInput } from '../inputs/inputs';
-import { overflowProperty, overflowXProperty, overflowYProperty } from './properties/properties';
+import { overflowProperty } from './properties/properties';
+import extend from 'lodash/extend';
 
 const display = {
     properties: [
@@ -94,7 +95,17 @@ const display = {
             inline: true,
             parent: "",
             inputtype: new CssUnitInput()
-        }, overflowProperty, overflowXProperty, overflowYProperty, {
+        }, extend({}, overflowProperty, {
+            sort: inc_base_sort(),
+        }), extend({}, overflowProperty, {
+            name: 'Overflow X',
+            key: "overflow-x",
+            sort: inc_base_sort()
+        }), extend({}, overflowProperty, {
+            name: 'Overflow Y',
+            key: "overflow-y",
+            sort: inc_base_sort()
+        }), {
             name: "Float",
             key: "float",
             htmlAttr: "style",
