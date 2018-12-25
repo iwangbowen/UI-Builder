@@ -457,7 +457,7 @@ const buttonTypeProperty = {
     key: "type",
     htmlAttr: "class",
     inputtype: new SelectInput(),
-    validValues: ["btn-default", "btn-primary", "btn-info", "btn-success", "btn-warning", "btn-info", "btn-light", "btn-dark", "btn-outline-primary", 'btn-outline-secondary', "btn-outline-info", "btn-outline-success", "btn-outline-warning", "btn-outline-info", "btn-outline-light", "btn-outline-dark", "btn-link"],
+    validValues: ["btn-default", "btn-primary", 'btn-secondary', "btn-info", "btn-success", "btn-warning", 'btn-danger', 'btn-link', "btn-light", "btn-dark", "btn-outline-primary", 'btn-outline-secondary', "btn-outline-info", "btn-outline-success", "btn-outline-warning", 'btn-outline-danger', "btn-outline-info", "btn-outline-light", "btn-outline-dark"],
     data: {
         options: [{
             value: "btn-default",
@@ -465,6 +465,9 @@ const buttonTypeProperty = {
         }, {
             value: "btn-primary",
             text: "Primary"
+        }, {
+            value: 'btn-secondary',
+            text: 'Secondary'
         }, {
             value: "btn btn-info",
             text: "Info"
@@ -475,8 +478,11 @@ const buttonTypeProperty = {
             value: "btn-warning",
             text: "Warning"
         }, {
-            value: "btn-info",
-            text: "Info"
+            value: "btn-danger",
+            text: "Danger"
+        }, {
+            value: "btn-link",
+            text: "Link"
         }, {
             value: "btn-light",
             text: "Light"
@@ -496,20 +502,20 @@ const buttonTypeProperty = {
             value: "btn-outline-success",
             text: "Success outline"
         }, {
+            value: "btn-outline-info",
+            text: "Info outline"
+        }, {
             value: "btn-outline-warning",
             text: "Warning outline"
         }, {
-            value: "btn-outline-info",
-            text: "Info outline"
+            value: "btn-outline-danger",
+            text: "Danger outline"
         }, {
             value: "btn-outline-light",
             text: "Light outline"
         }, {
             value: "btn-outline-dark",
             text: "Dark outline"
-        }, {
-            value: "btn-link",
-            text: "Link"
         }]
     }
 };
