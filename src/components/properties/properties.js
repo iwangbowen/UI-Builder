@@ -17,6 +17,8 @@ import { requiredSpanSelector, inputBlockClassSelector } from "../../util/select
 import { getRandomString } from "../../util/common";
 import { clickedPopupExists, createClickedPopup } from "../../util/dom";
 import camelCase from 'lodash/camelCase';
+import { inc_base_sort } from '../common';
+import extend from 'lodash/extend';
 
 const inputSizeProperty = {
     name: "Size",
@@ -1139,6 +1141,54 @@ const containerBackgroundProperty = {
     }
 };
 
+const overflowProperty = {
+    name: 'Overflow',
+    key: "overflow",
+    htmlAttr: "style",
+    sort: inc_base_sort(),
+    col: 6,
+    inline: true,
+    inputtype: new SelectInput(),
+    validValues: ['auto', 'hidden', 'inherit', 'initial', 'overlay', 'scroll', 'unset', 'visible'],
+    data: {
+        options: [{
+            value: 'auto',
+            text: 'Auto'
+        }, {
+            value: 'hidden',
+            text: 'Hidden'
+        }, {
+            value: 'inherit',
+            text: 'Inherit'
+        }, {
+            value: 'initial',
+            text: 'initial'
+        }, {
+            value: 'overlay',
+            text: 'Overlay'
+        }, {
+            value: 'scroll',
+            text: 'Scroll'
+        }, {
+            value: 'unset',
+            text: 'Unset'
+        }, {
+            value: 'visible',
+            text: 'Visible'
+        }]
+    }
+};
+
+const overflowXProperty = extend({}, overflowProperty, {
+    name: 'Overflow X',
+    key: "overflow-x"
+});
+
+const overflowYProperty = extend({}, overflowProperty, {
+    name: 'Overflow Y',
+    key: "overflow-y"
+});
+
 export {
     dataRowFieldProperty,
     dataUrlProperty,
@@ -1209,5 +1259,8 @@ export {
     containerTypeProperty,
     containerBackgroundProperty,
     backgroundColorProperty,
-    textColorProperty
+    textColorProperty,
+    overflowProperty,
+    overflowXProperty,
+    overflowYProperty
 };

@@ -1,5 +1,6 @@
 import { inc_base_sort } from './common';
 import { SectionInput, SelectInput, RadioButtonInput, CssUnitInput, ColorInput, RangeInput } from '../inputs/inputs';
+import { overflowProperty, overflowXProperty, overflowYProperty } from './properties/properties';
 
 const display = {
     properties: [
@@ -93,43 +94,7 @@ const display = {
             inline: true,
             parent: "",
             inputtype: new CssUnitInput()
-        }, {
-            name: 'Overflow',
-            key: "overflow",
-            htmlAttr: "style",
-            sort: inc_base_sort(),
-            col: 6,
-            inline: true,
-            inputtype: new SelectInput(),
-            validValues: ['auto', 'hidden', 'inherit', 'initial', 'overlay', 'scroll', 'unset', 'visible'],
-            data: {
-                options: [{
-                    value: 'auto',
-                    text: 'Auto'
-                }, {
-                    value: 'hidden',
-                    text: 'Hidden'
-                }, {
-                    value: 'inherit',
-                    text: 'Inherit'
-                }, {
-                    value: 'initial',
-                    text: 'initial'
-                }, {
-                    value: 'overlay',
-                    text: 'Overlay'
-                }, {
-                    value: 'scroll',
-                    text: 'Scroll'
-                }, {
-                    value: 'unset',
-                    text: 'Unset'
-                }, {
-                    value: 'visible',
-                    text: 'Visible'
-                }]
-            }
-        }, {
+        }, overflowProperty, overflowXProperty, overflowYProperty, {
             name: "Float",
             key: "float",
             htmlAttr: "style",
