@@ -310,6 +310,7 @@ function generateOptions(el, response) {
 
 |定制组件|组件说明|
 |---|---|
+|[Container](#container)|container|
 |[Form](#form)|表单|
 |[Grid Row](#grid-row)|栅格|
 |[Tabs](#tabs)|标签页|
@@ -332,6 +333,10 @@ function generateOptions(el, response) {
 |[Horizontal Rule](#horizontal-rule)|水平分割线|
 |[Image](#image)|图片组件|
 |[Progress Bar](#progress-bar)|进度条|
+
+#### Container
+
+Container是基于[Bootstrap](https://getbootstrap.com)中的[`Container`](https://getbootstrap.com/docs/4.1/layout/overview/)实现的组件。该组件主要是为了`HTML`的语义化，帮助用户将其他组件统一放在`Container`组件中，提供了几种不同的主题背景颜色。
 
 #### Form
 

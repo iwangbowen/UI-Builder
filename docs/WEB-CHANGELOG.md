@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.11.0] - 2018-12-27
+
+### Added
+
+- 新增`Container`组件
+
 ## [2.10.5] - 2018-12-25
 
 ### Added
