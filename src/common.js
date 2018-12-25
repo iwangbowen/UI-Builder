@@ -11,7 +11,7 @@ const popupSelector = `div.popup-window div.content, ${addOrEditPopupFormSelecto
 const popupRowColumnSelector = `div.popup-window div.content ${rowColumnSelector}, ${addOrEditPopupFormSelector} ${rowColumnSelector}`;
 const popupFormSelector = 'div.popup-window div.content form';
 const containerSelector = 'div.container';
-const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}, ${containerSelector}`;
+const gridSortableItemsSelector = `${gridFormSelector}, ${gridRowColumnSelector}`;
 const gridItemsSelector = `${gridWidgetSelector}, ${gridFormSelector}, ${gridRowColumnSelector}, ${containerSelector}`;
 const popupItemsSelector = `${popupSelector}, ${popupRowColumnSelector}, ${popupFormSelector}`;
 const pdsDroppableSelector = '.allButton.dropzone, .userList #myGrid';
@@ -100,5 +100,6 @@ export {
     imagePlaceholder,
     getDetailPopupSelector,
     detailPopup,
-    tooltipOptions
+    tooltipOptions,
+    containerSelector
 };

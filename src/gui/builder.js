@@ -5,7 +5,7 @@ import {
 	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
 	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
 } from '../util/dom';
-import { noneditableSelector, selectBox } from '../util/selectors';
+import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initComponentDrag, initIframeSortable,
@@ -13,7 +13,7 @@ import {
 	disableSortable, removeSortableAndGridsterDisability, initResize
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
-import { sortableAndDroppableSelector, gridWidgetSelector } from '../common';
+import { sortableAndDroppableSelector, gridWidgetSelector, containerSelector } from '../common';
 import MoveMutation from '../models/mutation/move-mutation';
 import { isInIframe } from '../constants';
 
@@ -48,7 +48,7 @@ Vvveb.Builder = {
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
 
-			enableDroppableInIframe(gridWidgetSelector);
+			enableDroppableInIframe(`${gridWidgetSelector}, ${containerSelector}`);
 			enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
 			initResize();
 			initIframeSortable();
@@ -214,8 +214,8 @@ Vvveb.Builder = {
 					});
 				}
 				original.after(cloned);
-				if (component && component.sortable && component.droppable) {
-					enableSortableAndDroppableInIframe(cloned);
+				if (component && (component.sortable || component.droppable)) {
+					enableSortableAndDroppableInIframe(cloned, undefined, undefined, component.droppable, component.sortable);
 				}
 				if (component && component.childrenSortable && component.childrenDroppable) {
 					enableSortableAndDroppableInIframe(cloned.children());

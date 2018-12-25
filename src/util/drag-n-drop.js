@@ -139,29 +139,34 @@ function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
         });
 }
 
-function enableSortableAndDroppableInIframe(elements, scope, connectWith) {
-    enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith);
+function enableSortableAndDroppableInIframe(elements, scope, connectWith, droppable, sortable) {
+    enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith, droppable, sortable);
 }
 
-function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = sortableAndDroppableSelector) {
-    $(elements)
-        .sortable({
-            connectWith,
-            cursor: 'move',
-            // Prevents sorting if you start on elements matching the selector.
-            // Default: "input,textarea,button,select,option"
-            // Exclude span.gs-resize-handle to fix resize handler position error
-            // after resize
-            cancel: "option, div.ui-resizable-handle, span.gs-resize-handle",
-            start: onSortingStarts,
-            update: onSortingUpdates
-        })
-        .droppable({
-            classes: droppableClasses,
-            greedy: true,
-            scope,
-            drop
-        });
+function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = sortableAndDroppableSelector, droppable = true, sortable = true) {
+    if (droppable) {
+        $(elements)
+            .droppable({
+                classes: droppableClasses,
+                greedy: true,
+                scope,
+                drop
+            });
+    }
+    if (sortable) {
+        $(elements)
+            .sortable({
+                connectWith,
+                cursor: 'move',
+                // Prevents sorting if you start on elements matching the selector.
+                // Default: "input,textarea,button,select,option"
+                // Exclude span.gs-resize-handle to fix resize handler position error
+                // after resize
+                cancel: "option, div.ui-resizable-handle, span.gs-resize-handle",
+                start: onSortingStarts,
+                update: onSortingUpdates
+            })
+    }
 }
 
 const uiDraggableDraggingClass = 'ui-draggable-dragging';
@@ -206,7 +211,7 @@ function drop(event, { draggable, helper, offset }) {
         if (component.onDrop) {
             appendedElement = component.onDrop(helper);
         }
-        if (component.sortable) {
+        if (!component.droppable && component.sortable) {
             // Check if the drop zone is popup form
             // Remove div.saveArea and be compatible
             if ($(this).is('form.popup-form') && $(this).find('.saveArea').length) {
@@ -229,6 +234,8 @@ function drop(event, { draggable, helper, offset }) {
                 enableSortableAndDroppable(appendedElement);
             } else if (appendedElement.is('div.row')) {
                 enableSortableAndDroppable(appendedElement.children());
+            } else if (component.droppable || component.sortable) {
+                enableSortableAndDroppable(appendedElement, undefined, undefined, component.droppable, component.sortable);
             }
         }
         if (component.afterDrop) {
