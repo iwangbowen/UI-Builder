@@ -8,7 +8,9 @@ All notable changes to this project will be documented in this file.
 
 - 新增`Container`组件
 
-- `Display`设置新增`Overflow`属性设置
+- `Display`设置新增`overflow`属性设置
+
+- `Border`设置新增`border-radius`属性设置
 
 ## [2.10.5] - 2018-12-25
 
