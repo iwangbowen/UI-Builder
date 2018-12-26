@@ -13,7 +13,7 @@ const border = {
         key: "border-style",
         htmlAttr: "style",
         sort: inc_base_sort(),
-        col: 12,
+        col: 6,
         inline: true,
         inputtype: new SelectInput(),
         data: {
