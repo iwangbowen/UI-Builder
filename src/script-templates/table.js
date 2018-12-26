@@ -3,7 +3,10 @@ import {
     rowClickedPopupPrefix, dataEnableCellClick, cellClickedPopupPrefix,
     dataPopulateHeaders, dataResponseDataKey, dataAgGridTransposeKey, dataAutoSizeColumns
 } from '../components/common';
-import { getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize, enableColResize, suppressColumnVirtualisation } from '../components/@common/table';
+import {
+    getGridOptionsIdentifier, pagination, paginationAutoPageSize, paginationPageSize,
+    enableColResize, suppressColumnVirtualisation, rowSelection
+} from '../components/@common/table';
 import { gridOptions } from '../common';
 import stringify from 'stringify-object';
 
@@ -20,7 +23,7 @@ var ${gridOptions}${key} = {
     enableSorting: true,
     ${enableColResize}: ${gridOptionsIdentifier[enableColResize]},
     enableFilter: false,
-    rowSelection: 'multiple',
+    rowSelection: '${gridOptionsIdentifier[rowSelection] === undefined ? 'multiple' : gridOptionsIdentifier[rowSelection]}',
     suppressRowClickSelection: true,
     suppressFieldDotNotation: true,
     ${suppressColumnVirtualisation}: ${gridOptionsIdentifier[suppressColumnVirtualisation] === undefined ? true : gridOptionsIdentifier[suppressColumnVirtualisation]},

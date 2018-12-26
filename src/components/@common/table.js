@@ -28,6 +28,7 @@ const suppressColumnVirtualisation = 'suppressColumnVirtualisation';
 const onCellClicked = 'onCellClicked';
 const onRowClicked = 'onRowClicked';
 const enableColResize = 'enableColResize';
+const rowSelection = 'rowSelection';
 
 const themeOptions = [
     {
@@ -617,5 +618,5 @@ export {
     table, columnDefs, getGridOptionsIdentifier, themeOptions,
     setColumnDefsAndRender, getColumnDefs, pagination, paginationAutoPageSize,
     paginationPageSize, onCellClicked, onRowClicked, enableColResize,
-    suppressColumnVirtualisation
+    suppressColumnVirtualisation, rowSelection
 };
