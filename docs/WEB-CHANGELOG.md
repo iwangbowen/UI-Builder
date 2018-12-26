@@ -14,6 +14,10 @@ All notable changes to this project will be documented in this file.
 
 - `Border -> Style`新增更多属性设置选择
 
+### Fixed
+
+- 生成代码时，使用[stringify-object](https://github.com/yeoman/stringify-object)，避免`JSON.stringify`序列化包含属性类型为`function`的对象时，属性丢失的问题，同时去掉属性名上面的`""`
+
 ## [2.10.5] - 2018-12-25
 
 ### Added
