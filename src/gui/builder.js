@@ -253,7 +253,7 @@ Vvveb.Builder = {
 
 		$("#delete-box").on("click", function (event) {
 			hideAuxiliaryElements();
-			const node = getElementWithSpecifiedClass(_this.selectedEl).get(0);
+			const node = _this.selectedEl.get(0);
 			Vvveb.Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				removedNodes: [node],
