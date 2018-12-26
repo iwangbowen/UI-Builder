@@ -366,7 +366,7 @@ function highlightWhenHovering(target) {
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
         });
-    jQuery("#highlight-name").html(Vvveb.Builder._getElementType(target));
+    jQuery("#highlight-name").html(target.tagName);
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {

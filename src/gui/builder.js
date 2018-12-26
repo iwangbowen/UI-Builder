@@ -104,32 +104,6 @@ Vvveb.Builder = {
 			iframeDocument.close();
 		}
 	},
-	_getElementType(el) {
-		//search for component attribute
-		let componentName = '';
-		if (el.attributes) {
-			for (var j = 0; j < el.attributes.length; j++) {
-				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
-					componentName = el.attributes[j].nodeName.replace('data-component-', '');
-				}
-			}
-		}
-		if (componentName != '') {
-			return componentName;
-		}
-		if (el.attributes) {
-			for (var j = 0; j < el.attributes.length; j++) {
-				if (el.attributes[j].nodeName.indexOf('data-component') > -1) {
-					componentName = el.attributes[j].nodeName.replace('data-component-', '');
-				}
-			}
-		}
-		if (componentName != '') {
-			return componentName;
-		}
-		//if (className) return componentName;
-		return el.tagName;
-	},
 	loadNodeComponent(node) {
 		const data = Vvveb.Components.matchNode(node);
 		if (data) {
