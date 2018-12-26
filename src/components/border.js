@@ -21,14 +21,44 @@ const border = {
                 value: "",
                 text: "Default"
             }, {
-                value: "solid",
-                text: "Solid"
+                value: 'dashed',
+                text: 'Dashed'
             }, {
-                value: "dotted",
-                text: "Dotted"
+                value: 'dotted',
+                text: 'Dotted'
             }, {
-                value: "dashed",
-                text: "Dashed"
+                value: 'double',
+                text: 'Double'
+            }, {
+                value: 'groove',
+                text: 'Groove'
+            }, {
+                value: 'hidden',
+                text: 'Hidden'
+            }, {
+                value: 'inherit',
+                text: 'Inherit'
+            }, {
+                value: 'initial',
+                text: 'Initial'
+            }, {
+                value: 'inset',
+                text: 'Inset'
+            }, {
+                value: 'none',
+                text: 'None'
+            }, {
+                value: 'outset',
+                text: 'Outset'
+            }, {
+                value: 'ridge',
+                text: 'Ridge'
+            }, {
+                value: 'solid',
+                text: 'Solid'
+            }, {
+                value: 'unset',
+                text: 'Unset'
             }],
         }
     }, {
