@@ -30,7 +30,7 @@ const selectBoxSelector = '#select-box';
 const highlightBoxSelector = '#highlight-box';
 const highlightNameSelector = '#highlight-name';
 const wysiwygEditorSelector = '#wysiwyg-editor'
-const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}, ${highlightNameSelector}, ${wysiwygEditorSelector}`;
+const auxiliaryElementsSelector = `${selectBoxSelector}, ${highlightBoxSelector}, ${wysiwygEditorSelector}`;
 
 const isInBuilder = true;
 
