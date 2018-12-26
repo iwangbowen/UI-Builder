@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 
 - `Border`设置新增`border-radius`属性设置
 
+- `Border -> Style`新增更多属性设置选择
+
 ## [2.10.5] - 2018-12-25
 
 ### Added
