@@ -67,7 +67,7 @@ function popupDelete() {
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function () {
                     layer.closeAll();
-                    query();
+                    $('form button#dataSearch').click();
                 },
                 error: function () {
                 }
@@ -150,7 +150,7 @@ function popupFormSubmitCallback() {
         $('button#' + $(this).parents('form').attr('${dataRelatedButton}')).attr('${dataUrl}'),
         function (response) {
             layer.closeAll();
-            query();
+            $('form button#dataSearch').click();
         },
         function () {
         });
