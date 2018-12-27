@@ -28,4 +28,4 @@ markdown_extensions:
       permalink: true
 repo_name: 'UI-Builder'
 repo_url: 'https://github.com/iwangbowen/UI-Builder'
-edit_uri: ''
+edit_uri: 'edit/master/docs/'
