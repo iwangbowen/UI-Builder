@@ -638,7 +638,7 @@ function popupEdit() {
         });
     };
     var setFormValues = function setFormValues(selectedRow) {
-        $('div.popup-window#edit form').find('input:not([type=submit]), select').each(function () {
+        $('div.popup-window#edit form').find('input:not([type=submit]), select, textarea').each(function () {
             var field = $(this).attr('data-row-field') || $(this).attr('name');
             $(this).val(selectedRow[field]);
         });
@@ -677,7 +677,7 @@ function popupDelete() {
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function success() {
                     layer.closeAll();
-                    query();
+                    $('form button#dataSearch').click();
                 },
                 error: function error() {}
             });
@@ -762,7 +762,7 @@ function popupFormSubmitCallback() {
         $('button#' + $(this).parents('form').attr('data-related-button')).attr('data-url'),
         function (response) {
             layer.closeAll();
-            query();
+            $('form button#dataSearch').click();
         },
         function () {
         });

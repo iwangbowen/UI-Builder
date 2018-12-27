@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.11.5] - 2019-01-02
+
+### Fixed
+
+- 修复弹出框关闭后，通过表单重新查询数据的代码错误
+
+- 修复详情弹出框中`textarea`元素的`value`没有由表格行数据自动填充的错误
+
 ## [2.11.0] - 2018-12-27
 
 ### Added
