@@ -2684,7 +2684,7 @@
         <span class="p">});</span>
     <span class="p">};</span>
     <span class="kd">var</span> <span class="nx">setFormValues</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">setFormValues</span><span class="p">(</span><span class="nx">selectedRow</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.popup-window#edit form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input:not([type=submit]), select&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.popup-window#edit form&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input:not([type=submit]), select, textarea&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">field</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-row-field&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
             <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">selectedRow</span><span class="p">[</span><span class="nx">field</span><span class="p">]);</span>
         <span class="p">});</span>
@@ -2757,7 +2757,7 @@
                 <span class="nx">fundodooAjax</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//true:开启计时功能，false（或去掉此属性）：不开启计时功能</span>
                 <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">success</span><span class="p">()</span> <span class="p">{</span>
                     <span class="nx">layer</span><span class="p">.</span><span class="nx">closeAll</span><span class="p">();</span>
-                    <span class="nx">query</span><span class="p">();</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form button#dataSearch&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
                 <span class="p">},</span>
                 <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">error</span><span class="p">()</span> <span class="p">{}</span>
             <span class="p">});</span>
@@ -2906,7 +2906,7 @@
         <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;button#&#39;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-related-button&#39;</span><span class="p">)).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-url&#39;</span><span class="p">),</span>
         <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">layer</span><span class="p">.</span><span class="nx">closeAll</span><span class="p">();</span>
-            <span class="nx">query</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;form button#dataSearch&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
         <span class="p">},</span>
         <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="p">});</span>
