@@ -30,7 +30,7 @@ function popupEdit() {
     };
     var setFormValues = function (selectedRow) {
         $('div.popup-window#edit form')
-            .find('input:not([type=submit]), select')
+            .find('input:not([type=submit]), select, textarea')
             .each(function () {
                 var field = $(this).attr('data-row-field') || $(this).attr('name');
                 $(this).val(selectedRow[field]);
