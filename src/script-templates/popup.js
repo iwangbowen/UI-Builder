@@ -57,13 +57,13 @@ function popupDelete() {
             btn: ['确定', '取消']
         }, function () {
             $.ajax({
-                url: config.fundodooApiDomainUrl + $('button#delete').attr('data-url'),
+                url: config.fundodooApiDomainUrl + $('button#popupDelete').attr('data-url'),
                 dataType: 'json',
                 contentType: 'application/x-www-form-urlencoded',
                 method: 'POST',
                 async: true,
                 traditional: true,
-                data: grids[0].gridOptions.api.getSelectedRows(),
+                data: grids[0].gridOptions.api.getSelectedRows()[0],
                 fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
                 success: function () {
                     layer.closeAll();
