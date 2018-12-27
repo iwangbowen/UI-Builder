@@ -13,8 +13,8 @@
   "scripts": {
     "start": "http-server -p 8090 -o",
     "test": "browser-sync start --server --serveStatic --startPath \"/editor.html\" --files \"src/**\" --single --port 4000",
-    "git:push": "git push && git push gitee",
-    "git:merge": "git checkout sageui_1_0_0 && git merge dev && git push && git checkout dev",
+    "git:push": "git push",
+    "git:merge": "git checkout sageui_1_0_0 && git merge master && git push gitee && git checkout master",
     "clean": "grunt clean:all",
     "clean:built": "grunt clean:built",
     "concat": "grunt concat",
