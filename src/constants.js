@@ -57,6 +57,8 @@ const themesEndpoint = 'http://localhost:8088/api/themes';
 
 const customThemeStyleId = 'custom-theme';
 
+const dataThemeName = 'data-theme-name';
+
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, html_beaufify_options, removeableScript, tableScriptClass, reservedScript,
@@ -64,5 +66,5 @@ export {
     dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
     generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint,
-    customThemeStyleId
+    customThemeStyleId, dataThemeName
 };

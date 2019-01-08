@@ -9,7 +9,7 @@ import {
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass, customThemeStyle, customThemeStyleId
+    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass, customThemeStyle, customThemeStyleId, dataThemeName
 } from '../constants';
 import curry from 'lodash/curry';
 import includes from 'lodash/includes';
@@ -584,14 +584,18 @@ function createClickedPopup(id) {
     return popup;
 }
 
+function getCurrentThemeName() {
+    return Vvveb.Builder.frameHtml.find(`#${customThemeStyleId}`).attr(dataThemeName);
+}
+
 function applyTheme(filename) {
     getThemeContent(filename)
         .then(css => {
             const customThemeStyle = Vvveb.Builder.frameHtml.find(`#${customThemeStyleId}`);
             if (customThemeStyle.length) {
-                customThemeStyle.html(css);
+                customThemeStyle.attr(dataThemeName, filename).html(css);
             } else {
-                Vvveb.Builder.frameHtml.find('head').append(`<style id="${customThemeStyleId}" type="text/css">${css}</style>`);
+                Vvveb.Builder.frameHtml.find('head').append(`<style id="${customThemeStyleId}" ${dataThemeName}="${filename}" type="text/css">${css}</style>`);
             }
         });
 }
@@ -604,5 +608,5 @@ export {
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup, applyTheme
+    createClickedPopup, applyTheme, getCurrentThemeName
 };

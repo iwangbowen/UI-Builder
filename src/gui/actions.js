@@ -1,5 +1,5 @@
 import Vvveb from './builder';
-import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util/dom';
+import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThemeName } from '../util/dom';
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
@@ -85,7 +85,14 @@ Vvveb.Actions = {
             const options = data.reduce((prev, cur) => {
                 return `${prev}<option value="${cur}">${cur}</option>`;
             }, '');
-            themesForm.find('select').html(options).selectmenu();
+            themesForm.find('select').html(options)
+                .selectmenu({
+                    width: 300
+                });
+            const currentThemeName = getCurrentThemeName();
+            if (currentThemeName) {
+                themesForm.find('select').val(currentThemeName).selectmenu('refresh');
+            }
             themesDialog.dialog('open');
         })
     },
