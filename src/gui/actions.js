@@ -82,7 +82,7 @@ Vvveb.Actions = {
     },
     switchTheme() {
         getThemeList().then(data => {
-            const options = data.reduce((prev, cur) => {
+            const options = data.filter(theme => theme.endsWith('.css')).reduce((prev, cur) => {
                 return `${prev}<option value="${cur}">${cur}</option>`;
             }, '');
             themesForm.find('select').html(options)
