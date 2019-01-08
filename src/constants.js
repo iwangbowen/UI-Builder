@@ -53,7 +53,11 @@ const templatePages = [
 
 const isInIframe = window !== window.parent;
 
-const themesEndpoint = 'http://localhost:8088/api/themes';
+const protocal = location.origin.split(':')[0];
+
+const host = location.origin.split(':')[1];
+
+const themesEndpoint = `${protocal}://${host}:8088/api/themes`;
 
 const customThemeStyleId = 'custom-theme';
 
