@@ -55,11 +55,14 @@ const isInIframe = window !== window.parent;
 
 const themesEndpoint = 'http://localhost:8088/api/themes';
 
+const customThemeStyleId = 'custom-theme';
+
 export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, html_beaufify_options, removeableScript, tableScriptClass, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
     dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
-    generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint
+    generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint,
+    customThemeStyleId
 };

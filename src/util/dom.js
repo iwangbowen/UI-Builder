@@ -5,11 +5,11 @@ import {
     htmlGenerator, changeScriptType, replacePopupWithForm,
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
     removeGridsterStylesheet, generateScripts, removeSharedScriptTag,
-    changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable, restoreNonEvaluateLinkType, restoreNonEvaluateScriptType
+    changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable, restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass
+    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass, customThemeStyle, customThemeStyleId
 } from '../constants';
 import curry from 'lodash/curry';
 import includes from 'lodash/includes';
@@ -584,6 +584,18 @@ function createClickedPopup(id) {
     return popup;
 }
 
+function applyTheme(filename) {
+    getThemeContent(filename)
+        .then(css => {
+            const customThemeStyle = Vvveb.Builder.frameHtml.find(`#${customThemeStyleId}`);
+            if (customThemeStyle.length) {
+                customThemeStyle.html(css);
+            } else {
+                Vvveb.Builder.frameHtml.find('head').append(`<style id="${customThemeStyleId}" type="text/css">${css}</style>`);
+            }
+        });
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
@@ -592,5 +604,5 @@ export {
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup
+    createClickedPopup, applyTheme
 };

@@ -85,7 +85,7 @@ Vvveb.Actions = {
             const options = data.reduce((prev, cur) => {
                 return `${prev}<option value="${cur}">${cur}</option>`;
             }, '');
-            themesForm.find('select').append(options).selectmenu();
+            themesForm.find('select').html(options).selectmenu();
             themesDialog.dialog('open');
         })
     },

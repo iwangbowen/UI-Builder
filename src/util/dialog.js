@@ -1,6 +1,6 @@
 import saveAs from 'file-saver';
 import JSZip from 'jszip';
-import { getBeautifiedHtml } from './dom';
+import { getBeautifiedHtml, applyTheme } from './dom';
 import {
     defaultHtmlFilename, defaultZipFilename, defaultJavaScriptFilename,
     defaultBundledHtmlFilename
@@ -50,6 +50,10 @@ const dialog = $("#dialog-form").dialog({
     }
 });
 
+function getSelectedTheme() {
+    return themesForm.find('select option:selected').val();
+}
+
 const themesDialog = $("#themes-dialog").dialog({
     autoOpen: false,
     height: 400,
@@ -57,30 +61,10 @@ const themesDialog = $("#themes-dialog").dialog({
     modal: true,
     buttons: {
         Apply() {
-            const value = $('input[name=file]:checked', form).val();
-            if (value === defaultBundledHtmlFilename
-                || value === defaultHtmlFilename
-                || value === defaultZipFilename) {
-                const text = getBeautifiedHtml(window.FrameDocument, false, value === defaultBundledHtmlFilename);
-                if (value === defaultBundledHtmlFilename || value === defaultHtmlFilename) {
-                    const blob = new Blob([text], { type: "text/html;charset=utf-8" });
-                    saveAs(blob, value);
-                } else {
-                    const zip = new JSZip();
-                    zip.file(defaultHtmlFilename, text);
-                    zip.file(defaultJavaScriptFilename, generateSharedJSCode());
-                    zip.generateAsync({ type: 'blob' }).then(blob => {
-                        saveAs(blob, defaultZipFilename);
-                    });
-                }
-            } else if (value === defaultJavaScriptFilename) {
-                const js = generateSharedJSCode();
-                const blob = new Blob([js], { type: 'text/javascript;charset=utf-8' });
-                saveAs(blob, defaultJavaScriptFilename);
-            }
+            applyTheme(getSelectedTheme());
         },
         Download() {
-            const filename = themesForm.find('select option:selected').val();
+            const filename = getSelectedTheme();
             getThemeContent(filename).then(data => {
                 const blob = new Blob([data], { type: 'text/css;charset=utf-8' });
                 saveAs(blob, filename);
