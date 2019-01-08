@@ -21,7 +21,7 @@ import startsWith from 'lodash/startsWith';
 import {
     removeableScript, tableScriptClass, appendableScript,
     dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass,
-    tooltipType, nonEvaluable, dataType, devDep
+    tooltipType, nonEvaluable, dataType, devDep, themesEndpoint
 } from '../constants';
 import { dataOnclickFunctionGenerated } from '../components/common';
 import 'core-js/es6/array';
@@ -519,6 +519,18 @@ function replacePopupWithForm(el) {
     return el;
 }
 
+function getThemeList() {
+    return $.ajax({
+        url: themesEndpoint
+    });
+}
+
+function getThemeContent(filename) {
+    return $.ajax({
+        url: `${themesEndpoint}/${filename}`
+    });
+}
+
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
@@ -529,5 +541,5 @@ export {
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
     removeSharedScriptTag, getTemplatePage, changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
-    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType
+    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType, getThemeList, getThemeContent
 };

@@ -3,7 +3,8 @@ import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile } from '../util
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
-import { dialog } from '../util/dialog';
+import { dialog, themesDialog, themesForm } from '../util/dialog';
+import { getThemeList } from '../util/jsoup';
 
 Vvveb.Actions = {
     init() {
@@ -78,6 +79,15 @@ Vvveb.Actions = {
     },
     upload() {
         $('#file-input').click();
+    },
+    switchTheme() {
+        getThemeList().then(data => {
+            const options = data.reduce((prev, cur) => {
+                return `${prev}<option value="${cur}">${cur}</option>`;
+            }, '');
+            themesForm.find('select').append(options).selectmenu();
+            themesDialog.dialog('open');
+        })
     },
     downloadWithExternalFiles() {
         getBeautifiedHtml(window.FrameDocument, true)
