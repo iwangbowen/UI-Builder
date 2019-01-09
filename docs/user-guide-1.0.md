@@ -1006,4 +1006,16 @@ gridOptions_fl.onRowSelected = function () {
 
 参考[ag-Grid文档](https://www.ag-grid.com/documentation-main/documentation.php)了解更多使用方式。
 
+## 样式主题生成器
+
+样式主题生成器是一款通过可视化界面制作Bootstrap主题的网页应用，允许用户在线制作、导出和上传样式主题。该应用与UI Tools集成，允许用户在UI Tools中使用已上传到服务器的主题。
+
+---
+
+### 界面说明
+
+### 基本操作
+
+### UI Tools集成
+
 [^1]: 更多属性设置[ag-Grid文档](https://www.ag-grid.com/documentation-main/documentation.php)。

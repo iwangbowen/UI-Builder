@@ -27,6 +27,7 @@ UI Tools是一套借助GUI界面帮助开发人员快速创建HTML页面的程�
 
 - [稳定版地址](http://10.108.7.58/editor.html)
 - [测试版地址](http://10.108.7.58:8080/editor.html)
+- [样式主题地址](http://10.108.7.58/app)
 
 ## Credits
 
@@ -38,6 +39,7 @@ UI Tools是一套借助GUI界面帮助开发人员快速创建HTML页面的程�
 - [Bootstrap](https://getbootstrap.com/) - 组件样式库
 - [noide](https://github.com/davidjamesstone/noide) - 程序版前端界面和后台实现
 - [Pkg](https://github.com/zeit/pkg) - node项目打包工具
+- [Bootstrap Magic](https://github.com/pikock/bootstrap-magic) - Bootstrap主题制作应用
 - [MkDocs](https://www.mkdocs.org/) - 文档生成工具
 - [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - 文档主题
 

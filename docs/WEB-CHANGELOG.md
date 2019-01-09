@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.20.0] - 2019-01-10
+
+### Added
+
+- 支持一键切换主题，可以切换或下载通过样式主题制作网页应用上传的主题
+
 ## [2.11.5] - 2019-01-02
 
 ### Fixed

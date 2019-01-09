@@ -5,6 +5,7 @@ nav:
     - FAQs: FAQs.md
     - 网页版CHANGELOG: WEB-CHANGELOG.md
     - 程序版CHANGELOG: APP-CHANGELOG.md
+    - 样式主题CHANGLOG: THEMES-CHANGELOG.md
 dev_addr: 127.0.0.1:8888
 use_directory_urls: false
 theme:
