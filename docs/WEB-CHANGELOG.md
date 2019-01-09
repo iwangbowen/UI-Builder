@@ -90,6 +90,7 @@ All notable changes to this project will be documented in this file.
 - 删除link和script标签的默认类型属性
 - 删除datetime input输入框的预览功能
 
+[2.20.0]:https://github.com/iwangbowen/UI-Builder/compare/2b9e3cebe83818dad16aec564da37e7054259b69...9884e4abcdf65f9de6628fa6d5491231e38d2786
 [2.11.0]:https://github.com/iwangbowen/UI-Builder/compare/71ffbffdd83dad6f8a4d2f0668490ffbbb59f6d4...538b2b2c03936b1574e0f890d0790a7f43e1403e
 [2.10.5]:https://github.com/iwangbowen/UI-Builder/compare/c1a73a68bdda5e69f19b35ba2c9e6c656b4f74bf...787ad2a3a4bc62e94f7e0d91b99275e3801933e0
 [2.10.1]: https://github.com/iwangbowen/UI-Builder/compare/045a5f569623e2695e23abd4de6268afa5cd1fc7...3f805e2119cd9ca4ebcb01bb341f234d2c772be6
