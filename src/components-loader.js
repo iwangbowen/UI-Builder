@@ -107,6 +107,7 @@ Vvveb.Components.extend("_base", "_base", border);
 // Vvveb.Components.add("html/gridrow@general", _general.gridrow);
 
 Vvveb.Components.add('html/labeldiv@common', _common.labeldiv);
+Vvveb.Components.extend("_base", _common_ids.divid, _common.div);
 Vvveb.Components.extend('_base', _common_ids.gridrowid, _common.gridrow);
 Vvveb.Components.extend('_base', _common_ids.gridcolumnid, _common.gridcolumn);
 Vvveb.Components.extend('_base', _common_ids.formid, _common.form);

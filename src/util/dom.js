@@ -311,6 +311,7 @@ function clearTimer() {
 
 function getElementWithSpecifiedClass(element) {
     return (!element.length
+        || element.hasClass('gs-w')
         || element.hasClass('draggable')
         || element.hasClass(draggableComponent))
         || element.hasClass(configurableComponent)
