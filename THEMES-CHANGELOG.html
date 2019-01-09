@@ -36,7 +36,7 @@
     
     
       
-        <title>FAQs - UI Tools文档</title>
+        <title>样式主题CHANGLOG - UI Tools文档</title>
       
     
     
@@ -99,7 +99,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#faqs" tabindex="1" class="md-skip">
+      <a href="#changelog" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -125,7 +125,7 @@
                 UI Tools文档
               </span>
               <span class="md-header-nav__topic">
-                FAQs
+                样式主题CHANGLOG
               </span>
             
           
@@ -264,20 +264,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="FAQs.html" title="FAQs" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="FAQs.html" title="FAQs" class="md-nav__link">
       FAQs
     </a>
-    
   </li>
 
     
@@ -309,11 +300,62 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="THEMES-CHANGELOG.html" title="样式主题CHANGLOG" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        样式主题CHANGLOG
+      </label>
+    
+    <a href="THEMES-CHANGELOG.html" title="样式主题CHANGLOG" class="md-nav__link md-nav__link--active">
       样式主题CHANGLOG
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#050-2019-01-10" title="[0.5.0] - 2019-01-10" class="md-nav__link">
+    [0.5.0] - 2019-01-10
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" title="Added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -334,6 +376,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#050-2019-01-10" title="[0.5.0] - 2019-01-10" class="md-nav__link">
+    [0.5.0] - 2019-01-10
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" title="Added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -344,18 +415,24 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/iwangbowen/UI-Builder/edit/master/docs/FAQs.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/iwangbowen/UI-Builder/edit/master/docs/THEMES-CHANGELOG.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="faqs">FAQs<a class="headerlink" href="#faqs" title="Permanent link">&para;</a></h1>
-<details class="question"><summary>UI Tools网页版和程序版是什么关系？</summary><p>UI Tools程序版依赖网页版，用户可以在配置文件中指定网页版的路径。如果网页版服务异常，程序版只能以编辑器模式工作，允许用户编辑本地文件系统的文件，但不能以Builder模式工作。</p>
-</details>
-<details class="question"><summary>可以修改导出页面中引用的样式和脚本路径吗？</summary><p>当用户第一次导出页面时，UI Tools会自动在导出页面中增加依赖的样式和脚本，它们的路径是页面工作在UI Tools中时的路径。用户可以修改它们的路径或删除以及增加新的引入文件以适配自己的需要。在页面重新导入中，UI Tools会忽略所有外部引入的文件和除了表格初始化代码之外的所有内联脚本。</p>
-</details>
-<details class="question"><summary>自动生成的代码可以删除或修改吗？</summary><p>用户不能删除或修改UI Tools自动生成的代码。UI Tools功能的更新会对应更新生成的代码。如果用户修改了原有的代码，UI Tools将会在导出时覆盖用户的代码。</p>
-<p>UI Tools不允许用户直接修改，但提供了重写覆盖的方式，用户可以通过编程的方式移除原有的默认实现，增加自定义逻辑。</p>
-<p>实际上，除了表格初始化代码之外，所有其他的代码都是通用代码，建议用户将通用代码单独引入，并及时更新通用代码。</p>
-</details>
+                <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<h2 id="050-2019-01-10">[0.5.0] - 2019-01-10<a class="headerlink" href="#050-2019-01-10" title="Permanent link">&para;</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>支持可视化界面编辑主题</p>
+</li>
+<li>
+<p>支持样式主题导出到本地或上传到服务器</p>
+</li>
+<li>
+<p>支持编辑保存到服务器的主题</p>
+</li>
+</ul>
                 
                   
                 
@@ -376,7 +453,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="user-guide-1.0.html" title="使用说明 1.0" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="APP-CHANGELOG.html" title="程序版CHANGELOG" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -385,25 +462,11 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                使用说明 1.0
+                程序版CHANGELOG
               </span>
             </div>
           </a>
         
-        
-          <a href="WEB-CHANGELOG.html" title="网页版CHANGELOG" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  前进
-                </span>
-                网页版CHANGELOG
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>
