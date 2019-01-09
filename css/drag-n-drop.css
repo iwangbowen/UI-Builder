@@ -101,7 +101,7 @@ div.row.gridrow-component > div, .form-border, .dashed-border {
 div.row > div.ui-state-hover,
 .allButton.dropzone.ui-state-hover,
 .userList #myGrid.ui-state-hover {
-  background: #EFEFEF
+  background:#ced4da;
 }
 
 .placeholder-component-highlight {
