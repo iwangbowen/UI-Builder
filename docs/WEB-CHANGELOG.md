@@ -6,7 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- 支持一键切换主题，可以切换或下载通过样式主题制作网页应用上传的主题
+- 支持一键切换主题，可以切换或下载通过样式主题生成器上传的主题
+
+- 允许直接选中和修改布局块的属性
+
+### Changed
+
+- 调整提示拖拽可放置区域的背景色
 
 ## [2.11.5] - 2019-01-02
 
