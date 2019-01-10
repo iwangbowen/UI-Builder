@@ -18,6 +18,7 @@ import findIndex from 'lodash/findIndex';
 import endsWith from 'lodash/endsWith';
 import curry from 'lodash/curry';
 import startsWith from 'lodash/startsWith';
+import css from 'css';
 import {
     removeableScript, tableScriptClass, appendableScript,
     dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass,
@@ -531,6 +532,31 @@ function getThemeContent(filename) {
     });
 }
 
+function transformGridsterStyle(html, width) {
+    let gridsterStyle;
+    // non-greedy regexp
+    html = html.replace(/(<style id="gridster-stylesheet" type="text\/css">)([\s\S]*?)(<\/style>)/, (match, p1, p2, p3) => {
+        gridsterStyle = p2;
+        return `${p1}${p3}`;
+    });
+    let gridsterDataAttrs = html
+        .match(/data-row="\d*"|data-col="\d*"|data-sizex="\d*"|data-sizey="\d*"/g);
+    gridsterDataAttrs = gridsterDataAttrs ? gridsterDataAttrs.map(v => `[${v}]`) : [];
+    if (gridsterStyle) {
+        const ast = css.parse(gridsterStyle);
+        ast.stylesheet.rules = ast.stylesheet.rules
+            .filter(rule => rule.selectors.some(selector => gridsterDataAttrs.includes(selector)));
+        html = html.replace(/(<style id="gridster-stylesheet" type="text\/css">)(<\/style>)/, `$1${css.stringify(ast, { compress: true })}$2`);
+    }
+    // Regexp
+    // Converse gridster absolute values to relative ones
+    // It's easy to just replace by RegExp
+    const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
+    return html.replace(reg, (match, p1, p2, p3, p4) => {
+        return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
+    });
+}
+
 export {
     removeUnusedTags, emptyChildren, generateTableScript, generateCalendarOnclickAttr,
     generateSelectOptionsScript, generateSubmitFormScript, generateButtonOnclickScript,
@@ -541,5 +567,5 @@ export {
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
     removeSharedScriptTag, getTemplatePage, changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
-    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType, getThemeList, getThemeContent
+    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType, getThemeList, getThemeContent, transformGridsterStyle
 };

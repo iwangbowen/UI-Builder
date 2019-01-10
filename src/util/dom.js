@@ -4,8 +4,10 @@ import {
     generateBaseTag, generateDevDependentTags, removeRemoveableScripts, removeNameBrackets,
     htmlGenerator, changeScriptType, replacePopupWithForm,
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
-    removeGridsterStylesheet, generateScripts, removeSharedScriptTag,
-    changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable, restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent
+    removeGridsterStylesheet, generateScripts,
+    changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
+    restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent,
+    transformGridsterStyle
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -203,17 +205,10 @@ function getBeautifiedHtml(doc, withExternalFiles = false, containsShared = true
     if (!containsShared && cache[key] && cache[key].html === origHtml) {
         return cache[key].beautifiedHtml;
     } else {
-        // Regexp
-        // Converse gridster absolute values to relative ones
-        // It's easy to just replace by RegExp
-        const width = $(doc).find('body div.gridster').width()
-        const reg = /(\[data-(col|sizex)="\d*"\])[\s\t\n]*\{[\s\t\n]*(left|width):[\s\t\n]*(\d+(\.\d+)?)px;[\s\t\n]*\}/g;
-        let html = origHtml.replace(reg, (match, p1, p2, p3, p4) => {
-            return `${p1} { ${p3}:${parseFloat(p4) / width * 100}%; }`;
-        });
+        const width = $(doc).find('body div.gridster').width();
+        let html = transformGridsterStyle(origHtml, width);
         // Remove current active tab class with empty string
         html = html.replace(/ ui-tabs-active ui-state-active/g, '');
-
         // Dom manipulation
         html = htmlGenerator(html, replacePopupWithForm, removeUnusedTags, removeImageDataURL, emptyChildren,
             removeStyleForSelectedElements, generateCalendarOnclickAttr,
