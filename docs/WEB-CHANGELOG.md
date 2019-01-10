@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.20.5] - 2019-01-15
+
+### Changed
+
+- 移除布局块中没有用到的`css`样式规则
+
 ## [2.20.0] - 2019-01-10
 
 ### Added
