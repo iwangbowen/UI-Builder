@@ -19,7 +19,7 @@
     "clean:built": "grunt clean:built",
     "concat": "grunt concat",
     "build:dev": "node compile.js && grunt build:dev",
-    "build:prod": "node compile.js && git pull && grunt build:prod",
+    "build:prod": "git pull && node compile.js && grunt build:prod",
     "count": "find ./src -name '*.js' | xargs wc -l",
     "docs:dev": "mkdocs serve",
     "docs:build": "mkdocs build --clean",
