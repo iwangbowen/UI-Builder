@@ -1097,6 +1097,17 @@ const labelIconProperty = {
     }
 };
 
+const bootstrapBackgroundColorProperty = {
+    name: "Background",
+    key: "background",
+    htmlAttr: "class",
+    validValues: bgcolorClasses,
+    inputtype: new SelectInput(),
+    data: {
+        options: bgcolorSelectOptions
+    }
+};
+
 const backgroundColorProperty = {
     name: "Background Color",
     key: "background-color",
@@ -1247,5 +1258,6 @@ export {
     containerBackgroundProperty,
     backgroundColorProperty,
     textColorProperty,
-    overflowProperty
+    overflowProperty,
+    bootstrapBackgroundColorProperty
 };

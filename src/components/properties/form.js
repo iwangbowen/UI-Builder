@@ -1,7 +1,8 @@
-import { actionProperty, methodProperty, formStyleProperty } from './properties';
+import { actionProperty, methodProperty, formStyleProperty, bootstrapBackgroundColorProperty} from './properties';
 
 const formProperties = [
     formStyleProperty,
+    bootstrapBackgroundColorProperty,
     actionProperty,
     methodProperty
 ];
