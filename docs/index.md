@@ -29,6 +29,14 @@ UI Tools是一套借助GUI界面帮助开发人员快速创建HTML页面的程�
 - [测试版地址](http://10.108.7.58:8080/editor.html)
 - [样式主题地址](http://10.108.7.58/app)
 
+## 项目主页
+
+---
+
+- [UI Tools网页版和文档](https://github.com/iwangbowen/UI-Builder)
+- [UI Tools程序版](https://github.com/iwangbowen/server-hosting-fs)
+- [样式主题制作器](https://github.com/iwangbowen/bootstrap-magic)
+
 ## Credits
 
 ---
