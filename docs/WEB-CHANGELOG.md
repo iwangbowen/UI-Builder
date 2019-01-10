@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- 支持一键切换主题，可以切换或下载通过样式主题生成器上传的主题
+- 支持一键切换主题，可以切换或下载通过样式主题制作器上传的主题
 
 - 允许直接选中和修改布局块的属性
 
