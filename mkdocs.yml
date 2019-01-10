@@ -2,7 +2,6 @@ site_name: UI Tools文档
 nav:
     - 主页: index.md
     - 使用说明 1.0: user-guide-1.0.md
-    - 下载: download.md
     - FAQs: FAQs.md
     - 网页版CHANGELOG: WEB-CHANGELOG.md
     - 程序版CHANGELOG: APP-CHANGELOG.md
