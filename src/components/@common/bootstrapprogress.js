@@ -1,12 +1,13 @@
 import { progressProperties as properties } from '../properties/progress';
-import basiccomponent from './basiccomponent';
 import extend from 'lodash/extend';
 import { cloneableComponent } from '../common';
+import dragHtmlComponent from './dragHtmlComponent';
 
-const bootstrapprogress = extend({}, basiccomponent, {
+const bootstrapprogress = extend({}, dragHtmlComponent, {
     classes: ["progress"],
     name: "Progress Bar",
     image: "icons/progressbar.svg",
+    dragHtml: `<img class="progress" src="libs/builder/icons/progressbar.svg" style="width: 100px; height: 30px;">`,
     html: `<div class="progress ${cloneableComponent}">
             <div class="progress-bar w-25"></div>
            </div>`,

@@ -6,10 +6,14 @@ import extend from 'lodash/extend';
 const labelfield = extend({}, basiccomponent, {
     name: 'Label Field',
     image: 'icons/label.svg',
+    dragHtml: `<img ${dataComponentId}="${labelfieldid}" src="libs/builder/icons/label.svg" style="width: 100px; height: 100px;">`,
     html: `<div ${dataComponentId}="${labelfieldid}">
                 <span ${dataComponentId}="${spanid}">Name</span>：
                 <span>Value</span>
-           </div>`
+           </div>`,
+    getDropHtml() {
+        return this.html;
+    }
 });
 
 export default labelfield;
