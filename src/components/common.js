@@ -51,6 +51,7 @@ function inc_base_sort() {
 }
 
 const placeholderComponentHighlight = 'placeholder-component-highlight';
+const dashedBorder = 'dashed-border';
 const draggableComponent = 'draggable-component';
 const configurableComponent = 'configurable-component';
 const gridrowComponent = 'gridrow-component';
@@ -89,6 +90,9 @@ const dataButtonKey = 'data-button-key';
 const dataPopulateHeaders = 'data-populate-headers';
 const dataTabsKey = 'data-tabs-key';
 const dataAutoSizeColumns = 'data-auto-size-columns';
+const dataSection = 'data-section';
+const dataSearch = 'data-search';
+const dataType = 'data-type';
 
 const rowClickedPopupPrefix = 'row_clicked_popup';
 const buttonClickedPopupPrefix = 'button_clicked_popup';
@@ -155,5 +159,6 @@ export {
     col_sm_2, col_sm_3, col_sm_4, col_sm_5, col_sm_6, col_sm_7, col_sm_8, col_sm_9,
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
-    placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle
+    placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
+    dataType, dashedBorder
 };

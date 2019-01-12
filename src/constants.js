@@ -45,10 +45,16 @@ const gridPage = {
     url: 'template/oee/html/demo/grid.html',
     templateUrl: 'template/oee/html/demo/grid_template.html'
 };
+const blankPage = {
+    name: 'blank',
+    title: 'blank',
+    url: 'template/oee/html/demo/blank.html',
+    templateUrl: 'template/oee/html/demo/blank_template.html'
+}
 
 const templatePages = [
-    gridPage,
-    pdsPage
+    blankPage,
+    pdsPage,
 ];
 
 const isInIframe = window !== window.parent;

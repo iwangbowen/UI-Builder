@@ -92,7 +92,7 @@ div.vertical-stripes {
   width: 287px;
 }
 
-div.row.gridrow-component > div, .form-border, .dashed-border {
+div.row.gridrow-component > div, .form-border {
   border: 1px dashed rgb(153, 153, 153);
 }
 
@@ -106,6 +106,13 @@ div.row > div.ui-state-hover,
 
 .placeholder-component-highlight {
   margin: 1px;
+  border: dashed 2px transparent;
+  border-color: #aaa;
+  transition: background-color 0.3s;
+}
+
+.dashed-border {
+  margin: 1.1px;
   border: dashed 2px transparent;
   border-color: #aaa;
   transition: background-color 0.3s;

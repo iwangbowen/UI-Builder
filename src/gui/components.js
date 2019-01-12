@@ -1,5 +1,5 @@
 import { SectionInput } from '../inputs/inputs';
-import { dataComponentId } from '../components/common';
+import { dataComponentId, dataSection, dataSearch, dataType } from '../components/common';
 import { getStyle } from '../util/dom';
 import tmpl from '../util/tmpl';
 import AttributesMutation from '../models/mutation/attributes-mutation';
@@ -115,7 +115,10 @@ Vvveb.Components = {
 		this.add(type, newData);
 	},
 	matchNode(node) {
-		if ($(node).attr(dataComponentId) && this._components[$(node).attr(dataComponentId)]) {
+		// Component list component li element
+		if ($(node).attr(dataSection) && $(node).attr(dataSearch) && this._components[$(node).attr(dataType)]) {
+			return this._components[$(node).attr(dataType)];
+		} else if ($(node).attr(dataComponentId) && this._components[$(node).attr(dataComponentId)]) {
 			return this._components[$(node).attr(dataComponentId)];
 		} else if ($(node).attr('type') == 'radio' || $(node).attr('type') == 'checkbox') {
 			const $parent = $(node).parent();

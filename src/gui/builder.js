@@ -8,9 +8,8 @@ import {
 import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
-	initComponentDrag, initIframeSortable,
-	enableSortableAndDroppableInIframe, enableDroppableInIframe,
-	disableSortable, removeSortableAndGridsterDisability, initResize
+	initIframeSortable, enableSortableAndDroppableInIframe, enableDroppableInIframe,
+	disableSortable, removeSortableAndGridsterDisability, initResize, initDraggableComponents, initRowColumnDrop, initDroppableComponents
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector, containerSelector } from '../common';
@@ -48,10 +47,11 @@ Vvveb.Builder = {
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
 
-			enableDroppableInIframe(`${gridWidgetSelector}, ${containerSelector}`);
-			enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
-			initResize();
-			initIframeSortable();
+			initDroppableComponents();
+			// enableDroppableInIframe(`${gridWidgetSelector}, ${containerSelector}`);
+			// enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
+			// initResize();
+			// initIframeSortable();
 			return this._initHightlight();
 		});
 	},
@@ -84,7 +84,7 @@ Vvveb.Builder = {
 						})
 					}
 					componentsSubList.append(item);
-					initComponentDrag(item, Vvveb.Components.get($(item).data("type")));
+					initDraggableComponents(item, Vvveb.Components.get($(item).data("type")));
 				}
 			}
 		}

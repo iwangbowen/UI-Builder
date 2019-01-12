@@ -26,6 +26,7 @@ Vvveb.ComponentsGroup['定制组件'] = [
 ];
 
 Vvveb.ComponentsGroup['通用组件'] = [
+    _common_ids.divid,
     _common_ids.bootstrapcontainerid,
     _common_ids.formid,
     _common_ids.gridrowid,
