@@ -1,5 +1,5 @@
 import { inc_base_sort } from './common';
-import { SectionInput, SelectInput, RadioButtonInput, CssUnitInput, ColorInput, RangeInput } from '../inputs/inputs';
+import { SectionInput, SelectInput, RadioButtonInput, CssUnitInput, ColorInput, RangeInput, NumberInput } from '../inputs/inputs';
 import { overflowProperty } from './properties/properties';
 import extend from 'lodash/extend';
 
@@ -106,6 +106,15 @@ const display = {
             key: "overflow-y",
             sort: inc_base_sort()
         }), {
+            name: 'Z Index',
+            key: 'z-index',
+            htmlAttr: 'style',
+            sort: inc_base_sort(),
+            col: 6,
+            inline: true,
+            parent: "",
+            inputtype: new NumberInput()
+        }, {
             name: "Float",
             key: "float",
             htmlAttr: "style",
