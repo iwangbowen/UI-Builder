@@ -92,7 +92,7 @@ function getCursorAt($element) {
 }
 
 function initDraggableComponents(item, component) {
-    item.draggable({
+    item.draggable(extend({}, draggableOptions, {
         iframeFix: true,
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
         // iframe scroll issue
@@ -101,8 +101,8 @@ function initDraggableComponents(item, component) {
             const html = item.prop('outerHTML');
             const $element = $(html).appendTo($('body'));
             return $element;
-        }
-    })
+        },
+    }))
 }
 
 function initComponentDrag(item, component) {
@@ -246,15 +246,15 @@ function onDrop(event, { draggable, helper, offset, position }) {
         const { left, top } = convertPositionInPercentage(appended, getPosition(helper, $(this)));
         appended.css({
             position: 'absolute',
-            width,
-            height,
+            // width,
+            // height,
             left,
             top
-        }).draggable();
-        appended.resizable({
-            handles: 'all',
-            stop: onResizableStop
-        });
+        }).draggable(draggableOptions);
+        // appended.resizable({
+        //     handles: 'all',
+        //     stop: onResizableStop
+        // });
         if (component.droppable) {
             appended.droppable({
                 greedy: true,
@@ -312,9 +312,13 @@ function initDroppable() {
         })
 }
 
+const draggableOptions = {
+    cancel: 'input,textarea,select,option'
+}
+
 function initDraggable() {
     Vvveb.Builder.frameHtml.find(`.${draggableComponent}`)
-        .draggable();
+        .draggable(draggableOptions);
 }
 
 function initResizable() {
