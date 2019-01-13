@@ -2,7 +2,7 @@ import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
-	clearSelectedElements, addOrRemoveElement, highlightWhenHovering, highlightwhenSelected,
+	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
 	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
 } from '../util/dom';
 import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
@@ -249,11 +249,17 @@ Vvveb.Builder = {
 		const _this = this;
 		this.frameBody.on("mousemove touchmove", function (event) {
 			if (event.target) {
-				if (getElementWithSpecifiedClass($(event.target)).length) {
-					_this.highlightEl = target = jQuery(event.target);
-					if (!event.ctrlKey) {
-						highlightWhenHovering(event.target);
+				// Show highlight box only when no button is pressed
+				// else hide highlight box
+				if (event.which === 0) {
+					if (getElementWithSpecifiedClass($(event.target)).length) {
+						_this.highlightEl = target = jQuery(event.target);
+						if (!event.ctrlKey) {
+							highlightOnMove(event.target);
+						}
 					}
+				} else {
+					hideAuxiliaryElements();
 				}
 			}
 		});

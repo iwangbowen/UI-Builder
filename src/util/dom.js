@@ -32,7 +32,7 @@ import {
 import { addDatetime } from './common';
 import 'core-js/es7/array';
 import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
-import { auxiliaryElementsSelector, detailPopup } from '../common';
+import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
 
 function getStyle(el, styleProp) {
@@ -349,12 +349,12 @@ function addStyleForSelectedElements() {
     each(selectedElements, element => $(element).addClass(multiSelectedClass));
 }
 
-function highlightWhenHovering(target) {
+function highlightOnMove(target) {
     const $target = $(target);
     const offset = $target.offset();
     const width = $target.outerWidth();
     const height = $target.outerHeight();
-    jQuery("#highlight-box").css(
+    jQuery(`${highlightBoxSelector}`).css(
         {
             top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
             left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
@@ -362,7 +362,7 @@ function highlightWhenHovering(target) {
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
         });
-    jQuery("#highlight-name").html(target.tagName);
+    jQuery(highlightNameSelector).html(target.tagName);
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {
@@ -599,7 +599,7 @@ function applyTheme(filename) {
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
-    addOrRemoveElement, highlightWhenHovering, highlightwhenSelected, leftAlignCallback,
+    addOrRemoveElement, highlightOnMove, highlightwhenSelected, leftAlignCallback,
     rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
