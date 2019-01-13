@@ -243,7 +243,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
         const { width, height } = convertSizeInPercentage(appended);
         // Use clone element as dragging element
         // Use current clone element position as appended element position
-        const { left, top } = convertPositionInPercentage(appended, position);
+        const { left, top } = convertPositionInPercentage(appended, getPosition(helper, $(this)));
         appended.css({
             position: 'absolute',
             width,
@@ -251,7 +251,6 @@ function onDrop(event, { draggable, helper, offset, position }) {
             left,
             top
         }).draggable();
-        appended.offset(offset);
         appended.resizable({
             handles: 'all',
             stop: onResizableStop
