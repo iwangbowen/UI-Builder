@@ -203,6 +203,14 @@ function drop(event, { draggable, helper, offset }) {
     }
 }
 
+function convertSizeInPercentage(element) {
+    const parent = element.parent();
+    return {
+        width: `${element.width() / parent.width() * 100}%`,
+        height: `${element.height() / parent.height() * 100}%`
+    };
+}
+
 function initDroppableComponents(elements) {
     Vvveb.Builder.frameHtml.find('body')
         .droppable({
@@ -212,7 +220,11 @@ function initDroppableComponents(elements) {
                 if (draggable !== helper) {
                     const component = Vvveb.Components.matchNode(helper.get(0));
                     const appended = appendToContainer(component.html, this);
-                    appended.draggable({
+                    const { width, height } = convertSizeInPercentage(appended);
+                    appended.css({
+                        width,
+                        height
+                    }).draggable({
                         stop() {
                             const element = $(this);
                             const parent = $(this).parent();
@@ -228,10 +240,10 @@ function initDroppableComponents(elements) {
                         appended.resizable({
                             handles: 'all',
                             stop(e, { element }) {
-                                const parent = element.parent();
+                                const { width, height } = convertSizeInPercentage(element);
                                 element.css({
-                                    width: `${element.width() / parent.width() * 100}%`,
-                                    height: `${element.height() / parent.height() * 100}%`
+                                    width,
+                                    height
                                 });
                             }
                         });
