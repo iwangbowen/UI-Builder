@@ -5,7 +5,7 @@ import { divid } from './ids';
 const div = {
     classes: ['gs-w'],
     image: "icons/div.svg",
-    html: `<div ${dataComponentId}="${divid}" class="${dashedBorder} ${configurableComponent} ${resizableComponent} ${draggableComponent} ${droppableComponent}" style="width: 350px; height: 200px;"></div>`,
+    html: `<div ${dataComponentId}="${divid}" class="${dashedBorder} ${configurableComponent} ${resizableComponent} ${draggableComponent} ${droppableComponent}" style="width: 500px; height: 300px;"></div>`,
     name: "Div",
     resizable: true,
     droppable: true,
