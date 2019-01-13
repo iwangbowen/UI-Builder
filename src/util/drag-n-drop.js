@@ -18,7 +18,7 @@ import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
-import { dataComponentId } from '../components/common';
+import { dataComponentId, droppableComponent, draggableComponent, resizableComponent } from '../components/common';
 
 const gridDroppables = [
     buttonid,
@@ -203,11 +203,11 @@ function drop(event, { draggable, helper, offset }) {
     }
 }
 
-function convertSizeInPercentage(element) {
+function convertSizeInPercentage(element, width = element.width(), height = element.height()) {
     const parent = element.parent();
     return {
-        width: `${element.width() / parent.width() * 100}%`,
-        height: `${element.height() / parent.height() * 100}%`
+        width: `${width / parent.width() * 100}%`,
+        height: `${height / parent.height() * 100}%`
     };
 }
 
@@ -220,49 +220,110 @@ function convertPositionInPercentage(element, position = element.position()) {
     }
 }
 
+function onResizableStop(e, { element }) {
+    const { width, height } = convertSizeInPercentage(element);
+    element.css({
+        width,
+        height
+    });
+}
+
+function getPosition(a, b) {
+    return {
+        left: a.offset().left - b.offset().left,
+        top: a.offset().top - b.offset().top
+    };
+}
+
+function onDrop(event, { draggable, helper, offset, position }) {
+    // Drag elemetn from component list
+    if (draggable !== helper) {
+        const component = Vvveb.Components.matchNode(helper.get(0));
+        const appended = appendToContainer(component.html, this);
+        const { width, height } = convertSizeInPercentage(appended);
+        // Use clone element as dragging element
+        // Use current clone element position as appended element position
+        const { left, top } = convertPositionInPercentage(appended, position);
+        appended.css({
+            position: 'absolute',
+            width,
+            height,
+            left,
+            top
+        }).draggable();
+        appended.offset(offset);
+        appended.resizable({
+            handles: 'all',
+            stop: onResizableStop
+        });
+        if (component.droppable) {
+            appended.droppable({
+                greedy: true,
+                classes: droppableClasses,
+                drop: onDrop
+            });
+        }
+    } else {
+        if (draggable.parent().is(this)) {
+            const { left, top } = convertPositionInPercentage(draggable);
+            draggable.css({
+                left,
+                top
+            });
+        } else {
+            // Compute width and height in pixel and position bewteen draggable and droppale before append
+            const initWidth = draggable.width();
+            const initHeight = draggable.height();
+            const position = getPosition(draggable, $(this));
+
+            draggable.appendTo(this);
+            const { width, height } = convertSizeInPercentage(draggable, initWidth, initHeight);
+            const { left, top } = convertPositionInPercentage(draggable, position);
+            draggable.css({
+                width,
+                height,
+                left,
+                top
+            });
+        }
+    }
+}
+
 function initDroppableComponents(elements) {
     Vvveb.Builder.frameHtml.find('body')
         .droppable({
             greedy: true,
             classes: droppableClasses,
-            drop(event, { draggable, helper, offset, position }) {
-                console.log(arguments);
-                if (draggable !== helper) {
-                    const component = Vvveb.Components.matchNode(helper.get(0));
-                    const appended = appendToContainer(component.html, this);
-                    const { width, height } = convertSizeInPercentage(appended);
-                    // Use clone element as dragging element
-                    // Use current clone element position as appended element position
-                    const { left, top } = convertPositionInPercentage(appended, position);
-                    appended.css({
-                        position: 'absolute',
-                        width,
-                        height,
-                        left,
-                        top
-                    }).draggable({
-                        stop() {
-                            const element = $(this);
-                            const { left, top } = convertPositionInPercentage(element);
-                            element.css({
-                                left,
-                                top
-                            });
-                        }
-                    });
-                    appended.resizable({
-                        handles: 'all',
-                        stop(e, { element }) {
-                            const { width, height } = convertSizeInPercentage(element);
-                            element.css({
-                                width,
-                                height
-                            });
-                        }
-                    });
-                }
-            }
+            drop: onDrop
         });
+}
+
+function initInteractions() {
+    initDroppable();
+    initDraggable();
+    initResizable();
+}
+
+function initDroppable() {
+    Vvveb.Builder.frameHtml.find(`.${droppableComponent}`)
+        .droppable({
+            greedy: true,
+            classes: droppableClasses,
+            drop: onDrop
+        })
+}
+
+function initDraggable() {
+    Vvveb.Builder.frameHtml.find(`.${draggableComponent}`)
+        .draggable();
+}
+
+function initResizable() {
+    Vvveb.Builder.frameHtml.find(`.${resizableComponent}`)
+        .resizable({
+            handles: 'all',
+            stop: onResizableStop
+        })
 }
 
 function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
@@ -575,5 +636,6 @@ export {
     removeSortableAndGridsterDisability,
     initResize,
     initDraggableComponents,
-    initDroppableComponents
+    initDroppableComponents,
+    initInteractions
 };

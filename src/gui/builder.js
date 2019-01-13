@@ -9,7 +9,8 @@ import { noneditableSelector, selectBox, componentSelector } from '../util/selec
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initIframeSortable, enableSortableAndDroppableInIframe, enableDroppableInIframe,
-	disableSortable, removeSortableAndGridsterDisability, initResize, initDraggableComponents, initRowColumnDrop, initDroppableComponents
+	disableSortable, removeSortableAndGridsterDisability, initResize, initDraggableComponents, initRowColumnDrop,
+	initInteractions
 } from '../util/drag-n-drop';
 import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
 import { sortableAndDroppableSelector, gridWidgetSelector, containerSelector } from '../common';
@@ -47,7 +48,8 @@ Vvveb.Builder = {
 			this.frameHtml = $(window.FrameDocument).find("html");
 			this.frameBody = $(window.FrameDocument).find('body');
 
-			initDroppableComponents();
+
+			initInteractions();
 			// enableDroppableInIframe(`${gridWidgetSelector}, ${containerSelector}`);
 			// enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
 			// initResize();

@@ -52,12 +52,15 @@ function inc_base_sort() {
 
 const placeholderComponentHighlight = 'placeholder-component-highlight';
 const dashedBorder = 'dashed-border';
-const draggableComponent = 'draggable-component';
 const configurableComponent = 'configurable-component';
 const gridrowComponent = 'gridrow-component';
 const cloneableComponent = 'cloneable-component';
 const deletableComponent = 'deletable-component';
 const containerComponent = 'container-component';
+const draggableComponent = 'draggable-component';
+const resizableComponent = 'resizable-component';
+const droppableComponent = 'droppable-component';
+
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
 const dataRelatedTable = 'data-related-table';
@@ -160,5 +163,5 @@ export {
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
-    dataType, dashedBorder
+    dataType, dashedBorder, resizableComponent, droppableComponent
 };
