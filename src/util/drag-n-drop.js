@@ -212,10 +212,28 @@ function initDroppableComponents(elements) {
                 if (draggable !== helper) {
                     const component = Vvveb.Components.matchNode(helper.get(0));
                     const appended = appendToContainer(component.html, this);
-                    appended.draggable();
+                    appended.draggable({
+                        stop() {
+                            const element = $(this);
+                            const parent = $(this).parent();
+                            const { left, top } = element.position();
+                            element.css({
+                                position: 'absolute',
+                                left: `${left / parent.width() * 100}%`,
+                                top: `${top / parent.height() * 100}%`
+                            });
+                        }
+                    });
                     if (component.resizable) {
                         appended.resizable({
-                            handles: 'all'
+                            handles: 'all',
+                            stop(e, { element }) {
+                                const parent = element.parent();
+                                element.css({
+                                    width: `${element.width() / parent.width() * 100}%`,
+                                    height: `${element.height() / parent.height() * 100}%`
+                                });
+                            }
                         });
                     }
                 }
