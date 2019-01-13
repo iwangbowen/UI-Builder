@@ -211,43 +211,55 @@ function convertSizeInPercentage(element) {
     };
 }
 
+function convertPositionInPercentage(element, position = element.position()) {
+    const parent = element.parent();
+    const { left, top } = position;
+    return {
+        left: `${left / parent.width() * 100}%`,
+        top: `${top / parent.height() * 100}%`
+    }
+}
+
 function initDroppableComponents(elements) {
     Vvveb.Builder.frameHtml.find('body')
         .droppable({
             greedy: true,
             classes: droppableClasses,
-            drop(event, { draggable, helper, offset }) {
+            drop(event, { draggable, helper, offset, position }) {
+                console.log(arguments);
                 if (draggable !== helper) {
                     const component = Vvveb.Components.matchNode(helper.get(0));
                     const appended = appendToContainer(component.html, this);
                     const { width, height } = convertSizeInPercentage(appended);
+                    // Use clone element as dragging element
+                    // Use current clone element position as appended element position
+                    const { left, top } = convertPositionInPercentage(appended, position);
                     appended.css({
+                        position: 'absolute',
                         width,
-                        height
+                        height,
+                        left,
+                        top
                     }).draggable({
                         stop() {
                             const element = $(this);
-                            const parent = $(this).parent();
-                            const { left, top } = element.position();
+                            const { left, top } = convertPositionInPercentage(element);
                             element.css({
-                                position: 'absolute',
-                                left: `${left / parent.width() * 100}%`,
-                                top: `${top / parent.height() * 100}%`
+                                left,
+                                top
                             });
                         }
                     });
-                    if (component.resizable) {
-                        appended.resizable({
-                            handles: 'all',
-                            stop(e, { element }) {
-                                const { width, height } = convertSizeInPercentage(element);
-                                element.css({
-                                    width,
-                                    height
-                                });
-                            }
-                        });
-                    }
+                    appended.resizable({
+                        handles: 'all',
+                        stop(e, { element }) {
+                            const { width, height } = convertSizeInPercentage(element);
+                            element.css({
+                                width,
+                                height
+                            });
+                        }
+                    });
                 }
             }
         });
