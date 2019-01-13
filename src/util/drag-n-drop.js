@@ -214,7 +214,9 @@ function initDroppableComponents(elements) {
                     const appended = appendToContainer(component.html, this);
                     appended.draggable();
                     if (component.resizable) {
-                        appended.resizable();
+                        appended.resizable({
+                            handles: 'all'
+                        });
                     }
                 }
             }
