@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.20.5] - 2019-01-15
+## [2.30.0] - 2019-01-15
+
+### Added
+
+- 增加`z-index`属性设置
 
 ### Changed
 
