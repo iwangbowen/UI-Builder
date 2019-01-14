@@ -112,8 +112,7 @@ div.row > div.ui-state-hover,
 }
 
 .dashed-border {
-  margin: 1.1px;
-  border: dashed 2px transparent;
+  border: dashed 1.2px transparent;
   border-color: #aaa;
   transition: background-color 0.3s;
 }

@@ -11673,7 +11673,7 @@ body {
 #vvveb-builder #canvas {
   /* margin-right: 260px; */
   /* margin-left: 260px; */
-  top: 20px;
+  top: 43px;
   width: calc( 100vw - 275px);
   height: calc( 100vh - 20px);
   position: fixed;
