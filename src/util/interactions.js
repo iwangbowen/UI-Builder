@@ -165,11 +165,20 @@ function convertAndInitInteractions(element, position) {
     }
 }
 
+// Use appendTo wrapper to deal with body as container
+function appendTo(element, container) {
+    if (container.find('script')) {
+        return element.insertBefore(container.find('script:first'));
+    } else {
+        return element.appendTo(container);
+    }
+}
+
 function onDrop(event, { draggable, helper, offset, position }) {
     // Drag elemetn from component list
     if (draggable !== helper) {
         const component = Vvveb.Components.matchNode(helper.get(0));
-        const appended = $(component.html).appendTo(this);
+        const appended = appendTo($(component.html), $(this));
         // Use clone element as dragging element
         // Use current clone element position as appended element position
         convertAndInitInteractions(appended, getOffsetBetweenElements(helper, $(this)));
@@ -189,7 +198,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
             const initHeight = draggable.outerHeight();
             const position = getOffsetBetweenElements(draggable, $(this));
 
-            draggable.appendTo(this);
+            appendTo(draggable, $(this));
             const { width, height } = convertSize(draggable, initWidth, initHeight);
             const { left, top } = convertPositionInPercentage(draggable, position);
             draggable.css({
