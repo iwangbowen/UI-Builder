@@ -16,6 +16,8 @@ function initDraggableComponents(item, component) {
             const $element = $(html).appendTo($('body'));
             return $element;
         },
+        // 108 is component li width, 42 is bg img height
+        cursorAt: { left: 108 / 2, top: 42 / 2 },
         revert: 'invalid'
     }))
 }
