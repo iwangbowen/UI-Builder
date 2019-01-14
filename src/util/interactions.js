@@ -117,6 +117,14 @@ function convertPositionInPercentage(element, position = element.position()) {
     }
 }
 
+function applyPositionInPercentage(element) {
+    const { left, top } = convertPositionInPercentage(element);
+    element.css({
+        left,
+        top
+    });
+}
+
 function onResizableStop(e, { element }) {
     const { width, height } = convertSize(element);
     element.css({
@@ -134,7 +142,6 @@ function getOffsetBetweenElements(a, b) {
 
 function offsetElement(element, { leftOffset, topOffset }) {
     const { left, top } = element.position();
-    console.log(left, top, leftOffset, topOffset);
     element.css({
         left: left + leftOffset,
         top: top + topOffset
@@ -195,11 +202,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
         }
     } else {
         if (draggable.parent().is(this)) {
-            const { left, top } = convertPositionInPercentage(draggable);
-            draggable.css({
-                left,
-                top
-            });
+            applyPositionInPercentage(draggable);
         } else {
             // Compute width and height in pixel and position bewteen draggable and droppale before append
             const initWidth = draggable.outerWidth();
@@ -274,5 +277,6 @@ export {
     initInteractions,
     offsetElement,
     convertAndInitInteractions,
-    removeResizableHandles
+    removeResizableHandles,
+    applyPositionInPercentage
 };

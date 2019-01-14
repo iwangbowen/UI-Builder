@@ -34,6 +34,7 @@ import 'core-js/es7/array';
 import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
+import { applyPositionInPercentage } from './interactions';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -387,8 +388,7 @@ function highlightwhenSelected(target, ctrlKeyPressed) {
 function getLeftestOrTopest(direction) {
     return min(
         selectedElements
-            .map($)
-            .map(v => v.offset()[direction]));
+            .map(v => Number.parseFloat(v.style[direction]))) + '%';
 }
 
 function getRightest() {
@@ -427,10 +427,8 @@ function preventDefault(event) {
 function moveToLeft(leftest) {
     each(selectedElements, function (element) {
         const $element = $(element);
-        const { top } = $element.offset();
-        $element.offset({
-            left: leftest,
-            top
+        $element.css({
+            left: leftest
         })
     });
 }
@@ -438,33 +436,31 @@ function moveToLeft(leftest) {
 function moveToTop(topest) {
     each(selectedElements, function (element) {
         const $element = $(element);
-        const { left } = $element.offset();
-        $element.offset({
-            left,
+        $element.css({
             top: topest
-        })
+        });
     });
 }
 
 function moveToRight(rightest) {
     each(selectedElements, function (element) {
         const $element = $(element);
-        const { top } = $element.offset();
         $element.offset({
             left: rightest - $element.outerWidth(),
-            top
-        })
+            top: $element.offset().top
+        });
+        applyPositionInPercentage($element);
     });
 }
 
 function moveToBottom(bottomest) {
     each(selectedElements, function (element) {
         const $element = $(element);
-        const { left } = $element.offset();
         $element.offset({
-            left,
+            left: $element.offset().left,
             top: bottomest - $element.outerHeight()
-        })
+        });
+        applyPositionInPercentage($element);
     });
 }
 
@@ -475,7 +471,8 @@ function moveToCenter(centerest) {
         $element.offset({
             left: centerest - $element.outerWidth() / 2,
             top
-        })
+        });
+        applyPositionInPercentage($element);
     });
 }
 
@@ -486,7 +483,8 @@ function moveToMiddle(middlest) {
         $element.offset({
             left,
             top: middlest - $element.outerHeight() / 2
-        })
+        });
+        applyPositionInPercentage($element);
     });
 }
 
