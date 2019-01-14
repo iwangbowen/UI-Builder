@@ -203,6 +203,11 @@ function onDrop(event, { draggable, helper, offset, position }) {
         if (component.beforeInit) {
             component.beforeInit(appended.get(0));
         }
+        Vvveb.Undo.addMutation(new ChildListMutation({
+            target: appended.get(0).parentNode,
+            addedNodes: [...appended],
+            nextSibing: appended[0].nextSibing
+        }));
     } else {
         if (draggable.parent().is(this)) {
             applyPositionInPercentage(draggable);
