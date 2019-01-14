@@ -1,4 +1,4 @@
-import { dataComponentId, cloneableComponent } from "../common";
+import { dataComponentId, cloneableComponent, resizableComponent, draggableComponent } from "../common";
 import { buttonid } from './ids';
 import { buttonProperties as properties } from '../properties/button';
 
@@ -8,7 +8,7 @@ const button = {
     name: "Button",
     image: "icons/button.svg",
     sortable: true,
-    html: `<button ${dataComponentId}=${buttonid} type="button" class="btn btn-primary btn-sm ${cloneableComponent}">Search</button>`,
+    html: `<button ${dataComponentId}=${buttonid} type="button" class="btn btn-primary btn-sm ${cloneableComponent} ${draggableComponent}">Search</button>`,
     properties
 };
 

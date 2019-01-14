@@ -18,7 +18,7 @@ import {
     gridDroppablesScope, sortableAndDroppableSelector, rowColumnSelector
 } from '../common';
 import 'core-js/es7/array';
-import { dataComponentId, droppableComponent, draggableComponent, resizableComponent } from '../components/common';
+import { dataComponentId, droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
 
 const gridDroppables = [
     buttonid,
@@ -203,12 +203,20 @@ function drop(event, { draggable, helper, offset }) {
     }
 }
 
-function convertSizeInPercentage(element, width = element.width(), height = element.height()) {
-    const parent = element.parent();
-    return {
-        width: `${width / parent.width() * 100}%`,
-        height: `${height / parent.height() * 100}%`
-    };
+function convertSize(element, width = element.outerWidth(), height = element.outerHeight()) {
+    // Convert to absolute unit or relative uite
+    if (element.hasClass(scaleOnResizeComponent)) {
+        const parent = element.parent();
+        return {
+            width: `${width / parent.outerWidth() * 100}%`,
+            height: `${height / parent.outerHeight() * 100}%`
+        };
+    } else {
+        return {
+            width,
+            height
+        };
+    }
 }
 
 function convertPositionInPercentage(element, position = element.position()) {
@@ -221,7 +229,7 @@ function convertPositionInPercentage(element, position = element.position()) {
 }
 
 function onResizableStop(e, { element }) {
-    const { width, height } = convertSizeInPercentage(element);
+    const { width, height } = convertSize(element);
     element.css({
         width,
         height
@@ -240,22 +248,22 @@ function onDrop(event, { draggable, helper, offset, position }) {
     if (draggable !== helper) {
         const component = Vvveb.Components.matchNode(helper.get(0));
         const appended = appendToContainer(component.html, this);
-        const { width, height } = convertSizeInPercentage(appended);
+
+        const { width, height } = convertSize(appended);
         // Use clone element as dragging element
         // Use current clone element position as appended element position
         const { left, top } = convertPositionInPercentage(appended, getPosition(helper, $(this)));
         appended.css({
             position: 'absolute',
-            // width,
-            // height,
+            width,
+            height,
             left,
             top
         }).draggable(draggableOptions);
-        // appended.resizable({
-        //     handles: 'all',
-        //     stop: onResizableStop
-        // });
-        if (component.droppable) {
+        if (appended.hasClass(resizableComponent)) {
+            appended.resizable(resizableOptions);
+        }
+        if (appended.hasClass(droppableComponent)) {
             appended.droppable({
                 greedy: true,
                 classes: droppableClasses,
@@ -271,12 +279,12 @@ function onDrop(event, { draggable, helper, offset, position }) {
             });
         } else {
             // Compute width and height in pixel and position bewteen draggable and droppale before append
-            const initWidth = draggable.width();
-            const initHeight = draggable.height();
+            const initWidth = draggable.outerWidth();
+            const initHeight = draggable.outerHeight();
             const position = getPosition(draggable, $(this));
 
             draggable.appendTo(this);
-            const { width, height } = convertSizeInPercentage(draggable, initWidth, initHeight);
+            const { width, height } = convertSize(draggable, initWidth, initHeight);
             const { left, top } = convertPositionInPercentage(draggable, position);
             draggable.css({
                 width,
@@ -314,7 +322,13 @@ function initDroppable() {
 
 const draggableOptions = {
     cancel: 'input,textarea,select,option'
-}
+};
+
+const resizableOptions = {
+    cancel: 'input,textarea,select,option',
+    handles: 'all',
+    stop: onResizableStop
+};
 
 function initDraggable() {
     Vvveb.Builder.frameHtml.find(`.${draggableComponent}`)
@@ -322,11 +336,12 @@ function initDraggable() {
 }
 
 function initResizable() {
+    Vvveb.Builder.frameHtml.find('body')
+        .resizable(extend({}, resizableOptions, {
+            handles: 's'
+        }))
     Vvveb.Builder.frameHtml.find(`.${resizableComponent}`)
-        .resizable({
-            handles: 'all',
-            stop: onResizableStop
-        })
+        .resizable(resizableOptions);
 }
 
 function enableDroppableInIframe(elements, scope = gridDroppablesScope) {

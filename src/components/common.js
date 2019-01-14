@@ -60,6 +60,7 @@ const containerComponent = 'container-component';
 const draggableComponent = 'draggable-component';
 const resizableComponent = 'resizable-component';
 const droppableComponent = 'droppable-component';
+const scaleOnResizeComponent = 'scale-on-resize-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -163,5 +164,5 @@ export {
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
-    dataType, dashedBorder, resizableComponent, droppableComponent
+    dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent
 };
