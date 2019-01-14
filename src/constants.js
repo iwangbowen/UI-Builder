@@ -53,8 +53,7 @@ const blankPage = {
 }
 
 const templatePages = [
-    blankPage,
-    pdsPage,
+    blankPage
 ];
 
 const isInIframe = window !== window.parent;
