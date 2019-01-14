@@ -121,7 +121,7 @@ function removeImageDataURL(el) {
     $(el).find('img')
         .each(function () {
             const $img = $(this);
-            if ($img.attr('src').indexOf('data:image') != -1) {
+            if ($img.attr('src') && $img.attr('src').indexOf('data:image') != -1) {
                 $img.attr('src', imagePlaceholder);
             }
         });
