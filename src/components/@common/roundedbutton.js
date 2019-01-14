@@ -1,4 +1,4 @@
-import { dataComponentId, cloneableComponent } from "../common";
+import { dataComponentId, cloneableComponent, draggableComponent } from "../common";
 import { roundedbuttonid } from './ids';
 import { roundedButtonProperty as properties } from '../properties/button';
 
@@ -8,7 +8,7 @@ const roundedbutton = {
     name: "Rounded Button",
     image: "icons/button.svg",
     sortable: true,
-    html: `<button ${dataComponentId}=${roundedbuttonid} type="button" class="btn btn-primary btn-sm btn-circle ${cloneableComponent}">
+    html: `<button ${dataComponentId}=${roundedbuttonid} type="button" class="btn btn-primary btn-sm btn-circle ${cloneableComponent} ${draggableComponent}">
             <i class="fa fa-check"></i>
            </button>`,
     properties
