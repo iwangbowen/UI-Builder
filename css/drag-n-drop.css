@@ -116,3 +116,7 @@ div.row > div.ui-state-hover,
   border-color: #aaa;
   transition: background-color 0.3s;
 }
+
+.resizable-margin-bottom {
+  margin-bottom: 25px;
+}
