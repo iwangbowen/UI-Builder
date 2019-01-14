@@ -3,7 +3,7 @@ import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
-	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements
+	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements, changeOffset
 } from '../util/dom';
 import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
@@ -12,7 +12,8 @@ import {
 	initInteractions,
 	offsetElement,
 	convertAndInitInteractions,
-	removeResizableHandles
+	removeResizableHandles,
+	arrayKeyPressed
 } from '../util/interactions';
 import { containerComponent, draggableComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
@@ -333,7 +334,7 @@ Vvveb.Builder = {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
 					// Disable element move using arrow keys in text node edit mode
 					if (!_this.texteditEl) {
-						document.getElementById('iframeId').contentWindow.arrowKeyMove(e.which, _this.selectedEl);
+						arrayKeyPressed(e.which, _this.selectedEl);
 						e.preventDefault();
 					}
 				} else if (e.ctrlKey) {
@@ -351,30 +352,6 @@ Vvveb.Builder = {
 			}
 		});
 
-		function changeOffset() {
-			if (_this.selectedEl) {
-				const offset = _this.selectedEl.offset();
-				jQuery(selectBox).css(
-					{
-						top: offset.top - _this.frameDoc.scrollTop(),
-						left: offset.left - _this.frameDoc.scrollLeft(),
-						width: _this.selectedEl.outerWidth(),
-						height: _this.selectedEl.outerHeight(),
-						//"display": "block"
-					});
-			}
-			if (_this.highlightEl) {
-				const offset = _this.highlightEl.offset();
-				jQuery("#highlight-box").css(
-					{
-						"top": offset.top - _this.frameDoc.scrollTop(),
-						"left": offset.left - _this.frameDoc.scrollLeft(),
-						"width": _this.highlightEl.outerWidth(),
-						"height": _this.highlightEl.outerHeight(),
-						//"display": "block"
-					});
-			}
-		}
 		// Fix scroll handler not called after changing pages
 		window.FrameWindow.addEventListener('scroll', changeOffset);
 		jQuery(window.FrameWindow).on('resize', changeOffset);

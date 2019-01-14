@@ -3,6 +3,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
+import { getElementWithSpecifiedClass, changeOffset } from './dom';
 
 function initDraggableComponents(item, component) {
     item.draggable(extend({}, draggableOptions, {
@@ -117,8 +118,8 @@ function convertPositionInPercentage(element, position = element.position()) {
     }
 }
 
-function applyPositionInPercentage(element) {
-    const { left, top } = convertPositionInPercentage(element);
+function applyPositionInPercentage(element, position) {
+    const { left, top } = convertPositionInPercentage(element, position);
     element.css({
         left,
         top
@@ -270,6 +271,28 @@ function initResizable() {
         .resizable(resizableOptions);
 }
 
+function arrayKeyPressed(key, element) {
+    changeOffset();
+    element = getElementWithSpecifiedClass(element);
+    let { left, top } = element.position();
+    switch (key) {
+        case 37: // left
+            left -= 1;
+            break;
+        case 38: // up
+            top -= 1;
+            break;
+        case 39: // right
+            left += 1;
+            break;
+        case 40: // down
+            top += 1;
+            break;
+        default: return; // exit this handler for other keys
+    }
+    applyPositionInPercentage(element, { left, top });
+}
+
 export {
     initTopPanelDrag,
     initDraggableComponents,
@@ -278,5 +301,6 @@ export {
     offsetElement,
     convertAndInitInteractions,
     removeResizableHandles,
-    applyPositionInPercentage
+    applyPositionInPercentage,
+    arrayKeyPressed
 };

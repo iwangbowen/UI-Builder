@@ -594,6 +594,31 @@ function applyTheme(filename) {
         });
 }
 
+function changeOffset() {
+    if (Vvveb.Builder.selectedEl) {
+        const offset = Vvveb.Builder.selectedEl.offset();
+        jQuery(selectBox).css(
+            {
+                top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
+                left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
+                width: Vvveb.Builder.selectedEl.outerWidth(),
+                height: Vvveb.Builder.selectedEl.outerHeight(),
+                //"display": "block"
+            });
+    }
+    if (Vvveb.Builder.highlightEl) {
+        const offset = Vvveb.Builder.highlightEl.offset();
+        jQuery("#highlight-box").css(
+            {
+                "top": offset.top - Vvveb.Builder.frameDoc.scrollTop(),
+                "left": offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
+                "width": Vvveb.Builder.highlightEl.outerWidth(),
+                "height": Vvveb.Builder.highlightEl.outerHeight(),
+                //"display": "block"
+            });
+    }
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
@@ -602,5 +627,5 @@ export {
     middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup, applyTheme, getCurrentThemeName
+    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset
 };
