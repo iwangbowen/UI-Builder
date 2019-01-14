@@ -167,7 +167,7 @@ function convertAndInitInteractions(element, position) {
 
 // Use appendTo wrapper to deal with body as container
 function appendTo(element, container) {
-    if (container.find('script')) {
+    if (container.find('script').length) {
         return element.insertBefore(container.find('script:first'));
     } else {
         return element.appendTo(container);
