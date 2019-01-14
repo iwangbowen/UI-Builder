@@ -183,6 +183,9 @@ function onDrop(event, { draggable, helper, offset, position }) {
         // Use clone element as dragging element
         // Use current clone element position as appended element position
         convertAndInitInteractions(appended, getOffsetBetweenElements(helper, $(this)));
+        if (component.afterDrop) {
+            component.afterDrop(appended.get(0));
+        }
         if (component.beforeInit) {
             component.beforeInit(appended.get(0));
         }

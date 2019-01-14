@@ -1,5 +1,5 @@
 import extend from 'lodash/extend';
-import { dataComponentId, configurableComponent, placeholderComponentHighlight } from '../common';
+import { dataComponentId, configurableComponent, placeholderComponentHighlight, defaultSizeStyle, dashedBorder, draggableComponent, resizableComponent, droppableComponent, scaleOnResizeComponent } from '../common';
 import { chartid } from './ids';
 import dragHtmlComponent from './dragHtmlComponent';
 
@@ -8,7 +8,7 @@ const chart = extend({}, dragHtmlComponent, {
     attributes: ["data-component-chartjs"],
     image: "icons/chart.svg",
     dragHtml: `<img ${dataComponentId}="${chartid}" src="libs/builder/icons/chart.svg" style="width: 75px; height: 75px;">`,
-    html: `<div ${dataComponentId}="${chartid}" class="${configurableComponent} ${placeholderComponentHighlight}" style="width:100%; height:100%;">\
+    html: `<div ${dataComponentId}="${chartid}" class="${configurableComponent} ${dashedBorder} ${draggableComponent} ${resizableComponent} ${droppableComponent} ${scaleOnResizeComponent}" style="${defaultSizeStyle}">\
 		   </div>`
 });
 
