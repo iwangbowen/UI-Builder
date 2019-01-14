@@ -143,6 +143,13 @@ function getOffsetBetweenElements(a, b) {
     };
 }
 
+function getOffset(offset1, offset2) {
+    return {
+        left: offset1.left - offset2.left,
+        top: offset1.top - offset2.top
+    }
+}
+
 function offsetElement(element, { leftOffset, topOffset }) {
     const { left, top } = element.position();
     element.css({
@@ -196,7 +203,12 @@ function onDrop(event, { draggable, helper, offset, position }) {
         const appended = appendTo($(component.html), $(this));
         // Use clone element as dragging element
         // Use current clone element position as appended element position
-        convertAndInitInteractions(appended, getOffsetBetweenElements(helper, $(this)));
+        // Compute droppable offset relative to the viewport and helper offset
+        // which is offset bewteen helper and iframe
+        // Subtract them to get offset bewteen draggable and droppable
+        const droppableOffset = this.getBoundingClientRect();
+        const helperOffset = getOffsetBetweenElements(helper, $('#iframeId'));
+        convertAndInitInteractions(appended, getOffset(helperOffset, droppableOffset));
         if (component.afterDrop) {
             component.afterDrop(appended.get(0));
         }
