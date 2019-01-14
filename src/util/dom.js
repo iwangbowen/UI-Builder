@@ -509,34 +509,33 @@ function middleAlign() {
     moveToMiddle(getMiddlest());
 }
 
-function leftAlignCallback(event) {
-    leftAlign();
-    return preventDefault(event);
-}
-
-function rightAlignCallback(event) {
-    rightAlign();
-    return preventDefault(event);
-}
-
-function topAlignCallback(event) {
-    topAlign();
-    return preventDefault(event);
-}
-
-function bottomAlignCallback(event) {
-    bottomAlign();
-    return preventDefault(event);
-}
-
-function centerAlignCallback(event) {
-    centerAlign();
-    return preventDefault(event);
-}
-
-function middleAlignCallback(event) {
-    middleAlign();
-    return preventDefault(event);
+function alignCallback(direction) {
+    return function (event) {
+        console.log(direction);
+        switch (direction) {
+            case 'left':
+                leftAlign();
+                break;
+            case 'right':
+                rightAlign();
+                break;
+            case 'top':
+                topAlign();
+                break;
+            case 'bottom':
+                bottomAlign();
+                break;
+            case 'center':
+                centerAlign();
+                break;
+            case 'middle':
+                middleAlign();
+                break;
+            default:
+        }
+        hideAuxiliaryElements();
+        return preventDefault(event);
+    };
 }
 
 // stackoverflow answer to how to check two elements overlap
@@ -620,10 +619,8 @@ function changeOffset() {
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
-    addOrRemoveElement, highlightOnMove, highlightwhenSelected, leftAlignCallback,
-    rightAlignCallback, topAlignCallback, bottomAlignCallback, centerAlignCallback,
-    middleAlignCallback, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
+    addOrRemoveElement, highlightOnMove, highlightwhenSelected, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset
+    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback
 };

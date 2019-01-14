@@ -1,9 +1,8 @@
 import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
-	middleAlignCallback, centerAlignCallback, topAlignCallback, leftAlignCallback, rightAlignCallback,
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
-	getElementWithSpecifiedClass, bottomAlignCallback, loadCallback, hideAuxiliaryElements, changeOffset
+	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback
 } from '../util/dom';
 import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
@@ -242,12 +241,12 @@ Vvveb.Builder = {
 			return false;
 		});
 
-		$('#left-align').on('click', leftAlignCallback);
-		$('#center-align').on('click', centerAlignCallback);
-		$('#right-align').on('click', rightAlignCallback);
-		$('#top-align').on('click', topAlignCallback);
-		$('#middle-align').on('click', middleAlignCallback);
-		$('#bottom-align').on('click', bottomAlignCallback);
+		$('#left-align').on('click', alignCallback('left'));
+		$('#center-align').on('click', alignCallback('center'));
+		$('#right-align').on('click', alignCallback('right'));
+		$('#top-align').on('click', alignCallback('top'));
+		$('#middle-align').on('click', alignCallback('middle'));
+		$('#bottom-align').on('click', alignCallback('bottom'));
 	},
 	_initHightlight() {
 		const _this = this;
