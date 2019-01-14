@@ -199,7 +199,7 @@ const table = {
     image: "icons/table.svg",
     name: "Base ag-Grid",
     dragHtml: `<img ${dataComponentId}="${commontableid}" src="libs/builder/icons/table.svg" style="width: 100px; height: auto;">`,
-    html: `<div style="width: 100px; height: 50px;" class="resize-drag ag-theme-blue horizontal-stripes"></div>`,
+    html: `<div style="width: 100px; height: 50px;" class="ag-theme-blue"></div>`,
     getDropHtml() {
         return this.html;
     },
@@ -207,9 +207,6 @@ const table = {
     getRenderElement(node) {
         const parents = $(node).parents(`[${dataTableId}]`);
         return parents.length ? parents[0] : node;
-    },
-    afterDrop(node) {
-        $(node).removeClass('horizontal-stripes');
     },
     beforeInit(node) {
         let tableKey = $(node).attr(dataTableId);
