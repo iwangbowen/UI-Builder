@@ -6,8 +6,7 @@ import {
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
     removeGridsterStylesheet, generateScripts,
     changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
-    restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent,
-    transformGridsterStyle
+    restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -206,8 +205,7 @@ function getBeautifiedHtml(doc, withExternalFiles = false, containsShared = true
     if (!containsShared && cache[key] && cache[key].html === origHtml) {
         return cache[key].beautifiedHtml;
     } else {
-        const width = $(doc).find('body div.gridster').width();
-        let html = transformGridsterStyle(origHtml, width);
+        let html = origHtml;
         // Remove current active tab class with empty string
         html = html.replace(/ ui-tabs-active ui-state-active/g, '');
         // Dom manipulation
