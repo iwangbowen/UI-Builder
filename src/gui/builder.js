@@ -11,9 +11,10 @@ import {
 	initDraggableComponents,
 	initInteractions,
 	offsetElement,
-	convertAndInitInteractions
+	convertAndInitInteractions,
+	removeResizableHandles
 } from '../util/interactions';
-import { containerComponent } from '../components/common';
+import { containerComponent, draggableComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
 import { isInIframe } from '../constants';
 
@@ -182,12 +183,18 @@ Vvveb.Builder = {
 			if (original.length) {
 				const cloned = original.clone();
 				original.after(cloned);
+				// Cloned elements would have resizable handles
+				// which would interfere with cloned elements resizable
+				removeResizableHandles(cloned);
 				// Add left and top offset for cloned element
 				offsetElement(cloned, {
 					leftOffset: 10,
 					topOffset: 10
 				});
 				convertAndInitInteractions(cloned);
+				cloned.find(`.${draggableComponent}`).each(function () {
+					convertAndInitInteractions($(this));
+				});
 
 				_this.selectedEl = cloned.click();
 

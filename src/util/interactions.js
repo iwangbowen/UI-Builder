@@ -142,6 +142,10 @@ function offsetElement(element, { leftOffset, topOffset }) {
     return element;
 }
 
+function removeResizableHandles(element) {
+    return element.find('div.ui-resizable-handle').remove();
+}
+
 function convertAndInitInteractions(element, position) {
     const { width, height } = convertSize(element);
     // Use clone element as dragging element
@@ -269,5 +273,6 @@ export {
     initDroppableComponents,
     initInteractions,
     offsetElement,
-    convertAndInitInteractions
+    convertAndInitInteractions,
+    removeResizableHandles
 };
