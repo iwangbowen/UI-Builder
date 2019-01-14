@@ -15,6 +15,7 @@ function initDraggableComponents(item, component) {
             const $element = $(html).appendTo($('body'));
             return $element;
         },
+        revert: 'invalid'
     }))
 }
 
