@@ -11,7 +11,7 @@ import {
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
-    importedPageHref, templatePages, pdsPage, isInIframe, generatedScriptType, generatedExecuteScriptClass, customThemeStyle, customThemeStyleId, dataThemeName
+    importedPageHref, templatePages, isInIframe, generatedScriptType, generatedExecuteScriptClass, customThemeStyle, customThemeStyleId, dataThemeName, blankPage
 } from '../constants';
 import curry from 'lodash/curry';
 import includes from 'lodash/includes';
@@ -99,7 +99,7 @@ function initBuilderPage() {
         setPageSrcdoc(page);
     } else {
         if (!page) {
-            page = pdsPage;
+            page = blankPage;
         }
         window.location.href = `#${addDatetime(page.name)}`;
     }

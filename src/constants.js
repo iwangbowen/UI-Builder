@@ -72,7 +72,7 @@ export {
     importedPageName, importedPageTitle, importedPageHref, baseHref, defaultFilename,
     templatePages, html_beaufify_options, removeableScript, tableScriptClass, reservedScript,
     multiSelectedClass, appendableScript, nonTemplateScriptType, javascriptScriptType,
-    dataScriptType, tooltipType, pdsPage, gridPage, isInBuilder, isInIframe,
+    dataScriptType, tooltipType, pdsPage, gridPage, blankPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
     generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint,
     customThemeStyleId, dataThemeName
