@@ -3,8 +3,9 @@ import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThem
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
-import { dialog, themesDialog, themesForm } from '../util/dialog';
+import { dialog, themesForm } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
+import { requestErrorDialogId } from '../shared';
 
 Vvveb.Actions = {
     init() {
@@ -81,20 +82,23 @@ Vvveb.Actions = {
         $('#file-input').click();
     },
     switchTheme() {
-        getThemeList().then(data => {
-            const options = data.filter(theme => theme.endsWith('.css')).reduce((prev, cur) => {
-                return `${prev}<option value="${cur}">${cur}</option>`;
-            }, '');
-            themesForm.find('select').html(options)
-                .selectmenu({
-                    width: 300
-                });
-            const currentThemeName = getCurrentThemeName();
-            if (currentThemeName) {
-                themesForm.find('select').val(currentThemeName).selectmenu('refresh');
-            }
-            themesDialog.dialog('open');
-        })
+        getThemeList()
+            .then(data => {
+                const options = data.filter(theme => theme.endsWith('.css')).reduce((prev, cur) => {
+                    return `${prev}<option value="${cur}">${cur}</option>`;
+                }, '');
+                themesForm.find('select').html(options)
+                    .selectmenu({
+                        width: 300
+                    });
+                const currentThemeName = getCurrentThemeName();
+                if (currentThemeName) {
+                    themesForm.find('select').val(currentThemeName).selectmenu('refresh');
+                }
+            })
+            .catch(e => {
+                $(`#${requestErrorDialogId}`).dialog();
+            });
     },
     downloadWithExternalFiles() {
         getBeautifiedHtml(window.FrameDocument, true)
