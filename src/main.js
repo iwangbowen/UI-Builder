@@ -11,7 +11,7 @@ import {
 import { beBackwardCompatible } from './util/common';
 import { isInIframe } from './constants';
 import { initMessageListener } from './message';
-import { initTopPanelDrag } from './util/drag-n-drop';
+import { initTopPanelDrag } from './util/interactions';
 
 $(document).ready(function () {
     beBackwardCompatible();

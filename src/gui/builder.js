@@ -8,12 +8,12 @@ import {
 import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
-	initIframeSortable, enableSortableAndDroppableInIframe, enableDroppableInIframe,
-	disableSortable, removeSortableAndGridsterDisability, initResize, initDraggableComponents, initRowColumnDrop,
-	initInteractions
-} from '../util/drag-n-drop';
-import { sortableClass, cloneableComponent, containerComponent } from '../components/common';
-import { sortableAndDroppableSelector, gridWidgetSelector, containerSelector } from '../common';
+	initDraggableComponents,
+	initInteractions,
+	offsetElement,
+	convertAndInitInteractions
+} from '../util/interactions';
+import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
 import { isInIframe } from '../constants';
 
@@ -180,23 +180,17 @@ Vvveb.Builder = {
 		$("#clone-box").on("click", function (event) {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
 			if (original.length) {
-				const component = Vvveb.Components.matchNode(original.get(0));
 				const cloned = original.clone();
-				if (!component.sortable && !cloned.hasClass(sortableClass) && !cloned.hasClass(cloneableComponent)) {
-					const { left, top } = cloned.offset();
-					cloned.offset({
-						left: left + 10,
-						top: top + 10
-					});
-				}
 				original.after(cloned);
-				if (component && (component.sortable || component.droppable)) {
-					enableSortableAndDroppableInIframe(cloned, undefined, undefined, component.droppable, component.sortable);
-				}
-				if (component && component.childrenSortable && component.childrenDroppable) {
-					enableSortableAndDroppableInIframe(cloned.children());
-				}
+				// Add left and top offset for cloned element
+				offsetElement(cloned, {
+					leftOffset: 10,
+					topOffset: 10
+				});
+				convertAndInitInteractions(cloned);
+
 				_this.selectedEl = cloned.click();
+
 				const node = cloned.get(0);
 				Vvveb.Undo.addMutation(new ChildListMutation({
 					target: node.parentNode,

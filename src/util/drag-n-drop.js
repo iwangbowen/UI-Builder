@@ -91,20 +91,6 @@ function getCursorAt($element) {
     }
 }
 
-function initDraggableComponents(item, component) {
-    item.draggable(extend({}, draggableOptions, {
-        iframeFix: true,
-        // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
-        // iframe scroll issue
-        iframeScroll: true,
-        helper() {
-            const html = item.prop('outerHTML');
-            const $element = $(html).appendTo($('body'));
-            return $element;
-        },
-    }))
-}
-
 function initComponentDrag(item, component) {
     const html = component.dragHtml || component.html;
     const cursorAt = getCursorAt($(html));
@@ -127,15 +113,6 @@ function initComponentDrag(item, component) {
         stop() {
         },
         revert: 'invalid'
-    });
-}
-
-function initTopPanelDrag() {
-    $('#top-panel').draggable({
-        iframeFix: true,
-        axis: 'x',
-        cursor: 'e-resize',
-        containment: "parent"
     });
 }
 
@@ -201,147 +178,6 @@ function drop(event, { draggable, helper, offset }) {
             nextSibing: appendedElement[0].nextSibing
         }));
     }
-}
-
-function convertSize(element, width = element.outerWidth(), height = element.outerHeight()) {
-    // Convert to absolute unit or relative uite
-    if (element.hasClass(scaleOnResizeComponent)) {
-        const parent = element.parent();
-        return {
-            width: `${width / parent.outerWidth() * 100}%`,
-            height: `${height / parent.outerHeight() * 100}%`
-        };
-    } else {
-        return {
-            width,
-            height
-        };
-    }
-}
-
-function convertPositionInPercentage(element, position = element.position()) {
-    const parent = element.parent();
-    const { left, top } = position;
-    return {
-        left: `${left / parent.width() * 100}%`,
-        top: `${top / parent.height() * 100}%`
-    }
-}
-
-function onResizableStop(e, { element }) {
-    const { width, height } = convertSize(element);
-    element.css({
-        width,
-        height
-    });
-}
-
-function getPosition(a, b) {
-    return {
-        left: a.offset().left - b.offset().left,
-        top: a.offset().top - b.offset().top
-    };
-}
-
-function onDrop(event, { draggable, helper, offset, position }) {
-    // Drag elemetn from component list
-    if (draggable !== helper) {
-        const component = Vvveb.Components.matchNode(helper.get(0));
-        const appended = appendToContainer(component.html, this);
-
-        const { width, height } = convertSize(appended);
-        // Use clone element as dragging element
-        // Use current clone element position as appended element position
-        const { left, top } = convertPositionInPercentage(appended, getPosition(helper, $(this)));
-        appended.css({
-            position: 'absolute',
-            width,
-            height,
-            left,
-            top
-        }).draggable(draggableOptions);
-        if (appended.hasClass(resizableComponent)) {
-            appended.resizable(resizableOptions);
-        }
-        if (appended.hasClass(droppableComponent)) {
-            appended.droppable({
-                greedy: true,
-                classes: droppableClasses,
-                drop: onDrop
-            });
-        }
-    } else {
-        if (draggable.parent().is(this)) {
-            const { left, top } = convertPositionInPercentage(draggable);
-            draggable.css({
-                left,
-                top
-            });
-        } else {
-            // Compute width and height in pixel and position bewteen draggable and droppale before append
-            const initWidth = draggable.outerWidth();
-            const initHeight = draggable.outerHeight();
-            const position = getPosition(draggable, $(this));
-
-            draggable.appendTo(this);
-            const { width, height } = convertSize(draggable, initWidth, initHeight);
-            const { left, top } = convertPositionInPercentage(draggable, position);
-            draggable.css({
-                width,
-                height,
-                left,
-                top
-            });
-        }
-    }
-}
-
-function initDroppableComponents(elements) {
-    Vvveb.Builder.frameHtml.find('body')
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        });
-}
-
-function initInteractions() {
-    initDroppable();
-    initDraggable();
-    initResizable();
-}
-
-function initDroppable() {
-    Vvveb.Builder.frameHtml.find(`.${droppableComponent}`)
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        })
-}
-
-const draggableOptions = {
-    cancel: 'input,textarea,select,option'
-};
-
-const resizableOptions = {
-    cancel: 'input,textarea,select,option',
-    handles: 'all',
-    stop: onResizableStop
-};
-
-function initDraggable() {
-    Vvveb.Builder.frameHtml.find(`.${draggableComponent}`)
-        .draggable(draggableOptions);
-}
-
-function initResizable() {
-    Vvveb.Builder.frameHtml.find('body')
-        .resizable(extend({}, resizableOptions, {
-            handles: 's'
-        }))
-    Vvveb.Builder.frameHtml.find(`.${resizableComponent}`)
-        .resizable(resizableOptions);
 }
 
 function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
@@ -636,7 +472,6 @@ function initComponentDragWithInteract() {
 }
 
 export {
-    initTopPanelDrag,
     initComponentDrag,
     initIframeDrag,
     initComponentDragWithInteract,
@@ -652,8 +487,5 @@ export {
     enableSortable,
     disableSortable,
     removeSortableAndGridsterDisability,
-    initResize,
-    initDraggableComponents,
-    initDroppableComponents,
-    initInteractions
+    initResize
 };
