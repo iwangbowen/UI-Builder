@@ -3,7 +3,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
-import { getElementWithSpecifiedClass, changeOffset } from './dom';
+import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements } from './dom';
 import { componentBgImgHeight } from '../constants';
 
 function initDraggableComponents(item, component) {
@@ -13,6 +13,8 @@ function initDraggableComponents(item, component) {
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
         // iframe scroll issue
         iframeScroll: true,
+        drag: null,
+        stop: null,
         helper() {
             const html = item.prop('outerHTML');
             const $element = $(html).appendTo($('body'));
@@ -258,8 +260,40 @@ function initInteractions() {
     initResizable();
 }
 
+// Initilize this array when multi-selected drag starts
+let selectedOffsetsRelativeToDraggable = [];
+
 const draggableOptions = {
-    cancel: 'input,textarea,select,option'
+    cancel: 'input,textarea,select,option',
+    start() {
+        if (isSelectedElement(this)) {
+            selectedOffsetsRelativeToDraggable = getSelectedElements()
+                .map(selected => getOffsetBetweenElements($(this), $(selected)));
+        }
+    },
+    drag(e, { offset }) {
+        if (isSelectedElement(this)) {
+            // offset refers to draggable element offset which is not applied to
+            // the draggable element yet
+            getSelectedElements()
+                .forEach((selected, index) => {
+                    const $selected = $(selected);
+                    const { left: dx, top: dy } = selectedOffsetsRelativeToDraggable[index];
+                    $selected.offset(addOffset(offset, {
+                        dx: -dx,
+                        dy: -dy
+                    }));
+                });
+        }
+    },
+    stop() {
+        if (isSelectedElement(this)) {
+            getSelectedElements()
+                .forEach(selected => {
+                    applyPositionInPercentage($(selected));
+                });
+        }
+    }
 };
 
 const resizableOptions = {

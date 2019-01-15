@@ -332,6 +332,10 @@ function addOrRemoveElement(element) {
     addStyleForSelectedElements();
 }
 
+function isSelectedElement(element) {
+    return selectedElements.some(selected => selected === element);
+}
+
 function clearSelectedElements() {
     selectedElements = [];
     removeStyleForSelectedElements(Vvveb.Builder.frameDoc.get(0));
@@ -621,5 +625,5 @@ export {
     addOrRemoveElement, highlightOnMove, highlightwhenSelected, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback
+    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback, isSelectedElement
 };
