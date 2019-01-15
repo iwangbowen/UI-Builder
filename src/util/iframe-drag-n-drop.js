@@ -1,6 +1,6 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
-import { popupCommon } from './popup-in-builder-gridster-snap';
+import { popupCommon } from './popup-in-builder';
 import { tableSelector } from './selectors';
 import { dataTableId, dataComponentId } from '../components/common';
 import { dummyData, gridOptions, tooltipOptions } from '../common';
