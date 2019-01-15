@@ -1,7 +1,6 @@
-import { hideToolBoxes } from './iframe-drag-n-drop';
+import { hideAuxiliaryElementsInParent } from './iframe-drag-n-drop';
 import { addOrEditPopupFormSelector, getDetailPopupIdSelector } from '../common';
 import wrap from 'lodash/wrap';
-import isElement from 'lodash/isElement';
 
 function setDroppable(option, containerSelector) {
     window.parent.setDroppable(option, containerSelector);
@@ -12,10 +11,9 @@ function setDroppable(option, containerSelector) {
 const detailPopups = [];
 
 function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
-    hideToolBoxes();
     setDroppable('disable');
     detailPopups.push(popup);
-    setDroppable('enable',getDetailPopupIdSelector(popup));
+    setDroppable('enable', getDetailPopupIdSelector(popup));
     return func(popup, url, data);
 }
 
@@ -38,6 +36,12 @@ function _popupCommon(popup) {
         area: ['660px', '330px'],
         skin: 'layui-layer-rim', //加上边框
         content: popup,
+        success: function (layero, index) {
+            // Hide auxiliary elements in next event loop
+            setTimeout(() => {
+                hideAuxiliaryElementsInParent();
+            }, 0);
+        },
         end
     });
 }

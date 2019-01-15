@@ -1,4 +1,4 @@
-import { hideToolBoxes } from './iframe-drag-n-drop';
+import { hideAuxiliaryElementsInParent } from './iframe-drag-n-drop';
 import { popupDelete } from './popup-in-builder-gridster-snap';
 
 function initGridOutofBuilder() {
@@ -38,10 +38,10 @@ function initGridInBuilder() {
             max_rows: 60,
             resize: {
                 enabled: true,
-                start: hideToolBoxes
+                start: hideAuxiliaryElementsInParent
             },
             draggable: {
-                start: hideToolBoxes,
+                start: hideAuxiliaryElementsInParent,
                 // exclude form children elements to prevent intervention with jquery-ui sortable
                 handle: '*:not(form *, button, div.row *)'
             }
@@ -56,7 +56,7 @@ function initGridInBuilder() {
                 () => {
                     layer.closeAll('dialog');
                     gridster.remove_widget($(this).parent());
-                    hideToolBoxes();
+                    hideAuxiliaryElementsInParent();
                 });
         });
     }

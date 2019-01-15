@@ -6,7 +6,7 @@ import { dataTableId, dataComponentId } from '../components/common';
 import { dummyData, gridOptions, tooltipOptions } from '../common';
 import { tabsid } from '../components/@common/ids';
 
-function hideToolBoxes() {
+function hideAuxiliaryElementsInParent() {
     window.parent
         && window.parent.hideAuxiliaryElements
         && window.parent.hideAuxiliaryElements();
@@ -334,5 +334,5 @@ function initTooltip() {
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData, hideToolBoxes, removeBaseTag, initTabs, initTooltip
+    setTableDummyData, hideAuxiliaryElementsInParent, removeBaseTag, initTabs, initTooltip
 };
