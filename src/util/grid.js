@@ -1,5 +1,5 @@
 import { hideToolBoxes } from './iframe-drag-n-drop';
-import { popupDelete } from './popup-in-builder';
+import { popupDelete } from './popup-in-builder-gridster-snap';
 
 function initGridOutofBuilder() {
     if ($('.gridster').length) {

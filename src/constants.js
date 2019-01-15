@@ -33,6 +33,8 @@ const tooltipType = 'tooltip';
 const multiSelectedClass = 'selected-with-ctrl-key';
 const devDep = 'dev-dep';
 
+const componentBgImgHeight = '42';
+
 const pdsPage = {
     name: `pds`,
     title: `pds`,
@@ -75,5 +77,5 @@ export {
     dataScriptType, tooltipType, pdsPage, gridPage, blankPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
     generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint,
-    customThemeStyleId, dataThemeName
+    customThemeStyleId, dataThemeName, componentBgImgHeight
 };

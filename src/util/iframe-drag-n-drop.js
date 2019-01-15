@@ -1,10 +1,9 @@
 import 'core-js/es6/array';
 import MoveMutation from '../models/mutation/move-mutation';
-import { popupAdd, popupEdit, popupDelete, popupDetail, exportData, popupCommon } from '../util/popup-in-builder';
+import { popupCommon } from './popup-in-builder-gridster-snap';
 import { tableSelector } from './selectors';
 import { dataTableId, dataComponentId } from '../components/common';
 import { dummyData, gridOptions, tooltipOptions } from '../common';
-import { enableGridster, disableGridster } from './grid';
 import { tabsid } from '../components/@common/ids';
 
 function hideToolBoxes() {
@@ -316,14 +315,7 @@ function setTableDummyData() {
 
 function setGlobalVariables() {
     self.hideAlignmentLines = hideAlignmentLines;
-    self.popupAdd = popupAdd;
-    self.popupEdit = popupEdit;
-    self.popupDelete = popupDelete;
-    self.popupDetail = popupDetail;
     self.popupCommon = popupCommon;
-    self.exportData = exportData;
-    self.enableGridster = enableGridster;
-    self.disableGridster = disableGridster;
 }
 
 // Remove base tag after document loaded to work around jQuery UI Tab

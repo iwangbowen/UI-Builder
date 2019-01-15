@@ -30,10 +30,10 @@ import {
 } from '../components/common';
 import { addDatetime } from './common';
 import 'core-js/es7/array';
-import { enableSortableAndDroppable, disableDroppable, enableDroppable, enableSortableAndDroppableInIframe } from './drag-n-drop';
+import { enableSortableAndDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
-import { applyPositionInPercentage } from './interactions';
+import { applyPositionInPercentage, setDroppable, initDroppable } from './interactions';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -555,8 +555,7 @@ function setGlobalVariables() {
     window.Vvveb = Vvveb;
     window.enableSortableAndDroppable = enableSortableAndDroppable;
     window.hideAuxiliaryElements = hideAuxiliaryElements;
-    window.disableDroppable = disableDroppable;
-    window.enableDroppable = enableDroppable;
+    window.setDroppable = setDroppable;
 }
 
 function getClickedPopup(selector) {
@@ -571,7 +570,8 @@ function createClickedPopup(id) {
     const popup = $(detailPopup)
         .attr('id', id)
         .insertBefore(Vvveb.Builder.frameBody.find('script').first());
-    enableSortableAndDroppableInIframe(popup.find('div.content'));
+
+    initDroppable(popup);
     return popup;
 }
 

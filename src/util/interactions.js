@@ -4,8 +4,10 @@ import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
 import { getElementWithSpecifiedClass, changeOffset } from './dom';
+import { componentBgImgHeight } from '../constants';
 
 function initDraggableComponents(item, component) {
+    const width = item.width();
     item.draggable(extend({}, draggableOptions, {
         iframeFix: true,
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
@@ -17,7 +19,7 @@ function initDraggableComponents(item, component) {
             return $element;
         },
         // 108 is component li width, 42 is bg img height
-        cursorAt: { left: 108 / 2, top: 42 / 2 },
+        cursorAt: { left: 35, top: componentBgImgHeight / 2 },
         revert: 'invalid'
     }))
 }
@@ -115,8 +117,8 @@ function convertPositionInPercentage(element, position = element.position()) {
     const parent = element.parent();
     const { left, top } = position;
     return {
-        left: `${left / parent.width() * 100}%`,
-        top: `${top / parent.height() * 100}%`
+        left: `${left / parent.outerWidth() * 100}%`,
+        top: `${top / parent.outerHeight() * 100}%`
     }
 }
 
@@ -159,6 +161,13 @@ function offsetElement(element, { leftOffset, topOffset }) {
     return element;
 }
 
+function addOffset({ left, top }, { dx, dy }) {
+    return {
+        left: left + dx,
+        top: top + dy
+    };
+}
+
 function removeResizableHandles(element) {
     return element.find('div.ui-resizable-handle').remove();
 }
@@ -199,6 +208,7 @@ function appendTo(element, container) {
 function onDrop(event, { draggable, helper, offset, position }) {
     // Drag elemetn from component list
     if (draggable !== helper) {
+        console.log(offset, position);
         const component = Vvveb.Components.matchNode(helper.get(0));
         const appended = appendTo($(component.html), $(this));
         // Use clone element as dragging element
@@ -208,7 +218,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
         // Subtract them to get offset bewteen draggable and droppable
         const droppableOffset = this.getBoundingClientRect();
         const helperOffset = getOffsetBetweenElements(helper, $('#iframeId'));
-        convertAndInitInteractions(appended, getOffset(helperOffset, droppableOffset));
+        convertAndInitInteractions(appended, addOffset(getOffset(helperOffset, droppableOffset), { dx: 0, dy: 0 }));
         if (component.afterDrop) {
             component.afterDrop(appended.get(0));
         }
@@ -242,28 +252,10 @@ function onDrop(event, { draggable, helper, offset, position }) {
     }
 }
 
-function initDroppableComponents(elements) {
-    Vvveb.Builder.frameHtml.find('body')
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        });
-}
-
 function initInteractions() {
     initDroppable();
     initDraggable();
     initResizable();
-}
-
-function initDroppable() {
-    Vvveb.Builder.frameHtml.find(`.${droppableComponent}`)
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        })
 }
 
 const draggableOptions = {
@@ -312,14 +304,37 @@ function arrayKeyPressed(key, element) {
     applyPositionInPercentage(element, { left, top });
 }
 
+function setDroppable(option, context = Vvveb.Builder.frameHtml) {
+    console.log(context.find(`.${droppableComponent}`));
+    context.find(`.${droppableComponent}`).droppable(option);
+}
+
+function setDroppable(option, containerSelector) {
+    if (containerSelector) {
+        Vvveb.Builder.frameHtml.find(`${containerSelector} .${droppableComponent}`).droppable(option);
+    } else {
+        Vvveb.Builder.frameHtml.find(`.${droppableComponent}`).droppable(option);
+    }
+}
+
+function initDroppable(context = Vvveb.Builder.frameHtml) {
+    context.find(`.${droppableComponent}`)
+        .droppable({
+            greedy: true,
+            classes: droppableClasses,
+            drop: onDrop
+        });
+}
+
 export {
     initTopPanelDrag,
     initDraggableComponents,
-    initDroppableComponents,
+    initDroppable,
     initInteractions,
     offsetElement,
     convertAndInitInteractions,
     removeResizableHandles,
     applyPositionInPercentage,
-    arrayKeyPressed
+    arrayKeyPressed,
+    setDroppable
 };

@@ -4,7 +4,7 @@ import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
 	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback
 } from '../util/dom';
-import { noneditableSelector, selectBox, componentSelector } from '../util/selectors';
+import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initDraggableComponents,
@@ -51,10 +51,6 @@ Vvveb.Builder = {
 
 
 			initInteractions();
-			// enableDroppableInIframe(`${gridWidgetSelector}, ${containerSelector}`);
-			// enableSortableAndDroppableInIframe(sortableAndDroppableSelector);
-			// initResize();
-			// initIframeSortable();
 			return this._initHightlight();
 		});
 	},

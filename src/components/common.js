@@ -61,6 +61,8 @@ const draggableComponent = 'draggable-component';
 const resizableComponent = 'resizable-component';
 const droppableComponent = 'droppable-component';
 const scaleOnResizeComponent = 'scale-on-resize-component';
+const horizontalScaleComponent = 'horizontal-scale-component';
+const verticalScaleComponent = 'vertical-scale-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -166,5 +168,5 @@ export {
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
-    defaultSizeStyle
+    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent
 };
