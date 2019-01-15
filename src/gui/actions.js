@@ -3,7 +3,7 @@ import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThem
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
-import { dialog, themesForm } from '../util/dialog';
+import { dialog, themesForm, themesDialog } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
 import { requestErrorDialogId } from '../shared';
 
@@ -95,6 +95,7 @@ Vvveb.Actions = {
                 if (currentThemeName) {
                     themesForm.find('select').val(currentThemeName).selectmenu('refresh');
                 }
+                themesDialog.dialog('open');
             })
             .catch(e => {
                 $(`#${requestErrorDialogId}`).dialog();
