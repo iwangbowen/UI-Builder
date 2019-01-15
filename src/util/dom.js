@@ -34,6 +34,8 @@ import { enableSortableAndDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
 import { applyPositionInPercentage, setDroppable, initDroppable } from './interactions';
+import { basicDialog } from './dialog';
+import { errorDialogTitle, elementsCannotBeAlignedContent } from '../shared';
 
 function getStyle(el, styleProp) {
     value = "";
@@ -515,28 +517,35 @@ function middleAlign() {
 
 function alignCallback(direction) {
     return function (event) {
-        switch (direction) {
-            case 'left':
-                leftAlign();
-                break;
-            case 'right':
-                rightAlign();
-                break;
-            case 'top':
-                topAlign();
-                break;
-            case 'bottom':
-                bottomAlign();
-                break;
-            case 'center':
-                centerAlign();
-                break;
-            case 'middle':
-                middleAlign();
-                break;
-            default:
+        if (areSiblings(getSelectedElements())) {
+            switch (direction) {
+                case 'left':
+                    leftAlign();
+                    break;
+                case 'right':
+                    rightAlign();
+                    break;
+                case 'top':
+                    topAlign();
+                    break;
+                case 'bottom':
+                    bottomAlign();
+                    break;
+                case 'center':
+                    centerAlign();
+                    break;
+                case 'middle':
+                    middleAlign();
+                    break;
+                default:
+            }
+            hideAuxiliaryElements();
+        } else {
+            basicDialog.set({
+                title: errorDialogTitle,
+                content: elementsCannotBeAlignedContent
+            }).open();
         }
-        hideAuxiliaryElements();
         return preventDefault(event);
     };
 }
@@ -619,11 +628,21 @@ function changeOffset() {
     }
 }
 
+function areSiblings(elements) {
+    if (elements.length) {
+        const siblings = $(elements[0]).siblings().add(elements[0]);
+        return elements.every(element => siblings.is(element));
+    } else {
+        return false;
+    }
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
     addOrRemoveElement, highlightOnMove, highlightwhenSelected, getElementWithSpecifiedClass, isOverlap, generateHtmlFromLocalStorageItemKey,
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
-    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback, isSelectedElement
+    createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback, isSelectedElement,
+    areSiblings
 };

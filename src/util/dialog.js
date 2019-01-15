@@ -3,7 +3,7 @@ import JSZip from 'jszip';
 import { getBeautifiedHtml, applyTheme } from './dom';
 import {
     defaultHtmlFilename, defaultZipFilename, defaultJavaScriptFilename,
-    defaultBundledHtmlFilename
+    defaultBundledHtmlFilename, basicDialogId
 } from '../shared';
 import { generateSharedJSCode, getThemeContent } from './jsoup';
 
@@ -76,8 +76,24 @@ const themesDialog = $("#themes-dialog").dialog({
     }
 });
 
+
+const basicDialog = {
+    set({ title, content }) {
+        this.basicDialog = $(`#${basicDialogId}`);
+        this.basicDialog.attr('title', title)
+            .find('p')
+            .text(content);
+        return this;
+    },
+    open() {
+        this.basicDialog.dialog();
+        return this;
+    }
+};
+
 export {
     dialog,
     themesDialog,
-    themesForm
+    themesForm,
+    basicDialog
 };

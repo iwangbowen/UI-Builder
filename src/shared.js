@@ -16,6 +16,8 @@ const settings = '设置';
 const requestErrorDialogId = 'request-error-dialog';
 const errorDialogTitle = 'Error';
 const requestErrorContent = 'Network error, please try again later';
+const basicDialogId = 'basic-dialog';
+const elementsCannotBeAlignedContent = 'Cannot align elements which are not siblings';
 
 module.exports = {
     appName,
@@ -35,5 +37,7 @@ module.exports = {
     settings,
     errorDialogTitle,
     requestErrorContent,
-    requestErrorDialogId
+    requestErrorDialogId,
+    basicDialogId,
+    elementsCannotBeAlignedContent
 };
