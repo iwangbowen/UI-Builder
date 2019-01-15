@@ -117,8 +117,8 @@ function convertPositionInPercentage(element, position = element.position()) {
     const parent = element.parent();
     const { left, top } = position;
     return {
-        left: `${left / parent.outerWidth() * 100}%`,
-        top: `${top / parent.outerHeight() * 100}%`
+        left: `${left / parent.width() * 100}%`,
+        top: `${top / parent.height() * 100}%`
     }
 }
 
@@ -305,7 +305,6 @@ function arrayKeyPressed(key, element) {
 }
 
 function setDroppable(option, context = Vvveb.Builder.frameHtml) {
-    console.log(context.find(`.${droppableComponent}`));
     context.find(`.${droppableComponent}`).droppable(option);
 }
 

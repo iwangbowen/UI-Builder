@@ -511,7 +511,6 @@ function middleAlign() {
 
 function alignCallback(direction) {
     return function (event) {
-        console.log(direction);
         switch (direction) {
             case 'left':
                 leftAlign();

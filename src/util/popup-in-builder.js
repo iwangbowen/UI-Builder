@@ -12,11 +12,6 @@ function setDroppable(option, containerSelector) {
 const detailPopups = [];
 
 function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
-    // Compatible with add or edit button triggered popup
-    // Function call popupAdd(this) or popupEdit(this);
-    if (isElement(popup)) {
-        popup = $(`${addOrEditPopupFormSelector}`);
-    }
     hideToolBoxes();
     setDroppable('disable');
     detailPopups.push(popup);
