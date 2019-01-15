@@ -188,8 +188,8 @@ Vvveb.Builder = {
 				removeResizableHandles(cloned);
 				// Add left and top offset for cloned element
 				offsetElement(cloned, {
-					leftOffset: 10,
-					topOffset: 10
+					leftOffset: 25,
+					topOffset: 25
 				});
 				convertAndInitInteractions(cloned);
 				cloned.find(`.${draggableComponent}`).each(function () {
