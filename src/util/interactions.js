@@ -364,6 +364,9 @@ function setDroppable(elements, option) {
     elements.droppable(option);
 }
 
+function setDraggable(elements, option) {
+    elements.draggable(option);
+}
 
 function setChildrenDroppable(element, option) {
     setDroppable(element.find(`.${droppableComponent}`), option);
@@ -388,5 +391,6 @@ export {
     removeResizableHandles,
     applyPositionInPercentage,
     arrayKeyPressed,
-    setDroppableBySelector
+    setDroppableBySelector,
+    setDraggable
 };

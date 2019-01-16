@@ -12,7 +12,8 @@ import {
 	offsetElement,
 	convertAndInitInteractions,
 	removeResizableHandles,
-	arrayKeyPressed
+	arrayKeyPressed,
+	setDraggable
 } from '../util/interactions';
 import { containerComponent, draggableComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
@@ -119,7 +120,7 @@ Vvveb.Builder = {
 			jQuery(selectBox).removeClass("text-edit").find("#select-actions").show();
 			this.texteditEl = null;
 		}
-		this.selectedEl = target = jQuery(node);
+		this.selectedEl = jQuery(node);
 		highlightwhenSelected(node, ctrlKeyPressed);
 	},
 	_initSelectBox() {
@@ -252,7 +253,7 @@ Vvveb.Builder = {
 				// else hide highlight box
 				if (event.which === 0) {
 					if (getElementWithSpecifiedClass($(event.target)).length) {
-						_this.highlightEl = target = jQuery(event.target);
+						_this.highlightEl = jQuery(event.target);
 						if (!event.ctrlKey) {
 							highlightOnMove(event.target);
 						}
@@ -263,31 +264,32 @@ Vvveb.Builder = {
 			}
 		});
 
-		// this.frameBody.on("dblclick", function (event) {
-		// 	replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
+		this.frameBody.on("dblclick", function (event) {
+			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 
-		// 	_this.texteditEl = target = jQuery(event.target);
-		// 	Vvveb.WysiwygEditor.edit(_this.texteditEl);
-		// 	if (!_this.texteditEl.parents(noneditableSelector).length) {
-		// 		// Disable sortable to allow edit mode text node to be editable
-		// 		disableSortable();
-		// 		window.FrameWindow.disableGridster();
-		// 		_this.texteditEl.attr({
-		// 			contenteditable: true,
-		// 			spellcheckker: false
-		// 		});
-		// 		_this.texteditEl.on('blur', removeSortableAndGridsterDisability);
-		// 	}
-		// 	_this.texteditEl.on("blur keyup paste input", function (event) {
-		// 		const el = $(this);
-		// 		jQuery(selectBox).css({
-		// 			"width": el.outerWidth(),
-		// 			"height": el.outerHeight()
-		// 		});
-		// 	});
-		// 	jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
-		// 	jQuery("#highlight-box").hide();
-		// });
+			_this.texteditEl = jQuery(event.target);
+			Vvveb.WysiwygEditor.edit(_this.texteditEl);
+			if (!_this.texteditEl.parents(noneditableSelector).length) {
+				// Disable draggable to allow edit mode text node to be editable
+				setDraggable(_this.texteditEl, 'disable');
+				_this.texteditEl.attr({
+					contenteditable: true,
+					spellcheckker: false
+				});
+				_this.texteditEl.on('blur', function () {
+					setDraggable($(this), 'enable');
+				});
+			}
+			_this.texteditEl.on("blur keyup paste input", function (event) {
+				const el = $(this);
+				jQuery(selectBox).css({
+					"width": el.outerWidth(),
+					"height": el.outerHeight()
+				});
+			});
+			jQuery(selectBox).addClass("text-edit").find("#select-actions").hide();
+			jQuery("#highlight-box").hide();
+		});
 
 		this.frameBody.on("click", function (event) {
 			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
