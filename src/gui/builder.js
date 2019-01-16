@@ -271,13 +271,18 @@ Vvveb.Builder = {
 			Vvveb.WysiwygEditor.edit(_this.texteditEl);
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
 				// Disable draggable to allow edit mode text node to be editable
-				setDraggable(_this.texteditEl, 'disable');
+				if (_this.texteditEl.draggable('instance')) {
+					setDraggable(_this.texteditEl, 'disable');
+				}
 				_this.texteditEl.attr({
 					contenteditable: true,
 					spellcheckker: false
 				});
 				_this.texteditEl.on('blur', function () {
-					setDraggable($(this), 'enable');
+					const $this = $(this);
+					if ($this.draggable('instance')) {
+						setDraggable($this, 'enable');
+					}
 				});
 			}
 			_this.texteditEl.on("blur keyup paste input", function (event) {
