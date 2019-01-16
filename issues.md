@@ -52,3 +52,17 @@
     参考[Using jQuery UI Tabs with the `base` Tag](https://www.tjvantoll.com/2013/02/17/using-jquery-ui-tabs-with-the-base-tag/)
     保存在localStorage中的页面或通过上传操作导入的页面，是通过将页面内容写入iframe中完成的。虽然可以显式设置iframe的src，但在iframe中获得的location.href仍然是父页面的location.href。因为iframe中外部依赖路径是相对于模板文件的路径，不是父页面的路径，所以设置了base标签来正确解析外部依赖。但在使用jQuery UI Tabs中，标签页的路径是相对于base来解析的，造成和location.href不同，jQuery UI在解析时如果发现不同，处理方式是通过ajax请求将返回的内容动态添加到标签页对应的内容区域，所以标签页解析错误。jQuery UI的处理方式虽然不是一个bug，但是违背直觉，同时没有提供选项来设置解析方式。临时解决办法是
     iframe依赖文件加载完毕后，移除base标签。
+
+11. jQuery UI嵌套droppable拖拽问题
+
+    **问题截图**
+
+    ![Nested droppable drag error](./nested-droppable-drag-error.gif)
+
+    **问题描述**
+
+    jQuery UI多个droppable元素嵌套时，拖动外层的droppable会使内层的droppable元素处于可以进行拖拽放置的状态。由于代码中会在drop结束后将draggable元素变为droppable的子元素，造成将父元素附加到子元素中，抛出`Uncaught DOMException: Failed to execute 'appendChild' on 'Node': The new child element contains the parent.`异常。
+
+    **解决方式**
+
+    现在的解决方式是拖拽开始时，将draggable子元素中的droppable设置为`disable`，拖拽结束后重新设置为`enable`。另外也可以考虑在drop结束后，判断draggale和droppable的层次关系，如果draggable是droppale的父元素，不执行元素附加操作。
