@@ -322,23 +322,33 @@ function initResizable() {
 function arrayKeyPressed(key, element) {
     changeOffset();
     element = getElementWithSpecifiedClass(element);
-    let { left, top } = element.position();
-    switch (key) {
-        case 37: // left
-            left -= 1;
-            break;
-        case 38: // up
-            top -= 1;
-            break;
-        case 39: // right
-            left += 1;
-            break;
-        case 40: // down
-            top += 1;
-            break;
-        default: return; // exit this handler for other keys
+
+    let elements = [];
+    if (getSelectedElements().length) {
+        elements = getSelectedElements().map($);
+    } else {
+        elements = [element];
     }
-    applyPositionInPercentage(element, { left, top });
+
+    elements.forEach(element => {
+        let { left, top } = element.position();
+        switch (key) {
+            case 37: // left
+                left -= 1;
+                break;
+            case 38: // up
+                top -= 1;
+                break;
+            case 39: // right
+                left += 1;
+                break;
+            case 40: // down
+                top += 1;
+                break;
+            default: return; // exit this handler for other keys
+        }
+        applyPositionInPercentage(element, { left, top });
+    });
 }
 
 
