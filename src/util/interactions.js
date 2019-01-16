@@ -264,6 +264,7 @@ function initInteractions() {
 // Initilize this array when multi-selected drag starts
 let selectedOffsetsRelativeToDraggable = [];
 let selectedOriginalSizes = [];
+let selectedOriginalPositions = [];
 
 const draggableOptions = {
     cancel: 'input,textarea,select,option',
@@ -305,23 +306,43 @@ const resizableOptions = {
     handles: 'all',
     start() {
         if (isSelectedElement(this)) {
-            selectedOriginalSizes = getSelectedElements()
-                .map($)
-                .map(selected => ({
-                    width: selected.width(),
-                    height: selected.height()
-                }));
+            const $selected = getSelectedElements().map($);
+            selectedOriginalSizes = $selected.map(selected => ({
+                width: selected.width(),
+                height: selected.height()
+            }));
+            selectedOriginalPositions = $selected.map(selected => selected.position());
         }
     },
-    resize(e, { size, originalSize }) {
+    resize(e, { size, originalSize, position, originalPosition }) {
         if (isSelectedElement(this)) {
-            const xRatio = size.width / originalSize.width;
-            const yRatio = size.height / originalSize.height;
+            // four directions: n, s, w, s
+            const leftChanged = position.left - originalPosition.left != 0;
+            const topChanged = position.top - originalPosition.top != 0;
+            const widthRatio = size.width / originalSize.width;
+            const heightRatio = size.height / originalSize.height;
             getSelectedElements()
                 .forEach((selected, index) => {
                     const $selected = $(selected);
-                    $selected.width(selectedOriginalSizes[index].width * xRatio);
-                    $selected.height(selectedOriginalSizes[index].height * yRatio);
+                    const originalSize = selectedOriginalSizes[index];
+                    let { left, top } = selectedOriginalPositions[index];
+                    const width = originalSize.width * widthRatio;
+                    const height = originalSize.height * heightRatio;
+                    const dx = width - originalSize.width;
+                    const dy = height - originalSize.height;
+                    if (leftChanged) {
+                        left -= dx;
+                    }
+                    if (topChanged) {
+                        top -= dy;
+                    }
+                    $selected
+                        .width(width)
+                        .height(height)
+                        .css({
+                            left,
+                            top
+                        });
                 });
         }
     },
