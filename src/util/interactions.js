@@ -263,6 +263,7 @@ function initInteractions() {
 
 // Initilize this array when multi-selected drag starts
 let selectedOffsetsRelativeToDraggable = [];
+let selectedOriginalSizes = [];
 
 const draggableOptions = {
     cancel: 'input,textarea,select,option',
@@ -302,7 +303,43 @@ const draggableOptions = {
 const resizableOptions = {
     cancel: 'input,textarea,select,option',
     handles: 'all',
-    stop: onResizableStop
+    start() {
+        if (isSelectedElement(this)) {
+            selectedOriginalSizes = getSelectedElements()
+                .map($)
+                .map(selected => ({
+                    width: selected.width(),
+                    height: selected.height()
+                }));
+        }
+    },
+    resize(e, { size, originalSize }) {
+        if (isSelectedElement(this)) {
+            const xRatio = size.width / originalSize.width;
+            const yRatio = size.height / originalSize.height;
+            getSelectedElements()
+                .forEach((selected, index) => {
+                    const $selected = $(selected);
+                    $selected.width(selectedOriginalSizes[index].width * xRatio);
+                    $selected.height(selectedOriginalSizes[index].height * yRatio);
+                });
+        }
+    },
+    stop(e, { element }) {
+        let elements = [];
+        if (isSelectedElement(this)) {
+            elements = getSelectedElements().map($);
+        } else {
+            elements = [element];
+        }
+        elements.forEach(element => {
+            const { width, height } = convertSize(element);
+            element.css({
+                width,
+                height
+            });
+        });
+    }
 };
 
 function initDraggable() {
