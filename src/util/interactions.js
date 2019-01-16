@@ -13,6 +13,7 @@ function initDraggableComponents(item, component) {
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
         // iframe scroll issue
         iframeScroll: true,
+        start: null,
         drag: null,
         stop: null,
         helper() {
@@ -266,6 +267,7 @@ let selectedOffsetsRelativeToDraggable = [];
 const draggableOptions = {
     cancel: 'input,textarea,select,option',
     start() {
+        setChildrenDroppable($(this), 'disable');
         if (isSelectedElement(this)) {
             selectedOffsetsRelativeToDraggable = getSelectedElements()
                 .map(selected => getOffsetBetweenElements($(this), $(selected)));
@@ -287,6 +289,7 @@ const draggableOptions = {
         }
     },
     stop() {
+        setChildrenDroppable($(this), 'enable');
         if (isSelectedElement(this)) {
             getSelectedElements()
                 .forEach(selected => {
@@ -338,16 +341,22 @@ function arrayKeyPressed(key, element) {
     applyPositionInPercentage(element, { left, top });
 }
 
-function setDroppable(option, context = Vvveb.Builder.frameHtml) {
-    context.find(`.${droppableComponent}`).droppable(option);
+
+function setDroppableBySelector(option, containerSelector) {
+    if (containerSelector) {
+        setDroppable(Vvveb.Builder.frameHtml.find(`${containerSelector} .${droppableComponent}`), option);
+    } else {
+        setDroppable(Vvveb.Builder.frameHtml.find(`.${droppableComponent}`), option);
+    }
 }
 
-function setDroppable(option, containerSelector) {
-    if (containerSelector) {
-        Vvveb.Builder.frameHtml.find(`${containerSelector} .${droppableComponent}`).droppable(option);
-    } else {
-        Vvveb.Builder.frameHtml.find(`.${droppableComponent}`).droppable(option);
-    }
+function setDroppable(elements, option) {
+    elements.droppable(option);
+}
+
+
+function setChildrenDroppable(element, option) {
+    setDroppable(element.find(`.${droppableComponent}`), option);
 }
 
 function initDroppable(context = Vvveb.Builder.frameHtml) {
@@ -369,5 +378,5 @@ export {
     removeResizableHandles,
     applyPositionInPercentage,
     arrayKeyPressed,
-    setDroppable
+    setDroppableBySelector
 };

@@ -2,8 +2,8 @@ import { hideAuxiliaryElementsInParent } from './iframe-drag-n-drop';
 import { addOrEditPopupFormSelector, getDetailPopupIdSelector } from '../common';
 import wrap from 'lodash/wrap';
 
-function setDroppable(option, containerSelector) {
-    window.parent.setDroppable(option, containerSelector);
+function setDroppableBySelector(option, containerSelector) {
+    window.parent.setDroppableBySelector(option, containerSelector);
 }
 
 // Fix bugs in nested detail popup windows
@@ -11,9 +11,9 @@ function setDroppable(option, containerSelector) {
 const detailPopups = [];
 
 function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
-    setDroppable('disable');
+    setDroppableBySelector('disable');
     detailPopups.push(popup);
-    setDroppable('enable', getDetailPopupIdSelector(popup));
+    setDroppableBySelector('enable', getDetailPopupIdSelector(popup));
     return func(popup, url, data);
 }
 
@@ -23,9 +23,9 @@ function end() {
 
     detailPopups.pop();
     if (detailPopups.length) {
-        setDroppable('enable', getDetailPopupIdSelector(detailPopups[detailPopups.length - 1]));
+        setDroppableBySelector('enable', getDetailPopupIdSelector(detailPopups[detailPopups.length - 1]));
     } else {
-        setDroppable('enable');
+        setDroppableBySelector('enable');
     }
 }
 
