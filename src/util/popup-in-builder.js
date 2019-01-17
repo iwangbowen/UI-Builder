@@ -18,15 +18,13 @@ function wrapper(func, popup = $(`${addOrEditPopupFormSelector}`), url, data) {
 }
 
 function end() {
-    $('div.popup-window#add form').trigger('reset');
-    $('div.popup-window#edit form').trigger('reset');
-
     detailPopups.pop();
     if (detailPopups.length) {
         setDroppableBySelector('enable', getDetailPopupIdSelector(detailPopups[detailPopups.length - 1]));
     } else {
         setDroppableBySelector('enable');
     }
+    hideAuxiliaryElementsInParent();
 }
 
 function _popupCommon(popup) {
