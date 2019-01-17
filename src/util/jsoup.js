@@ -129,11 +129,6 @@ function removeImageDataURL(el) {
 }
 
 const shardScriptTemplates = [
-    autoselectinputTemplate,
-    submitFormTemplate,
-    popupTemplate,
-    queryTempate,
-    multivalueselectTemplate,
     buttonClickPopupTemplate,
     tooltipTemplate,
     tabsTemplate
