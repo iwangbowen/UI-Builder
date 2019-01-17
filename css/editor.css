@@ -11719,7 +11719,7 @@ body {
 #vvveb-builder #select-box {
   position: absolute;
   border: 1px solid #4285f4;
-  background: rgba(66, 133, 244, 0.1);
+  /* background: rgba(66, 133, 244, 0.1); */
   width: 0px;
   height: 0px;
   top: 0px;
