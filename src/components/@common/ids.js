@@ -46,6 +46,7 @@ const labelid = 'html/label@common';
 const imageid = 'html/image@common';
 const chartid = 'html/chart@common';
 const tabsid = 'html/tabs@common';
+const bodyid = 'html/body@common';
 
 const bootstraptextareaid = 'html/bootstraptextarea@common';
 const bootstraptextareafieldid = 'html/bootstraptextareafield@common';
@@ -88,5 +89,5 @@ export {
     bootstrapdatetimeinputfieldid, bootstrapalertid, bootstrapbuttongroupid, bootstrapheadingid,
     bootstraphrid, bootstrapprogressid, bootstraptableid, bootstraptableheadercellid,
     bootstraptableheadid, bootstraptablerowid, bootstraptablecellid, bootstraptablebodyid,
-    imageid, chartid, tabsid, popuptextareaid, roundedbuttonid, bootstrapcontainerid
+    imageid, chartid, tabsid, popuptextareaid, roundedbuttonid, bootstrapcontainerid, bodyid
 };

@@ -103,6 +103,7 @@ Vvveb.Components.extend("_base", _common_ids.imageid, _common.image);
 Vvveb.Components.extend("_base", _common_ids.labelfieldid, _common.labelfield);
 Vvveb.Components.extend("_base", _common_ids.chartid, _common.chart);
 Vvveb.Components.extend("_base", _common_ids.tabsid, _common.tabs);
+Vvveb.Components.extend("_base", _common_ids.bodyid, _common.body);
 
 Vvveb.Components.extend("_base", _common_ids.bootstraptextareaid, _common.bootstraptextareainput);
 Vvveb.Components.extend("_base", _common_ids.bootstraptextareafieldid, _common.bootstraptextareainputfield);

@@ -71,6 +71,7 @@ import popupmanualselectinput from './popupmanualselectinput';
 import popuptextarea from './popuptextarea';
 import chart from './chart';
 import tabs from './tabs';
+import body from './body';
 
 import bootstraptextinputfield from './bootstraptextinputfield';
 import bootstraptextinput from './bootstraptextinput';
@@ -116,5 +117,5 @@ export {
     bootstrapcheckboxfield, bootstrapdatetimeinput, bootstrapdatetimeinputfield, bootstrapalert,
     bootstrapbuttongroup, bootstrapheading, bootstraphr, bootstrapprogress, bootstraptable,
     bootstraptableheadercell, bootstraptablehead, bootstraptablerow, bootstraptablecell,
-    bootstraptablebody, chart, tabs, popuptextarea, roundedbutton, bootstrapcontainer
+    bootstraptablebody, chart, tabs, popuptextarea, roundedbutton, bootstrapcontainer, body
 };
