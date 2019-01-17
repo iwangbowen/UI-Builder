@@ -637,6 +637,14 @@ function areSiblings(elements) {
     }
 }
 
+function getIframeWindow() {
+    return document.getElementById('iframeId').contentWindow;
+}
+
+function getFunctionInIframe(functionName) {
+    return getIframeWindow()[functionName];
+}
+
 export {
     getStyle, setIframeHeight, launchFullScreen, downloadAsTextFile, getBeautifiedHtml, delay,
     getHtml, getHash, createPage, loadCallback, getSelectedElements, clearSelectedElements,
@@ -644,5 +652,5 @@ export {
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
     createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback, isSelectedElement,
-    areSiblings
+    areSiblings, getFunctionInIframe
 };

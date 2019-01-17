@@ -13,7 +13,8 @@ import {
 	convertAndInitInteractions,
 	removeResizableHandles,
 	arrayKeyPressed,
-	setDraggable
+	setDraggable,
+	convertAndInitInteractionsRecursively
 } from '../util/interactions';
 import { containerComponent, draggableComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
@@ -188,10 +189,7 @@ Vvveb.Builder = {
 					leftOffset: 25,
 					topOffset: 25
 				});
-				convertAndInitInteractions(cloned);
-				cloned.find(`.${draggableComponent}`).each(function () {
-					convertAndInitInteractions($(this));
-				});
+				convertAndInitInteractionsRecursively(cloned);
 
 				_this.selectedEl = cloned.click();
 
@@ -297,6 +295,7 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("click", function (event) {
+
 			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
 			const element = getElementWithSpecifiedClass($(event.target));
 
@@ -331,7 +330,7 @@ Vvveb.Builder = {
 			}
 		});
 
-		this.frameBody.keydown(e => {
+		this.frameDoc.keydown(e => {
 			if (_this.selectedEl && _this.selectedEl.prop('tagName') != 'BODY') {
 				if (e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
 					// Disable element move using arrow keys in text node edit mode

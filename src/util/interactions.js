@@ -3,7 +3,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
-import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements } from './dom';
+import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements, getFunctionInIframe } from './dom';
 import { componentBgImgHeight } from '../constants';
 
 function initDraggableComponents(item, component) {
@@ -173,6 +173,15 @@ function addOffset({ left, top }, { dx, dy }) {
 
 function removeResizableHandles(element) {
     return element.find('div.ui-resizable-handle').remove();
+}
+
+function convertAndInitInteractionsRecursively(element) {
+    convertAndInitInteractions(element);
+    // Find draggable elements
+    // because all interactive elements are all draggable
+    element.find(`.${draggableComponent}`).each(function () {
+        convertAndInitInteractions($(this));
+    });
 }
 
 function convertAndInitInteractions(element, position) {
@@ -380,7 +389,7 @@ function initResizable() {
 function arrayKeyPressed(key, element) {
     changeOffset();
     element = getElementWithSpecifiedClass(element);
-
+    showAlignmentLines(element.get(0));
     let elements = [];
     if (getSelectedElements().length) {
         elements = getSelectedElements().map($);
@@ -439,16 +448,20 @@ function initDroppable(context = Vvveb.Builder.frameHtml) {
         });
 }
 
+function showAlignmentLines(element) {
+    return getFunctionInIframe('showAlignmentLines')(element);
+}
+
 export {
     initTopPanelDrag,
     initDraggableComponents,
     initDroppable,
     initInteractions,
     offsetElement,
-    convertAndInitInteractions,
     removeResizableHandles,
     applyPositionInPercentage,
     arrayKeyPressed,
     setDroppableBySelector,
-    setDraggable
+    setDraggable,
+    convertAndInitInteractionsRecursively
 };

@@ -33,6 +33,7 @@ let horizontalLine;
 let verticalLine;
 
 function showAlignmentLines(target) {
+    console.log(target);
     let horizontalLineShown = false;
     let verticalLineShown = false;
     const targetOffset = $(target).offset();
@@ -314,6 +315,7 @@ function setTableDummyData() {
 }
 
 function setGlobalVariables() {
+    self.showAlignmentLines = showAlignmentLines;
     self.hideAlignmentLines = hideAlignmentLines;
     self.popupCommon = popupCommon;
 }
