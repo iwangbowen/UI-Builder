@@ -163,12 +163,6 @@ function generateSharedJSCode() {
 function generateScripts(el, containsShard) {
     generateTableScript(el);
     if (containsShard) {
-        generateSelectOptionsScript(el);
-        generateSubmitFormScript(el);
-        generateButtonOnclickScript(el);
-        generatePopupScript(el);
-        generateQueryScript(el);
-        generateMultivalueSelectScript(el);
         generateButtonClickPopupScript(el);
         generateTabsScript(el);
         generateTooltipScript(el);
