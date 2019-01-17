@@ -1,3 +1,4 @@
+import Vvveb from '../gui/components';
 import {
     removeUnusedTags, emptyChildren, generateCalendarOnclickAttr,
     replaceWithExternalFiles, addNameBrackets,
@@ -23,7 +24,6 @@ import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
     userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector, generatedExecuteScriptSelector
 } from './selectors';
-import Vvveb from '../gui/components';
 import {
     draggableComponent, configurableComponent, sortableClass, cloneableComponent,
     deletableComponent
@@ -637,12 +637,8 @@ function areSiblings(elements) {
     }
 }
 
-function getIframeWindow() {
-    return document.getElementById('iframeId').contentWindow;
-}
-
 function getFunctionInIframe(functionName) {
-    return getIframeWindow()[functionName];
+    return Vvveb.Builder.frameWindow[functionName];
 }
 
 export {

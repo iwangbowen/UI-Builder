@@ -452,6 +452,10 @@ function showAlignmentLines(element) {
     return getFunctionInIframe('showAlignmentLines')(element);
 }
 
+function hideAlignmentLines() {
+    return getFunctionInIframe('hideAlignmentLines')();
+}
+
 export {
     initTopPanelDrag,
     initDraggableComponents,
@@ -463,5 +467,6 @@ export {
     arrayKeyPressed,
     setDroppableBySelector,
     setDraggable,
-    convertAndInitInteractionsRecursively
+    convertAndInitInteractionsRecursively,
+    hideAlignmentLines
 };

@@ -2,7 +2,7 @@ import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
-	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback
+	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback, getFunctionInIframe
 } from '../util/dom';
 import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
@@ -10,13 +10,13 @@ import {
 	initDraggableComponents,
 	initInteractions,
 	offsetElement,
-	convertAndInitInteractions,
 	removeResizableHandles,
 	arrayKeyPressed,
 	setDraggable,
-	convertAndInitInteractionsRecursively
+	convertAndInitInteractionsRecursively,
+	hideAlignmentLines
 } from '../util/interactions';
-import { containerComponent, draggableComponent } from '../components/common';
+import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
 import { isInIframe } from '../constants';
 
@@ -295,10 +295,8 @@ Vvveb.Builder = {
 		});
 
 		this.frameBody.on("click", function (event) {
-
-			document.getElementById('iframeId').contentWindow.hideAlignmentLines();
+			hideAlignmentLines();
 			const element = getElementWithSpecifiedClass($(event.target));
-
 			if (element.length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {
 					replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
@@ -354,8 +352,8 @@ Vvveb.Builder = {
 		});
 
 		// Fix scroll handler not called after changing pages
-		window.FrameWindow.addEventListener('scroll', changeOffset);
-		jQuery(window.FrameWindow).on('resize', changeOffset);
+		this.frameWindow.addEventListener('scroll', changeOffset);
+		jQuery(this.frameWindow).on('resize', changeOffset);
 	},
 	setHtml(html) {
 		//update only body to avoid breaking iframe css/js relative paths
