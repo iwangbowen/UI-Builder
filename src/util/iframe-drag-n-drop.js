@@ -4,19 +4,12 @@ import { popupCommon } from './popup-in-builder';
 import { tableSelector } from './selectors';
 import { dataTableId, dataComponentId } from '../components/common';
 import { dummyData, gridOptions, tooltipOptions } from '../common';
-import { tabsid } from '../components/@common/ids';
+import { tabsid, commontableid } from '../components/@common/ids';
 
 function hideAuxiliaryElementsInParent() {
     window.parent
         && window.parent.hideAuxiliaryElements
         && window.parent.hideAuxiliaryElements();
-}
-
-function isAlign(targetOffset, currentOffset) {
-    return {
-        isHorizontalAlign: Math.abs(targetOffset.top - currentOffset.top) <= 0.7,
-        isVerticalAlign: Math.abs(targetOffset.left - currentOffset.left) <= 0.7
-    };
 }
 
 function hideAlignmentLines() {
@@ -147,11 +140,14 @@ function showAlignmentLines(target) {
     let horizontalLinesShown = false;
     let verticalLinesShown = false;
     // 排除自身元素和该元素子元素
-    // Array.some Short Circuit
+    // Exclude target, target children elemetns,
+    // resizable-handle elements,
+    // table children elements
     Array.from($('body *:visible:not(script)')
         .not(target)
         .not($(target).find('*'))
-        .not('div.ui-resizable-handle')) // resizable-handle in jquery Resizable
+        .not('div.ui-resizable-handle')
+        .not(`div[${dataComponentId}="${commontableid}"] *`))
         .some(element => {
             const elementRect = getRect(element);
 
