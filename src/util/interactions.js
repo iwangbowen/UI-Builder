@@ -335,6 +335,7 @@ const resizableOptions = {
         }
     },
     resize(e, { size, originalSize, position, originalPosition }) {
+        hideAlignmentLines();
         if (isSelectedElement(this)) {
             // four directions: n, s, w, s
             const leftChanged = position.left - originalPosition.left != 0;
@@ -365,8 +366,10 @@ const resizableOptions = {
                         });
                 });
         }
+        showAlignmentLines(this);
     },
     stop(e, { element }) {
+        hideAlignmentLines();
         let elements = [];
         if (isSelectedElement(this)) {
             elements = getSelectedElements().map($);
