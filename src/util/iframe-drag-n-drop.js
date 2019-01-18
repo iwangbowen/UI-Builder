@@ -103,15 +103,17 @@ function repositionAndShowLineIfCloseEnough(target, elementRect, side) {
 
 function showLines(targetRect, elementRect, target, element, direction) {
     console.log(elementRect);
-    let side, otherSide, middleSide;
+    let side, otherSide, middleSide, span;
     if (direction === 'vertical') {
         side = 'left';
         otherSide = 'right';
         middleSide = 'center';
+        span = 'width';
     } else {
         side = 'top';
         otherSide = 'bottom';
         middleSide = 'middle';
+        span = 'height';
     }
     let distance = showLineIfCloseEnough(targetRect, elementRect, side);
     if (distance) {
@@ -122,9 +124,10 @@ function showLines(targetRect, elementRect, target, element, direction) {
     } else {
         distance = showLineIfCloseEnough(targetRect, elementRect, otherSide);
         if (distance) {
-            // Adjust position
-            target.style[side] = element.style[side];
-            // Get target new rect
+            // Right or bottom alignment
+            // target left or top should equal to
+            // element right or bottom minus target width or height
+            target.style[side] = elementRect[otherSide] - targetRect[span];
             return repositionAndShowLineIfCloseEnough(target, elementRect, side);
         } else {
             return showLineIfCloseEnough(targetRect, elementRect, middleSide);

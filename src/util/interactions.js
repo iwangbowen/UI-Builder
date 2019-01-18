@@ -421,8 +421,8 @@ function arrayKeyPressed(key, element) {
                 break;
             default: return; // exit this handler for other keys
         }
-        applyPositionInPercentage(element, { left, top });
         showAlignmentLines(element.get(0));
+        applyPositionInPercentage(element, { left, top });
     });
 }
 
