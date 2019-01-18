@@ -27,59 +27,163 @@ function hideHighlightAreas() {
     $(window.parent.document).find('#select-box, #highlight-box').hide();
 }
 
-let horizontalLineCreated = false;
-let verticalLineCreated = false;
-let horizontalLine;
-let verticalLine;
+function getRect(element) {
+    const rect = element.getBoundingClientRect();
+    rect.center = rect.left + (rect.right - rect.left) / 2;
+    rect.middle = rect.top + (rect.bottom - rect.top) / 2;
+    return rect;
+}
+
+const closeEnough = 1;
+
+function findCloseEnoughDistance(distance, ...distances) {
+    return distances.find(value => Math.abs(distance - value) < closeEnough);
+}
+
+function findCloseEnoughDistanceBetweenRects(targetRect, elementRect, side) {
+    const horizontalDistances = [elementRect.left, elementRect.center, elementRect.right];
+    const verticalDistances = [elementRect.top, elementRect.middle, elementRect.bottom];
+    if (isVerticalSide(side)) {
+        return findCloseEnoughDistance(targetRect[side], ...horizontalDistances);
+    } else {
+        return findCloseEnoughDistance(targetRect[side], ...verticalDistances);
+    }
+}
+
+function showVerticalLine(verticalLine, left) {
+    verticalLine.css({
+        left
+    }).show();
+}
+
+function showHorizontalLine(horizontalLine, top) {
+    horizontalLine.css({
+        top
+    }).show();
+}
+
+function isVerticalSide(side) {
+    return side === 'left' || side === 'center' || side === 'right';
+}
+
+function getLine(side) {
+    switch (side) {
+        case 'left':
+            return leftVerticalLine;
+        case 'center':
+            return centerVerticalLine;
+        case 'right':
+            return rightVerticalLine;
+        case 'top':
+            return topHorizontalLine;
+        case 'middle':
+            return middleHorizontalLine;
+        case 'bottom':
+            return bottomHorizontalLine;
+    }
+}
+
+// Return distance if find close enough distance or undefined
+function showLineIfCloseEnough(targetRect, elementRect, side) {
+    const distance = findCloseEnoughDistanceBetweenRects(targetRect, elementRect, side);
+    if (distance) {
+        if (isVerticalSide(side)) {
+            showVerticalLine(getLine(side), distance);
+        } else {
+            showHorizontalLine(getLine(side), distance);
+        }
+    }
+    return distance;
+}
+
+function repositionAndShowLineIfCloseEnough(target, elementRect, side) {
+    const targetRect = getRect(target);
+    return showLineIfCloseEnough(targetRect, elementRect, side);
+}
+
+function showLines(targetRect, elementRect, target, element, direction) {
+    console.log(elementRect);
+    let side, otherSide, middleSide;
+    if (direction === 'vertical') {
+        side = 'left';
+        otherSide = 'right';
+        middleSide = 'center';
+    } else {
+        side = 'top';
+        otherSide = 'bottom';
+        middleSide = 'middle';
+    }
+    let distance = showLineIfCloseEnough(targetRect, elementRect, side);
+    if (distance) {
+        // Adjust position
+        target.style[side] = element.style[side];
+        // Get target new rect
+        return repositionAndShowLineIfCloseEnough(target, elementRect, otherSide);
+    } else {
+        distance = showLineIfCloseEnough(targetRect, elementRect, otherSide);
+        if (distance) {
+            // Adjust position
+            target.style[side] = element.style[side];
+            // Get target new rect
+            return repositionAndShowLineIfCloseEnough(target, elementRect, side);
+        } else {
+            return showLineIfCloseEnough(targetRect, elementRect, middleSide);
+        }
+    }
+}
+
+function showVerticalLines(targetRect, elementRect, target, element) {
+    return showLines(targetRect, elementRect, target, element, 'vertical');
+}
+
+function showHorizontalLines(targetRect, elementRect, target, element) {
+    return showLines(targetRect, elementRect, target, element, 'horizontal');
+}
 
 function showAlignmentLines(target) {
-    console.log(target);
-    let horizontalLineShown = false;
-    let verticalLineShown = false;
-    const targetOffset = $(target).offset();
+    let targetRect = getRect(target);
+    let horizontalLinesShown = false;
+    let verticalLinesShown = false;
     // 排除自身元素和该元素子元素
+    // Array.some Short Circuit
     Array.from($('body *:visible:not(script)')
         .not(target)
-        .not($(target).find('*')))
-        .some(currentValue => {
-            const currentOffset = $(currentValue).offset();
-            const { isHorizontalAlign, isVerticalAlign } = isAlign(targetOffset, currentOffset);
-            if (!horizontalLineShown && isHorizontalAlign) {
-                if (horizontalLineCreated) {
-                    horizontalLine
-                        .css({
-                            top: targetOffset.top
-                        })
-                        .show();
-                } else {
-                    horizontalLine = $('<hr />')
-                        .addClass('horizontal-line')
-                        .css({
-                            top: targetOffset.top
-                        })
-                        .appendTo($('body'));
-                }
-                horizontalLineShown = true;
-            }
-            if (!verticalLineShown && isVerticalAlign) {
-                if (verticalLineCreated) {
-                    verticalLine
-                        .css({
-                            left: targetOffset.left
-                        })
-                        .show();
-                } else {
-                    verticalLine = $('<hr />')
-                        .addClass('vertical-line')
-                        .css({
-                            left: targetOffset.left
-                        })
-                        .appendTo($('body'));
-                }
-                verticalLineShown = true;
-            }
-            return horizontalLineShown && verticalLineShown;
+        .not($(target).find('*'))
+        .not('div.ui-resizable-handle')) // resizable-handle in jquery Resizable
+        .some(element => {
+            const elementRect = getRect(element);
+
+            verticalLinesShown = showVerticalLines(targetRect, elementRect, target, element);
+            horizontalLinesShown = showHorizontalLines(targetRect, elementRect, target, element);
+            return horizontalLinesShown && verticalLinesShown;
         });
+}
+
+let leftVerticalLine, centerVerticalLine, rightVerticalLine, topHorizontalLine,
+    middleHorizontalLine, bottomHorizontalLine;
+
+function initAlignmentLines() {
+    const body = $('body');
+    leftVerticalLine = $('<hr />').addClass('vertical-line left-vertical-line').css({
+        display: 'none'
+    }).appendTo(body);
+    centerVerticalLine = $('<hr />').addClass('vertical-line center-vertical-line').css({
+        display: 'none'
+    }).appendTo(body);
+    rightVerticalLine = $('<hr />').addClass('vertical-line right-vertical-line').css({
+        display: 'none'
+    }).appendTo(body);
+
+
+    topHorizontalLine = $('<hr />').addClass('horizontal-line top-horizontal-line').css({
+        display: 'none'
+    }).appendTo(body);
+    middleHorizontalLine = $('<hr />').addClass('horizontal-line middle-horizontal-line').css({
+        display: 'none'
+    }).appendTo(body);
+    bottomHorizontalLine = $('<hr />').addClass('horizontal-line bottom-horizontal-line').css({
+        display: 'none'
+    }).appendTo(body);
 }
 
 function arrowKeyMove(key, element) {
@@ -336,5 +440,6 @@ function initTooltip() {
 export {
     hideAlignmentLines, arrowKeyMove, showAlignmentLines, updatePosition, hideHighlightAreas,
     getAttributes, initDropzone, initResizeDrag, initDraggable, setGlobalVariables,
-    setTableDummyData, hideAuxiliaryElementsInParent, removeBaseTag, initTabs, initTooltip
+    setTableDummyData, hideAuxiliaryElementsInParent, removeBaseTag, initTabs, initTooltip,
+    initAlignmentLines
 };

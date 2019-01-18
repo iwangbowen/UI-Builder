@@ -176,16 +176,24 @@ function removeResizableHandles(element) {
 }
 
 function convertAndInitInteractionsRecursively(element) {
-    convertAndInitInteractions(element);
+    convertAndInitInteractions(element, undefined, false);
     // Find draggable elements
     // because all interactive elements are all draggable
     element.find(`.${draggableComponent}`).each(function () {
-        convertAndInitInteractions($(this));
+        convertAndInitInteractions($(this), undefined, false);
     });
 }
 
-function convertAndInitInteractions(element, position) {
-    const { width, height } = convertSize(element);
+function convertAndInitInteractions(element, position, convertSizeNeeded = true) {
+    let width, height;
+    if (convertSizeNeeded) {
+        const convertedSize = convertSize(element);
+        width = convertedSize.width;
+        height = convertedSize.height;
+    } else {
+        width = element.get(0).style.width;
+        height = element.get(0).style.height;
+    }
     // Use clone element as dragging element
     // Use current clone element position as appended element position
     const { left, top } = convertPositionInPercentage(element, position);
@@ -387,16 +395,15 @@ function initResizable() {
 }
 
 function arrayKeyPressed(key, element) {
+    hideAlignmentLines();
     changeOffset();
     element = getElementWithSpecifiedClass(element);
-    showAlignmentLines(element.get(0));
     let elements = [];
     if (getSelectedElements().length) {
         elements = getSelectedElements().map($);
     } else {
         elements = [element];
     }
-
     elements.forEach(element => {
         let { left, top } = element.position();
         switch (key) {
@@ -415,6 +422,7 @@ function arrayKeyPressed(key, element) {
             default: return; // exit this handler for other keys
         }
         applyPositionInPercentage(element, { left, top });
+        showAlignmentLines(element.get(0));
     });
 }
 

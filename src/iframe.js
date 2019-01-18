@@ -1,5 +1,5 @@
 import {
-    setGlobalVariables, setTableDummyData, removeBaseTag, initTabs, initTooltip
+    setGlobalVariables, setTableDummyData, removeBaseTag, initTabs, initTooltip, initAlignmentLines
 } from './util/iframe-drag-n-drop';
 import {
     addButtonListener
@@ -12,4 +12,5 @@ $(document).ready(() => {
     setGlobalVariables();
     setTableDummyData();
     addButtonListener();
+    initAlignmentLines();
 });

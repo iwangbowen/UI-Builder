@@ -180,7 +180,12 @@ Vvveb.Builder = {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
 			if (original.length) {
 				const cloned = original.clone();
+				const width = cloned.get(0).style.width;
+				const height = cloned.get(0).style.height;
 				original.after(cloned);
+				// Reserve width and height in percentage
+				cloned[0].style.width = width;
+				cloned[0].style.height = height;
 				// Cloned elements would have resizable handles
 				// which would interfere with cloned elements resizable
 				removeResizableHandles(cloned);
