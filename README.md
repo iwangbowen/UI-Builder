@@ -10,6 +10,8 @@ Check out [Chinese Docs](https://iwangbowen.github.io/UI-Builder/) for more info
 
 ![UI Builder Preview](./ui-builder.gif)
 
+The preview shown above is on branch `gridster-snap` right now, you can check out this branch to try it out. The master branch has adopted a different approach to the design and implementation and is in the active deveelopment currently.
+
 ## What it does
 
 - Draggable widgets
