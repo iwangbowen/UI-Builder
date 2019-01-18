@@ -293,6 +293,7 @@ const draggableOptions = {
         }
     },
     drag(e, { offset }) {
+        hideAlignmentLines();
         if (isSelectedElement(this)) {
             // offset refers to draggable element offset which is not applied to
             // the draggable element yet
@@ -306,8 +307,10 @@ const draggableOptions = {
                     }));
                 });
         }
+        showAlignmentLines(this);
     },
     stop() {
+        hideAlignmentLines();
         setChildrenDroppable($(this), 'enable');
         if (isSelectedElement(this)) {
             getSelectedElements()

@@ -102,7 +102,6 @@ function repositionAndShowLineIfCloseEnough(target, elementRect, side) {
 }
 
 function showLines(targetRect, elementRect, target, element, direction) {
-    console.log(elementRect);
     let side, otherSide, middleSide, span;
     if (direction === 'vertical') {
         side = 'left';
