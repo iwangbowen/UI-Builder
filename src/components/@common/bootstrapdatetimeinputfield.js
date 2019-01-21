@@ -6,10 +6,7 @@ import datetimeinputfield from './datetimeinputfield';
 import bootstrapdatetimeinput from './bootstrapdatetimeinput';
 
 const bootstrapdatetimeinputfield = extend({}, datetimeinputfield, {
-    html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapdatetimeinputfieldid}">
-               ${label.html}
-               ${bootstrapdatetimeinput.html}
-           </div>`
+    html: `${label.html}${bootstrapdatetimeinput.html}`
 });
 
 export default bootstrapdatetimeinputfield;

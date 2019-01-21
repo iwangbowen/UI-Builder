@@ -6,10 +6,7 @@ import bootstrapfileinput from './bootstrapfileinput';
 import fileinputfield from './fileinputfield';
 
 const bootstrapfileinputfield = extend({}, fileinputfield, {
-    html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapfileinputfieldid}">
-            ${label.html}
-			${bootstrapfileinput.html}
-           </div>`
+    html: `${label.html}${bootstrapfileinput.html}`
 });
 
 export default bootstrapfileinputfield;
