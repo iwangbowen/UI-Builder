@@ -3,7 +3,7 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
-import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements, getFunctionInIframe } from './dom';
+import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements, getFunctionInIframe, clearSelectedElements } from './dom';
 import { componentBgImgHeight } from '../constants';
 
 function initDraggableComponents(item, component) {
@@ -13,7 +13,10 @@ function initDraggableComponents(item, component) {
         // Use https://maxazan.github.io/jquery-ui-droppable-iframe/ to deal with
         // iframe scroll issue
         iframeScroll: true,
-        start: null,
+        start() {
+            // Clear multi-selected elements
+            clearSelectedElements();
+        },
         drag: null,
         stop: null,
         helper() {
