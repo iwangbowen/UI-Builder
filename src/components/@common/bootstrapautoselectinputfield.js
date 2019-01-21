@@ -6,10 +6,7 @@ import label from './label';
 import bootstrapautoselectinput from './bootstrapautoselectinput';
 
 const bootstrapautoselectinputfield = extend({}, autoselectinputfield, {
-    html: `<div class="${sortableClass} ${formGroup} ${rowClass}" ${dataComponentId}="${bootstrapautoselectinputfieldid}">
-               ${label.html}
-               ${bootstrapautoselectinput.html}
-           </div>`
+    html: `${label.html}${bootstrapautoselectinput.html}`
 });
 
 export default bootstrapautoselectinputfield;

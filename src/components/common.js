@@ -153,6 +153,7 @@ const headingReg = /H(\d)/;
 const labelAlignStyle = 'flex: 0 0 30%; min-height: 28px;';
 const inputAlignStyle = 'flex: 0 0 55%; margin-right: 20px; margin-left: 0px;';
 const defaultSizeStyle = "width: 500px; height: 300px;";
+const defaultInputWidth = '175.6px';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
@@ -171,5 +172,6 @@ export {
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
-    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2
+    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
+    defaultInputWidth
 };
