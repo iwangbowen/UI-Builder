@@ -18,6 +18,8 @@ const errorDialogTitle = 'Error';
 const requestErrorContent = 'Network error, please try again later';
 const basicDialogId = 'basic-dialog';
 const elementsCannotBeAlignedContent = 'Cannot align elements which are not siblings';
+const multiSelectedDelete = 'mutli-selected-delete';
+const multiSelectedCopy = 'multi-selected-copy';
 
 module.exports = {
     appName,
@@ -39,5 +41,7 @@ module.exports = {
     requestErrorContent,
     requestErrorDialogId,
     basicDialogId,
-    elementsCannotBeAlignedContent
+    elementsCannotBeAlignedContent,
+    multiSelectedDelete,
+    multiSelectedCopy
 };

@@ -19,6 +19,7 @@ import {
 import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
 import { isInIframe } from '../constants';
+import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 
 Vvveb.defaultComponent = "_base";
 Vvveb.preservePropertySections = true;
@@ -247,6 +248,17 @@ Vvveb.Builder = {
 		$('#top-align').on('click', alignCallback('top'));
 		$('#middle-align').on('click', alignCallback('middle'));
 		$('#bottom-align').on('click', alignCallback('bottom'));
+		$(`#${multiSelectedCopy}`).on('click', (event) => {
+			console.log('copy');
+			event.preventDefault();
+			return false;
+		});
+
+		$(`#${multiSelectedDelete}`).on('click', (event) => {
+			console.log('delete');
+			event.preventDefault();
+			return false;
+		});
 	},
 	_initHightlight() {
 		const _this = this;
