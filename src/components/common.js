@@ -63,6 +63,7 @@ const droppableComponent = 'droppable-component';
 const scaleOnResizeComponent = 'scale-on-resize-component';
 const horizontalScaleComponent = 'horizontal-scale-component';
 const verticalScaleComponent = 'vertical-scale-component';
+const inlineComponent = 'inline-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -173,5 +174,5 @@ export {
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
     defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
-    defaultInputWidth
+    defaultInputWidth, inlineComponent
 };
