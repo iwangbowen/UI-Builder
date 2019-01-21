@@ -238,7 +238,10 @@ function onDrop(event, { draggable, helper, offset, position }) {
         // Subtract them to get offset bewteen draggable and droppable
         const droppableOffset = this.getBoundingClientRect();
         const helperOffset = getOffsetBetweenElements(helper, $('#iframeId'));
-        convertAndInitInteractions(appended, addOffset(getOffset(helperOffset, droppableOffset), { dx: 0, dy: 0 }));
+        appended.each((index, element) =>
+            // Add horizontal offset if appended has more than one elements
+            convertAndInitInteractions($(element), addOffset(getOffset(helperOffset, droppableOffset), { dx: 40 * index, dy: 0 }))
+        );
         if (component.afterDrop) {
             component.afterDrop(appended.get(0));
         }
@@ -284,7 +287,7 @@ let selectedOriginalSizes = [];
 let selectedOriginalPositions = [];
 
 const draggableOptions = {
-    cancel: 'input,textarea,select,option',
+    cancel: 'option',
     start() {
         setChildrenDroppable($(this), 'disable');
         if (isSelectedElement(this)) {
@@ -322,7 +325,7 @@ const draggableOptions = {
 };
 
 const resizableOptions = {
-    cancel: 'input,textarea,select,option',
+    cancel: 'textarea,select,option',
     handles: 'all',
     start() {
         if (isSelectedElement(this)) {

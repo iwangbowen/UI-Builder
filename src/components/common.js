@@ -119,6 +119,8 @@ const col_sm_10 = 'col-sm-10';
 const col_sm_11 = 'col-sm-11';
 const col_sm_12 = 'col-sm-12';
 
+const mr_sm_2 = 'mr-sm-2';
+
 const rowClass = 'row';
 const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
@@ -143,6 +145,7 @@ const customControlLabel = 'custom-control-label';
 const customFile = 'custom-file';
 const customFileInput = 'custom-file-input';
 const customFileLabel = 'custom-file-label';
+const form_inline = 'form-inline';
 
 const colReg = /col-([^-\$ ]*)?-?(\d+)/g;
 const headingReg = /H(\d)/;
@@ -168,5 +171,5 @@ export {
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
-    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent
+    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2
 };
