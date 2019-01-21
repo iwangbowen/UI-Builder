@@ -114,7 +114,7 @@ function getSideFromDistance(rect, direction, distance) {
     }
 }
 
-function showLines(targetRect, elementRect, target, element, direction) {
+function showLines(targetRect, elementRect, target, element, direction, adjust) {
     let side, otherSide, middleSide, span;
     if (direction === 'vertical') {
         side = 'left';
@@ -129,18 +129,23 @@ function showLines(targetRect, elementRect, target, element, direction) {
     }
     let distance = showLineIfCloseEnough(targetRect, elementRect, side);
     if (distance) {
-        // Adjust position
-        const elementSide = getSideFromDistance(elementRect, direction, distance);
-        target.style[side] = element.style[elementSide];
+        if (adjust) {
+            // Adjust position
+            const elementSide = getSideFromDistance(elementRect, direction, distance);
+            target.style[side] = element.style[elementSide];
+        }
         // Get target new rect
         return repositionAndShowLineIfCloseEnough(target, elementRect, otherSide);
     } else {
         distance = showLineIfCloseEnough(targetRect, elementRect, otherSide);
         if (distance) {
-            // Right or bottom alignment
-            // target left or top should equal to
-            // element right or bottom minus target width or height
-            target.style[side] = elementRect[otherSide] - targetRect[span];
+            if (adjust) {
+                const elementSide = getSideFromDistance(elementRect, direction, distance);
+                // Right or bottom alignment
+                // target left or top should equal to
+                // element current alignment side minus target width or height
+                target.style[side] = elementRect[elementSide] - targetRect[span];
+            }
             return repositionAndShowLineIfCloseEnough(target, elementRect, side);
         } else {
             return showLineIfCloseEnough(targetRect, elementRect, middleSide);
@@ -148,15 +153,15 @@ function showLines(targetRect, elementRect, target, element, direction) {
     }
 }
 
-function showVerticalLines(targetRect, elementRect, target, element) {
-    return showLines(targetRect, elementRect, target, element, 'vertical');
+function showVerticalLines(targetRect, elementRect, target, element, adjust) {
+    return showLines(targetRect, elementRect, target, element, 'vertical', adjust);
 }
 
-function showHorizontalLines(targetRect, elementRect, target, element) {
-    return showLines(targetRect, elementRect, target, element, 'horizontal');
+function showHorizontalLines(targetRect, elementRect, target, element, adjust) {
+    return showLines(targetRect, elementRect, target, element, 'horizontal', adjust);
 }
 
-function showAlignmentLines(target) {
+function showAlignmentLines(target, adjust = true) {
     let targetRect = getRect(target);
     let horizontalLinesShown = false;
     let verticalLinesShown = false;
@@ -172,8 +177,8 @@ function showAlignmentLines(target) {
         .some(element => {
             const elementRect = getRect(element);
 
-            verticalLinesShown = showVerticalLines(targetRect, elementRect, target, element);
-            horizontalLinesShown = showHorizontalLines(targetRect, elementRect, target, element);
+            verticalLinesShown = showVerticalLines(targetRect, elementRect, target, element, adjust);
+            horizontalLinesShown = showHorizontalLines(targetRect, elementRect, target, element, adjust);
             return horizontalLinesShown && verticalLinesShown;
         });
 }

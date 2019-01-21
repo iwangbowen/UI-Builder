@@ -366,7 +366,7 @@ const resizableOptions = {
                         });
                 });
         }
-        showAlignmentLines(this);
+        showAlignmentLines(this, false);
     },
     stop(e, { element }) {
         hideAlignmentLines();
@@ -462,8 +462,8 @@ function initDroppable(context = Vvveb.Builder.frameHtml) {
         });
 }
 
-function showAlignmentLines(element) {
-    return getFunctionInIframe('showAlignmentLines')(element);
+function showAlignmentLines(element, adjust) {
+    return getFunctionInIframe('showAlignmentLines')(element, adjust);
 }
 
 function hideAlignmentLines() {
