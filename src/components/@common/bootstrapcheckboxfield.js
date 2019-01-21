@@ -8,9 +8,7 @@ import label from './label';
 const bootstrapcheckboxfield = extend({}, checkboxfield, {
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapcheckboxfieldid}">
                ${label.html}
-               <div class="${col_sm_9}">
-                ${bootstrapcheckbox.html}
-               </div>
+               ${bootstrapcheckbox.html}
            </div>`
 });
 

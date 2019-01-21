@@ -8,9 +8,7 @@ import bootstrapautoselectinput from './bootstrapautoselectinput';
 const bootstrapautoselectinputfield = extend({}, autoselectinputfield, {
     html: `<div class="${sortableClass} ${formGroup} ${rowClass}" ${dataComponentId}="${bootstrapautoselectinputfieldid}">
                ${label.html}
-               <div class="${col_sm_9}">
-                ${bootstrapautoselectinput.html}
-               </div>
+               ${bootstrapautoselectinput.html}
            </div>`
 });
 

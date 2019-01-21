@@ -8,9 +8,7 @@ import { bootstraptextareafieldid } from './ids';
 const bootstraptextareainputfield = extend({}, textareainputfield, {
     html: `<div ${dataComponentId}="${bootstraptextareafieldid}" class="${formGroup} ${sortableClass} ${rowClass}">
             ${label.html}
-            <div class="${col_sm_9}">
-                ${bootstraptextareainput.html}
-            </div>
+            ${bootstraptextareainput.html}
            </div>`
 });
 

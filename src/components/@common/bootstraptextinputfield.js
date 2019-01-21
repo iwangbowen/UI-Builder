@@ -8,10 +8,8 @@ import label from './label';
 const bootstraptextinputfield = extend({}, textinputfield, {
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstraptextinputfieldid}">
             ${label.html}
-            <div class="${col_sm_9}">
-                ${bootstraptextinput.html}
-                <small class="${formText} ${textMuted} ${deletableComponent}">We'll never share your information.</small>
-            </div>
+            ${bootstraptextinput.html}
+            <small class="${formText} ${textMuted} ${deletableComponent}">We'll never share your information.</small>
            </div>`
 });
 

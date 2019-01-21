@@ -10,9 +10,7 @@ const bootstrapmanualselectinputfield = extend({}, manualselectinputfield, {
     image: "icons/select_input.svg",
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapmanualselectinputfieldid}">
                ${label.html}
-               <div class="${col_sm_9}">
-                ${bootstrapmanualselectinput.html}
-               </div>
+               ${bootstrapmanualselectinput.html}
            </div>`
 });
 

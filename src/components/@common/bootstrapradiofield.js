@@ -8,9 +8,7 @@ import bootstrapradio from './bootstrapradio';
 const bootstrapradiofield = extend({}, radiofield, {
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapradiofieldid}">
             ${label.html}
-            <div class="${col_sm_9}">
-                ${bootstrapradio.html}
-            </div>
+            ${bootstrapradio.html}
            </div>`
 });
 

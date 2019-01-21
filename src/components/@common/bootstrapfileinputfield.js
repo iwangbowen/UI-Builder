@@ -8,9 +8,7 @@ import fileinputfield from './fileinputfield';
 const bootstrapfileinputfield = extend({}, fileinputfield, {
     html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapfileinputfieldid}">
             ${label.html}
-            <div class="${col_sm_9}">
-			    ${bootstrapfileinput.html}
-            </div>
+			${bootstrapfileinput.html}
            </div>`
 });
 
