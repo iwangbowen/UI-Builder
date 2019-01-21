@@ -24,7 +24,7 @@ import {
     dataScriptType, generatedNonExecuteScriptClass, generatedExecuteScriptClass,
     tooltipType, nonEvaluable, dataType, devDep, themesEndpoint
 } from '../constants';
-import { dataOnclickFunctionGenerated } from '../components/common';
+import { dataOnclickFunctionGenerated, droppableComponent } from '../components/common';
 import 'core-js/es6/array';
 import 'core-js/es7/array';
 import 'core-js/es6/string';
@@ -509,6 +509,38 @@ function replacePopupWithForm(el) {
     return el;
 }
 
+function sortElements(elements, parent) {
+    elements =
+        elements
+            .sort((a, b) => {
+                const $a = $(a);
+                const $b = $(b);
+                const aLeft = $a.css('left');
+                const aTop = $a.css('top');
+                const bLeft = $b.css('left');
+                const bTop = $b.css('top');
+                return Number.parseFloat(aTop) - Number.parseFloat(bTop) ||
+                    Number.parseFloat(aLeft) - Number.parseFloat(bLeft);
+            });
+    elements
+        .filter(function () {
+            return $(this).hasClass(droppableComponent);
+        })
+        .each(function () {
+            sortElements($(this).children(), $(this));
+        });
+    if (parent) {
+        elements.appendTo(parent);
+    }
+    return elements;
+}
+
+function sortElementsByPosition(el) {
+    const body = $(el).find('body');
+    sortElements(body.children(':not(script)')).insertBefore(body.find('script:first'));
+    return el;
+}
+
 function getThemeList() {
     return $.ajax({
         url: themesEndpoint
@@ -556,5 +588,6 @@ export {
     generateGridRemoveItemSpan, removeImageDataURL, generatedMissedScripts, generateButtonClickPopupScript,
     removeGridsterStylesheet, generateTabsScript, generateSharedJSCode, generateScripts,
     removeSharedScriptTag, getTemplatePage, changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
-    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType, getThemeList, getThemeContent, transformGridsterStyle
+    restoreNonEvaluateScriptType, restoreNonEvaluateLinkType, getThemeList, getThemeContent, transformGridsterStyle,
+    sortElementsByPosition
 };

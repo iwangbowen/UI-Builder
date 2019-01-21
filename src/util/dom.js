@@ -7,7 +7,7 @@ import {
     generateAddNewItemDiv, removeImageDataURL, generatedMissedScripts,
     removeGridsterStylesheet, generateScripts,
     changeLinkTypeToNonEvaluable, changeScriptTypeToNonEvaluable,
-    restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent
+    restoreNonEvaluateLinkType, restoreNonEvaluateScriptType, getThemeContent, sortElementsByPosition
 } from './jsoup';
 import {
     html_beaufify_options, multiSelectedClass, nonTemplateScriptType, javascriptScriptType,
@@ -218,7 +218,8 @@ function getBeautifiedHtml(doc, withExternalFiles = false, containsShared = true
             curry(changeScriptType)(curry.placeholder, generatedExecuteScriptSelector, javascriptScriptType),
             curry(changeScriptType)(curry.placeholder, generatedNonExecuteScriptSelector, javascriptScriptType),
             restoreNonEvaluateLinkType,
-            restoreNonEvaluateScriptType);
+            restoreNonEvaluateScriptType,
+            sortElementsByPosition);
 
         // Beautify
         const beautifiedHtml = withExternalFiles ? replaceWithExternalFiles(html).then(html => html_beautify(`${doctype}
