@@ -2,7 +2,7 @@ import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
-	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback, getFunctionInIframe
+	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback, getFunctionInIframe, getSelectedElements
 } from '../util/dom';
 import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
@@ -18,7 +18,7 @@ import {
 } from '../util/interactions';
 import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
-import { isInIframe } from '../constants';
+import { isInIframe, multiSelectedClass } from '../constants';
 import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 
 Vvveb.defaultComponent = "_base";
@@ -255,7 +255,18 @@ Vvveb.Builder = {
 		});
 
 		$(`#${multiSelectedDelete}`).on('click', (event) => {
-			console.log('delete');
+			hideAuxiliaryElements();
+			const selectedElements = getSelectedElements();
+			if (selectedElements.length) {
+				const node = selectedElements[0];
+				Vvveb.Undo.addMutation(new ChildListMutation({
+					target: node.parentNode,
+					removedNodes: [...selectedElements],
+					nextSibling: null
+				}));
+				selectedElements.forEach(element => $(element).removeClass(multiSelectedClass).remove());
+			}
+			clearSelectedElements();
 			event.preventDefault();
 			return false;
 		});
