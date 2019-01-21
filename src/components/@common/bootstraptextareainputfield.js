@@ -6,10 +6,7 @@ import textareainputfield from './textareainputfield';
 import { bootstraptextareafieldid } from './ids';
 
 const bootstraptextareainputfield = extend({}, textareainputfield, {
-    html: `<div ${dataComponentId}="${bootstraptextareafieldid}" class="${formGroup} ${sortableClass} ${rowClass}">
-            ${label.html}
-            ${bootstraptextareainput.html}
-           </div>`
+    html: `${label.html}${bootstraptextareainput.html}`
 });
 
 export default bootstraptextareainputfield;
