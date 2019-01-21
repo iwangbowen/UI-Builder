@@ -6,10 +6,7 @@ import bootstrapcheckbox from './bootstrapcheckbox';
 import label from './label';
 
 const bootstrapcheckboxfield = extend({}, checkboxfield, {
-    html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapcheckboxfieldid}">
-               ${label.html}
-               ${bootstrapcheckbox.html}
-           </div>`
+    html: `${label.html}${bootstrapcheckbox.html}`
 });
 
 export default bootstrapcheckboxfield;

@@ -6,10 +6,7 @@ import radiofield from './radiofield';
 import bootstrapradio from './bootstrapradio';
 
 const bootstrapradiofield = extend({}, radiofield, {
-    html: `<div class="${formGroup} ${sortableClass} ${rowClass}" ${dataComponentId}="${bootstrapradiofieldid}">
-            ${label.html}
-            ${bootstrapradio.html}
-           </div>`
+    html: `${label.html}${bootstrapradio.html}`
 });
 
 export default bootstrapradiofield;
