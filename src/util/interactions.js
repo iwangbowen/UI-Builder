@@ -347,7 +347,9 @@ const draggableOptions = {
 
 const droppableOptions = {
     // Prevent top center draggable menu bar from being dropped
-    accept: `.${draggableComponent}`,
+    accept(draggable) {
+        return draggable.attr('id') !== 'top-panel';
+    },
     greedy: true,
     classes: droppableClasses,
     drop: onDrop
