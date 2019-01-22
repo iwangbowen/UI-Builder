@@ -16,7 +16,7 @@ import {
 } from '../util/interactions';
 import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
-import { isInIframe, multiSelectedClass } from '../constants';
+import { isInIframe } from '../constants';
 import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 
 Vvveb.defaultComponent = "_base";
@@ -234,11 +234,9 @@ Vvveb.Builder = {
 		$(`#${multiSelectedCopy}`).on('click', (event) => {
 			hideAuxiliaryElements();
 			const selectedElements = getSelectedElements();
-			const clonedElements = selectedElements.map(function (element) {
-				return cloneAndInit($(element))[0];
-			});
+			const clonedElements = cloneAndInit($(selectedElements));
 			if (clonedElements.length) {
-				const node = clonedElements[0];
+				const node = clonedElements.get(0);
 				Vvveb.Undo.addMutation(new ChildListMutation({
 					target: node.parentNode,
 					addedNodes: clonedElements,
@@ -246,7 +244,7 @@ Vvveb.Builder = {
 				}));
 			}
 			clearSelectedElements();
-			setSelectedElements(clonedElements);
+			setSelectedElements(jQuery.makeArray(clonedElements));
 			event.preventDefault();
 			return false;
 		});
