@@ -361,19 +361,19 @@ function addStyleForSelectedElements() {
 }
 
 function highlightOnMove(target) {
-    const $target = $(target);
-    const offset = $target.offset();
-    const width = $target.outerWidth();
-    const height = $target.outerHeight();
+    const { top, left, width, height } = target.getBoundingClientRect();
     jQuery(`${highlightBoxSelector}`).css(
         {
-            top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
-            left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
+            top: top,
+            left: left,
             width,
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
         });
-    jQuery(highlightNameSelector).html(target.tagName);
+    // Show tag name below highlight box
+    jQuery(highlightNameSelector).html(target.tagName).css({
+        top: height
+    });
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {
