@@ -64,6 +64,8 @@ const scaleOnResizeComponent = 'scale-on-resize-component';
 const horizontalScaleComponent = 'horizontal-scale-component';
 const verticalScaleComponent = 'vertical-scale-component';
 const inlineComponent = 'inline-component';
+const defaultWidthComponent = 'default-width-component';
+const defaultHeightComponent = 'default-height-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -155,6 +157,8 @@ const labelAlignStyle = 'flex: 0 0 30%; min-height: 28px;';
 const inputAlignStyle = 'flex: 0 0 55%; margin-right: 20px; margin-left: 0px;';
 const defaultSizeStyle = "width: 500px; height: 300px;";
 const defaultInputWidth = '175.6px';
+const defaultWidthValue = 'auto';
+const defaultHeightValue = 'auto';
 
 export {
     bgcolorClasses, bgcolorSelectOptions, changeNodeName, inc_base_sort, dataComponentId, dataTableId,
@@ -174,5 +178,6 @@ export {
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
     defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
-    defaultInputWidth, inlineComponent
+    defaultInputWidth, inlineComponent, defaultWidthComponent, defaultHeightComponent, defaultWidthValue,
+    defaultHeightValue
 };
