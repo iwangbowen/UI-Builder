@@ -36,9 +36,7 @@ export default class ChildListMutation extends Mutation {
 
     removeNodes(nodes) {
         if (nodes) {
-            nodes.forEach(node => {
-                node.parentNode.removeChild(node)
-            });
+            nodes.forEach(node => node.parentNode.removeChild(node));
         }
     }
 }

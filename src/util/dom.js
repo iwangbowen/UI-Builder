@@ -325,6 +325,11 @@ function getSelectedElements() {
     return selectedElements;
 }
 
+function setSelectedElements(elements) {
+    selectedElements = elements;
+    $(elements).addClass(multiSelectedClass);
+}
+
 function addOrRemoveElement(element) {
     const draggableElement = getElementWithSpecifiedClass($(element)).get(0);
     if (includes(selectedElements, draggableElement)) {
@@ -649,5 +654,5 @@ export {
     initPanelToggle, initBuilderPage, setGlobalVariables, setPageSrcdoc, clearTimer, isTemplatePage,
     getSavedPages, hideAuxiliaryElements, decodeHash, generateHtml, getClickedPopup, clickedPopupExists,
     createClickedPopup, applyTheme, getCurrentThemeName, changeOffset, alignCallback, isSelectedElement,
-    areSiblings, getFunctionInIframe
+    areSiblings, getFunctionInIframe, setSelectedElements
 };

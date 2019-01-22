@@ -2,7 +2,7 @@ import Vvveb from './components';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
-	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback, getFunctionInIframe, getSelectedElements
+	getElementWithSpecifiedClass, loadCallback, hideAuxiliaryElements, changeOffset, alignCallback, getFunctionInIframe, getSelectedElements, setSelectedElements
 } from '../util/dom';
 import { noneditableSelector, selectBox } from '../util/selectors';
 import ChildListMutation from '../models/mutation/child-list-mutation';
@@ -279,6 +279,8 @@ Vvveb.Builder = {
 					nextSibling: null
 				}));
 			}
+			clearSelectedElements();
+			setSelectedElements(clonedElements);
 			event.preventDefault();
 			return false;
 		});
@@ -294,8 +296,8 @@ Vvveb.Builder = {
 					nextSibling: null
 				}));
 			}
-			selectedElements.forEach(element => $(element).removeClass(multiSelectedClass).remove());
 			clearSelectedElements();
+			$(selectedElements).remove();
 			event.preventDefault();
 			return false;
 		});
