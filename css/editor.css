@@ -11642,7 +11642,10 @@ body {
   /* transform: translateX(-50%); */
   border-bottom: 1px solid #eee;
   text-align: center;
-  background-color: #fafafa; }
+  background-color: #f1f1f1;
+  padding: 0.01em 16px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
 
 #vvveb-builder #bottom-panel {
   width: auto;
