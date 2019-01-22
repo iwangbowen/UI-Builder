@@ -236,7 +236,7 @@ Vvveb.Builder = {
 			const selectedElements = getSelectedElements();
 			const clonedElements = cloneAndInit($(selectedElements));
 			if (clonedElements.length) {
-				const node = clonedElements.get(0);
+				const node = clonedElements[0];
 				Vvveb.Undo.addMutation(new ChildListMutation({
 					target: node.parentNode,
 					addedNodes: clonedElements,

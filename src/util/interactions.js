@@ -137,26 +137,27 @@ function convertAndInitInteractionsRecursively(element) {
 }
 
 function cloneAndInit(original) {
-    const cloned = original.clone();
-    cloned.each(function () {
+    return original.map(function () {
         const $this = $(this);
-        const width = this.style.width;
-        const height = this.style.height;
-        original.after(this);
+        const $cloned = $(this).clone();
+        const cloned = $cloned.get(0);
+        const width = cloned.style.width;
+        const height = cloned.style.height;
+        $this.after(cloned);
         // Reserve width and height in percentage
-        this.style.width = width;
-        this.style.height = height;
+        cloned.style.width = width;
+        cloned.style.height = height;
         // Cloned elements would have resizable handles
         // which would interfere with cloned elements resizable
-        removeResizableHandles($this);
+        removeResizableHandles($cloned);
         // Add left and top offset for cloned element
-        offsetElement($this, {
+        offsetElement($cloned, {
             leftOffset: 25,
             topOffset: 25
         });
-        convertAndInitInteractionsRecursively($this);
+        convertAndInitInteractionsRecursively($cloned);
+        return cloned;
     });
-    return cloned;
 }
 
 function convertAndInitInteractions(element, position, convertSizeNeeded = true) {
