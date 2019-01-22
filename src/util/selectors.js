@@ -16,11 +16,10 @@ const multivalueSelectSelector = `select[${dataMultivalueSelectId}]`;
 
 const multiSelectedSelector = `.${multiSelectedClass}`;
 
-const withCtrlKeyActionsSelector = '#select-actions #with-ctrl-key';
-const withoutCtrlKeyActionsSelector = '#select-actions #without-ctrl-key';
-
 const selectBox = '#select-box';
 const selectActions = '#select-actions';
+const withCtrlKeyActionsSelector = `${selectActions} #with-ctrl-key`;
+const withoutCtrlKeyActionsSelector = `${selectActions} #without-ctrl-key`;
 
 const userDefinedScriptSelector = 'script:not([class]):not([src])';
 const generatedNonExecuteScriptSelector = `script.${generatedNonExecuteScriptClass}`;
