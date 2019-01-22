@@ -44,7 +44,7 @@ function addPropertyChangeListener(component, property) {
 			element = component.onChange(element, property, value, input);
 		}
 		if (!property.child && !property.parent) {
-			Vvveb.Builder.selectNode(element);
+			Vvveb.Builder.selectNode(element.get(0));
 		}
 	});
 };
