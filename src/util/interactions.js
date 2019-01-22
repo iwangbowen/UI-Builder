@@ -3,7 +3,10 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent } from '../components/common';
-import { getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements, getFunctionInIframe, clearSelectedElements } from './dom';
+import {
+    getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
+    getFunctionInIframe, clearSelectedElements
+} from './dom';
 import { componentBgImgHeight } from '../constants';
 
 function initDraggableComponents(item, component) {
@@ -42,66 +45,6 @@ function initTopPanelDrag() {
 const droppableClasses = {
     'ui-droppable-hover': 'ui-state-hover'
 };
-
-function drop(event, { draggable, helper, offset }) {
-    // Check drag elements from inside or out of iframe
-    if (draggable == helper) {
-        $(this).append(draggable);
-    } else {
-        const component = Vvveb.Components.matchNode(helper.get(0));
-        let appendedElement;
-        if (component.getDropHtml) {
-            helper = $(component.getDropHtml()).replaceAll(helper);
-        }
-        if (component.onDrop) {
-            appendedElement = component.onDrop(helper);
-        }
-        if (!component.droppable && component.sortable) {
-            // Check if the drop zone is popup form
-            // Remove div.saveArea and be compatible
-            if ($(this).is('form.popup-form') && $(this).find('.saveArea').length) {
-                appendedElement = cloneAndInsertBefore(helper, $(this).find('.saveArea'));
-            } else if (component.getDropHtml) {
-                appendedElement = appendTo(helper, this);
-            } else {
-                appendedElement = cloneAndAppendTo(helper, this);
-            }
-        } else {
-            appendedElement = (component.getDropHtml
-                ? appendTo : cloneAndAppendTo)(helper, this, {
-                    position: '',
-                    left: 0,
-                    top: 0,
-                    width: component.width || '100%',
-                    height: component.height || '100%',
-                });
-            if (appendedElement.is('form')) {
-                enableSortableAndDroppable(appendedElement);
-            } else if (appendedElement.is('div.row')) {
-                enableSortableAndDroppable(appendedElement.children());
-            } else if (component.droppable || component.sortable) {
-                enableSortableAndDroppable(appendedElement, undefined, undefined, component.droppable, component.sortable);
-            }
-        }
-        if (component.afterDrop) {
-            component.afterDrop(appendedElement.get(0));
-        }
-        if (component.beforeInit) {
-            component.beforeInit(appendedElement.get(0));
-        }
-        if (component.resizable) {
-            appendedElement.resizable(agGridResizableOptions);
-        }
-        if (component.isChildrenSortableAndDroppable) {
-            enableSortableAndDroppable(appendedElement.children(component.sortableAndDroppableSelector));
-        }
-        Vvveb.Undo.addMutation(new ChildListMutation({
-            target: appendedElement.get(0).parentNode,
-            addedNodes: [...appendedElement],
-            nextSibing: appendedElement[0].nextSibing
-        }));
-    }
-}
 
 function convertSize(element, width = element.outerWidth(), height = element.outerHeight()) {
     // Convert to absolute unit or relative uite
