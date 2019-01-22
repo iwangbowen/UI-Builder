@@ -54,6 +54,7 @@ Vvveb.FileManager = {
 					const self = this;
 					$("#dialog-confirm").dialog({
 						resizable: false,
+						draggable: false,
 						height: "auto",
 						width: 400,
 						modal: true,

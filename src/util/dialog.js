@@ -14,6 +14,7 @@ const themesForm = $('#themes-dialog').find('form');
 
 const dialog = $("#dialog-form").dialog({
     autoOpen: false,
+    draggable: false,
     height: 350,
     width: 600,
     modal: true,
@@ -59,6 +60,7 @@ const themesDialog = $("#themes-dialog").dialog({
     height: 400,
     width: 350,
     modal: true,
+    draggable: false,
     buttons: {
         Apply() {
             applyTheme(getSelectedTheme());

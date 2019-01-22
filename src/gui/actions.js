@@ -98,7 +98,9 @@ Vvveb.Actions = {
                 themesDialog.dialog('open');
             })
             .catch(e => {
-                $(`#${requestErrorDialogId}`).dialog();
+                $(`#${requestErrorDialogId}`).dialog({
+                    draggable: false
+                });
             });
     },
     downloadWithExternalFiles() {
