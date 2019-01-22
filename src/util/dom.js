@@ -22,7 +22,7 @@ import min from 'lodash/min';
 import max from 'lodash/max';
 import {
     multiSelectedSelector, selectBox, withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector,
-    userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector, generatedExecuteScriptSelector
+    userDefinedScriptSelector, nonTemplateScriptSelector, generatedNonExecuteScriptSelector, generatedExecuteScriptSelector, selectActions
 } from './selectors';
 import {
     draggableComponent, configurableComponent, sortableClass, cloneableComponent,
@@ -364,8 +364,8 @@ function highlightOnMove(target) {
     const { top, left, width, height } = target.getBoundingClientRect();
     jQuery(`${highlightBoxSelector}`).css(
         {
-            top: top,
-            left: left,
+            top,
+            left,
             width,
             height,
             display: target.hasAttribute('contenteditable') ? "none" : "block"
@@ -377,14 +377,16 @@ function highlightOnMove(target) {
 }
 
 function highlightwhenSelected(target, ctrlKeyPressed) {
-    const $target = $(target);
-    const offset = $target.offset();
+    const { top, left, width, height } = target.getBoundingClientRect();
     $(selectBox).css({
-        top: offset.top - Vvveb.Builder.frameDoc.scrollTop(),
-        left: offset.left - Vvveb.Builder.frameDoc.scrollLeft(),
-        width: $target.outerWidth(),
-        height: $target.outerHeight(),
+        top,
+        left,
+        width,
+        height,
         display: "block",
+    });
+    jQuery(selectBox).find(selectActions).css({
+        top: height
     });
     if (ctrlKeyPressed) {
         jQuery(selectBox).find(withCtrlKeyActionsSelector).show();

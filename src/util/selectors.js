@@ -20,6 +20,7 @@ const withCtrlKeyActionsSelector = '#select-actions #with-ctrl-key';
 const withoutCtrlKeyActionsSelector = '#select-actions #without-ctrl-key';
 
 const selectBox = '#select-box';
+const selectActions = '#select-actions';
 
 const userDefinedScriptSelector = 'script:not([class]):not([src])';
 const generatedNonExecuteScriptSelector = `script.${generatedNonExecuteScriptClass}`;
@@ -36,5 +37,5 @@ export {
     calendarOnclickSelector, multivalueSelectSelector, multiSelectedSelector, selectBox,
     withCtrlKeyActionsSelector, withoutCtrlKeyActionsSelector, userDefinedScriptSelector,
     nonTemplateScriptSelector, componentSelector, inputBlockClassSelector, sortableDivSelector,
-    generatedNonExecuteScriptSelector, generatedExecuteScriptSelector
+    generatedNonExecuteScriptSelector, generatedExecuteScriptSelector, selectActions
 };
