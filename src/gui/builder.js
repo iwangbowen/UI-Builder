@@ -248,8 +248,37 @@ Vvveb.Builder = {
 		$('#top-align').on('click', alignCallback('top'));
 		$('#middle-align').on('click', alignCallback('middle'));
 		$('#bottom-align').on('click', alignCallback('bottom'));
+
 		$(`#${multiSelectedCopy}`).on('click', (event) => {
-			console.log('copy');
+			hideAuxiliaryElements();
+			const selectedElements = getSelectedElements();
+			const clonedElements = selectedElements.map(function (element) {
+				const cloned = $(element).clone();
+				const width = cloned.get(0).style.width;
+				const height = cloned.get(0).style.height;
+				$(element).after(cloned);
+				// Reserve width and height in percentage
+				cloned[0].style.width = width;
+				cloned[0].style.height = height;
+				// Cloned elements would have resizable handles
+				// which would interfere with cloned elements resizable
+				removeResizableHandles(cloned);
+				// Add left and top offset for cloned element
+				offsetElement(cloned, {
+					leftOffset: 25,
+					topOffset: 25
+				});
+				convertAndInitInteractionsRecursively(cloned);
+				return cloned.get(0);
+			});
+			if (clonedElements.length) {
+				const node = clonedElements[0];
+				Vvveb.Undo.addMutation(new ChildListMutation({
+					target: node.parentNode,
+					addedNodes: clonedElements,
+					nextSibling: null
+				}));
+			}
 			event.preventDefault();
 			return false;
 		});
@@ -261,11 +290,11 @@ Vvveb.Builder = {
 				const node = selectedElements[0];
 				Vvveb.Undo.addMutation(new ChildListMutation({
 					target: node.parentNode,
-					removedNodes: [...selectedElements],
+					removedNodes: selectedElements,
 					nextSibling: null
 				}));
-				selectedElements.forEach(element => $(element).removeClass(multiSelectedClass).remove());
 			}
+			selectedElements.forEach(element => $(element).removeClass(multiSelectedClass).remove());
 			clearSelectedElements();
 			event.preventDefault();
 			return false;
