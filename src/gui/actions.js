@@ -3,9 +3,9 @@ import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThem
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
-import { dialog, themesForm, themesDialog } from '../util/dialog';
+import { dialog, themesForm, themesDialog, basicDialog } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
-import { requestErrorDialogId } from '../shared';
+import { errorDialogTitle, requestErrorContent } from '../shared';
 
 Vvveb.Actions = {
     init() {
@@ -98,9 +98,10 @@ Vvveb.Actions = {
                 themesDialog.dialog('open');
             })
             .catch(e => {
-                $(`#${requestErrorDialogId}`).dialog({
-                    draggable: false
-                });
+                basicDialog.set({
+                    title: errorDialogTitle,
+                    content: requestErrorContent
+                }).open();
             });
     },
     downloadWithExternalFiles() {
