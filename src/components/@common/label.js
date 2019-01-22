@@ -6,7 +6,7 @@ const label = {
     name: 'Label',
     nodes: ['label'],
     image: 'icons/label.svg',
-    html: `<label for="" ${dataComponentId}="${labelid}" class="${deletableComponent} ${inlineComponent} ${resizableComponent} ${draggableComponent}">Text</label>`,
+    html: `<label for="" ${dataComponentId}="${labelid}" class="${deletableComponent} ${inlineComponent} ${draggableComponent}">Text</label>`,
     properties
 };
 
