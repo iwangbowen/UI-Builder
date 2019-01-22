@@ -101,14 +101,6 @@ div.row.gridrow-component > div, .form-border {
   border: 1px dashed rgb(153, 153, 153);
 }
 
-.gridster .gs-w.ui-state-hover,
-.gridster .gs-w form.ui-state-hover,
-div.row > div.ui-state-hover,
-.allButton.dropzone.ui-state-hover,
-.userList #myGrid.ui-state-hover {
-  background:#ced4da;
-}
-
 .placeholder-component-highlight {
   margin: 1px;
   border: dashed 2px transparent;

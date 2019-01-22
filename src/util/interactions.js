@@ -40,7 +40,7 @@ function initTopPanelDrag() {
 }
 
 const droppableClasses = {
-    "ui-droppable-hover": "ui-state-hover"
+    'ui-droppable-hover': 'ui-state-hover'
 };
 
 function drop(event, { draggable, helper, offset }) {
@@ -234,11 +234,7 @@ function convertAndInitInteractions(element, position, convertSizeNeeded = true)
         element.resizable(resizableOptions);
     }
     if (element.hasClass(droppableComponent)) {
-        element.droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        });
+        element.droppable(droppableOptions);
     }
 }
 
@@ -254,7 +250,6 @@ function appendTo(element, container) {
 function onDrop(event, { draggable, helper, offset, position }) {
     // Drag elemetn from component list
     if (draggable !== helper) {
-        console.log(offset, position);
         const component = Vvveb.Components.matchNode(helper.get(0));
         const appended = appendTo($(component.html), $(this));
         // Use clone element as dragging element
@@ -348,6 +343,12 @@ const draggableOptions = {
                 });
         }
     }
+};
+
+const droppableOptions = {
+    greedy: true,
+    classes: droppableClasses,
+    drop: onDrop
 };
 
 const resizableOptions = {
@@ -484,11 +485,7 @@ function setChildrenDroppable(element, option) {
 
 function initDroppable(context = Vvveb.Builder.frameHtml) {
     context.find(`.${droppableComponent}`)
-        .droppable({
-            greedy: true,
-            classes: droppableClasses,
-            drop: onDrop
-        });
+        .droppable(droppableOptions);
 }
 
 function showAlignmentLines(element, adjust) {

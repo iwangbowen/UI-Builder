@@ -11673,9 +11673,10 @@ body {
 #vvveb-builder #canvas {
   /* margin-right: 260px; */
   /* margin-left: 260px; */
-  top: 43px;
+  /* top: 43px; */
   width: calc( 100vw - 275px);
-  height: calc( 100vh - 43px);
+  /* height: calc( 100vh - 43px); */
+  height: calc( 100vh - 0px);
   position: fixed;
   transition: width 0.35s, left 0.35s; }
   #vvveb-builder #canvas #iframe-wrapper, #vvveb-builder #canvas iframe {
