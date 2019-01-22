@@ -187,6 +187,26 @@ function convertAndInitInteractionsRecursively(element) {
     });
 }
 
+function cloneAndInit(original) {
+    const cloned = original.clone();
+    const width = cloned.get(0).style.width;
+    const height = cloned.get(0).style.height;
+    original.after(cloned);
+    // Reserve width and height in percentage
+    cloned[0].style.width = width;
+    cloned[0].style.height = height;
+    // Cloned elements would have resizable handles
+    // which would interfere with cloned elements resizable
+    removeResizableHandles(cloned);
+    // Add left and top offset for cloned element
+    offsetElement(cloned, {
+        leftOffset: 25,
+        topOffset: 25
+    });
+    convertAndInitInteractionsRecursively(cloned);
+    return cloned;
+}
+
 function convertAndInitInteractions(element, position, convertSizeNeeded = true) {
     let width, height;
     if (convertSizeNeeded) {
@@ -488,5 +508,6 @@ export {
     setDroppableBySelector,
     setDraggable,
     convertAndInitInteractionsRecursively,
-    hideAlignmentLines
+    hideAlignmentLines,
+    cloneAndInit
 };

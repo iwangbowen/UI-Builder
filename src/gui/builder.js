@@ -9,12 +9,10 @@ import ChildListMutation from '../models/mutation/child-list-mutation';
 import {
 	initDraggableComponents,
 	initInteractions,
-	offsetElement,
-	removeResizableHandles,
 	arrayKeyPressed,
 	setDraggable,
-	convertAndInitInteractionsRecursively,
-	hideAlignmentLines
+	hideAlignmentLines,
+	cloneAndInit
 } from '../util/interactions';
 import { containerComponent } from '../components/common';
 import MoveMutation from '../models/mutation/move-mutation';
@@ -180,23 +178,7 @@ Vvveb.Builder = {
 		$("#clone-box").on("click", function (event) {
 			const original = getElementWithSpecifiedClass(_this.selectedEl);
 			if (original.length) {
-				const cloned = original.clone();
-				const width = cloned.get(0).style.width;
-				const height = cloned.get(0).style.height;
-				original.after(cloned);
-				// Reserve width and height in percentage
-				cloned[0].style.width = width;
-				cloned[0].style.height = height;
-				// Cloned elements would have resizable handles
-				// which would interfere with cloned elements resizable
-				removeResizableHandles(cloned);
-				// Add left and top offset for cloned element
-				offsetElement(cloned, {
-					leftOffset: 25,
-					topOffset: 25
-				});
-				convertAndInitInteractionsRecursively(cloned);
-
+				const cloned = cloneAndInit(original);
 				_this.selectedEl = cloned.click();
 
 				const node = cloned.get(0);
@@ -253,23 +235,7 @@ Vvveb.Builder = {
 			hideAuxiliaryElements();
 			const selectedElements = getSelectedElements();
 			const clonedElements = selectedElements.map(function (element) {
-				const cloned = $(element).clone();
-				const width = cloned.get(0).style.width;
-				const height = cloned.get(0).style.height;
-				$(element).after(cloned);
-				// Reserve width and height in percentage
-				cloned[0].style.width = width;
-				cloned[0].style.height = height;
-				// Cloned elements would have resizable handles
-				// which would interfere with cloned elements resizable
-				removeResizableHandles(cloned);
-				// Add left and top offset for cloned element
-				offsetElement(cloned, {
-					leftOffset: 25,
-					topOffset: 25
-				});
-				convertAndInitInteractionsRecursively(cloned);
-				return cloned.get(0);
+				return cloneAndInit($(element))[0];
 			});
 			if (clonedElements.length) {
 				const node = clonedElements[0];
