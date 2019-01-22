@@ -88,7 +88,9 @@ const basicDialog = {
         return this;
     },
     open() {
-        this.basicDialog.dialog();
+        this.basicDialog.dialog({
+            draggable: false
+        });
         return this;
     }
 };
