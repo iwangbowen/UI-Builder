@@ -435,6 +435,13 @@ function arrayKeyPressed(key, element) {
     } else {
         elements = [element];
     }
+
+    multiMoveResizeMutation = elements
+        .map(element => element.get(0))
+        .reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
+            target: cur
+        })), new MultiMoveResizeMutation());
+
     elements.forEach(element => {
         let { left, top } = element.position();
         switch (key) {
@@ -455,6 +462,9 @@ function arrayKeyPressed(key, element) {
         showAlignmentLines(element.get(0));
         applyPositionInPercentage(element, { left, top });
     });
+
+    multiMoveResizeMutation.onMoveResizeEnd();
+    Vvveb.Undo.addMutation(multiMoveResizeMutation);
 }
 
 
