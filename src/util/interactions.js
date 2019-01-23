@@ -345,6 +345,16 @@ const resizableOptions = {
             }));
             selectedOriginalPositions = $selected.map(selected => selected.position());
         }
+
+        let elements = [];
+        if (isSelectedElement(this)) {
+            elements = getSelectedElements();
+        } else {
+            elements = [this];
+        }
+        multiMoveResizeMutation = elements.reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
+            target: cur
+        })), new MultiMoveResizeMutation());
     },
     resize(e, { size, originalSize, position, originalPosition }) {
         hideAlignmentLines();
@@ -395,6 +405,9 @@ const resizableOptions = {
                 height
             });
         });
+
+        multiMoveResizeMutation.onMoveResizeEnd();
+        Vvveb.Undo.addMutation(multiMoveResizeMutation);
     }
 };
 
