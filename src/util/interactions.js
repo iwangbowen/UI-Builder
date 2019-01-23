@@ -8,6 +8,7 @@ import {
     getFunctionInIframe, clearSelectedElements
 } from './dom';
 import { componentBgImgHeight } from '../constants';
+import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
 
 function initDraggableComponents(item, component) {
     const width = item.width();
@@ -137,7 +138,9 @@ function convertAndInitInteractionsRecursively(element) {
 }
 
 function cloneAndInit(original) {
-    return original.map(function () {
+    const multiChildListMutation = new MultiChildListMutation();
+    const clonedElements = [];
+    original.each(function () {
         const $this = $(this);
         const $cloned = $(this).clone();
         const cloned = $cloned.get(0);
@@ -156,8 +159,16 @@ function cloneAndInit(original) {
             topOffset: 25
         });
         convertAndInitInteractionsRecursively($cloned);
-        return cloned;
+
+        clonedElements.push(cloned);
+        multiChildListMutation.addChildListMutation(new ChildListMutation({
+            target: this.parentNode,
+            addedNodes: [cloned],
+            nextSibling: null
+        }));
     });
+    Vvveb.Undo.addMutation(multiChildListMutation);
+    return clonedElements;
 }
 
 function convertAndInitInteractions(element, position, convertSizeNeeded = true) {
