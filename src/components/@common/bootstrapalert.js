@@ -1,5 +1,5 @@
 import { alertProperties as properties } from '../properties/alert';
-import { dataComponentId, configurableComponent } from '../common';
+import { dataComponentId, configurableComponent, draggableComponent, resizableComponent } from '../common';
 import { bootstrapalertid } from './ids';
 import extend from 'lodash/extend';
 import dragHtmlComponent from './dragHtmlComponent';
@@ -9,7 +9,7 @@ const bootstrapalert = extend({}, dragHtmlComponent, {
   name: "Alert",
   image: "icons/alert.svg",
   dragHtml: `<img ${dataComponentId}="${bootstrapalertid}" src="libs/builder/icons/alert.svg" style="width: 100px; height: 100px;">`,
-  html: `<div ${dataComponentId}="${bootstrapalertid}" class="${configurableComponent} alert alert-warning alert-dismissible fade show" role="alert">
+  html: `<div ${dataComponentId}="${bootstrapalertid}" class="${configurableComponent} ${draggableComponent} ${resizableComponent} alert alert-warning alert-dismissible fade show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>

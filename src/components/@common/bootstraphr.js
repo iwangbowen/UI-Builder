@@ -1,5 +1,5 @@
 import extend from 'lodash/extend';
-import { cloneableComponent, dataComponentId } from '../common';
+import { cloneableComponent, dataComponentId, draggableComponent } from '../common';
 import { bootstraphrid } from './ids';
 import dragHtmlComponent from './dragHtmlComponent';
 
@@ -8,7 +8,7 @@ const bootstraphr = extend({}, dragHtmlComponent, {
     nodes: ["hr"],
     name: "Horizontal Rule",
     dragHtml: `<img ${dataComponentId}="${bootstraphrid}" src="libs/builder/icons/hr.svg" style="width: 100px; height: auto;">`,
-    html: `<hr class="${cloneableComponent}">`
+    html: `<hr class="${cloneableComponent} ${draggableComponent}">`
 });
 
 export default bootstraphr;
