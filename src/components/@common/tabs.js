@@ -1,8 +1,8 @@
-import { dataComponentId, configurableComponent, dataTabsKey } from "../common";
+import { dataComponentId, configurableComponent, dataTabsKey, draggableComponent, resizableComponent, droppableComponent } from "../common";
 import { tabsid } from "./ids";
 import { TabValueInput, ButtonInput } from "../../inputs/inputs";
-import { enableSortableAndDroppable } from "../../util/drag-n-drop";
 import { getRandomString } from "../../util/common";
+import { initDroppable } from "../../util/interactions";
 
 const iframeWindow = document.getElementById('iframeId').contentWindow;
 
@@ -19,7 +19,7 @@ const tabs = {
     name: 'Tabs',
     image: "icons/tabs.svg",
     dragHtml: `<img ${dataComponentId}="${tabsid}" src="libs/builder/icons/tabs.svg" style="width: 100px; height: auto;">`,
-    html: `<div ${dataComponentId}="${tabsid}" class="${configurableComponent}">
+    html: `<div ${dataComponentId}="${tabsid}" class="${configurableComponent} ${draggableComponent} ${resizableComponent}" style="width: 600px; height: 600px;">
            </div>`,
     getDropHtml() {
         return this.html;
@@ -41,18 +41,18 @@ const tabs = {
             <li><a href="#tabs${key}-2">Proin dolor</a></li>
             <li><a href="#tabs${key}-3">Aenean lacinia</a></li>
         </ul>
-        <div id="tabs${key}-1">
+        <div id="tabs${key}-1" class="${droppableComponent}">
         </div>
-        <div id="tabs${key}-2">
+        <div id="tabs${key}-2" class="${droppableComponent}">
         </div>
-        <div id="tabs${key}-3">
+        <div id="tabs${key}-3" class="${droppableComponent}">
         </div>
         `);
         $node.tabs();
         const height = $node.children('ul').height();
         $node.children('div').css({
             height: `calc(100% - ${height}px)`
-        })
+        });
     },
     beforeInit(node) {
         const tabs = iframeWindow.$(node);
@@ -101,10 +101,10 @@ const tabs = {
 
                 const li = `<li><a href="#${newTabId}">New Tab</a></li>`;
                 tabs.children('ul.ui-tabs-nav').append(li);
-                tabs.append(`<div id="${newTabId}" style="height: calc(100% - ${height}px);"></div>`);
+                tabs.append(`<div id="${newTabId}" class="${droppableComponent}" style="height: calc(100% - ${height}px);"></div>`);
                 tabs.tabs('refresh');
 
-                enableSortableAndDroppable(tabs.children().last());
+                initDroppable(tabs.children().last().get(0));
 
                 Vvveb.Components.render(tabsid);
                 return node;

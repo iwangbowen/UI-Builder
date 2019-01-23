@@ -213,6 +213,9 @@ function onDrop(event, { draggable, helper, offset, position }) {
     if (draggable !== helper) {
         const component = Vvveb.Components.matchNode(helper.get(0));
         const appended = appendTo($(component.html), $(this));
+        if (component.afterDrop) {
+            component.afterDrop(appended.get(0));
+        }
         // Use clone element as dragging element
         // Use current clone element position as appended element position
         // Compute droppable offset relative to the viewport and helper offset
@@ -224,9 +227,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
             // Add horizontal offset if appended has more than one elements
             convertAndInitInteractions($(element), addOffset(getOffset(helperOffset, droppableOffset), { dx: 40 * index, dy: 0 }))
         );
-        if (component.afterDrop) {
-            component.afterDrop(appended.get(0));
-        }
+        intiDroppableInContext(appended);
         if (component.beforeInit) {
             component.beforeInit(appended.get(0));
         }
@@ -258,7 +259,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
 }
 
 function initInteractions() {
-    initDroppable();
+    intiDroppableInContext();
     initDraggable();
     initResizable();
 }
@@ -448,9 +449,13 @@ function setChildrenDroppable(element, option) {
     setDroppable(element.find(`.${droppableComponent}`), option);
 }
 
-function initDroppable(context = Vvveb.Builder.frameHtml) {
+function intiDroppableInContext(context = Vvveb.Builder.frameHtml) {
     context.find(`.${droppableComponent}`)
         .droppable(droppableOptions);
+}
+
+function initDroppable(element) {
+    $(element).droppable(droppableOptions);
 }
 
 function showAlignmentLines(element, adjust) {
@@ -464,7 +469,7 @@ function hideAlignmentLines() {
 export {
     initTopPanelDrag,
     initDraggableComponents,
-    initDroppable,
+    intiDroppableInContext,
     initInteractions,
     offsetElement,
     removeResizableHandles,
@@ -474,5 +479,6 @@ export {
     setDraggable,
     convertAndInitInteractionsRecursively,
     hideAlignmentLines,
-    cloneAndInit
+    cloneAndInit,
+    initDroppable
 };

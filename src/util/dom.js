@@ -33,7 +33,7 @@ import 'core-js/es7/array';
 import { enableSortableAndDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
-import { applyPositionInPercentage, setDroppableBySelector, initDroppable } from './interactions';
+import { applyPositionInPercentage, setDroppableBySelector, intiDroppableInContext } from './interactions';
 import { basicDialog } from './dialog';
 import { errorDialogTitle, elementsCannotBeAlignedContent } from '../shared';
 
@@ -591,7 +591,7 @@ function createClickedPopup(id) {
         .attr('id', id)
         .insertBefore(Vvveb.Builder.frameBody.find('script').first());
 
-    initDroppable(popup);
+    intiDroppableInContext(popup);
     return popup;
 }
 
