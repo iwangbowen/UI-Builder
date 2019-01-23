@@ -11,10 +11,10 @@ export default class MultiChildListMutation extends Mutation {
     }
 
     redo() {
-        this.multiChildListMutation.forEach(childListMutation => childListMutation.redo());
+        this.multiChildListMutation.forEach(mutation => mutation.redo());
     }
 
     undo() {
-        this.multiChildListMutation.forEach(childListMutation => childListMutation.undo());
+        this.multiChildListMutation.forEach(mutation => mutation.undo());
     }
 }

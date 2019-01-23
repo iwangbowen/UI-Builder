@@ -9,6 +9,8 @@ import {
 } from './dom';
 import { componentBgImgHeight } from '../constants';
 import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
+import MultiMoveResizeMutation from '../models/mutation/multi-move-resize-mutation';
+import MoveResizeMutation from '../models/mutation/move-resize-mutation';
 
 function initDraggableComponents(item, component) {
     const width = item.width();
@@ -268,6 +270,7 @@ function initInteractions() {
 let selectedOffsetsRelativeToDraggable = [];
 let selectedOriginalSizes = [];
 let selectedOriginalPositions = [];
+let multiMoveResizeMutation;
 
 const draggableOptions = {
     cancel: 'option',
@@ -277,6 +280,16 @@ const draggableOptions = {
             selectedOffsetsRelativeToDraggable = getSelectedElements()
                 .map(selected => getOffsetBetweenElements($(this), $(selected)));
         }
+
+        let elements = [];
+        if (isSelectedElement(this)) {
+            elements = getSelectedElements();
+        } else {
+            elements = [this];
+        }
+        multiMoveResizeMutation = elements.reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
+            target: cur
+        })), new MultiMoveResizeMutation());
     },
     drag(e, { offset }) {
         hideAlignmentLines();
@@ -304,6 +317,9 @@ const draggableOptions = {
                     applyPositionInPercentage($(selected));
                 });
         }
+
+        multiMoveResizeMutation.onMoveResizeEnd();
+        Vvveb.Undo.addMutation(multiMoveResizeMutation);
     }
 };
 
