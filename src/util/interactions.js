@@ -2,7 +2,7 @@ import Vvveb from '../gui/components';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
-import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent, defaultWidthValue, defaultHeightValue } from '../components/common';
+import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent, defaultWidthValue, defaultHeightValue, defaultHeightComponent } from '../components/common';
 import {
     getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
     getFunctionInIframe, clearSelectedElements
@@ -59,7 +59,7 @@ function convertSize(element, width = element.outerWidth(), height = element.out
         if (element.hasClass(defaultWidthComponent)) {
             width = defaultWidthValue;
         }
-        if (element.hasClass(defaultHeightValue)) {
+        if (element.hasClass(defaultHeightComponent)) {
             height = defaultHeightValue;
         }
         return {
