@@ -26,6 +26,7 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _common_ids.formid,
     _common_ids.divid,
     _common_ids.commontableid,
+    _common_ids.labelid,
     _common_ids.buttonid,
     _common_ids.roundedbuttonid,
     _common_ids.bootstrapbuttongroupid,
@@ -45,7 +46,6 @@ Vvveb.ComponentsGroup['通用组件'] = [
     _common_ids.bootstraphrid,
     _common_ids.bootstrapprogressid,
     _common_ids.bootstraptableid,
-    _common_ids.labelfieldid,
     _common_ids.bootstrapcontainerid,
     _common_ids.gridrowid,
 ];
@@ -93,7 +93,6 @@ Vvveb.Components.extend('_base', _common_ids.commontableid, _common.commontable)
 Vvveb.Components.extend('_base', _common_ids.formlabelid, _common.formlabel);
 Vvveb.Components.extend("_base", _common_ids.labelid, _common.label);
 Vvveb.Components.extend("_base", _common_ids.imageid, _common.image);
-Vvveb.Components.extend("_base", _common_ids.labelfieldid, _common.labelfield);
 Vvveb.Components.extend("_base", _common_ids.chartid, _common.chart);
 Vvveb.Components.extend("_base", _common_ids.tabsid, _common.tabs);
 Vvveb.Components.extend("_base", _common_ids.bodyid, _common.body);
