@@ -1,4 +1,5 @@
-import Vvveb from '../gui/components';
+import Components from '../gui/components';
+import Builder from '../gui/builder';
 import Undo from '../gui/undo';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
@@ -126,7 +127,7 @@ function drop(event, { draggable, helper, offset }) {
     if (draggable == helper) {
         $(this).append(draggable);
     } else {
-        const component = Vvveb.Components.matchNode(helper.get(0));
+        const component = Components.matchNode(helper.get(0));
         let appendedElement;
         if (component.getDropHtml) {
             helper = $(component.getDropHtml()).replaceAll(helper);
@@ -182,7 +183,7 @@ function drop(event, { draggable, helper, offset }) {
 }
 
 function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
-    Vvveb.Builder.frameBody.find(elements)
+    Builder.frameBody.find(elements)
         .droppable({
             classes: droppableClasses,
             greedy: true,
@@ -192,7 +193,7 @@ function enableDroppableInIframe(elements, scope = gridDroppablesScope) {
 }
 
 function enableSortableAndDroppableInIframe(elements, scope, connectWith, droppable, sortable) {
-    enableSortableAndDroppable(Vvveb.Builder.frameBody.find(elements), scope, connectWith, droppable, sortable);
+    enableSortableAndDroppable(Builder.frameBody.find(elements), scope, connectWith, droppable, sortable);
 }
 
 function enableSortableAndDroppable(elements, scope = gridDroppablesScope, connectWith = sortableAndDroppableSelector, droppable = true, sortable = true) {
@@ -255,7 +256,7 @@ function cloneAndInsertBefore(helper, element, css = resetCss) {
 }
 
 function initRowColumnDrop() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find(rowColumnSelector)
         .droppable({
             greedy: true,
@@ -266,7 +267,7 @@ function initRowColumnDrop() {
 }
 
 function initIframeDrag() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find('.draggable')
         .draggable({
             containment: 'document'
@@ -297,7 +298,7 @@ function onSortingUpdates(event, { item }) {
 }
 
 function initIfameFormSortable() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find('.allButton.dropzone')
         .sortable({
             cursor: 'move',
@@ -315,7 +316,7 @@ function initIfameFormSortable() {
 }
 
 function initIframePopupSortable() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find('div.popup-window form.popup-form')
         .sortable({
             cursor: 'move',
@@ -333,7 +334,7 @@ function initIframeSortable() {
 // Resizing element would create elements right above the resizable element,
 // which could interfere with the sortable elements.
 function initIframeResizeVetically() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find('.resize-vertically')
         .resizable({
             handles: 's'
@@ -341,7 +342,7 @@ function initIframeResizeVetically() {
 }
 
 function initAgGridResize() {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find(`[${dataComponentId}="${commontableid}"], [${dataComponentId}="${customtableid}"]`)
         .resizable(agGridResizableOptions);
 }
@@ -351,13 +352,13 @@ function initResize() {
 }
 
 function removeSortableAndGridsterDisability({ target }) {
-    Vvveb.Builder.frameWindow.enableGridster();
+    Builder.frameWindow.enableGridster();
     enableSortable();
     target.removeEventListener('blur', removeSortableAndGridsterDisability);
 }
 
 function setInteraction(selector, interaction, option) {
-    Vvveb.Builder.frameBody.find(selector)[interaction](option);
+    Builder.frameBody.find(selector)[interaction](option);
 }
 
 function enableSortable() {
@@ -369,7 +370,7 @@ function disableSortable() {
 }
 
 function setDroppable(selector, option) {
-    Vvveb.Builder.frameBody
+    Builder.frameBody
         .find(selector)
         .droppable(option);
 }
@@ -398,7 +399,7 @@ function initComponentDragWithInteract() {
             // enable autoScroll
             autoScroll: true,
             onstart(event) {
-                const component = Vvveb.Components.get($(event.target).data("type"));
+                const component = Components.get($(event.target).data("type"));
                 const html = component.dragHtml || component.html;
                 $element = $(html).appendTo($('body'));
                 const display = $element.css('display');
@@ -433,7 +434,7 @@ function initComponentDragWithInteract() {
             },
             // call this function on every dragend event
             onend: event => {
-                const component = Vvveb.Components.matchNode($element[0]);
+                const component = Components.matchNode($element[0]);
                 isElementCreated = false;
                 let appendedElement;
                 if (component.onDrop) {
@@ -443,10 +444,10 @@ function initComponentDragWithInteract() {
                         top = $element.offset().top - $('#iframeId').offset().top;
                     // 直接替换元素会有拖动问题，可能是因为元素本身在父页面，所以包含一些特殊属性有关
                     // 获得html字符串，然后再进行替换
-                    let appendToElement = Vvveb.Builder.frameBody;
+                    let appendToElement = Builder.frameBody;
                     if (component.dropzone
-                        && isOverlap($element.get(0), Vvveb.Builder.frameBody.find(component.dropzone).get(0))) {
-                        appendToElement = Vvveb.Builder.frameBody.find(component.dropzone);
+                        && isOverlap($element.get(0), Builder.frameBody.find(component.dropzone).get(0))) {
+                        appendToElement = Builder.frameBody.find(component.dropzone);
                     }
                     appendToElement.append($element.prop("outerHTML"));
                     appendedElement = appendToElement

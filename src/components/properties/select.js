@@ -1,7 +1,7 @@
 import { ButtonInput, TextValueInput } from '../../inputs/inputs';
 import { property as tooltipProperty } from '../tooltip';
 import { manualselectinputid } from '../@common/ids';
-import Vvveb from '../../gui/components';
+import Components from '../../gui/components';
 import {
     dataRowFieldProperty, dataUrlProperty, onchangeProperty, nameProperty,
     requiredProperty, valueMappingProperty, textMappingProperty, inputSizeProperty, disabledProperty
@@ -27,7 +27,7 @@ const manualselectProperties = [
         onChange: function (node) {
             $(node).append('<option value="value">Text</option>');
             //render component properties again to include the new column inputs
-            Vvveb.Components.render(manualselectinputid);
+            Components.render(manualselectinputid);
             return node;
         }
     }
@@ -51,7 +51,7 @@ function manualselectBeforeInit(node) {
                 //if remove button is clicked remove option and render row properties
                 if (input.nodeName == 'BUTTON') {
                     option.remove();
-                    Vvveb.Components.render(manualselectinputid);
+                    Components.render(manualselectinputid);
                     return node;
                 }
                 if (input.name == "value") {

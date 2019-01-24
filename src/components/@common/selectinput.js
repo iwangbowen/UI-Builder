@@ -1,4 +1,4 @@
-import Vvveb from '../../gui/components';
+import Components from '../../gui/components';
 import { TextValueInput, ButtonInput } from '../../inputs/inputs';
 
 const selectinput = {
@@ -38,7 +38,7 @@ const selectinput = {
                     //if remove button is clicked remove option and render row properties
                     if (input.nodeName == 'BUTTON') {
                         option.remove();
-                        Vvveb.Components.render("html/selectinput");
+                        Components.render("html/selectinput");
                         return node;
                     }
                     if (input.name == "value") option.attr("value", value);
@@ -74,7 +74,7 @@ const selectinput = {
         onChange: function (node) {
             $(node).append('<option value="value">Text</option>');
             //render component properties again to include the new column inputs
-            Vvveb.Components.render("html/selectinput");
+            Components.render("html/selectinput");
             return node;
         }
     }]

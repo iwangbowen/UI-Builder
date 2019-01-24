@@ -1,6 +1,8 @@
-import Vvveb from './components';
+import Components from './components';
 import Undo from './undo';
 import Actions from './actions';
+import WysiwygEditor from './wysiwyg-editor';
+import ComponentsGroup from '../components-loader';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
@@ -23,12 +25,7 @@ import { isInIframe } from '../constants';
 import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
 
-Vvveb.defaultComponent = "_base";
-Vvveb.preservePropertySections = true;
-Vvveb.baseUrl = document.currentScript ? document.currentScript.src.replace(/[^\/]*?\.js$/, '') : '';
-Vvveb.ComponentsGroup = {};
-
-Vvveb.Builder = {
+export default Builder = {
 	dragMoveMutation: false,
 	init({ url, srcdoc }) {
 		this.loadControlGroups();
@@ -47,7 +44,7 @@ Vvveb.Builder = {
 		this.documentFrame.on('load', () => {
 			window.FrameWindow = this.iframe.contentWindow;
 			window.FrameDocument = this.iframe.contentWindow.document;
-			Vvveb.WysiwygEditor.init(window.FrameDocument);
+			WysiwygEditor.init(window.FrameDocument);
 			loadCallback();
 			this.frameWindow = window.FrameWindow;
 			this.frameDoc = $(window.FrameDocument);
@@ -62,7 +59,7 @@ Vvveb.Builder = {
 	loadControlGroups() {
 		const componentsList = $("#components-list");
 		componentsList.empty();
-		for (const group in Vvveb.ComponentsGroup) {
+		for (const group in ComponentsGroup) {
 			componentsList.append(`
 			<li class="header" data-section="${group}" data-search="">
 				<label class="header" for="comphead_${group}">${group}
@@ -72,10 +69,10 @@ Vvveb.Builder = {
 				<ol></ol>
 			</li>`);
 			const componentsSubList = componentsList.find(`li[data-section="${group}"] ol`);
-			const components = Vvveb.ComponentsGroup[group];
+			const components = ComponentsGroup[group];
 			for (const i in components) {
 				const componentType = components[i];
-				const component = Vvveb.Components.get(componentType);
+				const component = Components.get(componentType);
 				if (component) {
 					const item = $(`
 					<li data-section="${group}" data-type="${componentType}" data-search="${component.name.toLowerCase()}">
@@ -88,7 +85,7 @@ Vvveb.Builder = {
 						})
 					}
 					componentsSubList.append(item);
-					initDraggableComponents(item, Vvveb.Components.get($(item).data("type")));
+					initDraggableComponents(item, Components.get($(item).data("type")));
 				}
 			}
 		}
@@ -109,9 +106,9 @@ Vvveb.Builder = {
 		}
 	},
 	loadNodeComponent(node) {
-		const data = Vvveb.Components.matchNode(node);
+		const data = Components.matchNode(node);
 		if (data) {
-			Vvveb.Components.render(data.type);
+			Components.render(data.type);
 		}
 	},
 	selectNode(node = false, ctrlKeyPressed = false) {
@@ -120,7 +117,7 @@ Vvveb.Builder = {
 			return;
 		}
 		if (this.texteditEl && this.selectedEl && this.selectedEl.get(0) != node) {
-			Vvveb.WysiwygEditor.destroy(this.texteditEl);
+			WysiwygEditor.destroy(this.texteditEl);
 			jQuery(selectBox).removeClass("text-edit").find("#select-actions").show();
 			this.texteditEl = null;
 		}
@@ -280,7 +277,7 @@ Vvveb.Builder = {
 			replaceOtherShowingCalendarInputs(event.target, _this.frameBody);
 
 			_this.texteditEl = jQuery(event.target);
-			Vvveb.WysiwygEditor.edit(_this.texteditEl);
+			WysiwygEditor.edit(_this.texteditEl);
 			if (!_this.texteditEl.parents(noneditableSelector).length) {
 				// Disable draggable to allow edit mode text node to be editable
 				if (_this.texteditEl.draggable('instance')) {
@@ -320,7 +317,7 @@ Vvveb.Builder = {
 						} else {
 							clearSelectedElements();
 						}
-						const component = Vvveb.Components.matchNode(element.get(0));
+						const component = Components.matchNode(element.get(0));
 						let node = event.target;
 						if (component.getRenderElement) {
 							node = component.getRenderElement(node);
@@ -387,5 +384,3 @@ Vvveb.Builder = {
 		//return this.documentFrame.attr("srcdoc", html);
 	}
 };
-
-export default Vvveb;

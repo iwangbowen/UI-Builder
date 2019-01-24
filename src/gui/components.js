@@ -1,13 +1,15 @@
+import Builder from './builder';
 import Undo from './undo';
 import { SectionInput } from '../inputs/inputs';
 import { dataComponentId, dataSection, dataSearch, dataType } from '../components/common';
 import { getStyle } from '../util/dom';
 import tmpl from '../util/tmpl';
 import AttributesMutation from '../models/mutation/attributes-mutation';
+import { preservePropertySections, defaultComponent } from '../constants';
 
 function addPropertyChangeListener(component, property) {
 	property.input.on('propertyChange', function (event, value, input) {
-		let element = Vvveb.Builder.selectedEl;
+		let element = Builder.selectedEl;
 		if (property.child) element = element.find(property.child);
 		if (property.parent) element = element.parent(property.parent);
 		if (property.onChange) {
@@ -45,14 +47,12 @@ function addPropertyChangeListener(component, property) {
 			element = component.onChange(element, property, value, input);
 		}
 		if (!property.child && !property.parent) {
-			Vvveb.Builder.selectNode(element.get(0));
+			Builder.selectNode(element.get(0));
 		}
 	});
 };
 
-if (Vvveb === undefined) var Vvveb = {};
-
-Vvveb.Components = {
+export default Components = {
 	_components: {},
 	_nodesLookup: {},
 	_attributesLookup: {},
@@ -167,22 +167,22 @@ Vvveb.Components = {
 		if (tagName in this._nodesLookup) {
 			return this._nodesLookup[tagName];
 		}
-		return this.get(Vvveb.defaultComponent);
+		return this.get(defaultComponent);
 	},
 	render(type) {
 		const component = this._components[type];
 		const rightPanel = jQuery("#right-panel #component-properties");
 		let section = rightPanel.find('.section[data-section="default"]');
-		if (!(Vvveb.preservePropertySections && section.length)) {
+		if (!(preservePropertySections && section.length)) {
 			rightPanel.html('').append(tmpl("inputsectioninput", { key: "default", header: component.name }));
 			section = rightPanel.find(".section");
 		}
 		rightPanel.find('[data-header="default"] span').html(component.name);
 		section.html("")
 		if (component.beforeInit) {
-			component.beforeInit(Vvveb.Builder.selectedEl.get(0));
+			component.beforeInit(Builder.selectedEl.get(0));
 		}
-		const nodeElement = Vvveb.Builder.selectedEl;
+		const nodeElement = Builder.selectedEl;
 		component.properties.forEach(property => {
 			let element = nodeElement;
 			if (property.beforeInit) {
@@ -226,7 +226,7 @@ Vvveb.Components = {
 			addPropertyChangeListener(component, property);
 			if (property.inputtype instanceof SectionInput) {
 				section = rightPanel.find(`.section[data-section="${property.key}"]`);
-				if (Vvveb.preservePropertySections && section.length) {
+				if (preservePropertySections && section.length) {
 					section.html("");
 				} else {
 					rightPanel.append(property.input);
@@ -240,9 +240,7 @@ Vvveb.Components = {
 			}
 		});
 		if (component.init) {
-			component.init(Vvveb.Builder.selectedEl.get(0));
+			component.init(Builder.selectedEl.get(0));
 		}
 	}
 };
-
-export default Vvveb;

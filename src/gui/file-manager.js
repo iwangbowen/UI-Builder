@@ -1,4 +1,4 @@
-import Vvveb from './builder';
+import Builder from './builder';
 import Undo from './undo';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
@@ -6,7 +6,7 @@ import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliary
 import each from 'lodash/each';
 import { templatePages, importedPageName, importedPageHref } from '../constants';
 
-Vvveb.FileManager = {
+export default FileManager = {
 	tree: false,
 	pages: {},
 	pageTreeSelector: '#filemanager .tree > ol',
@@ -15,13 +15,14 @@ Vvveb.FileManager = {
 			._initContextMenu();
 	},
 	_initClickHandler() {
+		const self = this;
 		this.tree = $(this.pageTreeSelector).html("");
 		$(this.tree).on("click", "li[data-page] span", function (e) {
 			clearTimer();
 			hideAuxiliaryElements();
 			const clickedPageName = $(this).parents('li').data('page');
 			// window.location.reload();
-			Vvveb.FileManager.loadPage(clickedPageName);
+			self.loadPage(clickedPageName);
 			return false;
 		});
 		return this;
@@ -157,11 +158,11 @@ Vvveb.FileManager = {
 			window.location.href = `#${pageName}`;
 		}
 		this.renderPages().showActive(pageName);
-		Vvveb.Builder.loadUrl(this.pages[pageName].url, this.pages[pageName].srcdoc);
+		Builder.loadUrl(this.pages[pageName].url, this.pages[pageName].srcdoc);
 	},
 	loadPageFromMessage(html) {
 		clearTimer();
 		Undo.clearMutations();
-		Vvveb.Builder.loadUrl(addDatetime(importedPageName), generateHtml(html, importedPageHref));
+		Builder.loadUrl(addDatetime(importedPageName), generateHtml(html, importedPageHref));
 	}
 };

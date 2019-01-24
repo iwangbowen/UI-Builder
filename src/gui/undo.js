@@ -31,7 +31,7 @@ MutationRecord.oldValue 			String 		The return value depends on the MutationReco
 												For characterData, it is the data of the changed node before the change.
 												For childList, it is null.
 */
-import Vvveb from './components';
+import Builder from './builder';
 
 export default Undo = {
 	undos: [],
@@ -45,7 +45,7 @@ export default Undo = {
 		this.undoIndex = -1;
 	},
 	addMutation(mutation) {
-		Vvveb.Builder.frameBody.trigger("Undo.add");
+		Builder.frameBody.trigger("Undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);
 	},
 	getMutations() {
@@ -57,7 +57,7 @@ export default Undo = {
 		} else {
 			mutation.redo();
 		}
-		Vvveb.Builder.frameBody.trigger("Undo.restore");
+		Builder.frameBody.trigger("Undo.restore");
 	},
 	undo() {
 		if (this.undoIndex >= 0) {

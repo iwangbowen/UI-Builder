@@ -1,3 +1,4 @@
+import Components from '../../gui/components';
 import { GridInput, ButtonInput } from '../../inputs/inputs';
 import { gridrowid } from './ids';
 import gridcolumn from './gridcolumn';
@@ -41,7 +42,7 @@ const gridrow = {
                     //if remove button is clicked remove column and render row properties
                     if (input.nodeName == 'BUTTON') {
                         column.remove();
-                        Vvveb.Components.render(gridrowid);
+                        Components.render(gridrowid);
                         return node;
                     }
                     //if select input then change column class
@@ -82,7 +83,7 @@ const gridrow = {
         onChange: function (node) {
             enableSortableAndDroppable($(gridcolumn.html).appendTo($(node)));
             //render component properties again to include the new column inputs
-            Vvveb.Components.render(gridrowid);
+            Components.render(gridrowid);
             return node;
         }
     }]

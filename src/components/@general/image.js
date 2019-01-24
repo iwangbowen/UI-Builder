@@ -1,10 +1,10 @@
-import Vvveb from '../../gui/components'
 import { FileUploadInput, TextInput } from '../../inputs/inputs';
+import { baseUrl } from '../../constants';
 
 const image = {
     nodes: ["img"],
     name: "Image",
-    html: '<img src="' + Vvveb.baseUrl + 'icons/image.svg" height="128" width="128">',
+    html: '<img src="' + baseUrl + 'icons/image.svg" height="128" width="128">',
     /*
     afterDrop: function (node)
 	{

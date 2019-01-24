@@ -1,3 +1,4 @@
+import Components from '../../gui/components';
 import { dataComponentId, configurableComponent, dataTabsKey, draggableComponent, resizableComponent, droppableComponent } from "../common";
 import { tabsid } from "./ids";
 import { TabValueInput, ButtonInput } from "../../inputs/inputs";
@@ -71,7 +72,7 @@ const tabs = {
                     if (input.nodeName == 'BUTTON') {
                         $li.remove();
                         tabs.tabs("refresh");
-                        Vvveb.Components.render(tabsid);
+                        Components.render(tabsid);
                     } else {
                         $a.text(value);
                     }
@@ -106,7 +107,7 @@ const tabs = {
 
                 initDroppable(tabs.children().last().get(0));
 
-                Vvveb.Components.render(tabsid);
+                Components.render(tabsid);
                 return node;
             }
         }

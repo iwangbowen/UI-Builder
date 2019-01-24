@@ -1,5 +1,6 @@
 const baseHref = 'baseHref';
 const defaultFilename = 'index.html';
+const baseUrl = document.currentScript ? document.currentScript.src.replace(/[^\/]*?\.js$/, '') : '';
 
 const isInBuilder = true;
 
@@ -58,6 +59,10 @@ const templatePages = [
     blankPage
 ];
 
+const preservePropertySections = true;
+
+const defaultComponent = "_base";
+
 const isInIframe = window !== window.parent;
 
 const protocal = location.origin.split(':')[0];
@@ -77,5 +82,6 @@ export {
     dataScriptType, tooltipType, pdsPage, gridPage, blankPage, isInBuilder, isInIframe,
     css_beautify_options, generatedNonExecuteScriptClass, generatedScriptType,
     generatedExecuteScriptClass, dataType, nonEvaluable, devDep, themesEndpoint,
-    customThemeStyleId, dataThemeName, componentBgImgHeight
+    customThemeStyleId, dataThemeName, componentBgImgHeight, baseUrl, preservePropertySections,
+    defaultComponent
 };

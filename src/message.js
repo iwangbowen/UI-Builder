@@ -1,3 +1,4 @@
+import FileManager from './gui/file-manager';
 import { generateSharedJSCode, getTemplatePage } from "./util/jsoup";
 
 const parent = window.parent;
@@ -20,7 +21,7 @@ function initMessageListener() {
             data.js = generateSharedJSCode();
             sendMessage(data);
         } else if (data.type == 'add') {
-            const page = Vvveb.FileManager.getPage(data.template);
+            const page = FileManager.getPage(data.template);
             if (cache[page.templateUrl]) {
                 data.html = cache[page.templateUrl];
                 sendMessage(data);
@@ -33,7 +34,7 @@ function initMessageListener() {
             }
         } else {
             messageData = data;
-            Vvveb.FileManager.loadPageFromMessage(data.html);
+            FileManager.loadPageFromMessage(data.html);
         }
     });
 }

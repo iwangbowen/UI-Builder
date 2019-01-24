@@ -4,7 +4,7 @@ import {
     dataEnableRowClick, rowClickedPopupPrefix, dataAgGridTransposeKey, dataEnableCellClick,
     cellClickedPopupPrefix, dataPopulateHeaders, dataAutoSizeColumns
 } from '../common';
-import Vvveb from '../../gui/components';
+import Components from '../../gui/components';
 import Undo from '../../gui/undo';
 import flow from 'lodash/flow';
 import curry from 'lodash/curry';
@@ -122,7 +122,7 @@ function setColumnDefsAndRender(node, colDefs) {
     // The grid will redraw all the column headers, and then redraw all of the rows.
     getGridOptions(node).columnDefs = colDefs;
     setColumnDefs(node, colDefs);
-    Vvveb.Components.render($(node).attr(dataComponentId));
+    Components.render($(node).attr(dataComponentId));
 }
 
 function setGridOptions(node, gridOptions) {
@@ -542,7 +542,7 @@ const table = {
                     $(node).attr(dataEnableCellClick, 'false');
                 }
 
-                Vvveb.Components.render($(node).attr(dataComponentId));
+                Components.render($(node).attr(dataComponentId));
                 return node;
             },
             data: {
@@ -571,7 +571,7 @@ const table = {
                     $(node).attr(dataEnableRowClick, 'false');
                 }
 
-                Vvveb.Components.render($(node).attr(dataComponentId));
+                Components.render($(node).attr(dataComponentId));
                 return node;
             },
             data: {

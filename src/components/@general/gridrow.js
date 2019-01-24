@@ -1,3 +1,4 @@
+import Components from '../../gui/components';
 import { GridInput, ButtonInput } from '../../inputs/inputs';
 
 const gridrow = {
@@ -39,7 +40,7 @@ const gridrow = {
                     //if remove button is clicked remove column and render row properties
                     if (input.nodeName == 'BUTTON') {
                         column.remove();
-                        Vvveb.Components.render("html/gridrow");
+                        Components.render("html/gridrow");
                         return node;
                     }
 
@@ -88,7 +89,7 @@ const gridrow = {
             $(node).append('<div class="col-3">Col-3</div>');
 
             //render component properties again to include the new column inputs
-            Vvveb.Components.render("html/gridrow");
+            Components.render("html/gridrow");
 
             return node;
         }

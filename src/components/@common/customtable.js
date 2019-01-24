@@ -1,6 +1,6 @@
+import { Builder } from '../../gui/builder';
 import { dataComponentId, draggableComponent, dataEnableRowClick } from '../common';
 import { table } from './table';
-import Vvveb from '../../gui/components';
 import { customtableid } from './ids';
 import extend from 'lodash/extend';
 
@@ -18,7 +18,7 @@ const customtable = extend({}, table, {
                 transform: ''
             })
             .removeClass('draggable');
-        const appendToElement = Vvveb.Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid');
+        const appendToElement = Builder.frameBody.find('.containerRight .allContent .topContent .container .row .everyBox .boxarea .userList #myGrid');
         appendToElement.append($(node).prop('outerHTML'));
         return appendToElement.children('*:last');
     }

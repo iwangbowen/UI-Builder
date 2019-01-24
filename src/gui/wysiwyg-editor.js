@@ -1,8 +1,7 @@
-import Vvveb from './builder';
 import Undo from './undo';
 import CharacterDataMutation from '../models/mutation/character-data-mutation'
 
-Vvveb.WysiwygEditor = {
+export default WysiwygEditor = {
     isActive: false,
     oldValue: '',
     doc: false,

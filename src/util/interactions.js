@@ -1,4 +1,5 @@
-import Vvveb from '../gui/components';
+import Builder from '../gui/builder';
+import Components from '../gui/components';
 import Undo from '../gui/undo';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
@@ -219,7 +220,7 @@ function appendTo(element, container) {
 function onDrop(event, { draggable, helper, offset, position }) {
     // Drag elemetn from component list
     if (draggable !== helper) {
-        const component = Vvveb.Components.matchNode(helper.get(0));
+        const component = Components.matchNode(helper.get(0));
         const appended = appendTo($(component.html), $(this));
         if (component.afterDrop) {
             component.afterDrop(appended.get(0));
@@ -431,16 +432,16 @@ const resizableOptions = {
 };
 
 function initDraggable() {
-    Vvveb.Builder.frameHtml.find(`.${draggableComponent}`)
+    Builder.frameHtml.find(`.${draggableComponent}`)
         .draggable(draggableOptions);
 }
 
 function initResizable() {
-    Vvveb.Builder.frameHtml.find('body')
+    Builder.frameHtml.find('body')
         .resizable(extend({}, resizableOptions, {
             handles: 's'
         }))
-    Vvveb.Builder.frameHtml.find(`.${resizableComponent}`)
+    Builder.frameHtml.find(`.${resizableComponent}`)
         .resizable(resizableOptions);
 }
 
@@ -484,9 +485,9 @@ function arrayKeyPressed(key, element) {
 
 function setDroppableBySelector(option, containerSelector) {
     if (containerSelector) {
-        setDroppable(Vvveb.Builder.frameHtml.find(`${containerSelector} .${droppableComponent}`), option);
+        setDroppable(Builder.frameHtml.find(`${containerSelector} .${droppableComponent}`), option);
     } else {
-        setDroppable(Vvveb.Builder.frameHtml.find(`.${droppableComponent}`), option);
+        setDroppable(Builder.frameHtml.find(`.${droppableComponent}`), option);
     }
 }
 
@@ -502,7 +503,7 @@ function setChildrenDroppable(element, option) {
     setDroppable(element.find(`.${droppableComponent}`), option);
 }
 
-function intiDroppableInContext(context = Vvveb.Builder.frameHtml) {
+function intiDroppableInContext(context = Builder.frameHtml) {
     context.find(`.${droppableComponent}`)
         .droppable(droppableOptions);
 }

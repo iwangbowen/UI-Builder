@@ -1,8 +1,7 @@
-import Vvveb from './builder';
-import Undo from './undo';
+import Builder from './builder';
 import { getHtml, getBeautifiedHtml, delay } from '../util/dom';
 
-Vvveb.CodeEditor = {
+export default CodeEditor = {
 	isActive: false,
 	oldValue: '',
 	doc: false,
@@ -21,13 +20,13 @@ Vvveb.CodeEditor = {
 			this.isActive = true;
 			this.codemirror.getDoc().on("change", function (e, v) {
 				if (v.origin != 'setValue')
-					delay(Vvveb.Builder.setHtml(e.getValue()), 1000);
+					delay(Builder.setHtml(e.getValue()), 1000);
 			});
 		}
 		//_self = this;
-		Vvveb.Builder.frameBody.on("Undo.add Undo.restore", function (e) { Vvveb.CodeEditor.setValue(e); });
+		Builder.frameBody.on("Undo.add Undo.restore", (e) => { this.setValue(e); });
 		//load code when a new url is loaded
-		Vvveb.Builder.documentFrame.on("load", function (e) { Vvveb.CodeEditor.setValue(); });
+		Builder.documentFrame.on("load", (e) => { this.setValue(); });
 
 		this.isActive = true;
 		this.setValue(this.formated);

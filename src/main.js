@@ -1,9 +1,4 @@
-import Vvveb from './gui/components';
-import './gui/builder';
-import './gui/wysiwyg-editor';
-import './gui/actions';
-import './gui/file-manager';
-import './components-loader';
+import FileManager from './gui/file-manager';
 import {
     initPanelToggle, initBuilderPage, setGlobalVariables
 } from './util/dom';
@@ -22,7 +17,7 @@ $(document).ready(function () {
             height: '100%'
         });
     }
-    Vvveb.FileManager.init();
+    FileManager.init();
     initBuilderPage();
     initPanelToggle();
     initTopPanelDrag();

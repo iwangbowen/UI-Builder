@@ -1,5 +1,8 @@
-import Vvveb from './builder';
+import Builder from './builder';
 import Undo from './undo';
+import WysiwygEditor from './wysiwyg-editor';
+import FileManager from './file-manager';
+import CodeEditor from './plugin-codemirror';
 import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThemeName } from '../util/dom';
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
@@ -40,7 +43,7 @@ export default Actions = {
                 }).then(function (html) {
                     const itemKey = addDatetime(importedPageName);
                     localStorage.setItem(itemKey, html);
-                    Vvveb.FileManager.loadPage(itemKey);
+                    FileManager.loadPage(itemKey);
                 })
             }
             // Change file input value to allow the same name file to upload again
@@ -48,24 +51,24 @@ export default Actions = {
         });
     },
     undo() {
-        if (Vvveb.WysiwygEditor.isActive) {
-            Vvveb.WysiwygEditor.undo();
+        if (WysiwygEditor.isActive) {
+            WysiwygEditor.undo();
         } else {
             Undo.undo();
         }
-        Vvveb.Builder.selectNode();
+        Builder.selectNode();
     },
     showUndoHistory() {
         console.log(this);
         $(`#${undoHistoryId}`);
     },
     redo() {
-        if (Vvveb.WysiwygEditor.isActive) {
-            Vvveb.WysiwygEditor.redo();
+        if (WysiwygEditor.isActive) {
+            WysiwygEditor.redo();
         } else {
             Undo.redo();
         }
-        Vvveb.Builder.selectNode();
+        Builder.selectNode();
     },
     check() {
         $('#textarea-modal textarea').val(getBeautifiedHtml(window.FrameDocument, false, false));
@@ -76,10 +79,10 @@ export default Actions = {
     },
     toggleEditor() {
         $("#vvveb-builder").toggleClass("bottom-panel-expand");
-        Vvveb.CodeEditor.toggle();
+        CodeEditor.toggle();
     },
     formatCode() {
-        Vvveb.CodeEditor.formatCode();
+        CodeEditor.formatCode();
     },
     download() {
         dialog.dialog('open');
