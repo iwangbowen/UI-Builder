@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
 export default class ResizeMutation extends Mutation {
-    constructor({ target }) {
-        super('resize', target);
+    constructor({ type = 'Resize', target }) {
+        super(type, target);
         this.oldStyle = target.getAttribute('style');
     }
 

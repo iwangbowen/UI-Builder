@@ -2,8 +2,8 @@ import Mutation from './mutation';
 import { convertAndInitInteractionsRecursively } from '../../util/interactions';
 
 export default class ChildListMutation extends Mutation {
-    constructor({ target, addedNodes, removedNodes, nextSibling }) {
-        super('childList', target);
+    constructor({ type = 'childList', target, addedNodes, removedNodes, nextSibling }) {
+        super(type, target);
         this.addedNodes = addedNodes;
         this.removedNodes = removedNodes;
         this.nextSibling = nextSibling;

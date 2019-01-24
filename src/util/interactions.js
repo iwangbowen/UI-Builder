@@ -147,7 +147,9 @@ function convertAndInitInteractionsRecursively(element) {
 }
 
 function cloneAndInit(original) {
-    const multiChildListMutation = new MultiChildListMutation();
+    const multiChildListMutation = new MultiChildListMutation({
+        type: 'Clone'
+    });
     const clonedElements = [];
     original.each(function () {
         const $this = $(this);
@@ -241,6 +243,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
             component.beforeInit(appended.get(0));
         }
         Undo.addMutation(new ChildListMutation({
+            type: 'Add',
             target: appended.get(0).parentNode,
             addedNodes: [...appended],
             nextSibing: appended[0].nextSibing
@@ -291,14 +294,14 @@ function addMutationOnMoveEnd() {
 }
 
 function initMultiResizeMutation(element) {
-    multiResizeMutation = initMultiMutation(element, ResizeMutation, MultiResizeMutation);
+    multiResizeMutation = initMultiMutation(element, ResizeMutation, MultiResizeMutation, 'Resize');
 }
 
 function initMultiMoveMutation(element) {
-    multiMoveMutation = initMultiMutation(element, MoveMutation, MultiMoveMutation);
+    multiMoveMutation = initMultiMutation(element, MoveMutation, MultiMoveMutation, 'Move');
 }
 
-function initMultiMutation(element, Mutation, MultiMutation) {
+function initMultiMutation(element, Mutation, MultiMutation, type) {
     let elements = [];
     if (isSelectedElement(element)) {
         elements = getSelectedElements();
@@ -307,7 +310,9 @@ function initMultiMutation(element, Mutation, MultiMutation) {
     }
     return elements.reduce((prev, cur) => prev.addMutation(new Mutation({
         target: cur
-    })), new MultiMutation());
+    })), new MultiMutation({
+        type
+    }));
 }
 
 const draggableOptions = {

@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
 export default class MultiChildListMutation extends Mutation {
-    constructor() {
-        super('multiChildList', null);
+    constructor({type = 'multiChildList'}) {
+        super(type, null);
         this.multiChildListMutation = [];
     }
 

@@ -2,8 +2,8 @@ import { convertAndInitInteractionsRecursively } from '../../util/interactions';
 import Mutation from './mutation';
 
 export default class MoveMutation extends Mutation {
-    constructor({ target }) {
-        super('move', target);
+    constructor({ type = 'move', target }) {
+        super(type, target);
         this.oldParent = target.parentNode;
         this.oldNextSibling = target.nextSibling;
         this.oldStyle = target.getAttribute('style');

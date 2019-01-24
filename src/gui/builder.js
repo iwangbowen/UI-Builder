@@ -212,6 +212,7 @@ export default Builder = {
 			hideAuxiliaryElements();
 			const node = _this.selectedEl.get(0);
 			Undo.addMutation(new ChildListMutation({
+				type: 'Delete',
 				target: node.parentNode,
 				removedNodes: [node],
 				nextSibling: node.nextSibling
@@ -241,7 +242,9 @@ export default Builder = {
 		$(`#${multiSelectedDelete}`).on('click', (event) => {
 			hideAuxiliaryElements();
 			const selectedElements = getSelectedElements();
-			const multiChildListMutation = new MultiChildListMutation();
+			const multiChildListMutation = new MultiChildListMutation({
+				type: 'Delete'
+			});
 			selectedElements.forEach(node => {
 				multiChildListMutation.addChildListMutation(new ChildListMutation({
 					target: node.parentNode,

@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
 export default class MultiMoveMutation extends Mutation {
-    constructor() {
-        super('multiMove', null);
+    constructor({ type = 'multiMove' }) {
+        super(type, null);
         this.multiMoveMutations = [];
     }
 

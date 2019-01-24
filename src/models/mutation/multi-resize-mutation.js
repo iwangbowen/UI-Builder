@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
 export default class MultiResizeMutation extends Mutation {
-    constructor() {
-        super('multiResize', null);
+    constructor({ type = 'multiResize' }) {
+        super(type, null);
         this.multiResizeMutations = [];
     }
 
