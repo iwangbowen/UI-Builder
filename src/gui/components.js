@@ -33,6 +33,7 @@ function addPropertyChangeListener(component, property) {
 				element = element.attr(property.htmlAttr, value);
 			}
 			Undo.addMutation(new AttributesMutation({
+				type: 'Attribute',
 				target: element.get(0),
 				attributeName: property.htmlAttr,
 				inputtype: property.inputtype,

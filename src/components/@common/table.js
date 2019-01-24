@@ -303,6 +303,7 @@ const table = {
                     let colDefs = getColumnDefs(node);
                     if (input.nodeName == 'BUTTON') {
                         Undo.addMutation(new TableHeaderMutation({
+                            type: 'Remove table header',
                             target: node,
                             addHeader: false,
                             index: keyIndex,
@@ -602,6 +603,7 @@ const table = {
                 };
                 colDefs.push(colDef);
                 Undo.addMutation(new TableHeaderMutation({
+                    type: 'Add table header',
                     target: node,
                     addHeader: true,
                     colDef

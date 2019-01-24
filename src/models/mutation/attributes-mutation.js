@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
 export default class AttributesMutation extends Mutation {
-    constructor({ target, attributeName, inputtype, oldValue, newValue }) {
-        super('attributes', target);
+    constructor({ type = 'attributes', target, attributeName, inputtype, oldValue, newValue }) {
+        super(type, target);
         this.attributeName = attributeName;
         this.inputtype = inputtype;
         this.oldValue = oldValue;
