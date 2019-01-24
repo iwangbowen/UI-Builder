@@ -114,6 +114,12 @@ div.row.gridrow-component > div, .form-border {
   transition: background-color 0.3s;
 }
 
+.solid-border {
+  border: solid 1px;
+  border-color: #aaa;
+  transition: background-color 0.3s;
+}
+
 .resizable-margin-bottom {
   margin-bottom: 25px;
 }

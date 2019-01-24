@@ -51,7 +51,7 @@ function inc_base_sort() {
 }
 
 const placeholderComponentHighlight = 'placeholder-component-highlight';
-const dashedBorder = 'dashed-border';
+const solidBorder = 'solid-border';
 const configurableComponent = 'configurable-component';
 const gridrowComponent = 'gridrow-component';
 const cloneableComponent = 'cloneable-component';
@@ -129,7 +129,6 @@ const formItemClass = 'form-item';
 const inputBlockClass = 'input-block';
 const radioCheckboxBlockClass = 'radio-checkbox-block';
 const formBorderClass = 'form-border';
-const dashBorderClass = 'dashed-border';
 const formGroup = 'form-group';
 const formControl = 'form-control';
 const formControlSm = 'form-control-sm'
@@ -166,7 +165,7 @@ export {
     dataCommonTableId, dataMultivalueSelectId, dataRequiredSpan, dataResponseDataKey, dataOnclickFunctionGenerated,
     draggableComponent, dataTitle, configurableComponent, sortableClass, dataRowField, dataRelatedButton,
     formItemClass, inputBlockClass, radioCheckboxBlockClass, cloneableComponent, deletableComponent,
-    dataRelatedTable, gridrowComponent, formBorderClass, colReg, dashBorderClass, formGroup,
+    dataRelatedTable, gridrowComponent, formBorderClass, colReg, formGroup,
     formControl, formControlFile, formCheck, formCheckInput, formCheckLabel, formText,
     textMuted, formCheckInline, btnBlock, headingReg, customControl, customCheckbox, customControlInput,
     customControlLabel, customFile, customFileInput, customFileLabel, containerComponent,
@@ -176,7 +175,7 @@ export {
     col_sm_10, col_sm_11, col_sm_12, dataEnableButtonClickPopup, buttonClickedPopupPrefix,
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
-    dataType, dashedBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
+    dataType, solidBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
     defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
     defaultInputWidth, inlineComponent, defaultWidthComponent, defaultHeightComponent, defaultWidthValue,
     defaultHeightValue

@@ -1,11 +1,11 @@
-import { bgcolorSelectOptions, bgcolorClasses, dataComponentId, dashedBorder, configurableComponent, resizableComponent, draggableComponent, droppableComponent, scaleOnResizeComponent } from '../common';
+import { bgcolorSelectOptions, bgcolorClasses, dataComponentId, solidBorder, configurableComponent, resizableComponent, draggableComponent, droppableComponent, scaleOnResizeComponent } from '../common';
 import { SelectInput, ColorInput } from '../../inputs/inputs';
 import { divid } from './ids';
 
 const div = {
     classes: ['gs-w'],
     image: "icons/div.svg",
-    html: `<div ${dataComponentId}="${divid}" class="${dashedBorder} ${configurableComponent} ${resizableComponent} ${draggableComponent} ${droppableComponent} ${scaleOnResizeComponent}" style="width: 500px; height: 300px;"></div>`,
+    html: `<div ${dataComponentId}="${divid}" class="${solidBorder} ${configurableComponent} ${resizableComponent} ${draggableComponent} ${droppableComponent} ${scaleOnResizeComponent}" style="width: 500px; height: 300px;"></div>`,
     name: "Div",
     resizable: true,
     droppable: true,
