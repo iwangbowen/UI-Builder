@@ -2,15 +2,20 @@ import Vvveb from '../gui/components';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
-import { droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent, defaultWidthValue, defaultHeightValue, defaultHeightComponent } from '../components/common';
+import {
+    droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent,
+    defaultWidthValue, defaultHeightValue, defaultHeightComponent
+} from '../components/common';
 import {
     getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
     getFunctionInIframe, clearSelectedElements
 } from './dom';
 import { componentBgImgHeight } from '../constants';
 import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
-import MultiMoveResizeMutation from '../models/mutation/multi-move-resize-mutation';
-import MoveResizeMutation from '../models/mutation/move-resize-mutation';
+import MoveMutation from '../models/mutation/move-mutation';
+import MultiMoveMutation from '../models/mutation/multi-move-mutation';
+import ResizeMutation from '../models/mutation/resize-mutation';
+import MultiResizeMutation from '../models/mutation/multi-resize-mutation';
 
 function initDraggableComponents(item, component) {
     const width = item.width();
@@ -270,7 +275,38 @@ function initInteractions() {
 let selectedOffsetsRelativeToDraggable = [];
 let selectedOriginalSizes = [];
 let selectedOriginalPositions = [];
-let multiMoveResizeMutation;
+let multiResizeMutation;
+let multiMoveMutation;
+
+function addMutationOnResizeEnd() {
+    multiResizeMutation.onResizeEnd();
+    Vvveb.Undo.addMutation(multiResizeMutation);
+}
+
+function addMutationOnMoveEnd() {
+    multiMoveMutation.onMoveEnd();
+    Vvveb.Undo.addMutation(multiMoveMutation);
+}
+
+function initMultiResizeMutation(element) {
+    multiResizeMutation = initMultiMutation(element, ResizeMutation, MultiResizeMutation);
+}
+
+function initMultiMoveMutation(element) {
+    multiMoveMutation = initMultiMutation(element, MoveMutation, MultiMoveMutation);
+}
+
+function initMultiMutation(element, Mutation, MultiMutation) {
+    let elements = [];
+    if (isSelectedElement(element)) {
+        elements = getSelectedElements();
+    } else {
+        elements = [element];
+    }
+    return elements.reduce((prev, cur) => prev.addMutation(new Mutation({
+        target: cur
+    })), new MultiMutation());
+}
 
 const draggableOptions = {
     cancel: 'option',
@@ -281,15 +317,7 @@ const draggableOptions = {
                 .map(selected => getOffsetBetweenElements($(this), $(selected)));
         }
 
-        let elements = [];
-        if (isSelectedElement(this)) {
-            elements = getSelectedElements();
-        } else {
-            elements = [this];
-        }
-        multiMoveResizeMutation = elements.reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
-            target: cur
-        })), new MultiMoveResizeMutation());
+        initMultiMoveMutation(this);
     },
     drag(e, { offset }) {
         hideAlignmentLines();
@@ -318,8 +346,7 @@ const draggableOptions = {
                 });
         }
 
-        multiMoveResizeMutation.onMoveResizeEnd();
-        Vvveb.Undo.addMutation(multiMoveResizeMutation);
+        addMutationOnMoveEnd();
     }
 };
 
@@ -346,15 +373,7 @@ const resizableOptions = {
             selectedOriginalPositions = $selected.map(selected => selected.position());
         }
 
-        let elements = [];
-        if (isSelectedElement(this)) {
-            elements = getSelectedElements();
-        } else {
-            elements = [this];
-        }
-        multiMoveResizeMutation = elements.reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
-            target: cur
-        })), new MultiMoveResizeMutation());
+        initMultiResizeMutation(this);
     },
     resize(e, { size, originalSize, position, originalPosition }) {
         hideAlignmentLines();
@@ -406,8 +425,7 @@ const resizableOptions = {
             });
         });
 
-        multiMoveResizeMutation.onMoveResizeEnd();
-        Vvveb.Undo.addMutation(multiMoveResizeMutation);
+        addMutationOnResizeEnd();
     }
 };
 
@@ -436,11 +454,7 @@ function arrayKeyPressed(key, element) {
         elements = [element];
     }
 
-    multiMoveResizeMutation = elements
-        .map(element => element.get(0))
-        .reduce((prev, cur) => prev.addMoveResizeMutation(new MoveResizeMutation({
-            target: cur
-        })), new MultiMoveResizeMutation());
+    initMultiMoveMutation(element.get(0));
 
     elements.forEach(element => {
         let { left, top } = element.position();
@@ -463,8 +477,7 @@ function arrayKeyPressed(key, element) {
         applyPositionInPercentage(element, { left, top });
     });
 
-    multiMoveResizeMutation.onMoveResizeEnd();
-    Vvveb.Undo.addMutation(multiMoveResizeMutation);
+    addMutationOnMoveEnd();
 }
 
 
