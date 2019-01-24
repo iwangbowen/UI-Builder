@@ -9,6 +9,8 @@ const undoHistory = $(`#${undoHistoryId}`);
 const undoHistoryDivider = $(`#${undoHistoryDividerId}`);
 const undoHistoryFooter = $(`#${undoHistoryFooterId}`);
 
+const historyLimit = 15;
+
 function isUndoHistoryFooter(node) {
     return node.attr('id') === undoHistoryFooterId;
 };
@@ -23,7 +25,7 @@ function setUndoHistroyButtonDisabled() {
 
 function getUndoHistory() {
     const history = Undo.getUndoHistory();
-    return history.reverse().reduce((prev, cur) =>
+    return history.reverse().slice(0, historyLimit).reduce((prev, cur) =>
         `${prev}<a class="dropdown-item" href="#">${cur.type}</a>`, '');
 }
 
