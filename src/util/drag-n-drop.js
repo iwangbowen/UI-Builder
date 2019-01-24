@@ -2,7 +2,7 @@ import Vvveb from '../gui/components';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
 import { componentSelector, sortableDivSelector } from './selectors';
-import MoveMutation from '../models/mutation/move-mutation';
+import SortMutation from '../models/mutation/sort-mutation';
 import reduce from 'lodash/reduce';
 import extend from 'lodash/extend';
 import {
@@ -281,7 +281,7 @@ function getNextSortableSiblingElement(target) {
 
 function onSortingStarts(event, { item }) {
     const target = item.get(0);
-    sortingMutation = new MoveMutation({
+    sortingMutation = new SortMutation({
         target,
         oldParent: target.parentNode,
         oldNextSibling: getNextSortableSiblingElement(target)

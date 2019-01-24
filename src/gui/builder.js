@@ -16,7 +16,7 @@ import {
 	cloneAndInit
 } from '../util/interactions';
 import { containerComponent } from '../components/common';
-import MoveMutation from '../models/mutation/move-mutation';
+import SortMutation from '../models/mutation/sort-mutation';
 import { isInIframe } from '../constants';
 import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
@@ -141,7 +141,7 @@ Vvveb.Builder = {
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
 
-			Vvveb.Undo.addMutation(new MoveMutation({
+			Vvveb.Undo.addMutation(new SortMutation({
 				target: node,
 				oldParent,
 				newParent,
@@ -166,7 +166,7 @@ Vvveb.Builder = {
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
 
-			Vvveb.Undo.addMutation(new MoveMutation({
+			Vvveb.Undo.addMutation(new SortMutation({
 				target: node,
 				oldParent,
 				oldNextSibling,

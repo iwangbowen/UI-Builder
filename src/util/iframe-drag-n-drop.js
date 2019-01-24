@@ -1,5 +1,5 @@
 import 'core-js/es6/array';
-import MoveMutation from '../models/mutation/move-mutation';
+import SortMutation from '../models/mutation/sort-mutation';
 import { popupCommon } from './popup-in-builder';
 import { tableSelector } from './selectors';
 import { dataTableId, dataComponentId } from '../components/common';
@@ -405,7 +405,7 @@ function initDraggable() {
             // call this function on every dragmove event
             onstart(event) {
                 const target = event.target;
-                mutation = new MoveMutation({
+                mutation = new SortMutation({
                     target,
                     oldParent: target.parentNode,
                     oldNextSibling: target.nextSibling,

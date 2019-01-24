@@ -1,8 +1,8 @@
 import Mutation from './mutation';
 
-export default class MoveMutation extends Mutation {
+export default class SortMutation extends Mutation {
     constructor({ target, oldParent, oldNextSibling, oldAttrs, newParent, newNextSibling, newAttrs }) {
-        super('move', target);
+        super('sort', target);
         this.oldParent = oldParent;
         this.oldNextSibling = oldNextSibling;
         this.oldAttrs = oldAttrs;
