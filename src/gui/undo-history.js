@@ -9,8 +9,6 @@ const undoHistory = $(`#${undoHistoryId}`);
 const undoHistoryDivider = $(`#${undoHistoryDividerId}`);
 const undoHistoryFooter = $(`#${undoHistoryFooterId}`);
 
-const historyLimit = 15;
-
 function isUndoHistoryFooter(node) {
     return node.attr('id') === undoHistoryFooterId;
 };
@@ -25,7 +23,7 @@ function setUndoHistroyButtonDisabled() {
 
 function getUndoHistory() {
     const history = Undo.getUndoHistory();
-    return history.reverse().slice(0, historyLimit).reduce((prev, cur) =>
+    return history.reverse().reduce((prev, cur) =>
         `${prev}<a class="dropdown-item" href="#">${cur.type}</a>`, '');
 }
 
@@ -35,8 +33,7 @@ function setUndoHistoryFooterToCancel() {
 
 function showUndoHistory() {
     setUndoHistoryFooterToCancel();
-    undoHistoryDivider.prevAll().remove();
-    undoHistoryDivider.before(getUndoHistory());
+    undoHistoryDivider.prev().html(getUndoHistory());
 }
 
 undoHistory.on('mouseover', 'a', function () {
@@ -46,7 +43,7 @@ undoHistory.on('mouseover', 'a', function () {
         setUndoHistoryFooterToCancel();
     } else {
         $this.prevAll().addClass('disabled');
-        undoHistoryFooter.text(`Undo previous ${$this.index() + 1} steps`);
+        undoHistoryFooter.text(`Undo last ${$this.index() + 1} steps`);
         $this.addClass('active');
     }
 });
