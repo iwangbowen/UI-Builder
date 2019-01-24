@@ -1,5 +1,6 @@
 import Vvveb from './components';
 import Undo from './undo';
+import Actions from './actions';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
@@ -37,7 +38,7 @@ Vvveb.Builder = {
 		this.documentFrame = $("#iframe-wrapper > iframe");
 		this.canvas = $("#canvas");
 
-		Vvveb.Actions.init();
+		Actions.init();
 
 		if (!isInIframe) {
 			this._loadIframe(url, srcdoc);
@@ -324,7 +325,7 @@ Vvveb.Builder = {
 						if (component.getRenderElement) {
 							node = component.getRenderElement(node);
 						}
-						if (!Vvveb.Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
+						if (!Actions.isPreview && !$('#attribute-settings').hasClass('active')) {
 							$('#attribute-settings')
 								.addClass('active')
 								.siblings()

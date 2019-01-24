@@ -8,17 +8,18 @@ import { dialog, themesForm, themesDialog, basicDialog } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
 import { errorDialogTitle, requestErrorContent, undoHistoryId } from '../shared';
 
-Vvveb.Actions = {
+export default Actions = {
     init() {
+        const self = this;
         $("[data-vvveb-action]").each(function () {
             let on = "click";
             if (this.dataset.vvvebOn) {
                 on = this.dataset.vvvebOn;
             }
-            $(this).on(on, Vvveb.Actions[this.dataset.vvvebAction]);
+            $(this).on(on, self[this.dataset.vvvebAction]);
             if (this.dataset.vvvebShortcut) {
-                $(document).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
-                $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Actions[this.dataset.vvvebAction]);
+                $(document).bind('keydown', this.dataset.vvvebShortcut, self[this.dataset.vvvebAction]);
+                $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, self[this.dataset.vvvebAction]);
             }
         });
         this._initFileUpload();
