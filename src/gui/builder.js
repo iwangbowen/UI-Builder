@@ -24,6 +24,7 @@ import SortMutation from '../models/mutation/sort-mutation';
 import { isInIframe } from '../constants';
 import { multiSelectedCopy, multiSelectedDelete } from '../shared';
 import MultiChildListMutation from '../models/mutation/multi-child-list-mutation';
+import { closeDropdown } from './undo-history';
 
 export default Builder = {
 	dragMoveMutation: false,
@@ -307,6 +308,7 @@ export default Builder = {
 
 		this.frameBody.on("click", function (event) {
 			hideAlignmentLines();
+			closeDropdown();
 			const element = getElementWithSpecifiedClass($(event.target));
 			if (element.length) {
 				if (!($(event.target).hasClass('horizontal-line') || $(event.target).hasClass('vertical-line'))) {

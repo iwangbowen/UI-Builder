@@ -21,6 +21,9 @@ const elementsCannotBeAlignedContent = 'Cannot align elements which are not sibl
 const multiSelectedDelete = 'mutli-selected-delete';
 const multiSelectedCopy = 'multi-selected-copy';
 const undoHistoryId = 'undo-history';
+const undoHistoryBtnId = 'undo-history-btn';
+const undoHistoryFooterId = 'undo-history-footer';
+const undoHistoryDividerId = 'undo-history-divider';
 
 module.exports = {
     appName,
@@ -45,5 +48,8 @@ module.exports = {
     elementsCannotBeAlignedContent,
     multiSelectedDelete,
     multiSelectedCopy,
-    undoHistoryId
+    undoHistoryId,
+    undoHistoryBtnId,
+    undoHistoryFooterId,
+    undoHistoryDividerId
 };

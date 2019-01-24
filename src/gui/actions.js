@@ -9,7 +9,10 @@ import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
 import { dialog, themesForm, themesDialog, basicDialog } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
-import { errorDialogTitle, requestErrorContent, undoHistoryId } from '../shared';
+import {
+    errorDialogTitle, requestErrorContent
+} from '../shared';
+import { showUndoHistory } from './undo-history';
 
 export default Actions = {
     init() {
@@ -58,10 +61,7 @@ export default Actions = {
         }
         Builder.selectNode();
     },
-    showUndoHistory() {
-        console.log(this);
-        $(`#${undoHistoryId}`);
-    },
+    showUndoHistory,
     redo() {
         if (WysiwygEditor.isActive) {
             WysiwygEditor.redo();

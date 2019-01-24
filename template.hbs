@@ -28,8 +28,8 @@
                 <button id="undo-history-btn" type="button" disabled class="btn btn-light dropdown-toggle dropdown-toggle-split" data-vvveb-action="showUndoHistory" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu" id="{{undoHistoryId}}">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
+                    <div class="dropdown-divider" id="{{undoHistoryDividerId}}"></div>
+                    <a class="dropdown-item" href="#" id="{{undoHistoryFooterId}}">Cancel</a>
                 </div>
                 <button class="btn btn-light" title="Redo (Ctrl/Cmd + Y)" id="redo-btn" data-vvveb-action="redo"
                     data-vvveb-shortcut="ctrl+y">

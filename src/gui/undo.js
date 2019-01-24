@@ -32,6 +32,7 @@ MutationRecord.oldValue 			String 		The return value depends on the MutationReco
 												For childList, it is null.
 */
 import Builder from './builder';
+import { setUndoHistroyButtonDisabled } from './undo-history';
 
 export default Undo = {
 	undos: [],
@@ -43,13 +44,18 @@ export default Undo = {
 	clearMutations() {
 		this.mutations = [];
 		this.undoIndex = -1;
+		setUndoHistroyButtonDisabled();
 	},
 	addMutation(mutation) {
 		Builder.frameBody.trigger("Undo.add");
 		this.mutations.splice(++this.undoIndex, 0, mutation);
+		setUndoHistroyButtonDisabled();
 	},
 	getMutations() {
 		return this.mutations;
+	},
+	getUndoHistory() {
+		return this.mutations.slice(0, this.undoIndex + 1);
 	},
 	restore(mutation, undo) {
 		if (undo) {
@@ -58,10 +64,17 @@ export default Undo = {
 			mutation.redo();
 		}
 		Builder.frameBody.trigger("Undo.restore");
+		setUndoHistroyButtonDisabled();
 	},
 	undo() {
 		if (this.undoIndex >= 0) {
 			this.restore(this.mutations[this.undoIndex--], true);
+		}
+	},
+	undoBySteps(steps) {
+		// steps denote element index in history list starting from 0
+		while (steps-- >= 0) {
+			this.undo();
 		}
 	},
 	redo() {
