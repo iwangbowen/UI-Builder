@@ -1,4 +1,5 @@
 import Vvveb from './builder';
+import Undo from './undo';
 import tmpl from '../util/tmpl';
 import { getRandomString, addDatetime } from '../util/common';
 import { setPageSrcdoc, isTemplatePage, getSavedPages, clearTimer, hideAuxiliaryElements, decodeHash, generateHtml } from '../util/dom';
@@ -146,7 +147,7 @@ Vvveb.FileManager = {
 		return this;
 	},
 	loadPage(pageName) {
-		Vvveb.Undo.clearMutations();
+		Undo.clearMutations();
 		this.addPages([...getSavedPages(), ...templatePages]);
 		if (isTemplatePage(pageName)) {
 			const newPageName = addDatetime(pageName);
@@ -160,7 +161,7 @@ Vvveb.FileManager = {
 	},
 	loadPageFromMessage(html) {
 		clearTimer();
-		Vvveb.Undo.clearMutations();
+		Undo.clearMutations();
 		Vvveb.Builder.loadUrl(addDatetime(importedPageName), generateHtml(html, importedPageHref));
 	}
 };

@@ -1,4 +1,5 @@
 import Vvveb from './builder';
+import Undo from './undo';
 import CharacterDataMutation from '../models/mutation/character-data-mutation'
 
 Vvveb.WysiwygEditor = {
@@ -50,7 +51,7 @@ Vvveb.WysiwygEditor = {
         $("#wysiwyg-editor").hide();
         this.isActive = false;
         node = this.element.get(0);
-        Vvveb.Undo.addMutation(new CharacterDataMutation({
+        Undo.addMutation(new CharacterDataMutation({
             target: node,
             oldValue: this.oldValue,
             newValue: node.innerHTML

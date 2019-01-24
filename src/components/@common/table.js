@@ -5,6 +5,7 @@ import {
     cellClickedPopupPrefix, dataPopulateHeaders, dataAutoSizeColumns
 } from '../common';
 import Vvveb from '../../gui/components';
+import Undo from '../../gui/undo';
 import flow from 'lodash/flow';
 import curry from 'lodash/curry';
 import partial from 'lodash/partial';
@@ -301,7 +302,7 @@ const table = {
                     const keyIndex = parseInt(this.key.substr('option'.length)) - 1;
                     let colDefs = getColumnDefs(node);
                     if (input.nodeName == 'BUTTON') {
-                        Vvveb.Undo.addMutation(new TableHeaderMutation({
+                        Undo.addMutation(new TableHeaderMutation({
                             target: node,
                             addHeader: false,
                             index: keyIndex,
@@ -600,7 +601,7 @@ const table = {
                     headerCheckboxSelection: false
                 };
                 colDefs.push(colDef);
-                Vvveb.Undo.addMutation(new TableHeaderMutation({
+                Undo.addMutation(new TableHeaderMutation({
                     target: node,
                     addHeader: true,
                     colDef

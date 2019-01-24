@@ -431,7 +431,7 @@ function initDraggable() {
                 mutation.newParent = target.parentNode;
                 mutation.newNextSibling = target.nextSibling;
                 mutation.newAttrs = getAttributes(target);
-                window.parent.Vvveb.Undo.addMutation(mutation);
+                window.parent.Undo.addMutation(mutation);
             }
         });
 }

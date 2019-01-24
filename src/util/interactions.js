@@ -1,4 +1,5 @@
 import Vvveb from '../gui/components';
+import Undo from '../gui/undo';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import extend from 'lodash/extend';
 import 'core-js/es7/array';
@@ -174,7 +175,7 @@ function cloneAndInit(original) {
             nextSibling: null
         }));
     });
-    Vvveb.Undo.addMutation(multiChildListMutation);
+    Undo.addMutation(multiChildListMutation);
     return clonedElements;
 }
 
@@ -238,7 +239,7 @@ function onDrop(event, { draggable, helper, offset, position }) {
         if (component.beforeInit) {
             component.beforeInit(appended.get(0));
         }
-        Vvveb.Undo.addMutation(new ChildListMutation({
+        Undo.addMutation(new ChildListMutation({
             target: appended.get(0).parentNode,
             addedNodes: [...appended],
             nextSibing: appended[0].nextSibing
@@ -280,12 +281,12 @@ let multiMoveMutation;
 
 function addMutationOnResizeEnd() {
     multiResizeMutation.onResizeEnd();
-    Vvveb.Undo.addMutation(multiResizeMutation);
+    Undo.addMutation(multiResizeMutation);
 }
 
 function addMutationOnMoveEnd() {
     multiMoveMutation.onMoveEnd();
-    Vvveb.Undo.addMutation(multiMoveMutation);
+    Undo.addMutation(multiMoveMutation);
 }
 
 function initMultiResizeMutation(element) {

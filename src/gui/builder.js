@@ -1,4 +1,5 @@
 import Vvveb from './components';
+import Undo from './undo';
 import { replaceOtherShowingCalendarInputs } from '../util/dataAttr';
 import {
 	clearSelectedElements, addOrRemoveElement, highlightOnMove, highlightwhenSelected,
@@ -141,7 +142,7 @@ Vvveb.Builder = {
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
 
-			Vvveb.Undo.addMutation(new SortMutation({
+			Undo.addMutation(new SortMutation({
 				target: node,
 				oldParent,
 				newParent,
@@ -166,7 +167,7 @@ Vvveb.Builder = {
 			const newParent = node.parentNode;
 			const newNextSibling = node.nextSibling;
 
-			Vvveb.Undo.addMutation(new SortMutation({
+			Undo.addMutation(new SortMutation({
 				target: node,
 				oldParent,
 				oldNextSibling,
@@ -211,7 +212,7 @@ Vvveb.Builder = {
 		$("#delete-box").on("click", function (event) {
 			hideAuxiliaryElements();
 			const node = _this.selectedEl.get(0);
-			Vvveb.Undo.addMutation(new ChildListMutation({
+			Undo.addMutation(new ChildListMutation({
 				target: node.parentNode,
 				removedNodes: [node],
 				nextSibling: node.nextSibling
@@ -248,7 +249,7 @@ Vvveb.Builder = {
 					removedNodes: [node]
 				}));
 			});
-			Vvveb.Undo.addMutation(multiChildListMutation);
+			Undo.addMutation(multiChildListMutation);
 			clearSelectedElements();
 			$(selectedElements).remove();
 			event.preventDefault();

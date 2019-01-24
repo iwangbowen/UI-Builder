@@ -1,4 +1,5 @@
 import Vvveb from './builder';
+import Undo from './undo';
 import { getHtml, getBeautifiedHtml, delay } from '../util/dom';
 
 Vvveb.CodeEditor = {
@@ -24,7 +25,7 @@ Vvveb.CodeEditor = {
 			});
 		}
 		//_self = this;
-		Vvveb.Builder.frameBody.on("vvveb.undo.add vvveb.undo.restore", function (e) { Vvveb.CodeEditor.setValue(e); });
+		Vvveb.Builder.frameBody.on("Undo.add Undo.restore", function (e) { Vvveb.CodeEditor.setValue(e); });
 		//load code when a new url is loaded
 		Vvveb.Builder.documentFrame.on("load", function (e) { Vvveb.CodeEditor.setValue(); });
 

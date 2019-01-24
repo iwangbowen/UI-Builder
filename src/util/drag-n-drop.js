@@ -1,4 +1,5 @@
 import Vvveb from '../gui/components';
+import Undo from '../gui/undo';
 import ChildListMutation from '../models/mutation/child-list-mutation';
 import { isOverlap } from '../util/dom';
 import { componentSelector, sortableDivSelector } from './selectors';
@@ -172,7 +173,7 @@ function drop(event, { draggable, helper, offset }) {
         if (component.isChildrenSortableAndDroppable) {
             enableSortableAndDroppable(appendedElement.children(component.sortableAndDroppableSelector));
         }
-        Vvveb.Undo.addMutation(new ChildListMutation({
+        Undo.addMutation(new ChildListMutation({
             target: appendedElement.get(0).parentNode,
             addedNodes: [...appendedElement],
             nextSibing: appendedElement[0].nextSibing
@@ -292,7 +293,7 @@ function onSortingUpdates(event, { item }) {
     const target = item.get(0);
     sortingMutation.newParent = target.parentNode;
     sortingMutation.newNextSibling = getNextSortableSiblingElement(target);
-    Vvveb.Undo.addMutation(sortingMutation);
+    Undo.addMutation(sortingMutation);
 }
 
 function initIfameFormSortable() {
@@ -462,7 +463,7 @@ function initComponentDragWithInteract() {
                         .removeAttr('data-x data-y');
                 }
                 $element.remove();
-                Vvveb.Undo.addMutation(new ChildListMutation({
+                Undo.addMutation(new ChildListMutation({
                     target: appendedElement.get(0).parentNode,
                     addedNodes: [appendedElement.get(0)],
                     nextSibing: appendedElement[0].nextSibing

@@ -1,3 +1,4 @@
+import Undo from './undo';
 import { SectionInput } from '../inputs/inputs';
 import { dataComponentId, dataSection, dataSearch, dataType } from '../components/common';
 import { getStyle } from '../util/dom';
@@ -29,7 +30,7 @@ function addPropertyChangeListener(component, property) {
 			} else {
 				element = element.attr(property.htmlAttr, value);
 			}
-			Vvveb.Undo.addMutation(new AttributesMutation({
+			Undo.addMutation(new AttributesMutation({
 				target: element.get(0),
 				attributeName: property.htmlAttr,
 				inputtype: property.inputtype,

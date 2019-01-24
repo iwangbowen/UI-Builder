@@ -20,6 +20,7 @@ const basicDialogId = 'basic-dialog';
 const elementsCannotBeAlignedContent = 'Cannot align elements which are not siblings';
 const multiSelectedDelete = 'mutli-selected-delete';
 const multiSelectedCopy = 'multi-selected-copy';
+const undoHistoryId = 'undo-history';
 
 module.exports = {
     appName,
@@ -43,5 +44,6 @@ module.exports = {
     basicDialogId,
     elementsCannotBeAlignedContent,
     multiSelectedDelete,
-    multiSelectedCopy
+    multiSelectedCopy,
+    undoHistoryId
 };

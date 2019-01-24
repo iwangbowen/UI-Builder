@@ -3,7 +3,6 @@ import './gui/builder';
 import './gui/wysiwyg-editor';
 import './gui/actions';
 import './gui/file-manager';
-import './gui/undo';
 import './components-loader';
 import {
     initPanelToggle, initBuilderPage, setGlobalVariables

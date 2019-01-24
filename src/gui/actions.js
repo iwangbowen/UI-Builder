@@ -1,11 +1,12 @@
 import Vvveb from './builder';
+import Undo from './undo';
 import { launchFullScreen, getBeautifiedHtml, downloadAsTextFile, getCurrentThemeName } from '../util/dom';
 import 'core-js/es6/promise';
 import { importedPageName, defaultFilename } from '../constants';
 import { addDatetime } from '../util/common';
 import { dialog, themesForm, themesDialog, basicDialog } from '../util/dialog';
 import { getThemeList } from '../util/jsoup';
-import { errorDialogTitle, requestErrorContent } from '../shared';
+import { errorDialogTitle, requestErrorContent, undoHistoryId } from '../shared';
 
 Vvveb.Actions = {
     init() {
@@ -49,15 +50,19 @@ Vvveb.Actions = {
         if (Vvveb.WysiwygEditor.isActive) {
             Vvveb.WysiwygEditor.undo();
         } else {
-            Vvveb.Undo.undo();
+            Undo.undo();
         }
         Vvveb.Builder.selectNode();
+    },
+    showUndoHistory() {
+        console.log(this);
+        $(`#${undoHistoryId}`);
     },
     redo() {
         if (Vvveb.WysiwygEditor.isActive) {
             Vvveb.WysiwygEditor.redo();
         } else {
-            Vvveb.Undo.redo();
+            Undo.redo();
         }
         Vvveb.Builder.selectNode();
     },
