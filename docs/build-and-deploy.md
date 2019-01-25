@@ -23,7 +23,7 @@
 
 ### Apache HTTP Server配置和常用命令
 
-`Apache HTTP Server`配置文件路径`/etc/httpd/conf/httpd`
+`Apache HTTP Server`配置文件路径`/etc/httpd/conf/httpd.conf`
 
 配置文件
 
