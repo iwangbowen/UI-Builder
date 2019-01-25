@@ -6,7 +6,7 @@ import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import {
     droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent,
-    defaultWidthValue, defaultHeightValue, defaultHeightComponent
+    defaultWidthValue, defaultHeightValue, defaultHeightComponent, verticalScaleComponent, horizontalNonScaleComponent
 } from '../components/common';
 import {
     getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
@@ -60,9 +60,18 @@ function convertSize(element, width = element.outerWidth(), height = element.out
     // Convert to absolute unit or relative uite
     if (element.hasClass(scaleOnResizeComponent)) {
         const parent = element.parent();
+
+        // Height default to not scale
+        if (element.hasClass(verticalScaleComponent)) {
+            height = `${height / parent.outerHeight() * 100}%`
+        }
+        // Width default to scale
+        if (!element.hasClass(horizontalNonScaleComponent)) {
+            width = `${width / parent.outerWidth() * 100}%`;
+        }
         return {
-            width: `${width / parent.outerWidth() * 100}%`,
-            height: `${height / parent.outerHeight() * 100}%`
+            width,
+            height
         };
     } else {
         if (element.hasClass(defaultWidthComponent)) {

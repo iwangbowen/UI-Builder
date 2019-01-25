@@ -61,11 +61,13 @@ const draggableComponent = 'draggable-component';
 const resizableComponent = 'resizable-component';
 const droppableComponent = 'droppable-component';
 const scaleOnResizeComponent = 'scale-on-resize-component';
-const horizontalScaleComponent = 'horizontal-scale-component';
+const horizontalNonScaleComponent = 'horizontal-non-scale-component';
 const verticalScaleComponent = 'vertical-scale-component';
 const inlineComponent = 'inline-component';
 const defaultWidthComponent = 'default-width-component';
 const defaultHeightComponent = 'default-height-component';
+const leftOffsetNonScaleComponent = 'left-offset-non-scale-component';
+const topOffsetScaleComponent = 'top-offset-scale-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -176,7 +178,7 @@ export {
     dataButtonKey, cellClickedPopupPrefix, dataPopulateHeaders, dataTabsKey, dataAutoSizeColumns,
     placeholderComponentHighlight, formControlSm, labelAlignStyle, inputAlignStyle, dataSearch, dataSection,
     dataType, solidBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
-    defaultSizeStyle, horizontalScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
+    defaultSizeStyle, horizontalNonScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
     defaultInputWidth, inlineComponent, defaultWidthComponent, defaultHeightComponent, defaultWidthValue,
-    defaultHeightValue
+    defaultHeightValue, leftOffsetNonScaleComponent, topOffsetScaleComponent
 };
