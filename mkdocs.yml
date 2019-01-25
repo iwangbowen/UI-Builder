@@ -3,10 +3,10 @@ nav:
     - 主页: index.md
     - 使用说明 1.0: user-guide-1.0.md
     - 构建及部署: build-and-deploy.md
-    - FAQs: FAQs.md
     - 网页版CHANGELOG: WEB-CHANGELOG.md
     - 程序版CHANGELOG: APP-CHANGELOG.md
     - 样式主题制作器CHANGLOG: THEMES-CHANGELOG.md
+    - FAQs: FAQs.md
 dev_addr: 127.0.0.1:8888
 use_directory_urls: false
 theme:
