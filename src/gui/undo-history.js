@@ -33,7 +33,9 @@ function setUndoHistoryFooterToCancel() {
 
 function showUndoHistory() {
     setUndoHistoryFooterToCancel();
-    undoHistoryDivider.prev().html(getUndoHistory());
+    setTimeout(() => {
+        undoHistoryDivider.prev().html(getUndoHistory()).scrollTop(0);
+    }, 0);
 }
 
 undoHistory.on('mouseover', 'a', function () {
