@@ -156,7 +156,7 @@ npm run zip:all
 
 ### 程序发布
 
-本地编译打包后，可以将程序发布到服务器的`/var/www/download`路径，通过不同的路径名区分不同的版本，并在文档中的[程序版CHANGELOG](/APP-CHANGELOG.html)中更新对应版本的路径。
+本地编译打包后，可以将程序发布到服务器的`/var/www/download`路径，通过不同的路径名区分不同的版本，并在文档中的[程序版CHANGELOG](./APP-CHANGELOG.html)中更新对应版本的路径。
 
 ## 样式主题制作器
 
