@@ -6,7 +6,7 @@ import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import {
     droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent,
-    defaultWidthValue, defaultHeightValue, defaultHeightComponent, verticalScaleComponent, horizontalNonScaleComponent
+    defaultWidthValue, defaultHeightValue, defaultHeightComponent, verticalScaleComponent, horizontalNonScaleComponent, sizeAutoChangeComponent
 } from '../components/common';
 import {
     getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
@@ -193,21 +193,20 @@ function cloneAndInit(original) {
 
 function convertAndInitInteractions(element, position, convertSizeNeeded = true) {
     let width, height;
-    if (convertSizeNeeded) {
+    if (convertSizeNeeded && !element.hasClass(sizeAutoChangeComponent)) {
         const convertedSize = convertSize(element);
         width = convertedSize.width;
         height = convertedSize.height;
-    } else {
-        width = element.get(0).style.width;
-        height = element.get(0).style.height;
+        element.css({
+            width,
+            height
+        });
     }
     // Use clone element as dragging element
     // Use current clone element position as appended element position
     const { left, top } = convertPositionInPercentage(element, position);
     element.css({
         position: 'absolute',
-        width,
-        height,
         left,
         top
     }).draggable(draggableOptions);

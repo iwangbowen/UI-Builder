@@ -68,6 +68,7 @@ const defaultWidthComponent = 'default-width-component';
 const defaultHeightComponent = 'default-height-component';
 const leftOffsetNonScaleComponent = 'left-offset-non-scale-component';
 const topOffsetScaleComponent = 'top-offset-scale-component';
+const sizeAutoChangeComponent = 'size-auto-change-component';
 
 const dataComponentId = 'data-component-id';
 const dataTableId = 'data-table-id';
@@ -180,5 +181,5 @@ export {
     dataType, solidBorder, resizableComponent, droppableComponent, scaleOnResizeComponent,
     defaultSizeStyle, horizontalNonScaleComponent, verticalScaleComponent, form_inline, mr_sm_2,
     defaultInputWidth, inlineComponent, defaultWidthComponent, defaultHeightComponent, defaultWidthValue,
-    defaultHeightValue, leftOffsetNonScaleComponent, topOffsetScaleComponent
+    defaultHeightValue, leftOffsetNonScaleComponent, topOffsetScaleComponent, sizeAutoChangeComponent
 };
