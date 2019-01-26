@@ -3,8 +3,6 @@ import { imageSrcProperty, widthProperty, heightProperty, altProperty, imageForm
 const imageProperties = [
     imageUploadProperty,
     imageSrcProperty,
-    widthProperty,
-    heightProperty,
     altProperty,
     imageFormatProperty,
     dataKeyMappingProperty,

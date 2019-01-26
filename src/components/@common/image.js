@@ -8,9 +8,7 @@ const height = '150';
 const image = {
     nodes: ['img'],
     name: 'Image',
-    html: `<img class="${configurableComponent} ${draggableComponent}" src="${imagePlaceholder}" height="${height}" width="${width}">`,
-    width: `${width}px`,
-    height: `${height}px`,
+    html: `<img class="${configurableComponent} ${draggableComponent}" src="${imagePlaceholder}" style="width: ${width}px; height: ${height}px">`,
     image: "icons/image.svg",
     properties
 };
