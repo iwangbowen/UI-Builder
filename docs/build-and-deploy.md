@@ -86,7 +86,7 @@ service httpd restart
 安装依赖
 
 ```bash
-npm run install
+npm install
 ```
 
 本地开发
@@ -119,7 +119,7 @@ npm run build:prod
 安装依赖
 
 ```bash
-npm run install
+npm install
 ```
 
 监控模式启动前端项目
@@ -169,7 +169,7 @@ npm run zip:all
 安装依赖
 
 ```bash
-npm run install
+npm install
 ```
 
 本地开发
