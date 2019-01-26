@@ -62,6 +62,13 @@ listen 8080
       DirectoryIndex index.html
    </Directory>
 </VirtualHost>
+
+# 禁用缓存配置
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
 ```
 
 修改配置文件后重启服务器
@@ -208,6 +215,10 @@ npm run restart
 ### 项目主页
 
 [文档](https://github.com/iwangbowen/UI-Builder/tree/master)
+
+文档制作器主页[MkDocs](https://www.mkdocs.org/)
+
+文档主题样式主页[Material for MkDocs](https://github.com/squidfunk/mkdocs-material)
 
 !!! tip "提示"
     文档位于UI Tools项目的`master`分支中的`docs`目录。
