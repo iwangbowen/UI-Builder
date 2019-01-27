@@ -6,7 +6,7 @@ import extend from 'lodash/extend';
 import 'core-js/es7/array';
 import {
     droppableComponent, draggableComponent, resizableComponent, scaleOnResizeComponent, defaultWidthComponent,
-    defaultWidthValue, defaultHeightValue, defaultHeightComponent, verticalScaleComponent, horizontalNonScaleComponent, sizeAutoChangeComponent
+    defaultWidthValue, defaultHeightValue, defaultHeightComponent, verticalScaleComponent, horizontalNonScaleComponent, sizeAutoChangeComponent, topOffsetScaleComponent, leftOffsetNonScaleComponent
 } from '../components/common';
 import {
     getElementWithSpecifiedClass, changeOffset, isSelectedElement, getSelectedElements,
@@ -89,11 +89,17 @@ function convertSize(element, width = element.outerWidth(), height = element.out
 
 function convertPositionInPercentage(element, position = element.position()) {
     const parent = element.parent();
-    const { left, top } = position;
-    return {
-        left: `${left / parent.width() * 100}%`,
-        top: `${top / parent.height() * 100}%`
+    let { left, top } = position;
+    if (element.hasClass(topOffsetScaleComponent)) {
+        top = `${top / parent.height() * 100}%`;
     }
+    if (!element.hasClass(leftOffsetNonScaleComponent)) {
+        left = `${left / parent.width() * 100}%`;
+    }
+    return {
+        left,
+        top
+    };
 }
 
 function applyPositionInPercentage(element, position) {
