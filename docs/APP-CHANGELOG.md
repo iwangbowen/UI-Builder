@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.20.0] - 2019-01-27
+
+- [服务器](/download/1.20.0/noide.zip)
+- [GitHub](https://github.com/iwangbowen/server-hosting-fs/releases/download/1.20.0/noide.zip)
+
 ## [1.10.2] - 2018-12-17
 
 下载
