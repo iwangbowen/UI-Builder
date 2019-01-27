@@ -1,4 +1,5 @@
 import { generateSharedJSCode, getTemplatePage } from "./util/jsoup";
+import { templatePages } from './constants';
 
 const parent = window.parent;
 
@@ -16,7 +17,10 @@ const cache = {};
 
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data } }) => {
-        if (data.type == 'updateSharedJS') {
+        if (data.type == 'queryTemplatePages') {
+            data.templatePages = templatePages;
+            sendMessage(data);
+        } else if (data.type == 'updateSharedJS') {
             data.js = generateSharedJSCode();
             sendMessage(data);
         } else if (data.type == 'add') {
