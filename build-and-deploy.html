@@ -1040,7 +1040,7 @@
 </td></tr></table>
 
 <h3 id="_13">程序发布<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>本地编译打包后，可以将程序发布到服务器的<code>/var/www/download</code>路径，通过不同的路径名区分不同的版本，并在文档中的<a href="./APP-CHANGELOG.html">程序版CHANGELOG</a>中更新对应版本的路径。</p>
+<p>本地编译打包后，可以将程序发布到服务器的<code>/var/www/download</code>路径，通过不同的路径名区分不同的版本，并在文档中的<a href="APP-CHANGELOG.html">程序版CHANGELOG</a>中更新对应版本的路径。</p>
 <h2 id="_14">样式主题制作器<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <h3 id="_15">项目主页<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/iwangbowen/bootstrap-magic">样式主题制作器</a></p>
@@ -1086,6 +1086,28 @@
 <p>文档位于UI Tools项目的<code>master</code>分支中的<code>docs</code>目录。</p>
 </div>
 <h3 id="_21">本地开发<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>安装<a href="https://www.python.org/">Python</a></p>
+</li>
+<li>
+<p>安装<a href="https://www.mkdocs.org">MkDocs</a></p>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>安装文档主题<a href="https://github.com/squidfunk/mkdocs-material">Material for MkDocs</a></li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs-material
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>本地生成文档页面</li>
+</ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>npm run docs:dev
 </pre></div>
 </td></tr></table>
