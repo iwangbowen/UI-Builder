@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 - [服务器](/download/1.20.0/noide.zip)
 - [GitHub](https://github.com/iwangbowen/server-hosting-fs/releases/download/1.20.0/noide.zip)
 
+---
+
+### Fixed
+
+- 修复UI Tools不同分支模板页面不一致的问题
+
 ## [1.10.2] - 2018-12-17
 
 下载
