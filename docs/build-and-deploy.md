@@ -163,7 +163,7 @@ npm run zip:all
 
 ### 程序发布
 
-本地编译打包后，可以将程序发布到服务器的`/var/www/download`路径，通过不同的路径名区分不同的版本，并在文档中的[程序版CHANGELOG](./APP-CHANGELOG.html)中更新对应版本的路径。
+本地编译打包后，可以将程序发布到服务器的`/var/www/download`路径，通过不同的路径名区分不同的版本，并在文档中的[程序版CHANGELOG](./APP-CHANGELOG.md)中更新对应版本的路径。
 
 ## 样式主题制作器
 
@@ -224,6 +224,22 @@ npm run restart
     文档位于UI Tools项目的`master`分支中的`docs`目录。
 
 ### 本地开发
+
+- 安装[Python](https://www.python.org/)
+
+- 安装[MkDocs](https://www.mkdocs.org)
+
+```bash
+pip install mkdocs
+```
+
+- 安装文档主题[Material for MkDocs](https://github.com/squidfunk/mkdocs-material)
+
+```bash
+pip install mkdocs-material
+```
+
+- 本地生成文档页面
 
 ```bash
 npm run docs:dev
