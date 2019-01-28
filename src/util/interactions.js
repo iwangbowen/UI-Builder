@@ -18,6 +18,8 @@ import MoveMutation from '../models/mutation/move-mutation';
 import MultiMoveMutation from '../models/mutation/multi-move-mutation';
 import ResizeMutation from '../models/mutation/resize-mutation';
 import MultiResizeMutation from '../models/mutation/multi-resize-mutation';
+import AlignMutation from '../models/mutation/align-mutation';
+import MultiAlignMutation from '../models/mutation/multi-align-mutation';
 
 function initDraggableComponents(item, component) {
     const width = item.width();
@@ -296,6 +298,7 @@ let selectedOriginalSizes = [];
 let selectedOriginalPositions = [];
 let multiResizeMutation;
 let multiMoveMutation;
+let multiAlignMutation;
 
 function addMutationOnResizeEnd() {
     multiResizeMutation.onResizeEnd();
@@ -307,12 +310,21 @@ function addMutationOnMoveEnd() {
     Undo.addMutation(multiMoveMutation);
 }
 
+function addMutationOnAlignEnd() {
+    multiAlignMutation.onAlignEnd();
+    Undo.addMutation(multiAlignMutation);
+}
+
 function initMultiResizeMutation(element) {
     multiResizeMutation = initMultiMutation(element, ResizeMutation, MultiResizeMutation, 'Resize');
 }
 
 function initMultiMoveMutation(element) {
     multiMoveMutation = initMultiMutation(element, MoveMutation, MultiMoveMutation, 'Move');
+}
+
+function initMultiAlignMutation(element) {
+    multiAlignMutation = initMultiMutation(element, AlignMutation, MultiAlignMutation, 'Align');
 }
 
 function initMultiMutation(element, Mutation, MultiMutation, type) {
@@ -553,5 +565,7 @@ export {
     convertAndInitInteractionsRecursively,
     hideAlignmentLines,
     cloneAndInit,
-    initDroppable
+    initDroppable,
+    initMultiAlignMutation,
+    addMutationOnAlignEnd
 };

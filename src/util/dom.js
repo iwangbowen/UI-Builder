@@ -34,7 +34,7 @@ import 'core-js/es7/array';
 import { enableSortableAndDroppable } from './drag-n-drop';
 import { auxiliaryElementsSelector, detailPopup, highlightBoxSelector, highlightNameSelector } from '../common';
 import { sendMessage, getMessageData } from '../message';
-import { applyPositionInPercentage, setDroppableBySelector, intiDroppableInContext } from './interactions';
+import { applyPositionInPercentage, setDroppableBySelector, intiDroppableInContext, initMultiAlignMutation, addMutationOnAlignEnd } from './interactions';
 import { basicDialog } from './dialog';
 import { errorDialogTitle, elementsCannotBeAlignedContent } from '../shared';
 
@@ -527,6 +527,7 @@ function middleAlign() {
 function alignCallback(direction) {
     return function (event) {
         if (areSiblings(getSelectedElements())) {
+            initMultiAlignMutation(Builder.getSelectedEl().get(0));
             switch (direction) {
                 case 'left':
                     leftAlign();
@@ -548,6 +549,7 @@ function alignCallback(direction) {
                     break;
                 default:
             }
+            addMutationOnAlignEnd();
             hideAuxiliaryElements();
         } else {
             basicDialog.set({

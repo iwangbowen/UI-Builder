@@ -112,6 +112,9 @@ export default Builder = {
 			Components.render(data.type);
 		}
 	},
+	getSelectedEl() {
+		return this.selectedEl;
+	},
 	selectNode(node = false, ctrlKeyPressed = false) {
 		if (!node) {
 			jQuery(selectBox).hide();
