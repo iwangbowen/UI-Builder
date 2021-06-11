@@ -26,6 +26,7 @@ The preview shown above is on branch `gridster-snap` right now, you can check ou
 ## Getting started
 
 1. Install development dependencies:
+
     ```sh
     npm install
     ```
@@ -35,6 +36,7 @@ The preview shown above is on branch `gridster-snap` right now, you can check ou
     ```sh
     npm run build:dev
     ```
+
 3. Start app
 
     ```sh
